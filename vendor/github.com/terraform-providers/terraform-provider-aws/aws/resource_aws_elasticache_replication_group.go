@@ -9,11 +9,9 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/elasticache"
-
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/helper/validation"
-	"github.com/hashicorp/terraform/terraform"
 )
 
 func resourceAwsElasticacheReplicationGroup() *schema.Resource {
@@ -225,13 +223,6 @@ func resourceAwsElasticacheReplicationGroup() *schema.Resource {
 			},
 		},
 		SchemaVersion: 1,
-
-		// SchemaVersion: 1 did not include any state changes via MigrateState.
-		// Perform a no-operation state upgrade for Terraform 0.12 compatibility.
-		// Future state migrations should be performed with StateUpgraders.
-		MigrateState: func(v int, inst *terraform.InstanceState, meta interface{}) (*terraform.InstanceState, error) {
-			return inst, nil
-		},
 
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(60 * time.Minute),
@@ -852,16 +843,8 @@ func deleteElasticacheReplicationGroup(replicationGroupID string, conn *elastica
 		}
 		return nil
 	})
-	if isResourceTimeoutError(err) {
-		_, err = conn.DeleteReplicationGroup(input)
-	}
-
-	if isAWSErr(err, elasticache.ErrCodeReplicationGroupNotFoundFault, "") {
-		return nil
-	}
-
 	if err != nil {
-		return fmt.Errorf("error deleting Elasticache Replication Group: %s", err)
+		return err
 	}
 
 	log.Printf("[DEBUG] Waiting for deletion: %s", replicationGroupID)

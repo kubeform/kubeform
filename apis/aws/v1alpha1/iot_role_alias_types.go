@@ -25,8 +25,6 @@ type IotRoleAliasSpec struct {
 
 	Alias string `json:"alias" tf:"alias"`
 	// +optional
-	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
-	// +optional
 	CredentialDuration int    `json:"credentialDuration,omitempty" tf:"credential_duration,omitempty"`
 	RoleArn            string `json:"roleArn" tf:"role_arn"`
 }

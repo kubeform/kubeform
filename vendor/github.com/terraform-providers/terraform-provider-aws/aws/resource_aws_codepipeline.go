@@ -161,7 +161,6 @@ func resourceAwsCodePipeline() *schema.Resource {
 					},
 				},
 			},
-			"tags": tagsSchema(),
 		},
 	}
 }
@@ -170,7 +169,6 @@ func resourceAwsCodePipelineCreate(d *schema.ResourceData, meta interface{}) err
 	conn := meta.(*AWSClient).codepipelineconn
 	params := &codepipeline.CreatePipelineInput{
 		Pipeline: expandAwsCodePipeline(d),
-		Tags:     tagsFromMapCodePipeline(d.Get("tags").(map[string]interface{})),
 	}
 
 	var resp *codepipeline.CreatePipelineOutput
@@ -449,11 +447,6 @@ func resourceAwsCodePipelineRead(d *schema.ResourceData, meta interface{}) error
 	d.Set("arn", metadata.PipelineArn)
 	d.Set("name", pipeline.Name)
 	d.Set("role_arn", pipeline.RoleArn)
-
-	if err := saveTagsCodePipeline(conn, d); err != nil {
-		return err
-	}
-
 	return nil
 }
 
@@ -470,10 +463,6 @@ func resourceAwsCodePipelineUpdate(d *schema.ResourceData, meta interface{}) err
 		return fmt.Errorf(
 			"[ERROR] Error updating CodePipeline (%s): %s",
 			d.Id(), err)
-	}
-
-	if err := setTagsCodePipeline(conn, d); err != nil {
-		return fmt.Errorf("Error updating CodePipeline tags: %s", d.Id())
 	}
 
 	return resourceAwsCodePipelineRead(d, meta)

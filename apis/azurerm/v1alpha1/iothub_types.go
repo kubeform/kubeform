@@ -45,6 +45,21 @@ type IothubSpecFallbackRoute struct {
 	Source string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
+type IothubSpecFileUpload struct {
+	ConnectionString string `json:"-" sensitive:"true" tf:"connection_string"`
+	ContainerName    string `json:"containerName" tf:"container_name"`
+	// +optional
+	DefaultTtl string `json:"defaultTtl,omitempty" tf:"default_ttl,omitempty"`
+	// +optional
+	LockDuration string `json:"lockDuration,omitempty" tf:"lock_duration,omitempty"`
+	// +optional
+	MaxDeliveryCount int `json:"maxDeliveryCount,omitempty" tf:"max_delivery_count,omitempty"`
+	// +optional
+	Notifications bool `json:"notifications,omitempty" tf:"notifications,omitempty"`
+	// +optional
+	SasTtl string `json:"sasTtl,omitempty" tf:"sas_ttl,omitempty"`
+}
+
 type IothubSpecIpFilterRule struct {
 	Action string `json:"action" tf:"action"`
 	IpMask string `json:"ipMask" tf:"ip_mask"`
@@ -97,6 +112,9 @@ type IothubSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	FallbackRoute []IothubSpecFallbackRoute `json:"fallbackRoute,omitempty" tf:"fallback_route,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	FileUpload []IothubSpecFileUpload `json:"fileUpload,omitempty" tf:"file_upload,omitempty"`
 	// +optional
 	Hostname string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 	// +optional

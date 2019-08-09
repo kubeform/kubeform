@@ -422,6 +422,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            enableAdvancedThreatProtection:
+              type: boolean
             enableBlobEncryption:
               type: boolean
             enableFileEncryption:
@@ -508,6 +510,101 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            queueProperties:
+              items:
+                properties:
+                  corsRule:
+                    items:
+                      properties:
+                        allowedHeaders:
+                          items:
+                            type: string
+                          maxItems: 64
+                          type: array
+                        allowedMethods:
+                          items:
+                            type: string
+                          maxItems: 64
+                          type: array
+                        allowedOrigins:
+                          items:
+                            type: string
+                          maxItems: 64
+                          type: array
+                        exposedHeaders:
+                          items:
+                            type: string
+                          maxItems: 64
+                          type: array
+                        maxAgeInSeconds:
+                          type: integer
+                      required:
+                      - allowedHeaders
+                      - allowedMethods
+                      - allowedOrigins
+                      - exposedHeaders
+                      - maxAgeInSeconds
+                      type: object
+                    maxItems: 5
+                    type: array
+                  hourMetrics:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                        includeApis:
+                          type: boolean
+                        retentionPolicyDays:
+                          type: integer
+                        version:
+                          type: string
+                      required:
+                      - enabled
+                      - version
+                      type: object
+                    maxItems: 1
+                    type: array
+                  logging:
+                    items:
+                      properties:
+                        delete:
+                          type: boolean
+                        read:
+                          type: boolean
+                        retentionPolicyDays:
+                          type: integer
+                        version:
+                          type: string
+                        write:
+                          type: boolean
+                      required:
+                      - delete
+                      - read
+                      - version
+                      - write
+                      type: object
+                    maxItems: 1
+                    type: array
+                  minuteMetrics:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                        includeApis:
+                          type: boolean
+                        retentionPolicyDays:
+                          type: integer
+                        version:
+                          type: string
+                      required:
+                      - enabled
+                      - version
+                      type: object
+                    maxItems: 1
+                    type: array
+                type: object
+              maxItems: 1
+              type: array
             resourceGroupName:
               type: string
             secondaryBlobEndpoint:
@@ -591,6 +688,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                enableAdvancedThreatProtection:
+                  type: boolean
                 enableBlobEncryption:
                   type: boolean
                 enableFileEncryption:
@@ -677,6 +776,101 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                queueProperties:
+                  items:
+                    properties:
+                      corsRule:
+                        items:
+                          properties:
+                            allowedHeaders:
+                              items:
+                                type: string
+                              maxItems: 64
+                              type: array
+                            allowedMethods:
+                              items:
+                                type: string
+                              maxItems: 64
+                              type: array
+                            allowedOrigins:
+                              items:
+                                type: string
+                              maxItems: 64
+                              type: array
+                            exposedHeaders:
+                              items:
+                                type: string
+                              maxItems: 64
+                              type: array
+                            maxAgeInSeconds:
+                              type: integer
+                          required:
+                          - allowedHeaders
+                          - allowedMethods
+                          - allowedOrigins
+                          - exposedHeaders
+                          - maxAgeInSeconds
+                          type: object
+                        maxItems: 5
+                        type: array
+                      hourMetrics:
+                        items:
+                          properties:
+                            enabled:
+                              type: boolean
+                            includeApis:
+                              type: boolean
+                            retentionPolicyDays:
+                              type: integer
+                            version:
+                              type: string
+                          required:
+                          - enabled
+                          - version
+                          type: object
+                        maxItems: 1
+                        type: array
+                      logging:
+                        items:
+                          properties:
+                            delete:
+                              type: boolean
+                            read:
+                              type: boolean
+                            retentionPolicyDays:
+                              type: integer
+                            version:
+                              type: string
+                            write:
+                              type: boolean
+                          required:
+                          - delete
+                          - read
+                          - version
+                          - write
+                          type: object
+                        maxItems: 1
+                        type: array
+                      minuteMetrics:
+                        items:
+                          properties:
+                            enabled:
+                              type: boolean
+                            includeApis:
+                              type: boolean
+                            retentionPolicyDays:
+                              type: integer
+                            version:
+                              type: string
+                          required:
+                          - enabled
+                          - version
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
                 resourceGroupName:
                   type: string
                 secondaryBlobEndpoint:

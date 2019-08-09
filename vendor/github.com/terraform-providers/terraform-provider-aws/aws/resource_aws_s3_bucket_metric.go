@@ -62,9 +62,8 @@ func resourceAwsS3BucketMetricPut(d *schema.ResourceData, meta interface{}) erro
 
 	if v, ok := d.GetOk("filter"); ok {
 		filterList := v.([]interface{})
-		if filterMap, ok := filterList[0].(map[string]interface{}); ok {
-			metricsConfiguration.Filter = expandS3MetricsFilter(filterMap)
-		}
+		filterMap := filterList[0].(map[string]interface{})
+		metricsConfiguration.Filter = expandS3MetricsFilter(filterMap)
 	}
 
 	input := &s3.PutBucketMetricsConfigurationInput{

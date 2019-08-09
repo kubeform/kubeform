@@ -29,16 +29,12 @@ type RedshiftParameterGroupSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
-	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Family      string `json:"family" tf:"family"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Parameter []RedshiftParameterGroupSpecParameter `json:"parameter,omitempty" tf:"parameter,omitempty"`
-	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type RedshiftParameterGroupStatus struct {

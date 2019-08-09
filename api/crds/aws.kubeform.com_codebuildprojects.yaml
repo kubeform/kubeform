@@ -433,10 +433,6 @@ spec:
                 properties:
                   location:
                     type: string
-                  modes:
-                    items:
-                      type: string
-                    type: array
                   type:
                     type: string
                 type: object
@@ -473,19 +469,6 @@ spec:
                     type: string
                   privilegedMode:
                     type: boolean
-                  registryCredential:
-                    items:
-                      properties:
-                        credential:
-                          type: string
-                        credentialProvider:
-                          type: string
-                      required:
-                      - credential
-                      - credentialProvider
-                      type: object
-                    maxItems: 1
-                    type: array
                   type:
                     type: string
                 required:
@@ -498,36 +481,6 @@ spec:
               uniqueItems: true
             id:
               type: string
-            logsConfig:
-              items:
-                properties:
-                  cloudwatchLogs:
-                    items:
-                      properties:
-                        groupName:
-                          type: string
-                        status:
-                          type: string
-                        streamName:
-                          type: string
-                      type: object
-                    maxItems: 1
-                    type: array
-                  s3Logs:
-                    items:
-                      properties:
-                        encryptionDisabled:
-                          type: boolean
-                        location:
-                          type: string
-                        status:
-                          type: string
-                      type: object
-                    maxItems: 1
-                    type: array
-                type: object
-              maxItems: 1
-              type: array
             name:
               type: string
             providerRef:
@@ -720,10 +673,6 @@ spec:
                     properties:
                       location:
                         type: string
-                      modes:
-                        items:
-                          type: string
-                        type: array
                       type:
                         type: string
                     type: object
@@ -760,19 +709,6 @@ spec:
                         type: string
                       privilegedMode:
                         type: boolean
-                      registryCredential:
-                        items:
-                          properties:
-                            credential:
-                              type: string
-                            credentialProvider:
-                              type: string
-                          required:
-                          - credential
-                          - credentialProvider
-                          type: object
-                        maxItems: 1
-                        type: array
                       type:
                         type: string
                     required:
@@ -785,36 +721,6 @@ spec:
                   uniqueItems: true
                 id:
                   type: string
-                logsConfig:
-                  items:
-                    properties:
-                      cloudwatchLogs:
-                        items:
-                          properties:
-                            groupName:
-                              type: string
-                            status:
-                              type: string
-                            streamName:
-                              type: string
-                          type: object
-                        maxItems: 1
-                        type: array
-                      s3Logs:
-                        items:
-                          properties:
-                            encryptionDisabled:
-                              type: boolean
-                            location:
-                              type: string
-                            status:
-                              type: string
-                          type: object
-                        maxItems: 1
-                        type: array
-                    type: object
-                  maxItems: 1
-                  type: array
                 name:
                   type: string
                 providerRef:

@@ -430,47 +430,8 @@ spec:
             configurationsJSON:
               type: string
             coreInstanceCount:
-              description: Deprecated
               type: integer
-            coreInstanceGroup:
-              items:
-                properties:
-                  ID:
-                    type: string
-                  autoscalingPolicy:
-                    type: string
-                  bidPrice:
-                    type: string
-                  ebsConfig:
-                    items:
-                      properties:
-                        iops:
-                          type: integer
-                        size:
-                          type: integer
-                        type:
-                          type: string
-                        volumesPerInstance:
-                          type: integer
-                      required:
-                      - size
-                      - type
-                      type: object
-                    type: array
-                    uniqueItems: true
-                  instanceCount:
-                    type: integer
-                  instanceType:
-                    type: string
-                  name:
-                    type: string
-                required:
-                - instanceType
-                type: object
-              maxItems: 1
-              type: array
             coreInstanceType:
-              description: Deprecated
               type: string
             customAmiID:
               type: string
@@ -503,7 +464,6 @@ spec:
             id:
               type: string
             instanceGroup:
-              description: Deprecated
               items:
                 properties:
                   ID:
@@ -559,41 +519,7 @@ spec:
               type: array
             logURI:
               type: string
-            masterInstanceGroup:
-              items:
-                properties:
-                  ID:
-                    type: string
-                  bidPrice:
-                    type: string
-                  ebsConfig:
-                    items:
-                      properties:
-                        iops:
-                          type: integer
-                        size:
-                          type: integer
-                        type:
-                          type: string
-                        volumesPerInstance:
-                          type: integer
-                      required:
-                      - size
-                      - type
-                      type: object
-                    type: array
-                    uniqueItems: true
-                  instanceType:
-                    type: string
-                  name:
-                    type: string
-                required:
-                - instanceType
-                type: object
-              maxItems: 1
-              type: array
             masterInstanceType:
-              description: Deprecated
               type: string
             masterPublicDNS:
               type: string
@@ -714,47 +640,8 @@ spec:
                 configurationsJSON:
                   type: string
                 coreInstanceCount:
-                  description: Deprecated
                   type: integer
-                coreInstanceGroup:
-                  items:
-                    properties:
-                      ID:
-                        type: string
-                      autoscalingPolicy:
-                        type: string
-                      bidPrice:
-                        type: string
-                      ebsConfig:
-                        items:
-                          properties:
-                            iops:
-                              type: integer
-                            size:
-                              type: integer
-                            type:
-                              type: string
-                            volumesPerInstance:
-                              type: integer
-                          required:
-                          - size
-                          - type
-                          type: object
-                        type: array
-                        uniqueItems: true
-                      instanceCount:
-                        type: integer
-                      instanceType:
-                        type: string
-                      name:
-                        type: string
-                    required:
-                    - instanceType
-                    type: object
-                  maxItems: 1
-                  type: array
                 coreInstanceType:
-                  description: Deprecated
                   type: string
                 customAmiID:
                   type: string
@@ -787,7 +674,6 @@ spec:
                 id:
                   type: string
                 instanceGroup:
-                  description: Deprecated
                   items:
                     properties:
                       ID:
@@ -843,41 +729,7 @@ spec:
                   type: array
                 logURI:
                   type: string
-                masterInstanceGroup:
-                  items:
-                    properties:
-                      ID:
-                        type: string
-                      bidPrice:
-                        type: string
-                      ebsConfig:
-                        items:
-                          properties:
-                            iops:
-                              type: integer
-                            size:
-                              type: integer
-                            type:
-                              type: string
-                            volumesPerInstance:
-                              type: integer
-                          required:
-                          - size
-                          - type
-                          type: object
-                        type: array
-                        uniqueItems: true
-                      instanceType:
-                        type: string
-                      name:
-                        type: string
-                    required:
-                    - instanceType
-                    type: object
-                  maxItems: 1
-                  type: array
                 masterInstanceType:
-                  description: Deprecated
                   type: string
                 masterPublicDNS:
                   type: string

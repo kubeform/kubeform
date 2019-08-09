@@ -461,8 +461,6 @@ spec:
               type: string
             maintenanceWindow:
               type: string
-            maxAllocatedStorage:
-              type: integer
             monitoringInterval:
               type: integer
             monitoringRoleArn:
@@ -475,12 +473,6 @@ spec:
               type: string
             parameterGroupName:
               type: string
-            performanceInsightsEnabled:
-              type: boolean
-            performanceInsightsKmsKeyID:
-              type: string
-            performanceInsightsRetentionPeriod:
-              type: integer
             port:
               type: integer
             providerRef:
@@ -637,8 +629,6 @@ spec:
                   type: string
                 maintenanceWindow:
                   type: string
-                maxAllocatedStorage:
-                  type: integer
                 monitoringInterval:
                   type: integer
                 monitoringRoleArn:
@@ -651,12 +641,6 @@ spec:
                   type: string
                 parameterGroupName:
                   type: string
-                performanceInsightsEnabled:
-                  type: boolean
-                performanceInsightsKmsKeyID:
-                  type: string
-                performanceInsightsRetentionPeriod:
-                  type: integer
                 port:
                   type: integer
                 providerRef:

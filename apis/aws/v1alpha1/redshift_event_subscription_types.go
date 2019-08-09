@@ -24,8 +24,6 @@ type RedshiftEventSubscriptionSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
-	// +optional
 	CustomerAwsID string `json:"customerAwsID,omitempty" tf:"customer_aws_id,omitempty"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`

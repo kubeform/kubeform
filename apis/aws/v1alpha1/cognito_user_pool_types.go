@@ -46,8 +46,6 @@ type CognitoUserPoolSpecDeviceConfiguration struct {
 
 type CognitoUserPoolSpecEmailConfiguration struct {
 	// +optional
-	EmailSendingAccount string `json:"emailSendingAccount,omitempty" tf:"email_sending_account,omitempty"`
-	// +optional
 	ReplyToEmailAddress string `json:"replyToEmailAddress,omitempty" tf:"reply_to_email_address,omitempty"`
 	// +optional
 	SourceArn string `json:"sourceArn,omitempty" tf:"source_arn,omitempty"`

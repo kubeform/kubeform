@@ -512,23 +512,6 @@ spec:
                   serviceDiscovery:
                     items:
                       properties:
-                        awsCloudMap:
-                          items:
-                            properties:
-                              attributes:
-                                additionalProperties:
-                                  type: string
-                                type: object
-                              namespaceName:
-                                type: string
-                              serviceName:
-                                type: string
-                            required:
-                            - namespaceName
-                            - serviceName
-                            type: object
-                          maxItems: 1
-                          type: array
                         dns:
                           items:
                             properties:
@@ -538,7 +521,10 @@ spec:
                             - hostname
                             type: object
                           maxItems: 1
+                          minItems: 1
                           type: array
+                      required:
+                      - dns
                       type: object
                     maxItems: 1
                     type: array
@@ -546,10 +532,6 @@ spec:
               maxItems: 1
               minItems: 1
               type: array
-            tags:
-              additionalProperties:
-                type: string
-              type: object
           required:
           - meshName
           - name
@@ -680,23 +662,6 @@ spec:
                       serviceDiscovery:
                         items:
                           properties:
-                            awsCloudMap:
-                              items:
-                                properties:
-                                  attributes:
-                                    additionalProperties:
-                                      type: string
-                                    type: object
-                                  namespaceName:
-                                    type: string
-                                  serviceName:
-                                    type: string
-                                required:
-                                - namespaceName
-                                - serviceName
-                                type: object
-                              maxItems: 1
-                              type: array
                             dns:
                               items:
                                 properties:
@@ -706,7 +671,10 @@ spec:
                                 - hostname
                                 type: object
                               maxItems: 1
+                              minItems: 1
                               type: array
+                          required:
+                          - dns
                           type: object
                         maxItems: 1
                         type: array
@@ -714,10 +682,6 @@ spec:
                   maxItems: 1
                   minItems: 1
                   type: array
-                tags:
-                  additionalProperties:
-                    type: string
-                  type: object
               required:
               - meshName
               - name

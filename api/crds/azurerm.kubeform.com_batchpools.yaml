@@ -540,11 +540,6 @@ spec:
                     type: string
                   version:
                     type: string
-                required:
-                - offer
-                - publisher
-                - sku
-                - version
                 type: object
               maxItems: 1
               type: array
@@ -711,11 +706,6 @@ spec:
                         type: string
                       version:
                         type: string
-                    required:
-                    - offer
-                    - publisher
-                    - sku
-                    - version
                     type: object
                   maxItems: 1
                   type: array

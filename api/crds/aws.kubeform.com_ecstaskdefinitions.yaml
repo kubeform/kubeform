@@ -439,22 +439,6 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            proxyConfiguration:
-              items:
-                properties:
-                  containerName:
-                    type: string
-                  properties:
-                    additionalProperties:
-                      type: string
-                    type: object
-                  type:
-                    type: string
-                required:
-                - containerName
-                type: object
-              maxItems: 1
-              type: array
             requiresCompatibilities:
               items:
                 type: string
@@ -556,22 +540,6 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
-                proxyConfiguration:
-                  items:
-                    properties:
-                      containerName:
-                        type: string
-                      properties:
-                        additionalProperties:
-                          type: string
-                        type: object
-                      type:
-                        type: string
-                    required:
-                    - containerName
-                    type: object
-                  maxItems: 1
-                  type: array
                 requiresCompatibilities:
                   items:
                     type: string

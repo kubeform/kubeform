@@ -67,12 +67,6 @@ func resourceAwsIamServiceLinkedRole() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 				ForceNew: true,
-				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
-					if strings.Contains(d.Get("aws_service_name").(string), ".application-autoscaling.") && new == "" {
-						return true
-					}
-					return false
-				},
 			},
 
 			"description": {

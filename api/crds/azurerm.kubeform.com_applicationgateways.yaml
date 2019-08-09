@@ -630,6 +630,22 @@ spec:
               type: array
             id:
               type: string
+            identity:
+              items:
+                properties:
+                  identityIDS:
+                    items:
+                      type: string
+                    maxItems: 1
+                    minItems: 1
+                    type: array
+                  type:
+                    type: string
+                required:
+                - identityIDS
+                type: object
+              maxItems: 1
+              type: array
             location:
               type: string
             name:
@@ -1247,6 +1263,22 @@ spec:
                   type: array
                 id:
                   type: string
+                identity:
+                  items:
+                    properties:
+                      identityIDS:
+                        items:
+                          type: string
+                        maxItems: 1
+                        minItems: 1
+                        type: array
+                      type:
+                        type: string
+                    required:
+                    - identityIDS
+                    type: object
+                  maxItems: 1
+                  type: array
                 location:
                   type: string
                 name:

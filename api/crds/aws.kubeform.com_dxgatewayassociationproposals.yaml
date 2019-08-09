@@ -402,12 +402,6 @@ spec:
                 type: string
               type: array
               uniqueItems: true
-            associatedGatewayID:
-              type: string
-            associatedGatewayOwnerAccountID:
-              type: string
-            associatedGatewayType:
-              type: string
             dxGatewayID:
               type: string
             dxGatewayOwnerAccountID:
@@ -424,12 +418,12 @@ spec:
                   type: string
               type: object
             vpnGatewayID:
-              description: Deprecated
               type: string
           required:
           - dxGatewayID
           - dxGatewayOwnerAccountID
           - providerRef
+          - vpnGatewayID
           type: object
         status:
           properties:
@@ -445,12 +439,6 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
-                associatedGatewayID:
-                  type: string
-                associatedGatewayOwnerAccountID:
-                  type: string
-                associatedGatewayType:
-                  type: string
                 dxGatewayID:
                   type: string
                 dxGatewayOwnerAccountID:
@@ -467,12 +455,12 @@ spec:
                       type: string
                   type: object
                 vpnGatewayID:
-                  description: Deprecated
                   type: string
               required:
               - dxGatewayID
               - dxGatewayOwnerAccountID
               - providerRef
+              - vpnGatewayID
               type: object
             state:
               properties:

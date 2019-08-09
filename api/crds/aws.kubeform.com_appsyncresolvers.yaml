@@ -407,18 +407,6 @@ spec:
               type: string
             id:
               type: string
-            kind:
-              type: string
-            pipelineConfig:
-              items:
-                properties:
-                  functions:
-                    items:
-                      type: string
-                    type: array
-                type: object
-              maxItems: 1
-              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -436,6 +424,7 @@ spec:
               type: string
           required:
           - apiID
+          - dataSource
           - field
           - providerRef
           - requestTemplate
@@ -461,18 +450,6 @@ spec:
                   type: string
                 id:
                   type: string
-                kind:
-                  type: string
-                pipelineConfig:
-                  items:
-                    properties:
-                      functions:
-                        items:
-                          type: string
-                        type: array
-                    type: object
-                  maxItems: 1
-                  type: array
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -490,6 +467,7 @@ spec:
                   type: string
               required:
               - apiID
+              - dataSource
               - field
               - providerRef
               - requestTemplate

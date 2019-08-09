@@ -434,10 +434,6 @@ spec:
               type: string
             ramSize:
               type: integer
-            tags:
-              additionalProperties:
-                type: string
-              type: object
             userData:
               type: string
             username:
@@ -495,10 +491,6 @@ spec:
                   type: string
                 ramSize:
                   type: integer
-                tags:
-                  additionalProperties:
-                    type: string
-                  type: object
                 userData:
                   type: string
                 username:

@@ -36,8 +36,6 @@ type CodecommitRepositorySpec struct {
 	// +optional
 	RepositoryID   string `json:"repositoryID,omitempty" tf:"repository_id,omitempty"`
 	RepositoryName string `json:"repositoryName" tf:"repository_name"`
-	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type CodecommitRepositoryStatus struct {

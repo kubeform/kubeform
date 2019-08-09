@@ -488,10 +488,6 @@ spec:
                 type: object
               minItems: 2
               type: array
-            tags:
-              additionalProperties:
-                type: string
-              type: object
           required:
           - artifactStore
           - name
@@ -599,10 +595,6 @@ spec:
                     type: object
                   minItems: 2
                   type: array
-                tags:
-                  additionalProperties:
-                    type: string
-                  type: object
               required:
               - artifactStore
               - name

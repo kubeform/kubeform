@@ -437,8 +437,6 @@ spec:
               type: string
             type:
               type: string
-            version:
-              type: integer
           required:
           - name
           - providerRef
@@ -493,8 +491,6 @@ spec:
                   type: string
                 type:
                   type: string
-                version:
-                  type: integer
               required:
               - name
               - providerRef

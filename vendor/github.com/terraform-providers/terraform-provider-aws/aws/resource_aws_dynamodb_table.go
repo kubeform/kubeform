@@ -289,13 +289,10 @@ func resourceAwsDynamoDbTableCreate(d *schema.ResourceData, meta interface{}) er
 
 	log.Printf("[DEBUG] Creating DynamoDB table with key schema: %#v", keySchemaMap)
 
-	tags := tagsFromMapDynamoDb(d.Get("tags").(map[string]interface{}))
-
 	req := &dynamodb.CreateTableInput{
 		TableName:   aws.String(d.Get("name").(string)),
 		BillingMode: aws.String(d.Get("billing_mode").(string)),
 		KeySchema:   expandDynamoDbKeySchema(keySchemaMap),
-		Tags:        tags,
 	}
 
 	billingMode := d.Get("billing_mode").(string)
@@ -354,7 +351,6 @@ func resourceAwsDynamoDbTableCreate(d *schema.ResourceData, meta interface{}) er
 	}
 
 	var output *dynamodb.CreateTableOutput
-	var requiresTagging bool
 	err := resource.Retry(2*time.Minute, func() *resource.RetryError {
 		var err error
 		output, err = conn.CreateTable(req)
@@ -374,13 +370,6 @@ func resourceAwsDynamoDbTableCreate(d *schema.ResourceData, meta interface{}) er
 				req.BillingMode = nil
 				return resource.RetryableError(err)
 			}
-			// AWS GovCloud (US) and others may reply with the following until their API is updated:
-			// ValidationException: Unsupported input parameter Tags
-			if isAWSErr(err, "ValidationException", "Unsupported input parameter Tags") {
-				req.Tags = nil
-				requiresTagging = true
-				return resource.RetryableError(err)
-			}
 
 			return resource.NonRetryableError(err)
 		}
@@ -397,16 +386,14 @@ func resourceAwsDynamoDbTableCreate(d *schema.ResourceData, meta interface{}) er
 		return err
 	}
 
-	if requiresTagging {
-		if err := setTagsDynamoDb(conn, d); err != nil {
-			return fmt.Errorf("error adding DynamoDB Table (%s) tags: %s", d.Id(), err)
-		}
-	}
-
 	if d.Get("ttl.0.enabled").(bool) {
 		if err := updateDynamoDbTimeToLive(d.Id(), d.Get("ttl").([]interface{}), conn); err != nil {
 			return fmt.Errorf("error enabling DynamoDB Table (%s) Time to Live: %s", d.Id(), err)
 		}
+	}
+
+	if err := setTagsDynamoDb(conn, d); err != nil {
+		return fmt.Errorf("error adding DynamoDB Table (%s) tags: %s", d.Id(), err)
 	}
 
 	if d.Get("point_in_time_recovery.0.enabled").(bool) {

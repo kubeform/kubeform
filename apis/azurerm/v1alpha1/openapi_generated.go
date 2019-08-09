@@ -277,6 +277,11 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"k8s.io/apimachinery/pkg/runtime.TypeMeta":                                                       schema_k8sio_apimachinery_pkg_runtime_TypeMeta(ref),
 		"k8s.io/apimachinery/pkg/runtime.Unknown":                                                        schema_k8sio_apimachinery_pkg_runtime_Unknown(ref),
 		"k8s.io/apimachinery/pkg/util/intstr.IntOrString":                                                schema_apimachinery_pkg_util_intstr_IntOrString(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServer":                             schema_kubeform_apis_azurerm_v1alpha1_AnalysisServicesServer(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerList":                         schema_kubeform_apis_azurerm_v1alpha1_AnalysisServicesServerList(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerSpec":                         schema_kubeform_apis_azurerm_v1alpha1_AnalysisServicesServerSpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerSpecIpv4FirewallRule":         schema_kubeform_apis_azurerm_v1alpha1_AnalysisServicesServerSpecIpv4FirewallRule(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerStatus":                       schema_kubeform_apis_azurerm_v1alpha1_AnalysisServicesServerStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagement":                                      schema_kubeform_apis_azurerm_v1alpha1_ApiManagement(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPI":                                   schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPI(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIList":                               schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPIList(ref),
@@ -320,6 +325,16 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAuthorizationServerSpec":                                                     schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAuthorizationServerSpec(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAuthorizationServerSpecTokenBodyParameter":                                   schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAuthorizationServerSpecTokenBodyParameter(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAuthorizationServerStatus":                                                   schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAuthorizationServerStatus(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackend":                                                                     schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackend(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendList":                                                                 schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendList(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpec":                                                                 schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecCredentials":                                                      schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpecCredentials(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecCredentialsAuthorization":                                         schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpecCredentialsAuthorization(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecProxy":                                                            schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpecProxy(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecServiceFabricCluster":                                             schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpecServiceFabricCluster(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecServiceFabricClusterServerX509Name":                               schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpecServiceFabricClusterServerX509Name(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecTls":                                                              schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpecTls(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendStatus":                                                               schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementCertificate":                                                                 schema_kubeform_apis_azurerm_v1alpha1_ApiManagementCertificate(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementCertificateList":                                                             schema_kubeform_apis_azurerm_v1alpha1_ApiManagementCertificateList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementCertificateSpec":                                                             schema_kubeform_apis_azurerm_v1alpha1_ApiManagementCertificateSpec(ref),
@@ -406,6 +421,12 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlot":                                                                           schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlot(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotList":                                                                       schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpec":                                                                       schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettings":                                                           schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecAuthSettings(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsActiveDirectory":                                            schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecAuthSettingsActiveDirectory(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsFacebook":                                                   schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecAuthSettingsFacebook(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsGoogle":                                                     schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecAuthSettingsGoogle(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsMicrosoft":                                                  schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecAuthSettingsMicrosoft(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsTwitter":                                                    schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecAuthSettingsTwitter(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecConnectionString":                                                       schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecConnectionString(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecIdentity":                                                               schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecIdentity(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecSiteConfig":                                                             schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecSiteConfig(ref),
@@ -420,6 +441,8 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecAuthSettingsGoogle":                                                         schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecAuthSettingsGoogle(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecAuthSettingsMicrosoft":                                                      schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecAuthSettingsMicrosoft(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecAuthSettingsTwitter":                                                        schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecAuthSettingsTwitter(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecBackup":                                                                     schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecBackup(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecBackupSchedule":                                                             schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecBackupSchedule(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecConnectionString":                                                           schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecConnectionString(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecIdentity":                                                                   schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecIdentity(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecLogs":                                                                       schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecLogs(ref),
@@ -430,6 +453,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecSiteConfigIpRestriction":                                                    schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecSiteConfigIpRestriction(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecSiteCredential":                                                             schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecSiteCredential(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecSourceControl":                                                              schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecSourceControl(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecStorageAccount":                                                             schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecStorageAccount(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceStatus":                                                                         schema_kubeform_apis_azurerm_v1alpha1_AppServiceStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGateway":                                                                       schema_kubeform_apis_azurerm_v1alpha1_ApplicationGateway(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewayList":                                                                   schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewayList(ref),
@@ -446,6 +470,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecGatewayIPConfiguration":                                             schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecGatewayIPConfiguration(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecHttpListener":                                                       schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecHttpListener(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecHttpListenerCustomErrorConfiguration":                               schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecHttpListenerCustomErrorConfiguration(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecIdentity":                                                           schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecIdentity(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecProbe":                                                              schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecProbe(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecProbeMatch":                                                         schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecProbeMatch(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecRedirectConfiguration":                                              schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecRedirectConfiguration(ref),
@@ -563,7 +588,12 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchAccount":                                                                             schema_kubeform_apis_azurerm_v1alpha1_BatchAccount(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchAccountList":                                                                         schema_kubeform_apis_azurerm_v1alpha1_BatchAccountList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchAccountSpec":                                                                         schema_kubeform_apis_azurerm_v1alpha1_BatchAccountSpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchAccountSpecKeyVaultReference":                                                        schema_kubeform_apis_azurerm_v1alpha1_BatchAccountSpecKeyVaultReference(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchAccountStatus":                                                                       schema_kubeform_apis_azurerm_v1alpha1_BatchAccountStatus(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplication":                                                                         schema_kubeform_apis_azurerm_v1alpha1_BatchApplication(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplicationList":                                                                     schema_kubeform_apis_azurerm_v1alpha1_BatchApplicationList(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplicationSpec":                                                                     schema_kubeform_apis_azurerm_v1alpha1_BatchApplicationSpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplicationStatus":                                                                   schema_kubeform_apis_azurerm_v1alpha1_BatchApplicationStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchCertificate":                                                                         schema_kubeform_apis_azurerm_v1alpha1_BatchCertificate(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchCertificateList":                                                                     schema_kubeform_apis_azurerm_v1alpha1_BatchCertificateList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchCertificateSpec":                                                                     schema_kubeform_apis_azurerm_v1alpha1_BatchCertificateSpec(ref),
@@ -621,6 +651,8 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistry":                                                                        schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistry(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistryList":                                                                    schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistryList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpec":                                                                    schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistrySpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpecNetworkRuleSet":                                                      schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistrySpecNetworkRuleSet(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpecNetworkRuleSetIpRule":                                                schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistrySpecNetworkRuleSetIpRule(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpecStorageAccount":                                                      schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistrySpecStorageAccount(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistryStatus":                                                                  schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistryStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerService":                                                                         schema_kubeform_apis_azurerm_v1alpha1_ContainerService(ref),
@@ -889,6 +921,12 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionApp":                                                                              schema_kubeform_apis_azurerm_v1alpha1_FunctionApp(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppList":                                                                          schema_kubeform_apis_azurerm_v1alpha1_FunctionAppList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpec":                                                                          schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettings":                                                              schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecAuthSettings(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsActiveDirectory":                                               schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecAuthSettingsActiveDirectory(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsFacebook":                                                      schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecAuthSettingsFacebook(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsGoogle":                                                        schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecAuthSettingsGoogle(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsMicrosoft":                                                     schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecAuthSettingsMicrosoft(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsTwitter":                                                       schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecAuthSettingsTwitter(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecConnectionString":                                                          schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecConnectionString(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecIdentity":                                                                  schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecIdentity(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecSiteConfig":                                                                schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecSiteConfig(ref),
@@ -1010,6 +1048,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpec":                                                                               schema_kubeform_apis_azurerm_v1alpha1_IothubSpec(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecEndpoint":                                                                       schema_kubeform_apis_azurerm_v1alpha1_IothubSpecEndpoint(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecFallbackRoute":                                                                  schema_kubeform_apis_azurerm_v1alpha1_IothubSpecFallbackRoute(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecFileUpload":                                                                     schema_kubeform_apis_azurerm_v1alpha1_IothubSpecFileUpload(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecIpFilterRule":                                                                   schema_kubeform_apis_azurerm_v1alpha1_IothubSpecIpFilterRule(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecRoute":                                                                          schema_kubeform_apis_azurerm_v1alpha1_IothubSpecRoute(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecSharedAccessPolicy":                                                             schema_kubeform_apis_azurerm_v1alpha1_IothubSpecSharedAccessPolicy(ref),
@@ -1064,6 +1103,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecRoleBasedAccessControl":                                              schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecRoleBasedAccessControl(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecRoleBasedAccessControlAzureActiveDirectory":                          schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecRoleBasedAccessControlAzureActiveDirectory(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecServicePrincipal":                                                    schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecServicePrincipal(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecWindowsProfile":                                                      schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecWindowsProfile(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterStatus":                                                                  schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.Lb":                                                                                       schema_kubeform_apis_azurerm_v1alpha1_Lb(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbBackendAddressPool":                                                                     schema_kubeform_apis_azurerm_v1alpha1_LbBackendAddressPool(ref),
@@ -1158,6 +1198,10 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagementLockList":                                                                       schema_kubeform_apis_azurerm_v1alpha1_ManagementLockList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagementLockSpec":                                                                       schema_kubeform_apis_azurerm_v1alpha1_ManagementLockSpec(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagementLockStatus":                                                                     schema_kubeform_apis_azurerm_v1alpha1_ManagementLockStatus(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccount":                                                                              schema_kubeform_apis_azurerm_v1alpha1_MapsAccount(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccountList":                                                                          schema_kubeform_apis_azurerm_v1alpha1_MapsAccountList(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccountSpec":                                                                          schema_kubeform_apis_azurerm_v1alpha1_MapsAccountSpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccountStatus":                                                                        schema_kubeform_apis_azurerm_v1alpha1_MapsAccountStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbDatabase":                                                                          schema_kubeform_apis_azurerm_v1alpha1_MariadbDatabase(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbDatabaseList":                                                                      schema_kubeform_apis_azurerm_v1alpha1_MariadbDatabaseList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbDatabaseSpec":                                                                      schema_kubeform_apis_azurerm_v1alpha1_MariadbDatabaseSpec(ref),
@@ -1377,6 +1421,10 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlVirtualNetworkRuleList":                                                         schema_kubeform_apis_azurerm_v1alpha1_PostgresqlVirtualNetworkRuleList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlVirtualNetworkRuleSpec":                                                         schema_kubeform_apis_azurerm_v1alpha1_PostgresqlVirtualNetworkRuleSpec(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlVirtualNetworkRuleStatus":                                                       schema_kubeform_apis_azurerm_v1alpha1_PostgresqlVirtualNetworkRuleStatus(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecord":                                                                        schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSARecord(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecordList":                                                                    schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSARecordList(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecordSpec":                                                                    schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSARecordSpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecordStatus":                                                                  schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSARecordStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSZone":                                                                           schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSZone(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSZoneList":                                                                       schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSZoneList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSZoneSpec":                                                                       schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSZoneSpec(ref),
@@ -1587,6 +1635,11 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecCustomDomain":                                                           schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecCustomDomain(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecIdentity":                                                               schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecIdentity(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecNetworkRules":                                                           schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecNetworkRules(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueueProperties":                                                        schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueueProperties(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueuePropertiesCorsRule":                                                schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueuePropertiesCorsRule(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueuePropertiesHourMetrics":                                             schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueuePropertiesHourMetrics(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueuePropertiesLogging":                                                 schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueuePropertiesLogging(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueuePropertiesMinuteMetrics":                                           schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueuePropertiesMinuteMetrics(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountStatus":                                                                     schema_kubeform_apis_azurerm_v1alpha1_StorageAccountStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageBlob":                                                                              schema_kubeform_apis_azurerm_v1alpha1_StorageBlob(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageBlobList":                                                                          schema_kubeform_apis_azurerm_v1alpha1_StorageBlobList(ref),
@@ -1601,12 +1654,24 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageQueueSpec":                                                                         schema_kubeform_apis_azurerm_v1alpha1_StorageQueueSpec(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageQueueStatus":                                                                       schema_kubeform_apis_azurerm_v1alpha1_StorageQueueStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShare":                                                                             schema_kubeform_apis_azurerm_v1alpha1_StorageShare(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectory":                                                                    schema_kubeform_apis_azurerm_v1alpha1_StorageShareDirectory(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectoryList":                                                                schema_kubeform_apis_azurerm_v1alpha1_StorageShareDirectoryList(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectorySpec":                                                                schema_kubeform_apis_azurerm_v1alpha1_StorageShareDirectorySpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectoryStatus":                                                              schema_kubeform_apis_azurerm_v1alpha1_StorageShareDirectoryStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareList":                                                                         schema_kubeform_apis_azurerm_v1alpha1_StorageShareList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareSpec":                                                                         schema_kubeform_apis_azurerm_v1alpha1_StorageShareSpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareSpecAcl":                                                                      schema_kubeform_apis_azurerm_v1alpha1_StorageShareSpecAcl(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareSpecAclAccessPolicy":                                                          schema_kubeform_apis_azurerm_v1alpha1_StorageShareSpecAclAccessPolicy(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareStatus":                                                                       schema_kubeform_apis_azurerm_v1alpha1_StorageShareStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTable":                                                                             schema_kubeform_apis_azurerm_v1alpha1_StorageTable(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntity":                                                                       schema_kubeform_apis_azurerm_v1alpha1_StorageTableEntity(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntityList":                                                                   schema_kubeform_apis_azurerm_v1alpha1_StorageTableEntityList(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntitySpec":                                                                   schema_kubeform_apis_azurerm_v1alpha1_StorageTableEntitySpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntityStatus":                                                                 schema_kubeform_apis_azurerm_v1alpha1_StorageTableEntityStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableList":                                                                         schema_kubeform_apis_azurerm_v1alpha1_StorageTableList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableSpec":                                                                         schema_kubeform_apis_azurerm_v1alpha1_StorageTableSpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableSpecAcl":                                                                      schema_kubeform_apis_azurerm_v1alpha1_StorageTableSpecAcl(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableSpecAclAccessPolicy":                                                          schema_kubeform_apis_azurerm_v1alpha1_StorageTableSpecAclAccessPolicy(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableStatus":                                                                       schema_kubeform_apis_azurerm_v1alpha1_StorageTableStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsFunctionJavascriptUdf":                                                     schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsFunctionJavascriptUdf(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsFunctionJavascriptUdfList":                                                 schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsFunctionJavascriptUdfList(ref),
@@ -1673,6 +1738,8 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpoint":                                                                   schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpoint(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpointList":                                                               schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpointSpec":                                                               schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointSpec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpointSpecCustomHeader":                                                   schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointSpecCustomHeader(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpointSpecSubnet":                                                         schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointSpecSubnet(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpointStatus":                                                             schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerProfile":                                                                    schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerProfile(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerProfileList":                                                                schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerProfileList(ref),
@@ -13702,6 +13769,259 @@ func schema_apimachinery_pkg_util_intstr_IntOrString(ref common.ReferenceCallbac
 	}
 }
 
+func schema_kubeform_apis_azurerm_v1alpha1_AnalysisServicesServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerSpec", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerStatus"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AnalysisServicesServerList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "AnalysisServicesServerList is a list of AnalysisServicesServers",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of AnalysisServicesServer CRD objects",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServer"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServer"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AnalysisServicesServerSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"adminUsers": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"enablePowerBiService": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"ipv4FirewallRule": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerSpecIpv4FirewallRule"),
+									},
+								},
+							},
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"querypoolConnectionMode": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resourceGroupName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"sku": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"providerRef", "location", "name", "resourceGroupName", "sku"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerSpecIpv4FirewallRule"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AnalysisServicesServerSpecIpv4FirewallRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"rangeEnd": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"rangeStart": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"name", "rangeEnd", "rangeStart"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AnalysisServicesServerStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"output": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerSpec"),
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis.State"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerSpec"},
+	}
+}
+
 func schema_kubeform_apis_azurerm_v1alpha1_ApiManagement(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -15920,6 +16240,484 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAuthorizationServerStatu
 		},
 		Dependencies: []string{
 			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAuthorizationServerSpec"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackend(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpec", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendStatus"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ApiManagementBackendList is a list of ApiManagementBackends",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of ApiManagementBackend CRD objects",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackend"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackend"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secretRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"apiManagementName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"credentials": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecCredentials"),
+									},
+								},
+							},
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"protocol": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"proxy": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecProxy"),
+									},
+								},
+							},
+						},
+					},
+					"resourceGroupName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resourceID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"serviceFabricCluster": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecServiceFabricCluster"),
+									},
+								},
+							},
+						},
+					},
+					"title": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tls": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecTls"),
+									},
+								},
+							},
+						},
+					},
+					"url": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"providerRef", "apiManagementName", "name", "protocol", "resourceGroupName", "url"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecCredentials", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecProxy", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecServiceFabricCluster", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecTls"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpecCredentials(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"authorization": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecCredentialsAuthorization"),
+									},
+								},
+							},
+						},
+					},
+					"certificate": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"header": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"query": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecCredentialsAuthorization"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpecCredentialsAuthorization(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"parameter": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"scheme": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpecProxy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"url": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"username": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"url", "username"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpecServiceFabricCluster(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"clientCertificateThumbprint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"managementEndpoints": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"maxPartitionResolutionRetries": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"serverCertificateThumbprints": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"serverX509Name": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecServiceFabricClusterServerX509Name"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"clientCertificateThumbprint", "managementEndpoints", "maxPartitionResolutionRetries"},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpecServiceFabricClusterServerX509Name"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpecServiceFabricClusterServerX509Name(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"issuerCertificateThumbprint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"issuerCertificateThumbprint", "name"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpecTls(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"validateCertificateChain": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"validateCertificateName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"output": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpec"),
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis.State"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpec"},
 	}
 }
 
@@ -19867,6 +20665,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpec(ref common.Referen
 							},
 						},
 					},
+					"authSettings": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettings"),
+									},
+								},
+							},
+						},
+					},
 					"clientAffinityEnabled": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -19976,7 +20786,298 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpec(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecConnectionString", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecIdentity", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecSiteConfig", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecSiteCredential"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettings", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecConnectionString", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecIdentity", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecSiteConfig", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecSiteCredential"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecAuthSettings(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"activeDirectory": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsActiveDirectory"),
+									},
+								},
+							},
+						},
+					},
+					"additionalLoginParams": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"allowedExternalRedirectUrls": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"defaultProvider": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"facebook": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsFacebook"),
+									},
+								},
+							},
+						},
+					},
+					"google": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsGoogle"),
+									},
+								},
+							},
+						},
+					},
+					"issuer": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"microsoft": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsMicrosoft"),
+									},
+								},
+							},
+						},
+					},
+					"runtimeVersion": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tokenRefreshExtensionHours": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tokenStoreEnabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"twitter": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsTwitter"),
+									},
+								},
+							},
+						},
+					},
+					"unauthenticatedClientAction": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"enabled"},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsActiveDirectory", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsFacebook", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsGoogle", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsMicrosoft", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpecAuthSettingsTwitter"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecAuthSettingsActiveDirectory(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"allowedAudiences": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"clientID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"clientID"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecAuthSettingsFacebook(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"appID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"oauthScopes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"appID"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecAuthSettingsGoogle(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"clientID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"oauthScopes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"clientID"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecAuthSettingsMicrosoft(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"clientID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"oauthScopes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"clientID"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecAuthSettingsTwitter(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"consumerKey": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"consumerKey"},
+			},
+		},
 	}
 }
 
@@ -20011,6 +21112,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecIdentity(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"identityIDS": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"principalID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -20373,6 +21487,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpec(ref common.ReferenceCa
 							},
 						},
 					},
+					"backup": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecBackup"),
+									},
+								},
+							},
+						},
+					},
 					"clientAffinityEnabled": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -20505,6 +21631,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpec(ref common.ReferenceCa
 							},
 						},
 					},
+					"storageAccount": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecStorageAccount"),
+									},
+								},
+							},
+						},
+					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -20524,7 +21662,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpec(ref common.ReferenceCa
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecAuthSettings", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecConnectionString", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecIdentity", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecLogs", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecSiteConfig", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecSiteCredential", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecSourceControl"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecAuthSettings", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecBackup", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecConnectionString", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecIdentity", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecLogs", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecSiteConfig", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecSiteCredential", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecSourceControl", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecStorageAccount"},
 	}
 }
 
@@ -20819,6 +21957,88 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecAuthSettingsTwitter(ref
 	}
 }
 
+func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecBackup(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"schedule": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecBackupSchedule"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"name", "schedule"},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpecBackupSchedule"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecBackupSchedule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"frequencyInterval": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"frequencyUnit": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"keepAtLeastOneBackup": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"retentionPeriodInDays": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"startTime": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"frequencyInterval", "frequencyUnit"},
+			},
+		},
+	}
+}
+
 func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecConnectionString(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -20850,6 +22070,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecIdentity(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"identityIDS": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"principalID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -21228,6 +22461,49 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecSourceControl(ref commo
 	}
 }
 
+func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecStorageAccount(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"accountName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"mountPath": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"shareName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"accountName", "name", "shareName", "type"},
+			},
+		},
+	}
+}
+
 func schema_kubeform_apis_azurerm_v1alpha1_AppServiceStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -21499,6 +22775,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpec(ref common.Ref
 							},
 						},
 					},
+					"identity": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecIdentity"),
+									},
+								},
+							},
+						},
+					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -21657,7 +22945,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpec(ref common.Ref
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecAuthenticationCertificate", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecAutoscaleConfiguration", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecBackendAddressPool", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecBackendHTTPSettings", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecCustomErrorConfiguration", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecFrontendIPConfiguration", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecFrontendPort", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecGatewayIPConfiguration", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecHttpListener", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecProbe", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecRedirectConfiguration", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecRequestRoutingRule", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecRewriteRuleSet", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecSku", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecSslCertificate", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecSslPolicy", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecUrlPathMap", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecWafConfiguration"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecAuthenticationCertificate", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecAutoscaleConfiguration", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecBackendAddressPool", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecBackendHTTPSettings", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecCustomErrorConfiguration", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecFrontendIPConfiguration", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecFrontendPort", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecGatewayIPConfiguration", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecHttpListener", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecIdentity", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecProbe", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecRedirectConfiguration", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecRequestRoutingRule", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecRewriteRuleSet", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecSku", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecSslCertificate", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecSslPolicy", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecUrlPathMap", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpecWafConfiguration"},
 	}
 }
 
@@ -22212,6 +23500,38 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecHttpListenerCus
 					},
 				},
 				Required: []string{"customErrorPageURL", "statusCode"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecIdentity(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"identityIDS": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"identityIDS"},
 			},
 		},
 	}
@@ -27784,6 +29104,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchAccountSpec(ref common.Reference
 							Format: "",
 						},
 					},
+					"keyVaultReference": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchAccountSpecKeyVaultReference"),
+									},
+								},
+							},
+						},
+					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -27833,7 +29165,32 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchAccountSpec(ref common.Reference
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchAccountSpecKeyVaultReference"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_BatchAccountSpecKeyVaultReference(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"ID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"url": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"ID", "url"},
+			},
+		},
 	}
 }
 
@@ -27865,6 +29222,189 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchAccountStatus(ref common.Referen
 		},
 		Dependencies: []string{
 			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchAccountSpec"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_BatchApplication(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplicationSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplicationStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplicationSpec", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplicationStatus"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_BatchApplicationList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "BatchApplicationList is a list of BatchApplications",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of BatchApplication CRD objects",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplication"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplication"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_BatchApplicationSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"accountName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"allowUpdates": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"defaultVersion": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"displayName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resourceGroupName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"providerRef", "accountName", "name", "resourceGroupName"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.LocalObjectReference"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_BatchApplicationStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"output": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplicationSpec"),
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis.State"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplicationSpec"},
 	}
 }
 
@@ -28627,7 +30167,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchPoolSpecStorageImageReference(re
 						},
 					},
 				},
-				Required: []string{"offer", "publisher", "sku", "version"},
 			},
 		},
 	}
@@ -30704,6 +32243,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistrySpec(ref common.Refe
 							Format: "",
 						},
 					},
+					"networkRuleSet": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpecNetworkRuleSet"),
+									},
+								},
+							},
+						},
+					},
 					"resourceGroupName": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -30754,7 +32305,64 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistrySpec(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpecStorageAccount"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpecNetworkRuleSet", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpecStorageAccount"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistrySpecNetworkRuleSet(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"defaultAction": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ipRule": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpecNetworkRuleSetIpRule"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpecNetworkRuleSetIpRule"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistrySpecNetworkRuleSetIpRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"action": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ipRange": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"action", "ipRange"},
+			},
+		},
 	}
 }
 
@@ -43796,6 +45404,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpec(ref common.ReferenceC
 							},
 						},
 					},
+					"authSettings": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettings"),
+									},
+								},
+							},
+						},
+					},
 					"clientAffinityEnabled": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -43935,7 +45555,298 @@ func schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpec(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecConnectionString", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecIdentity", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecSiteConfig", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecSiteCredential"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettings", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecConnectionString", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecIdentity", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecSiteConfig", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecSiteCredential"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecAuthSettings(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"activeDirectory": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsActiveDirectory"),
+									},
+								},
+							},
+						},
+					},
+					"additionalLoginParams": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"allowedExternalRedirectUrls": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"defaultProvider": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"facebook": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsFacebook"),
+									},
+								},
+							},
+						},
+					},
+					"google": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsGoogle"),
+									},
+								},
+							},
+						},
+					},
+					"issuer": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"microsoft": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsMicrosoft"),
+									},
+								},
+							},
+						},
+					},
+					"runtimeVersion": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tokenRefreshExtensionHours": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tokenStoreEnabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"twitter": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsTwitter"),
+									},
+								},
+							},
+						},
+					},
+					"unauthenticatedClientAction": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"enabled"},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsActiveDirectory", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsFacebook", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsGoogle", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsMicrosoft", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpecAuthSettingsTwitter"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecAuthSettingsActiveDirectory(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"allowedAudiences": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"clientID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"clientID"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecAuthSettingsFacebook(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"appID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"oauthScopes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"appID"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecAuthSettingsGoogle(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"clientID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"oauthScopes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"clientID"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecAuthSettingsMicrosoft(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"clientID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"oauthScopes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"clientID"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecAuthSettingsTwitter(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"consumerKey": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"consumerKey"},
+			},
+		},
 	}
 }
 
@@ -49698,6 +51609,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubSpec(ref common.ReferenceCallba
 							},
 						},
 					},
+					"fileUpload": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecFileUpload"),
+									},
+								},
+							},
+						},
+					},
 					"hostname": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -49795,7 +51718,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubSpec(ref common.ReferenceCallba
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecEndpoint", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecFallbackRoute", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecIpFilterRule", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecRoute", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecSharedAccessPolicy", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecSku"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecEndpoint", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecFallbackRoute", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecFileUpload", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecIpFilterRule", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecRoute", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecSharedAccessPolicy", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpecSku"},
 	}
 }
 
@@ -49892,6 +51815,55 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubSpecFallbackRoute(ref common.Re
 						},
 					},
 				},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_IothubSpecFileUpload(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"containerName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"defaultTtl": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"lockDuration": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"maxDeliveryCount": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"notifications": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"sasTtl": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"containerName"},
 			},
 		},
 	}
@@ -52011,12 +53983,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpec(ref common.Refe
 							},
 						},
 					},
+					"windowsProfile": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecWindowsProfile"),
+									},
+								},
+							},
+						},
+					},
 				},
 				Required: []string{"providerRef", "agentPoolProfile", "dnsPrefix", "location", "name", "resourceGroupName", "servicePrincipal"},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecAddonProfile", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecAgentPoolProfile", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecKubeAdminConfig", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecKubeConfig", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecLinuxProfile", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecNetworkProfile", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecRoleBasedAccessControl", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecServicePrincipal"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecAddonProfile", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecAgentPoolProfile", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecKubeAdminConfig", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecKubeConfig", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecLinuxProfile", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecNetworkProfile", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecRoleBasedAccessControl", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecServicePrincipal", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpecWindowsProfile"},
 	}
 }
 
@@ -52151,6 +54135,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecAgentPoolProfile
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"availabilityZones": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -52164,6 +54161,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecAgentPoolProfile
 							Format:      "",
 						},
 					},
+					"enableAutoScaling": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"fqdn": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
@@ -52171,7 +54174,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecAgentPoolProfile
 							Format:      "",
 						},
 					},
+					"maxCount": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 					"maxPods": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"minCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
@@ -52181,6 +54196,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecAgentPoolProfile
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
+						},
+					},
+					"nodeTaints": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"osDiskSizeGb": {
@@ -52362,6 +54390,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecNetworkProfile(r
 							Format: "",
 						},
 					},
+					"loadBalancerSku": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"networkPlugin": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -52471,6 +54505,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecServicePrincipal
 					},
 				},
 				Required: []string{"clientID"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecWindowsProfile(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"adminUsername": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"adminUsername"},
 			},
 		},
 	}
@@ -57015,6 +59068,196 @@ func schema_kubeform_apis_azurerm_v1alpha1_ManagementLockStatus(ref common.Refer
 		},
 		Dependencies: []string{
 			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagementLockSpec"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_MapsAccount(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccountSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccountStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccountSpec", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccountStatus"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_MapsAccountList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "MapsAccountList is a list of MapsAccounts",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of MapsAccount CRD objects",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccount"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccount"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_MapsAccountSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secretRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resourceGroupName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"skuName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"xMsClientID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"providerRef", "name", "resourceGroupName", "skuName"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.LocalObjectReference"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_MapsAccountStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"output": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccountSpec"),
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis.State"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccountSpec"},
 	}
 }
 
@@ -67547,6 +69790,204 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlVirtualNetworkRuleStatus(re
 	}
 }
 
+func schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSARecord(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecordSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecordStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecordSpec", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecordStatus"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSARecordList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "PrivateDNSARecordList is a list of PrivateDNSARecords",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of PrivateDNSARecord CRD objects",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecord"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecord"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSARecordSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"records": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"resourceGroupName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"ttl": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"zoneName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"providerRef", "name", "records", "resourceGroupName", "ttl", "zoneName"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.LocalObjectReference"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSARecordStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"output": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecordSpec"),
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis.State"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecordSpec"},
+	}
+}
+
 func schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSZone(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -72237,7 +74678,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SecurityCenterContactSpec(ref common.
 						},
 					},
 				},
-				Required: []string{"providerRef", "alertNotifications", "alertsToAdmins", "email", "phone"},
+				Required: []string{"providerRef", "alertNotifications", "alertsToAdmins", "email"},
 			},
 		},
 		Dependencies: []string{
@@ -77860,6 +80301,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpec(ref common.Referen
 							},
 						},
 					},
+					"enableAdvancedThreatProtection": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"enableBlobEncryption": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -77998,6 +80445,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpec(ref common.Referen
 							Format: "",
 						},
 					},
+					"queueProperties": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueueProperties"),
+									},
+								},
+							},
+						},
+					},
 					"resourceGroupName": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -78101,7 +80560,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpec(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecCustomDomain", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecIdentity", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecNetworkRules"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecCustomDomain", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecIdentity", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecNetworkRules", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueueProperties"},
 	}
 }
 
@@ -78213,6 +80672,256 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecNetworkRules(ref co
 						},
 					},
 				},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueueProperties(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"corsRule": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueuePropertiesCorsRule"),
+									},
+								},
+							},
+						},
+					},
+					"hourMetrics": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueuePropertiesHourMetrics"),
+									},
+								},
+							},
+						},
+					},
+					"logging": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueuePropertiesLogging"),
+									},
+								},
+							},
+						},
+					},
+					"minuteMetrics": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueuePropertiesMinuteMetrics"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueuePropertiesCorsRule", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueuePropertiesHourMetrics", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueuePropertiesLogging", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpecQueuePropertiesMinuteMetrics"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueuePropertiesCorsRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"allowedHeaders": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"allowedMethods": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"allowedOrigins": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"exposedHeaders": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"maxAgeInSeconds": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+				},
+				Required: []string{"allowedHeaders", "allowedMethods", "allowedOrigins", "exposedHeaders", "maxAgeInSeconds"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueuePropertiesHourMetrics(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"includeApis": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"retentionPolicyDays": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"enabled", "version"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueuePropertiesLogging(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"delete": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"read": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"retentionPolicyDays": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"write": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"delete", "read", "version", "write"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueuePropertiesMinuteMetrics(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"includeApis": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"retentionPolicyDays": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"enabled", "version"},
 			},
 		},
 	}
@@ -78595,13 +81304,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageContainerSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"name": {
+					"hasImmutabilityPolicy": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
-					"properties": {
+					"hasLegalHold": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"metadata": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
 							AdditionalProperties: &spec.SchemaOrBool{
@@ -78615,10 +81330,32 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageContainerSpec(ref common.Refer
 							},
 						},
 					},
-					"resourceGroupName": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
+						},
+					},
+					"properties": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Deprecated",
+							Type:        []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"resourceGroupName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Deprecated",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"storageAccountName": {
@@ -78628,7 +81365,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageContainerSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "resourceGroupName", "storageAccountName"},
+				Required: []string{"providerRef", "name", "storageAccountName"},
 			},
 		},
 		Dependencies: []string{
@@ -78774,6 +81511,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageQueueSpec(ref common.Reference
 							Format: "",
 						},
 					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -78782,8 +81533,9 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageQueueSpec(ref common.Reference
 					},
 					"resourceGroupName": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Deprecated",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"storageAccountName": {
@@ -78793,7 +81545,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageQueueSpec(ref common.Reference
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "resourceGroupName", "storageAccountName"},
+				Required: []string{"providerRef", "name", "storageAccountName"},
 			},
 		},
 		Dependencies: []string{
@@ -78875,6 +81627,185 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageShare(ref common.ReferenceCall
 	}
 }
 
+func schema_kubeform_apis_azurerm_v1alpha1_StorageShareDirectory(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectorySpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectoryStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectorySpec", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectoryStatus"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageShareDirectoryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "StorageShareDirectoryList is a list of StorageShareDirectorys",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of StorageShareDirectory CRD objects",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectory"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectory"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageShareDirectorySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"shareName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"storageAccountName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"providerRef", "name", "shareName", "storageAccountName"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.LocalObjectReference"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageShareDirectoryStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"output": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectorySpec"),
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis.State"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectorySpec"},
+	}
+}
+
 func schema_kubeform_apis_azurerm_v1alpha1_StorageShareList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -78939,6 +81870,32 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageShareSpec(ref common.Reference
 							Format: "",
 						},
 					},
+					"acl": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareSpecAcl"),
+									},
+								},
+							},
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -78953,8 +81910,9 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageShareSpec(ref common.Reference
 					},
 					"resourceGroupName": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Deprecated",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"storageAccountName": {
@@ -78970,11 +81928,75 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageShareSpec(ref common.Reference
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "resourceGroupName", "storageAccountName"},
+				Required: []string{"providerRef", "name", "storageAccountName"},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareSpecAcl"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageShareSpecAcl(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"accessPolicy": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareSpecAclAccessPolicy"),
+									},
+								},
+							},
+						},
+					},
+					"ID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"ID"},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareSpecAclAccessPolicy"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageShareSpecAclAccessPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"expiry": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"permissions": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"start": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"expiry", "permissions", "start"},
+			},
+		},
 	}
 }
 
@@ -79052,6 +82074,191 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageTable(ref common.ReferenceCall
 	}
 }
 
+func schema_kubeform_apis_azurerm_v1alpha1_StorageTableEntity(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntitySpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntityStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntitySpec", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntityStatus"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageTableEntityList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "StorageTableEntityList is a list of StorageTableEntitys",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of StorageTableEntity CRD objects",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntity"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntity"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageTableEntitySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"entity": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"partitionKey": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"rowKey": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"storageAccountName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tableName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"providerRef", "entity", "partitionKey", "rowKey", "storageAccountName", "tableName"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.LocalObjectReference"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageTableEntityStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"output": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntitySpec"),
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis.State"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntitySpec"},
+	}
+}
+
 func schema_kubeform_apis_azurerm_v1alpha1_StorageTableList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -79116,6 +82323,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageTableSpec(ref common.Reference
 							Format: "",
 						},
 					},
+					"acl": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableSpecAcl"),
+									},
+								},
+							},
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -79124,8 +82343,9 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageTableSpec(ref common.Reference
 					},
 					"resourceGroupName": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Deprecated",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"storageAccountName": {
@@ -79135,11 +82355,75 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageTableSpec(ref common.Reference
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "resourceGroupName", "storageAccountName"},
+				Required: []string{"providerRef", "name", "storageAccountName"},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableSpecAcl"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageTableSpecAcl(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"accessPolicy": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableSpecAclAccessPolicy"),
+									},
+								},
+							},
+						},
+					},
+					"ID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"ID"},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableSpecAclAccessPolicy"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_StorageTableSpecAclAccessPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"expiry": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"permissions": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"start": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"expiry", "permissions", "start"},
+			},
+		},
 	}
 }
 
@@ -82192,6 +85476,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointSpec(ref common
 							Format: "",
 						},
 					},
+					"customHeader": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpointSpecCustomHeader"),
+									},
+								},
+							},
+						},
+					},
 					"endpointLocation": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -82253,6 +85549,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointSpec(ref common
 							Format: "",
 						},
 					},
+					"subnet": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpointSpecSubnet"),
+									},
+								},
+							},
+						},
+					},
 					"target": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -82282,7 +85590,63 @@ func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointSpec(ref common
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpointSpecCustomHeader", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpointSpecSubnet"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointSpecCustomHeader(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"value": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"name", "value"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointSpecSubnet(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"first": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"last": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"scope": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+				},
+				Required: []string{"first"},
+			},
+		},
 	}
 }
 

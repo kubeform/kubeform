@@ -25,11 +25,20 @@ type StorageContainerSpec struct {
 
 	// +optional
 	ContainerAccessType string `json:"containerAccessType,omitempty" tf:"container_access_type,omitempty"`
-	Name                string `json:"name" tf:"name"`
 	// +optional
-	Properties         map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
-	ResourceGroupName  string            `json:"resourceGroupName" tf:"resource_group_name"`
-	StorageAccountName string            `json:"storageAccountName" tf:"storage_account_name"`
+	HasImmutabilityPolicy bool `json:"hasImmutabilityPolicy,omitempty" tf:"has_immutability_policy,omitempty"`
+	// +optional
+	HasLegalHold bool `json:"hasLegalHold,omitempty" tf:"has_legal_hold,omitempty"`
+	// +optional
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Name     string            `json:"name" tf:"name"`
+	// +optional
+	// Deprecated
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
+	// +optional
+	// Deprecated
+	ResourceGroupName  string `json:"resourceGroupName,omitempty" tf:"resource_group_name,omitempty"`
+	StorageAccountName string `json:"storageAccountName" tf:"storage_account_name"`
 }
 
 type StorageContainerStatus struct {

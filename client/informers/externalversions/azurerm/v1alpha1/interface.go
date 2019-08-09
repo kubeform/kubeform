@@ -24,6 +24,8 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// AnalysisServicesServers returns a AnalysisServicesServerInformer.
+	AnalysisServicesServers() AnalysisServicesServerInformer
 	// ApiManagements returns a ApiManagementInformer.
 	ApiManagements() ApiManagementInformer
 	// ApiManagementAPIs returns a ApiManagementAPIInformer.
@@ -40,6 +42,8 @@ type Interface interface {
 	ApiManagementAPIVersionSets() ApiManagementAPIVersionSetInformer
 	// ApiManagementAuthorizationServers returns a ApiManagementAuthorizationServerInformer.
 	ApiManagementAuthorizationServers() ApiManagementAuthorizationServerInformer
+	// ApiManagementBackends returns a ApiManagementBackendInformer.
+	ApiManagementBackends() ApiManagementBackendInformer
 	// ApiManagementCertificates returns a ApiManagementCertificateInformer.
 	ApiManagementCertificates() ApiManagementCertificateInformer
 	// ApiManagementGroups returns a ApiManagementGroupInformer.
@@ -118,6 +122,8 @@ type Interface interface {
 	AzureadServicePrincipalPasswords() AzureadServicePrincipalPasswordInformer
 	// BatchAccounts returns a BatchAccountInformer.
 	BatchAccounts() BatchAccountInformer
+	// BatchApplications returns a BatchApplicationInformer.
+	BatchApplications() BatchApplicationInformer
 	// BatchCertificates returns a BatchCertificateInformer.
 	BatchCertificates() BatchCertificateInformer
 	// BatchPools returns a BatchPoolInformer.
@@ -326,6 +332,8 @@ type Interface interface {
 	ManagementGroups() ManagementGroupInformer
 	// ManagementLocks returns a ManagementLockInformer.
 	ManagementLocks() ManagementLockInformer
+	// MapsAccounts returns a MapsAccountInformer.
+	MapsAccounts() MapsAccountInformer
 	// MariadbDatabases returns a MariadbDatabaseInformer.
 	MariadbDatabases() MariadbDatabaseInformer
 	// MariadbFirewallRules returns a MariadbFirewallRuleInformer.
@@ -410,6 +418,8 @@ type Interface interface {
 	PostgresqlServers() PostgresqlServerInformer
 	// PostgresqlVirtualNetworkRules returns a PostgresqlVirtualNetworkRuleInformer.
 	PostgresqlVirtualNetworkRules() PostgresqlVirtualNetworkRuleInformer
+	// PrivateDNSARecords returns a PrivateDNSARecordInformer.
+	PrivateDNSARecords() PrivateDNSARecordInformer
 	// PrivateDNSZones returns a PrivateDNSZoneInformer.
 	PrivateDNSZones() PrivateDNSZoneInformer
 	// PublicIPs returns a PublicIPInformer.
@@ -500,8 +510,12 @@ type Interface interface {
 	StorageQueues() StorageQueueInformer
 	// StorageShares returns a StorageShareInformer.
 	StorageShares() StorageShareInformer
+	// StorageShareDirectories returns a StorageShareDirectoryInformer.
+	StorageShareDirectories() StorageShareDirectoryInformer
 	// StorageTables returns a StorageTableInformer.
 	StorageTables() StorageTableInformer
+	// StorageTableEntities returns a StorageTableEntityInformer.
+	StorageTableEntities() StorageTableEntityInformer
 	// StreamAnalyticsFunctionJavascriptUdves returns a StreamAnalyticsFunctionJavascriptUdfInformer.
 	StreamAnalyticsFunctionJavascriptUdves() StreamAnalyticsFunctionJavascriptUdfInformer
 	// StreamAnalyticsJobs returns a StreamAnalyticsJobInformer.
@@ -563,6 +577,11 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
+// AnalysisServicesServers returns a AnalysisServicesServerInformer.
+func (v *version) AnalysisServicesServers() AnalysisServicesServerInformer {
+	return &analysisServicesServerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // ApiManagements returns a ApiManagementInformer.
 func (v *version) ApiManagements() ApiManagementInformer {
 	return &apiManagementInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -601,6 +620,11 @@ func (v *version) ApiManagementAPIVersionSets() ApiManagementAPIVersionSetInform
 // ApiManagementAuthorizationServers returns a ApiManagementAuthorizationServerInformer.
 func (v *version) ApiManagementAuthorizationServers() ApiManagementAuthorizationServerInformer {
 	return &apiManagementAuthorizationServerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ApiManagementBackends returns a ApiManagementBackendInformer.
+func (v *version) ApiManagementBackends() ApiManagementBackendInformer {
+	return &apiManagementBackendInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ApiManagementCertificates returns a ApiManagementCertificateInformer.
@@ -796,6 +820,11 @@ func (v *version) AzureadServicePrincipalPasswords() AzureadServicePrincipalPass
 // BatchAccounts returns a BatchAccountInformer.
 func (v *version) BatchAccounts() BatchAccountInformer {
 	return &batchAccountInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// BatchApplications returns a BatchApplicationInformer.
+func (v *version) BatchApplications() BatchApplicationInformer {
+	return &batchApplicationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // BatchCertificates returns a BatchCertificateInformer.
@@ -1318,6 +1347,11 @@ func (v *version) ManagementLocks() ManagementLockInformer {
 	return &managementLockInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// MapsAccounts returns a MapsAccountInformer.
+func (v *version) MapsAccounts() MapsAccountInformer {
+	return &mapsAccountInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // MariadbDatabases returns a MariadbDatabaseInformer.
 func (v *version) MariadbDatabases() MariadbDatabaseInformer {
 	return &mariadbDatabaseInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -1526,6 +1560,11 @@ func (v *version) PostgresqlServers() PostgresqlServerInformer {
 // PostgresqlVirtualNetworkRules returns a PostgresqlVirtualNetworkRuleInformer.
 func (v *version) PostgresqlVirtualNetworkRules() PostgresqlVirtualNetworkRuleInformer {
 	return &postgresqlVirtualNetworkRuleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// PrivateDNSARecords returns a PrivateDNSARecordInformer.
+func (v *version) PrivateDNSARecords() PrivateDNSARecordInformer {
+	return &privateDNSARecordInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // PrivateDNSZones returns a PrivateDNSZoneInformer.
@@ -1753,9 +1792,19 @@ func (v *version) StorageShares() StorageShareInformer {
 	return &storageShareInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// StorageShareDirectories returns a StorageShareDirectoryInformer.
+func (v *version) StorageShareDirectories() StorageShareDirectoryInformer {
+	return &storageShareDirectoryInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // StorageTables returns a StorageTableInformer.
 func (v *version) StorageTables() StorageTableInformer {
 	return &storageTableInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// StorageTableEntities returns a StorageTableEntityInformer.
+func (v *version) StorageTableEntities() StorageTableEntityInformer {
+	return &storageTableEntityInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // StreamAnalyticsFunctionJavascriptUdves returns a StreamAnalyticsFunctionJavascriptUdfInformer.

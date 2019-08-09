@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/hashicorp/terraform/helper/schema"
@@ -115,7 +116,7 @@ func resourceAwsEbsSnapshotCopyRead(d *schema.ResourceData, meta interface{}) er
 		SnapshotIds: []*string{aws.String(d.Id())},
 	}
 	res, err := conn.DescribeSnapshots(req)
-	if isAWSErr(err, "InvalidSnapshot.NotFound", "") {
+	if ec2err, ok := err.(awserr.Error); ok && ec2err.Code() == "InvalidSnapshotID.NotFound" {
 		log.Printf("Snapshot %q Not found - removing from state", d.Id())
 		d.SetId("")
 		return nil
@@ -151,12 +152,13 @@ func resourceAwsEbsSnapshotCopyDelete(d *schema.ResourceData, meta interface{}) 
 			return nil
 		}
 
-		if isAWSErr(err, "SnapshotInUse", "") {
+		ebsErr, ok := err.(awserr.Error)
+		if ebsErr.Code() == "SnapshotInUse" {
 			return resource.RetryableError(fmt.Errorf("EBS SnapshotInUse - trying again while it detaches"))
 		}
 
-		if isAWSErr(err, "InvalidSnapshot.NotFound", "") {
-			return nil
+		if !ok {
+			return resource.NonRetryableError(err)
 		}
 
 		return resource.NonRetryableError(err)

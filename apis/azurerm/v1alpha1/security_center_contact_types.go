@@ -26,7 +26,8 @@ type SecurityCenterContactSpec struct {
 	AlertNotifications bool   `json:"alertNotifications" tf:"alert_notifications"`
 	AlertsToAdmins     bool   `json:"alertsToAdmins" tf:"alerts_to_admins"`
 	Email              string `json:"email" tf:"email"`
-	Phone              string `json:"phone" tf:"phone"`
+	// +optional
+	Phone string `json:"phone,omitempty" tf:"phone,omitempty"`
 }
 
 type SecurityCenterContactStatus struct {

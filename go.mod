@@ -3,40 +3,41 @@ module kubeform.dev/kubeform
 go 1.12
 
 require (
-	cloud.google.com/go v0.41.0 // indirect
-	github.com/appscode/go v0.0.0-20190621064509-6b292c9166e3
-	github.com/aws/aws-sdk-go v1.20.20 // indirect
+	github.com/Azure/go-autorest/autorest v0.7.0 // indirect
 	github.com/dave/jennifer v1.3.0
 	github.com/emicklei/go-restful v2.9.6+incompatible // indirect
 	github.com/evanphx/json-patch v4.5.0+incompatible // indirect
-	github.com/go-critic/go-critic v0.0.0-20181204210945-ee9bf5809ead // indirect
 	github.com/go-openapi/spec v0.19.2
 	github.com/gobuffalo/flect v0.1.5
+	github.com/golang/groupcache v0.0.0-20190702054246-869f871628b6 // indirect
+	github.com/google/btree v1.0.0 // indirect
 	github.com/google/gofuzz v1.0.0 // indirect
-	github.com/hashicorp/terraform v0.12.4
+	github.com/googleapis/gnostic v0.3.0 // indirect
+	github.com/gophercloud/gophercloud v0.3.0 // indirect
+	github.com/hashicorp/terraform v0.12.7-0.20190808211310-979a2fa6d13b
+	github.com/json-iterator/go v1.1.6 // indirect
 	github.com/mattn/go-colorable v0.1.2 // indirect
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
+	github.com/pkg/errors v0.8.1 // indirect
 	github.com/spf13/afero v1.2.2 // indirect
-	github.com/terraform-providers/terraform-provider-aws v0.0.0-20190711201143-6a59557e3feb
-	github.com/terraform-providers/terraform-provider-azurerm v1.31.0
+	github.com/terraform-providers/terraform-provider-aws v0.0.0-20190510001811-4b894dbf13f6
+	github.com/terraform-providers/terraform-provider-azurerm v1.32.1
 	github.com/terraform-providers/terraform-provider-digitalocean v1.5.0
 	github.com/terraform-providers/terraform-provider-google v1.20.0
 	github.com/terraform-providers/terraform-provider-linode v1.8.0
-	gopkg.in/inf.v0 v0.9.1 // indirect
-	k8s.io/api v0.0.0-20190711103429-37c3b8b1ca65
-	k8s.io/apimachinery v0.0.0-20190711222657-391ed67afa7b
-	k8s.io/client-go v11.0.1-0.20190409021438-1a26190bd76a+incompatible
+	golang.org/x/oauth2 v0.0.0-20190402181905-9f3314589c9a // indirect
+	k8s.io/api v0.0.0-20190503110853-61630f889b3c
+	k8s.io/apimachinery v0.0.0-20190508063446-a3da69d3723c
+	k8s.io/client-go v11.0.0+incompatible
 	k8s.io/klog v0.3.1 // indirect
-	k8s.io/kube-openapi v0.0.0-20190228160746-b3a7cee44a30
-	k8s.io/utils v0.0.0-20190607212802-c55fbcfc754a // indirect
+	k8s.io/kube-openapi v0.0.0-20190502190224-411b2483e503
+	k8s.io/utils v0.0.0-20190506122338-8fab8cb257d5 // indirect
 )
 
 replace (
-	github.com/Azure/go-autorest => github.com/Azure/go-autorest/autorest v0.5.0
-	github.com/hashicorp/go-azure-helpers => github.com/hashicorp/go-azure-helpers v0.5.0
+	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.2+incompatible
 	github.com/hashicorp/hcl => github.com/hashicorp/hcl v0.0.0-20170504190234-a4b07c25de5f
-	github.com/hashicorp/terraform => github.com/kubeform/terraform v0.12.5-0.20190716182444-c20e89d13573
 	github.com/ugorji/go => github.com/ugorji/go v0.0.0-20171019201919-bdcc60b419d1
 	k8s.io/api => k8s.io/api v0.0.0-20190313235455-40a48860b5ab
 	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.0.0-20190315093550-53c4693659ed
@@ -52,4 +53,5 @@ replace (
 	k8s.io/kubernetes => k8s.io/kubernetes v1.14.0
 	k8s.io/metrics => k8s.io/metrics v0.0.0-20190314001731-1bd6a4002213
 	k8s.io/utils => k8s.io/utils v0.0.0-20190221042446-c2654d5206da
+	sigs.k8s.io/structured-merge-diff => sigs.k8s.io/structured-merge-diff v0.0.0-20190302045857-e85c7b244fd2
 )

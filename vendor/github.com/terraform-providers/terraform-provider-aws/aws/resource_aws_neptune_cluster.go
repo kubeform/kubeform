@@ -350,13 +350,6 @@ func resourceAwsNeptuneClusterCreate(d *schema.ResourceData, meta interface{}) e
 		}
 		return nil
 	})
-	if isResourceTimeoutError(err) {
-		if restoreDBClusterFromSnapshot {
-			_, err = conn.RestoreDBClusterFromSnapshot(restoreDBClusterFromSnapshotInput)
-		} else {
-			_, err = conn.CreateDBCluster(createDbClusterInput)
-		}
-	}
 	if err != nil {
 		return fmt.Errorf("error creating Neptune Cluster: %s", err)
 	}
@@ -549,9 +542,6 @@ func resourceAwsNeptuneClusterUpdate(d *schema.ResourceData, meta interface{}) e
 			}
 			return nil
 		})
-		if isResourceTimeoutError(err) {
-			_, err = conn.ModifyDBCluster(req)
-		}
 		if err != nil {
 			return fmt.Errorf("Failed to modify Neptune Cluster (%s): %s", d.Id(), err)
 		}
@@ -646,9 +636,6 @@ func resourceAwsNeptuneClusterDelete(d *schema.ResourceData, meta interface{}) e
 		}
 		return nil
 	})
-	if isResourceTimeoutError(err) {
-		_, err = conn.DeleteDBCluster(&deleteOpts)
-	}
 	if err != nil {
 		return fmt.Errorf("Neptune Cluster cannot be deleted: %s", err)
 	}

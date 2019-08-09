@@ -24,14 +24,6 @@ type EcsTaskDefinitionSpecPlacementConstraints struct {
 	Type       string `json:"type" tf:"type"`
 }
 
-type EcsTaskDefinitionSpecProxyConfiguration struct {
-	ContainerName string `json:"containerName" tf:"container_name"`
-	// +optional
-	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
-	// +optional
-	Type string `json:"type,omitempty" tf:"type,omitempty"`
-}
-
 type EcsTaskDefinitionSpecVolumeDockerVolumeConfiguration struct {
 	// +optional
 	Autoprovision bool `json:"autoprovision,omitempty" tf:"autoprovision,omitempty"`
@@ -79,9 +71,6 @@ type EcsTaskDefinitionSpec struct {
 	// +kubebuilder:validation:MaxItems=10
 	// +kubebuilder:validation:UniqueItems=true
 	PlacementConstraints []EcsTaskDefinitionSpecPlacementConstraints `json:"placementConstraints,omitempty" tf:"placement_constraints,omitempty"`
-	// +optional
-	// +kubebuilder:validation:MaxItems=1
-	ProxyConfiguration []EcsTaskDefinitionSpecProxyConfiguration `json:"proxyConfiguration,omitempty" tf:"proxy_configuration,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	RequiresCompatibilities []string `json:"requiresCompatibilities,omitempty" tf:"requires_compatibilities,omitempty"`

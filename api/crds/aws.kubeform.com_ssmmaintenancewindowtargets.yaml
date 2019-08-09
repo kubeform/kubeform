@@ -397,11 +397,7 @@ spec:
           type: object
         spec:
           properties:
-            description:
-              type: string
             id:
-              type: string
-            name:
               type: string
             ownerInformation:
               type: string
@@ -448,11 +444,7 @@ spec:
               type: integer
             output:
               properties:
-                description:
-                  type: string
                 id:
-                  type: string
-                name:
                   type: string
                 ownerInformation:
                   type: string

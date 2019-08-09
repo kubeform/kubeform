@@ -399,13 +399,22 @@ spec:
           properties:
             containerAccessType:
               type: string
+            hasImmutabilityPolicy:
+              type: boolean
+            hasLegalHold:
+              type: boolean
             id:
               type: string
+            metadata:
+              additionalProperties:
+                type: string
+              type: object
             name:
               type: string
             properties:
               additionalProperties:
                 type: string
+              description: Deprecated
               type: object
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -417,13 +426,13 @@ spec:
                   type: string
               type: object
             resourceGroupName:
+              description: Deprecated
               type: string
             storageAccountName:
               type: string
           required:
           - name
           - providerRef
-          - resourceGroupName
           - storageAccountName
           type: object
         status:
@@ -437,13 +446,22 @@ spec:
               properties:
                 containerAccessType:
                   type: string
+                hasImmutabilityPolicy:
+                  type: boolean
+                hasLegalHold:
+                  type: boolean
                 id:
                   type: string
+                metadata:
+                  additionalProperties:
+                    type: string
+                  type: object
                 name:
                   type: string
                 properties:
                   additionalProperties:
                     type: string
+                  description: Deprecated
                   type: object
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -455,13 +473,13 @@ spec:
                       type: string
                   type: object
                 resourceGroupName:
+                  description: Deprecated
                   type: string
                 storageAccountName:
                   type: string
               required:
               - name
               - providerRef
-              - resourceGroupName
               - storageAccountName
               type: object
             state:

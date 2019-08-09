@@ -446,8 +446,6 @@ spec:
             emailConfiguration:
               items:
                 properties:
-                  emailSendingAccount:
-                    type: string
                   replyToEmailAddress:
                     type: string
                   sourceArn:
@@ -676,8 +674,6 @@ spec:
                 emailConfiguration:
                   items:
                     properties:
-                      emailSendingAccount:
-                        type: string
                       replyToEmailAddress:
                         type: string
                       sourceArn:

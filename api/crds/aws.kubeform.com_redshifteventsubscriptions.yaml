@@ -397,8 +397,6 @@ spec:
           type: object
         spec:
           properties:
-            arn:
-              type: string
             customerAwsID:
               type: string
             enabled:
@@ -452,8 +450,6 @@ spec:
               type: integer
             output:
               properties:
-                arn:
-                  type: string
                 customerAwsID:
                   type: string
                 enabled:

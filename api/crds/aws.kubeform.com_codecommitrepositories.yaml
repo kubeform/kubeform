@@ -422,10 +422,6 @@ spec:
               type: string
             repositoryName:
               type: string
-            tags:
-              additionalProperties:
-                type: string
-              type: object
           required:
           - providerRef
           - repositoryName
@@ -464,10 +460,6 @@ spec:
                   type: string
                 repositoryName:
                   type: string
-                tags:
-                  additionalProperties:
-                    type: string
-                  type: object
               required:
               - providerRef
               - repositoryName

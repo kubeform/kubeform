@@ -444,10 +444,6 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            tags:
-              additionalProperties:
-                type: string
-              type: object
             targetAction:
               type: string
             targetPipeline:
@@ -517,10 +513,6 @@ spec:
                       description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
-                  type: object
-                tags:
-                  additionalProperties:
-                    type: string
                   type: object
                 targetAction:
                   type: string

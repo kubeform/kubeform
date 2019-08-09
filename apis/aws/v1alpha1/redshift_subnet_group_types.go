@@ -24,8 +24,6 @@ type RedshiftSubnetGroupSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
-	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true

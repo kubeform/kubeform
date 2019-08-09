@@ -65,28 +65,16 @@ func resourceAwsDefaultVpcDhcpOptionsCreate(d *schema.ResourceData, meta interfa
 		},
 	}
 
-	var dhcpOptions []*ec2.DhcpOptions
-	err := conn.DescribeDhcpOptionsPages(req, func(page *ec2.DescribeDhcpOptionsOutput, lastPage bool) bool {
-		dhcpOptions = append(dhcpOptions, page.DhcpOptions...)
-		return !lastPage
-	})
-
+	resp, err := conn.DescribeDhcpOptions(req)
 	if err != nil {
-		return fmt.Errorf("Error describing DHCP options: %s", err)
+		return err
 	}
 
-	if len(dhcpOptions) == 0 {
+	if len(resp.DhcpOptions) != 1 || resp.DhcpOptions[0] == nil {
 		return fmt.Errorf("Default DHCP Options Set not found")
 	}
 
-	if len(dhcpOptions) > 1 {
-		return fmt.Errorf("Multiple default DHCP Options Sets found")
-	}
-
-	if dhcpOptions[0] == nil {
-		return fmt.Errorf("Default DHCP Options Set is empty")
-	}
-	d.SetId(aws.StringValue(dhcpOptions[0].DhcpOptionsId))
+	d.SetId(aws.StringValue(resp.DhcpOptions[0].DhcpOptionsId))
 
 	return resourceAwsVpcDhcpOptionsUpdate(d, meta)
 }

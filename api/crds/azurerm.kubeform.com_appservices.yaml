@@ -500,6 +500,38 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            backup:
+              items:
+                properties:
+                  enabled:
+                    type: boolean
+                  name:
+                    type: string
+                  schedule:
+                    items:
+                      properties:
+                        frequencyInterval:
+                          type: integer
+                        frequencyUnit:
+                          type: string
+                        keepAtLeastOneBackup:
+                          type: boolean
+                        retentionPeriodInDays:
+                          type: integer
+                        startTime:
+                          type: string
+                      required:
+                      - frequencyInterval
+                      - frequencyUnit
+                      type: object
+                    maxItems: 1
+                    type: array
+                required:
+                - name
+                - schedule
+                type: object
+              maxItems: 1
+              type: array
             clientAffinityEnabled:
               type: boolean
             clientCertEnabled:
@@ -528,6 +560,11 @@ spec:
             identity:
               items:
                 properties:
+                  identityIDS:
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
                   principalID:
                     type: string
                   tenantID:
@@ -688,6 +725,27 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            storageAccount:
+              items:
+                properties:
+                  accountName:
+                    type: string
+                  mountPath:
+                    type: string
+                  name:
+                    type: string
+                  shareName:
+                    type: string
+                  type:
+                    type: string
+                required:
+                - accountName
+                - name
+                - shareName
+                - type
+                type: object
+              type: array
+              uniqueItems: true
             tags:
               additionalProperties:
                 type: string
@@ -811,6 +869,38 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                backup:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                      name:
+                        type: string
+                      schedule:
+                        items:
+                          properties:
+                            frequencyInterval:
+                              type: integer
+                            frequencyUnit:
+                              type: string
+                            keepAtLeastOneBackup:
+                              type: boolean
+                            retentionPeriodInDays:
+                              type: integer
+                            startTime:
+                              type: string
+                          required:
+                          - frequencyInterval
+                          - frequencyUnit
+                          type: object
+                        maxItems: 1
+                        type: array
+                    required:
+                    - name
+                    - schedule
+                    type: object
+                  maxItems: 1
+                  type: array
                 clientAffinityEnabled:
                   type: boolean
                 clientCertEnabled:
@@ -839,6 +929,11 @@ spec:
                 identity:
                   items:
                     properties:
+                      identityIDS:
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
                       principalID:
                         type: string
                       tenantID:
@@ -999,6 +1094,27 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                storageAccount:
+                  items:
+                    properties:
+                      accountName:
+                        type: string
+                      mountPath:
+                        type: string
+                      name:
+                        type: string
+                      shareName:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - accountName
+                    - name
+                    - shareName
+                    - type
+                    type: object
+                  type: array
+                  uniqueItems: true
                 tags:
                   additionalProperties:
                     type: string

@@ -38,8 +38,6 @@ type CodebuildProjectSpecCache struct {
 	// +optional
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional
-	Modes []string `json:"modes,omitempty" tf:"modes,omitempty"`
-	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
@@ -48,11 +46,6 @@ type CodebuildProjectSpecEnvironmentEnvironmentVariable struct {
 	// +optional
 	Type  string `json:"type,omitempty" tf:"type,omitempty"`
 	Value string `json:"value" tf:"value"`
-}
-
-type CodebuildProjectSpecEnvironmentRegistryCredential struct {
-	Credential         string `json:"credential" tf:"credential"`
-	CredentialProvider string `json:"credentialProvider" tf:"credential_provider"`
 }
 
 type CodebuildProjectSpecEnvironment struct {
@@ -65,38 +58,8 @@ type CodebuildProjectSpecEnvironment struct {
 	// +optional
 	ImagePullCredentialsType string `json:"imagePullCredentialsType,omitempty" tf:"image_pull_credentials_type,omitempty"`
 	// +optional
-	PrivilegedMode bool `json:"privilegedMode,omitempty" tf:"privileged_mode,omitempty"`
-	// +optional
-	// +kubebuilder:validation:MaxItems=1
-	RegistryCredential []CodebuildProjectSpecEnvironmentRegistryCredential `json:"registryCredential,omitempty" tf:"registry_credential,omitempty"`
-	Type               string                                              `json:"type" tf:"type"`
-}
-
-type CodebuildProjectSpecLogsConfigCloudwatchLogs struct {
-	// +optional
-	GroupName string `json:"groupName,omitempty" tf:"group_name,omitempty"`
-	// +optional
-	Status string `json:"status,omitempty" tf:"status,omitempty"`
-	// +optional
-	StreamName string `json:"streamName,omitempty" tf:"stream_name,omitempty"`
-}
-
-type CodebuildProjectSpecLogsConfigS3Logs struct {
-	// +optional
-	EncryptionDisabled bool `json:"encryptionDisabled,omitempty" tf:"encryption_disabled,omitempty"`
-	// +optional
-	Location string `json:"location,omitempty" tf:"location,omitempty"`
-	// +optional
-	Status string `json:"status,omitempty" tf:"status,omitempty"`
-}
-
-type CodebuildProjectSpecLogsConfig struct {
-	// +optional
-	// +kubebuilder:validation:MaxItems=1
-	CloudwatchLogs []CodebuildProjectSpecLogsConfigCloudwatchLogs `json:"cloudwatchLogs,omitempty" tf:"cloudwatch_logs,omitempty"`
-	// +optional
-	// +kubebuilder:validation:MaxItems=1
-	S3Logs []CodebuildProjectSpecLogsConfigS3Logs `json:"s3Logs,omitempty" tf:"s3_logs,omitempty"`
+	PrivilegedMode bool   `json:"privilegedMode,omitempty" tf:"privileged_mode,omitempty"`
+	Type           string `json:"type" tf:"type"`
 }
 
 type CodebuildProjectSpecSecondaryArtifacts struct {
@@ -201,10 +164,7 @@ type CodebuildProjectSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	Environment []CodebuildProjectSpecEnvironment `json:"environment" tf:"environment"`
-	// +optional
-	// +kubebuilder:validation:MaxItems=1
-	LogsConfig []CodebuildProjectSpecLogsConfig `json:"logsConfig,omitempty" tf:"logs_config,omitempty"`
-	Name       string                           `json:"name" tf:"name"`
+	Name        string                            `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SecondaryArtifacts []CodebuildProjectSpecSecondaryArtifacts `json:"secondaryArtifacts,omitempty" tf:"secondary_artifacts,omitempty"`

@@ -397,8 +397,6 @@ spec:
           type: object
         spec:
           properties:
-            blackhole:
-              type: boolean
             destinationCIDRBlock:
               type: string
             id:
@@ -419,6 +417,7 @@ spec:
           required:
           - destinationCIDRBlock
           - providerRef
+          - transitGatewayAttachmentID
           - transitGatewayRouteTableID
           type: object
         status:
@@ -430,8 +429,6 @@ spec:
               type: integer
             output:
               properties:
-                blackhole:
-                  type: boolean
                 destinationCIDRBlock:
                   type: string
                 id:
@@ -452,6 +449,7 @@ spec:
               required:
               - destinationCIDRBlock
               - providerRef
+              - transitGatewayAttachmentID
               - transitGatewayRouteTableID
               type: object
             state:

@@ -397,8 +397,6 @@ spec:
           type: object
         spec:
           properties:
-            arn:
-              type: string
             id:
               type: string
             kmsKeyID:
@@ -431,8 +429,6 @@ spec:
               type: integer
             output:
               properties:
-                arn:
-                  type: string
                 id:
                   type: string
                 kmsKeyID:

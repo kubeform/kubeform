@@ -451,10 +451,6 @@ spec:
               maxItems: 1
               minItems: 1
               type: array
-            tags:
-              additionalProperties:
-                type: string
-              type: object
           required:
           - meshName
           - name
@@ -524,10 +520,6 @@ spec:
                   maxItems: 1
                   minItems: 1
                   type: array
-                tags:
-                  additionalProperties:
-                    type: string
-                  type: object
               required:
               - meshName
               - name

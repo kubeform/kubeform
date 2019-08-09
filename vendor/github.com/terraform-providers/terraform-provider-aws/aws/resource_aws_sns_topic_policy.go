@@ -162,6 +162,5 @@ func buildDefaultSnsTopicPolicy(topicArn, accountId string) string {
       }
     }
   ]
-}
-`, topicArn, accountId)
+}`, topicArn, accountId)
 }

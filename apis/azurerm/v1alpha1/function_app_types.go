@@ -1,6 +1,8 @@
 package v1alpha1
 
 import (
+	"encoding/json"
+
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"kubeform.dev/kubeform/apis"
@@ -16,6 +18,75 @@ type FunctionApp struct {
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              FunctionAppSpec   `json:"spec,omitempty"`
 	Status            FunctionAppStatus `json:"status,omitempty"`
+}
+
+type FunctionAppSpecAuthSettingsActiveDirectory struct {
+	// +optional
+	AllowedAudiences []string `json:"allowedAudiences,omitempty" tf:"allowed_audiences,omitempty"`
+	ClientID         string   `json:"clientID" tf:"client_id"`
+	// +optional
+	ClientSecret string `json:"-" sensitive:"true" tf:"client_secret,omitempty"`
+}
+
+type FunctionAppSpecAuthSettingsFacebook struct {
+	AppID     string `json:"appID" tf:"app_id"`
+	AppSecret string `json:"-" sensitive:"true" tf:"app_secret"`
+	// +optional
+	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes,omitempty"`
+}
+
+type FunctionAppSpecAuthSettingsGoogle struct {
+	ClientID     string `json:"clientID" tf:"client_id"`
+	ClientSecret string `json:"-" sensitive:"true" tf:"client_secret"`
+	// +optional
+	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes,omitempty"`
+}
+
+type FunctionAppSpecAuthSettingsMicrosoft struct {
+	ClientID     string `json:"clientID" tf:"client_id"`
+	ClientSecret string `json:"-" sensitive:"true" tf:"client_secret"`
+	// +optional
+	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes,omitempty"`
+}
+
+type FunctionAppSpecAuthSettingsTwitter struct {
+	ConsumerKey    string `json:"consumerKey" tf:"consumer_key"`
+	ConsumerSecret string `json:"-" sensitive:"true" tf:"consumer_secret"`
+}
+
+type FunctionAppSpecAuthSettings struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	ActiveDirectory []FunctionAppSpecAuthSettingsActiveDirectory `json:"activeDirectory,omitempty" tf:"active_directory,omitempty"`
+	// +optional
+	AdditionalLoginParams map[string]string `json:"additionalLoginParams,omitempty" tf:"additional_login_params,omitempty"`
+	// +optional
+	AllowedExternalRedirectUrls []string `json:"allowedExternalRedirectUrls,omitempty" tf:"allowed_external_redirect_urls,omitempty"`
+	// +optional
+	DefaultProvider string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
+	Enabled         bool   `json:"enabled" tf:"enabled"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Facebook []FunctionAppSpecAuthSettingsFacebook `json:"facebook,omitempty" tf:"facebook,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Google []FunctionAppSpecAuthSettingsGoogle `json:"google,omitempty" tf:"google,omitempty"`
+	// +optional
+	Issuer string `json:"issuer,omitempty" tf:"issuer,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Microsoft []FunctionAppSpecAuthSettingsMicrosoft `json:"microsoft,omitempty" tf:"microsoft,omitempty"`
+	// +optional
+	RuntimeVersion string `json:"runtimeVersion,omitempty" tf:"runtime_version,omitempty"`
+	// +optional
+	TokenRefreshExtensionHours json.Number `json:"tokenRefreshExtensionHours,omitempty" tf:"token_refresh_extension_hours,omitempty"`
+	// +optional
+	TokenStoreEnabled bool `json:"tokenStoreEnabled,omitempty" tf:"token_store_enabled,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Twitter []FunctionAppSpecAuthSettingsTwitter `json:"twitter,omitempty" tf:"twitter,omitempty"`
+	// +optional
+	UnauthenticatedClientAction string `json:"unauthenticatedClientAction,omitempty" tf:"unauthenticated_client_action,omitempty"`
 }
 
 type FunctionAppSpecConnectionString struct {
@@ -60,6 +131,9 @@ type FunctionAppSpec struct {
 	AppServicePlanID string `json:"appServicePlanID" tf:"app_service_plan_id"`
 	// +optional
 	AppSettings map[string]string `json:"appSettings,omitempty" tf:"app_settings,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	AuthSettings []FunctionAppSpecAuthSettings `json:"authSettings,omitempty" tf:"auth_settings,omitempty"`
 	// +optional
 	ClientAffinityEnabled bool `json:"clientAffinityEnabled,omitempty" tf:"client_affinity_enabled,omitempty"`
 	// +optional

@@ -1011,7 +1011,6 @@ func resourceAwsS3BucketRead(d *schema.ResourceData, meta interface{}) error {
 		lifecycleRules = make([]map[string]interface{}, 0, len(lifecycle.Rules))
 
 		for _, lifecycleRule := range lifecycle.Rules {
-			log.Printf("[DEBUG] S3 bucket: %s, read lifecycle rule: %v", d.Id(), lifecycleRule)
 			rule := make(map[string]interface{})
 
 			// ID
@@ -1033,10 +1032,6 @@ func resourceAwsS3BucketRead(d *schema.ResourceData, meta interface{}) error {
 					// Prefix
 					if filter.Prefix != nil && *filter.Prefix != "" {
 						rule["prefix"] = *filter.Prefix
-					}
-					// Tag
-					if filter.Tag != nil {
-						rule["tags"] = tagsToMapS3([]*s3.Tag{filter.Tag})
 					}
 				}
 			} else {

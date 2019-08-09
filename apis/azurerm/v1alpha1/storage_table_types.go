@@ -18,13 +18,30 @@ type StorageTable struct {
 	Status            StorageTableStatus `json:"status,omitempty"`
 }
 
+type StorageTableSpecAclAccessPolicy struct {
+	Expiry      string `json:"expiry" tf:"expiry"`
+	Permissions string `json:"permissions" tf:"permissions"`
+	Start       string `json:"start" tf:"start"`
+}
+
+type StorageTableSpecAcl struct {
+	// +optional
+	AccessPolicy []StorageTableSpecAclAccessPolicy `json:"accessPolicy,omitempty" tf:"access_policy,omitempty"`
+	ID           string                            `json:"ID" tf:"id"`
+}
+
 type StorageTableSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Name               string `json:"name" tf:"name"`
-	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Acl  []StorageTableSpecAcl `json:"acl,omitempty" tf:"acl,omitempty"`
+	Name string                `json:"name" tf:"name"`
+	// +optional
+	// Deprecated
+	ResourceGroupName  string `json:"resourceGroupName,omitempty" tf:"resource_group_name,omitempty"`
 	StorageAccountName string `json:"storageAccountName" tf:"storage_account_name"`
 }
 

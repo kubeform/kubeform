@@ -155,6 +155,14 @@ type ApplicationGatewaySpecHttpListener struct {
 	SslCertificateName string `json:"sslCertificateName,omitempty" tf:"ssl_certificate_name,omitempty"`
 }
 
+type ApplicationGatewaySpecIdentity struct {
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:MinItems=1
+	IdentityIDS []string `json:"identityIDS" tf:"identity_ids"`
+	// +optional
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
 type ApplicationGatewaySpecProbeMatch struct {
 	// +optional
 	Body string `json:"body,omitempty" tf:"body,omitempty"`
@@ -403,8 +411,11 @@ type ApplicationGatewaySpec struct {
 	// +kubebuilder:validation:MaxItems=2
 	GatewayIPConfiguration []ApplicationGatewaySpecGatewayIPConfiguration `json:"gatewayIPConfiguration" tf:"gateway_ip_configuration"`
 	HttpListener           []ApplicationGatewaySpecHttpListener           `json:"httpListener" tf:"http_listener"`
-	Location               string                                         `json:"location" tf:"location"`
-	Name                   string                                         `json:"name" tf:"name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Identity []ApplicationGatewaySpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
+	Location string                           `json:"location" tf:"location"`
+	Name     string                           `json:"name" tf:"name"`
 	// +optional
 	Probe []ApplicationGatewaySpecProbe `json:"probe,omitempty" tf:"probe,omitempty"`
 	// +optional

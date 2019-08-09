@@ -443,6 +443,26 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            fileUpload:
+              items:
+                properties:
+                  containerName:
+                    type: string
+                  defaultTtl:
+                    type: string
+                  lockDuration:
+                    type: string
+                  maxDeliveryCount:
+                    type: integer
+                  notifications:
+                    type: boolean
+                  sasTtl:
+                    type: string
+                required:
+                - containerName
+                type: object
+              maxItems: 1
+              type: array
             hostname:
               type: string
             id:
@@ -599,6 +619,26 @@ spec:
                         type: array
                       source:
                         type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                fileUpload:
+                  items:
+                    properties:
+                      containerName:
+                        type: string
+                      defaultTtl:
+                        type: string
+                      lockDuration:
+                        type: string
+                      maxDeliveryCount:
+                        type: integer
+                      notifications:
+                        type: boolean
+                      sasTtl:
+                        type: string
+                    required:
+                    - containerName
                     type: object
                   maxItems: 1
                   type: array

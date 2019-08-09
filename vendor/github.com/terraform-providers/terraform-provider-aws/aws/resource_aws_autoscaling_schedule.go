@@ -3,7 +3,6 @@ package aws
 import (
 	"fmt"
 	"log"
-	"strings"
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -20,9 +19,6 @@ func resourceAwsAutoscalingSchedule() *schema.Resource {
 		Read:   resourceAwsAutoscalingScheduleRead,
 		Update: resourceAwsAutoscalingScheduleCreate,
 		Delete: resourceAwsAutoscalingScheduleDelete,
-		Importer: &schema.ResourceImporter{
-			State: resourceAwsAutoscalingScheduleImport,
-		},
 
 		Schema: map[string]*schema.Schema{
 			"arn": {
@@ -73,27 +69,6 @@ func resourceAwsAutoscalingSchedule() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceAwsAutoscalingScheduleImport(d *schema.ResourceData, meta interface{}) ([]*schema.ResourceData, error) {
-	splitId := strings.Split(d.Id(), "/")
-	if len(splitId) != 2 {
-		return []*schema.ResourceData{}, fmt.Errorf("wrong format of resource: %s. Please follow 'asg-name/action-name'", d.Id())
-	}
-
-	asgName := splitId[0]
-	actionName := splitId[1]
-
-	err := d.Set("autoscaling_group_name", asgName)
-	if err != nil {
-		return []*schema.ResourceData{}, fmt.Errorf("failed to set autoscaling_group_name value")
-	}
-	err = d.Set("scheduled_action_name", actionName)
-	if err != nil {
-		return []*schema.ResourceData{}, fmt.Errorf("failed to set scheduled_action_name value")
-	}
-	d.SetId(actionName)
-	return []*schema.ResourceData{d}, nil
 }
 
 func resourceAwsAutoscalingScheduleCreate(d *schema.ResourceData, meta interface{}) error {

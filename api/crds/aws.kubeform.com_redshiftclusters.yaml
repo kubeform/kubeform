@@ -399,8 +399,6 @@ spec:
           properties:
             allowVersionUpgrade:
               type: boolean
-            arn:
-              type: string
             automatedSnapshotRetentionPeriod:
               type: integer
             availabilityZone:
@@ -538,8 +536,6 @@ spec:
               properties:
                 allowVersionUpgrade:
                   type: boolean
-                arn:
-                  type: string
                 automatedSnapshotRetentionPeriod:
                   type: integer
                 availabilityZone:

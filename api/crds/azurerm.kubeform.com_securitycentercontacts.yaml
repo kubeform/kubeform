@@ -420,7 +420,6 @@ spec:
           - alertNotifications
           - alertsToAdmins
           - email
-          - phone
           - providerRef
           type: object
         status:
@@ -455,7 +454,6 @@ spec:
               - alertNotifications
               - alertsToAdmins
               - email
-              - phone
               - providerRef
               type: object
             state:

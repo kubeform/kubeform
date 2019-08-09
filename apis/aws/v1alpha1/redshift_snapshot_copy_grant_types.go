@@ -24,8 +24,6 @@ type RedshiftSnapshotCopyGrantSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
-	// +optional
 	KmsKeyID              string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	SnapshotCopyGrantName string `json:"snapshotCopyGrantName" tf:"snapshot_copy_grant_name"`
 	// +optional

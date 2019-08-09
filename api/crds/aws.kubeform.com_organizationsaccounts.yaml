@@ -411,8 +411,6 @@ spec:
               type: string
             name:
               type: string
-            parentID:
-              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -426,10 +424,6 @@ spec:
               type: string
             status:
               type: string
-            tags:
-              additionalProperties:
-                type: string
-              type: object
           required:
           - email
           - name
@@ -458,8 +452,6 @@ spec:
                   type: string
                 name:
                   type: string
-                parentID:
-                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -473,10 +465,6 @@ spec:
                   type: string
                 status:
                   type: string
-                tags:
-                  additionalProperties:
-                    type: string
-                  type: object
               required:
               - email
               - name

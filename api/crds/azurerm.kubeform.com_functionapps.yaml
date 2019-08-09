@@ -403,6 +403,103 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            authSettings:
+              items:
+                properties:
+                  activeDirectory:
+                    items:
+                      properties:
+                        allowedAudiences:
+                          items:
+                            type: string
+                          type: array
+                        clientID:
+                          type: string
+                      required:
+                      - clientID
+                      type: object
+                    maxItems: 1
+                    type: array
+                  additionalLoginParams:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  allowedExternalRedirectUrls:
+                    items:
+                      type: string
+                    type: array
+                  defaultProvider:
+                    type: string
+                  enabled:
+                    type: boolean
+                  facebook:
+                    items:
+                      properties:
+                        appID:
+                          type: string
+                        oauthScopes:
+                          items:
+                            type: string
+                          type: array
+                      required:
+                      - appID
+                      type: object
+                    maxItems: 1
+                    type: array
+                  google:
+                    items:
+                      properties:
+                        clientID:
+                          type: string
+                        oauthScopes:
+                          items:
+                            type: string
+                          type: array
+                      required:
+                      - clientID
+                      type: object
+                    maxItems: 1
+                    type: array
+                  issuer:
+                    type: string
+                  microsoft:
+                    items:
+                      properties:
+                        clientID:
+                          type: string
+                        oauthScopes:
+                          items:
+                            type: string
+                          type: array
+                      required:
+                      - clientID
+                      type: object
+                    maxItems: 1
+                    type: array
+                  runtimeVersion:
+                    type: string
+                  tokenRefreshExtensionHours:
+                    description: A Number represents a JSON number literal.
+                    type: string
+                  tokenStoreEnabled:
+                    type: boolean
+                  twitter:
+                    items:
+                      properties:
+                        consumerKey:
+                          type: string
+                      required:
+                      - consumerKey
+                      type: object
+                    maxItems: 1
+                    type: array
+                  unauthenticatedClientAction:
+                    type: string
+                required:
+                - enabled
+                type: object
+              maxItems: 1
+              type: array
             clientAffinityEnabled:
               type: boolean
             connectionString:
@@ -521,6 +618,103 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                authSettings:
+                  items:
+                    properties:
+                      activeDirectory:
+                        items:
+                          properties:
+                            allowedAudiences:
+                              items:
+                                type: string
+                              type: array
+                            clientID:
+                              type: string
+                          required:
+                          - clientID
+                          type: object
+                        maxItems: 1
+                        type: array
+                      additionalLoginParams:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      allowedExternalRedirectUrls:
+                        items:
+                          type: string
+                        type: array
+                      defaultProvider:
+                        type: string
+                      enabled:
+                        type: boolean
+                      facebook:
+                        items:
+                          properties:
+                            appID:
+                              type: string
+                            oauthScopes:
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - appID
+                          type: object
+                        maxItems: 1
+                        type: array
+                      google:
+                        items:
+                          properties:
+                            clientID:
+                              type: string
+                            oauthScopes:
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - clientID
+                          type: object
+                        maxItems: 1
+                        type: array
+                      issuer:
+                        type: string
+                      microsoft:
+                        items:
+                          properties:
+                            clientID:
+                              type: string
+                            oauthScopes:
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - clientID
+                          type: object
+                        maxItems: 1
+                        type: array
+                      runtimeVersion:
+                        type: string
+                      tokenRefreshExtensionHours:
+                        description: A Number represents a JSON number literal.
+                        type: string
+                      tokenStoreEnabled:
+                        type: boolean
+                      twitter:
+                        items:
+                          properties:
+                            consumerKey:
+                              type: string
+                          required:
+                          - consumerKey
+                          type: object
+                        maxItems: 1
+                        type: array
+                      unauthenticatedClientAction:
+                        type: string
+                    required:
+                    - enabled
+                    type: object
+                  maxItems: 1
+                  type: array
                 clientAffinityEnabled:
                   type: boolean
                 connectionString:

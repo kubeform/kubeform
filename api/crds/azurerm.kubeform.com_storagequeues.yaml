@@ -399,6 +399,10 @@ spec:
           properties:
             id:
               type: string
+            metadata:
+              additionalProperties:
+                type: string
+              type: object
             name:
               type: string
             providerRef:
@@ -411,13 +415,13 @@ spec:
                   type: string
               type: object
             resourceGroupName:
+              description: Deprecated
               type: string
             storageAccountName:
               type: string
           required:
           - name
           - providerRef
-          - resourceGroupName
           - storageAccountName
           type: object
         status:
@@ -431,6 +435,10 @@ spec:
               properties:
                 id:
                   type: string
+                metadata:
+                  additionalProperties:
+                    type: string
+                  type: object
                 name:
                   type: string
                 providerRef:
@@ -443,13 +451,13 @@ spec:
                       type: string
                   type: object
                 resourceGroupName:
+                  description: Deprecated
                   type: string
                 storageAccountName:
                   type: string
               required:
               - name
               - providerRef
-              - resourceGroupName
               - storageAccountName
               type: object
             state:

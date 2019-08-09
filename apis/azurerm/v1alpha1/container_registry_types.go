@@ -18,6 +18,19 @@ type ContainerRegistry struct {
 	Status            ContainerRegistryStatus `json:"status,omitempty"`
 }
 
+type ContainerRegistrySpecNetworkRuleSetIpRule struct {
+	Action  string `json:"action" tf:"action"`
+	IpRange string `json:"ipRange" tf:"ip_range"`
+}
+
+type ContainerRegistrySpecNetworkRuleSet struct {
+	// +optional
+	DefaultAction string `json:"defaultAction,omitempty" tf:"default_action,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	IpRule []ContainerRegistrySpecNetworkRuleSetIpRule `json:"ipRule,omitempty" tf:"ip_rule,omitempty"`
+}
+
 type ContainerRegistrySpecStorageAccount struct {
 	AccessKey string `json:"-" sensitive:"true" tf:"access_key"`
 	Name      string `json:"name" tf:"name"`
@@ -42,9 +55,12 @@ type ContainerRegistrySpec struct {
 	GeoreplicationLocations []string `json:"georeplicationLocations,omitempty" tf:"georeplication_locations,omitempty"`
 	Location                string   `json:"location" tf:"location"`
 	// +optional
-	LoginServer       string `json:"loginServer,omitempty" tf:"login_server,omitempty"`
-	Name              string `json:"name" tf:"name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	LoginServer string `json:"loginServer,omitempty" tf:"login_server,omitempty"`
+	Name        string `json:"name" tf:"name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	NetworkRuleSet    []ContainerRegistrySpecNetworkRuleSet `json:"networkRuleSet,omitempty" tf:"network_rule_set,omitempty"`
+	ResourceGroupName string                                `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Sku string `json:"sku,omitempty" tf:"sku,omitempty"`
 	// +optional

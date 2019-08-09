@@ -9,9 +9,8 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func setTagsRedshift(conn *redshift.Redshift, d *schema.ResourceData) error {
+func setTagsRedshift(conn *redshift.Redshift, d *schema.ResourceData, arn string) error {
 	if d.HasChange("tags") {
-		arn := d.Get("arn").(string)
 		oraw, nraw := d.GetChange("tags")
 		o := oraw.(map[string]interface{})
 		n := nraw.(map[string]interface{})

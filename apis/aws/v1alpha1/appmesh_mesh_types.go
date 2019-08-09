@@ -44,8 +44,6 @@ type AppmeshMeshSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Spec []AppmeshMeshSpecSpec `json:"spec,omitempty" tf:"spec,omitempty"`
-	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type AppmeshMeshStatus struct {

@@ -33,8 +33,6 @@ type VpcEndpointServiceSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	BaseEndpointDNSNames []string `json:"baseEndpointDNSNames,omitempty" tf:"base_endpoint_dns_names,omitempty"`
-	// +optional
-	ManagesVpcEndpoints bool `json:"managesVpcEndpoints,omitempty" tf:"manages_vpc_endpoints,omitempty"`
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	NetworkLoadBalancerArns []string `json:"networkLoadBalancerArns" tf:"network_load_balancer_arns"`
@@ -46,8 +44,6 @@ type VpcEndpointServiceSpec struct {
 	ServiceType string `json:"serviceType,omitempty" tf:"service_type,omitempty"`
 	// +optional
 	State string `json:"state,omitempty" tf:"state,omitempty"`
-	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type VpcEndpointServiceStatus struct {

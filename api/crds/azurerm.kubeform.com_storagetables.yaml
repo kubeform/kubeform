@@ -397,6 +397,31 @@ spec:
           type: object
         spec:
           properties:
+            acl:
+              items:
+                properties:
+                  ID:
+                    type: string
+                  accessPolicy:
+                    items:
+                      properties:
+                        expiry:
+                          type: string
+                        permissions:
+                          type: string
+                        start:
+                          type: string
+                      required:
+                      - expiry
+                      - permissions
+                      - start
+                      type: object
+                    type: array
+                required:
+                - ID
+                type: object
+              type: array
+              uniqueItems: true
             id:
               type: string
             name:
@@ -411,13 +436,13 @@ spec:
                   type: string
               type: object
             resourceGroupName:
+              description: Deprecated
               type: string
             storageAccountName:
               type: string
           required:
           - name
           - providerRef
-          - resourceGroupName
           - storageAccountName
           type: object
         status:
@@ -429,6 +454,31 @@ spec:
               type: integer
             output:
               properties:
+                acl:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      accessPolicy:
+                        items:
+                          properties:
+                            expiry:
+                              type: string
+                            permissions:
+                              type: string
+                            start:
+                              type: string
+                          required:
+                          - expiry
+                          - permissions
+                          - start
+                          type: object
+                        type: array
+                    required:
+                    - ID
+                    type: object
+                  type: array
+                  uniqueItems: true
                 id:
                   type: string
                 name:
@@ -443,13 +493,13 @@ spec:
                       type: string
                   type: object
                 resourceGroupName:
+                  description: Deprecated
                   type: string
                 storageAccountName:
                   type: string
               required:
               - name
               - providerRef
-              - resourceGroupName
               - storageAccountName
               type: object
             state:

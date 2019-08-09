@@ -34,13 +34,9 @@ type OrganizationsAccountSpec struct {
 	JoinedTimestamp string `json:"joinedTimestamp,omitempty" tf:"joined_timestamp,omitempty"`
 	Name            string `json:"name" tf:"name"`
 	// +optional
-	ParentID string `json:"parentID,omitempty" tf:"parent_id,omitempty"`
-	// +optional
 	RoleName string `json:"roleName,omitempty" tf:"role_name,omitempty"`
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
-	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type OrganizationsAccountStatus struct {

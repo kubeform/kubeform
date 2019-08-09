@@ -402,21 +402,11 @@ spec:
                 type: string
               type: array
               uniqueItems: true
-            associatedGatewayID:
-              type: string
-            associatedGatewayOwnerAccountID:
-              type: string
-            associatedGatewayType:
-              type: string
             dxGatewayAssociationID:
               type: string
             dxGatewayID:
               type: string
-            dxGatewayOwnerAccountID:
-              type: string
             id:
-              type: string
-            proposalID:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -428,11 +418,11 @@ spec:
                   type: string
               type: object
             vpnGatewayID:
-              description: Deprecated
               type: string
           required:
           - dxGatewayID
           - providerRef
+          - vpnGatewayID
           type: object
         status:
           properties:
@@ -448,21 +438,11 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
-                associatedGatewayID:
-                  type: string
-                associatedGatewayOwnerAccountID:
-                  type: string
-                associatedGatewayType:
-                  type: string
                 dxGatewayAssociationID:
                   type: string
                 dxGatewayID:
                   type: string
-                dxGatewayOwnerAccountID:
-                  type: string
                 id:
-                  type: string
-                proposalID:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -474,11 +454,11 @@ spec:
                       type: string
                   type: object
                 vpnGatewayID:
-                  description: Deprecated
                   type: string
               required:
               - dxGatewayID
               - providerRef
+              - vpnGatewayID
               type: object
             state:
               properties:

@@ -89,6 +89,26 @@ type AppServiceSpecAuthSettings struct {
 	UnauthenticatedClientAction string `json:"unauthenticatedClientAction,omitempty" tf:"unauthenticated_client_action,omitempty"`
 }
 
+type AppServiceSpecBackupSchedule struct {
+	FrequencyInterval int    `json:"frequencyInterval" tf:"frequency_interval"`
+	FrequencyUnit     string `json:"frequencyUnit" tf:"frequency_unit"`
+	// +optional
+	KeepAtLeastOneBackup bool `json:"keepAtLeastOneBackup,omitempty" tf:"keep_at_least_one_backup,omitempty"`
+	// +optional
+	RetentionPeriodInDays int `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	// +optional
+	StartTime string `json:"startTime,omitempty" tf:"start_time,omitempty"`
+}
+
+type AppServiceSpecBackup struct {
+	// +optional
+	Enabled bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	Name    string `json:"name" tf:"name"`
+	// +kubebuilder:validation:MaxItems=1
+	Schedule          []AppServiceSpecBackupSchedule `json:"schedule" tf:"schedule"`
+	StorageAccountURL string                         `json:"-" sensitive:"true" tf:"storage_account_url"`
+}
+
 type AppServiceSpecConnectionString struct {
 	Name  string `json:"name" tf:"name"`
 	Type  string `json:"type" tf:"type"`
@@ -96,6 +116,9 @@ type AppServiceSpecConnectionString struct {
 }
 
 type AppServiceSpecIdentity struct {
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	IdentityIDS []string `json:"identityIDS,omitempty" tf:"identity_ids,omitempty"`
 	// +optional
 	PrincipalID string `json:"principalID,omitempty" tf:"principal_id,omitempty"`
 	// +optional
@@ -200,6 +223,16 @@ type AppServiceSpecSourceControl struct {
 	RepoURL string `json:"repoURL,omitempty" tf:"repo_url,omitempty"`
 }
 
+type AppServiceSpecStorageAccount struct {
+	AccessKey   string `json:"-" sensitive:"true" tf:"access_key"`
+	AccountName string `json:"accountName" tf:"account_name"`
+	// +optional
+	MountPath string `json:"mountPath,omitempty" tf:"mount_path,omitempty"`
+	Name      string `json:"name" tf:"name"`
+	ShareName string `json:"shareName" tf:"share_name"`
+	Type      string `json:"type" tf:"type"`
+}
+
 type AppServiceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -213,6 +246,9 @@ type AppServiceSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AuthSettings []AppServiceSpecAuthSettings `json:"authSettings,omitempty" tf:"auth_settings,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Backup []AppServiceSpecBackup `json:"backup,omitempty" tf:"backup,omitempty"`
 	// +optional
 	ClientAffinityEnabled bool `json:"clientAffinityEnabled,omitempty" tf:"client_affinity_enabled,omitempty"`
 	// +optional
@@ -248,6 +284,9 @@ type AppServiceSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SourceControl []AppServiceSpecSourceControl `json:"sourceControl,omitempty" tf:"source_control,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	StorageAccount []AppServiceSpecStorageAccount `json:"storageAccount,omitempty" tf:"storage_account,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

@@ -44,12 +44,10 @@ type CodepipelineWebhookSpec struct {
 	AuthenticationConfiguration []CodepipelineWebhookSpecAuthenticationConfiguration `json:"authenticationConfiguration,omitempty" tf:"authentication_configuration,omitempty"`
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
-	Filter []CodepipelineWebhookSpecFilter `json:"filter" tf:"filter"`
-	Name   string                          `json:"name" tf:"name"`
-	// +optional
-	Tags           map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	TargetAction   string            `json:"targetAction" tf:"target_action"`
-	TargetPipeline string            `json:"targetPipeline" tf:"target_pipeline"`
+	Filter         []CodepipelineWebhookSpecFilter `json:"filter" tf:"filter"`
+	Name           string                          `json:"name" tf:"name"`
+	TargetAction   string                          `json:"targetAction" tf:"target_action"`
+	TargetPipeline string                          `json:"targetPipeline" tf:"target_pipeline"`
 	// +optional
 	Url string `json:"url,omitempty" tf:"url,omitempty"`
 }

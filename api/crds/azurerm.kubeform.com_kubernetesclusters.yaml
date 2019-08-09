@@ -444,18 +444,32 @@ spec:
             agentPoolProfile:
               items:
                 properties:
+                  availabilityZones:
+                    items:
+                      type: string
+                    type: array
                   count:
                     type: integer
                   dnsPrefix:
                     description: Deprecated
                     type: string
+                  enableAutoScaling:
+                    type: boolean
                   fqdn:
                     description: Deprecated
                     type: string
+                  maxCount:
+                    type: integer
                   maxPods:
+                    type: integer
+                  minCount:
                     type: integer
                   name:
                     type: string
+                  nodeTaints:
+                    items:
+                      type: string
+                    type: array
                   osDiskSizeGb:
                     type: integer
                   osType:
@@ -544,6 +558,8 @@ spec:
                     type: string
                   dockerBridgeCIDR:
                     type: string
+                  loadBalancerSku:
+                    type: string
                   networkPlugin:
                     type: string
                   networkPolicy:
@@ -619,6 +635,16 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            windowsProfile:
+              items:
+                properties:
+                  adminUsername:
+                    type: string
+                required:
+                - adminUsername
+                type: object
+              maxItems: 1
+              type: array
           required:
           - agentPoolProfile
           - dnsPrefix
@@ -684,18 +710,32 @@ spec:
                 agentPoolProfile:
                   items:
                     properties:
+                      availabilityZones:
+                        items:
+                          type: string
+                        type: array
                       count:
                         type: integer
                       dnsPrefix:
                         description: Deprecated
                         type: string
+                      enableAutoScaling:
+                        type: boolean
                       fqdn:
                         description: Deprecated
                         type: string
+                      maxCount:
+                        type: integer
                       maxPods:
+                        type: integer
+                      minCount:
                         type: integer
                       name:
                         type: string
+                      nodeTaints:
+                        items:
+                          type: string
+                        type: array
                       osDiskSizeGb:
                         type: integer
                       osType:
@@ -784,6 +824,8 @@ spec:
                         type: string
                       dockerBridgeCIDR:
                         type: string
+                      loadBalancerSku:
+                        type: string
                       networkPlugin:
                         type: string
                       networkPolicy:
@@ -859,6 +901,16 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                windowsProfile:
+                  items:
+                    properties:
+                      adminUsername:
+                        type: string
+                    required:
+                    - adminUsername
+                    type: object
+                  maxItems: 1
+                  type: array
               required:
               - agentPoolProfile
               - dnsPrefix

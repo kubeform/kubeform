@@ -401,6 +401,19 @@ spec:
               type: string
             id:
               type: string
+            keyVaultReference:
+              items:
+                properties:
+                  ID:
+                    type: string
+                  url:
+                    type: string
+                required:
+                - ID
+                - url
+                type: object
+              maxItems: 1
+              type: array
             location:
               type: string
             name:
@@ -452,6 +465,19 @@ spec:
                   type: string
                 id:
                   type: string
+                keyVaultReference:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      url:
+                        type: string
+                    required:
+                    - ID
+                    - url
+                    type: object
+                  maxItems: 1
+                  type: array
                 location:
                   type: string
                 name:

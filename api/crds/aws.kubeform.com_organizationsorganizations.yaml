@@ -432,19 +432,6 @@ spec:
               type: string
             masterAccountID:
               type: string
-            nonMasterAccounts:
-              items:
-                properties:
-                  ID:
-                    type: string
-                  arn:
-                    type: string
-                  email:
-                    type: string
-                  name:
-                    type: string
-                type: object
-              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -521,19 +508,6 @@ spec:
                   type: string
                 masterAccountID:
                   type: string
-                nonMasterAccounts:
-                  items:
-                    properties:
-                      ID:
-                        type: string
-                      arn:
-                        type: string
-                      email:
-                        type: string
-                      name:
-                        type: string
-                    type: object
-                  type: array
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.

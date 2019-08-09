@@ -501,10 +501,6 @@ spec:
               maxItems: 1
               minItems: 1
               type: array
-            tags:
-              additionalProperties:
-                type: string
-              type: object
             virtualRouterName:
               type: string
           required:
@@ -627,10 +623,6 @@ spec:
                   maxItems: 1
                   minItems: 1
                   type: array
-                tags:
-                  additionalProperties:
-                    type: string
-                  type: object
                 virtualRouterName:
                   type: string
               required:

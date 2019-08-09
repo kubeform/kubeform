@@ -105,12 +105,12 @@ func saveTagsCloudWatchEvents(conn *events.CloudWatchEvents, d *schema.ResourceD
 		ResourceARN: aws.String(arn),
 	})
 
-	if err != nil && !isAWSErr(err, "UnknownOperationException", "") {
+	if err != nil {
 		return fmt.Errorf("Error retreiving tags for %s: %s", arn, err)
 	}
 
 	var tagList []*events.Tag
-	if resp != nil && len(resp.Tags) > 0 {
+	if len(resp.Tags) > 0 {
 		tagList = resp.Tags
 	}
 

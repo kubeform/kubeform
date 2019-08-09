@@ -399,26 +399,6 @@ spec:
           properties:
             branchFilter:
               type: string
-            filterGroup:
-              items:
-                properties:
-                  filter:
-                    items:
-                      properties:
-                        excludeMatchedPattern:
-                          type: boolean
-                        pattern:
-                          type: string
-                        type:
-                          type: string
-                      required:
-                      - pattern
-                      - type
-                      type: object
-                    type: array
-                type: object
-              type: array
-              uniqueItems: true
             id:
               type: string
             payloadURL:
@@ -460,26 +440,6 @@ spec:
               properties:
                 branchFilter:
                   type: string
-                filterGroup:
-                  items:
-                    properties:
-                      filter:
-                        items:
-                          properties:
-                            excludeMatchedPattern:
-                              type: boolean
-                            pattern:
-                              type: string
-                            type:
-                              type: string
-                          required:
-                          - pattern
-                          - type
-                          type: object
-                        type: array
-                    type: object
-                  type: array
-                  uniqueItems: true
                 id:
                   type: string
                 payloadURL:

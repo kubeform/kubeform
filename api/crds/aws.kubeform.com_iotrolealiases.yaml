@@ -399,8 +399,6 @@ spec:
           properties:
             alias:
               type: string
-            arn:
-              type: string
             credentialDuration:
               type: integer
             id:
@@ -431,8 +429,6 @@ spec:
             output:
               properties:
                 alias:
-                  type: string
-                arn:
                   type: string
                 credentialDuration:
                   type: integer

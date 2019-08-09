@@ -18,6 +18,8 @@ limitations under the License.
 
 package v1alpha1
 
+type AnalysisServicesServerExpansion interface{}
+
 type ApiManagementExpansion interface{}
 
 type ApiManagementAPIExpansion interface{}
@@ -33,6 +35,8 @@ type ApiManagementAPISchemaExpansion interface{}
 type ApiManagementAPIVersionSetExpansion interface{}
 
 type ApiManagementAuthorizationServerExpansion interface{}
+
+type ApiManagementBackendExpansion interface{}
 
 type ApiManagementCertificateExpansion interface{}
 
@@ -111,6 +115,8 @@ type AzureadServicePrincipalExpansion interface{}
 type AzureadServicePrincipalPasswordExpansion interface{}
 
 type BatchAccountExpansion interface{}
+
+type BatchApplicationExpansion interface{}
 
 type BatchCertificateExpansion interface{}
 
@@ -320,6 +326,8 @@ type ManagementGroupExpansion interface{}
 
 type ManagementLockExpansion interface{}
 
+type MapsAccountExpansion interface{}
+
 type MariadbDatabaseExpansion interface{}
 
 type MariadbFirewallRuleExpansion interface{}
@@ -403,6 +411,8 @@ type PostgresqlFirewallRuleExpansion interface{}
 type PostgresqlServerExpansion interface{}
 
 type PostgresqlVirtualNetworkRuleExpansion interface{}
+
+type PrivateDNSARecordExpansion interface{}
 
 type PrivateDNSZoneExpansion interface{}
 
@@ -494,7 +504,11 @@ type StorageQueueExpansion interface{}
 
 type StorageShareExpansion interface{}
 
+type StorageShareDirectoryExpansion interface{}
+
 type StorageTableExpansion interface{}
+
+type StorageTableEntityExpansion interface{}
 
 type StreamAnalyticsFunctionJavascriptUdfExpansion interface{}
 

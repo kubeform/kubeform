@@ -23,8 +23,12 @@ type StorageQueueSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Name               string `json:"name" tf:"name"`
-	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Name     string            `json:"name" tf:"name"`
+	// +optional
+	// Deprecated
+	ResourceGroupName  string `json:"resourceGroupName,omitempty" tf:"resource_group_name,omitempty"`
 	StorageAccountName string `json:"storageAccountName" tf:"storage_account_name"`
 }
 

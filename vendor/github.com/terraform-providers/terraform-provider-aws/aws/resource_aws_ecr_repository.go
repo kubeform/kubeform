@@ -81,8 +81,8 @@ func resourceAwsEcrRepositoryRead(d *schema.ResourceData, meta interface{}) erro
 		RepositoryNames: aws.StringSlice([]string{d.Id()}),
 	}
 
-	var err error
-	err = resource.Retry(1*time.Minute, func() *resource.RetryError {
+	err := resource.Retry(1*time.Minute, func() *resource.RetryError {
+		var err error
 		out, err = conn.DescribeRepositories(input)
 		if d.IsNewResource() && isAWSErr(err, ecr.ErrCodeRepositoryNotFoundException, "") {
 			return resource.RetryableError(err)
@@ -92,10 +92,6 @@ func resourceAwsEcrRepositoryRead(d *schema.ResourceData, meta interface{}) erro
 		}
 		return nil
 	})
-
-	if isResourceTimeoutError(err) {
-		out, err = conn.DescribeRepositories(input)
-	}
 
 	if isAWSErr(err, ecr.ErrCodeRepositoryNotFoundException, "") {
 		log.Printf("[WARN] ECR Repository (%s) not found, removing from state", d.Id())
@@ -147,11 +143,10 @@ func resourceAwsEcrRepositoryDelete(d *schema.ResourceData, meta interface{}) er
 	}
 
 	log.Printf("[DEBUG] Waiting for ECR Repository %q to be deleted", d.Id())
-	input := &ecr.DescribeRepositoriesInput{
-		RepositoryNames: aws.StringSlice([]string{d.Id()}),
-	}
 	err = resource.Retry(d.Timeout(schema.TimeoutDelete), func() *resource.RetryError {
-		_, err = conn.DescribeRepositories(input)
+		_, err := conn.DescribeRepositories(&ecr.DescribeRepositoriesInput{
+			RepositoryNames: aws.StringSlice([]string{d.Id()}),
+		})
 		if err != nil {
 			if isAWSErr(err, ecr.ErrCodeRepositoryNotFoundException, "") {
 				return nil
@@ -159,16 +154,9 @@ func resourceAwsEcrRepositoryDelete(d *schema.ResourceData, meta interface{}) er
 			return resource.NonRetryableError(err)
 		}
 
-		return resource.RetryableError(fmt.Errorf("%q: Timeout while waiting for the ECR Repository to be deleted", d.Id()))
+		return resource.RetryableError(
+			fmt.Errorf("%q: Timeout while waiting for the ECR Repository to be deleted", d.Id()))
 	})
-	if isResourceTimeoutError(err) {
-		_, err = conn.DescribeRepositories(input)
-	}
-
-	if isAWSErr(err, ecr.ErrCodeRepositoryNotFoundException, "") {
-		return nil
-	}
-
 	if err != nil {
 		return fmt.Errorf("error deleting ECR repository: %s", err)
 	}

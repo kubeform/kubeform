@@ -1,7 +1,6 @@
 package aws
 
 import (
-	"fmt"
 	"log"
 	"time"
 
@@ -52,9 +51,9 @@ func resourceAwsEcrRepositoryPolicyCreate(d *schema.ResourceData, meta interface
 	log.Printf("[DEBUG] Creating ECR resository policy: %s", input)
 
 	// Retry due to IAM eventual consistency
-	var err error
 	var out *ecr.SetRepositoryPolicyOutput
-	err = resource.Retry(2*time.Minute, func() *resource.RetryError {
+	err := resource.Retry(2*time.Minute, func() *resource.RetryError {
+		var err error
 		out, err = conn.SetRepositoryPolicy(&input)
 
 		if isAWSErr(err, "InvalidParameterException", "Invalid repository policy provided") {
@@ -63,11 +62,8 @@ func resourceAwsEcrRepositoryPolicyCreate(d *schema.ResourceData, meta interface
 		}
 		return resource.NonRetryableError(err)
 	})
-	if isResourceTimeoutError(err) {
-		out, err = conn.SetRepositoryPolicy(&input)
-	}
 	if err != nil {
-		return fmt.Errorf("Error creating ECR Repository Policy: %s", err)
+		return err
 	}
 
 	repositoryPolicy := *out
@@ -128,9 +124,9 @@ func resourceAwsEcrRepositoryPolicyUpdate(d *schema.ResourceData, meta interface
 	log.Printf("[DEBUG] Updating ECR resository policy: %s", input)
 
 	// Retry due to IAM eventual consistency
-	var err error
 	var out *ecr.SetRepositoryPolicyOutput
-	err = resource.Retry(2*time.Minute, func() *resource.RetryError {
+	err := resource.Retry(2*time.Minute, func() *resource.RetryError {
+		var err error
 		out, err = conn.SetRepositoryPolicy(&input)
 
 		if isAWSErr(err, "InvalidParameterException", "Invalid repository policy provided") {
@@ -139,11 +135,8 @@ func resourceAwsEcrRepositoryPolicyUpdate(d *schema.ResourceData, meta interface
 		}
 		return resource.NonRetryableError(err)
 	})
-	if isResourceTimeoutError(err) {
-		out, err = conn.SetRepositoryPolicy(&input)
-	}
 	if err != nil {
-		return fmt.Errorf("Error updating ECR Repository Policy: %s", err)
+		return err
 	}
 
 	repositoryPolicy := *out

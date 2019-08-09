@@ -28,6 +28,10 @@ type FakeAzurermV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeAzurermV1alpha1) AnalysisServicesServers(namespace string) v1alpha1.AnalysisServicesServerInterface {
+	return &FakeAnalysisServicesServers{c, namespace}
+}
+
 func (c *FakeAzurermV1alpha1) ApiManagements(namespace string) v1alpha1.ApiManagementInterface {
 	return &FakeApiManagements{c, namespace}
 }
@@ -58,6 +62,10 @@ func (c *FakeAzurermV1alpha1) ApiManagementAPIVersionSets(namespace string) v1al
 
 func (c *FakeAzurermV1alpha1) ApiManagementAuthorizationServers(namespace string) v1alpha1.ApiManagementAuthorizationServerInterface {
 	return &FakeApiManagementAuthorizationServers{c, namespace}
+}
+
+func (c *FakeAzurermV1alpha1) ApiManagementBackends(namespace string) v1alpha1.ApiManagementBackendInterface {
+	return &FakeApiManagementBackends{c, namespace}
 }
 
 func (c *FakeAzurermV1alpha1) ApiManagementCertificates(namespace string) v1alpha1.ApiManagementCertificateInterface {
@@ -214,6 +222,10 @@ func (c *FakeAzurermV1alpha1) AzureadServicePrincipalPasswords(namespace string)
 
 func (c *FakeAzurermV1alpha1) BatchAccounts(namespace string) v1alpha1.BatchAccountInterface {
 	return &FakeBatchAccounts{c, namespace}
+}
+
+func (c *FakeAzurermV1alpha1) BatchApplications(namespace string) v1alpha1.BatchApplicationInterface {
+	return &FakeBatchApplications{c, namespace}
 }
 
 func (c *FakeAzurermV1alpha1) BatchCertificates(namespace string) v1alpha1.BatchCertificateInterface {
@@ -632,6 +644,10 @@ func (c *FakeAzurermV1alpha1) ManagementLocks(namespace string) v1alpha1.Managem
 	return &FakeManagementLocks{c, namespace}
 }
 
+func (c *FakeAzurermV1alpha1) MapsAccounts(namespace string) v1alpha1.MapsAccountInterface {
+	return &FakeMapsAccounts{c, namespace}
+}
+
 func (c *FakeAzurermV1alpha1) MariadbDatabases(namespace string) v1alpha1.MariadbDatabaseInterface {
 	return &FakeMariadbDatabases{c, namespace}
 }
@@ -798,6 +814,10 @@ func (c *FakeAzurermV1alpha1) PostgresqlServers(namespace string) v1alpha1.Postg
 
 func (c *FakeAzurermV1alpha1) PostgresqlVirtualNetworkRules(namespace string) v1alpha1.PostgresqlVirtualNetworkRuleInterface {
 	return &FakePostgresqlVirtualNetworkRules{c, namespace}
+}
+
+func (c *FakeAzurermV1alpha1) PrivateDNSARecords(namespace string) v1alpha1.PrivateDNSARecordInterface {
+	return &FakePrivateDNSARecords{c, namespace}
 }
 
 func (c *FakeAzurermV1alpha1) PrivateDNSZones(namespace string) v1alpha1.PrivateDNSZoneInterface {
@@ -980,8 +1000,16 @@ func (c *FakeAzurermV1alpha1) StorageShares(namespace string) v1alpha1.StorageSh
 	return &FakeStorageShares{c, namespace}
 }
 
+func (c *FakeAzurermV1alpha1) StorageShareDirectories(namespace string) v1alpha1.StorageShareDirectoryInterface {
+	return &FakeStorageShareDirectories{c, namespace}
+}
+
 func (c *FakeAzurermV1alpha1) StorageTables(namespace string) v1alpha1.StorageTableInterface {
 	return &FakeStorageTables{c, namespace}
+}
+
+func (c *FakeAzurermV1alpha1) StorageTableEntities(namespace string) v1alpha1.StorageTableEntityInterface {
+	return &FakeStorageTableEntities{c, namespace}
 }
 
 func (c *FakeAzurermV1alpha1) StreamAnalyticsFunctionJavascriptUdves(namespace string) v1alpha1.StreamAnalyticsFunctionJavascriptUdfInterface {

@@ -255,8 +255,9 @@ func (s *BeginTransactionRequest) MarshalJSON() ([]byte, error) {
 
 // Binding: Associates `members` with a `role`.
 type Binding struct {
-	// Condition: The condition that is associated with this binding.
-	// NOTE: An unsatisfied condition will not allow user access via
+	// Condition: Unimplemented. The condition that is associated with this
+	// binding.
+	// NOTE: an unsatisfied condition will not allow user access via
 	// current
 	// binding. Different bindings, including their conditions, are
 	// examined
@@ -765,7 +766,7 @@ type ExecuteBatchDmlRequest struct {
 	// first failed statement; the remaining statements will not
 	// run.
 	//
-	// REQUIRES: `statements_size()` > 0.
+	// REQUIRES: statements_size() > 0.
 	Statements []*Statement `json:"statements,omitempty"`
 
 	// Transaction: The transaction to use. A ReadWrite transaction is
@@ -808,27 +809,24 @@ func (s *ExecuteBatchDmlRequest) MarshalJSON() ([]byte, error) {
 // successfully, or if
 // a statement failed, using one of the following approaches:
 //
-//   1. Check if `'status'` field is `OkStatus`.
-//   2. Check if `result_sets_size()` equals the number of statements
-// in
+//   1. Check if 'status' field is OkStatus.
+//   2. Check if result_sets_size() equals the number of statements in
 //      ExecuteBatchDmlRequest.
 //
 // Example 1: A request with 5 DML statements, all executed
 // successfully.
-//
 // Result: A response with 5 ResultSets, one for each statement in the
 // same
-// order, and an `OkStatus`.
+// order, and an OK status.
 //
 // Example 2: A request with 5 DML statements. The 3rd statement has a
 // syntax
 // error.
-//
 // Result: A response with 2 ResultSets, for the first 2 statements
 // that
-// run successfully, and a syntax error (`INVALID_ARGUMENT`) status.
+// run successfully, and a syntax error (INVALID_ARGUMENT) status.
 // From
-// `result_set_size()` client can determine that the 3rd statement has
+// result_set_size() client can determine that the 3rd statement has
 // failed.
 type ExecuteBatchDmlResponse struct {
 	// ResultSets: ResultSets, one for each statement in the request that
@@ -1209,10 +1207,9 @@ type Instance struct {
 	// in API responses for instances that are not yet in state
 	// `READY`.
 	//
-	// See
-	// [the
-	// documentation](https://cloud.google.com/spanner/docs/instances#no
-	// de_count)
+	// See [the
+	// documentation](https://cloud.google.com/spanner/docs/instances#node_co
+	// unt)
 	// for more information about nodes.
 	NodeCount int64 `json:"nodeCount,omitempty"`
 
@@ -1272,11 +1269,6 @@ type InstanceConfig struct {
 	// are of the form
 	// `projects/<project>/instanceConfigs/a-z*`
 	Name string `json:"name,omitempty"`
-
-	// Replicas: The geographic placement of nodes in this instance
-	// configuration and their
-	// replication properties.
-	Replicas []*ReplicaInfo `json:"replicas,omitempty"`
 
 	// ServerResponse contains the HTTP response code and headers from the
 	// server.
@@ -1779,8 +1771,7 @@ type Operation struct {
 	// service that
 	// originally returns it. If you use the default HTTP mapping,
 	// the
-	// `name` should be a resource name ending with
-	// `operations/{unique_id}`.
+	// `name` should have the format of `operations/some/unique/name`.
 	Name string `json:"name,omitempty"`
 
 	// Response: The normal response of the operation in case of success.
@@ -2669,74 +2660,6 @@ func (s *ReadRequest) MarshalJSON() ([]byte, error) {
 type ReadWrite struct {
 }
 
-type ReplicaInfo struct {
-	// DefaultLeaderLocation: If true, this location is designated as the
-	// default leader location where
-	// leader replicas are placed. See the [region
-	// types
-	// documentation](https://cloud.google.com/spanner/docs/instances#r
-	// egion_types)
-	// for more details.
-	DefaultLeaderLocation bool `json:"defaultLeaderLocation,omitempty"`
-
-	// Location: The location of the serving resources, e.g. "us-central1".
-	Location string `json:"location,omitempty"`
-
-	// Type: The type of replica.
-	//
-	// Possible values:
-	//   "TYPE_UNSPECIFIED" - Not specified.
-	//   "READ_WRITE" - Read-write replicas support both reads and writes.
-	// These replicas:
-	//
-	// * Maintain a full copy of your data.
-	// * Serve reads.
-	// * Can vote whether to commit a write.
-	// * Participate in leadership election.
-	// * Are eligible to become a leader.
-	//   "READ_ONLY" - Read-only replicas only support reads (not writes).
-	// Read-only replicas:
-	//
-	// * Maintain a full copy of your data.
-	// * Serve reads.
-	// * Do not participate in voting to commit writes.
-	// * Are not eligible to become a leader.
-	//   "WITNESS" - Witness replicas don't support reads but do participate
-	// in voting to
-	// commit writes. Witness replicas:
-	//
-	// * Do not maintain a full copy of data.
-	// * Do not serve reads.
-	// * Vote whether to commit writes.
-	// * Participate in leader election but are not eligible to become
-	// leader.
-	Type string `json:"type,omitempty"`
-
-	// ForceSendFields is a list of field names (e.g.
-	// "DefaultLeaderLocation") to unconditionally include in API requests.
-	// By default, fields with empty values are omitted from API requests.
-	// However, any non-pointer, non-interface field appearing in
-	// ForceSendFields will be sent to the server regardless of whether the
-	// field is empty or not. This may be used to include empty fields in
-	// Patch requests.
-	ForceSendFields []string `json:"-"`
-
-	// NullFields is a list of field names (e.g. "DefaultLeaderLocation") to
-	// include in API requests with the JSON null value. By default, fields
-	// with empty values are omitted from API requests. However, any field
-	// with an empty value appearing in NullFields will be sent to the
-	// server as null. It is an error if a field in this list has a
-	// non-empty value. This may be used to include null fields in Patch
-	// requests.
-	NullFields []string `json:"-"`
-}
-
-func (s *ReplicaInfo) MarshalJSON() ([]byte, error) {
-	type NoMethod ReplicaInfo
-	raw := NoMethod(*s)
-	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
-}
-
 // ResultSet: Results from Read or
 // ExecuteSql.
 type ResultSet struct {
@@ -3113,14 +3036,81 @@ func (s *Statement) MarshalJSON() ([]byte, error) {
 // suitable for
 // different programming environments, including REST APIs and RPC APIs.
 // It is
-// used by [gRPC](https://github.com/grpc). Each `Status` message
-// contains
-// three pieces of data: error code, error message, and error
-// details.
+// used by [gRPC](https://github.com/grpc). The error model is designed
+// to be:
 //
-// You can find out more about this error model and how to work with it
-// in the
-// [API Design Guide](https://cloud.google.com/apis/design/errors).
+// - Simple to use and understand for most users
+// - Flexible enough to meet unexpected needs
+//
+// # Overview
+//
+// The `Status` message contains three pieces of data: error code,
+// error
+// message, and error details. The error code should be an enum value
+// of
+// google.rpc.Code, but it may accept additional error codes if needed.
+// The
+// error message should be a developer-facing English message that
+// helps
+// developers *understand* and *resolve* the error. If a localized
+// user-facing
+// error message is needed, put the localized message in the error
+// details or
+// localize it in the client. The optional error details may contain
+// arbitrary
+// information about the error. There is a predefined set of error
+// detail types
+// in the package `google.rpc` that can be used for common error
+// conditions.
+//
+// # Language mapping
+//
+// The `Status` message is the logical representation of the error
+// model, but it
+// is not necessarily the actual wire format. When the `Status` message
+// is
+// exposed in different client libraries and different wire protocols,
+// it can be
+// mapped differently. For example, it will likely be mapped to some
+// exceptions
+// in Java, but more likely mapped to some error codes in C.
+//
+// # Other uses
+//
+// The error model and the `Status` message can be used in a variety
+// of
+// environments, either with or without APIs, to provide a
+// consistent developer experience across different
+// environments.
+//
+// Example uses of this error model include:
+//
+// - Partial errors. If a service needs to return partial errors to the
+// client,
+//     it may embed the `Status` in the normal response to indicate the
+// partial
+//     errors.
+//
+// - Workflow errors. A typical workflow has multiple steps. Each step
+// may
+//     have a `Status` message for error reporting.
+//
+// - Batch operations. If a client uses batch request and batch
+// response, the
+//     `Status` message should be used directly inside batch response,
+// one for
+//     each error sub-response.
+//
+// - Asynchronous operations. If an API call embeds asynchronous
+// operation
+//     results in its response, the status of those operations should
+// be
+//     represented directly using the `Status` message.
+//
+// - Logging. If some API errors are stored in logs, the message
+// `Status` could
+//     be used directly after any stripping needed for security/privacy
+// reasons.
 type Status struct {
 	// Code: The status code, which should be an enum value of
 	// google.rpc.Code.

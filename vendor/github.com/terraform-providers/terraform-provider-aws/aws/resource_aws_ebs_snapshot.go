@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/hashicorp/terraform/helper/schema"
@@ -16,11 +17,6 @@ func resourceAwsEbsSnapshot() *schema.Resource {
 		Create: resourceAwsEbsSnapshotCreate,
 		Read:   resourceAwsEbsSnapshotRead,
 		Delete: resourceAwsEbsSnapshotDelete,
-
-		Timeouts: &schema.ResourceTimeout{
-			Create: schema.DefaultTimeout(10 * time.Minute),
-			Delete: schema.DefaultTimeout(10 * time.Minute),
-		},
 
 		Schema: map[string]*schema.Schema{
 			"volume_id": {
@@ -99,7 +95,7 @@ func resourceAwsEbsSnapshotCreate(d *schema.ResourceData, meta interface{}) erro
 
 	d.SetId(*res.SnapshotId)
 
-	err = resourceAwsEbsSnapshotWaitForAvailable(d, conn)
+	err = resourceAwsEbsSnapshotWaitForAvailable(d.Id(), conn)
 	if err != nil {
 		return err
 	}
@@ -153,7 +149,7 @@ func resourceAwsEbsSnapshotRead(d *schema.ResourceData, meta interface{}) error 
 func resourceAwsEbsSnapshotDelete(d *schema.ResourceData, meta interface{}) error {
 	conn := meta.(*AWSClient).ec2conn
 
-	return resource.Retry(d.Timeout(schema.TimeoutDelete), func() *resource.RetryError {
+	return resource.Retry(5*time.Minute, func() *resource.RetryError {
 		request := &ec2.DeleteSnapshotInput{
 			SnapshotId: aws.String(d.Id()),
 		}
@@ -161,27 +157,26 @@ func resourceAwsEbsSnapshotDelete(d *schema.ResourceData, meta interface{}) erro
 		if err == nil {
 			return nil
 		}
-		if isAWSErr(err, "SnapshotInUse", "") {
+
+		ebsErr, ok := err.(awserr.Error)
+		if ebsErr.Code() == "SnapshotInUse" {
 			return resource.RetryableError(fmt.Errorf("EBS SnapshotInUse - trying again while it detaches"))
 		}
+
+		if !ok {
+			return resource.NonRetryableError(err)
+		}
+
 		return resource.NonRetryableError(err)
 	})
 }
 
-func resourceAwsEbsSnapshotWaitForAvailable(d *schema.ResourceData, conn *ec2.EC2) error {
-	log.Printf("Waiting for Snapshot %s to become available...", d.Id())
+func resourceAwsEbsSnapshotWaitForAvailable(id string, conn *ec2.EC2) error {
+	log.Printf("Waiting for Snapshot %s to become available...", id)
 
-	return resource.Retry(d.Timeout(schema.TimeoutCreate), func() *resource.RetryError {
-		req := &ec2.DescribeSnapshotsInput{
-			SnapshotIds: []*string{aws.String(d.Id())},
-		}
-		err := conn.WaitUntilSnapshotCompleted(req)
-		if err == nil {
-			return nil
-		}
-		if isAWSErr(err, "ResourceNotReady", "") {
-			return resource.RetryableError(fmt.Errorf("EBS CreatingSnapshot - waiting for snapshot to become available"))
-		}
-		return resource.NonRetryableError(err)
-	})
+	req := &ec2.DescribeSnapshotsInput{
+		SnapshotIds: []*string{aws.String(id)},
+	}
+	err := conn.WaitUntilSnapshotCompleted(req)
+	return err
 }

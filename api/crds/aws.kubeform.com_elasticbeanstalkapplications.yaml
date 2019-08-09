@@ -413,8 +413,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-            arn:
-              type: string
             description:
               type: string
             id:
@@ -429,10 +427,6 @@ spec:
                   description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
-              type: object
-            tags:
-              additionalProperties:
-                type: string
               type: object
           required:
           - name
@@ -463,8 +457,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                arn:
-                  type: string
                 description:
                   type: string
                 id:
@@ -479,10 +471,6 @@ spec:
                       description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
-                  type: object
-                tags:
-                  additionalProperties:
-                    type: string
                   type: object
               required:
               - name

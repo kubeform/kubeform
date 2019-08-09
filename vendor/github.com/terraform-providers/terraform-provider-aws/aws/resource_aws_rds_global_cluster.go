@@ -196,10 +196,6 @@ func resourceAwsRDSGlobalClusterDelete(d *schema.ResourceData, meta interface{})
 		return nil
 	})
 
-	if isResourceTimeoutError(err) {
-		_, err = conn.DeleteGlobalCluster(input)
-	}
-
 	if isAWSErr(err, rds.ErrCodeGlobalClusterNotFoundFault, "") {
 		return nil
 	}

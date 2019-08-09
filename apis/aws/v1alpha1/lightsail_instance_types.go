@@ -46,8 +46,6 @@ type LightsailInstanceSpec struct {
 	// +optional
 	RamSize int `json:"ramSize,omitempty" tf:"ram_size,omitempty"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	// +optional
 	UserData string `json:"userData,omitempty" tf:"user_data,omitempty"`
 	// +optional
 	Username string `json:"username,omitempty" tf:"username,omitempty"`

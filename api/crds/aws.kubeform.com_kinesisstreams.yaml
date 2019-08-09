@@ -401,8 +401,6 @@ spec:
               type: string
             encryptionType:
               type: string
-            enforceConsumerDeletion:
-              type: boolean
             id:
               type: string
             kmsKeyID:
@@ -449,8 +447,6 @@ spec:
                   type: string
                 encryptionType:
                   type: string
-                enforceConsumerDeletion:
-                  type: boolean
                 id:
                   type: string
                 kmsKeyID:

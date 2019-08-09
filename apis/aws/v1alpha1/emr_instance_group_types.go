@@ -32,10 +32,6 @@ type EmrInstanceGroupSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// +optional
-	AutoscalingPolicy string `json:"autoscalingPolicy,omitempty" tf:"autoscaling_policy,omitempty"`
-	// +optional
-	BidPrice  string `json:"bidPrice,omitempty" tf:"bid_price,omitempty"`
 	ClusterID string `json:"clusterID" tf:"cluster_id"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true

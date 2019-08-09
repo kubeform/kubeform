@@ -291,9 +291,6 @@ func resourceAwsRDSClusterInstanceCreate(d *schema.ResourceData, meta interface{
 		}
 		return nil
 	})
-	if isResourceTimeoutError(err) {
-		resp, err = conn.CreateDBInstance(createOpts)
-	}
 	if err != nil {
 		return fmt.Errorf("error creating RDS DB Instance: %s", err)
 	}
@@ -503,9 +500,6 @@ func resourceAwsRDSClusterInstanceUpdate(d *schema.ResourceData, meta interface{
 			}
 			return nil
 		})
-		if isResourceTimeoutError(err) {
-			_, err = conn.ModifyDBInstance(req)
-		}
 		if err != nil {
 			return fmt.Errorf("Error modifying DB Instance %s: %s", d.Id(), err)
 		}

@@ -48,16 +48,26 @@ type KubernetesClusterSpecAddonProfile struct {
 
 type KubernetesClusterSpecAgentPoolProfile struct {
 	// +optional
+	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
+	// +optional
 	Count int `json:"count,omitempty" tf:"count,omitempty"`
 	// +optional
 	// Deprecated
 	DnsPrefix string `json:"dnsPrefix,omitempty" tf:"dns_prefix,omitempty"`
 	// +optional
+	EnableAutoScaling bool `json:"enableAutoScaling,omitempty" tf:"enable_auto_scaling,omitempty"`
+	// +optional
 	// Deprecated
 	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 	// +optional
-	MaxPods int    `json:"maxPods,omitempty" tf:"max_pods,omitempty"`
-	Name    string `json:"name" tf:"name"`
+	MaxCount int `json:"maxCount,omitempty" tf:"max_count,omitempty"`
+	// +optional
+	MaxPods int `json:"maxPods,omitempty" tf:"max_pods,omitempty"`
+	// +optional
+	MinCount int    `json:"minCount,omitempty" tf:"min_count,omitempty"`
+	Name     string `json:"name" tf:"name"`
+	// +optional
+	NodeTaints []string `json:"nodeTaints,omitempty" tf:"node_taints,omitempty"`
 	// +optional
 	OsDiskSizeGb int `json:"osDiskSizeGb,omitempty" tf:"os_disk_size_gb,omitempty"`
 	// +optional
@@ -114,7 +124,9 @@ type KubernetesClusterSpecNetworkProfile struct {
 	DnsServiceIP string `json:"dnsServiceIP,omitempty" tf:"dns_service_ip,omitempty"`
 	// +optional
 	DockerBridgeCIDR string `json:"dockerBridgeCIDR,omitempty" tf:"docker_bridge_cidr,omitempty"`
-	NetworkPlugin    string `json:"networkPlugin" tf:"network_plugin"`
+	// +optional
+	LoadBalancerSku string `json:"loadBalancerSku,omitempty" tf:"load_balancer_sku,omitempty"`
+	NetworkPlugin   string `json:"networkPlugin" tf:"network_plugin"`
 	// +optional
 	NetworkPolicy string `json:"networkPolicy,omitempty" tf:"network_policy,omitempty"`
 	// +optional
@@ -141,6 +153,12 @@ type KubernetesClusterSpecRoleBasedAccessControl struct {
 type KubernetesClusterSpecServicePrincipal struct {
 	ClientID     string `json:"clientID" tf:"client_id"`
 	ClientSecret string `json:"-" sensitive:"true" tf:"client_secret"`
+}
+
+type KubernetesClusterSpecWindowsProfile struct {
+	// +optional
+	AdminPassword string `json:"-" sensitive:"true" tf:"admin_password,omitempty"`
+	AdminUsername string `json:"adminUsername" tf:"admin_username"`
 }
 
 type KubernetesClusterSpec struct {
@@ -191,6 +209,9 @@ type KubernetesClusterSpec struct {
 	ServicePrincipal []KubernetesClusterSpecServicePrincipal `json:"servicePrincipal" tf:"service_principal"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	WindowsProfile []KubernetesClusterSpecWindowsProfile `json:"windowsProfile,omitempty" tf:"windows_profile,omitempty"`
 }
 
 type KubernetesClusterStatus struct {

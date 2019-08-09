@@ -137,11 +137,6 @@ func dataSourceAwsRdsCluster() *schema.Resource {
 				Computed: true,
 			},
 
-			"hosted_zone_id": {
-				Type:     schema.TypeString,
-				Computed: true,
-			},
-
 			"replication_source_identifier": {
 				Type:     schema.TypeString,
 				Computed: true,

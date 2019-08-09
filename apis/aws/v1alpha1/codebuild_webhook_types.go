@@ -18,18 +18,6 @@ type CodebuildWebhook struct {
 	Status            CodebuildWebhookStatus `json:"status,omitempty"`
 }
 
-type CodebuildWebhookSpecFilterGroupFilter struct {
-	// +optional
-	ExcludeMatchedPattern bool   `json:"excludeMatchedPattern,omitempty" tf:"exclude_matched_pattern,omitempty"`
-	Pattern               string `json:"pattern" tf:"pattern"`
-	Type                  string `json:"type" tf:"type"`
-}
-
-type CodebuildWebhookSpecFilterGroup struct {
-	// +optional
-	Filter []CodebuildWebhookSpecFilterGroupFilter `json:"filter,omitempty" tf:"filter,omitempty"`
-}
-
 type CodebuildWebhookSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -39,9 +27,6 @@ type CodebuildWebhookSpec struct {
 
 	// +optional
 	BranchFilter string `json:"branchFilter,omitempty" tf:"branch_filter,omitempty"`
-	// +optional
-	// +kubebuilder:validation:UniqueItems=true
-	FilterGroup []CodebuildWebhookSpecFilterGroup `json:"filterGroup,omitempty" tf:"filter_group,omitempty"`
 	// +optional
 	PayloadURL  string `json:"payloadURL,omitempty" tf:"payload_url,omitempty"`
 	ProjectName string `json:"projectName" tf:"project_name"`

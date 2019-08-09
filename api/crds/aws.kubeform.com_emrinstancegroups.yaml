@@ -397,10 +397,6 @@ spec:
           type: object
         spec:
           properties:
-            autoscalingPolicy:
-              type: string
-            bidPrice:
-              type: string
             clusterID:
               type: string
             ebsConfig:
@@ -457,10 +453,6 @@ spec:
               type: integer
             output:
               properties:
-                autoscalingPolicy:
-                  type: string
-                bidPrice:
-                  type: string
                 clusterID:
                   type: string
                 ebsConfig:

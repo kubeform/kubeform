@@ -401,8 +401,6 @@ spec:
               type: string
             identity:
               type: string
-            includeOriginalHeaders:
-              type: boolean
             notificationType:
               type: string
             providerRef:
@@ -434,8 +432,6 @@ spec:
                   type: string
                 identity:
                   type: string
-                includeOriginalHeaders:
-                  type: boolean
                 notificationType:
                   type: string
                 providerRef:

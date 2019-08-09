@@ -46,6 +46,60 @@ type StorageAccountSpecNetworkRules struct {
 	VirtualNetworkSubnetIDS []string `json:"virtualNetworkSubnetIDS,omitempty" tf:"virtual_network_subnet_ids,omitempty"`
 }
 
+type StorageAccountSpecQueuePropertiesCorsRule struct {
+	// +kubebuilder:validation:MaxItems=64
+	AllowedHeaders []string `json:"allowedHeaders" tf:"allowed_headers"`
+	// +kubebuilder:validation:MaxItems=64
+	AllowedMethods []string `json:"allowedMethods" tf:"allowed_methods"`
+	// +kubebuilder:validation:MaxItems=64
+	AllowedOrigins []string `json:"allowedOrigins" tf:"allowed_origins"`
+	// +kubebuilder:validation:MaxItems=64
+	ExposedHeaders  []string `json:"exposedHeaders" tf:"exposed_headers"`
+	MaxAgeInSeconds int      `json:"maxAgeInSeconds" tf:"max_age_in_seconds"`
+}
+
+type StorageAccountSpecQueuePropertiesHourMetrics struct {
+	Enabled bool `json:"enabled" tf:"enabled"`
+	// +optional
+	IncludeApis bool `json:"includeApis,omitempty" tf:"include_apis,omitempty"`
+	// +optional
+	RetentionPolicyDays int    `json:"retentionPolicyDays,omitempty" tf:"retention_policy_days,omitempty"`
+	Version             string `json:"version" tf:"version"`
+}
+
+type StorageAccountSpecQueuePropertiesLogging struct {
+	Delete bool `json:"delete" tf:"delete"`
+	Read   bool `json:"read" tf:"read"`
+	// +optional
+	RetentionPolicyDays int    `json:"retentionPolicyDays,omitempty" tf:"retention_policy_days,omitempty"`
+	Version             string `json:"version" tf:"version"`
+	Write               bool   `json:"write" tf:"write"`
+}
+
+type StorageAccountSpecQueuePropertiesMinuteMetrics struct {
+	Enabled bool `json:"enabled" tf:"enabled"`
+	// +optional
+	IncludeApis bool `json:"includeApis,omitempty" tf:"include_apis,omitempty"`
+	// +optional
+	RetentionPolicyDays int    `json:"retentionPolicyDays,omitempty" tf:"retention_policy_days,omitempty"`
+	Version             string `json:"version" tf:"version"`
+}
+
+type StorageAccountSpecQueueProperties struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=5
+	CorsRule []StorageAccountSpecQueuePropertiesCorsRule `json:"corsRule,omitempty" tf:"cors_rule,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	HourMetrics []StorageAccountSpecQueuePropertiesHourMetrics `json:"hourMetrics,omitempty" tf:"hour_metrics,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Logging []StorageAccountSpecQueuePropertiesLogging `json:"logging,omitempty" tf:"logging,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	MinuteMetrics []StorageAccountSpecQueuePropertiesMinuteMetrics `json:"minuteMetrics,omitempty" tf:"minute_metrics,omitempty"`
+}
+
 type StorageAccountSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -67,6 +121,8 @@ type StorageAccountSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CustomDomain []StorageAccountSpecCustomDomain `json:"customDomain,omitempty" tf:"custom_domain,omitempty"`
+	// +optional
+	EnableAdvancedThreatProtection bool `json:"enableAdvancedThreatProtection,omitempty" tf:"enable_advanced_threat_protection,omitempty"`
 	// +optional
 	EnableBlobEncryption bool `json:"enableBlobEncryption,omitempty" tf:"enable_blob_encryption,omitempty"`
 	// +optional
@@ -114,8 +170,11 @@ type StorageAccountSpec struct {
 	// +optional
 	PrimaryWebEndpoint string `json:"primaryWebEndpoint,omitempty" tf:"primary_web_endpoint,omitempty"`
 	// +optional
-	PrimaryWebHost    string `json:"primaryWebHost,omitempty" tf:"primary_web_host,omitempty"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	PrimaryWebHost string `json:"primaryWebHost,omitempty" tf:"primary_web_host,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	QueueProperties   []StorageAccountSpecQueueProperties `json:"queueProperties,omitempty" tf:"queue_properties,omitempty"`
+	ResourceGroupName string                              `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key,omitempty"`
 	// +optional

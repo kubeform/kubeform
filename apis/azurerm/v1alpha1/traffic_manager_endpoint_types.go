@@ -18,11 +18,26 @@ type TrafficManagerEndpoint struct {
 	Status            TrafficManagerEndpointStatus `json:"status,omitempty"`
 }
 
+type TrafficManagerEndpointSpecCustomHeader struct {
+	Name  string `json:"name" tf:"name"`
+	Value string `json:"value" tf:"value"`
+}
+
+type TrafficManagerEndpointSpecSubnet struct {
+	First string `json:"first" tf:"first"`
+	// +optional
+	Last string `json:"last,omitempty" tf:"last,omitempty"`
+	// +optional
+	Scope int `json:"scope,omitempty" tf:"scope,omitempty"`
+}
+
 type TrafficManagerEndpointSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// +optional
+	CustomHeader []TrafficManagerEndpointSpecCustomHeader `json:"customHeader,omitempty" tf:"custom_header,omitempty"`
 	// +optional
 	EndpointLocation string `json:"endpointLocation,omitempty" tf:"endpoint_location,omitempty"`
 	// +optional
@@ -38,6 +53,8 @@ type TrafficManagerEndpointSpec struct {
 	Priority          int    `json:"priority,omitempty" tf:"priority,omitempty"`
 	ProfileName       string `json:"profileName" tf:"profile_name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Subnet []TrafficManagerEndpointSpecSubnet `json:"subnet,omitempty" tf:"subnet,omitempty"`
 	// +optional
 	Target string `json:"target,omitempty" tf:"target,omitempty"`
 	// +optional

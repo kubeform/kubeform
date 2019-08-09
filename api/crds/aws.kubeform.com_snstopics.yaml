@@ -446,10 +446,6 @@ spec:
               type: string
             sqsSuccessFeedbackSampleRate:
               type: integer
-            tags:
-              additionalProperties:
-                type: string
-              type: object
           required:
           - providerRef
           type: object
@@ -511,10 +507,6 @@ spec:
                   type: string
                 sqsSuccessFeedbackSampleRate:
                   type: integer
-                tags:
-                  additionalProperties:
-                    type: string
-                  type: object
               required:
               - providerRef
               type: object

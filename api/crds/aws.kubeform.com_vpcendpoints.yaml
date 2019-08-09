@@ -419,8 +419,6 @@ spec:
                 type: string
               type: array
               uniqueItems: true
-            ownerID:
-              type: string
             policy:
               type: string
             prefixListID:
@@ -436,8 +434,6 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            requesterManaged:
-              type: boolean
             routeTableIDS:
               items:
                 type: string
@@ -457,10 +453,6 @@ spec:
                 type: string
               type: array
               uniqueItems: true
-            tags:
-              additionalProperties:
-                type: string
-              type: object
             vpcEndpointType:
               type: string
             vpcID:
@@ -501,8 +493,6 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
-                ownerID:
-                  type: string
                 policy:
                   type: string
                 prefixListID:
@@ -518,8 +508,6 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
-                requesterManaged:
-                  type: boolean
                 routeTableIDS:
                   items:
                     type: string
@@ -539,10 +527,6 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
-                tags:
-                  additionalProperties:
-                    type: string
-                  type: object
                 vpcEndpointType:
                   type: string
                 vpcID:

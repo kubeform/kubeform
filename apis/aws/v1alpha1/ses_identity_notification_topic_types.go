@@ -23,10 +23,8 @@ type SesIdentityNotificationTopicSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Identity string `json:"identity" tf:"identity"`
-	// +optional
-	IncludeOriginalHeaders bool   `json:"includeOriginalHeaders,omitempty" tf:"include_original_headers,omitempty"`
-	NotificationType       string `json:"notificationType" tf:"notification_type"`
+	Identity         string `json:"identity" tf:"identity"`
+	NotificationType string `json:"notificationType" tf:"notification_type"`
 	// +optional
 	TopicArn string `json:"topicArn,omitempty" tf:"topic_arn,omitempty"`
 }

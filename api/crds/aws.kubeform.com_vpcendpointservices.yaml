@@ -416,8 +416,6 @@ spec:
               uniqueItems: true
             id:
               type: string
-            managesVpcEndpoints:
-              type: boolean
             networkLoadBalancerArns:
               items:
                 type: string
@@ -441,10 +439,6 @@ spec:
               type: string
             state:
               type: string
-            tags:
-              additionalProperties:
-                type: string
-              type: object
           required:
           - acceptanceRequired
           - networkLoadBalancerArns
@@ -478,8 +472,6 @@ spec:
                   uniqueItems: true
                 id:
                   type: string
-                managesVpcEndpoints:
-                  type: boolean
                 networkLoadBalancerArns:
                   items:
                     type: string
@@ -503,10 +495,6 @@ spec:
                   type: string
                 state:
                   type: string
-                tags:
-                  additionalProperties:
-                    type: string
-                  type: object
               required:
               - acceptanceRequired
               - networkLoadBalancerArns

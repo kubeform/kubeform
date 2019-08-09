@@ -71,8 +71,6 @@ func resourceAwsLbTargetGroup() *schema.Resource {
 					elbv2.ProtocolEnumHttps,
 					elbv2.ProtocolEnumTcp,
 					elbv2.ProtocolEnumTls,
-					elbv2.ProtocolEnumUdp,
-					elbv2.ProtocolEnumTcpUdp,
 				}, true),
 			},
 
@@ -202,7 +200,7 @@ func resourceAwsLbTargetGroup() *schema.Resource {
 							Type:         schema.TypeInt,
 							Optional:     true,
 							Computed:     true,
-							ValidateFunc: validation.IntBetween(2, 120),
+							ValidateFunc: validation.IntBetween(2, 60),
 						},
 
 						"healthy_threshold": {

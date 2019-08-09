@@ -94,11 +94,15 @@ type BatchPoolSpecStartTask struct {
 
 type BatchPoolSpecStorageImageReference struct {
 	// +optional
-	ID        string `json:"ID,omitempty" tf:"id,omitempty"`
-	Offer     string `json:"offer" tf:"offer"`
-	Publisher string `json:"publisher" tf:"publisher"`
-	Sku       string `json:"sku" tf:"sku"`
-	Version   string `json:"version" tf:"version"`
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	Offer string `json:"offer,omitempty" tf:"offer,omitempty"`
+	// +optional
+	Publisher string `json:"publisher,omitempty" tf:"publisher,omitempty"`
+	// +optional
+	Sku string `json:"sku,omitempty" tf:"sku,omitempty"`
+	// +optional
+	Version string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type BatchPoolSpec struct {

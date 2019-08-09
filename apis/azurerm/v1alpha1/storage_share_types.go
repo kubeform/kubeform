@@ -18,15 +18,34 @@ type StorageShare struct {
 	Status            StorageShareStatus `json:"status,omitempty"`
 }
 
+type StorageShareSpecAclAccessPolicy struct {
+	Expiry      string `json:"expiry" tf:"expiry"`
+	Permissions string `json:"permissions" tf:"permissions"`
+	Start       string `json:"start" tf:"start"`
+}
+
+type StorageShareSpecAcl struct {
+	// +optional
+	AccessPolicy []StorageShareSpecAclAccessPolicy `json:"accessPolicy,omitempty" tf:"access_policy,omitempty"`
+	ID           string                            `json:"ID" tf:"id"`
+}
+
 type StorageShareSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Name string `json:"name" tf:"name"`
 	// +optional
-	Quota              int    `json:"quota,omitempty" tf:"quota,omitempty"`
-	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +kubebuilder:validation:UniqueItems=true
+	Acl []StorageShareSpecAcl `json:"acl,omitempty" tf:"acl,omitempty"`
+	// +optional
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Name     string            `json:"name" tf:"name"`
+	// +optional
+	Quota int `json:"quota,omitempty" tf:"quota,omitempty"`
+	// +optional
+	// Deprecated
+	ResourceGroupName  string `json:"resourceGroupName,omitempty" tf:"resource_group_name,omitempty"`
 	StorageAccountName string `json:"storageAccountName" tf:"storage_account_name"`
 	// +optional
 	Url string `json:"url,omitempty" tf:"url,omitempty"`

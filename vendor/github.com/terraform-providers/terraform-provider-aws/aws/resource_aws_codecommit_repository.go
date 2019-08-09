@@ -58,7 +58,6 @@ func resourceAwsCodeCommitRepository() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"tags": tagsSchema(),
 		},
 	}
 }
@@ -69,7 +68,6 @@ func resourceAwsCodeCommitRepositoryCreate(d *schema.ResourceData, meta interfac
 	input := &codecommit.CreateRepositoryInput{
 		RepositoryName:        aws.String(d.Get("repository_name").(string)),
 		RepositoryDescription: aws.String(d.Get("description").(string)),
-		Tags:                  tagsFromMapCodeCommit(d.Get("tags").(map[string]interface{})),
 	}
 
 	out, err := conn.CreateRepository(input)
@@ -103,11 +101,6 @@ func resourceAwsCodeCommitRepositoryUpdate(d *schema.ResourceData, meta interfac
 		}
 	}
 
-	if !d.IsNewResource() {
-		if err := setTagsCodeCommit(conn, d); err != nil {
-			return fmt.Errorf("error updating CodeCommit Repository tags for %s: %s", d.Id(), err)
-		}
-	}
 	return resourceAwsCodeCommitRepositoryRead(d, meta)
 }
 
@@ -140,17 +133,6 @@ func resourceAwsCodeCommitRepositoryRead(d *schema.ResourceData, meta interface{
 		if out.RepositoryMetadata.DefaultBranch != nil {
 			d.Set("default_branch", out.RepositoryMetadata.DefaultBranch)
 		}
-	}
-
-	// List tags
-	tagList, err := conn.ListTagsForResource(&codecommit.ListTagsForResourceInput{
-		ResourceArn: out.RepositoryMetadata.Arn,
-	})
-	if err != nil {
-		return fmt.Errorf("error listing CodeCommit Repository tags for %s: %s", d.Id(), err)
-	}
-	if err := d.Set("tags", tagsToMapCodeCommit(tagList.Tags)); err != nil {
-		return fmt.Errorf("error setting tags: %s", err)
 	}
 
 	return nil

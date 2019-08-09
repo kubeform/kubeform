@@ -18,11 +18,6 @@ type AppsyncResolver struct {
 	Status            AppsyncResolverStatus `json:"status,omitempty"`
 }
 
-type AppsyncResolverSpecPipelineConfig struct {
-	// +optional
-	Functions []string `json:"functions,omitempty" tf:"functions,omitempty"`
-}
-
 type AppsyncResolverSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -30,18 +25,12 @@ type AppsyncResolverSpec struct {
 
 	ApiID string `json:"apiID" tf:"api_id"`
 	// +optional
-	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
-	// +optional
-	DataSource string `json:"dataSource,omitempty" tf:"data_source,omitempty"`
-	Field      string `json:"field" tf:"field"`
-	// +optional
-	Kind string `json:"kind,omitempty" tf:"kind,omitempty"`
-	// +optional
-	// +kubebuilder:validation:MaxItems=1
-	PipelineConfig   []AppsyncResolverSpecPipelineConfig `json:"pipelineConfig,omitempty" tf:"pipeline_config,omitempty"`
-	RequestTemplate  string                              `json:"requestTemplate" tf:"request_template"`
-	ResponseTemplate string                              `json:"responseTemplate" tf:"response_template"`
-	Type             string                              `json:"type" tf:"type"`
+	Arn              string `json:"arn,omitempty" tf:"arn,omitempty"`
+	DataSource       string `json:"dataSource" tf:"data_source"`
+	Field            string `json:"field" tf:"field"`
+	RequestTemplate  string `json:"requestTemplate" tf:"request_template"`
+	ResponseTemplate string `json:"responseTemplate" tf:"response_template"`
+	Type             string `json:"type" tf:"type"`
 }
 
 type AppsyncResolverStatus struct {

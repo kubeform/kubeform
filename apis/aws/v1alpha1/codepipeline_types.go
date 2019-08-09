@@ -67,8 +67,6 @@ type CodepipelineSpec struct {
 	RoleArn       string                          `json:"roleArn" tf:"role_arn"`
 	// +kubebuilder:validation:MinItems=2
 	Stage []CodepipelineSpecStage `json:"stage" tf:"stage"`
-	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type CodepipelineStatus struct {
