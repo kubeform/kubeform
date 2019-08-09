@@ -11,14 +11,14 @@ import (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 
-type EventhubNamespace struct {
+type EventhubNamespace_ struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              EventhubNamespaceSpec   `json:"spec,omitempty"`
-	Status            EventhubNamespaceStatus `json:"status,omitempty"`
+	Spec              EventhubNamespace_Spec   `json:"spec,omitempty"`
+	Status            EventhubNamespace_Status `json:"status,omitempty"`
 }
 
-type EventhubNamespaceSpec struct {
+type EventhubNamespace_Spec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
@@ -49,12 +49,12 @@ type EventhubNamespaceSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
-type EventhubNamespaceStatus struct {
+type EventhubNamespace_Status struct {
 	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 	// +optional
-	Output *EventhubNamespaceSpec `json:"output,omitempty"`
+	Output *EventhubNamespace_Spec `json:"output,omitempty"`
 	// +optional
 	State *apis.State `json:"state,omitempty"`
 }
@@ -62,10 +62,10 @@ type EventhubNamespaceStatus struct {
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 
-// EventhubNamespaceList is a list of EventhubNamespaces
-type EventhubNamespaceList struct {
+// EventhubNamespace_List is a list of EventhubNamespace_s
+type EventhubNamespace_List struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	// Items is a list of EventhubNamespace CRD objects
-	Items []EventhubNamespace `json:"items,omitempty"`
+	// Items is a list of EventhubNamespace_ CRD objects
+	Items []EventhubNamespace_ `json:"items,omitempty"`
 }

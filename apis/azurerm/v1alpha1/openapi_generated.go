@@ -871,14 +871,14 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubConsumerGroupSpec":                                                                schema_kubeform_apis_azurerm_v1alpha1_EventhubConsumerGroupSpec(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubConsumerGroupStatus":                                                              schema_kubeform_apis_azurerm_v1alpha1_EventhubConsumerGroupStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubList":                                                                             schema_kubeform_apis_azurerm_v1alpha1_EventhubList(ref),
-		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace":                                                                        schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespace(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceAuthorizationRule":                                                       schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceAuthorizationRule(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceAuthorizationRuleList":                                                   schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceAuthorizationRuleList(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceAuthorizationRuleSpec":                                                   schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceAuthorizationRuleSpec(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceAuthorizationRuleStatus":                                                 schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceAuthorizationRuleStatus(ref),
-		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceList":                                                                    schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceList(ref),
-		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceSpec":                                                                    schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceSpec(ref),
-		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceStatus":                                                                  schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceStatus(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_":                                                                       schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespace_(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_List":                                                                   schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespace_List(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_Spec":                                                                   schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespace_Spec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_Status":                                                                 schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespace_Status(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubSpec":                                                                             schema_kubeform_apis_azurerm_v1alpha1_EventhubSpec(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubSpecCaptureDescription":                                                           schema_kubeform_apis_azurerm_v1alpha1_EventhubSpecCaptureDescription(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubSpecCaptureDescriptionDestination":                                                schema_kubeform_apis_azurerm_v1alpha1_EventhubSpecCaptureDescriptionDestination(ref),
@@ -1371,11 +1371,11 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubAuthorizationRuleSpec":                                                     schema_kubeform_apis_azurerm_v1alpha1_NotificationHubAuthorizationRuleSpec(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubAuthorizationRuleStatus":                                                   schema_kubeform_apis_azurerm_v1alpha1_NotificationHubAuthorizationRuleStatus(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubList":                                                                      schema_kubeform_apis_azurerm_v1alpha1_NotificationHubList(ref),
-		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace":                                                                 schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace(ref),
-		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceList":                                                             schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceList(ref),
-		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceSpec":                                                             schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceSpec(ref),
-		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceSpecSku":                                                          schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceSpecSku(ref),
-		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceStatus":                                                           schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceStatus(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_":                                                                schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace_(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_List":                                                            schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace_List(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_Spec":                                                            schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace_Spec(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_SpecSku":                                                         schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace_SpecSku(ref),
+		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_Status":                                                          schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace_Status(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubSpec":                                                                      schema_kubeform_apis_azurerm_v1alpha1_NotificationHubSpec(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubSpecApnsCredential":                                                        schema_kubeform_apis_azurerm_v1alpha1_NotificationHubSpecApnsCredential(ref),
 		"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubSpecGcmCredential":                                                         schema_kubeform_apis_azurerm_v1alpha1_NotificationHubSpecGcmCredential(ref),
@@ -42902,49 +42902,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubList(ref common.ReferenceCall
 	}
 }
 
-func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespace(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
-						},
-					},
-					"spec": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceSpec"),
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceStatus"),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceSpec", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceStatus"},
-	}
-}
-
 func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceAuthorizationRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -43140,11 +43097,54 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceAuthorizationRuleSta
 	}
 }
 
-func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespace_(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "EventhubNamespaceList is a list of EventhubNamespaces",
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_Spec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_Status"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_Spec", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_Status"},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespace_List(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "EventhubNamespace_List is a list of EventhubNamespace_s",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -43168,12 +43168,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceList(ref common.Refe
 					},
 					"items": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Items is a list of EventhubNamespace CRD objects",
+							Description: "Items is a list of EventhubNamespace_ CRD objects",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace"),
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_"),
 									},
 								},
 							},
@@ -43183,11 +43183,11 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceList(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace"},
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_"},
 	}
 }
 
-func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespace_Spec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -43280,7 +43280,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceSpec(ref common.Refe
 	}
 }
 
-func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespace_Status(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -43295,7 +43295,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceStatus(ref common.Re
 					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceSpec"),
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_Spec"),
 						},
 					},
 					"state": {
@@ -43307,7 +43307,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceStatus(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceSpec"},
+			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_Spec"},
 	}
 }
 
@@ -67484,7 +67484,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubList(ref common.Refere
 	}
 }
 
-func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace_(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -67511,27 +67511,27 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace(ref common.R
 					},
 					"spec": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceSpec"),
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_Spec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceStatus"),
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_Status"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceSpec", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceStatus"},
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_Spec", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_Status"},
 	}
 }
 
-func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace_List(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "NotificationHubNamespaceList is a list of NotificationHubNamespaces",
+				Description: "NotificationHubNamespace_List is a list of NotificationHubNamespace_s",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -67555,12 +67555,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceList(ref comm
 					},
 					"items": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Items is a list of NotificationHubNamespace CRD objects",
+							Description: "Items is a list of NotificationHubNamespace_ CRD objects",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace"),
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_"),
 									},
 								},
 							},
@@ -67570,11 +67570,11 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceList(ref comm
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace"},
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_"},
 	}
 }
 
-func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace_Spec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -67634,7 +67634,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceSpec(ref comm
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceSpecSku"),
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_SpecSku"),
 									},
 								},
 							},
@@ -67651,11 +67651,11 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceSpec(ref comm
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceSpecSku"},
+			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_SpecSku"},
 	}
 }
 
-func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceSpecSku(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace_SpecSku(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -67674,7 +67674,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceSpecSku(ref c
 	}
 }
 
-func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace_Status(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -67689,7 +67689,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceStatus(ref co
 					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceSpec"),
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_Spec"),
 						},
 					},
 					"state": {
@@ -67701,7 +67701,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceStatus(ref co
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceSpec"},
+			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_Spec"},
 	}
 }
 

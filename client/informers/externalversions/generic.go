@@ -1293,10 +1293,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Azurerm().V1alpha1().EventhubAuthorizationRules().Informer()}, nil
 	case azurermv1alpha1.SchemeGroupVersion.WithResource("eventhubconsumergroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Azurerm().V1alpha1().EventhubConsumerGroups().Informer()}, nil
-	case azurermv1alpha1.SchemeGroupVersion.WithResource("eventhubnamespaces"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Azurerm().V1alpha1().EventhubNamespaces().Informer()}, nil
 	case azurermv1alpha1.SchemeGroupVersion.WithResource("eventhubnamespaceauthorizationrules"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Azurerm().V1alpha1().EventhubNamespaceAuthorizationRules().Informer()}, nil
+	case azurermv1alpha1.SchemeGroupVersion.WithResource("eventhubnamespace_s"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Azurerm().V1alpha1().EventhubNamespace_s().Informer()}, nil
 	case azurermv1alpha1.SchemeGroupVersion.WithResource("expressroutecircuits"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Azurerm().V1alpha1().ExpressRouteCircuits().Informer()}, nil
 	case azurermv1alpha1.SchemeGroupVersion.WithResource("expressroutecircuitauthorizations"):
@@ -1461,8 +1461,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Azurerm().V1alpha1().NotificationHubs().Informer()}, nil
 	case azurermv1alpha1.SchemeGroupVersion.WithResource("notificationhubauthorizationrules"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Azurerm().V1alpha1().NotificationHubAuthorizationRules().Informer()}, nil
-	case azurermv1alpha1.SchemeGroupVersion.WithResource("notificationhubnamespaces"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Azurerm().V1alpha1().NotificationHubNamespaces().Informer()}, nil
+	case azurermv1alpha1.SchemeGroupVersion.WithResource("notificationhubnamespace_s"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Azurerm().V1alpha1().NotificationHubNamespace_s().Informer()}, nil
 	case azurermv1alpha1.SchemeGroupVersion.WithResource("packetcaptures"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Azurerm().V1alpha1().PacketCaptures().Informer()}, nil
 	case azurermv1alpha1.SchemeGroupVersion.WithResource("policyassignments"):

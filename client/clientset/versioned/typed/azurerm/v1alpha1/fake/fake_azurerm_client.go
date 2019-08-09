@@ -440,12 +440,12 @@ func (c *FakeAzurermV1alpha1) EventhubConsumerGroups(namespace string) v1alpha1.
 	return &FakeEventhubConsumerGroups{c, namespace}
 }
 
-func (c *FakeAzurermV1alpha1) EventhubNamespaces(namespace string) v1alpha1.EventhubNamespaceInterface {
-	return &FakeEventhubNamespaces{c, namespace}
-}
-
 func (c *FakeAzurermV1alpha1) EventhubNamespaceAuthorizationRules(namespace string) v1alpha1.EventhubNamespaceAuthorizationRuleInterface {
 	return &FakeEventhubNamespaceAuthorizationRules{c, namespace}
+}
+
+func (c *FakeAzurermV1alpha1) EventhubNamespace_s(namespace string) v1alpha1.EventhubNamespace_Interface {
+	return &FakeEventhubNamespace_s{c, namespace}
 }
 
 func (c *FakeAzurermV1alpha1) ExpressRouteCircuits(namespace string) v1alpha1.ExpressRouteCircuitInterface {
@@ -776,8 +776,8 @@ func (c *FakeAzurermV1alpha1) NotificationHubAuthorizationRules(namespace string
 	return &FakeNotificationHubAuthorizationRules{c, namespace}
 }
 
-func (c *FakeAzurermV1alpha1) NotificationHubNamespaces(namespace string) v1alpha1.NotificationHubNamespaceInterface {
-	return &FakeNotificationHubNamespaces{c, namespace}
+func (c *FakeAzurermV1alpha1) NotificationHubNamespace_s(namespace string) v1alpha1.NotificationHubNamespace_Interface {
+	return &FakeNotificationHubNamespace_s{c, namespace}
 }
 
 func (c *FakeAzurermV1alpha1) PacketCaptures(namespace string) v1alpha1.PacketCaptureInterface {

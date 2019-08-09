@@ -842,14 +842,6 @@ type EventhubConsumerGroupListerExpansion interface{}
 // EventhubConsumerGroupNamespaceLister.
 type EventhubConsumerGroupNamespaceListerExpansion interface{}
 
-// EventhubNamespaceListerExpansion allows custom methods to be added to
-// EventhubNamespaceLister.
-type EventhubNamespaceListerExpansion interface{}
-
-// EventhubNamespaceNamespaceListerExpansion allows custom methods to be added to
-// EventhubNamespaceNamespaceLister.
-type EventhubNamespaceNamespaceListerExpansion interface{}
-
 // EventhubNamespaceAuthorizationRuleListerExpansion allows custom methods to be added to
 // EventhubNamespaceAuthorizationRuleLister.
 type EventhubNamespaceAuthorizationRuleListerExpansion interface{}
@@ -857,6 +849,14 @@ type EventhubNamespaceAuthorizationRuleListerExpansion interface{}
 // EventhubNamespaceAuthorizationRuleNamespaceListerExpansion allows custom methods to be added to
 // EventhubNamespaceAuthorizationRuleNamespaceLister.
 type EventhubNamespaceAuthorizationRuleNamespaceListerExpansion interface{}
+
+// EventhubNamespace_ListerExpansion allows custom methods to be added to
+// EventhubNamespace_Lister.
+type EventhubNamespace_ListerExpansion interface{}
+
+// EventhubNamespace_NamespaceListerExpansion allows custom methods to be added to
+// EventhubNamespace_NamespaceLister.
+type EventhubNamespace_NamespaceListerExpansion interface{}
 
 // ExpressRouteCircuitListerExpansion allows custom methods to be added to
 // ExpressRouteCircuitLister.
@@ -1514,13 +1514,13 @@ type NotificationHubAuthorizationRuleListerExpansion interface{}
 // NotificationHubAuthorizationRuleNamespaceLister.
 type NotificationHubAuthorizationRuleNamespaceListerExpansion interface{}
 
-// NotificationHubNamespaceListerExpansion allows custom methods to be added to
-// NotificationHubNamespaceLister.
-type NotificationHubNamespaceListerExpansion interface{}
+// NotificationHubNamespace_ListerExpansion allows custom methods to be added to
+// NotificationHubNamespace_Lister.
+type NotificationHubNamespace_ListerExpansion interface{}
 
-// NotificationHubNamespaceNamespaceListerExpansion allows custom methods to be added to
-// NotificationHubNamespaceNamespaceLister.
-type NotificationHubNamespaceNamespaceListerExpansion interface{}
+// NotificationHubNamespace_NamespaceListerExpansion allows custom methods to be added to
+// NotificationHubNamespace_NamespaceLister.
+type NotificationHubNamespace_NamespaceListerExpansion interface{}
 
 // PacketCaptureListerExpansion allows custom methods to be added to
 // PacketCaptureLister.

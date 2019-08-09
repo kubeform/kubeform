@@ -230,10 +230,10 @@ type Interface interface {
 	EventhubAuthorizationRules() EventhubAuthorizationRuleInformer
 	// EventhubConsumerGroups returns a EventhubConsumerGroupInformer.
 	EventhubConsumerGroups() EventhubConsumerGroupInformer
-	// EventhubNamespaces returns a EventhubNamespaceInformer.
-	EventhubNamespaces() EventhubNamespaceInformer
 	// EventhubNamespaceAuthorizationRules returns a EventhubNamespaceAuthorizationRuleInformer.
 	EventhubNamespaceAuthorizationRules() EventhubNamespaceAuthorizationRuleInformer
+	// EventhubNamespace_s returns a EventhubNamespace_Informer.
+	EventhubNamespace_s() EventhubNamespace_Informer
 	// ExpressRouteCircuits returns a ExpressRouteCircuitInformer.
 	ExpressRouteCircuits() ExpressRouteCircuitInformer
 	// ExpressRouteCircuitAuthorizations returns a ExpressRouteCircuitAuthorizationInformer.
@@ -398,8 +398,8 @@ type Interface interface {
 	NotificationHubs() NotificationHubInformer
 	// NotificationHubAuthorizationRules returns a NotificationHubAuthorizationRuleInformer.
 	NotificationHubAuthorizationRules() NotificationHubAuthorizationRuleInformer
-	// NotificationHubNamespaces returns a NotificationHubNamespaceInformer.
-	NotificationHubNamespaces() NotificationHubNamespaceInformer
+	// NotificationHubNamespace_s returns a NotificationHubNamespace_Informer.
+	NotificationHubNamespace_s() NotificationHubNamespace_Informer
 	// PacketCaptures returns a PacketCaptureInformer.
 	PacketCaptures() PacketCaptureInformer
 	// PolicyAssignments returns a PolicyAssignmentInformer.
@@ -1092,14 +1092,14 @@ func (v *version) EventhubConsumerGroups() EventhubConsumerGroupInformer {
 	return &eventhubConsumerGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
-// EventhubNamespaces returns a EventhubNamespaceInformer.
-func (v *version) EventhubNamespaces() EventhubNamespaceInformer {
-	return &eventhubNamespaceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
-}
-
 // EventhubNamespaceAuthorizationRules returns a EventhubNamespaceAuthorizationRuleInformer.
 func (v *version) EventhubNamespaceAuthorizationRules() EventhubNamespaceAuthorizationRuleInformer {
 	return &eventhubNamespaceAuthorizationRuleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// EventhubNamespace_s returns a EventhubNamespace_Informer.
+func (v *version) EventhubNamespace_s() EventhubNamespace_Informer {
+	return &eventhubNamespace_Informer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ExpressRouteCircuits returns a ExpressRouteCircuitInformer.
@@ -1512,9 +1512,9 @@ func (v *version) NotificationHubAuthorizationRules() NotificationHubAuthorizati
 	return &notificationHubAuthorizationRuleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
-// NotificationHubNamespaces returns a NotificationHubNamespaceInformer.
-func (v *version) NotificationHubNamespaces() NotificationHubNamespaceInformer {
-	return &notificationHubNamespaceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+// NotificationHubNamespace_s returns a NotificationHubNamespace_Informer.
+func (v *version) NotificationHubNamespace_s() NotificationHubNamespace_Informer {
+	return &notificationHubNamespace_Informer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // PacketCaptures returns a PacketCaptureInformer.

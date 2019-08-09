@@ -130,8 +130,8 @@ type AzurermV1alpha1Interface interface {
 	EventhubsGetter
 	EventhubAuthorizationRulesGetter
 	EventhubConsumerGroupsGetter
-	EventhubNamespacesGetter
 	EventhubNamespaceAuthorizationRulesGetter
+	EventhubNamespace_sGetter
 	ExpressRouteCircuitsGetter
 	ExpressRouteCircuitAuthorizationsGetter
 	ExpressRouteCircuitPeeringsGetter
@@ -214,7 +214,7 @@ type AzurermV1alpha1Interface interface {
 	NetworkWatchersGetter
 	NotificationHubsGetter
 	NotificationHubAuthorizationRulesGetter
-	NotificationHubNamespacesGetter
+	NotificationHubNamespace_sGetter
 	PacketCapturesGetter
 	PolicyAssignmentsGetter
 	PolicyDefinitionsGetter
@@ -716,12 +716,12 @@ func (c *AzurermV1alpha1Client) EventhubConsumerGroups(namespace string) Eventhu
 	return newEventhubConsumerGroups(c, namespace)
 }
 
-func (c *AzurermV1alpha1Client) EventhubNamespaces(namespace string) EventhubNamespaceInterface {
-	return newEventhubNamespaces(c, namespace)
-}
-
 func (c *AzurermV1alpha1Client) EventhubNamespaceAuthorizationRules(namespace string) EventhubNamespaceAuthorizationRuleInterface {
 	return newEventhubNamespaceAuthorizationRules(c, namespace)
+}
+
+func (c *AzurermV1alpha1Client) EventhubNamespace_s(namespace string) EventhubNamespace_Interface {
+	return newEventhubNamespace_s(c, namespace)
 }
 
 func (c *AzurermV1alpha1Client) ExpressRouteCircuits(namespace string) ExpressRouteCircuitInterface {
@@ -1052,8 +1052,8 @@ func (c *AzurermV1alpha1Client) NotificationHubAuthorizationRules(namespace stri
 	return newNotificationHubAuthorizationRules(c, namespace)
 }
 
-func (c *AzurermV1alpha1Client) NotificationHubNamespaces(namespace string) NotificationHubNamespaceInterface {
-	return newNotificationHubNamespaces(c, namespace)
+func (c *AzurermV1alpha1Client) NotificationHubNamespace_s(namespace string) NotificationHubNamespace_Interface {
+	return newNotificationHubNamespace_s(c, namespace)
 }
 
 func (c *AzurermV1alpha1Client) PacketCaptures(namespace string) PacketCaptureInterface {

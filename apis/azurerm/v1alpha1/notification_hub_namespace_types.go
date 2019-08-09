@@ -11,18 +11,18 @@ import (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 
-type NotificationHubNamespace struct {
+type NotificationHubNamespace_ struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              NotificationHubNamespaceSpec   `json:"spec,omitempty"`
-	Status            NotificationHubNamespaceStatus `json:"status,omitempty"`
+	Spec              NotificationHubNamespace_Spec   `json:"spec,omitempty"`
+	Status            NotificationHubNamespace_Status `json:"status,omitempty"`
 }
 
-type NotificationHubNamespaceSpecSku struct {
+type NotificationHubNamespace_SpecSku struct {
 	Name string `json:"name" tf:"name"`
 }
 
-type NotificationHubNamespaceSpec struct {
+type NotificationHubNamespace_Spec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
@@ -38,17 +38,17 @@ type NotificationHubNamespaceSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// Deprecated
-	Sku []NotificationHubNamespaceSpecSku `json:"sku,omitempty" tf:"sku,omitempty"`
+	Sku []NotificationHubNamespace_SpecSku `json:"sku,omitempty" tf:"sku,omitempty"`
 	// +optional
 	SkuName string `json:"skuName,omitempty" tf:"sku_name,omitempty"`
 }
 
-type NotificationHubNamespaceStatus struct {
+type NotificationHubNamespace_Status struct {
 	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 	// +optional
-	Output *NotificationHubNamespaceSpec `json:"output,omitempty"`
+	Output *NotificationHubNamespace_Spec `json:"output,omitempty"`
 	// +optional
 	State *apis.State `json:"state,omitempty"`
 }
@@ -56,10 +56,10 @@ type NotificationHubNamespaceStatus struct {
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 
-// NotificationHubNamespaceList is a list of NotificationHubNamespaces
-type NotificationHubNamespaceList struct {
+// NotificationHubNamespace_List is a list of NotificationHubNamespace_s
+type NotificationHubNamespace_List struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	// Items is a list of NotificationHubNamespace CRD objects
-	Items []NotificationHubNamespace `json:"items,omitempty"`
+	// Items is a list of NotificationHubNamespace_ CRD objects
+	Items []NotificationHubNamespace_ `json:"items,omitempty"`
 }

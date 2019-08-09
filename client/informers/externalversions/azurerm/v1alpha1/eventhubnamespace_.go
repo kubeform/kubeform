@@ -31,59 +31,59 @@ import (
 	v1alpha1 "kubeform.dev/kubeform/client/listers/azurerm/v1alpha1"
 )
 
-// EventhubNamespaceInformer provides access to a shared informer and lister for
-// EventhubNamespaces.
-type EventhubNamespaceInformer interface {
+// EventhubNamespace_Informer provides access to a shared informer and lister for
+// EventhubNamespace_s.
+type EventhubNamespace_Informer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.EventhubNamespaceLister
+	Lister() v1alpha1.EventhubNamespace_Lister
 }
 
-type eventhubNamespaceInformer struct {
+type eventhubNamespace_Informer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewEventhubNamespaceInformer constructs a new informer for EventhubNamespace type.
+// NewEventhubNamespace_Informer constructs a new informer for EventhubNamespace_ type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewEventhubNamespaceInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredEventhubNamespaceInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewEventhubNamespace_Informer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredEventhubNamespace_Informer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredEventhubNamespaceInformer constructs a new informer for EventhubNamespace type.
+// NewFilteredEventhubNamespace_Informer constructs a new informer for EventhubNamespace_ type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredEventhubNamespaceInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredEventhubNamespace_Informer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AzurermV1alpha1().EventhubNamespaces(namespace).List(options)
+				return client.AzurermV1alpha1().EventhubNamespace_s(namespace).List(options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AzurermV1alpha1().EventhubNamespaces(namespace).Watch(options)
+				return client.AzurermV1alpha1().EventhubNamespace_s(namespace).Watch(options)
 			},
 		},
-		&azurermv1alpha1.EventhubNamespace{},
+		&azurermv1alpha1.EventhubNamespace_{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *eventhubNamespaceInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredEventhubNamespaceInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *eventhubNamespace_Informer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredEventhubNamespace_Informer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *eventhubNamespaceInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&azurermv1alpha1.EventhubNamespace{}, f.defaultInformer)
+func (f *eventhubNamespace_Informer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&azurermv1alpha1.EventhubNamespace_{}, f.defaultInformer)
 }
 
-func (f *eventhubNamespaceInformer) Lister() v1alpha1.EventhubNamespaceLister {
-	return v1alpha1.NewEventhubNamespaceLister(f.Informer().GetIndexer())
+func (f *eventhubNamespace_Informer) Lister() v1alpha1.EventhubNamespace_Lister {
+	return v1alpha1.NewEventhubNamespace_Lister(f.Informer().GetIndexer())
 }

@@ -31,59 +31,59 @@ import (
 	v1alpha1 "kubeform.dev/kubeform/client/listers/azurerm/v1alpha1"
 )
 
-// NotificationHubNamespaceInformer provides access to a shared informer and lister for
-// NotificationHubNamespaces.
-type NotificationHubNamespaceInformer interface {
+// NotificationHubNamespace_Informer provides access to a shared informer and lister for
+// NotificationHubNamespace_s.
+type NotificationHubNamespace_Informer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.NotificationHubNamespaceLister
+	Lister() v1alpha1.NotificationHubNamespace_Lister
 }
 
-type notificationHubNamespaceInformer struct {
+type notificationHubNamespace_Informer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewNotificationHubNamespaceInformer constructs a new informer for NotificationHubNamespace type.
+// NewNotificationHubNamespace_Informer constructs a new informer for NotificationHubNamespace_ type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewNotificationHubNamespaceInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredNotificationHubNamespaceInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewNotificationHubNamespace_Informer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredNotificationHubNamespace_Informer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredNotificationHubNamespaceInformer constructs a new informer for NotificationHubNamespace type.
+// NewFilteredNotificationHubNamespace_Informer constructs a new informer for NotificationHubNamespace_ type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredNotificationHubNamespaceInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredNotificationHubNamespace_Informer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AzurermV1alpha1().NotificationHubNamespaces(namespace).List(options)
+				return client.AzurermV1alpha1().NotificationHubNamespace_s(namespace).List(options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AzurermV1alpha1().NotificationHubNamespaces(namespace).Watch(options)
+				return client.AzurermV1alpha1().NotificationHubNamespace_s(namespace).Watch(options)
 			},
 		},
-		&azurermv1alpha1.NotificationHubNamespace{},
+		&azurermv1alpha1.NotificationHubNamespace_{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *notificationHubNamespaceInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredNotificationHubNamespaceInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *notificationHubNamespace_Informer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredNotificationHubNamespace_Informer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *notificationHubNamespaceInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&azurermv1alpha1.NotificationHubNamespace{}, f.defaultInformer)
+func (f *notificationHubNamespace_Informer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&azurermv1alpha1.NotificationHubNamespace_{}, f.defaultInformer)
 }
 
-func (f *notificationHubNamespaceInformer) Lister() v1alpha1.NotificationHubNamespaceLister {
-	return v1alpha1.NewNotificationHubNamespaceLister(f.Informer().GetIndexer())
+func (f *notificationHubNamespace_Informer) Lister() v1alpha1.NotificationHubNamespace_Lister {
+	return v1alpha1.NewNotificationHubNamespace_Lister(f.Informer().GetIndexer())
 }

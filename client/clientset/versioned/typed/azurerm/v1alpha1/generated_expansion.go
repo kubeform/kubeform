@@ -224,9 +224,9 @@ type EventhubAuthorizationRuleExpansion interface{}
 
 type EventhubConsumerGroupExpansion interface{}
 
-type EventhubNamespaceExpansion interface{}
-
 type EventhubNamespaceAuthorizationRuleExpansion interface{}
+
+type EventhubNamespace_Expansion interface{}
 
 type ExpressRouteCircuitExpansion interface{}
 
@@ -392,7 +392,7 @@ type NotificationHubExpansion interface{}
 
 type NotificationHubAuthorizationRuleExpansion interface{}
 
-type NotificationHubNamespaceExpansion interface{}
+type NotificationHubNamespace_Expansion interface{}
 
 type PacketCaptureExpansion interface{}
 
