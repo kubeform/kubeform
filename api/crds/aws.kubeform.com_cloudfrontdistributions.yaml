@@ -679,7 +679,7 @@ spec:
                           type: string
                         originReadTimeout:
                           type: integer
-                        originSslProtocols:
+                        originSSLProtocols:
                           items:
                             type: string
                           type: array
@@ -688,7 +688,7 @@ spec:
                       - httpPort
                       - httpsPort
                       - originProtocolPolicy
-                      - originSslProtocols
+                      - originSSLProtocols
                       type: object
                     maxItems: 1
                     type: array
@@ -1111,7 +1111,7 @@ spec:
                               type: string
                             originReadTimeout:
                               type: integer
-                            originSslProtocols:
+                            originSSLProtocols:
                               items:
                                 type: string
                               type: array
@@ -1120,7 +1120,7 @@ spec:
                           - httpPort
                           - httpsPort
                           - originProtocolPolicy
-                          - originSslProtocols
+                          - originSSLProtocols
                           type: object
                         maxItems: 1
                         type: array
@@ -1276,3 +1276,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

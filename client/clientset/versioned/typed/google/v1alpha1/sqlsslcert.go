@@ -29,43 +29,43 @@ import (
 	scheme "kubeform.dev/kubeform/client/clientset/versioned/scheme"
 )
 
-// SqlSslCertsGetter has a method to return a SqlSslCertInterface.
+// SqlSSLCertsGetter has a method to return a SqlSSLCertInterface.
 // A group's client should implement this interface.
-type SqlSslCertsGetter interface {
-	SqlSslCerts(namespace string) SqlSslCertInterface
+type SqlSSLCertsGetter interface {
+	SqlSSLCerts(namespace string) SqlSSLCertInterface
 }
 
-// SqlSslCertInterface has methods to work with SqlSslCert resources.
-type SqlSslCertInterface interface {
-	Create(*v1alpha1.SqlSslCert) (*v1alpha1.SqlSslCert, error)
-	Update(*v1alpha1.SqlSslCert) (*v1alpha1.SqlSslCert, error)
-	UpdateStatus(*v1alpha1.SqlSslCert) (*v1alpha1.SqlSslCert, error)
+// SqlSSLCertInterface has methods to work with SqlSSLCert resources.
+type SqlSSLCertInterface interface {
+	Create(*v1alpha1.SqlSSLCert) (*v1alpha1.SqlSSLCert, error)
+	Update(*v1alpha1.SqlSSLCert) (*v1alpha1.SqlSSLCert, error)
+	UpdateStatus(*v1alpha1.SqlSSLCert) (*v1alpha1.SqlSSLCert, error)
 	Delete(name string, options *v1.DeleteOptions) error
 	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.SqlSslCert, error)
-	List(opts v1.ListOptions) (*v1alpha1.SqlSslCertList, error)
+	Get(name string, options v1.GetOptions) (*v1alpha1.SqlSSLCert, error)
+	List(opts v1.ListOptions) (*v1alpha1.SqlSSLCertList, error)
 	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlSslCert, err error)
-	SqlSslCertExpansion
+	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlSSLCert, err error)
+	SqlSSLCertExpansion
 }
 
-// sqlSslCerts implements SqlSslCertInterface
-type sqlSslCerts struct {
+// sqlSSLCerts implements SqlSSLCertInterface
+type sqlSSLCerts struct {
 	client rest.Interface
 	ns     string
 }
 
-// newSqlSslCerts returns a SqlSslCerts
-func newSqlSslCerts(c *GoogleV1alpha1Client, namespace string) *sqlSslCerts {
-	return &sqlSslCerts{
+// newSqlSSLCerts returns a SqlSSLCerts
+func newSqlSSLCerts(c *GoogleV1alpha1Client, namespace string) *sqlSSLCerts {
+	return &sqlSSLCerts{
 		client: c.RESTClient(),
 		ns:     namespace,
 	}
 }
 
-// Get takes name of the sqlSslCert, and returns the corresponding sqlSslCert object, and an error if there is any.
-func (c *sqlSslCerts) Get(name string, options v1.GetOptions) (result *v1alpha1.SqlSslCert, err error) {
-	result = &v1alpha1.SqlSslCert{}
+// Get takes name of the sqlSSLCert, and returns the corresponding sqlSSLCert object, and an error if there is any.
+func (c *sqlSSLCerts) Get(name string, options v1.GetOptions) (result *v1alpha1.SqlSSLCert, err error) {
+	result = &v1alpha1.SqlSSLCert{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sqlsslcerts").
@@ -76,13 +76,13 @@ func (c *sqlSslCerts) Get(name string, options v1.GetOptions) (result *v1alpha1.
 	return
 }
 
-// List takes label and field selectors, and returns the list of SqlSslCerts that match those selectors.
-func (c *sqlSslCerts) List(opts v1.ListOptions) (result *v1alpha1.SqlSslCertList, err error) {
+// List takes label and field selectors, and returns the list of SqlSSLCerts that match those selectors.
+func (c *sqlSSLCerts) List(opts v1.ListOptions) (result *v1alpha1.SqlSSLCertList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
 	}
-	result = &v1alpha1.SqlSslCertList{}
+	result = &v1alpha1.SqlSSLCertList{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("sqlsslcerts").
@@ -93,8 +93,8 @@ func (c *sqlSslCerts) List(opts v1.ListOptions) (result *v1alpha1.SqlSslCertList
 	return
 }
 
-// Watch returns a watch.Interface that watches the requested sqlSslCerts.
-func (c *sqlSslCerts) Watch(opts v1.ListOptions) (watch.Interface, error) {
+// Watch returns a watch.Interface that watches the requested sqlSSLCerts.
+func (c *sqlSSLCerts) Watch(opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -108,26 +108,26 @@ func (c *sqlSslCerts) Watch(opts v1.ListOptions) (watch.Interface, error) {
 		Watch()
 }
 
-// Create takes the representation of a sqlSslCert and creates it.  Returns the server's representation of the sqlSslCert, and an error, if there is any.
-func (c *sqlSslCerts) Create(sqlSslCert *v1alpha1.SqlSslCert) (result *v1alpha1.SqlSslCert, err error) {
-	result = &v1alpha1.SqlSslCert{}
+// Create takes the representation of a sqlSSLCert and creates it.  Returns the server's representation of the sqlSSLCert, and an error, if there is any.
+func (c *sqlSSLCerts) Create(sqlSSLCert *v1alpha1.SqlSSLCert) (result *v1alpha1.SqlSSLCert, err error) {
+	result = &v1alpha1.SqlSSLCert{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("sqlsslcerts").
-		Body(sqlSslCert).
+		Body(sqlSSLCert).
 		Do().
 		Into(result)
 	return
 }
 
-// Update takes the representation of a sqlSslCert and updates it. Returns the server's representation of the sqlSslCert, and an error, if there is any.
-func (c *sqlSslCerts) Update(sqlSslCert *v1alpha1.SqlSslCert) (result *v1alpha1.SqlSslCert, err error) {
-	result = &v1alpha1.SqlSslCert{}
+// Update takes the representation of a sqlSSLCert and updates it. Returns the server's representation of the sqlSSLCert, and an error, if there is any.
+func (c *sqlSSLCerts) Update(sqlSSLCert *v1alpha1.SqlSSLCert) (result *v1alpha1.SqlSSLCert, err error) {
+	result = &v1alpha1.SqlSSLCert{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sqlsslcerts").
-		Name(sqlSslCert.Name).
-		Body(sqlSslCert).
+		Name(sqlSSLCert.Name).
+		Body(sqlSSLCert).
 		Do().
 		Into(result)
 	return
@@ -136,21 +136,21 @@ func (c *sqlSslCerts) Update(sqlSslCert *v1alpha1.SqlSslCert) (result *v1alpha1.
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
 
-func (c *sqlSslCerts) UpdateStatus(sqlSslCert *v1alpha1.SqlSslCert) (result *v1alpha1.SqlSslCert, err error) {
-	result = &v1alpha1.SqlSslCert{}
+func (c *sqlSSLCerts) UpdateStatus(sqlSSLCert *v1alpha1.SqlSSLCert) (result *v1alpha1.SqlSSLCert, err error) {
+	result = &v1alpha1.SqlSSLCert{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("sqlsslcerts").
-		Name(sqlSslCert.Name).
+		Name(sqlSSLCert.Name).
 		SubResource("status").
-		Body(sqlSslCert).
+		Body(sqlSSLCert).
 		Do().
 		Into(result)
 	return
 }
 
-// Delete takes name of the sqlSslCert and deletes it. Returns an error if one occurs.
-func (c *sqlSslCerts) Delete(name string, options *v1.DeleteOptions) error {
+// Delete takes name of the sqlSSLCert and deletes it. Returns an error if one occurs.
+func (c *sqlSSLCerts) Delete(name string, options *v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("sqlsslcerts").
@@ -161,7 +161,7 @@ func (c *sqlSslCerts) Delete(name string, options *v1.DeleteOptions) error {
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *sqlSslCerts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *sqlSSLCerts) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
 	var timeout time.Duration
 	if listOptions.TimeoutSeconds != nil {
 		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
@@ -176,9 +176,9 @@ func (c *sqlSslCerts) DeleteCollection(options *v1.DeleteOptions, listOptions v1
 		Error()
 }
 
-// Patch applies the patch and returns the patched sqlSslCert.
-func (c *sqlSslCerts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlSslCert, err error) {
-	result = &v1alpha1.SqlSslCert{}
+// Patch applies the patch and returns the patched sqlSSLCert.
+func (c *sqlSSLCerts) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.SqlSSLCert, err error) {
+	result = &v1alpha1.SqlSSLCert{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("sqlsslcerts").

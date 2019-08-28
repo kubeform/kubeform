@@ -29,43 +29,43 @@ import (
 	scheme "kubeform.dev/kubeform/client/clientset/versioned/scheme"
 )
 
-// ComputeSslCertificatesGetter has a method to return a ComputeSslCertificateInterface.
+// ComputeSSLCertificatesGetter has a method to return a ComputeSSLCertificateInterface.
 // A group's client should implement this interface.
-type ComputeSslCertificatesGetter interface {
-	ComputeSslCertificates(namespace string) ComputeSslCertificateInterface
+type ComputeSSLCertificatesGetter interface {
+	ComputeSSLCertificates(namespace string) ComputeSSLCertificateInterface
 }
 
-// ComputeSslCertificateInterface has methods to work with ComputeSslCertificate resources.
-type ComputeSslCertificateInterface interface {
-	Create(*v1alpha1.ComputeSslCertificate) (*v1alpha1.ComputeSslCertificate, error)
-	Update(*v1alpha1.ComputeSslCertificate) (*v1alpha1.ComputeSslCertificate, error)
-	UpdateStatus(*v1alpha1.ComputeSslCertificate) (*v1alpha1.ComputeSslCertificate, error)
+// ComputeSSLCertificateInterface has methods to work with ComputeSSLCertificate resources.
+type ComputeSSLCertificateInterface interface {
+	Create(*v1alpha1.ComputeSSLCertificate) (*v1alpha1.ComputeSSLCertificate, error)
+	Update(*v1alpha1.ComputeSSLCertificate) (*v1alpha1.ComputeSSLCertificate, error)
+	UpdateStatus(*v1alpha1.ComputeSSLCertificate) (*v1alpha1.ComputeSSLCertificate, error)
 	Delete(name string, options *v1.DeleteOptions) error
 	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeSslCertificate, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeSslCertificateList, error)
+	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeSSLCertificate, error)
+	List(opts v1.ListOptions) (*v1alpha1.ComputeSSLCertificateList, error)
 	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSslCertificate, err error)
-	ComputeSslCertificateExpansion
+	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSSLCertificate, err error)
+	ComputeSSLCertificateExpansion
 }
 
-// computeSslCertificates implements ComputeSslCertificateInterface
-type computeSslCertificates struct {
+// computeSSLCertificates implements ComputeSSLCertificateInterface
+type computeSSLCertificates struct {
 	client rest.Interface
 	ns     string
 }
 
-// newComputeSslCertificates returns a ComputeSslCertificates
-func newComputeSslCertificates(c *GoogleV1alpha1Client, namespace string) *computeSslCertificates {
-	return &computeSslCertificates{
+// newComputeSSLCertificates returns a ComputeSSLCertificates
+func newComputeSSLCertificates(c *GoogleV1alpha1Client, namespace string) *computeSSLCertificates {
+	return &computeSSLCertificates{
 		client: c.RESTClient(),
 		ns:     namespace,
 	}
 }
 
-// Get takes name of the computeSslCertificate, and returns the corresponding computeSslCertificate object, and an error if there is any.
-func (c *computeSslCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeSslCertificate, err error) {
-	result = &v1alpha1.ComputeSslCertificate{}
+// Get takes name of the computeSSLCertificate, and returns the corresponding computeSSLCertificate object, and an error if there is any.
+func (c *computeSSLCertificates) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeSSLCertificate, err error) {
+	result = &v1alpha1.ComputeSSLCertificate{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computesslcertificates").
@@ -76,13 +76,13 @@ func (c *computeSslCertificates) Get(name string, options v1.GetOptions) (result
 	return
 }
 
-// List takes label and field selectors, and returns the list of ComputeSslCertificates that match those selectors.
-func (c *computeSslCertificates) List(opts v1.ListOptions) (result *v1alpha1.ComputeSslCertificateList, err error) {
+// List takes label and field selectors, and returns the list of ComputeSSLCertificates that match those selectors.
+func (c *computeSSLCertificates) List(opts v1.ListOptions) (result *v1alpha1.ComputeSSLCertificateList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
 	}
-	result = &v1alpha1.ComputeSslCertificateList{}
+	result = &v1alpha1.ComputeSSLCertificateList{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computesslcertificates").
@@ -93,8 +93,8 @@ func (c *computeSslCertificates) List(opts v1.ListOptions) (result *v1alpha1.Com
 	return
 }
 
-// Watch returns a watch.Interface that watches the requested computeSslCertificates.
-func (c *computeSslCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
+// Watch returns a watch.Interface that watches the requested computeSSLCertificates.
+func (c *computeSSLCertificates) Watch(opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -108,26 +108,26 @@ func (c *computeSslCertificates) Watch(opts v1.ListOptions) (watch.Interface, er
 		Watch()
 }
 
-// Create takes the representation of a computeSslCertificate and creates it.  Returns the server's representation of the computeSslCertificate, and an error, if there is any.
-func (c *computeSslCertificates) Create(computeSslCertificate *v1alpha1.ComputeSslCertificate) (result *v1alpha1.ComputeSslCertificate, err error) {
-	result = &v1alpha1.ComputeSslCertificate{}
+// Create takes the representation of a computeSSLCertificate and creates it.  Returns the server's representation of the computeSSLCertificate, and an error, if there is any.
+func (c *computeSSLCertificates) Create(computeSSLCertificate *v1alpha1.ComputeSSLCertificate) (result *v1alpha1.ComputeSSLCertificate, err error) {
+	result = &v1alpha1.ComputeSSLCertificate{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computesslcertificates").
-		Body(computeSslCertificate).
+		Body(computeSSLCertificate).
 		Do().
 		Into(result)
 	return
 }
 
-// Update takes the representation of a computeSslCertificate and updates it. Returns the server's representation of the computeSslCertificate, and an error, if there is any.
-func (c *computeSslCertificates) Update(computeSslCertificate *v1alpha1.ComputeSslCertificate) (result *v1alpha1.ComputeSslCertificate, err error) {
-	result = &v1alpha1.ComputeSslCertificate{}
+// Update takes the representation of a computeSSLCertificate and updates it. Returns the server's representation of the computeSSLCertificate, and an error, if there is any.
+func (c *computeSSLCertificates) Update(computeSSLCertificate *v1alpha1.ComputeSSLCertificate) (result *v1alpha1.ComputeSSLCertificate, err error) {
+	result = &v1alpha1.ComputeSSLCertificate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computesslcertificates").
-		Name(computeSslCertificate.Name).
-		Body(computeSslCertificate).
+		Name(computeSSLCertificate.Name).
+		Body(computeSSLCertificate).
 		Do().
 		Into(result)
 	return
@@ -136,21 +136,21 @@ func (c *computeSslCertificates) Update(computeSslCertificate *v1alpha1.ComputeS
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
 
-func (c *computeSslCertificates) UpdateStatus(computeSslCertificate *v1alpha1.ComputeSslCertificate) (result *v1alpha1.ComputeSslCertificate, err error) {
-	result = &v1alpha1.ComputeSslCertificate{}
+func (c *computeSSLCertificates) UpdateStatus(computeSSLCertificate *v1alpha1.ComputeSSLCertificate) (result *v1alpha1.ComputeSSLCertificate, err error) {
+	result = &v1alpha1.ComputeSSLCertificate{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computesslcertificates").
-		Name(computeSslCertificate.Name).
+		Name(computeSSLCertificate.Name).
 		SubResource("status").
-		Body(computeSslCertificate).
+		Body(computeSSLCertificate).
 		Do().
 		Into(result)
 	return
 }
 
-// Delete takes name of the computeSslCertificate and deletes it. Returns an error if one occurs.
-func (c *computeSslCertificates) Delete(name string, options *v1.DeleteOptions) error {
+// Delete takes name of the computeSSLCertificate and deletes it. Returns an error if one occurs.
+func (c *computeSSLCertificates) Delete(name string, options *v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computesslcertificates").
@@ -161,7 +161,7 @@ func (c *computeSslCertificates) Delete(name string, options *v1.DeleteOptions) 
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeSslCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeSSLCertificates) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
 	var timeout time.Duration
 	if listOptions.TimeoutSeconds != nil {
 		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
@@ -176,9 +176,9 @@ func (c *computeSslCertificates) DeleteCollection(options *v1.DeleteOptions, lis
 		Error()
 }
 
-// Patch applies the patch and returns the patched computeSslCertificate.
-func (c *computeSslCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSslCertificate, err error) {
-	result = &v1alpha1.ComputeSslCertificate{}
+// Patch applies the patch and returns the patched computeSSLCertificate.
+func (c *computeSSLCertificates) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSSLCertificate, err error) {
+	result = &v1alpha1.ComputeSSLCertificate{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computesslcertificates").

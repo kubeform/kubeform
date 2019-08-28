@@ -2370,13 +2370,13 @@ type LbListenerRuleListerExpansion interface{}
 // LbListenerRuleNamespaceLister.
 type LbListenerRuleNamespaceListerExpansion interface{}
 
-// LbSslNegotiationPolicyListerExpansion allows custom methods to be added to
-// LbSslNegotiationPolicyLister.
-type LbSslNegotiationPolicyListerExpansion interface{}
+// LbSSLNegotiationPolicyListerExpansion allows custom methods to be added to
+// LbSSLNegotiationPolicyLister.
+type LbSSLNegotiationPolicyListerExpansion interface{}
 
-// LbSslNegotiationPolicyNamespaceListerExpansion allows custom methods to be added to
-// LbSslNegotiationPolicyNamespaceLister.
-type LbSslNegotiationPolicyNamespaceListerExpansion interface{}
+// LbSSLNegotiationPolicyNamespaceListerExpansion allows custom methods to be added to
+// LbSSLNegotiationPolicyNamespaceLister.
+type LbSSLNegotiationPolicyNamespaceListerExpansion interface{}
 
 // LbTargetGroupListerExpansion allows custom methods to be added to
 // LbTargetGroupLister.

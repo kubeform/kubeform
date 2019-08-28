@@ -31,59 +31,59 @@ import (
 	v1alpha1 "kubeform.dev/kubeform/client/listers/aws/v1alpha1"
 )
 
-// LbSslNegotiationPolicyInformer provides access to a shared informer and lister for
-// LbSslNegotiationPolicies.
-type LbSslNegotiationPolicyInformer interface {
+// LbSSLNegotiationPolicyInformer provides access to a shared informer and lister for
+// LbSSLNegotiationPolicies.
+type LbSSLNegotiationPolicyInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.LbSslNegotiationPolicyLister
+	Lister() v1alpha1.LbSSLNegotiationPolicyLister
 }
 
-type lbSslNegotiationPolicyInformer struct {
+type lbSSLNegotiationPolicyInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewLbSslNegotiationPolicyInformer constructs a new informer for LbSslNegotiationPolicy type.
+// NewLbSSLNegotiationPolicyInformer constructs a new informer for LbSSLNegotiationPolicy type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewLbSslNegotiationPolicyInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredLbSslNegotiationPolicyInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewLbSSLNegotiationPolicyInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredLbSSLNegotiationPolicyInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredLbSslNegotiationPolicyInformer constructs a new informer for LbSslNegotiationPolicy type.
+// NewFilteredLbSSLNegotiationPolicyInformer constructs a new informer for LbSSLNegotiationPolicy type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredLbSslNegotiationPolicyInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredLbSSLNegotiationPolicyInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AwsV1alpha1().LbSslNegotiationPolicies(namespace).List(options)
+				return client.AwsV1alpha1().LbSSLNegotiationPolicies(namespace).List(options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AwsV1alpha1().LbSslNegotiationPolicies(namespace).Watch(options)
+				return client.AwsV1alpha1().LbSSLNegotiationPolicies(namespace).Watch(options)
 			},
 		},
-		&awsv1alpha1.LbSslNegotiationPolicy{},
+		&awsv1alpha1.LbSSLNegotiationPolicy{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *lbSslNegotiationPolicyInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredLbSslNegotiationPolicyInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *lbSSLNegotiationPolicyInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredLbSSLNegotiationPolicyInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *lbSslNegotiationPolicyInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&awsv1alpha1.LbSslNegotiationPolicy{}, f.defaultInformer)
+func (f *lbSSLNegotiationPolicyInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&awsv1alpha1.LbSSLNegotiationPolicy{}, f.defaultInformer)
 }
 
-func (f *lbSslNegotiationPolicyInformer) Lister() v1alpha1.LbSslNegotiationPolicyLister {
-	return v1alpha1.NewLbSslNegotiationPolicyLister(f.Informer().GetIndexer())
+func (f *lbSSLNegotiationPolicyInformer) Lister() v1alpha1.LbSSLNegotiationPolicyLister {
+	return v1alpha1.NewLbSSLNegotiationPolicyLister(f.Informer().GetIndexer())
 }

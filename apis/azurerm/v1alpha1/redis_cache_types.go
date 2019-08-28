@@ -1,8 +1,10 @@
 package v1alpha1
 
 import (
-	core "k8s.io/api/core/v1"
+    "encoding/json"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+	core "k8s.io/api/core/v1"
 	"kubeform.dev/kubeform/apis"
 )
 
@@ -64,13 +66,13 @@ type RedisCacheSpec struct {
 
 	Capacity int `json:"capacity" tf:"capacity"`
 	// +optional
-	EnableNonSslPort bool   `json:"enableNonSslPort,omitempty" tf:"enable_non_ssl_port,omitempty"`
+	EnableNonSSLPort bool   `json:"enableNonSSLPort,omitempty" tf:"enable_non_ssl_port,omitempty"`
 	Family           string `json:"family" tf:"family"`
 	// +optional
 	Hostname string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 	Location string `json:"location" tf:"location"`
 	// +optional
-	MinimumTlsVersion string `json:"minimumTlsVersion,omitempty" tf:"minimum_tls_version,omitempty"`
+	MinimumTLSVersion string `json:"minimumTLSVersion,omitempty" tf:"minimum_tls_version,omitempty"`
 	Name              string `json:"name" tf:"name"`
 	// +optional
 	PatchSchedule []RedisCacheSpecPatchSchedule `json:"patchSchedule,omitempty" tf:"patch_schedule,omitempty"`
@@ -100,14 +102,16 @@ type RedisCacheSpec struct {
 	Zones []string `json:"zones,omitempty" tf:"zones,omitempty"`
 }
 
+
+
 type RedisCacheStatus struct {
-	// Resource generation, which is updated on mutation by the API Server.
+    // Resource generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
 	// +optional
-	Output *RedisCacheSpec `json:"output,omitempty"`
-	// +optional
-	State *apis.State `json:"state,omitempty"`
+    Output *RedisCacheSpec `json:"output,omitempty"`
+    // +optional
+    State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

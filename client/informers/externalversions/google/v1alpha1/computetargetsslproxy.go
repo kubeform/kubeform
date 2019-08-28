@@ -31,59 +31,59 @@ import (
 	v1alpha1 "kubeform.dev/kubeform/client/listers/google/v1alpha1"
 )
 
-// ComputeTargetSslProxyInformer provides access to a shared informer and lister for
-// ComputeTargetSslProxies.
-type ComputeTargetSslProxyInformer interface {
+// ComputeTargetSSLProxyInformer provides access to a shared informer and lister for
+// ComputeTargetSSLProxies.
+type ComputeTargetSSLProxyInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.ComputeTargetSslProxyLister
+	Lister() v1alpha1.ComputeTargetSSLProxyLister
 }
 
-type computeTargetSslProxyInformer struct {
+type computeTargetSSLProxyInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewComputeTargetSslProxyInformer constructs a new informer for ComputeTargetSslProxy type.
+// NewComputeTargetSSLProxyInformer constructs a new informer for ComputeTargetSSLProxy type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewComputeTargetSslProxyInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredComputeTargetSslProxyInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewComputeTargetSSLProxyInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredComputeTargetSSLProxyInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredComputeTargetSslProxyInformer constructs a new informer for ComputeTargetSslProxy type.
+// NewFilteredComputeTargetSSLProxyInformer constructs a new informer for ComputeTargetSSLProxy type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredComputeTargetSslProxyInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredComputeTargetSSLProxyInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.GoogleV1alpha1().ComputeTargetSslProxies(namespace).List(options)
+				return client.GoogleV1alpha1().ComputeTargetSSLProxies(namespace).List(options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.GoogleV1alpha1().ComputeTargetSslProxies(namespace).Watch(options)
+				return client.GoogleV1alpha1().ComputeTargetSSLProxies(namespace).Watch(options)
 			},
 		},
-		&googlev1alpha1.ComputeTargetSslProxy{},
+		&googlev1alpha1.ComputeTargetSSLProxy{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *computeTargetSslProxyInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredComputeTargetSslProxyInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *computeTargetSSLProxyInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredComputeTargetSSLProxyInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *computeTargetSslProxyInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&googlev1alpha1.ComputeTargetSslProxy{}, f.defaultInformer)
+func (f *computeTargetSSLProxyInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&googlev1alpha1.ComputeTargetSSLProxy{}, f.defaultInformer)
 }
 
-func (f *computeTargetSslProxyInformer) Lister() v1alpha1.ComputeTargetSslProxyLister {
-	return v1alpha1.NewComputeTargetSslProxyLister(f.Informer().GetIndexer())
+func (f *computeTargetSSLProxyInformer) Lister() v1alpha1.ComputeTargetSSLProxyLister {
+	return v1alpha1.NewComputeTargetSSLProxyLister(f.Informer().GetIndexer())
 }

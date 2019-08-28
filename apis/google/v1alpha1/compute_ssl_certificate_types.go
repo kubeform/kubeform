@@ -1,8 +1,10 @@
 package v1alpha1
 
 import (
-	core "k8s.io/api/core/v1"
+    "encoding/json"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+	core "k8s.io/api/core/v1"
 	"kubeform.dev/kubeform/apis"
 )
 
@@ -11,14 +13,14 @@ import (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 
-type ComputeSslCertificate struct {
+type ComputeSSLCertificate struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              ComputeSslCertificateSpec   `json:"spec,omitempty"`
-	Status            ComputeSslCertificateStatus `json:"status,omitempty"`
+	Spec              ComputeSSLCertificateSpec   `json:"spec,omitempty"`
+	Status            ComputeSSLCertificateStatus `json:"status,omitempty"`
 }
 
-type ComputeSslCertificateSpec struct {
+type ComputeSSLCertificateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
@@ -43,23 +45,25 @@ type ComputeSslCertificateSpec struct {
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 }
 
-type ComputeSslCertificateStatus struct {
-	// Resource generation, which is updated on mutation by the API Server.
+
+
+type ComputeSSLCertificateStatus struct {
+    // Resource generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
 	// +optional
-	Output *ComputeSslCertificateSpec `json:"output,omitempty"`
-	// +optional
-	State *apis.State `json:"state,omitempty"`
+    Output *ComputeSSLCertificateSpec `json:"output,omitempty"`
+    // +optional
+    State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 
-// ComputeSslCertificateList is a list of ComputeSslCertificates
-type ComputeSslCertificateList struct {
+// ComputeSSLCertificateList is a list of ComputeSSLCertificates
+type ComputeSSLCertificateList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	// Items is a list of ComputeSslCertificate CRD objects
-	Items []ComputeSslCertificate `json:"items,omitempty"`
+	// Items is a list of ComputeSSLCertificate CRD objects
+	Items []ComputeSSLCertificate `json:"items,omitempty"`
 }

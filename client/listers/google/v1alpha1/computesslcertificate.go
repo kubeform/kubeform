@@ -25,64 +25,64 @@ import (
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 )
 
-// ComputeSslCertificateLister helps list ComputeSslCertificates.
-type ComputeSslCertificateLister interface {
-	// List lists all ComputeSslCertificates in the indexer.
-	List(selector labels.Selector) (ret []*v1alpha1.ComputeSslCertificate, err error)
-	// ComputeSslCertificates returns an object that can list and get ComputeSslCertificates.
-	ComputeSslCertificates(namespace string) ComputeSslCertificateNamespaceLister
-	ComputeSslCertificateListerExpansion
+// ComputeSSLCertificateLister helps list ComputeSSLCertificates.
+type ComputeSSLCertificateLister interface {
+	// List lists all ComputeSSLCertificates in the indexer.
+	List(selector labels.Selector) (ret []*v1alpha1.ComputeSSLCertificate, err error)
+	// ComputeSSLCertificates returns an object that can list and get ComputeSSLCertificates.
+	ComputeSSLCertificates(namespace string) ComputeSSLCertificateNamespaceLister
+	ComputeSSLCertificateListerExpansion
 }
 
-// computeSslCertificateLister implements the ComputeSslCertificateLister interface.
-type computeSslCertificateLister struct {
+// computeSSLCertificateLister implements the ComputeSSLCertificateLister interface.
+type computeSSLCertificateLister struct {
 	indexer cache.Indexer
 }
 
-// NewComputeSslCertificateLister returns a new ComputeSslCertificateLister.
-func NewComputeSslCertificateLister(indexer cache.Indexer) ComputeSslCertificateLister {
-	return &computeSslCertificateLister{indexer: indexer}
+// NewComputeSSLCertificateLister returns a new ComputeSSLCertificateLister.
+func NewComputeSSLCertificateLister(indexer cache.Indexer) ComputeSSLCertificateLister {
+	return &computeSSLCertificateLister{indexer: indexer}
 }
 
-// List lists all ComputeSslCertificates in the indexer.
-func (s *computeSslCertificateLister) List(selector labels.Selector) (ret []*v1alpha1.ComputeSslCertificate, err error) {
+// List lists all ComputeSSLCertificates in the indexer.
+func (s *computeSSLCertificateLister) List(selector labels.Selector) (ret []*v1alpha1.ComputeSSLCertificate, err error) {
 	err = cache.ListAll(s.indexer, selector, func(m interface{}) {
-		ret = append(ret, m.(*v1alpha1.ComputeSslCertificate))
+		ret = append(ret, m.(*v1alpha1.ComputeSSLCertificate))
 	})
 	return ret, err
 }
 
-// ComputeSslCertificates returns an object that can list and get ComputeSslCertificates.
-func (s *computeSslCertificateLister) ComputeSslCertificates(namespace string) ComputeSslCertificateNamespaceLister {
-	return computeSslCertificateNamespaceLister{indexer: s.indexer, namespace: namespace}
+// ComputeSSLCertificates returns an object that can list and get ComputeSSLCertificates.
+func (s *computeSSLCertificateLister) ComputeSSLCertificates(namespace string) ComputeSSLCertificateNamespaceLister {
+	return computeSSLCertificateNamespaceLister{indexer: s.indexer, namespace: namespace}
 }
 
-// ComputeSslCertificateNamespaceLister helps list and get ComputeSslCertificates.
-type ComputeSslCertificateNamespaceLister interface {
-	// List lists all ComputeSslCertificates in the indexer for a given namespace.
-	List(selector labels.Selector) (ret []*v1alpha1.ComputeSslCertificate, err error)
-	// Get retrieves the ComputeSslCertificate from the indexer for a given namespace and name.
-	Get(name string) (*v1alpha1.ComputeSslCertificate, error)
-	ComputeSslCertificateNamespaceListerExpansion
+// ComputeSSLCertificateNamespaceLister helps list and get ComputeSSLCertificates.
+type ComputeSSLCertificateNamespaceLister interface {
+	// List lists all ComputeSSLCertificates in the indexer for a given namespace.
+	List(selector labels.Selector) (ret []*v1alpha1.ComputeSSLCertificate, err error)
+	// Get retrieves the ComputeSSLCertificate from the indexer for a given namespace and name.
+	Get(name string) (*v1alpha1.ComputeSSLCertificate, error)
+	ComputeSSLCertificateNamespaceListerExpansion
 }
 
-// computeSslCertificateNamespaceLister implements the ComputeSslCertificateNamespaceLister
+// computeSSLCertificateNamespaceLister implements the ComputeSSLCertificateNamespaceLister
 // interface.
-type computeSslCertificateNamespaceLister struct {
+type computeSSLCertificateNamespaceLister struct {
 	indexer   cache.Indexer
 	namespace string
 }
 
-// List lists all ComputeSslCertificates in the indexer for a given namespace.
-func (s computeSslCertificateNamespaceLister) List(selector labels.Selector) (ret []*v1alpha1.ComputeSslCertificate, err error) {
+// List lists all ComputeSSLCertificates in the indexer for a given namespace.
+func (s computeSSLCertificateNamespaceLister) List(selector labels.Selector) (ret []*v1alpha1.ComputeSSLCertificate, err error) {
 	err = cache.ListAllByNamespace(s.indexer, s.namespace, selector, func(m interface{}) {
-		ret = append(ret, m.(*v1alpha1.ComputeSslCertificate))
+		ret = append(ret, m.(*v1alpha1.ComputeSSLCertificate))
 	})
 	return ret, err
 }
 
-// Get retrieves the ComputeSslCertificate from the indexer for a given namespace and name.
-func (s computeSslCertificateNamespaceLister) Get(name string) (*v1alpha1.ComputeSslCertificate, error) {
+// Get retrieves the ComputeSSLCertificate from the indexer for a given namespace and name.
+func (s computeSSLCertificateNamespaceLister) Get(name string) (*v1alpha1.ComputeSSLCertificate, error) {
 	obj, exists, err := s.indexer.GetByKey(s.namespace + "/" + name)
 	if err != nil {
 		return nil, err
@@ -90,5 +90,5 @@ func (s computeSslCertificateNamespaceLister) Get(name string) (*v1alpha1.Comput
 	if !exists {
 		return nil, errors.NewNotFound(v1alpha1.Resource("computesslcertificate"), name)
 	}
-	return obj.(*v1alpha1.ComputeSslCertificate), nil
+	return obj.(*v1alpha1.ComputeSSLCertificate), nil
 }

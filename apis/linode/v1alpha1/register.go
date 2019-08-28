@@ -37,42 +37,43 @@ func Resource(resource string) schema.GroupResource {
 // Adds the list of known types to api.Scheme.
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
-
-		&Instance{},
-		&InstanceList{},
-
-		&Domain{},
-		&DomainList{},
-
-		&NodebalancerConfig{},
-		&NodebalancerConfigList{},
-
-		&Sshkey{},
-		&SshkeyList{},
-
-		&Volume{},
-		&VolumeList{},
-
-		&Image{},
-		&ImageList{},
-
-		&DomainRecord{},
-		&DomainRecordList{},
-
-		&Nodebalancer{},
-		&NodebalancerList{},
-
-		&NodebalancerNode{},
-		&NodebalancerNodeList{},
-
-		&Rdns{},
-		&RdnsList{},
-
-		&Stackscript{},
-		&StackscriptList{},
-
-		&Token{},
-		&TokenList{},
+    
+        &Rdns{},
+        &RdnsList{},
+    
+        &Sshkey{},
+        &SshkeyList{},
+    
+        &Token{},
+        &TokenList{},
+    
+        &Instance{},
+        &InstanceList{},
+    
+        &Nodebalancer{},
+        &NodebalancerList{},
+    
+        &NodebalancerConfig{},
+        &NodebalancerConfigList{},
+    
+        &NodebalancerNode{},
+        &NodebalancerNodeList{},
+    
+        &Volume{},
+        &VolumeList{},
+    
+        &Image{},
+        &ImageList{},
+    
+        &Domain{},
+        &DomainList{},
+    
+        &DomainRecord{},
+        &DomainRecordList{},
+    
+        &Stackscript{},
+        &StackscriptList{},
+    
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

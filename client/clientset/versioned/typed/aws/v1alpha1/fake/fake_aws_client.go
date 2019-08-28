@@ -1204,8 +1204,8 @@ func (c *FakeAwsV1alpha1) LbListenerRules(namespace string) v1alpha1.LbListenerR
 	return &FakeLbListenerRules{c, namespace}
 }
 
-func (c *FakeAwsV1alpha1) LbSslNegotiationPolicies(namespace string) v1alpha1.LbSslNegotiationPolicyInterface {
-	return &FakeLbSslNegotiationPolicies{c, namespace}
+func (c *FakeAwsV1alpha1) LbSSLNegotiationPolicies(namespace string) v1alpha1.LbSSLNegotiationPolicyInterface {
+	return &FakeLbSSLNegotiationPolicies{c, namespace}
 }
 
 func (c *FakeAwsV1alpha1) LbTargetGroups(namespace string) v1alpha1.LbTargetGroupInterface {

@@ -321,7 +321,7 @@ type AwsV1alpha1Interface interface {
 	LbListenersGetter
 	LbListenerCertificatesGetter
 	LbListenerRulesGetter
-	LbSslNegotiationPoliciesGetter
+	LbSSLNegotiationPoliciesGetter
 	LbTargetGroupsGetter
 	LbTargetGroupAttachmentsGetter
 	LicensemanagerAssociationsGetter
@@ -1724,8 +1724,8 @@ func (c *AwsV1alpha1Client) LbListenerRules(namespace string) LbListenerRuleInte
 	return newLbListenerRules(c, namespace)
 }
 
-func (c *AwsV1alpha1Client) LbSslNegotiationPolicies(namespace string) LbSslNegotiationPolicyInterface {
-	return newLbSslNegotiationPolicies(c, namespace)
+func (c *AwsV1alpha1Client) LbSSLNegotiationPolicies(namespace string) LbSSLNegotiationPolicyInterface {
+	return newLbSSLNegotiationPolicies(c, namespace)
 }
 
 func (c *AwsV1alpha1Client) LbTargetGroups(namespace string) LbTargetGroupInterface {

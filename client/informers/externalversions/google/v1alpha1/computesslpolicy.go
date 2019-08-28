@@ -31,59 +31,59 @@ import (
 	v1alpha1 "kubeform.dev/kubeform/client/listers/google/v1alpha1"
 )
 
-// ComputeSslPolicyInformer provides access to a shared informer and lister for
-// ComputeSslPolicies.
-type ComputeSslPolicyInformer interface {
+// ComputeSSLPolicyInformer provides access to a shared informer and lister for
+// ComputeSSLPolicies.
+type ComputeSSLPolicyInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.ComputeSslPolicyLister
+	Lister() v1alpha1.ComputeSSLPolicyLister
 }
 
-type computeSslPolicyInformer struct {
+type computeSSLPolicyInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewComputeSslPolicyInformer constructs a new informer for ComputeSslPolicy type.
+// NewComputeSSLPolicyInformer constructs a new informer for ComputeSSLPolicy type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewComputeSslPolicyInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredComputeSslPolicyInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewComputeSSLPolicyInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredComputeSSLPolicyInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredComputeSslPolicyInformer constructs a new informer for ComputeSslPolicy type.
+// NewFilteredComputeSSLPolicyInformer constructs a new informer for ComputeSSLPolicy type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredComputeSslPolicyInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredComputeSSLPolicyInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.GoogleV1alpha1().ComputeSslPolicies(namespace).List(options)
+				return client.GoogleV1alpha1().ComputeSSLPolicies(namespace).List(options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.GoogleV1alpha1().ComputeSslPolicies(namespace).Watch(options)
+				return client.GoogleV1alpha1().ComputeSSLPolicies(namespace).Watch(options)
 			},
 		},
-		&googlev1alpha1.ComputeSslPolicy{},
+		&googlev1alpha1.ComputeSSLPolicy{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *computeSslPolicyInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredComputeSslPolicyInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *computeSSLPolicyInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredComputeSSLPolicyInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *computeSslPolicyInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&googlev1alpha1.ComputeSslPolicy{}, f.defaultInformer)
+func (f *computeSSLPolicyInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&googlev1alpha1.ComputeSSLPolicy{}, f.defaultInformer)
 }
 
-func (f *computeSslPolicyInformer) Lister() v1alpha1.ComputeSslPolicyLister {
-	return v1alpha1.NewComputeSslPolicyLister(f.Informer().GetIndexer())
+func (f *computeSSLPolicyInformer) Lister() v1alpha1.ComputeSSLPolicyLister {
+	return v1alpha1.NewComputeSSLPolicyLister(f.Informer().GetIndexer())
 }

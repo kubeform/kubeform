@@ -28,31 +28,31 @@ import (
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 )
 
-// FakeComputeSslPolicies implements ComputeSslPolicyInterface
-type FakeComputeSslPolicies struct {
+// FakeComputeSSLPolicies implements ComputeSSLPolicyInterface
+type FakeComputeSSLPolicies struct {
 	Fake *FakeGoogleV1alpha1
 	ns   string
 }
 
 var computesslpoliciesResource = schema.GroupVersionResource{Group: "google.kubeform.com", Version: "v1alpha1", Resource: "computesslpolicies"}
 
-var computesslpoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeSslPolicy"}
+var computesslpoliciesKind = schema.GroupVersionKind{Group: "google.kubeform.com", Version: "v1alpha1", Kind: "ComputeSSLPolicy"}
 
-// Get takes name of the computeSslPolicy, and returns the corresponding computeSslPolicy object, and an error if there is any.
-func (c *FakeComputeSslPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeSslPolicy, err error) {
+// Get takes name of the computeSSLPolicy, and returns the corresponding computeSSLPolicy object, and an error if there is any.
+func (c *FakeComputeSSLPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeSSLPolicy, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewGetAction(computesslpoliciesResource, c.ns, name), &v1alpha1.ComputeSslPolicy{})
+		Invokes(testing.NewGetAction(computesslpoliciesResource, c.ns, name), &v1alpha1.ComputeSSLPolicy{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.ComputeSslPolicy), err
+	return obj.(*v1alpha1.ComputeSSLPolicy), err
 }
 
-// List takes label and field selectors, and returns the list of ComputeSslPolicies that match those selectors.
-func (c *FakeComputeSslPolicies) List(opts v1.ListOptions) (result *v1alpha1.ComputeSslPolicyList, err error) {
+// List takes label and field selectors, and returns the list of ComputeSSLPolicies that match those selectors.
+func (c *FakeComputeSSLPolicies) List(opts v1.ListOptions) (result *v1alpha1.ComputeSSLPolicyList, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewListAction(computesslpoliciesResource, computesslpoliciesKind, c.ns, opts), &v1alpha1.ComputeSslPolicyList{})
+		Invokes(testing.NewListAction(computesslpoliciesResource, computesslpoliciesKind, c.ns, opts), &v1alpha1.ComputeSSLPolicyList{})
 
 	if obj == nil {
 		return nil, err
@@ -62,8 +62,8 @@ func (c *FakeComputeSslPolicies) List(opts v1.ListOptions) (result *v1alpha1.Com
 	if label == nil {
 		label = labels.Everything()
 	}
-	list := &v1alpha1.ComputeSslPolicyList{ListMeta: obj.(*v1alpha1.ComputeSslPolicyList).ListMeta}
-	for _, item := range obj.(*v1alpha1.ComputeSslPolicyList).Items {
+	list := &v1alpha1.ComputeSSLPolicyList{ListMeta: obj.(*v1alpha1.ComputeSSLPolicyList).ListMeta}
+	for _, item := range obj.(*v1alpha1.ComputeSSLPolicyList).Items {
 		if label.Matches(labels.Set(item.Labels)) {
 			list.Items = append(list.Items, item)
 		}
@@ -71,70 +71,70 @@ func (c *FakeComputeSslPolicies) List(opts v1.ListOptions) (result *v1alpha1.Com
 	return list, err
 }
 
-// Watch returns a watch.Interface that watches the requested computeSslPolicies.
-func (c *FakeComputeSslPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+// Watch returns a watch.Interface that watches the requested computeSSLPolicies.
+func (c *FakeComputeSSLPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(computesslpoliciesResource, c.ns, opts))
 
 }
 
-// Create takes the representation of a computeSslPolicy and creates it.  Returns the server's representation of the computeSslPolicy, and an error, if there is any.
-func (c *FakeComputeSslPolicies) Create(computeSslPolicy *v1alpha1.ComputeSslPolicy) (result *v1alpha1.ComputeSslPolicy, err error) {
+// Create takes the representation of a computeSSLPolicy and creates it.  Returns the server's representation of the computeSSLPolicy, and an error, if there is any.
+func (c *FakeComputeSSLPolicies) Create(computeSSLPolicy *v1alpha1.ComputeSSLPolicy) (result *v1alpha1.ComputeSSLPolicy, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewCreateAction(computesslpoliciesResource, c.ns, computeSslPolicy), &v1alpha1.ComputeSslPolicy{})
+		Invokes(testing.NewCreateAction(computesslpoliciesResource, c.ns, computeSSLPolicy), &v1alpha1.ComputeSSLPolicy{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.ComputeSslPolicy), err
+	return obj.(*v1alpha1.ComputeSSLPolicy), err
 }
 
-// Update takes the representation of a computeSslPolicy and updates it. Returns the server's representation of the computeSslPolicy, and an error, if there is any.
-func (c *FakeComputeSslPolicies) Update(computeSslPolicy *v1alpha1.ComputeSslPolicy) (result *v1alpha1.ComputeSslPolicy, err error) {
+// Update takes the representation of a computeSSLPolicy and updates it. Returns the server's representation of the computeSSLPolicy, and an error, if there is any.
+func (c *FakeComputeSSLPolicies) Update(computeSSLPolicy *v1alpha1.ComputeSSLPolicy) (result *v1alpha1.ComputeSSLPolicy, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewUpdateAction(computesslpoliciesResource, c.ns, computeSslPolicy), &v1alpha1.ComputeSslPolicy{})
+		Invokes(testing.NewUpdateAction(computesslpoliciesResource, c.ns, computeSSLPolicy), &v1alpha1.ComputeSSLPolicy{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.ComputeSslPolicy), err
+	return obj.(*v1alpha1.ComputeSSLPolicy), err
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeComputeSslPolicies) UpdateStatus(computeSslPolicy *v1alpha1.ComputeSslPolicy) (*v1alpha1.ComputeSslPolicy, error) {
+func (c *FakeComputeSSLPolicies) UpdateStatus(computeSSLPolicy *v1alpha1.ComputeSSLPolicy) (*v1alpha1.ComputeSSLPolicy, error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewUpdateSubresourceAction(computesslpoliciesResource, "status", c.ns, computeSslPolicy), &v1alpha1.ComputeSslPolicy{})
+		Invokes(testing.NewUpdateSubresourceAction(computesslpoliciesResource, "status", c.ns, computeSSLPolicy), &v1alpha1.ComputeSSLPolicy{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.ComputeSslPolicy), err
+	return obj.(*v1alpha1.ComputeSSLPolicy), err
 }
 
-// Delete takes name of the computeSslPolicy and deletes it. Returns an error if one occurs.
-func (c *FakeComputeSslPolicies) Delete(name string, options *v1.DeleteOptions) error {
+// Delete takes name of the computeSSLPolicy and deletes it. Returns an error if one occurs.
+func (c *FakeComputeSSLPolicies) Delete(name string, options *v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteAction(computesslpoliciesResource, c.ns, name), &v1alpha1.ComputeSslPolicy{})
+		Invokes(testing.NewDeleteAction(computesslpoliciesResource, c.ns, name), &v1alpha1.ComputeSSLPolicy{})
 
 	return err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeComputeSslPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *FakeComputeSSLPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
 	action := testing.NewDeleteCollectionAction(computesslpoliciesResource, c.ns, listOptions)
 
-	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeSslPolicyList{})
+	_, err := c.Fake.Invokes(action, &v1alpha1.ComputeSSLPolicyList{})
 	return err
 }
 
-// Patch applies the patch and returns the patched computeSslPolicy.
-func (c *FakeComputeSslPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSslPolicy, err error) {
+// Patch applies the patch and returns the patched computeSSLPolicy.
+func (c *FakeComputeSSLPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeSSLPolicy, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewPatchSubresourceAction(computesslpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeSslPolicy{})
+		Invokes(testing.NewPatchSubresourceAction(computesslpoliciesResource, c.ns, name, pt, data, subresources...), &v1alpha1.ComputeSSLPolicy{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.ComputeSslPolicy), err
+	return obj.(*v1alpha1.ComputeSSLPolicy), err
 }

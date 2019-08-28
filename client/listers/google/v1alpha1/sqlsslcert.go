@@ -25,64 +25,64 @@ import (
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 )
 
-// SqlSslCertLister helps list SqlSslCerts.
-type SqlSslCertLister interface {
-	// List lists all SqlSslCerts in the indexer.
-	List(selector labels.Selector) (ret []*v1alpha1.SqlSslCert, err error)
-	// SqlSslCerts returns an object that can list and get SqlSslCerts.
-	SqlSslCerts(namespace string) SqlSslCertNamespaceLister
-	SqlSslCertListerExpansion
+// SqlSSLCertLister helps list SqlSSLCerts.
+type SqlSSLCertLister interface {
+	// List lists all SqlSSLCerts in the indexer.
+	List(selector labels.Selector) (ret []*v1alpha1.SqlSSLCert, err error)
+	// SqlSSLCerts returns an object that can list and get SqlSSLCerts.
+	SqlSSLCerts(namespace string) SqlSSLCertNamespaceLister
+	SqlSSLCertListerExpansion
 }
 
-// sqlSslCertLister implements the SqlSslCertLister interface.
-type sqlSslCertLister struct {
+// sqlSSLCertLister implements the SqlSSLCertLister interface.
+type sqlSSLCertLister struct {
 	indexer cache.Indexer
 }
 
-// NewSqlSslCertLister returns a new SqlSslCertLister.
-func NewSqlSslCertLister(indexer cache.Indexer) SqlSslCertLister {
-	return &sqlSslCertLister{indexer: indexer}
+// NewSqlSSLCertLister returns a new SqlSSLCertLister.
+func NewSqlSSLCertLister(indexer cache.Indexer) SqlSSLCertLister {
+	return &sqlSSLCertLister{indexer: indexer}
 }
 
-// List lists all SqlSslCerts in the indexer.
-func (s *sqlSslCertLister) List(selector labels.Selector) (ret []*v1alpha1.SqlSslCert, err error) {
+// List lists all SqlSSLCerts in the indexer.
+func (s *sqlSSLCertLister) List(selector labels.Selector) (ret []*v1alpha1.SqlSSLCert, err error) {
 	err = cache.ListAll(s.indexer, selector, func(m interface{}) {
-		ret = append(ret, m.(*v1alpha1.SqlSslCert))
+		ret = append(ret, m.(*v1alpha1.SqlSSLCert))
 	})
 	return ret, err
 }
 
-// SqlSslCerts returns an object that can list and get SqlSslCerts.
-func (s *sqlSslCertLister) SqlSslCerts(namespace string) SqlSslCertNamespaceLister {
-	return sqlSslCertNamespaceLister{indexer: s.indexer, namespace: namespace}
+// SqlSSLCerts returns an object that can list and get SqlSSLCerts.
+func (s *sqlSSLCertLister) SqlSSLCerts(namespace string) SqlSSLCertNamespaceLister {
+	return sqlSSLCertNamespaceLister{indexer: s.indexer, namespace: namespace}
 }
 
-// SqlSslCertNamespaceLister helps list and get SqlSslCerts.
-type SqlSslCertNamespaceLister interface {
-	// List lists all SqlSslCerts in the indexer for a given namespace.
-	List(selector labels.Selector) (ret []*v1alpha1.SqlSslCert, err error)
-	// Get retrieves the SqlSslCert from the indexer for a given namespace and name.
-	Get(name string) (*v1alpha1.SqlSslCert, error)
-	SqlSslCertNamespaceListerExpansion
+// SqlSSLCertNamespaceLister helps list and get SqlSSLCerts.
+type SqlSSLCertNamespaceLister interface {
+	// List lists all SqlSSLCerts in the indexer for a given namespace.
+	List(selector labels.Selector) (ret []*v1alpha1.SqlSSLCert, err error)
+	// Get retrieves the SqlSSLCert from the indexer for a given namespace and name.
+	Get(name string) (*v1alpha1.SqlSSLCert, error)
+	SqlSSLCertNamespaceListerExpansion
 }
 
-// sqlSslCertNamespaceLister implements the SqlSslCertNamespaceLister
+// sqlSSLCertNamespaceLister implements the SqlSSLCertNamespaceLister
 // interface.
-type sqlSslCertNamespaceLister struct {
+type sqlSSLCertNamespaceLister struct {
 	indexer   cache.Indexer
 	namespace string
 }
 
-// List lists all SqlSslCerts in the indexer for a given namespace.
-func (s sqlSslCertNamespaceLister) List(selector labels.Selector) (ret []*v1alpha1.SqlSslCert, err error) {
+// List lists all SqlSSLCerts in the indexer for a given namespace.
+func (s sqlSSLCertNamespaceLister) List(selector labels.Selector) (ret []*v1alpha1.SqlSSLCert, err error) {
 	err = cache.ListAllByNamespace(s.indexer, s.namespace, selector, func(m interface{}) {
-		ret = append(ret, m.(*v1alpha1.SqlSslCert))
+		ret = append(ret, m.(*v1alpha1.SqlSSLCert))
 	})
 	return ret, err
 }
 
-// Get retrieves the SqlSslCert from the indexer for a given namespace and name.
-func (s sqlSslCertNamespaceLister) Get(name string) (*v1alpha1.SqlSslCert, error) {
+// Get retrieves the SqlSSLCert from the indexer for a given namespace and name.
+func (s sqlSSLCertNamespaceLister) Get(name string) (*v1alpha1.SqlSSLCert, error) {
 	obj, exists, err := s.indexer.GetByKey(s.namespace + "/" + name)
 	if err != nil {
 		return nil, err
@@ -90,5 +90,5 @@ func (s sqlSslCertNamespaceLister) Get(name string) (*v1alpha1.SqlSslCert, error
 	if !exists {
 		return nil, errors.NewNotFound(v1alpha1.Resource("sqlsslcert"), name)
 	}
-	return obj.(*v1alpha1.SqlSslCert), nil
+	return obj.(*v1alpha1.SqlSSLCert), nil
 }

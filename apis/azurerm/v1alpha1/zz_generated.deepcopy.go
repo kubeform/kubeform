@@ -4770,8 +4770,8 @@ func (in *ApplicationGatewaySpec) DeepCopyInto(out *ApplicationGatewaySpec) {
 		*out = make([]ApplicationGatewaySpecCustomErrorConfiguration, len(*in))
 		copy(*out, *in)
 	}
-	if in.DisabledSslProtocols != nil {
-		in, out := &in.DisabledSslProtocols, &out.DisabledSslProtocols
+	if in.DisabledSSLProtocols != nil {
+		in, out := &in.DisabledSSLProtocols, &out.DisabledSSLProtocols
 		*out = make([]string, len(*in))
 		copy(*out, *in)
 	}

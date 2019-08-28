@@ -1,8 +1,10 @@
 package v1alpha1
 
 import (
-	core "k8s.io/api/core/v1"
+    "encoding/json"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+	core "k8s.io/api/core/v1"
 	"kubeform.dev/kubeform/apis"
 )
 
@@ -62,7 +64,7 @@ type ApiManagementSpecHostnameConfigurationProxy struct {
 	// +optional
 	CertificatePassword string `json:"-" sensitive:"true" tf:"certificate_password,omitempty"`
 	// +optional
-	DefaultSslBinding bool   `json:"defaultSslBinding,omitempty" tf:"default_ssl_binding,omitempty"`
+	DefaultSSLBinding bool   `json:"defaultSSLBinding,omitempty" tf:"default_ssl_binding,omitempty"`
 	HostName          string `json:"hostName" tf:"host_name"`
 	// +optional
 	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
@@ -110,17 +112,17 @@ type ApiManagementSpecPolicy struct {
 
 type ApiManagementSpecSecurity struct {
 	// +optional
-	DisableBackendSsl30 bool `json:"disableBackendSsl30,omitempty" tf:"disable_backend_ssl30,omitempty"`
+	DisableBackendSSL30 bool `json:"disableBackendSSL30,omitempty" tf:"disable_backend_ssl30,omitempty"`
 	// +optional
-	DisableBackendTls10 bool `json:"disableBackendTls10,omitempty" tf:"disable_backend_tls10,omitempty"`
+	DisableBackendTLS10 bool `json:"disableBackendTLS10,omitempty" tf:"disable_backend_tls10,omitempty"`
 	// +optional
-	DisableBackendTls11 bool `json:"disableBackendTls11,omitempty" tf:"disable_backend_tls11,omitempty"`
+	DisableBackendTLS11 bool `json:"disableBackendTLS11,omitempty" tf:"disable_backend_tls11,omitempty"`
 	// +optional
-	DisableFrontendSsl30 bool `json:"disableFrontendSsl30,omitempty" tf:"disable_frontend_ssl30,omitempty"`
+	DisableFrontendSSL30 bool `json:"disableFrontendSSL30,omitempty" tf:"disable_frontend_ssl30,omitempty"`
 	// +optional
-	DisableFrontendTls10 bool `json:"disableFrontendTls10,omitempty" tf:"disable_frontend_tls10,omitempty"`
+	DisableFrontendTLS10 bool `json:"disableFrontendTLS10,omitempty" tf:"disable_frontend_tls10,omitempty"`
 	// +optional
-	DisableFrontendTls11 bool `json:"disableFrontendTls11,omitempty" tf:"disable_frontend_tls11,omitempty"`
+	DisableFrontendTLS11 bool `json:"disableFrontendTLS11,omitempty" tf:"disable_frontend_tls11,omitempty"`
 	// +optional
 	// Deprecated
 	DisableTripleDESChipers bool `json:"disableTripleDESChipers,omitempty" tf:"disable_triple_des_chipers,omitempty"`
@@ -206,14 +208,16 @@ type ApiManagementSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
+
+
 type ApiManagementStatus struct {
-	// Resource generation, which is updated on mutation by the API Server.
+    // Resource generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
 	// +optional
-	Output *ApiManagementSpec `json:"output,omitempty"`
-	// +optional
-	State *apis.State `json:"state,omitempty"`
+    Output *ApiManagementSpec `json:"output,omitempty"`
+    // +optional
+    State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

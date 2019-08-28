@@ -29,43 +29,43 @@ import (
 	scheme "kubeform.dev/kubeform/client/clientset/versioned/scheme"
 )
 
-// LbSslNegotiationPoliciesGetter has a method to return a LbSslNegotiationPolicyInterface.
+// LbSSLNegotiationPoliciesGetter has a method to return a LbSSLNegotiationPolicyInterface.
 // A group's client should implement this interface.
-type LbSslNegotiationPoliciesGetter interface {
-	LbSslNegotiationPolicies(namespace string) LbSslNegotiationPolicyInterface
+type LbSSLNegotiationPoliciesGetter interface {
+	LbSSLNegotiationPolicies(namespace string) LbSSLNegotiationPolicyInterface
 }
 
-// LbSslNegotiationPolicyInterface has methods to work with LbSslNegotiationPolicy resources.
-type LbSslNegotiationPolicyInterface interface {
-	Create(*v1alpha1.LbSslNegotiationPolicy) (*v1alpha1.LbSslNegotiationPolicy, error)
-	Update(*v1alpha1.LbSslNegotiationPolicy) (*v1alpha1.LbSslNegotiationPolicy, error)
-	UpdateStatus(*v1alpha1.LbSslNegotiationPolicy) (*v1alpha1.LbSslNegotiationPolicy, error)
+// LbSSLNegotiationPolicyInterface has methods to work with LbSSLNegotiationPolicy resources.
+type LbSSLNegotiationPolicyInterface interface {
+	Create(*v1alpha1.LbSSLNegotiationPolicy) (*v1alpha1.LbSSLNegotiationPolicy, error)
+	Update(*v1alpha1.LbSSLNegotiationPolicy) (*v1alpha1.LbSSLNegotiationPolicy, error)
+	UpdateStatus(*v1alpha1.LbSSLNegotiationPolicy) (*v1alpha1.LbSSLNegotiationPolicy, error)
 	Delete(name string, options *v1.DeleteOptions) error
 	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.LbSslNegotiationPolicy, error)
-	List(opts v1.ListOptions) (*v1alpha1.LbSslNegotiationPolicyList, error)
+	Get(name string, options v1.GetOptions) (*v1alpha1.LbSSLNegotiationPolicy, error)
+	List(opts v1.ListOptions) (*v1alpha1.LbSSLNegotiationPolicyList, error)
 	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbSslNegotiationPolicy, err error)
-	LbSslNegotiationPolicyExpansion
+	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbSSLNegotiationPolicy, err error)
+	LbSSLNegotiationPolicyExpansion
 }
 
-// lbSslNegotiationPolicies implements LbSslNegotiationPolicyInterface
-type lbSslNegotiationPolicies struct {
+// lbSSLNegotiationPolicies implements LbSSLNegotiationPolicyInterface
+type lbSSLNegotiationPolicies struct {
 	client rest.Interface
 	ns     string
 }
 
-// newLbSslNegotiationPolicies returns a LbSslNegotiationPolicies
-func newLbSslNegotiationPolicies(c *AwsV1alpha1Client, namespace string) *lbSslNegotiationPolicies {
-	return &lbSslNegotiationPolicies{
+// newLbSSLNegotiationPolicies returns a LbSSLNegotiationPolicies
+func newLbSSLNegotiationPolicies(c *AwsV1alpha1Client, namespace string) *lbSSLNegotiationPolicies {
+	return &lbSSLNegotiationPolicies{
 		client: c.RESTClient(),
 		ns:     namespace,
 	}
 }
 
-// Get takes name of the lbSslNegotiationPolicy, and returns the corresponding lbSslNegotiationPolicy object, and an error if there is any.
-func (c *lbSslNegotiationPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.LbSslNegotiationPolicy, err error) {
-	result = &v1alpha1.LbSslNegotiationPolicy{}
+// Get takes name of the lbSSLNegotiationPolicy, and returns the corresponding lbSSLNegotiationPolicy object, and an error if there is any.
+func (c *lbSSLNegotiationPolicies) Get(name string, options v1.GetOptions) (result *v1alpha1.LbSSLNegotiationPolicy, err error) {
+	result = &v1alpha1.LbSSLNegotiationPolicy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("lbsslnegotiationpolicies").
@@ -76,13 +76,13 @@ func (c *lbSslNegotiationPolicies) Get(name string, options v1.GetOptions) (resu
 	return
 }
 
-// List takes label and field selectors, and returns the list of LbSslNegotiationPolicies that match those selectors.
-func (c *lbSslNegotiationPolicies) List(opts v1.ListOptions) (result *v1alpha1.LbSslNegotiationPolicyList, err error) {
+// List takes label and field selectors, and returns the list of LbSSLNegotiationPolicies that match those selectors.
+func (c *lbSSLNegotiationPolicies) List(opts v1.ListOptions) (result *v1alpha1.LbSSLNegotiationPolicyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
 	}
-	result = &v1alpha1.LbSslNegotiationPolicyList{}
+	result = &v1alpha1.LbSSLNegotiationPolicyList{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("lbsslnegotiationpolicies").
@@ -93,8 +93,8 @@ func (c *lbSslNegotiationPolicies) List(opts v1.ListOptions) (result *v1alpha1.L
 	return
 }
 
-// Watch returns a watch.Interface that watches the requested lbSslNegotiationPolicies.
-func (c *lbSslNegotiationPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+// Watch returns a watch.Interface that watches the requested lbSSLNegotiationPolicies.
+func (c *lbSSLNegotiationPolicies) Watch(opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -108,26 +108,26 @@ func (c *lbSslNegotiationPolicies) Watch(opts v1.ListOptions) (watch.Interface, 
 		Watch()
 }
 
-// Create takes the representation of a lbSslNegotiationPolicy and creates it.  Returns the server's representation of the lbSslNegotiationPolicy, and an error, if there is any.
-func (c *lbSslNegotiationPolicies) Create(lbSslNegotiationPolicy *v1alpha1.LbSslNegotiationPolicy) (result *v1alpha1.LbSslNegotiationPolicy, err error) {
-	result = &v1alpha1.LbSslNegotiationPolicy{}
+// Create takes the representation of a lbSSLNegotiationPolicy and creates it.  Returns the server's representation of the lbSSLNegotiationPolicy, and an error, if there is any.
+func (c *lbSSLNegotiationPolicies) Create(lbSSLNegotiationPolicy *v1alpha1.LbSSLNegotiationPolicy) (result *v1alpha1.LbSSLNegotiationPolicy, err error) {
+	result = &v1alpha1.LbSSLNegotiationPolicy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("lbsslnegotiationpolicies").
-		Body(lbSslNegotiationPolicy).
+		Body(lbSSLNegotiationPolicy).
 		Do().
 		Into(result)
 	return
 }
 
-// Update takes the representation of a lbSslNegotiationPolicy and updates it. Returns the server's representation of the lbSslNegotiationPolicy, and an error, if there is any.
-func (c *lbSslNegotiationPolicies) Update(lbSslNegotiationPolicy *v1alpha1.LbSslNegotiationPolicy) (result *v1alpha1.LbSslNegotiationPolicy, err error) {
-	result = &v1alpha1.LbSslNegotiationPolicy{}
+// Update takes the representation of a lbSSLNegotiationPolicy and updates it. Returns the server's representation of the lbSSLNegotiationPolicy, and an error, if there is any.
+func (c *lbSSLNegotiationPolicies) Update(lbSSLNegotiationPolicy *v1alpha1.LbSSLNegotiationPolicy) (result *v1alpha1.LbSSLNegotiationPolicy, err error) {
+	result = &v1alpha1.LbSSLNegotiationPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lbsslnegotiationpolicies").
-		Name(lbSslNegotiationPolicy.Name).
-		Body(lbSslNegotiationPolicy).
+		Name(lbSSLNegotiationPolicy.Name).
+		Body(lbSSLNegotiationPolicy).
 		Do().
 		Into(result)
 	return
@@ -136,21 +136,21 @@ func (c *lbSslNegotiationPolicies) Update(lbSslNegotiationPolicy *v1alpha1.LbSsl
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
 
-func (c *lbSslNegotiationPolicies) UpdateStatus(lbSslNegotiationPolicy *v1alpha1.LbSslNegotiationPolicy) (result *v1alpha1.LbSslNegotiationPolicy, err error) {
-	result = &v1alpha1.LbSslNegotiationPolicy{}
+func (c *lbSSLNegotiationPolicies) UpdateStatus(lbSSLNegotiationPolicy *v1alpha1.LbSSLNegotiationPolicy) (result *v1alpha1.LbSSLNegotiationPolicy, err error) {
+	result = &v1alpha1.LbSSLNegotiationPolicy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("lbsslnegotiationpolicies").
-		Name(lbSslNegotiationPolicy.Name).
+		Name(lbSSLNegotiationPolicy.Name).
 		SubResource("status").
-		Body(lbSslNegotiationPolicy).
+		Body(lbSSLNegotiationPolicy).
 		Do().
 		Into(result)
 	return
 }
 
-// Delete takes name of the lbSslNegotiationPolicy and deletes it. Returns an error if one occurs.
-func (c *lbSslNegotiationPolicies) Delete(name string, options *v1.DeleteOptions) error {
+// Delete takes name of the lbSSLNegotiationPolicy and deletes it. Returns an error if one occurs.
+func (c *lbSSLNegotiationPolicies) Delete(name string, options *v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("lbsslnegotiationpolicies").
@@ -161,7 +161,7 @@ func (c *lbSslNegotiationPolicies) Delete(name string, options *v1.DeleteOptions
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *lbSslNegotiationPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *lbSSLNegotiationPolicies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
 	var timeout time.Duration
 	if listOptions.TimeoutSeconds != nil {
 		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
@@ -176,9 +176,9 @@ func (c *lbSslNegotiationPolicies) DeleteCollection(options *v1.DeleteOptions, l
 		Error()
 }
 
-// Patch applies the patch and returns the patched lbSslNegotiationPolicy.
-func (c *lbSslNegotiationPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbSslNegotiationPolicy, err error) {
-	result = &v1alpha1.LbSslNegotiationPolicy{}
+// Patch applies the patch and returns the patched lbSSLNegotiationPolicy.
+func (c *lbSSLNegotiationPolicies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.LbSSLNegotiationPolicy, err error) {
+	result = &v1alpha1.LbSSLNegotiationPolicy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("lbsslnegotiationpolicies").

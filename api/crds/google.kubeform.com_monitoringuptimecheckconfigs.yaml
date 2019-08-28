@@ -427,7 +427,7 @@ spec:
                     type: string
                   port:
                     type: integer
-                  useSsl:
+                  useSSL:
                     type: boolean
                 type: object
               maxItems: 1
@@ -560,7 +560,7 @@ spec:
                         type: string
                       port:
                         type: integer
-                      useSsl:
+                      useSSL:
                         type: boolean
                     type: object
                   maxItems: 1
@@ -678,3 +678,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

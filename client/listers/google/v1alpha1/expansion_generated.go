@@ -394,6 +394,22 @@ type ComputeRouterPeerListerExpansion interface{}
 // ComputeRouterPeerNamespaceLister.
 type ComputeRouterPeerNamespaceListerExpansion interface{}
 
+// ComputeSSLCertificateListerExpansion allows custom methods to be added to
+// ComputeSSLCertificateLister.
+type ComputeSSLCertificateListerExpansion interface{}
+
+// ComputeSSLCertificateNamespaceListerExpansion allows custom methods to be added to
+// ComputeSSLCertificateNamespaceLister.
+type ComputeSSLCertificateNamespaceListerExpansion interface{}
+
+// ComputeSSLPolicyListerExpansion allows custom methods to be added to
+// ComputeSSLPolicyLister.
+type ComputeSSLPolicyListerExpansion interface{}
+
+// ComputeSSLPolicyNamespaceListerExpansion allows custom methods to be added to
+// ComputeSSLPolicyNamespaceLister.
+type ComputeSSLPolicyNamespaceListerExpansion interface{}
+
 // ComputeSecurityPolicyListerExpansion allows custom methods to be added to
 // ComputeSecurityPolicyLister.
 type ComputeSecurityPolicyListerExpansion interface{}
@@ -425,22 +441,6 @@ type ComputeSnapshotListerExpansion interface{}
 // ComputeSnapshotNamespaceListerExpansion allows custom methods to be added to
 // ComputeSnapshotNamespaceLister.
 type ComputeSnapshotNamespaceListerExpansion interface{}
-
-// ComputeSslCertificateListerExpansion allows custom methods to be added to
-// ComputeSslCertificateLister.
-type ComputeSslCertificateListerExpansion interface{}
-
-// ComputeSslCertificateNamespaceListerExpansion allows custom methods to be added to
-// ComputeSslCertificateNamespaceLister.
-type ComputeSslCertificateNamespaceListerExpansion interface{}
-
-// ComputeSslPolicyListerExpansion allows custom methods to be added to
-// ComputeSslPolicyLister.
-type ComputeSslPolicyListerExpansion interface{}
-
-// ComputeSslPolicyNamespaceListerExpansion allows custom methods to be added to
-// ComputeSslPolicyNamespaceLister.
-type ComputeSslPolicyNamespaceListerExpansion interface{}
 
 // ComputeSubnetworkListerExpansion allows custom methods to be added to
 // ComputeSubnetworkLister.
@@ -498,13 +498,13 @@ type ComputeTargetPoolListerExpansion interface{}
 // ComputeTargetPoolNamespaceLister.
 type ComputeTargetPoolNamespaceListerExpansion interface{}
 
-// ComputeTargetSslProxyListerExpansion allows custom methods to be added to
-// ComputeTargetSslProxyLister.
-type ComputeTargetSslProxyListerExpansion interface{}
+// ComputeTargetSSLProxyListerExpansion allows custom methods to be added to
+// ComputeTargetSSLProxyLister.
+type ComputeTargetSSLProxyListerExpansion interface{}
 
-// ComputeTargetSslProxyNamespaceListerExpansion allows custom methods to be added to
-// ComputeTargetSslProxyNamespaceLister.
-type ComputeTargetSslProxyNamespaceListerExpansion interface{}
+// ComputeTargetSSLProxyNamespaceListerExpansion allows custom methods to be added to
+// ComputeTargetSSLProxyNamespaceLister.
+type ComputeTargetSSLProxyNamespaceListerExpansion interface{}
 
 // ComputeTargetTcpProxyListerExpansion allows custom methods to be added to
 // ComputeTargetTcpProxyLister.
@@ -1146,13 +1146,13 @@ type SqlDatabaseInstanceListerExpansion interface{}
 // SqlDatabaseInstanceNamespaceLister.
 type SqlDatabaseInstanceNamespaceListerExpansion interface{}
 
-// SqlSslCertListerExpansion allows custom methods to be added to
-// SqlSslCertLister.
-type SqlSslCertListerExpansion interface{}
+// SqlSSLCertListerExpansion allows custom methods to be added to
+// SqlSSLCertLister.
+type SqlSSLCertListerExpansion interface{}
 
-// SqlSslCertNamespaceListerExpansion allows custom methods to be added to
-// SqlSslCertNamespaceLister.
-type SqlSslCertNamespaceListerExpansion interface{}
+// SqlSSLCertNamespaceListerExpansion allows custom methods to be added to
+// SqlSSLCertNamespaceLister.
+type SqlSSLCertNamespaceListerExpansion interface{}
 
 // SqlUserListerExpansion allows custom methods to be added to
 // SqlUserLister.

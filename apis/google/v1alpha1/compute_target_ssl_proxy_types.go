@@ -1,8 +1,10 @@
 package v1alpha1
 
 import (
-	core "k8s.io/api/core/v1"
+    "encoding/json"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+	core "k8s.io/api/core/v1"
 	"kubeform.dev/kubeform/apis"
 )
 
@@ -11,14 +13,14 @@ import (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 
-type ComputeTargetSslProxy struct {
+type ComputeTargetSSLProxy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              ComputeTargetSslProxySpec   `json:"spec,omitempty"`
-	Status            ComputeTargetSslProxyStatus `json:"status,omitempty"`
+	Spec              ComputeTargetSSLProxySpec   `json:"spec,omitempty"`
+	Status            ComputeTargetSSLProxyStatus `json:"status,omitempty"`
 }
 
-type ComputeTargetSslProxySpec struct {
+type ComputeTargetSSLProxySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
@@ -43,23 +45,25 @@ type ComputeTargetSslProxySpec struct {
 	SslPolicy string `json:"sslPolicy,omitempty" tf:"ssl_policy,omitempty"`
 }
 
-type ComputeTargetSslProxyStatus struct {
-	// Resource generation, which is updated on mutation by the API Server.
+
+
+type ComputeTargetSSLProxyStatus struct {
+    // Resource generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
 	// +optional
-	Output *ComputeTargetSslProxySpec `json:"output,omitempty"`
-	// +optional
-	State *apis.State `json:"state,omitempty"`
+    Output *ComputeTargetSSLProxySpec `json:"output,omitempty"`
+    // +optional
+    State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 
-// ComputeTargetSslProxyList is a list of ComputeTargetSslProxys
-type ComputeTargetSslProxyList struct {
+// ComputeTargetSSLProxyList is a list of ComputeTargetSSLProxys
+type ComputeTargetSSLProxyList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	// Items is a list of ComputeTargetSslProxy CRD objects
-	Items []ComputeTargetSslProxy `json:"items,omitempty"`
+	// Items is a list of ComputeTargetSSLProxy CRD objects
+	Items []ComputeTargetSSLProxy `json:"items,omitempty"`
 }

@@ -31,59 +31,59 @@ import (
 	v1alpha1 "kubeform.dev/kubeform/client/listers/google/v1alpha1"
 )
 
-// SqlSslCertInformer provides access to a shared informer and lister for
-// SqlSslCerts.
-type SqlSslCertInformer interface {
+// SqlSSLCertInformer provides access to a shared informer and lister for
+// SqlSSLCerts.
+type SqlSSLCertInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.SqlSslCertLister
+	Lister() v1alpha1.SqlSSLCertLister
 }
 
-type sqlSslCertInformer struct {
+type sqlSSLCertInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewSqlSslCertInformer constructs a new informer for SqlSslCert type.
+// NewSqlSSLCertInformer constructs a new informer for SqlSSLCert type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewSqlSslCertInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredSqlSslCertInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewSqlSSLCertInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredSqlSSLCertInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredSqlSslCertInformer constructs a new informer for SqlSslCert type.
+// NewFilteredSqlSSLCertInformer constructs a new informer for SqlSSLCert type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredSqlSslCertInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredSqlSSLCertInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.GoogleV1alpha1().SqlSslCerts(namespace).List(options)
+				return client.GoogleV1alpha1().SqlSSLCerts(namespace).List(options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.GoogleV1alpha1().SqlSslCerts(namespace).Watch(options)
+				return client.GoogleV1alpha1().SqlSSLCerts(namespace).Watch(options)
 			},
 		},
-		&googlev1alpha1.SqlSslCert{},
+		&googlev1alpha1.SqlSSLCert{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *sqlSslCertInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredSqlSslCertInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *sqlSSLCertInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredSqlSSLCertInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *sqlSslCertInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&googlev1alpha1.SqlSslCert{}, f.defaultInformer)
+func (f *sqlSSLCertInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&googlev1alpha1.SqlSSLCert{}, f.defaultInformer)
 }
 
-func (f *sqlSslCertInformer) Lister() v1alpha1.SqlSslCertLister {
-	return v1alpha1.NewSqlSslCertLister(f.Informer().GetIndexer())
+func (f *sqlSSLCertInformer) Lister() v1alpha1.SqlSSLCertLister {
+	return v1alpha1.NewSqlSSLCertLister(f.Informer().GetIndexer())
 }

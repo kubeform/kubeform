@@ -559,6 +559,14 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeRouterSpecBgp":                                                         schema_kubeform_apis_google_v1alpha1_ComputeRouterSpecBgp(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeRouterSpecBgpAdvertisedIPRanges":                                       schema_kubeform_apis_google_v1alpha1_ComputeRouterSpecBgpAdvertisedIPRanges(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeRouterStatus":                                                          schema_kubeform_apis_google_v1alpha1_ComputeRouterStatus(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLCertificate":                                                        schema_kubeform_apis_google_v1alpha1_ComputeSSLCertificate(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLCertificateList":                                                    schema_kubeform_apis_google_v1alpha1_ComputeSSLCertificateList(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLCertificateSpec":                                                    schema_kubeform_apis_google_v1alpha1_ComputeSSLCertificateSpec(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLCertificateStatus":                                                  schema_kubeform_apis_google_v1alpha1_ComputeSSLCertificateStatus(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLPolicy":                                                             schema_kubeform_apis_google_v1alpha1_ComputeSSLPolicy(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLPolicyList":                                                         schema_kubeform_apis_google_v1alpha1_ComputeSSLPolicyList(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLPolicySpec":                                                         schema_kubeform_apis_google_v1alpha1_ComputeSSLPolicySpec(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLPolicyStatus":                                                       schema_kubeform_apis_google_v1alpha1_ComputeSSLPolicyStatus(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSecurityPolicy":                                                        schema_kubeform_apis_google_v1alpha1_ComputeSecurityPolicy(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSecurityPolicyList":                                                    schema_kubeform_apis_google_v1alpha1_ComputeSecurityPolicyList(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSecurityPolicySpec":                                                    schema_kubeform_apis_google_v1alpha1_ComputeSecurityPolicySpec(ref),
@@ -580,14 +588,6 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSnapshotSpecSnapshotEncryptionKey":                                     schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpecSnapshotEncryptionKey(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSnapshotSpecSourceDiskEncryptionKey":                                   schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpecSourceDiskEncryptionKey(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSnapshotStatus":                                                        schema_kubeform_apis_google_v1alpha1_ComputeSnapshotStatus(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslCertificate":                                                        schema_kubeform_apis_google_v1alpha1_ComputeSslCertificate(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslCertificateList":                                                    schema_kubeform_apis_google_v1alpha1_ComputeSslCertificateList(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslCertificateSpec":                                                    schema_kubeform_apis_google_v1alpha1_ComputeSslCertificateSpec(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslCertificateStatus":                                                  schema_kubeform_apis_google_v1alpha1_ComputeSslCertificateStatus(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslPolicy":                                                             schema_kubeform_apis_google_v1alpha1_ComputeSslPolicy(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslPolicyList":                                                         schema_kubeform_apis_google_v1alpha1_ComputeSslPolicyList(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslPolicySpec":                                                         schema_kubeform_apis_google_v1alpha1_ComputeSslPolicySpec(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslPolicyStatus":                                                       schema_kubeform_apis_google_v1alpha1_ComputeSslPolicyStatus(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSubnetwork":                                                            schema_kubeform_apis_google_v1alpha1_ComputeSubnetwork(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSubnetworkIamBinding":                                                  schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkIamBinding(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSubnetworkIamBindingList":                                              schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkIamBindingList(ref),
@@ -617,10 +617,10 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetPoolList":                                                        schema_kubeform_apis_google_v1alpha1_ComputeTargetPoolList(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetPoolSpec":                                                        schema_kubeform_apis_google_v1alpha1_ComputeTargetPoolSpec(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetPoolStatus":                                                      schema_kubeform_apis_google_v1alpha1_ComputeTargetPoolStatus(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSslProxy":                                                        schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxy(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSslProxyList":                                                    schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxyList(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSslProxySpec":                                                    schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxySpec(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSslProxyStatus":                                                  schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxyStatus(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSSLProxy":                                                        schema_kubeform_apis_google_v1alpha1_ComputeTargetSSLProxy(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSSLProxyList":                                                    schema_kubeform_apis_google_v1alpha1_ComputeTargetSSLProxyList(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSSLProxySpec":                                                    schema_kubeform_apis_google_v1alpha1_ComputeTargetSSLProxySpec(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSSLProxyStatus":                                                  schema_kubeform_apis_google_v1alpha1_ComputeTargetSSLProxyStatus(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetTcpProxy":                                                        schema_kubeform_apis_google_v1alpha1_ComputeTargetTcpProxy(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetTcpProxyList":                                                    schema_kubeform_apis_google_v1alpha1_ComputeTargetTcpProxyList(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetTcpProxySpec":                                                    schema_kubeform_apis_google_v1alpha1_ComputeTargetTcpProxySpec(ref),
@@ -1054,10 +1054,10 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlDatabaseList":                                                              schema_kubeform_apis_google_v1alpha1_SqlDatabaseList(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlDatabaseSpec":                                                              schema_kubeform_apis_google_v1alpha1_SqlDatabaseSpec(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlDatabaseStatus":                                                            schema_kubeform_apis_google_v1alpha1_SqlDatabaseStatus(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlSslCert":                                                                   schema_kubeform_apis_google_v1alpha1_SqlSslCert(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlSslCertList":                                                               schema_kubeform_apis_google_v1alpha1_SqlSslCertList(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlSslCertSpec":                                                               schema_kubeform_apis_google_v1alpha1_SqlSslCertSpec(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlSslCertStatus":                                                             schema_kubeform_apis_google_v1alpha1_SqlSslCertStatus(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlSSLCert":                                                                   schema_kubeform_apis_google_v1alpha1_SqlSSLCert(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlSSLCertList":                                                               schema_kubeform_apis_google_v1alpha1_SqlSSLCertList(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlSSLCertSpec":                                                               schema_kubeform_apis_google_v1alpha1_SqlSSLCertSpec(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlSSLCertStatus":                                                             schema_kubeform_apis_google_v1alpha1_SqlSSLCertStatus(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlUser":                                                                      schema_kubeform_apis_google_v1alpha1_SqlUser(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlUserList":                                                                  schema_kubeform_apis_google_v1alpha1_SqlUserList(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.SqlUserSpec":                                                                  schema_kubeform_apis_google_v1alpha1_SqlUserSpec(ref),
@@ -27257,6 +27257,421 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterStatus(ref common.Referen
 	}
 }
 
+func schema_kubeform_apis_google_v1alpha1_ComputeSSLCertificate(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLCertificateSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLCertificateStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLCertificateSpec", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLCertificateStatus"},
+	}
+}
+
+func schema_kubeform_apis_google_v1alpha1_ComputeSSLCertificateList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ComputeSSLCertificateList is a list of ComputeSSLCertificates",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of ComputeSSLCertificate CRD objects",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLCertificate"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLCertificate"},
+	}
+}
+
+func schema_kubeform_apis_google_v1alpha1_ComputeSSLCertificateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secretRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"certificateID": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"creationTimestamp": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"namePrefix": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"project": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"selfLink": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"providerRef"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.LocalObjectReference"},
+	}
+}
+
+func schema_kubeform_apis_google_v1alpha1_ComputeSSLCertificateStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"output": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLCertificateSpec"),
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis.State"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLCertificateSpec"},
+	}
+}
+
+func schema_kubeform_apis_google_v1alpha1_ComputeSSLPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLPolicySpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLPolicyStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLPolicySpec", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLPolicyStatus"},
+	}
+}
+
+func schema_kubeform_apis_google_v1alpha1_ComputeSSLPolicyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ComputeSSLPolicyList is a list of ComputeSSLPolicys",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of ComputeSSLPolicy CRD objects",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLPolicy"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLPolicy"},
+	}
+}
+
+func schema_kubeform_apis_google_v1alpha1_ComputeSSLPolicySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"creationTimestamp": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"customFeatures": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enabledFeatures": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"fingerprint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"minTLSVersion": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"profile": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"project": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"selfLink": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"providerRef", "name"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.LocalObjectReference"},
+	}
+}
+
+func schema_kubeform_apis_google_v1alpha1_ComputeSSLPolicyStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"output": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLPolicySpec"),
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis.State"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSSLPolicySpec"},
+	}
+}
+
 func schema_kubeform_apis_google_v1alpha1_ComputeSecurityPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -28182,421 +28597,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSnapshotStatus(ref common.Refer
 		},
 		Dependencies: []string{
 			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSnapshotSpec"},
-	}
-}
-
-func schema_kubeform_apis_google_v1alpha1_ComputeSslCertificate(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
-						},
-					},
-					"spec": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslCertificateSpec"),
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslCertificateStatus"),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslCertificateSpec", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslCertificateStatus"},
-	}
-}
-
-func schema_kubeform_apis_google_v1alpha1_ComputeSslCertificateList(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "ComputeSslCertificateList is a list of ComputeSslCertificates",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
-						},
-					},
-					"items": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Items is a list of ComputeSslCertificate CRD objects",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslCertificate"),
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslCertificate"},
-	}
-}
-
-func schema_kubeform_apis_google_v1alpha1_ComputeSslCertificateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secretRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
-					"certificateID": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"creationTimestamp": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"namePrefix": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"project": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"selfLink": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-				},
-				Required: []string{"providerRef"},
-			},
-		},
-		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
-	}
-}
-
-func schema_kubeform_apis_google_v1alpha1_ComputeSslCertificateStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"observedGeneration": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Resource generation, which is updated on mutation by the API Server.",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslCertificateSpec"),
-						},
-					},
-					"state": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslCertificateSpec"},
-	}
-}
-
-func schema_kubeform_apis_google_v1alpha1_ComputeSslPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
-						},
-					},
-					"spec": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslPolicySpec"),
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslPolicyStatus"),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslPolicySpec", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslPolicyStatus"},
-	}
-}
-
-func schema_kubeform_apis_google_v1alpha1_ComputeSslPolicyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "ComputeSslPolicyList is a list of ComputeSslPolicys",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
-						},
-					},
-					"items": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Items is a list of ComputeSslPolicy CRD objects",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslPolicy"),
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslPolicy"},
-	}
-}
-
-func schema_kubeform_apis_google_v1alpha1_ComputeSslPolicySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"creationTimestamp": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"customFeatures": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"enabledFeatures": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"fingerprint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"minTlsVersion": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"profile": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"project": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"selfLink": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-				},
-				Required: []string{"providerRef", "name"},
-			},
-		},
-		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
-	}
-}
-
-func schema_kubeform_apis_google_v1alpha1_ComputeSslPolicyStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"observedGeneration": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Resource generation, which is updated on mutation by the API Server.",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslPolicySpec"),
-						},
-					},
-					"state": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeSslPolicySpec"},
 	}
 }
 
@@ -30039,7 +30039,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetPoolStatus(ref common.Ref
 	}
 }
 
-func schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_google_v1alpha1_ComputeTargetSSLProxy(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -30066,27 +30066,27 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxy(ref common.Refer
 					},
 					"spec": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSslProxySpec"),
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSSLProxySpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSslProxyStatus"),
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSSLProxyStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSslProxySpec", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSslProxyStatus"},
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSSLProxySpec", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSSLProxyStatus"},
 	}
 }
 
-func schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_google_v1alpha1_ComputeTargetSSLProxyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ComputeTargetSslProxyList is a list of ComputeTargetSslProxys",
+				Description: "ComputeTargetSSLProxyList is a list of ComputeTargetSSLProxys",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -30110,12 +30110,12 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxyList(ref common.R
 					},
 					"items": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Items is a list of ComputeTargetSslProxy CRD objects",
+							Description: "Items is a list of ComputeTargetSSLProxy CRD objects",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSslProxy"),
+										Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSSLProxy"),
 									},
 								},
 							},
@@ -30125,11 +30125,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxyList(ref common.R
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSslProxy"},
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSSLProxy"},
 	}
 }
 
-func schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_google_v1alpha1_ComputeTargetSSLProxySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -30222,7 +30222,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxySpec(ref common.R
 	}
 }
 
-func schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxyStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_google_v1alpha1_ComputeTargetSSLProxyStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -30237,7 +30237,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxyStatus(ref common
 					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSslProxySpec"),
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSSLProxySpec"),
 						},
 					},
 					"state": {
@@ -30249,7 +30249,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxyStatus(ref common
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSslProxySpec"},
+			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeTargetSSLProxySpec"},
 	}
 }
 
@@ -41554,7 +41554,7 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringUptimeCheckConfigSpecHttpChe
 							Format: "int32",
 						},
 					},
-					"useSsl": {
+					"useSSL": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
@@ -50204,7 +50204,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpecSettingsIpConfi
 							Format: "",
 						},
 					},
-					"requireSsl": {
+					"requireSSL": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
@@ -50473,7 +50473,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseStatus(ref common.Reference
 	}
 }
 
-func schema_kubeform_apis_google_v1alpha1_SqlSslCert(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_google_v1alpha1_SqlSSLCert(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -50500,27 +50500,27 @@ func schema_kubeform_apis_google_v1alpha1_SqlSslCert(ref common.ReferenceCallbac
 					},
 					"spec": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.SqlSslCertSpec"),
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.SqlSSLCertSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.SqlSslCertStatus"),
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.SqlSSLCertStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.SqlSslCertSpec", "kubeform.dev/kubeform/apis/google/v1alpha1.SqlSslCertStatus"},
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.SqlSSLCertSpec", "kubeform.dev/kubeform/apis/google/v1alpha1.SqlSSLCertStatus"},
 	}
 }
 
-func schema_kubeform_apis_google_v1alpha1_SqlSslCertList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_google_v1alpha1_SqlSSLCertList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SqlSslCertList is a list of SqlSslCerts",
+				Description: "SqlSSLCertList is a list of SqlSSLCerts",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -50544,12 +50544,12 @@ func schema_kubeform_apis_google_v1alpha1_SqlSslCertList(ref common.ReferenceCal
 					},
 					"items": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Items is a list of SqlSslCert CRD objects",
+							Description: "Items is a list of SqlSSLCert CRD objects",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.SqlSslCert"),
+										Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.SqlSSLCert"),
 									},
 								},
 							},
@@ -50559,11 +50559,11 @@ func schema_kubeform_apis_google_v1alpha1_SqlSslCertList(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.SqlSslCert"},
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.SqlSSLCert"},
 	}
 }
 
-func schema_kubeform_apis_google_v1alpha1_SqlSslCertSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_google_v1alpha1_SqlSSLCertSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -50642,7 +50642,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlSslCertSpec(ref common.ReferenceCal
 	}
 }
 
-func schema_kubeform_apis_google_v1alpha1_SqlSslCertStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_google_v1alpha1_SqlSSLCertStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -50657,7 +50657,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlSslCertStatus(ref common.ReferenceC
 					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.SqlSslCertSpec"),
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.SqlSSLCertSpec"),
 						},
 					},
 					"state": {
@@ -50669,7 +50669,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlSslCertStatus(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/google/v1alpha1.SqlSslCertSpec"},
+			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/google/v1alpha1.SqlSSLCertSpec"},
 	}
 }
 

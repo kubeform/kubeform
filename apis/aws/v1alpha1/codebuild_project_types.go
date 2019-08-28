@@ -1,8 +1,10 @@
 package v1alpha1
 
 import (
-	core "k8s.io/api/core/v1"
+    "encoding/json"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+	core "k8s.io/api/core/v1"
 	"kubeform.dev/kubeform/apis"
 )
 
@@ -94,7 +96,7 @@ type CodebuildProjectSpecSecondarySources struct {
 	// +optional
 	GitCloneDepth int `json:"gitCloneDepth,omitempty" tf:"git_clone_depth,omitempty"`
 	// +optional
-	InsecureSsl bool `json:"insecureSsl,omitempty" tf:"insecure_ssl,omitempty"`
+	InsecureSSL bool `json:"insecureSSL,omitempty" tf:"insecure_ssl,omitempty"`
 	// +optional
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional
@@ -118,7 +120,7 @@ type CodebuildProjectSpecSource struct {
 	// +optional
 	GitCloneDepth int `json:"gitCloneDepth,omitempty" tf:"git_clone_depth,omitempty"`
 	// +optional
-	InsecureSsl bool `json:"insecureSsl,omitempty" tf:"insecure_ssl,omitempty"`
+	InsecureSSL bool `json:"insecureSSL,omitempty" tf:"insecure_ssl,omitempty"`
 	// +optional
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional
@@ -182,14 +184,16 @@ type CodebuildProjectSpec struct {
 	VpcConfig []CodebuildProjectSpecVpcConfig `json:"vpcConfig,omitempty" tf:"vpc_config,omitempty"`
 }
 
+
+
 type CodebuildProjectStatus struct {
-	// Resource generation, which is updated on mutation by the API Server.
+    // Resource generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
 	// +optional
-	Output *CodebuildProjectSpec `json:"output,omitempty"`
-	// +optional
-	State *apis.State `json:"state,omitempty"`
+    Output *CodebuildProjectSpec `json:"output,omitempty"`
+    // +optional
+    State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

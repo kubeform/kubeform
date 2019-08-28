@@ -29,43 +29,43 @@ import (
 	scheme "kubeform.dev/kubeform/client/clientset/versioned/scheme"
 )
 
-// ComputeTargetSslProxiesGetter has a method to return a ComputeTargetSslProxyInterface.
+// ComputeTargetSSLProxiesGetter has a method to return a ComputeTargetSSLProxyInterface.
 // A group's client should implement this interface.
-type ComputeTargetSslProxiesGetter interface {
-	ComputeTargetSslProxies(namespace string) ComputeTargetSslProxyInterface
+type ComputeTargetSSLProxiesGetter interface {
+	ComputeTargetSSLProxies(namespace string) ComputeTargetSSLProxyInterface
 }
 
-// ComputeTargetSslProxyInterface has methods to work with ComputeTargetSslProxy resources.
-type ComputeTargetSslProxyInterface interface {
-	Create(*v1alpha1.ComputeTargetSslProxy) (*v1alpha1.ComputeTargetSslProxy, error)
-	Update(*v1alpha1.ComputeTargetSslProxy) (*v1alpha1.ComputeTargetSslProxy, error)
-	UpdateStatus(*v1alpha1.ComputeTargetSslProxy) (*v1alpha1.ComputeTargetSslProxy, error)
+// ComputeTargetSSLProxyInterface has methods to work with ComputeTargetSSLProxy resources.
+type ComputeTargetSSLProxyInterface interface {
+	Create(*v1alpha1.ComputeTargetSSLProxy) (*v1alpha1.ComputeTargetSSLProxy, error)
+	Update(*v1alpha1.ComputeTargetSSLProxy) (*v1alpha1.ComputeTargetSSLProxy, error)
+	UpdateStatus(*v1alpha1.ComputeTargetSSLProxy) (*v1alpha1.ComputeTargetSSLProxy, error)
 	Delete(name string, options *v1.DeleteOptions) error
 	DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error
-	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeTargetSslProxy, error)
-	List(opts v1.ListOptions) (*v1alpha1.ComputeTargetSslProxyList, error)
+	Get(name string, options v1.GetOptions) (*v1alpha1.ComputeTargetSSLProxy, error)
+	List(opts v1.ListOptions) (*v1alpha1.ComputeTargetSSLProxyList, error)
 	Watch(opts v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeTargetSslProxy, err error)
-	ComputeTargetSslProxyExpansion
+	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeTargetSSLProxy, err error)
+	ComputeTargetSSLProxyExpansion
 }
 
-// computeTargetSslProxies implements ComputeTargetSslProxyInterface
-type computeTargetSslProxies struct {
+// computeTargetSSLProxies implements ComputeTargetSSLProxyInterface
+type computeTargetSSLProxies struct {
 	client rest.Interface
 	ns     string
 }
 
-// newComputeTargetSslProxies returns a ComputeTargetSslProxies
-func newComputeTargetSslProxies(c *GoogleV1alpha1Client, namespace string) *computeTargetSslProxies {
-	return &computeTargetSslProxies{
+// newComputeTargetSSLProxies returns a ComputeTargetSSLProxies
+func newComputeTargetSSLProxies(c *GoogleV1alpha1Client, namespace string) *computeTargetSSLProxies {
+	return &computeTargetSSLProxies{
 		client: c.RESTClient(),
 		ns:     namespace,
 	}
 }
 
-// Get takes name of the computeTargetSslProxy, and returns the corresponding computeTargetSslProxy object, and an error if there is any.
-func (c *computeTargetSslProxies) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeTargetSslProxy, err error) {
-	result = &v1alpha1.ComputeTargetSslProxy{}
+// Get takes name of the computeTargetSSLProxy, and returns the corresponding computeTargetSSLProxy object, and an error if there is any.
+func (c *computeTargetSSLProxies) Get(name string, options v1.GetOptions) (result *v1alpha1.ComputeTargetSSLProxy, err error) {
+	result = &v1alpha1.ComputeTargetSSLProxy{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computetargetsslproxies").
@@ -76,13 +76,13 @@ func (c *computeTargetSslProxies) Get(name string, options v1.GetOptions) (resul
 	return
 }
 
-// List takes label and field selectors, and returns the list of ComputeTargetSslProxies that match those selectors.
-func (c *computeTargetSslProxies) List(opts v1.ListOptions) (result *v1alpha1.ComputeTargetSslProxyList, err error) {
+// List takes label and field selectors, and returns the list of ComputeTargetSSLProxies that match those selectors.
+func (c *computeTargetSSLProxies) List(opts v1.ListOptions) (result *v1alpha1.ComputeTargetSSLProxyList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
 	}
-	result = &v1alpha1.ComputeTargetSslProxyList{}
+	result = &v1alpha1.ComputeTargetSSLProxyList{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("computetargetsslproxies").
@@ -93,8 +93,8 @@ func (c *computeTargetSslProxies) List(opts v1.ListOptions) (result *v1alpha1.Co
 	return
 }
 
-// Watch returns a watch.Interface that watches the requested computeTargetSslProxies.
-func (c *computeTargetSslProxies) Watch(opts v1.ListOptions) (watch.Interface, error) {
+// Watch returns a watch.Interface that watches the requested computeTargetSSLProxies.
+func (c *computeTargetSSLProxies) Watch(opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -108,26 +108,26 @@ func (c *computeTargetSslProxies) Watch(opts v1.ListOptions) (watch.Interface, e
 		Watch()
 }
 
-// Create takes the representation of a computeTargetSslProxy and creates it.  Returns the server's representation of the computeTargetSslProxy, and an error, if there is any.
-func (c *computeTargetSslProxies) Create(computeTargetSslProxy *v1alpha1.ComputeTargetSslProxy) (result *v1alpha1.ComputeTargetSslProxy, err error) {
-	result = &v1alpha1.ComputeTargetSslProxy{}
+// Create takes the representation of a computeTargetSSLProxy and creates it.  Returns the server's representation of the computeTargetSSLProxy, and an error, if there is any.
+func (c *computeTargetSSLProxies) Create(computeTargetSSLProxy *v1alpha1.ComputeTargetSSLProxy) (result *v1alpha1.ComputeTargetSSLProxy, err error) {
+	result = &v1alpha1.ComputeTargetSSLProxy{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("computetargetsslproxies").
-		Body(computeTargetSslProxy).
+		Body(computeTargetSSLProxy).
 		Do().
 		Into(result)
 	return
 }
 
-// Update takes the representation of a computeTargetSslProxy and updates it. Returns the server's representation of the computeTargetSslProxy, and an error, if there is any.
-func (c *computeTargetSslProxies) Update(computeTargetSslProxy *v1alpha1.ComputeTargetSslProxy) (result *v1alpha1.ComputeTargetSslProxy, err error) {
-	result = &v1alpha1.ComputeTargetSslProxy{}
+// Update takes the representation of a computeTargetSSLProxy and updates it. Returns the server's representation of the computeTargetSSLProxy, and an error, if there is any.
+func (c *computeTargetSSLProxies) Update(computeTargetSSLProxy *v1alpha1.ComputeTargetSSLProxy) (result *v1alpha1.ComputeTargetSSLProxy, err error) {
+	result = &v1alpha1.ComputeTargetSSLProxy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computetargetsslproxies").
-		Name(computeTargetSslProxy.Name).
-		Body(computeTargetSslProxy).
+		Name(computeTargetSSLProxy.Name).
+		Body(computeTargetSSLProxy).
 		Do().
 		Into(result)
 	return
@@ -136,21 +136,21 @@ func (c *computeTargetSslProxies) Update(computeTargetSslProxy *v1alpha1.Compute
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
 
-func (c *computeTargetSslProxies) UpdateStatus(computeTargetSslProxy *v1alpha1.ComputeTargetSslProxy) (result *v1alpha1.ComputeTargetSslProxy, err error) {
-	result = &v1alpha1.ComputeTargetSslProxy{}
+func (c *computeTargetSSLProxies) UpdateStatus(computeTargetSSLProxy *v1alpha1.ComputeTargetSSLProxy) (result *v1alpha1.ComputeTargetSSLProxy, err error) {
+	result = &v1alpha1.ComputeTargetSSLProxy{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("computetargetsslproxies").
-		Name(computeTargetSslProxy.Name).
+		Name(computeTargetSSLProxy.Name).
 		SubResource("status").
-		Body(computeTargetSslProxy).
+		Body(computeTargetSSLProxy).
 		Do().
 		Into(result)
 	return
 }
 
-// Delete takes name of the computeTargetSslProxy and deletes it. Returns an error if one occurs.
-func (c *computeTargetSslProxies) Delete(name string, options *v1.DeleteOptions) error {
+// Delete takes name of the computeTargetSSLProxy and deletes it. Returns an error if one occurs.
+func (c *computeTargetSSLProxies) Delete(name string, options *v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("computetargetsslproxies").
@@ -161,7 +161,7 @@ func (c *computeTargetSslProxies) Delete(name string, options *v1.DeleteOptions)
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *computeTargetSslProxies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
+func (c *computeTargetSSLProxies) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
 	var timeout time.Duration
 	if listOptions.TimeoutSeconds != nil {
 		timeout = time.Duration(*listOptions.TimeoutSeconds) * time.Second
@@ -176,9 +176,9 @@ func (c *computeTargetSslProxies) DeleteCollection(options *v1.DeleteOptions, li
 		Error()
 }
 
-// Patch applies the patch and returns the patched computeTargetSslProxy.
-func (c *computeTargetSslProxies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeTargetSslProxy, err error) {
-	result = &v1alpha1.ComputeTargetSslProxy{}
+// Patch applies the patch and returns the patched computeTargetSSLProxy.
+func (c *computeTargetSSLProxies) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1alpha1.ComputeTargetSSLProxy, err error) {
+	result = &v1alpha1.ComputeTargetSSLProxy{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("computetargetsslproxies").

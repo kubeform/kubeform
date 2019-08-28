@@ -1,10 +1,10 @@
 package v1alpha1
 
 import (
-	"encoding/json"
-
-	core "k8s.io/api/core/v1"
+    "encoding/json"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+	core "k8s.io/api/core/v1"
 	"kubeform.dev/kubeform/apis"
 )
 
@@ -103,14 +103,16 @@ type AppautoscalingPolicySpec struct {
 	TargetTrackingScalingPolicyConfiguration []AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration `json:"targetTrackingScalingPolicyConfiguration,omitempty" tf:"target_tracking_scaling_policy_configuration,omitempty"`
 }
 
+
+
 type AppautoscalingPolicyStatus struct {
-	// Resource generation, which is updated on mutation by the API Server.
+    // Resource generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
 	// +optional
-	Output *AppautoscalingPolicySpec `json:"output,omitempty"`
-	// +optional
-	State *apis.State `json:"state,omitempty"`
+    Output *AppautoscalingPolicySpec `json:"output,omitempty"`
+    // +optional
+    State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

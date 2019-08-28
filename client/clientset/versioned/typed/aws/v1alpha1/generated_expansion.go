@@ -606,7 +606,7 @@ type LbListenerCertificateExpansion interface{}
 
 type LbListenerRuleExpansion interface{}
 
-type LbSslNegotiationPolicyExpansion interface{}
+type LbSSLNegotiationPolicyExpansion interface{}
 
 type LbTargetGroupExpansion interface{}
 

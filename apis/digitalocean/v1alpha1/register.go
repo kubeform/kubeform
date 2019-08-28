@@ -37,66 +37,67 @@ func Resource(resource string) schema.GroupResource {
 // Adds the list of known types to api.Scheme.
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
-
-		&Firewall{},
-		&FirewallList{},
-
-		&FloatingIP{},
-		&FloatingIPList{},
-
-		&Volume{},
-		&VolumeList{},
-
-		&Domain{},
-		&DomainList{},
-
-		&KubernetesCluster{},
-		&KubernetesClusterList{},
-
-		&Loadbalancer{},
-		&LoadbalancerList{},
-
-		&Project{},
-		&ProjectList{},
-
-		&DropletSnapshot{},
-		&DropletSnapshotList{},
-
-		&DatabaseCluster{},
-		&DatabaseClusterList{},
-
-		&FloatingIPAssignment{},
-		&FloatingIPAssignmentList{},
-
-		&KubernetesNodePool{},
-		&KubernetesNodePoolList{},
-
-		&Record{},
-		&RecordList{},
-
-		&SpacesBucket{},
-		&SpacesBucketList{},
-
-		&Certificate{},
-		&CertificateList{},
-
-		&Droplet{},
-		&DropletList{},
-
-		&SshKey{},
-		&SshKeyList{},
-
-		&Tag{},
-		&TagList{},
-
-		&VolumeAttachment{},
-		&VolumeAttachmentList{},
-
-		&VolumeSnapshot{},
-		&VolumeSnapshotList{},
-
-		&Cdn{},
-		&CdnList{},
+    
+        &DropletSnapshot{},
+        &DropletSnapshotList{},
+    
+        &FloatingIP{},
+        &FloatingIPList{},
+    
+        &SpacesBucket{},
+        &SpacesBucketList{},
+    
+        &SshKey{},
+        &SshKeyList{},
+    
+        &VolumeSnapshot{},
+        &VolumeSnapshotList{},
+    
+        &Domain{},
+        &DomainList{},
+    
+        &Loadbalancer{},
+        &LoadbalancerList{},
+    
+        &Project{},
+        &ProjectList{},
+    
+        &VolumeAttachment{},
+        &VolumeAttachmentList{},
+    
+        &Tag{},
+        &TagList{},
+    
+        &DatabaseCluster{},
+        &DatabaseClusterList{},
+    
+        &Firewall{},
+        &FirewallList{},
+    
+        &FloatingIPAssignment{},
+        &FloatingIPAssignmentList{},
+    
+        &KubernetesCluster{},
+        &KubernetesClusterList{},
+    
+        &KubernetesNodePool{},
+        &KubernetesNodePoolList{},
+    
+        &Record{},
+        &RecordList{},
+    
+        &Certificate{},
+        &CertificateList{},
+    
+        &Cdn{},
+        &CdnList{},
+    
+        &Droplet{},
+        &DropletList{},
+    
+        &Volume{},
+        &VolumeList{},
+    
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

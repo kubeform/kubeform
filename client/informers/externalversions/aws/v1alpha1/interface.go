@@ -612,8 +612,8 @@ type Interface interface {
 	LbListenerCertificates() LbListenerCertificateInformer
 	// LbListenerRules returns a LbListenerRuleInformer.
 	LbListenerRules() LbListenerRuleInformer
-	// LbSslNegotiationPolicies returns a LbSslNegotiationPolicyInformer.
-	LbSslNegotiationPolicies() LbSslNegotiationPolicyInformer
+	// LbSSLNegotiationPolicies returns a LbSSLNegotiationPolicyInformer.
+	LbSSLNegotiationPolicies() LbSSLNegotiationPolicyInformer
 	// LbTargetGroups returns a LbTargetGroupInformer.
 	LbTargetGroups() LbTargetGroupInformer
 	// LbTargetGroupAttachments returns a LbTargetGroupAttachmentInformer.
@@ -2535,9 +2535,9 @@ func (v *version) LbListenerRules() LbListenerRuleInformer {
 	return &lbListenerRuleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
-// LbSslNegotiationPolicies returns a LbSslNegotiationPolicyInformer.
-func (v *version) LbSslNegotiationPolicies() LbSslNegotiationPolicyInformer {
-	return &lbSslNegotiationPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+// LbSSLNegotiationPolicies returns a LbSSLNegotiationPolicyInformer.
+func (v *version) LbSSLNegotiationPolicies() LbSSLNegotiationPolicyInformer {
+	return &lbSSLNegotiationPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // LbTargetGroups returns a LbTargetGroupInformer.

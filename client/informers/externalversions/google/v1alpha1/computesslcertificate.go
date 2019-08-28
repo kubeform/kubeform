@@ -31,59 +31,59 @@ import (
 	v1alpha1 "kubeform.dev/kubeform/client/listers/google/v1alpha1"
 )
 
-// ComputeSslCertificateInformer provides access to a shared informer and lister for
-// ComputeSslCertificates.
-type ComputeSslCertificateInformer interface {
+// ComputeSSLCertificateInformer provides access to a shared informer and lister for
+// ComputeSSLCertificates.
+type ComputeSSLCertificateInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.ComputeSslCertificateLister
+	Lister() v1alpha1.ComputeSSLCertificateLister
 }
 
-type computeSslCertificateInformer struct {
+type computeSSLCertificateInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewComputeSslCertificateInformer constructs a new informer for ComputeSslCertificate type.
+// NewComputeSSLCertificateInformer constructs a new informer for ComputeSSLCertificate type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewComputeSslCertificateInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredComputeSslCertificateInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewComputeSSLCertificateInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredComputeSSLCertificateInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredComputeSslCertificateInformer constructs a new informer for ComputeSslCertificate type.
+// NewFilteredComputeSSLCertificateInformer constructs a new informer for ComputeSSLCertificate type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredComputeSslCertificateInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredComputeSSLCertificateInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.GoogleV1alpha1().ComputeSslCertificates(namespace).List(options)
+				return client.GoogleV1alpha1().ComputeSSLCertificates(namespace).List(options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.GoogleV1alpha1().ComputeSslCertificates(namespace).Watch(options)
+				return client.GoogleV1alpha1().ComputeSSLCertificates(namespace).Watch(options)
 			},
 		},
-		&googlev1alpha1.ComputeSslCertificate{},
+		&googlev1alpha1.ComputeSSLCertificate{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *computeSslCertificateInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredComputeSslCertificateInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *computeSSLCertificateInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredComputeSSLCertificateInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *computeSslCertificateInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&googlev1alpha1.ComputeSslCertificate{}, f.defaultInformer)
+func (f *computeSSLCertificateInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&googlev1alpha1.ComputeSSLCertificate{}, f.defaultInformer)
 }
 
-func (f *computeSslCertificateInformer) Lister() v1alpha1.ComputeSslCertificateLister {
-	return v1alpha1.NewComputeSslCertificateLister(f.Informer().GetIndexer())
+func (f *computeSSLCertificateInformer) Lister() v1alpha1.ComputeSSLCertificateLister {
+	return v1alpha1.NewComputeSSLCertificateLister(f.Informer().GetIndexer())
 }

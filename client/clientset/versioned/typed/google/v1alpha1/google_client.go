@@ -74,12 +74,12 @@ type GoogleV1alpha1Interface interface {
 	ComputeRouterInterfacesGetter
 	ComputeRouterNATsGetter
 	ComputeRouterPeersGetter
+	ComputeSSLCertificatesGetter
+	ComputeSSLPoliciesGetter
 	ComputeSecurityPoliciesGetter
 	ComputeSharedVpcHostProjectsGetter
 	ComputeSharedVpcServiceProjectsGetter
 	ComputeSnapshotsGetter
-	ComputeSslCertificatesGetter
-	ComputeSslPoliciesGetter
 	ComputeSubnetworksGetter
 	ComputeSubnetworkIamBindingsGetter
 	ComputeSubnetworkIamMembersGetter
@@ -87,7 +87,7 @@ type GoogleV1alpha1Interface interface {
 	ComputeTargetHTTPProxiesGetter
 	ComputeTargetHTTPSProxiesGetter
 	ComputeTargetPoolsGetter
-	ComputeTargetSslProxiesGetter
+	ComputeTargetSSLProxiesGetter
 	ComputeTargetTcpProxiesGetter
 	ComputeURLMapsGetter
 	ComputeVPNGatewaysGetter
@@ -168,7 +168,7 @@ type GoogleV1alpha1Interface interface {
 	SpannerInstanceIamPoliciesGetter
 	SqlDatabasesGetter
 	SqlDatabaseInstancesGetter
-	SqlSslCertsGetter
+	SqlSSLCertsGetter
 	SqlUsersGetter
 	StorageBucketsGetter
 	StorageBucketACLsGetter
@@ -376,6 +376,14 @@ func (c *GoogleV1alpha1Client) ComputeRouterPeers(namespace string) ComputeRoute
 	return newComputeRouterPeers(c, namespace)
 }
 
+func (c *GoogleV1alpha1Client) ComputeSSLCertificates(namespace string) ComputeSSLCertificateInterface {
+	return newComputeSSLCertificates(c, namespace)
+}
+
+func (c *GoogleV1alpha1Client) ComputeSSLPolicies(namespace string) ComputeSSLPolicyInterface {
+	return newComputeSSLPolicies(c, namespace)
+}
+
 func (c *GoogleV1alpha1Client) ComputeSecurityPolicies(namespace string) ComputeSecurityPolicyInterface {
 	return newComputeSecurityPolicies(c, namespace)
 }
@@ -390,14 +398,6 @@ func (c *GoogleV1alpha1Client) ComputeSharedVpcServiceProjects(namespace string)
 
 func (c *GoogleV1alpha1Client) ComputeSnapshots(namespace string) ComputeSnapshotInterface {
 	return newComputeSnapshots(c, namespace)
-}
-
-func (c *GoogleV1alpha1Client) ComputeSslCertificates(namespace string) ComputeSslCertificateInterface {
-	return newComputeSslCertificates(c, namespace)
-}
-
-func (c *GoogleV1alpha1Client) ComputeSslPolicies(namespace string) ComputeSslPolicyInterface {
-	return newComputeSslPolicies(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) ComputeSubnetworks(namespace string) ComputeSubnetworkInterface {
@@ -428,8 +428,8 @@ func (c *GoogleV1alpha1Client) ComputeTargetPools(namespace string) ComputeTarge
 	return newComputeTargetPools(c, namespace)
 }
 
-func (c *GoogleV1alpha1Client) ComputeTargetSslProxies(namespace string) ComputeTargetSslProxyInterface {
-	return newComputeTargetSslProxies(c, namespace)
+func (c *GoogleV1alpha1Client) ComputeTargetSSLProxies(namespace string) ComputeTargetSSLProxyInterface {
+	return newComputeTargetSSLProxies(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) ComputeTargetTcpProxies(namespace string) ComputeTargetTcpProxyInterface {
@@ -752,8 +752,8 @@ func (c *GoogleV1alpha1Client) SqlDatabaseInstances(namespace string) SqlDatabas
 	return newSqlDatabaseInstances(c, namespace)
 }
 
-func (c *GoogleV1alpha1Client) SqlSslCerts(namespace string) SqlSslCertInterface {
-	return newSqlSslCerts(c, namespace)
+func (c *GoogleV1alpha1Client) SqlSSLCerts(namespace string) SqlSSLCertInterface {
+	return newSqlSSLCerts(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) SqlUsers(namespace string) SqlUserInterface {

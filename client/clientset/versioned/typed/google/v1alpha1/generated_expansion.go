@@ -112,6 +112,10 @@ type ComputeRouterNATExpansion interface{}
 
 type ComputeRouterPeerExpansion interface{}
 
+type ComputeSSLCertificateExpansion interface{}
+
+type ComputeSSLPolicyExpansion interface{}
+
 type ComputeSecurityPolicyExpansion interface{}
 
 type ComputeSharedVpcHostProjectExpansion interface{}
@@ -119,10 +123,6 @@ type ComputeSharedVpcHostProjectExpansion interface{}
 type ComputeSharedVpcServiceProjectExpansion interface{}
 
 type ComputeSnapshotExpansion interface{}
-
-type ComputeSslCertificateExpansion interface{}
-
-type ComputeSslPolicyExpansion interface{}
 
 type ComputeSubnetworkExpansion interface{}
 
@@ -138,7 +138,7 @@ type ComputeTargetHTTPSProxyExpansion interface{}
 
 type ComputeTargetPoolExpansion interface{}
 
-type ComputeTargetSslProxyExpansion interface{}
+type ComputeTargetSSLProxyExpansion interface{}
 
 type ComputeTargetTcpProxyExpansion interface{}
 
@@ -300,7 +300,7 @@ type SqlDatabaseExpansion interface{}
 
 type SqlDatabaseInstanceExpansion interface{}
 
-type SqlSslCertExpansion interface{}
+type SqlSSLCertExpansion interface{}
 
 type SqlUserExpansion interface{}
 

@@ -118,6 +118,10 @@ type Interface interface {
 	ComputeRouterNATs() ComputeRouterNATInformer
 	// ComputeRouterPeers returns a ComputeRouterPeerInformer.
 	ComputeRouterPeers() ComputeRouterPeerInformer
+	// ComputeSSLCertificates returns a ComputeSSLCertificateInformer.
+	ComputeSSLCertificates() ComputeSSLCertificateInformer
+	// ComputeSSLPolicies returns a ComputeSSLPolicyInformer.
+	ComputeSSLPolicies() ComputeSSLPolicyInformer
 	// ComputeSecurityPolicies returns a ComputeSecurityPolicyInformer.
 	ComputeSecurityPolicies() ComputeSecurityPolicyInformer
 	// ComputeSharedVpcHostProjects returns a ComputeSharedVpcHostProjectInformer.
@@ -126,10 +130,6 @@ type Interface interface {
 	ComputeSharedVpcServiceProjects() ComputeSharedVpcServiceProjectInformer
 	// ComputeSnapshots returns a ComputeSnapshotInformer.
 	ComputeSnapshots() ComputeSnapshotInformer
-	// ComputeSslCertificates returns a ComputeSslCertificateInformer.
-	ComputeSslCertificates() ComputeSslCertificateInformer
-	// ComputeSslPolicies returns a ComputeSslPolicyInformer.
-	ComputeSslPolicies() ComputeSslPolicyInformer
 	// ComputeSubnetworks returns a ComputeSubnetworkInformer.
 	ComputeSubnetworks() ComputeSubnetworkInformer
 	// ComputeSubnetworkIamBindings returns a ComputeSubnetworkIamBindingInformer.
@@ -144,8 +144,8 @@ type Interface interface {
 	ComputeTargetHTTPSProxies() ComputeTargetHTTPSProxyInformer
 	// ComputeTargetPools returns a ComputeTargetPoolInformer.
 	ComputeTargetPools() ComputeTargetPoolInformer
-	// ComputeTargetSslProxies returns a ComputeTargetSslProxyInformer.
-	ComputeTargetSslProxies() ComputeTargetSslProxyInformer
+	// ComputeTargetSSLProxies returns a ComputeTargetSSLProxyInformer.
+	ComputeTargetSSLProxies() ComputeTargetSSLProxyInformer
 	// ComputeTargetTcpProxies returns a ComputeTargetTcpProxyInformer.
 	ComputeTargetTcpProxies() ComputeTargetTcpProxyInformer
 	// ComputeURLMaps returns a ComputeURLMapInformer.
@@ -306,8 +306,8 @@ type Interface interface {
 	SqlDatabases() SqlDatabaseInformer
 	// SqlDatabaseInstances returns a SqlDatabaseInstanceInformer.
 	SqlDatabaseInstances() SqlDatabaseInstanceInformer
-	// SqlSslCerts returns a SqlSslCertInformer.
-	SqlSslCerts() SqlSslCertInformer
+	// SqlSSLCerts returns a SqlSSLCertInformer.
+	SqlSSLCerts() SqlSSLCertInformer
 	// SqlUsers returns a SqlUserInformer.
 	SqlUsers() SqlUserInformer
 	// StorageBuckets returns a StorageBucketInformer.
@@ -580,6 +580,16 @@ func (v *version) ComputeRouterPeers() ComputeRouterPeerInformer {
 	return &computeRouterPeerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// ComputeSSLCertificates returns a ComputeSSLCertificateInformer.
+func (v *version) ComputeSSLCertificates() ComputeSSLCertificateInformer {
+	return &computeSSLCertificateInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ComputeSSLPolicies returns a ComputeSSLPolicyInformer.
+func (v *version) ComputeSSLPolicies() ComputeSSLPolicyInformer {
+	return &computeSSLPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // ComputeSecurityPolicies returns a ComputeSecurityPolicyInformer.
 func (v *version) ComputeSecurityPolicies() ComputeSecurityPolicyInformer {
 	return &computeSecurityPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -598,16 +608,6 @@ func (v *version) ComputeSharedVpcServiceProjects() ComputeSharedVpcServiceProje
 // ComputeSnapshots returns a ComputeSnapshotInformer.
 func (v *version) ComputeSnapshots() ComputeSnapshotInformer {
 	return &computeSnapshotInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
-}
-
-// ComputeSslCertificates returns a ComputeSslCertificateInformer.
-func (v *version) ComputeSslCertificates() ComputeSslCertificateInformer {
-	return &computeSslCertificateInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
-}
-
-// ComputeSslPolicies returns a ComputeSslPolicyInformer.
-func (v *version) ComputeSslPolicies() ComputeSslPolicyInformer {
-	return &computeSslPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ComputeSubnetworks returns a ComputeSubnetworkInformer.
@@ -645,9 +645,9 @@ func (v *version) ComputeTargetPools() ComputeTargetPoolInformer {
 	return &computeTargetPoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
-// ComputeTargetSslProxies returns a ComputeTargetSslProxyInformer.
-func (v *version) ComputeTargetSslProxies() ComputeTargetSslProxyInformer {
-	return &computeTargetSslProxyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+// ComputeTargetSSLProxies returns a ComputeTargetSSLProxyInformer.
+func (v *version) ComputeTargetSSLProxies() ComputeTargetSSLProxyInformer {
+	return &computeTargetSSLProxyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ComputeTargetTcpProxies returns a ComputeTargetTcpProxyInformer.
@@ -1050,9 +1050,9 @@ func (v *version) SqlDatabaseInstances() SqlDatabaseInstanceInformer {
 	return &sqlDatabaseInstanceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
-// SqlSslCerts returns a SqlSslCertInformer.
-func (v *version) SqlSslCerts() SqlSslCertInformer {
-	return &sqlSslCertInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+// SqlSSLCerts returns a SqlSSLCertInformer.
+func (v *version) SqlSSLCerts() SqlSSLCertInformer {
+	return &sqlSSLCertInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // SqlUsers returns a SqlUserInformer.

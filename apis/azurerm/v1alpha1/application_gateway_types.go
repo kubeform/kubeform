@@ -1,8 +1,10 @@
 package v1alpha1
 
 import (
-	core "k8s.io/api/core/v1"
+    "encoding/json"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+	core "k8s.io/api/core/v1"
 	"kubeform.dev/kubeform/apis"
 )
 
@@ -402,7 +404,7 @@ type ApplicationGatewaySpec struct {
 	CustomErrorConfiguration []ApplicationGatewaySpecCustomErrorConfiguration `json:"customErrorConfiguration,omitempty" tf:"custom_error_configuration,omitempty"`
 	// +optional
 	// Deprecated
-	DisabledSslProtocols []string `json:"disabledSslProtocols,omitempty" tf:"disabled_ssl_protocols,omitempty"`
+	DisabledSSLProtocols []string `json:"disabledSSLProtocols,omitempty" tf:"disabled_ssl_protocols,omitempty"`
 	// +optional
 	EnableHttp2 bool `json:"enableHttp2,omitempty" tf:"enable_http2,omitempty"`
 	// +kubebuilder:validation:MinItems=1
@@ -442,14 +444,16 @@ type ApplicationGatewaySpec struct {
 	Zones []string `json:"zones,omitempty" tf:"zones,omitempty"`
 }
 
+
+
 type ApplicationGatewayStatus struct {
-	// Resource generation, which is updated on mutation by the API Server.
+    // Resource generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
 	// +optional
-	Output *ApplicationGatewaySpec `json:"output,omitempty"`
-	// +optional
-	State *apis.State `json:"state,omitempty"`
+    Output *ApplicationGatewaySpec `json:"output,omitempty"`
+    // +optional
+    State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

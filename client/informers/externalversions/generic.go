@@ -646,7 +646,7 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	case v1alpha1.SchemeGroupVersion.WithResource("lblistenerrules"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().LbListenerRules().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("lbsslnegotiationpolicies"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().LbSslNegotiationPolicies().Informer()}, nil
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().LbSSLNegotiationPolicies().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("lbtargetgroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().LbTargetGroups().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("lbtargetgroupattachments"):
@@ -1765,6 +1765,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeRouterNATs().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("computerouterpeers"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeRouterPeers().Informer()}, nil
+	case googlev1alpha1.SchemeGroupVersion.WithResource("computesslcertificates"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeSSLCertificates().Informer()}, nil
+	case googlev1alpha1.SchemeGroupVersion.WithResource("computesslpolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeSSLPolicies().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("computesecuritypolicies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeSecurityPolicies().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("computesharedvpchostprojects"):
@@ -1773,10 +1777,6 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeSharedVpcServiceProjects().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("computesnapshots"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeSnapshots().Informer()}, nil
-	case googlev1alpha1.SchemeGroupVersion.WithResource("computesslcertificates"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeSslCertificates().Informer()}, nil
-	case googlev1alpha1.SchemeGroupVersion.WithResource("computesslpolicies"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeSslPolicies().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("computesubnetworks"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeSubnetworks().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("computesubnetworkiambindings"):
@@ -1792,7 +1792,7 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	case googlev1alpha1.SchemeGroupVersion.WithResource("computetargetpools"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeTargetPools().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("computetargetsslproxies"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeTargetSslProxies().Informer()}, nil
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeTargetSSLProxies().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("computetargettcpproxies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ComputeTargetTcpProxies().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("computeurlmaps"):
@@ -1954,7 +1954,7 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	case googlev1alpha1.SchemeGroupVersion.WithResource("sqldatabaseinstances"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().SqlDatabaseInstances().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("sqlsslcerts"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().SqlSslCerts().Informer()}, nil
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().SqlSSLCerts().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("sqlusers"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().SqlUsers().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("storagebuckets"):

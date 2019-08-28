@@ -216,6 +216,14 @@ func (c *FakeGoogleV1alpha1) ComputeRouterPeers(namespace string) v1alpha1.Compu
 	return &FakeComputeRouterPeers{c, namespace}
 }
 
+func (c *FakeGoogleV1alpha1) ComputeSSLCertificates(namespace string) v1alpha1.ComputeSSLCertificateInterface {
+	return &FakeComputeSSLCertificates{c, namespace}
+}
+
+func (c *FakeGoogleV1alpha1) ComputeSSLPolicies(namespace string) v1alpha1.ComputeSSLPolicyInterface {
+	return &FakeComputeSSLPolicies{c, namespace}
+}
+
 func (c *FakeGoogleV1alpha1) ComputeSecurityPolicies(namespace string) v1alpha1.ComputeSecurityPolicyInterface {
 	return &FakeComputeSecurityPolicies{c, namespace}
 }
@@ -230,14 +238,6 @@ func (c *FakeGoogleV1alpha1) ComputeSharedVpcServiceProjects(namespace string) v
 
 func (c *FakeGoogleV1alpha1) ComputeSnapshots(namespace string) v1alpha1.ComputeSnapshotInterface {
 	return &FakeComputeSnapshots{c, namespace}
-}
-
-func (c *FakeGoogleV1alpha1) ComputeSslCertificates(namespace string) v1alpha1.ComputeSslCertificateInterface {
-	return &FakeComputeSslCertificates{c, namespace}
-}
-
-func (c *FakeGoogleV1alpha1) ComputeSslPolicies(namespace string) v1alpha1.ComputeSslPolicyInterface {
-	return &FakeComputeSslPolicies{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) ComputeSubnetworks(namespace string) v1alpha1.ComputeSubnetworkInterface {
@@ -268,8 +268,8 @@ func (c *FakeGoogleV1alpha1) ComputeTargetPools(namespace string) v1alpha1.Compu
 	return &FakeComputeTargetPools{c, namespace}
 }
 
-func (c *FakeGoogleV1alpha1) ComputeTargetSslProxies(namespace string) v1alpha1.ComputeTargetSslProxyInterface {
-	return &FakeComputeTargetSslProxies{c, namespace}
+func (c *FakeGoogleV1alpha1) ComputeTargetSSLProxies(namespace string) v1alpha1.ComputeTargetSSLProxyInterface {
+	return &FakeComputeTargetSSLProxies{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) ComputeTargetTcpProxies(namespace string) v1alpha1.ComputeTargetTcpProxyInterface {
@@ -592,8 +592,8 @@ func (c *FakeGoogleV1alpha1) SqlDatabaseInstances(namespace string) v1alpha1.Sql
 	return &FakeSqlDatabaseInstances{c, namespace}
 }
 
-func (c *FakeGoogleV1alpha1) SqlSslCerts(namespace string) v1alpha1.SqlSslCertInterface {
-	return &FakeSqlSslCerts{c, namespace}
+func (c *FakeGoogleV1alpha1) SqlSSLCerts(namespace string) v1alpha1.SqlSSLCertInterface {
+	return &FakeSqlSSLCerts{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) SqlUsers(namespace string) v1alpha1.SqlUserInterface {

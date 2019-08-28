@@ -25,64 +25,64 @@ import (
 	v1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 )
 
-// ComputeTargetSslProxyLister helps list ComputeTargetSslProxies.
-type ComputeTargetSslProxyLister interface {
-	// List lists all ComputeTargetSslProxies in the indexer.
-	List(selector labels.Selector) (ret []*v1alpha1.ComputeTargetSslProxy, err error)
-	// ComputeTargetSslProxies returns an object that can list and get ComputeTargetSslProxies.
-	ComputeTargetSslProxies(namespace string) ComputeTargetSslProxyNamespaceLister
-	ComputeTargetSslProxyListerExpansion
+// ComputeTargetSSLProxyLister helps list ComputeTargetSSLProxies.
+type ComputeTargetSSLProxyLister interface {
+	// List lists all ComputeTargetSSLProxies in the indexer.
+	List(selector labels.Selector) (ret []*v1alpha1.ComputeTargetSSLProxy, err error)
+	// ComputeTargetSSLProxies returns an object that can list and get ComputeTargetSSLProxies.
+	ComputeTargetSSLProxies(namespace string) ComputeTargetSSLProxyNamespaceLister
+	ComputeTargetSSLProxyListerExpansion
 }
 
-// computeTargetSslProxyLister implements the ComputeTargetSslProxyLister interface.
-type computeTargetSslProxyLister struct {
+// computeTargetSSLProxyLister implements the ComputeTargetSSLProxyLister interface.
+type computeTargetSSLProxyLister struct {
 	indexer cache.Indexer
 }
 
-// NewComputeTargetSslProxyLister returns a new ComputeTargetSslProxyLister.
-func NewComputeTargetSslProxyLister(indexer cache.Indexer) ComputeTargetSslProxyLister {
-	return &computeTargetSslProxyLister{indexer: indexer}
+// NewComputeTargetSSLProxyLister returns a new ComputeTargetSSLProxyLister.
+func NewComputeTargetSSLProxyLister(indexer cache.Indexer) ComputeTargetSSLProxyLister {
+	return &computeTargetSSLProxyLister{indexer: indexer}
 }
 
-// List lists all ComputeTargetSslProxies in the indexer.
-func (s *computeTargetSslProxyLister) List(selector labels.Selector) (ret []*v1alpha1.ComputeTargetSslProxy, err error) {
+// List lists all ComputeTargetSSLProxies in the indexer.
+func (s *computeTargetSSLProxyLister) List(selector labels.Selector) (ret []*v1alpha1.ComputeTargetSSLProxy, err error) {
 	err = cache.ListAll(s.indexer, selector, func(m interface{}) {
-		ret = append(ret, m.(*v1alpha1.ComputeTargetSslProxy))
+		ret = append(ret, m.(*v1alpha1.ComputeTargetSSLProxy))
 	})
 	return ret, err
 }
 
-// ComputeTargetSslProxies returns an object that can list and get ComputeTargetSslProxies.
-func (s *computeTargetSslProxyLister) ComputeTargetSslProxies(namespace string) ComputeTargetSslProxyNamespaceLister {
-	return computeTargetSslProxyNamespaceLister{indexer: s.indexer, namespace: namespace}
+// ComputeTargetSSLProxies returns an object that can list and get ComputeTargetSSLProxies.
+func (s *computeTargetSSLProxyLister) ComputeTargetSSLProxies(namespace string) ComputeTargetSSLProxyNamespaceLister {
+	return computeTargetSSLProxyNamespaceLister{indexer: s.indexer, namespace: namespace}
 }
 
-// ComputeTargetSslProxyNamespaceLister helps list and get ComputeTargetSslProxies.
-type ComputeTargetSslProxyNamespaceLister interface {
-	// List lists all ComputeTargetSslProxies in the indexer for a given namespace.
-	List(selector labels.Selector) (ret []*v1alpha1.ComputeTargetSslProxy, err error)
-	// Get retrieves the ComputeTargetSslProxy from the indexer for a given namespace and name.
-	Get(name string) (*v1alpha1.ComputeTargetSslProxy, error)
-	ComputeTargetSslProxyNamespaceListerExpansion
+// ComputeTargetSSLProxyNamespaceLister helps list and get ComputeTargetSSLProxies.
+type ComputeTargetSSLProxyNamespaceLister interface {
+	// List lists all ComputeTargetSSLProxies in the indexer for a given namespace.
+	List(selector labels.Selector) (ret []*v1alpha1.ComputeTargetSSLProxy, err error)
+	// Get retrieves the ComputeTargetSSLProxy from the indexer for a given namespace and name.
+	Get(name string) (*v1alpha1.ComputeTargetSSLProxy, error)
+	ComputeTargetSSLProxyNamespaceListerExpansion
 }
 
-// computeTargetSslProxyNamespaceLister implements the ComputeTargetSslProxyNamespaceLister
+// computeTargetSSLProxyNamespaceLister implements the ComputeTargetSSLProxyNamespaceLister
 // interface.
-type computeTargetSslProxyNamespaceLister struct {
+type computeTargetSSLProxyNamespaceLister struct {
 	indexer   cache.Indexer
 	namespace string
 }
 
-// List lists all ComputeTargetSslProxies in the indexer for a given namespace.
-func (s computeTargetSslProxyNamespaceLister) List(selector labels.Selector) (ret []*v1alpha1.ComputeTargetSslProxy, err error) {
+// List lists all ComputeTargetSSLProxies in the indexer for a given namespace.
+func (s computeTargetSSLProxyNamespaceLister) List(selector labels.Selector) (ret []*v1alpha1.ComputeTargetSSLProxy, err error) {
 	err = cache.ListAllByNamespace(s.indexer, s.namespace, selector, func(m interface{}) {
-		ret = append(ret, m.(*v1alpha1.ComputeTargetSslProxy))
+		ret = append(ret, m.(*v1alpha1.ComputeTargetSSLProxy))
 	})
 	return ret, err
 }
 
-// Get retrieves the ComputeTargetSslProxy from the indexer for a given namespace and name.
-func (s computeTargetSslProxyNamespaceLister) Get(name string) (*v1alpha1.ComputeTargetSslProxy, error) {
+// Get retrieves the ComputeTargetSSLProxy from the indexer for a given namespace and name.
+func (s computeTargetSSLProxyNamespaceLister) Get(name string) (*v1alpha1.ComputeTargetSSLProxy, error) {
 	obj, exists, err := s.indexer.GetByKey(s.namespace + "/" + name)
 	if err != nil {
 		return nil, err
@@ -90,5 +90,5 @@ func (s computeTargetSslProxyNamespaceLister) Get(name string) (*v1alpha1.Comput
 	if !exists {
 		return nil, errors.NewNotFound(v1alpha1.Resource("computetargetsslproxy"), name)
 	}
-	return obj.(*v1alpha1.ComputeTargetSslProxy), nil
+	return obj.(*v1alpha1.ComputeTargetSSLProxy), nil
 }
