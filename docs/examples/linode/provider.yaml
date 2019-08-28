@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: linode
+type: "kubeform.com/linode"
+data:
+  token: <Base64 encoded value of linode token>

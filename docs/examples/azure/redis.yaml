@@ -1,0 +1,15 @@
+apiVersion: azurerm.kubeform.com/v1alpha1
+kind: RedisCache
+metadata:
+  name: redis-test-1
+spec:
+  name: example-cache
+  resourceGroupName: dev
+  location: East US
+  capacity: 2
+  family: C
+  skuName: Standard
+  enableNonSslPort: false
+  minimumTlsVersion: "1.2"
+  providerRef:
+    name: azure

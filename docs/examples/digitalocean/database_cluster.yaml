@@ -1,0 +1,13 @@
+apiVersion: digitalocean.kubeform.com/v1alpha1
+kind: DatabaseCluster
+metadata:
+  name: test1
+spec:
+  name: example-cluster
+  engine: pg
+  version: "11"
+  size: db-s-1vcpu-1gb
+  region: nyc1
+  nodeCount: 1
+  providerRef:
+    name: do

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: do
+type: "kubeform.com/digitalocean"
+data:
+  token: <Base64 encoded value of digitalocean token>

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: aws
+type: kubeform.com/aws
+data:
+  region: dXMtZWFzdC0xCg==
+  access_key: <Base64 encoded value of access key>
+  secret_key: <Base64 encoded value of secret key>
