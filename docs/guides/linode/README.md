@@ -17,7 +17,7 @@ aliases:
 
 This guide will show you how to provision a Linode Instance using Kubeform.
 
-> Examples used in this guide can be found [here](/docs/examples/linode).
+> Examples used in this guide can be found [here](https://github.com/kubeform/docs/tree/v0.0.1/docs/examples/linode).
 
 Look at the `Terraform` configuration below:
 

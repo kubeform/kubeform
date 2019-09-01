@@ -17,7 +17,7 @@ aliases:
 
 This guide will show you how to provision a Digitalocean Database Cluster using Kubeform.
 
-> Examples used in this guide can be found [here](/docs/examples/digitalocean).
+> Examples used in this guide can be found [here](https://github.com/kubeform/docs/tree/v0.0.1/docs/examples/digitalocean).
 
 Look at the `Terraform` configuration below:
 
