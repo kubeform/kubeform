@@ -1,15 +1,15 @@
 ---
-title: Overview | Developer Guide
-description: Developer Guide Overview
+title: Developer Guide
 menu:
-  product_kubeform_0.0.1:
+  docs_v0.0.1:
     identifier: developer-guide-readme
     name: Overview
     parent: developer-guide
-    weight: 15
-product_name: Kubeform
-menu_name: product_kubeform_0.0.1
+    weight: 10
+menu_name: docs_v0.0.1
 section_menu_id: setup
+aliases:
+  - /docs/v0.0.1/setup/developer-guide/
 ---
 
 > New to Kubeform? Please start [here](/docs/concepts/README.md).

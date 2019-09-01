@@ -2,17 +2,16 @@
 title: Acknowledgement | Kubeform
 description: Acknowledgement
 menu:
-  product_kubeform:
-    identifier: acknowledgement-kubeform
+  docs_v0.0.1:
+    identifier: acknowledgement
     name: Acknowledgement
     parent: welcome
     weight: 20
-product_name: kubeform
-menu_name: product_kubeform
+menu_name: docs_v0.0.1
 section_menu_id: welcome
-url: /products/kubeform/welcome/acknowledgement/
+url: /docs/v0.0.1/welcome/acknowledgement/
 aliases:
-  - /products/kubeform/acknowledgement/
+  - /docs/v0.0.1/acknowledgement/
 ---
 
 # Acknowledgement

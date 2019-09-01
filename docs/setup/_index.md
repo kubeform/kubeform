@@ -1,9 +1,9 @@
 ---
 title: Setup | Kubeform
 menu:
-  product_kubeform_0.0.1:
+  docs_v0.0.1:
     identifier: setup
     name: Setup
     weight: 30
-menu_name: product_kubeform_0.0.1
+menu_name: docs_v0.0.1
 ---

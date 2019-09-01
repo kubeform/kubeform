@@ -2,17 +2,16 @@
 title: Contributing | Kubeform
 description: Contributing
 menu:
-  product_kubeform:
-    identifier: contributing-kubeform
+  docs_v0.0.1:
+    identifier: contributing
     name: Contributing
     parent: welcome
     weight: 10
-product_name: kubeform
-menu_name: product_kubeform
+menu_name: docs_v0.0.1
 section_menu_id: welcome
-url: /products/kubeform/welcome/contributing/
+url: /docs/v0.0.1/welcome/contributing/
 aliases:
-  - /products/kubeform/CONTRIBUTING/
+  - /docs/v0.0.1/CONTRIBUTING/
 ---
 
 # Contribution Guidelines

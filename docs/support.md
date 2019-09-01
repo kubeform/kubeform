@@ -2,17 +2,16 @@
 title: Support | Kubeform
 description: Support
 menu:
-  product_kubeform_0.0.1:
-    identifier: support-kubeform
+  docs_v0.0.1:
+    identifier: support
     name: Support
     parent: welcome
     weight: 25
-product_name: kubeform
-menu_name: product_kubeform_0.0.1
+menu_name: docs_v0.0.1
 section_menu_id: welcome
-url: /products/kubeform/0.0.1/welcome/support/
+url: /docs/v0.0.1/welcome/support/
 aliases:
-  - /products/kubeform/0.0.1/support/
+  - /docs/v0.0.1/support/
 ---
 # Support
 

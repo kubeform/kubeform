@@ -1,16 +1,15 @@
 ---
-title: Release | Kubeform
-description: Kubeform Release
+title: Release
 menu:
-  product_kubeform_0.0.1:
-    identifier: release
-    name: Release
+  docs_v0.0.1:
+    identifier: developer-guide-release
+    name: Release Process
     parent: developer-guide
-    weight: 15
-product_name: Kubeform
-menu_name: product_kubeform_0.0.1
+    weight: 20
+menu_name: docs_v0.0.1
 section_menu_id: setup
 ---
+
 # Release Process
 
 The following steps must be done from a Linux x64 bit machine.

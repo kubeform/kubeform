@@ -1,10 +1,22 @@
-## Architecture of Kubeform
+---
+title: Kubeform Architecture
+menu:
+  docs_v0.0.1:
+    identifier: kubeform-architecture
+    name: Kubeform Architecture
+    parent: what-is-kubeform
+    weight: 20
+menu_name: docs_v0.0.1
+section_menu_id: concepts
+---
+
+## Kubeform Architecture
 
 The following diagram shows how `Kubeform` creates a resource on a Cloud Provider (GCP, AWS, etc.).
 
 <figure align="center">
- <img alt="Architecture of Kubeform" src="/docs/images/concepts/what-is-kubeform/architecture.svg">
- <figcaption align="center">Fig: Architecture of Kubeform</figcaption>
+ <img alt="Kubeform Architecture" src="/docs/images/concepts/what-is-kubeform/architecture.svg">
+ <figcaption align="center">Fig: Kubeform Architecture</figcaption>
 </figure>
 
 The Resource Creation Process of Kubeform consists of the following steps:

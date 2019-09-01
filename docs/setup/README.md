@@ -2,18 +2,18 @@
 title: Table of Contents | Setup
 description: Table of Contents | Setup
 menu:
-  product_kubeform_0.0.1:
+  docs_v0.0.1:
     identifier: setup-readme
     name: Readme
     parent: setup
     weight: -1
-product_name: Kubeform
-menu_name: product_kubeform_0.0.1
+menu_name: docs_v0.0.1
 section_menu_id: setup
-url: /products/Kubeform/0.0.1/setup/
+url: /docs/v0.0.1/setup/
 aliases:
-  - /products/Kubeform/0.0.1/setup/README/
+  - /docs/v0.0.1/setup/README/
 ---
+
 # Setup
 
 Setup contains instructions for installing the Kubeform and its various components in Kubernetes.

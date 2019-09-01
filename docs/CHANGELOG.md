@@ -2,17 +2,16 @@
 title: Releases | Kubeform
 description: Release History
 menu:
-  product_kubeform_0.1.0-rc.0:
-    identifier: release-history
+  docs_v0.0.1:
+    identifier: changelog
     name: Releases
     parent: welcome
     weight: 10
-product_name: kubeform
-menu_name: product_kubeform_0.1.0-rc.0
+menu_name: docs_v0.0.1
 section_menu_id: welcome
-url: /products/kubeform/0.1.0-rc.0/welcome/releases/
+url: /docs/v0.0.1/welcome/releases/
 aliases:
-  - /products/kubeform/0.1.0-rc.0/RELEASES/
+  - /docs/v0.0.1/RELEASES/
 ---
 
 ## Current Release

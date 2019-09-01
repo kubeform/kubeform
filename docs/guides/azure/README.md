@@ -1,3 +1,18 @@
+---
+title: Azure
+menu:
+  docs_v0.0.1:
+    identifier: readme-azure
+    name: Azure
+    parent: azure-guides
+    weight: 10
+menu_name: docs_v0.0.1
+section_menu_id: guides
+url: /docs/v0.0.1/guides/azure/
+aliases:
+  - /docs/v0.0.1/guides/azure/README/
+---
+
 # Azure
 
 This guide will show you how to provision a Azure Redis Cache using Kubeform.
@@ -44,7 +59,7 @@ spec:
     kind: RedisCache
     plural: rediscaches
   scope: Namespaced
-``` 
+```
 
 Save it in a file (eg. `crd.yaml`) then apply it using kubectl.
 
@@ -56,7 +71,7 @@ $ kubectl apply -f crd.yaml
 
 Then create the secret which is necessary for provisioning the Redis Cache in Azure.
 
-```yaml 
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:

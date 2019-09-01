@@ -1,3 +1,18 @@
+---
+title: Google
+menu:
+  docs_v0.0.1:
+    identifier: readme-google
+    name: Google
+    parent: google-guides
+    weight: 10
+menu_name: docs_v0.0.1
+section_menu_id: guides
+url: /docs/v0.0.1/guides/google/
+aliases:
+  - /docs/v0.0.1/guides/google/README/
+---
+
 # Google
 
 This guide will show you how to provision a Google Storage Bucket using Kubeform.
@@ -45,7 +60,7 @@ spec:
     kind: StorageBucket
     plural: storagebuckets
   scope: Namespaced
-``` 
+```
 
 Save it in a file (eg. `crd.yaml`) then apply it using kubectl.
 
@@ -57,7 +72,7 @@ $ kubectl apply -f crd.yaml
 
 Then create the secret which is necessary for provisioning the Storage Bucket in Google.
 
-```yaml 
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:

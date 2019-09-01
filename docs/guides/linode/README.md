@@ -1,3 +1,18 @@
+---
+title: Linode
+menu:
+  docs_v0.0.1:
+    identifier: readme-linode
+    name: Linode
+    parent: linode-guides
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: guides
+url: /docs/v0.0.1/guides/linode/
+aliases:
+  - /docs/v0.0.1/guides/linode/README/
+---
+
 # Linode
 
 This guide will show you how to provision a Linode Instance using Kubeform.
@@ -46,7 +61,7 @@ spec:
     kind: Instance
     plural: instances
   scope: Namespaced
-``` 
+```
 
 Save it in a file (eg. `crd.yaml`) then apply it using kubectl.
 
@@ -58,7 +73,7 @@ $ kubectl apply -f crd.yaml
 
 Then create the secret which is necessary for provisioning the Instance in Linode.
 
-```yaml 
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:

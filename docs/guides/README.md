@@ -1,3 +1,18 @@
+---
+title: Guides | Kubeform
+menu:
+  docs_v0.0.1:
+    identifier: guides-readme
+    name: Readme
+    parent: guides
+    weight: -1
+menu_name: docs_v0.0.1
+section_menu_id: guides
+url: /docs/v0.0.1/guides/
+aliases:
+  - /docs/v0.0.1/guides/README/
+---
+
 # Guides
 
 Guides show how to provision different cloud infrastructure using Kubeform. We have divided guides section into the following sub-sections:

@@ -2,21 +2,22 @@
 title: Welcome | Kubeform
 description: Welcome to Kubeform
 menu:
-  product_kubeform_0.0.1:
-    identifier: readme-kubeform
+  docs_v0.0.1:
+    identifier: readme
     name: Readme
     parent: welcome
     weight: -1
-product_name: kubeform
-menu_name: product_kubeform
+menu_name: docs_v0.0.1
 section_menu_id: welcome
-url: /products/kubeform/welcome/
+url: /docs/v0.0.1/welcome/
 aliases:
-  - /products/kubeform/
-  - /products/kubeform/README/
+  - /docs/v0.0.1/
+  - /docs/v0.0.1/README/
 ---
+
 # Kubeform
- Kubeform by AppsCode is a Kubernetes operator for [terrafrom](https://terraform.io). If you need to create a cloud infrastructure from kubernetes to use it with any kubernetes workloads or CRD you might want to create it from kubernetes. Kubeform allows you to create cloud infrastructure from kubernetes. You can just write a CRD for a cloud infrastructure, apply it and Kubeform will create it!
+
+Kubeform by AppsCode is a Kubernetes operator for [terrafrom](https://terraform.io). If you need to create a cloud infrastructure from kubernetes to use it with any kubernetes workloads or CRD you might want to create it from kubernetes. Kubeform allows you to create cloud infrastructure from kubernetes. You can just write a CRD for a cloud infrastructure, apply it and Kubeform will create it!
 
 From here you can learn all about Kubeform's architecture and how to deploy and use Kubeform.
 

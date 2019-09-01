@@ -1,10 +1,9 @@
 ---
-title: Docs | Kubeform
-description: Kubeform Docs
+title: Kubeform
 menu:
-  product_Kubeform:
+  docs_v0.0.1:
     identifier: welcome
     name: Welcome
     weight: 10
-menu_name: product_Kubeform
+menu_name: docs_v0.0.1
 ---

@@ -1,3 +1,18 @@
+---
+title: AWS
+menu:
+  docs_v0.0.1:
+    identifier: readme-aws
+    name: AWS
+    parent: aws-guides
+    weight: 10
+menu_name: docs_v0.0.1
+section_menu_id: guides
+url: /docs/v0.0.1/guides/aws/
+aliases:
+  - /docs/v0.0.1/guides/aws/README/
+---
+
 # AWS
 
 This guide will show you how to provision a AWS RDS (Relational Database Service) using Kubeform.
@@ -53,7 +68,7 @@ spec:
     kind: DbInstance
     plural: dbinstances
     scope: Namespaced
-``` 
+```
 
 Save it in a file (eg. `crd.yaml`) then apply it using kubectl.
 
@@ -65,7 +80,7 @@ $ kubectl apply -f crd.yaml
 
 Then create the secret which is necessary for provisioning the RDS instance in AWS.
 
-```yaml 
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:

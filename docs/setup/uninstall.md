@@ -1,16 +1,15 @@
 ---
-title: Uninstall
-description: Kubeform Uninstall
+title: Uninstall | Kubeform
 menu:
-  product_kubeform_0.0.1:
-    identifier: uninstall-Kubeform
+  docs_v0.0.1:
+    identifier: uninstall-kubeform
     name: Uninstall
     parent: setup
     weight: 20
-product_name: Kubeform
-menu_name: product_kubeform_0.0.1
+menu_name: docs_v0.0.1
 section_menu_id: setup
 ---
+
 # Uninstall Kubeform
 
 To uninstall kubeform installed using helm, use the following command.

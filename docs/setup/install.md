@@ -1,14 +1,12 @@
 ---
-title: Install
-description: Kubeform Install
+title: Install | Kubeform
 menu:
-  product_kubeform_0.0.1:
-    identifier: install-Kubeform
+  docs_v0.0.1:
+    identifier: install-kubeform
     name: Install
     parent: setup
     weight: 10
-product_name: Kubeform
-menu_name: product_kubeform_0.0.1
+menu_name: docs_v0.0.1
 section_menu_id: setup
 ---
 

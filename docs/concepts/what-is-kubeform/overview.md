@@ -2,13 +2,12 @@
 title: Kubeform Overview
 description: Kubeform Overview
 menu:
-  product_kubeform_0.0.1:
+  docs_v0.0.1:
     identifier: overview-concepts
     name: Overview
-    parent: what-is-Kubeform
+    parent: what-is-kubeform
     weight: 10
-product_name: Kubeform
-menu_name: product_kubeform_0.0.1
+menu_name: docs_v0.0.1
 section_menu_id: concepts
 ---
 
@@ -19,16 +18,16 @@ section_menu_id: concepts
 ## Features
 
 - **Native Kubernetes Support**
-  Standard Kubernetes is all you need. If you can run Kubernetes, you can provision and manage cloud infrastructure using Kubeform. Use standard Kubernetes CLI and API to provision and manage different cloud infrastructures. This native integration with Kubernetes means your cloud infrastructures are ready for any higher level deployment tooling like GitOps, Open Policy Agent (OPA), etc. 
+  Standard Kubernetes is all you need. If you can run Kubernetes, you can provision and manage cloud infrastructure using Kubeform. Use standard Kubernetes CLI and API to provision and manage different cloud infrastructures. This native integration with Kubernetes means your cloud infrastructures are ready for any higher level deployment tooling like GitOps, Open Policy Agent (OPA), etc.
 
 - **Built on Terrafrom**
   Terraform is a popular tool for provisioning cloud infrastructure. Kubeform is built on top of Terraform. You can think it like a kubernetes operator for terraform. You can easily convert any resource of terrafrom using a CRD. You can just write a yaml for the resource which is almost same as a `tf` configuration. After applying the yaml using kubernetes API, kubeform will provision the cloud infrastructure for you!
 
-- **Infrastructure as Code**: 
+- **Infrastructure as Code**:
   Using kubeform, you can just write a yaml and provision a cloud infrastructure in popular cloud platforms. You can easily provision and manage cloud infrastructures using codes. You can automate the lifecycle of cloud infrastructure using kubeform.
 
-- **Supports Multiple Cloud Platform**: 
-  Kubeform supports 5 top cloud platforms. These are AWS, Google Cloud, Azure, Digitalocean & Linode. Using Kubeform, Infrastructure of any of these clouds can be provisioned using a simple CRD instance. 
+- **Supports Multiple Cloud Platform**:
+  Kubeform supports 5 top cloud platforms. These are AWS, Google Cloud, Azure, Digitalocean & Linode. Using Kubeform, Infrastructure of any of these clouds can be provisioned using a simple CRD instance.
 
 - **Unleash Developer Velocity**:
   With Kubeform, you can launch a cloud infrastructure via a simple CRD instance and start developing in minutes. Kubeform eliminates lengthy deployment and management processes with on-demand provisioning, scaling, patching and updating cloud infrastructure and shortens time-to-value. Kubeform gives each developer on your team their own development instance, so your team can focus on what matters most — velocity and not have to worry about stepping on each other’s toes.
