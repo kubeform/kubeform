@@ -40,26 +40,39 @@ type StackscriptSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// The date this StackScript was created.
 	// +optional
 	Created string `json:"created,omitempty" tf:"created,omitempty"`
+	// Count of currently active, deployed Linodes created from this StackScript.
 	// +optional
 	DeploymentsActive int `json:"deploymentsActive,omitempty" tf:"deployments_active,omitempty"`
+	// The total number of times this StackScript has been deployed.
 	// +optional
-	DeploymentsTotal int      `json:"deploymentsTotal,omitempty" tf:"deployments_total,omitempty"`
-	Description      string   `json:"description" tf:"description"`
-	Images           []string `json:"images" tf:"images"`
+	DeploymentsTotal int `json:"deploymentsTotal,omitempty" tf:"deployments_total,omitempty"`
+	// A description for the StackScript.
+	Description string `json:"description" tf:"description"`
+	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
+	Images []string `json:"images" tf:"images"`
+	// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
 	// +optional
-	IsPublic bool   `json:"isPublic,omitempty" tf:"is_public,omitempty"`
-	Label    string `json:"label" tf:"label"`
+	IsPublic bool `json:"isPublic,omitempty" tf:"is_public,omitempty"`
+	// The StackScript's label is for display purposes only.
+	Label string `json:"label" tf:"label"`
+	// This field allows you to add notes for the set of revisions made to this StackScript.
 	// +optional
 	RevNote string `json:"revNote,omitempty" tf:"rev_note,omitempty"`
-	Script  string `json:"script" tf:"script"`
+	// The script to execute when provisioning a new Linode with this StackScript.
+	Script string `json:"script" tf:"script"`
+	// The date this StackScript was updated.
 	// +optional
 	Updated string `json:"updated,omitempty" tf:"updated,omitempty"`
+	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
 	// +optional
 	UserDefinedFields []StackscriptSpecUserDefinedFields `json:"userDefinedFields,omitempty" tf:"user_defined_fields,omitempty"`
+	// The Gravatar ID for the User who created the StackScript.
 	// +optional
 	UserGravatarID string `json:"userGravatarID,omitempty" tf:"user_gravatar_id,omitempty"`
+	// The User who created the StackScript.
 	// +optional
 	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }

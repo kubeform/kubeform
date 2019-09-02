@@ -21,10 +21,13 @@ type Nodebalancer struct {
 }
 
 type NodebalancerSpecTransfer struct {
+	// The total transfer, in MB, used by this NodeBalancer this month
 	// +optional
 	In json.Number `json:"in,omitempty" tf:"in,omitempty"`
+	// The total inbound transfer, in MB, used for this NodeBalancer this month
 	// +optional
 	Out json.Number `json:"out,omitempty" tf:"out,omitempty"`
+	// The total outbound transfer, in MB, used for this NodeBalancer this month
 	// +optional
 	Total json.Number `json:"total,omitempty" tf:"total,omitempty"`
 }
@@ -34,19 +37,26 @@ type NodebalancerSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// Throttle connections per second (0-20). Set to 0 (zero) to disable throttling.
 	// +optional
 	ClientConnThrottle int `json:"clientConnThrottle,omitempty" tf:"client_conn_throttle,omitempty"`
 	// +optional
 	Created string `json:"created,omitempty" tf:"created,omitempty"`
+	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	// +optional
 	Hostname string `json:"hostname,omitempty" tf:"hostname,omitempty"`
+	// The Public IPv4 Address of this NodeBalancer
 	// +optional
 	Ipv4 string `json:"ipv4,omitempty" tf:"ipv4,omitempty"`
+	// The Public IPv6 Address of this NodeBalancer
 	// +optional
 	Ipv6 string `json:"ipv6,omitempty" tf:"ipv6,omitempty"`
+	// The label of the Linode NodeBalancer.
 	// +optional
-	Label  string `json:"label,omitempty" tf:"label,omitempty"`
+	Label string `json:"label,omitempty" tf:"label,omitempty"`
+	// The region where this NodeBalancer will be deployed.
 	Region string `json:"region" tf:"region"`
+	// An array of tags applied to this object. Tags are for organizational purposes only.
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`

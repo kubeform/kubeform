@@ -85,6 +85,7 @@ type LoadbalancerSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	StickySessions []LoadbalancerSpecStickySessions `json:"stickySessions,omitempty" tf:"sticky_sessions,omitempty"`
+	// the uniform resource name for the load balancer
 	// +optional
 	Urn string `json:"urn,omitempty" tf:"urn,omitempty"`
 }

@@ -398,22 +398,32 @@ spec:
         spec:
           properties:
             created:
+              description: The date this StackScript was created.
               type: string
             deploymentsActive:
+              description: Count of currently active, deployed Linodes created from
+                this StackScript.
               type: integer
             deploymentsTotal:
+              description: The total number of times this StackScript has been deployed.
               type: integer
             description:
+              description: A description for the StackScript.
               type: string
             id:
               type: string
             images:
+              description: An array of Image IDs representing the Images that this
+                StackScript is compatible for deploying with.
               items:
                 type: string
               type: array
             isPublic:
+              description: This determines whether other users can use your StackScript.
+                Once a StackScript is made public, it cannot be made private.
               type: boolean
             label:
+              description: The StackScript's label is for display purposes only.
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -425,12 +435,20 @@ spec:
                   type: string
               type: object
             revNote:
+              description: This field allows you to add notes for the set of revisions
+                made to this StackScript.
               type: string
             script:
+              description: The script to execute when provisioning a new Linode with
+                this StackScript.
               type: string
             updated:
+              description: The date this StackScript was updated.
               type: string
             userDefinedFields:
+              description: This is a list of fields defined with a special syntax
+                inside this StackScript that allow for supplying customized parameters
+                during deployment.
               items:
                 properties:
                   default:
@@ -448,8 +466,10 @@ spec:
                 type: object
               type: array
             userGravatarID:
+              description: The Gravatar ID for the User who created the StackScript.
               type: string
             username:
+              description: The User who created the StackScript.
               type: string
           required:
           - description
@@ -468,22 +488,33 @@ spec:
             output:
               properties:
                 created:
+                  description: The date this StackScript was created.
                   type: string
                 deploymentsActive:
+                  description: Count of currently active, deployed Linodes created
+                    from this StackScript.
                   type: integer
                 deploymentsTotal:
+                  description: The total number of times this StackScript has been
+                    deployed.
                   type: integer
                 description:
+                  description: A description for the StackScript.
                   type: string
                 id:
                   type: string
                 images:
+                  description: An array of Image IDs representing the Images that
+                    this StackScript is compatible for deploying with.
                   items:
                     type: string
                   type: array
                 isPublic:
+                  description: This determines whether other users can use your StackScript.
+                    Once a StackScript is made public, it cannot be made private.
                   type: boolean
                 label:
+                  description: The StackScript's label is for display purposes only.
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -495,12 +526,20 @@ spec:
                       type: string
                   type: object
                 revNote:
+                  description: This field allows you to add notes for the set of revisions
+                    made to this StackScript.
                   type: string
                 script:
+                  description: The script to execute when provisioning a new Linode
+                    with this StackScript.
                   type: string
                 updated:
+                  description: The date this StackScript was updated.
                   type: string
                 userDefinedFields:
+                  description: This is a list of fields defined with a special syntax
+                    inside this StackScript that allow for supplying customized parameters
+                    during deployment.
                   items:
                     properties:
                       default:
@@ -518,8 +557,10 @@ spec:
                     type: object
                   type: array
                 userGravatarID:
+                  description: The Gravatar ID for the User who created the StackScript.
                   type: string
                 username:
+                  description: The User who created the StackScript.
                   type: string
               required:
               - description
@@ -552,9 +593,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

@@ -25,14 +25,21 @@ type NodebalancerNodeSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Address  string `json:"address" tf:"address"`
-	ConfigID int    `json:"configID" tf:"config_id"`
-	Label    string `json:"label" tf:"label"`
+	// The private IP Address and port (IP:PORT) where this backend can be reached. This must be a private IP address.
+	Address string `json:"address" tf:"address"`
+	// The ID of the NodeBalancerConfig to access.
+	ConfigID int `json:"configID" tf:"config_id"`
+	// The label for this node. This is for display purposes only.
+	Label string `json:"label" tf:"label"`
+	// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it.
 	// +optional
-	Mode           string `json:"mode,omitempty" tf:"mode,omitempty"`
-	NodebalancerID int    `json:"nodebalancerID" tf:"nodebalancer_id"`
+	Mode string `json:"mode,omitempty" tf:"mode,omitempty"`
+	// The ID of the NodeBalancer to access.
+	NodebalancerID int `json:"nodebalancerID" tf:"nodebalancer_id"`
+	// The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
+	// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255)
 	// +optional
 	Weight int `json:"weight,omitempty" tf:"weight,omitempty"`
 }

@@ -398,6 +398,7 @@ spec:
         spec:
           properties:
             address:
+              description: The public Linode IPv4 or IPv6 address to operate on.
               type: string
             id:
               type: string
@@ -411,6 +412,9 @@ spec:
                   type: string
               type: object
             rdns:
+              description: The reverse DNS assigned to this address. For public IPv4
+                addresses, this will be set to a default value provided by Linode
+                if not explicitly set.
               type: string
           required:
           - address
@@ -427,6 +431,7 @@ spec:
             output:
               properties:
                 address:
+                  description: The public Linode IPv4 or IPv6 address to operate on.
                   type: string
                 id:
                   type: string
@@ -440,6 +445,9 @@ spec:
                       type: string
                   type: object
                 rdns:
+                  description: The reverse DNS assigned to this address. For public
+                    IPv4 addresses, this will be set to a default value provided by
+                    Linode if not explicitly set.
                   type: string
               required:
               - address
@@ -470,9 +478,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

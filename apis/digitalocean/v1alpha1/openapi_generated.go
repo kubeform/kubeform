@@ -12420,38 +12420,44 @@ func schema_kubeform_apis_digitalocean_v1alpha1_CdnSpec(ref common.ReferenceCall
 					},
 					"certificateID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "ID of a DigitalOcean managed TLS certificate for use with custom domains",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"createdAt": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The date and time (ISO8601) of when the CDN endpoint was created.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"customDomain": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "fully qualified domain name (FQDN) for custom subdomain, (requires certificate_id)",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"endpoint": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "fully qualified domain name (FQDN) to serve the CDN content",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"origin": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "fully qualified domain name (FQDN) for the origin server",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The amount of time the content is cached in the CDN",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 				},
@@ -14321,8 +14327,9 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FloatingIPSpec(ref common.Refere
 					},
 					"urn": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "the uniform resource name for the floating ip",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -15201,8 +15208,9 @@ func schema_kubeform_apis_digitalocean_v1alpha1_LoadbalancerSpec(ref common.Refe
 					},
 					"urn": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "the uniform resource name for the load balancer",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -15488,49 +15496,57 @@ func schema_kubeform_apis_digitalocean_v1alpha1_ProjectSpec(ref common.Reference
 					},
 					"createdAt": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "the date and time when the project was created, (ISO8601)",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "the descirption of the project",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"environment": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "the environment of the project's resources",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "the human-readable name for the project",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"ownerID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "the id of the project owner.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"ownerUUID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "the unique universal identifier of the project owner.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"purpose": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "the purpose of the project",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"resources": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "the resources associated with the project",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -15543,8 +15559,9 @@ func schema_kubeform_apis_digitalocean_v1alpha1_ProjectSpec(ref common.Reference
 					},
 					"updatedAt": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "the date and time when the project was last updated, (ISO8601)",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -15909,38 +15926,44 @@ func schema_kubeform_apis_digitalocean_v1alpha1_SpacesBucketSpec(ref common.Refe
 					},
 					"acl": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Canned ACL applied on bucket creation",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"bucketDomainName": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The FQDN of the bucket",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"forceDestroy": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "Unless true, the bucket will only be destroyed if empty",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Bucket name",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"region": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Bucket region",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"urn": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "the uniform resource name for the bucket",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -16827,8 +16850,9 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeSpec(ref common.ReferenceC
 					},
 					"urn": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "the uniform resource name for the volume.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},

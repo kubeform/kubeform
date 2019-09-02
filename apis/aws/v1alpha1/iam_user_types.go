@@ -27,6 +27,7 @@ type IamUserSpec struct {
 
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// Delete user even if it has non-Terraform-managed IAM access keys, login profile or MFA devices
 	// +optional
 	ForceDestroy bool   `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
 	Name         string `json:"name" tf:"name"`

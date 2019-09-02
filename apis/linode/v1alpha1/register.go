@@ -38,14 +38,26 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
     
-        &Rdns{},
-        &RdnsList{},
+        &Image{},
+        &ImageList{},
     
-        &Sshkey{},
-        &SshkeyList{},
+        &Domain{},
+        &DomainList{},
+    
+        &DomainRecord{},
+        &DomainRecordList{},
+    
+        &NodebalancerNode{},
+        &NodebalancerNodeList{},
+    
+        &Stackscript{},
+        &StackscriptList{},
     
         &Token{},
         &TokenList{},
+    
+        &Volume{},
+        &VolumeList{},
     
         &Instance{},
         &InstanceList{},
@@ -56,23 +68,11 @@ func addKnownTypes(scheme *runtime.Scheme) error {
         &NodebalancerConfig{},
         &NodebalancerConfigList{},
     
-        &NodebalancerNode{},
-        &NodebalancerNodeList{},
+        &Rdns{},
+        &RdnsList{},
     
-        &Volume{},
-        &VolumeList{},
-    
-        &Image{},
-        &ImageList{},
-    
-        &Domain{},
-        &DomainList{},
-    
-        &DomainRecord{},
-        &DomainRecordList{},
-    
-        &Stackscript{},
-        &StackscriptList{},
+        &Sshkey{},
+        &SshkeyList{},
     
 	)
 

@@ -12486,68 +12486,79 @@ func schema_kubeform_apis_linode_v1alpha1_DomainRecordSpec(ref common.ReferenceC
 					},
 					"domainID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The ID of the Domain to access.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The name of this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the subdomain being associated with an IP address.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"port": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The port this Record points to.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"priority": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The priority of the target host. Lower values are preferred.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"protocol": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The protocol this Record's service communicates with. Only valid for SRV records.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"recordType": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"service": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The service this Record identified. Only valid for SRV records.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"tag": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The tag portion of a CAA record. It is invalid to set this on other record types.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"target": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The target for this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the address the named Domain should resolve to.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"ttlSec": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"weight": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The relative weight of this Record. Higher values are preferred.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 				},
@@ -12609,7 +12620,8 @@ func schema_kubeform_apis_linode_v1alpha1_DomainSpec(ref common.ReferenceCallbac
 					},
 					"axfrIPS": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -12622,31 +12634,36 @@ func schema_kubeform_apis_linode_v1alpha1_DomainSpec(ref common.ReferenceCallbac
 					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "A description for this Domain. This is for display purposes only.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"domain": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"expireSec": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 00, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"group": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The group this Domain belongs to. This is for display purposes only.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"masterIPS": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "The IP addresses representing the master DNS for this Domain.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -12659,31 +12676,36 @@ func schema_kubeform_apis_linode_v1alpha1_DomainSpec(ref common.ReferenceCallbac
 					},
 					"refreshSec": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"retrySec": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The interval, in seconds, at which a failed refresh should be retried. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"soaEmail": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Start of Authority email address. This is required for master Domains.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Used to control whether this Domain is currently being rendered.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "An array of tags applied to this object. Tags are for organizational purposes only.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -12696,14 +12718,16 @@ func schema_kubeform_apis_linode_v1alpha1_DomainSpec(ref common.ReferenceCallbac
 					},
 					"ttlSec": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"type": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -12855,74 +12879,86 @@ func schema_kubeform_apis_linode_v1alpha1_ImageSpec(ref common.ReferenceCallback
 					},
 					"created": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "When this Image was created.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"createdBy": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The name of the User who created this Image.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"deprecated": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "Whether or not this Image is deprecated. Will only be True for deprecated public Images.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "A detailed description of this Image.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"diskID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The ID of the Linode Disk that this Image will be created from.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"expiry": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Only Images created automatically (from a deleted Linode; type=automatic) will expire.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"isPublic": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "True if the Image is public.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"label": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "A short description of the Image. Labels cannot contain special characters.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"linodeID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The ID of the Linode that this Image will be created from.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"size": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The minimum size this Image needs to deploy. Size is in MB.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"type": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"vendor": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The upstream distribution vendor. Nil for private Images.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -13091,7 +13127,8 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 					},
 					"authorizedKeys": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -13104,7 +13141,8 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 					},
 					"authorizedUsers": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -13117,13 +13155,15 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 					},
 					"backupID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"backups": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "Information about this Linode's backups status.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -13135,19 +13175,22 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 					},
 					"backupsEnabled": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"bootConfigLabel": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The Label of the Instance Config that should be used to boot the Linode instance.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"config": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "Configuration profiles define the VM settings and boot behavior of the Linode Instance.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -13171,25 +13214,29 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 					},
 					"group": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The display group of the Linode instance.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"image": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"ipAddress": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address will be used for this field.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"ipv4": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -13202,32 +13249,37 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 					},
 					"ipv6": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"label": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"privateIP": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"privateIPAddress": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "This Linode's Private IPv4 Address.  The regional private IP address range is 192.168.128/17 address shared by all Linode Instances in a region.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"region": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "This is the location where the Linode was deployed. This cannot be changed without opening a support ticket.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"specs": {
@@ -13244,25 +13296,29 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 					},
 					"stackscriptID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The status of the instance, indicating the current readiness state.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"swapSize": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "An array of tags applied to this object. Tags are for organizational purposes only.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -13275,14 +13331,16 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 					},
 					"type": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The type of instance to be deployed, determining the price and size.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"watchdogEnabled": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 				},
@@ -13302,32 +13360,37 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecAlerts(ref common.Referenc
 				Properties: map[string]spec.Schema{
 					"cpu": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"io": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"networkIn": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"networkOut": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"transferQuota": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 				},
@@ -13344,8 +13407,9 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecBackups(ref common.Referen
 				Properties: map[string]spec.Schema{
 					"enabled": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "If this Linode has the Backup service enabled.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"schedule": {
@@ -13376,14 +13440,16 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecBackupsSchedule(ref common
 				Properties: map[string]spec.Schema{
 					"day": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The day ('Sunday'-'Saturday') of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as 'Scheduling' until the day is automatically selected.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"window": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -13400,13 +13466,15 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfig(ref common.Referenc
 				Properties: map[string]spec.Schema{
 					"comments": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Optional field for arbitrary User comments on this Config.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"devices": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -13418,7 +13486,8 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfig(ref common.Referenc
 					},
 					"helpers": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "Helpers enabled when booting to this Linode Config.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -13430,38 +13499,44 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfig(ref common.Referenc
 					},
 					"kernel": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"label": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The Config's label for display purposes.  Also used by `boot_config_label`.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"memoryLimit": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "Defaults to the total RAM of the Linode",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"rootDevice": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The root device to boot. The corresponding disk must be attached.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"runLevel": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Defines the state of your Linode after booting. Defaults to default.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"virtMode": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Controls the virtualization mode. Defaults to paravirt.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -13591,20 +13666,23 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSda(ref commo
 				Properties: map[string]spec.Schema{
 					"diskID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The Disk ID to map to this disk slot",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"diskLabel": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The `label` of the `disk` to map to this `device` slot.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"volumeID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The Block Storage volume ID to map to this disk slot",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 				},
@@ -13831,32 +13909,37 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigHelpers(ref common.R
 				Properties: map[string]spec.Schema{
 					"devtmpfsAutomount": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "Populates the /dev directory early during boot without udev. Defaults to false.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"distro": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "Controls the behavior of the Linode Config's Distribution Helper setting.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"modulesDep": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "Creates a modules dependency file for the Kernel you run.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"network": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"updatedbDisabled": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "Disables updatedb cron job to avoid disk thrashing.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 				},
@@ -13873,7 +13956,8 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecDisk(ref common.ReferenceC
 				Properties: map[string]spec.Schema{
 					"authorizedKeys": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -13886,7 +13970,8 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecDisk(ref common.ReferenceC
 					},
 					"authorizedUsers": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -13899,44 +13984,51 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecDisk(ref common.ReferenceC
 					},
 					"filesystem": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"ID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"image": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"label": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The disks label, which acts as an identifier in Terraform.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"readOnly": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "If true, this Disk is read-only.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"size": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The size of the Disk in MB.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"stackscriptID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 				},
@@ -13954,26 +14046,30 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecSpecs(ref common.Reference
 				Properties: map[string]spec.Schema{
 					"disk": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"memory": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"transfer": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The amount of network transfer this Linode is allotted each month.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"vcpus": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 				},
@@ -14170,56 +14266,65 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigSpec(ref common.Refe
 					},
 					"algorithm": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "What algorithm this NodeBalancer should use for routing traffic to backends: roundrobin, leastconn, source",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"check": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"checkAttempts": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "How many times to attempt a check before considering a backend to be down. (1-30)",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"checkBody": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"checkInterval": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "How often, in seconds, to check that backends are up and serving requests.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"checkPassive": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"checkPath": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"checkTimeout": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "How long, in seconds, to wait for a check attempt before considering it failed. (1-30)",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"cipherSuite": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"nodeStatus": {
@@ -14237,44 +14342,51 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigSpec(ref common.Refe
 					},
 					"nodebalancerID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The ID of the NodeBalancer to access.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"port": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"protocol": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"sslCert": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"sslCommonname": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The common name for the SSL certification this port is serving if this port is not configured to use SSL.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"sslFingerprint": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"stickiness": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -14294,14 +14406,16 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigSpecNodeStatus(ref c
 				Properties: map[string]spec.Schema{
 					"statusDown": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"statusUp": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The number of backends considered to be 'UP' and healthy, and that are serving requests.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 				},
@@ -14497,44 +14611,51 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerNodeSpec(ref common.Refere
 					},
 					"address": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The private IP Address and port (IP:PORT) where this backend can be reached. This must be a private IP address.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"configID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The ID of the NodeBalancerConfig to access.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"label": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The label for this node. This is for display purposes only.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"mode": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"nodebalancerID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The ID of the NodeBalancer to access.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"weight": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255)",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 				},
@@ -14596,8 +14717,9 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerSpec(ref common.ReferenceC
 					},
 					"clientConnThrottle": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "Throttle connections per second (0-20). Set to 0 (zero) to disable throttling.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"created": {
@@ -14608,37 +14730,43 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerSpec(ref common.ReferenceC
 					},
 					"hostname": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "This NodeBalancer's hostname, ending with .nodebalancer.linode.com",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"ipv4": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The Public IPv4 Address of this NodeBalancer",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"ipv6": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The Public IPv6 Address of this NodeBalancer",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"label": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The label of the Linode NodeBalancer.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"region": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The region where this NodeBalancer will be deployed.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "An array of tags applied to this object. Tags are for organizational purposes only.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -14685,20 +14813,23 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerSpecTransfer(ref common.Re
 				Properties: map[string]spec.Schema{
 					"in": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The total transfer, in MB, used by this NodeBalancer this month",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"out": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The total inbound transfer, in MB, used for this NodeBalancer this month",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"total": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The total outbound transfer, in MB, used for this NodeBalancer this month",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -14847,14 +14978,16 @@ func schema_kubeform_apis_linode_v1alpha1_RdnsSpec(ref common.ReferenceCallback)
 					},
 					"address": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The public Linode IPv4 or IPv6 address to operate on.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"rdns": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -15006,20 +15139,23 @@ func schema_kubeform_apis_linode_v1alpha1_SshkeySpec(ref common.ReferenceCallbac
 					},
 					"created": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The date this key was added.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"label": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The label of the Linode SSH Key.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"sshKey": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -15171,31 +15307,36 @@ func schema_kubeform_apis_linode_v1alpha1_StackscriptSpec(ref common.ReferenceCa
 					},
 					"created": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The date this StackScript was created.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"deploymentsActive": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "Count of currently active, deployed Linodes created from this StackScript.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"deploymentsTotal": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The total number of times this StackScript has been deployed.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "A description for the StackScript.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"images": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "An array of Image IDs representing the Images that this StackScript is compatible for deploying with.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -15208,37 +15349,43 @@ func schema_kubeform_apis_linode_v1alpha1_StackscriptSpec(ref common.ReferenceCa
 					},
 					"isPublic": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Description: "This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.",
+							Type:        []string{"boolean"},
+							Format:      "",
 						},
 					},
 					"label": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The StackScript's label is for display purposes only.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"revNote": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "This field allows you to add notes for the set of revisions made to this StackScript.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"script": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The script to execute when provisioning a new Linode with this StackScript.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"updated": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The date this StackScript was updated.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"userDefinedFields": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
@@ -15250,14 +15397,16 @@ func schema_kubeform_apis_linode_v1alpha1_StackscriptSpec(ref common.ReferenceCa
 					},
 					"userGravatarID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The Gravatar ID for the User who created the StackScript.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"username": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The User who created the StackScript.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -15457,32 +15606,37 @@ func schema_kubeform_apis_linode_v1alpha1_TokenSpec(ref common.ReferenceCallback
 					},
 					"created": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The date and time this token was created.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"expiry": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"label": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The label of the Linode Token.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"scopes": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"token": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The token used to access the API.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
@@ -15634,43 +15788,50 @@ func schema_kubeform_apis_linode_v1alpha1_VolumeSpec(ref common.ReferenceCallbac
 					},
 					"filesystemPath": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ + Volume label.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"label": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The label of the Linode Volume.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"linodeID": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "The Linode ID where the Volume should be attached.",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"region": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The region where this volume will be deployed.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"size": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Description: "Size of the Volume in GB",
+							Type:        []string{"integer"},
+							Format:      "int32",
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Description: "The status of the volume, indicating the current readiness state.",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
+							Description: "An array of tags applied to this object. Tags are for organizational purposes only.",
+							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{

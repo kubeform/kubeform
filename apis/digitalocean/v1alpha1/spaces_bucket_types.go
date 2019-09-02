@@ -25,15 +25,21 @@ type SpacesBucketSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// Canned ACL applied on bucket creation
 	// +optional
 	Acl string `json:"acl,omitempty" tf:"acl,omitempty"`
+	// The FQDN of the bucket
 	// +optional
 	BucketDomainName string `json:"bucketDomainName,omitempty" tf:"bucket_domain_name,omitempty"`
+	// Unless true, the bucket will only be destroyed if empty
 	// +optional
-	ForceDestroy bool   `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
-	Name         string `json:"name" tf:"name"`
+	ForceDestroy bool `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
+	// Bucket name
+	Name string `json:"name" tf:"name"`
+	// Bucket region
 	// +optional
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	// the uniform resource name for the bucket
 	// +optional
 	Urn string `json:"urn,omitempty" tf:"urn,omitempty"`
 }

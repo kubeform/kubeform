@@ -38,53 +38,38 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
     
-        &DropletSnapshot{},
-        &DropletSnapshotList{},
-    
-        &FloatingIP{},
-        &FloatingIPList{},
-    
-        &SpacesBucket{},
-        &SpacesBucketList{},
-    
-        &SshKey{},
-        &SshKeyList{},
-    
-        &VolumeSnapshot{},
-        &VolumeSnapshotList{},
+        &DatabaseCluster{},
+        &DatabaseClusterList{},
     
         &Domain{},
         &DomainList{},
     
-        &Loadbalancer{},
-        &LoadbalancerList{},
+        &Firewall{},
+        &FirewallList{},
     
-        &Project{},
-        &ProjectList{},
+        &FloatingIP{},
+        &FloatingIPList{},
+    
+        &Volume{},
+        &VolumeList{},
     
         &VolumeAttachment{},
         &VolumeAttachmentList{},
     
-        &Tag{},
-        &TagList{},
-    
-        &DatabaseCluster{},
-        &DatabaseClusterList{},
-    
-        &Firewall{},
-        &FirewallList{},
+        &Droplet{},
+        &DropletList{},
     
         &FloatingIPAssignment{},
         &FloatingIPAssignmentList{},
     
-        &KubernetesCluster{},
-        &KubernetesClusterList{},
-    
         &KubernetesNodePool{},
         &KubernetesNodePoolList{},
     
-        &Record{},
-        &RecordList{},
+        &Tag{},
+        &TagList{},
+    
+        &VolumeSnapshot{},
+        &VolumeSnapshotList{},
     
         &Certificate{},
         &CertificateList{},
@@ -92,11 +77,26 @@ func addKnownTypes(scheme *runtime.Scheme) error {
         &Cdn{},
         &CdnList{},
     
-        &Droplet{},
-        &DropletList{},
+        &DropletSnapshot{},
+        &DropletSnapshotList{},
     
-        &Volume{},
-        &VolumeList{},
+        &KubernetesCluster{},
+        &KubernetesClusterList{},
+    
+        &SshKey{},
+        &SshKeyList{},
+    
+        &Loadbalancer{},
+        &LoadbalancerList{},
+    
+        &Project{},
+        &ProjectList{},
+    
+        &Record{},
+        &RecordList{},
+    
+        &SpacesBucket{},
+        &SpacesBucketList{},
     
 	)
 

@@ -398,12 +398,16 @@ spec:
         spec:
           properties:
             filesystemPath:
+              description: The full filesystem path for the Volume based on the Volume's
+                label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ + Volume label.
               type: string
             id:
               type: string
             label:
+              description: The label of the Linode Volume.
               type: string
             linodeID:
+              description: The Linode ID where the Volume should be attached.
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -415,12 +419,18 @@ spec:
                   type: string
               type: object
             region:
+              description: The region where this volume will be deployed.
               type: string
             size:
+              description: Size of the Volume in GB
               type: integer
             status:
+              description: The status of the volume, indicating the current readiness
+                state.
               type: string
             tags:
+              description: An array of tags applied to this object. Tags are for organizational
+                purposes only.
               items:
                 type: string
               type: array
@@ -440,12 +450,17 @@ spec:
             output:
               properties:
                 filesystemPath:
+                  description: The full filesystem path for the Volume based on the
+                    Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ +
+                    Volume label.
                   type: string
                 id:
                   type: string
                 label:
+                  description: The label of the Linode Volume.
                   type: string
                 linodeID:
+                  description: The Linode ID where the Volume should be attached.
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -457,12 +472,18 @@ spec:
                       type: string
                   type: object
                 region:
+                  description: The region where this volume will be deployed.
                   type: string
                 size:
+                  description: Size of the Volume in GB
                   type: integer
                 status:
+                  description: The status of the volume, indicating the current readiness
+                    state.
                   type: string
                 tags:
+                  description: An array of tags applied to this object. Tags are for
+                    organizational purposes only.
                   items:
                     type: string
                   type: array
@@ -496,9 +517,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

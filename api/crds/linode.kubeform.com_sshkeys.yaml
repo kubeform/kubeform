@@ -398,10 +398,12 @@ spec:
         spec:
           properties:
             created:
+              description: The date this key was added.
               type: string
             id:
               type: string
             label:
+              description: The label of the Linode SSH Key.
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -413,6 +415,8 @@ spec:
                   type: string
               type: object
             sshKey:
+              description: The public SSH Key, which is used to authenticate to the
+                root user of the Linodes you deploy.
               type: string
           required:
           - label
@@ -429,10 +433,12 @@ spec:
             output:
               properties:
                 created:
+                  description: The date this key was added.
                   type: string
                 id:
                   type: string
                 label:
+                  description: The label of the Linode SSH Key.
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -444,6 +450,8 @@ spec:
                       type: string
                   type: object
                 sshKey:
+                  description: The public SSH Key, which is used to authenticate to
+                    the root user of the Linodes you deploy.
                   type: string
               required:
               - label
@@ -474,9 +482,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

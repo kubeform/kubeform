@@ -398,16 +398,24 @@ spec:
         spec:
           properties:
             domainID:
+              description: The ID of the Domain to access.
               type: integer
             id:
               type: string
             name:
+              description: The name of this Record. This field's actual usage depends
+                on the type of record this represents. For A and AAAA records, this
+                is the subdomain being associated with an IP address.
               type: string
             port:
+              description: The port this Record points to.
               type: integer
             priority:
+              description: The priority of the target host. Lower values are preferred.
               type: integer
             protocol:
+              description: The protocol this Record's service communicates with. Only
+                valid for SRV records.
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -419,16 +427,32 @@ spec:
                   type: string
               type: object
             recordType:
+              description: The type of Record this is in the DNS system. For example,
+                A records associate a domain name with an IPv4 address, and AAAA records
+                associate a domain name with an IPv6 address.
               type: string
             service:
+              description: The service this Record identified. Only valid for SRV
+                records.
               type: string
             tag:
+              description: The tag portion of a CAA record. It is invalid to set this
+                on other record types.
               type: string
             target:
+              description: The target for this Record. This field's actual usage depends
+                on the type of record this represents. For A and AAAA records, this
+                is the address the named Domain should resolve to.
               type: string
             ttlSec:
+              description: '''Time to Live'' - the amount of time in seconds that
+                this Domain''s records may be cached by resolvers or other domain
+                servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600,
+                86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value
+                will be rounded to the nearest valid value.'
               type: integer
             weight:
+              description: The relative weight of this Record. Higher values are preferred.
               type: integer
           required:
           - domainID
@@ -447,16 +471,24 @@ spec:
             output:
               properties:
                 domainID:
+                  description: The ID of the Domain to access.
                   type: integer
                 id:
                   type: string
                 name:
+                  description: The name of this Record. This field's actual usage
+                    depends on the type of record this represents. For A and AAAA
+                    records, this is the subdomain being associated with an IP address.
                   type: string
                 port:
+                  description: The port this Record points to.
                   type: integer
                 priority:
+                  description: The priority of the target host. Lower values are preferred.
                   type: integer
                 protocol:
+                  description: The protocol this Record's service communicates with.
+                    Only valid for SRV records.
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -468,16 +500,33 @@ spec:
                       type: string
                   type: object
                 recordType:
+                  description: The type of Record this is in the DNS system. For example,
+                    A records associate a domain name with an IPv4 address, and AAAA
+                    records associate a domain name with an IPv6 address.
                   type: string
                 service:
+                  description: The service this Record identified. Only valid for
+                    SRV records.
                   type: string
                 tag:
+                  description: The tag portion of a CAA record. It is invalid to set
+                    this on other record types.
                   type: string
                 target:
+                  description: The target for this Record. This field's actual usage
+                    depends on the type of record this represents. For A and AAAA
+                    records, this is the address the named Domain should resolve to.
                   type: string
                 ttlSec:
+                  description: '''Time to Live'' - the amount of time in seconds that
+                    this Domain''s records may be cached by resolvers or other domain
+                    servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600,
+                    86400, 172800, 345600, 604800, 1209600, and 2419200 - any other
+                    value will be rounded to the nearest valid value.'
                   type: integer
                 weight:
+                  description: The relative weight of this Record. Higher values are
+                    preferred.
                   type: integer
               required:
               - domainID
@@ -510,9 +559,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

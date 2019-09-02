@@ -398,18 +398,24 @@ spec:
         spec:
           properties:
             createdAt:
+              description: the date and time when the project was created, (ISO8601)
               type: string
             description:
+              description: the descirption of the project
               type: string
             environment:
+              description: the environment of the project's resources
               type: string
             id:
               type: string
             name:
+              description: the human-readable name for the project
               type: string
             ownerID:
+              description: the id of the project owner.
               type: integer
             ownerUUID:
+              description: the unique universal identifier of the project owner.
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -421,13 +427,16 @@ spec:
                   type: string
               type: object
             purpose:
+              description: the purpose of the project
               type: string
             resources:
+              description: the resources associated with the project
               items:
                 type: string
               type: array
               uniqueItems: true
             updatedAt:
+              description: the date and time when the project was last updated, (ISO8601)
               type: string
           required:
           - name
@@ -443,18 +452,24 @@ spec:
             output:
               properties:
                 createdAt:
+                  description: the date and time when the project was created, (ISO8601)
                   type: string
                 description:
+                  description: the descirption of the project
                   type: string
                 environment:
+                  description: the environment of the project's resources
                   type: string
                 id:
                   type: string
                 name:
+                  description: the human-readable name for the project
                   type: string
                 ownerID:
+                  description: the id of the project owner.
                   type: integer
                 ownerUUID:
+                  description: the unique universal identifier of the project owner.
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -466,13 +481,17 @@ spec:
                       type: string
                   type: object
                 purpose:
+                  description: the purpose of the project
                   type: string
                 resources:
+                  description: the resources associated with the project
                   items:
                     type: string
                   type: array
                   uniqueItems: true
                 updatedAt:
+                  description: the date and time when the project was last updated,
+                    (ISO8601)
                   type: string
               required:
               - name
@@ -502,9 +521,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

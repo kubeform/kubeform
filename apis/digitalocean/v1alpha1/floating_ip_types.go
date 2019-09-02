@@ -30,6 +30,7 @@ type FloatingIPSpec struct {
 	// +optional
 	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	Region    string `json:"region" tf:"region"`
+	// the uniform resource name for the floating ip
 	// +optional
 	Urn string `json:"urn,omitempty" tf:"urn,omitempty"`
 }

@@ -56,6 +56,7 @@ type CloudbuildTriggerSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// Contents of the build template.
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Build []CloudbuildTriggerSpecBuild `json:"build,omitempty" tf:"build,omitempty"`

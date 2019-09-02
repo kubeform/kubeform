@@ -25,16 +25,23 @@ type VolumeSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ + Volume label.
 	// +optional
 	FilesystemPath string `json:"filesystemPath,omitempty" tf:"filesystem_path,omitempty"`
-	Label          string `json:"label" tf:"label"`
+	// The label of the Linode Volume.
+	Label string `json:"label" tf:"label"`
+	// The Linode ID where the Volume should be attached.
 	// +optional
-	LinodeID int    `json:"linodeID,omitempty" tf:"linode_id,omitempty"`
-	Region   string `json:"region" tf:"region"`
+	LinodeID int `json:"linodeID,omitempty" tf:"linode_id,omitempty"`
+	// The region where this volume will be deployed.
+	Region string `json:"region" tf:"region"`
+	// Size of the Volume in GB
 	// +optional
 	Size int `json:"size,omitempty" tf:"size,omitempty"`
+	// The status of the volume, indicating the current readiness state.
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
+	// An array of tags applied to this object. Tags are for organizational purposes only.
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`

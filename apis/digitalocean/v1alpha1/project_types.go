@@ -25,22 +25,31 @@ type ProjectSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// the date and time when the project was created, (ISO8601)
 	// +optional
 	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
+	// the descirption of the project
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// the environment of the project's resources
 	// +optional
 	Environment string `json:"environment,omitempty" tf:"environment,omitempty"`
-	Name        string `json:"name" tf:"name"`
+	// the human-readable name for the project
+	Name string `json:"name" tf:"name"`
+	// the id of the project owner.
 	// +optional
 	OwnerID int `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
+	// the unique universal identifier of the project owner.
 	// +optional
 	OwnerUUID string `json:"ownerUUID,omitempty" tf:"owner_uuid,omitempty"`
+	// the purpose of the project
 	// +optional
 	Purpose string `json:"purpose,omitempty" tf:"purpose,omitempty"`
+	// the resources associated with the project
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Resources []string `json:"resources,omitempty" tf:"resources,omitempty"`
+	// the date and time when the project was last updated, (ISO8601)
 	// +optional
 	UpdatedAt string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 }

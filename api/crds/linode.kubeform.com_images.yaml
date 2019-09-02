@@ -398,24 +398,37 @@ spec:
         spec:
           properties:
             created:
+              description: When this Image was created.
               type: string
             createdBy:
+              description: The name of the User who created this Image.
               type: string
             deprecated:
+              description: Whether or not this Image is deprecated. Will only be True
+                for deprecated public Images.
               type: boolean
             description:
+              description: A detailed description of this Image.
               type: string
             diskID:
+              description: The ID of the Linode Disk that this Image will be created
+                from.
               type: integer
             expiry:
+              description: Only Images created automatically (from a deleted Linode;
+                type=automatic) will expire.
               type: string
             id:
               type: string
             isPublic:
+              description: True if the Image is public.
               type: boolean
             label:
+              description: A short description of the Image. Labels cannot contain
+                special characters.
               type: string
             linodeID:
+              description: The ID of the Linode that this Image will be created from.
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -427,10 +440,16 @@ spec:
                   type: string
               type: object
             size:
+              description: The minimum size this Image needs to deploy. Size is in
+                MB.
               type: integer
             type:
+              description: How the Image was created. 'Manual' Images can be created
+                at any time. 'Automatic' images are created automatically from a deleted
+                Linode.
               type: string
             vendor:
+              description: The upstream distribution vendor. Nil for private Images.
               type: string
           required:
           - diskID
@@ -448,24 +467,38 @@ spec:
             output:
               properties:
                 created:
+                  description: When this Image was created.
                   type: string
                 createdBy:
+                  description: The name of the User who created this Image.
                   type: string
                 deprecated:
+                  description: Whether or not this Image is deprecated. Will only
+                    be True for deprecated public Images.
                   type: boolean
                 description:
+                  description: A detailed description of this Image.
                   type: string
                 diskID:
+                  description: The ID of the Linode Disk that this Image will be created
+                    from.
                   type: integer
                 expiry:
+                  description: Only Images created automatically (from a deleted Linode;
+                    type=automatic) will expire.
                   type: string
                 id:
                   type: string
                 isPublic:
+                  description: True if the Image is public.
                   type: boolean
                 label:
+                  description: A short description of the Image. Labels cannot contain
+                    special characters.
                   type: string
                 linodeID:
+                  description: The ID of the Linode that this Image will be created
+                    from.
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -477,10 +510,16 @@ spec:
                       type: string
                   type: object
                 size:
+                  description: The minimum size this Image needs to deploy. Size is
+                    in MB.
                   type: integer
                 type:
+                  description: How the Image was created. 'Manual' Images can be created
+                    at any time. 'Automatic' images are created automatically from
+                    a deleted Linode.
                   type: string
                 vendor:
+                  description: The upstream distribution vendor. Nil for private Images.
                   type: string
               required:
               - diskID
@@ -512,9 +551,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

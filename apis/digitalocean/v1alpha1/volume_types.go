@@ -44,6 +44,7 @@ type VolumeSpec struct {
 	Size                  int    `json:"size" tf:"size"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
+	// the uniform resource name for the volume.
 	// +optional
 	Urn string `json:"urn,omitempty" tf:"urn,omitempty"`
 }

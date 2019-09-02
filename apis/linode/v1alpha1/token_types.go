@@ -25,13 +25,18 @@ type TokenSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// The date and time this token was created.
 	// +optional
 	Created string `json:"created,omitempty" tf:"created,omitempty"`
+	// When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
 	// +optional
 	Expiry string `json:"expiry,omitempty" tf:"expiry,omitempty"`
+	// The label of the Linode Token.
 	// +optional
-	Label  string `json:"label,omitempty" tf:"label,omitempty"`
+	Label string `json:"label,omitempty" tf:"label,omitempty"`
+	// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.
 	Scopes string `json:"scopes" tf:"scopes"`
+	// The token used to access the API.
 	// +optional
 	Token string `json:"token,omitempty" tf:"token,omitempty"`
 }

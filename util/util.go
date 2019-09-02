@@ -89,7 +89,9 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 	for _, key := range keys {
 		value := s[key]
 		id := flect.Capitalize(flect.Camelize(key))
-
+		if value.Description != "" {
+			statements = append(statements, Comment("// "+value.Description))
+		}
 		if value.Removed != "" {
 			continue
 		}

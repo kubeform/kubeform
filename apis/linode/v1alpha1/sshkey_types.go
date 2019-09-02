@@ -25,10 +25,13 @@ type SshkeySpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// The date this key was added.
 	// +optional
 	Created string `json:"created,omitempty" tf:"created,omitempty"`
-	Label   string `json:"label" tf:"label"`
-	SshKey  string `json:"sshKey" tf:"ssh_key"`
+	// The label of the Linode SSH Key.
+	Label string `json:"label" tf:"label"`
+	// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+	SshKey string `json:"sshKey" tf:"ssh_key"`
 }
 
 

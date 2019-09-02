@@ -398,16 +398,26 @@ spec:
         spec:
           properties:
             address:
+              description: The private IP Address and port (IP:PORT) where this backend
+                can be reached. This must be a private IP address.
               type: string
             configID:
+              description: The ID of the NodeBalancerConfig to access.
               type: integer
             id:
               type: string
             label:
+              description: The label for this node. This is for display purposes only.
               type: string
             mode:
+              description: The mode this NodeBalancer should use when sending traffic
+                to this backend. If set to `accept` this backend is accepting traffic.
+                If set to `reject` this backend will not receive traffic. If set to
+                `drain` this backend will not receive new traffic, but connections
+                already pinned to it will continue to be routed to it.
               type: string
             nodebalancerID:
+              description: The ID of the NodeBalancer to access.
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -419,8 +429,13 @@ spec:
                   type: string
               type: object
             status:
+              description: The current status of this node, based on the configured
+                checks of its NodeBalancer Config. (unknown, UP, DOWN)
               type: string
             weight:
+              description: Used when picking a backend to serve a request and is not
+                pinned to a single backend yet. Nodes with a higher weight will receive
+                more traffic. (1-255)
               type: integer
           required:
           - address
@@ -439,16 +454,28 @@ spec:
             output:
               properties:
                 address:
+                  description: The private IP Address and port (IP:PORT) where this
+                    backend can be reached. This must be a private IP address.
                   type: string
                 configID:
+                  description: The ID of the NodeBalancerConfig to access.
                   type: integer
                 id:
                   type: string
                 label:
+                  description: The label for this node. This is for display purposes
+                    only.
                   type: string
                 mode:
+                  description: The mode this NodeBalancer should use when sending
+                    traffic to this backend. If set to `accept` this backend is accepting
+                    traffic. If set to `reject` this backend will not receive traffic.
+                    If set to `drain` this backend will not receive new traffic, but
+                    connections already pinned to it will continue to be routed to
+                    it.
                   type: string
                 nodebalancerID:
+                  description: The ID of the NodeBalancer to access.
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -460,8 +487,13 @@ spec:
                       type: string
                   type: object
                 status:
+                  description: The current status of this node, based on the configured
+                    checks of its NodeBalancer Config. (unknown, UP, DOWN)
                   type: string
                 weight:
+                  description: Used when picking a backend to serve a request and
+                    is not pinned to a single backend yet. Nodes with a higher weight
+                    will receive more traffic. (1-255)
                   type: integer
               required:
               - address
@@ -494,9 +526,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

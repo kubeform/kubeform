@@ -398,16 +398,24 @@ spec:
         spec:
           properties:
             certificateID:
+              description: ID of a DigitalOcean managed TLS certificate for use with
+                custom domains
               type: string
             createdAt:
+              description: The date and time (ISO8601) of when the CDN endpoint was
+                created.
               type: string
             customDomain:
+              description: fully qualified domain name (FQDN) for custom subdomain,
+                (requires certificate_id)
               type: string
             endpoint:
+              description: fully qualified domain name (FQDN) to serve the CDN content
               type: string
             id:
               type: string
             origin:
+              description: fully qualified domain name (FQDN) for the origin server
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -419,6 +427,7 @@ spec:
                   type: string
               type: object
             ttl:
+              description: The amount of time the content is cached in the CDN
               type: integer
           required:
           - origin
@@ -434,16 +443,25 @@ spec:
             output:
               properties:
                 certificateID:
+                  description: ID of a DigitalOcean managed TLS certificate for use
+                    with custom domains
                   type: string
                 createdAt:
+                  description: The date and time (ISO8601) of when the CDN endpoint
+                    was created.
                   type: string
                 customDomain:
+                  description: fully qualified domain name (FQDN) for custom subdomain,
+                    (requires certificate_id)
                   type: string
                 endpoint:
+                  description: fully qualified domain name (FQDN) to serve the CDN
+                    content
                   type: string
                 id:
                   type: string
                 origin:
+                  description: fully qualified domain name (FQDN) for the origin server
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -455,6 +473,7 @@ spec:
                       type: string
                   type: object
                 ttl:
+                  description: The amount of time the content is cached in the CDN
                   type: integer
               required:
               - origin
@@ -484,9 +503,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

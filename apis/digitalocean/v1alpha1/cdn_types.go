@@ -25,15 +25,21 @@ type CdnSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// ID of a DigitalOcean managed TLS certificate for use with custom domains
 	// +optional
 	CertificateID string `json:"certificateID,omitempty" tf:"certificate_id,omitempty"`
+	// The date and time (ISO8601) of when the CDN endpoint was created.
 	// +optional
 	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
+	// fully qualified domain name (FQDN) for custom subdomain, (requires certificate_id)
 	// +optional
 	CustomDomain string `json:"customDomain,omitempty" tf:"custom_domain,omitempty"`
+	// fully qualified domain name (FQDN) to serve the CDN content
 	// +optional
 	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
-	Origin   string `json:"origin" tf:"origin"`
+	// fully qualified domain name (FQDN) for the origin server
+	Origin string `json:"origin" tf:"origin"`
+	// The amount of time the content is cached in the CDN
 	// +optional
 	Ttl int `json:"ttl,omitempty" tf:"ttl,omitempty"`
 }
