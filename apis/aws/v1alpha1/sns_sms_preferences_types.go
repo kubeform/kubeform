@@ -1,10 +1,8 @@
 package v1alpha1
 
 import (
-    "encoding/json"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/apimachinery/pkg/runtime"
 	core "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"kubeform.dev/kubeform/apis"
 )
 
@@ -39,16 +37,14 @@ type SnsSmsPreferencesSpec struct {
 	UsageReportS3Bucket string `json:"usageReportS3Bucket,omitempty" tf:"usage_report_s3_bucket,omitempty"`
 }
 
-
-
 type SnsSmsPreferencesStatus struct {
-    // Resource generation, which is updated on mutation by the API Server.
+	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 	// +optional
-    Output *SnsSmsPreferencesSpec `json:"output,omitempty"`
-    // +optional
-    State *apis.State `json:"state,omitempty"`
+	Output *SnsSmsPreferencesSpec `json:"output,omitempty"`
+	// +optional
+	State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

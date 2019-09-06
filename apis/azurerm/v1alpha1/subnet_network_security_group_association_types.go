@@ -1,10 +1,8 @@
 package v1alpha1
 
 import (
-    "encoding/json"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/apimachinery/pkg/runtime"
 	core "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"kubeform.dev/kubeform/apis"
 )
 
@@ -29,16 +27,14 @@ type SubnetNetworkSecurityGroupAssociationSpec struct {
 	SubnetID               string `json:"subnetID" tf:"subnet_id"`
 }
 
-
-
 type SubnetNetworkSecurityGroupAssociationStatus struct {
-    // Resource generation, which is updated on mutation by the API Server.
+	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 	// +optional
-    Output *SubnetNetworkSecurityGroupAssociationSpec `json:"output,omitempty"`
-    // +optional
-    State *apis.State `json:"state,omitempty"`
+	Output *SubnetNetworkSecurityGroupAssociationSpec `json:"output,omitempty"`
+	// +optional
+	State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

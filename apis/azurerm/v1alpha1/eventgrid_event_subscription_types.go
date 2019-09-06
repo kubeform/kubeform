@@ -1,10 +1,8 @@
 package v1alpha1
 
 import (
-    "encoding/json"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/apimachinery/pkg/runtime"
 	core "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"kubeform.dev/kubeform/apis"
 )
 
@@ -94,16 +92,14 @@ type EventgridEventSubscriptionSpec struct {
 	WebhookEndpoint []EventgridEventSubscriptionSpecWebhookEndpoint `json:"webhookEndpoint,omitempty" tf:"webhook_endpoint,omitempty"`
 }
 
-
-
 type EventgridEventSubscriptionStatus struct {
-    // Resource generation, which is updated on mutation by the API Server.
+	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 	// +optional
-    Output *EventgridEventSubscriptionSpec `json:"output,omitempty"`
-    // +optional
-    State *apis.State `json:"state,omitempty"`
+	Output *EventgridEventSubscriptionSpec `json:"output,omitempty"`
+	// +optional
+	State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

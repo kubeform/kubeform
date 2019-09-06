@@ -1,10 +1,8 @@
 package v1alpha1
 
 import (
-    "encoding/json"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/apimachinery/pkg/runtime"
 	core "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"kubeform.dev/kubeform/apis"
 )
 
@@ -48,16 +46,14 @@ type DevTestVirtualNetworkSpec struct {
 	UniqueIdentifier string `json:"uniqueIdentifier,omitempty" tf:"unique_identifier,omitempty"`
 }
 
-
-
 type DevTestVirtualNetworkStatus struct {
-    // Resource generation, which is updated on mutation by the API Server.
+	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 	// +optional
-    Output *DevTestVirtualNetworkSpec `json:"output,omitempty"`
-    // +optional
-    State *apis.State `json:"state,omitempty"`
+	Output *DevTestVirtualNetworkSpec `json:"output,omitempty"`
+	// +optional
+	State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

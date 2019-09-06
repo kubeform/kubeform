@@ -1,10 +1,8 @@
 package v1alpha1
 
 import (
-    "encoding/json"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/apimachinery/pkg/runtime"
 	core "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"kubeform.dev/kubeform/apis"
 )
 
@@ -98,16 +96,14 @@ type ElastictranscoderPipelineSpec struct {
 	ThumbnailConfigPermissions []ElastictranscoderPipelineSpecThumbnailConfigPermissions `json:"thumbnailConfigPermissions,omitempty" tf:"thumbnail_config_permissions,omitempty"`
 }
 
-
-
 type ElastictranscoderPipelineStatus struct {
-    // Resource generation, which is updated on mutation by the API Server.
+	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 	// +optional
-    Output *ElastictranscoderPipelineSpec `json:"output,omitempty"`
-    // +optional
-    State *apis.State `json:"state,omitempty"`
+	Output *ElastictranscoderPipelineSpec `json:"output,omitempty"`
+	// +optional
+	State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

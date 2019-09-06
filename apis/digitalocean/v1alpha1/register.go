@@ -37,67 +37,66 @@ func Resource(resource string) schema.GroupResource {
 // Adds the list of known types to api.Scheme.
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
-    
-        &DatabaseCluster{},
-        &DatabaseClusterList{},
-    
-        &Domain{},
-        &DomainList{},
-    
-        &Firewall{},
-        &FirewallList{},
-    
-        &FloatingIP{},
-        &FloatingIPList{},
-    
-        &Volume{},
-        &VolumeList{},
-    
-        &VolumeAttachment{},
-        &VolumeAttachmentList{},
-    
-        &Droplet{},
-        &DropletList{},
-    
-        &FloatingIPAssignment{},
-        &FloatingIPAssignmentList{},
-    
-        &KubernetesNodePool{},
-        &KubernetesNodePoolList{},
-    
-        &Tag{},
-        &TagList{},
-    
-        &VolumeSnapshot{},
-        &VolumeSnapshotList{},
-    
-        &Certificate{},
-        &CertificateList{},
-    
-        &Cdn{},
-        &CdnList{},
-    
-        &DropletSnapshot{},
-        &DropletSnapshotList{},
-    
-        &KubernetesCluster{},
-        &KubernetesClusterList{},
-    
-        &SshKey{},
-        &SshKeyList{},
-    
-        &Loadbalancer{},
-        &LoadbalancerList{},
-    
-        &Project{},
-        &ProjectList{},
-    
-        &Record{},
-        &RecordList{},
-    
-        &SpacesBucket{},
-        &SpacesBucketList{},
-    
+
+		&DatabaseCluster{},
+		&DatabaseClusterList{},
+
+		&Domain{},
+		&DomainList{},
+
+		&Firewall{},
+		&FirewallList{},
+
+		&FloatingIP{},
+		&FloatingIPList{},
+
+		&Volume{},
+		&VolumeList{},
+
+		&VolumeAttachment{},
+		&VolumeAttachmentList{},
+
+		&Droplet{},
+		&DropletList{},
+
+		&FloatingIPAssignment{},
+		&FloatingIPAssignmentList{},
+
+		&KubernetesNodePool{},
+		&KubernetesNodePoolList{},
+
+		&Tag{},
+		&TagList{},
+
+		&VolumeSnapshot{},
+		&VolumeSnapshotList{},
+
+		&Certificate{},
+		&CertificateList{},
+
+		&Cdn{},
+		&CdnList{},
+
+		&DropletSnapshot{},
+		&DropletSnapshotList{},
+
+		&KubernetesCluster{},
+		&KubernetesClusterList{},
+
+		&SshKey{},
+		&SshKeyList{},
+
+		&Loadbalancer{},
+		&LoadbalancerList{},
+
+		&Project{},
+		&ProjectList{},
+
+		&Record{},
+		&RecordList{},
+
+		&SpacesBucket{},
+		&SpacesBucketList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,
