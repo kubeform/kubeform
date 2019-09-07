@@ -164,11 +164,26 @@ label-crds:
 		mv bin/crd.yaml $$f; \
 	done
 
+.PHONY: gen-crd-docs
+gen-crd-docs:
+	@echo "Generating CRD api reference docs"
+	gen-crd-api-reference-docs          \
+		-config hack/config.json        \
+		-template-dir ~/go/src/github.com/ahmetb/gen-crd-api-reference-docs/template \
+		-api-dir kubeform.dev/kubeform/apis          \
+		-out-dir ../docs/docs/reference/
+	hugo-tools add-frontmatter                              \
+		~/go/src/kubeform.dev/docs/docs/reference           \
+		--product=docs                                      \
+		--version=v0.0.1                                    \
+		--shared=false                                      \
+		--skipDir=true
+
 .PHONY: manifests
 manifests: gen-crds label-crds
 
 .PHONY: gen
-gen: clientset openapi manifests
+gen: clientset openapi manifests gen-crd-docs
 
 fmt: $(BUILD_DIRS)
 	@docker run                                                 \
