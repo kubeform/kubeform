@@ -1,3 +1,15 @@
+---
+title: RedshiftSnapshotCopyGrant
+menu:
+  docs_v0.0.1:
+    identifier: redshiftsnapshotcopygrant-aws.kubeform.com
+    name: RedshiftSnapshotCopyGrant
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## RedshiftSnapshotCopyGrant
 | Field | Type | Description |
 | ------ | ----- | ----------- |

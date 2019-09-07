@@ -1,3 +1,15 @@
+---
+title: EcsService
+menu:
+  docs_v0.0.1:
+    identifier: ecsservice-aws.kubeform.com
+    name: EcsService
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## EcsService
 | Field | Type | Description |
 | ------ | ----- | ----------- |

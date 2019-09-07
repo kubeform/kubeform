@@ -1,3 +1,15 @@
+---
+title: SourcerepoRepository
+menu:
+  docs_v0.0.1:
+    identifier: sourcereporepository-google.kubeform.com
+    name: SourcerepoRepository
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SourcerepoRepository
 | Field | Type | Description |
 | ------ | ----- | ----------- |

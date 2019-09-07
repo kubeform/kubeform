@@ -1,3 +1,15 @@
+---
+title: ApiManagementProductAPI
+menu:
+  docs_v0.0.1:
+    identifier: apimanagementproductapi-azurerm.kubeform.com
+    name: ApiManagementProductAPI
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ApiManagementProductAPI
 | Field | Type | Description |
 | ------ | ----- | ----------- |

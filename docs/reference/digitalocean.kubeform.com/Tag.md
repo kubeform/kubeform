@@ -1,3 +1,15 @@
+---
+title: Tag
+menu:
+  docs_v0.0.1:
+    identifier: tag-digitalocean.kubeform.com
+    name: Tag
+    parent: digitalocean.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## Tag
 | Field | Type | Description |
 | ------ | ----- | ----------- |

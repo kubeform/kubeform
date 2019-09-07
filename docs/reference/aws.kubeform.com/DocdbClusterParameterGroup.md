@@ -1,3 +1,15 @@
+---
+title: DocdbClusterParameterGroup
+menu:
+  docs_v0.0.1:
+    identifier: docdbclusterparametergroup-aws.kubeform.com
+    name: DocdbClusterParameterGroup
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DocdbClusterParameterGroup
 | Field | Type | Description |
 | ------ | ----- | ----------- |

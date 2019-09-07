@@ -1,3 +1,15 @@
+---
+title: ApiGatewayUsagePlanKey
+menu:
+  docs_v0.0.1:
+    identifier: apigatewayusageplankey-aws.kubeform.com
+    name: ApiGatewayUsagePlanKey
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ApiGatewayUsagePlanKey
 | Field | Type | Description |
 | ------ | ----- | ----------- |

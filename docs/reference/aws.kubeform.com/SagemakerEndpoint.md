@@ -1,3 +1,15 @@
+---
+title: SagemakerEndpoint
+menu:
+  docs_v0.0.1:
+    identifier: sagemakerendpoint-aws.kubeform.com
+    name: SagemakerEndpoint
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SagemakerEndpoint
 | Field | Type | Description |
 | ------ | ----- | ----------- |

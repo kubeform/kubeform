@@ -1,3 +1,15 @@
+---
+title: MskCluster
+menu:
+  docs_v0.0.1:
+    identifier: mskcluster-aws.kubeform.com
+    name: MskCluster
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## MskCluster
 | Field | Type | Description |
 | ------ | ----- | ----------- |

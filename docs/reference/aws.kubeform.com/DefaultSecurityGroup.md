@@ -1,3 +1,15 @@
+---
+title: DefaultSecurityGroup
+menu:
+  docs_v0.0.1:
+    identifier: defaultsecuritygroup-aws.kubeform.com
+    name: DefaultSecurityGroup
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DefaultSecurityGroup
 | Field | Type | Description |
 | ------ | ----- | ----------- |

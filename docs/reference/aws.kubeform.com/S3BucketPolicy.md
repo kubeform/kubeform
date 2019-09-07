@@ -1,3 +1,15 @@
+---
+title: S3BucketPolicy
+menu:
+  docs_v0.0.1:
+    identifier: s3bucketpolicy-aws.kubeform.com
+    name: S3BucketPolicy
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## S3BucketPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

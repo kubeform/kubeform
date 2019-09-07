@@ -1,3 +1,15 @@
+---
+title: TransferSSHKey
+menu:
+  docs_v0.0.1:
+    identifier: transfersshkey-aws.kubeform.com
+    name: TransferSSHKey
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## TransferSSHKey
 | Field | Type | Description |
 | ------ | ----- | ----------- |

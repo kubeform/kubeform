@@ -1,3 +1,15 @@
+---
+title: StreamAnalyticsOutputBlob
+menu:
+  docs_v0.0.1:
+    identifier: streamanalyticsoutputblob-azurerm.kubeform.com
+    name: StreamAnalyticsOutputBlob
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## StreamAnalyticsOutputBlob
 | Field | Type | Description |
 | ------ | ----- | ----------- |

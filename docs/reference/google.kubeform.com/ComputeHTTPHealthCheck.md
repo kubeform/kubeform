@@ -1,3 +1,15 @@
+---
+title: ComputeHTTPHealthCheck
+menu:
+  docs_v0.0.1:
+    identifier: computehttphealthcheck-google.kubeform.com
+    name: ComputeHTTPHealthCheck
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ComputeHTTPHealthCheck
 | Field | Type | Description |
 | ------ | ----- | ----------- |

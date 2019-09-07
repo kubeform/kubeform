@@ -1,3 +1,15 @@
+---
+title: LbRule
+menu:
+  docs_v0.0.1:
+    identifier: lbrule-azurerm.kubeform.com
+    name: LbRule
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## LbRule
 | Field | Type | Description |
 | ------ | ----- | ----------- |

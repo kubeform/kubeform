@@ -1,3 +1,15 @@
+---
+title: WafRuleGroup
+menu:
+  docs_v0.0.1:
+    identifier: wafrulegroup-aws.kubeform.com
+    name: WafRuleGroup
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## WafRuleGroup
 | Field | Type | Description |
 | ------ | ----- | ----------- |

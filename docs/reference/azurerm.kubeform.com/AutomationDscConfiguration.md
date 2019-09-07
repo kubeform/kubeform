@@ -1,3 +1,15 @@
+---
+title: AutomationDscConfiguration
+menu:
+  docs_v0.0.1:
+    identifier: automationdscconfiguration-azurerm.kubeform.com
+    name: AutomationDscConfiguration
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## AutomationDscConfiguration
 | Field | Type | Description |
 | ------ | ----- | ----------- |

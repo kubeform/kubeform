@@ -1,3 +1,15 @@
+---
+title: DxGateway
+menu:
+  docs_v0.0.1:
+    identifier: dxgateway-aws.kubeform.com
+    name: DxGateway
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DxGateway
 | Field | Type | Description |
 | ------ | ----- | ----------- |

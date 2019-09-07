@@ -1,3 +1,15 @@
+---
+title: GlueConnection
+menu:
+  docs_v0.0.1:
+    identifier: glueconnection-aws.kubeform.com
+    name: GlueConnection
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## GlueConnection
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: DnsSrvRecord
+menu:
+  docs_v0.0.1:
+    identifier: dnssrvrecord-azurerm.kubeform.com
+    name: DnsSrvRecord
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DnsSrvRecord
 | Field | Type | Description |
 | ------ | ----- | ----------- |

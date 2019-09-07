@@ -1,3 +1,15 @@
+---
+title: DnsPtrRecord
+menu:
+  docs_v0.0.1:
+    identifier: dnsptrrecord-azurerm.kubeform.com
+    name: DnsPtrRecord
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DnsPtrRecord
 | Field | Type | Description |
 | ------ | ----- | ----------- |

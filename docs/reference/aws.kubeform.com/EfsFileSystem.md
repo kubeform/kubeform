@@ -1,3 +1,15 @@
+---
+title: EfsFileSystem
+menu:
+  docs_v0.0.1:
+    identifier: efsfilesystem-aws.kubeform.com
+    name: EfsFileSystem
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## EfsFileSystem
 | Field | Type | Description |
 | ------ | ----- | ----------- |

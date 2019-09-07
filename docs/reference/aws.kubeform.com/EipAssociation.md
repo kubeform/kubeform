@@ -1,3 +1,15 @@
+---
+title: EipAssociation
+menu:
+  docs_v0.0.1:
+    identifier: eipassociation-aws.kubeform.com
+    name: EipAssociation
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## EipAssociation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

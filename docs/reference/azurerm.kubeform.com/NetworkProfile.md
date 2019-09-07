@@ -1,3 +1,15 @@
+---
+title: NetworkProfile
+menu:
+  docs_v0.0.1:
+    identifier: networkprofile-azurerm.kubeform.com
+    name: NetworkProfile
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## NetworkProfile
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: ResourcegroupsGroup
+menu:
+  docs_v0.0.1:
+    identifier: resourcegroupsgroup-aws.kubeform.com
+    name: ResourcegroupsGroup
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ResourcegroupsGroup
 | Field | Type | Description |
 | ------ | ----- | ----------- |

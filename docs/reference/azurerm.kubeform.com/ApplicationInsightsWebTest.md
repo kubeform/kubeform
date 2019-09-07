@@ -1,3 +1,15 @@
+---
+title: ApplicationInsightsWebTest
+menu:
+  docs_v0.0.1:
+    identifier: applicationinsightswebtest-azurerm.kubeform.com
+    name: ApplicationInsightsWebTest
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ApplicationInsightsWebTest
 | Field | Type | Description |
 | ------ | ----- | ----------- |

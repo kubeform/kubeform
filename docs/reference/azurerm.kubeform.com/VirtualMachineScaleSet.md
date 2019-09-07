@@ -1,3 +1,15 @@
+---
+title: VirtualMachineScaleSet
+menu:
+  docs_v0.0.1:
+    identifier: virtualmachinescaleset-azurerm.kubeform.com
+    name: VirtualMachineScaleSet
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## VirtualMachineScaleSet
 | Field | Type | Description |
 | ------ | ----- | ----------- |

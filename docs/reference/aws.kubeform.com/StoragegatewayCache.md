@@ -1,3 +1,15 @@
+---
+title: StoragegatewayCache
+menu:
+  docs_v0.0.1:
+    identifier: storagegatewaycache-aws.kubeform.com
+    name: StoragegatewayCache
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## StoragegatewayCache
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: DxConnectionAssociation
+menu:
+  docs_v0.0.1:
+    identifier: dxconnectionassociation-aws.kubeform.com
+    name: DxConnectionAssociation
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DxConnectionAssociation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: StorageTable
+menu:
+  docs_v0.0.1:
+    identifier: storagetable-azurerm.kubeform.com
+    name: StorageTable
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## StorageTable
 | Field | Type | Description |
 | ------ | ----- | ----------- |

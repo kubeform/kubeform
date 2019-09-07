@@ -1,3 +1,15 @@
+---
+title: ServicecatalogPortfolio
+menu:
+  docs_v0.0.1:
+    identifier: servicecatalogportfolio-aws.kubeform.com
+    name: ServicecatalogPortfolio
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ServicecatalogPortfolio
 | Field | Type | Description |
 | ------ | ----- | ----------- |

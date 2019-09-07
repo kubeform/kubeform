@@ -1,3 +1,15 @@
+---
+title: PubsubSubscription
+menu:
+  docs_v0.0.1:
+    identifier: pubsubsubscription-google.kubeform.com
+    name: PubsubSubscription
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## PubsubSubscription
 | Field | Type | Description |
 | ------ | ----- | ----------- |

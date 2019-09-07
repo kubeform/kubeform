@@ -1,3 +1,15 @@
+---
+title: PinpointSmsChannel
+menu:
+  docs_v0.0.1:
+    identifier: pinpointsmschannel-aws.kubeform.com
+    name: PinpointSmsChannel
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## PinpointSmsChannel
 | Field | Type | Description |
 | ------ | ----- | ----------- |

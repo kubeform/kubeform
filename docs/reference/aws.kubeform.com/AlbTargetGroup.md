@@ -1,3 +1,15 @@
+---
+title: AlbTargetGroup
+menu:
+  docs_v0.0.1:
+    identifier: albtargetgroup-aws.kubeform.com
+    name: AlbTargetGroup
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## AlbTargetGroup
 | Field | Type | Description |
 | ------ | ----- | ----------- |

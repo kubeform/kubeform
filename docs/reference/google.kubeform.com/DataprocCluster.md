@@ -1,3 +1,15 @@
+---
+title: DataprocCluster
+menu:
+  docs_v0.0.1:
+    identifier: dataproccluster-google.kubeform.com
+    name: DataprocCluster
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DataprocCluster
 | Field | Type | Description |
 | ------ | ----- | ----------- |

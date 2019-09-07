@@ -1,3 +1,15 @@
+---
+title: DatasyncAgent
+menu:
+  docs_v0.0.1:
+    identifier: datasyncagent-aws.kubeform.com
+    name: DatasyncAgent
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DatasyncAgent
 | Field | Type | Description |
 | ------ | ----- | ----------- |

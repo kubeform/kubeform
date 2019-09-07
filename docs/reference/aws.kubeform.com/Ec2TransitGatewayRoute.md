@@ -1,3 +1,15 @@
+---
+title: Ec2TransitGatewayRoute
+menu:
+  docs_v0.0.1:
+    identifier: ec2transitgatewayroute-aws.kubeform.com
+    name: Ec2TransitGatewayRoute
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## Ec2TransitGatewayRoute
 | Field | Type | Description |
 | ------ | ----- | ----------- |

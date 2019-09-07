@@ -1,3 +1,15 @@
+---
+title: UserAssignedIdentity
+menu:
+  docs_v0.0.1:
+    identifier: userassignedidentity-azurerm.kubeform.com
+    name: UserAssignedIdentity
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## UserAssignedIdentity
 | Field | Type | Description |
 | ------ | ----- | ----------- |

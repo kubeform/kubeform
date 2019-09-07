@@ -1,3 +1,15 @@
+---
+title: Ec2ClientVPNEndpoint
+menu:
+  docs_v0.0.1:
+    identifier: ec2clientvpnendpoint-aws.kubeform.com
+    name: Ec2ClientVPNEndpoint
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## Ec2ClientVPNEndpoint
 | Field | Type | Description |
 | ------ | ----- | ----------- |

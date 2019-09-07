@@ -1,3 +1,15 @@
+---
+title: Cloud9EnvironmentEc2
+menu:
+  docs_v0.0.1:
+    identifier: cloud9environmentec2-aws.kubeform.com
+    name: Cloud9EnvironmentEc2
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## Cloud9EnvironmentEc2
 | Field | Type | Description |
 | ------ | ----- | ----------- |

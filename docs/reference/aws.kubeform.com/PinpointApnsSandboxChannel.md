@@ -1,3 +1,15 @@
+---
+title: PinpointApnsSandboxChannel
+menu:
+  docs_v0.0.1:
+    identifier: pinpointapnssandboxchannel-aws.kubeform.com
+    name: PinpointApnsSandboxChannel
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## PinpointApnsSandboxChannel
 | Field | Type | Description |
 | ------ | ----- | ----------- |

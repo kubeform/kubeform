@@ -1,3 +1,15 @@
+---
+title: BatchJobQueue
+menu:
+  docs_v0.0.1:
+    identifier: batchjobqueue-aws.kubeform.com
+    name: BatchJobQueue
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## BatchJobQueue
 | Field | Type | Description |
 | ------ | ----- | ----------- |

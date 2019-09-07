@@ -1,3 +1,15 @@
+---
+title: ComputeSSLPolicy
+menu:
+  docs_v0.0.1:
+    identifier: computesslpolicy-google.kubeform.com
+    name: ComputeSSLPolicy
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ComputeSSLPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

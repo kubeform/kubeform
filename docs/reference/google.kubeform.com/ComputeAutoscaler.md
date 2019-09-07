@@ -1,3 +1,15 @@
+---
+title: ComputeAutoscaler
+menu:
+  docs_v0.0.1:
+    identifier: computeautoscaler-google.kubeform.com
+    name: ComputeAutoscaler
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ComputeAutoscaler
 | Field | Type | Description |
 | ------ | ----- | ----------- |

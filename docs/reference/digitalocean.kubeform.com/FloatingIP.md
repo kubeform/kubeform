@@ -1,3 +1,15 @@
+---
+title: FloatingIP
+menu:
+  docs_v0.0.1:
+    identifier: floatingip-digitalocean.kubeform.com
+    name: FloatingIP
+    parent: digitalocean.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## FloatingIP
 | Field | Type | Description |
 | ------ | ----- | ----------- |

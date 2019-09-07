@@ -1,3 +1,15 @@
+---
+title: CognitoIdentityPool
+menu:
+  docs_v0.0.1:
+    identifier: cognitoidentitypool-aws.kubeform.com
+    name: CognitoIdentityPool
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## CognitoIdentityPool
 | Field | Type | Description |
 | ------ | ----- | ----------- |

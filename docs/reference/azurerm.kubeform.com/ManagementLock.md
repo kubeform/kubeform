@@ -1,3 +1,15 @@
+---
+title: ManagementLock
+menu:
+  docs_v0.0.1:
+    identifier: managementlock-azurerm.kubeform.com
+    name: ManagementLock
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ManagementLock
 | Field | Type | Description |
 | ------ | ----- | ----------- |

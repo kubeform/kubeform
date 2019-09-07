@@ -1,3 +1,15 @@
+---
+title: KeyVault
+menu:
+  docs_v0.0.1:
+    identifier: keyvault-azurerm.kubeform.com
+    name: KeyVault
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## KeyVault
 | Field | Type | Description |
 | ------ | ----- | ----------- |

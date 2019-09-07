@@ -1,3 +1,15 @@
+---
+title: SshKey
+menu:
+  docs_v0.0.1:
+    identifier: sshkey-digitalocean.kubeform.com
+    name: SshKey
+    parent: digitalocean.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SshKey
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: DynamodbTableItem
+menu:
+  docs_v0.0.1:
+    identifier: dynamodbtableitem-aws.kubeform.com
+    name: DynamodbTableItem
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DynamodbTableItem
 | Field | Type | Description |
 | ------ | ----- | ----------- |

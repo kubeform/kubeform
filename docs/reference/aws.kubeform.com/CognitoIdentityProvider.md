@@ -1,3 +1,15 @@
+---
+title: CognitoIdentityProvider
+menu:
+  docs_v0.0.1:
+    identifier: cognitoidentityprovider-aws.kubeform.com
+    name: CognitoIdentityProvider
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## CognitoIdentityProvider
 | Field | Type | Description |
 | ------ | ----- | ----------- |

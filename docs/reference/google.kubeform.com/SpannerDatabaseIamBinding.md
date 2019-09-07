@@ -1,3 +1,15 @@
+---
+title: SpannerDatabaseIamBinding
+menu:
+  docs_v0.0.1:
+    identifier: spannerdatabaseiambinding-google.kubeform.com
+    name: SpannerDatabaseIamBinding
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SpannerDatabaseIamBinding
 | Field | Type | Description |
 | ------ | ----- | ----------- |

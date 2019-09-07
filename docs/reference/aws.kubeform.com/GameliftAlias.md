@@ -1,3 +1,15 @@
+---
+title: GameliftAlias
+menu:
+  docs_v0.0.1:
+    identifier: gameliftalias-aws.kubeform.com
+    name: GameliftAlias
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## GameliftAlias
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: IotThing
+menu:
+  docs_v0.0.1:
+    identifier: iotthing-aws.kubeform.com
+    name: IotThing
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## IotThing
 | Field | Type | Description |
 | ------ | ----- | ----------- |

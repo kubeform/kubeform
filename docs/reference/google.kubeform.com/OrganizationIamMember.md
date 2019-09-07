@@ -1,3 +1,15 @@
+---
+title: OrganizationIamMember
+menu:
+  docs_v0.0.1:
+    identifier: organizationiammember-google.kubeform.com
+    name: OrganizationIamMember
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## OrganizationIamMember
 | Field | Type | Description |
 | ------ | ----- | ----------- |

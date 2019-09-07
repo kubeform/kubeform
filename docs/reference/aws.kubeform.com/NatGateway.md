@@ -1,3 +1,15 @@
+---
+title: NatGateway
+menu:
+  docs_v0.0.1:
+    identifier: natgateway-aws.kubeform.com
+    name: NatGateway
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## NatGateway
 | Field | Type | Description |
 | ------ | ----- | ----------- |

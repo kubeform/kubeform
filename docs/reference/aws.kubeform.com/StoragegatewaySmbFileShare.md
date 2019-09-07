@@ -1,3 +1,15 @@
+---
+title: StoragegatewaySmbFileShare
+menu:
+  docs_v0.0.1:
+    identifier: storagegatewaysmbfileshare-aws.kubeform.com
+    name: StoragegatewaySmbFileShare
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## StoragegatewaySmbFileShare
 | Field | Type | Description |
 | ------ | ----- | ----------- |

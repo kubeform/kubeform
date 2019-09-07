@@ -1,3 +1,15 @@
+---
+title: CosmosdbMongoDatabase
+menu:
+  docs_v0.0.1:
+    identifier: cosmosdbmongodatabase-azurerm.kubeform.com
+    name: CosmosdbMongoDatabase
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## CosmosdbMongoDatabase
 | Field | Type | Description |
 | ------ | ----- | ----------- |

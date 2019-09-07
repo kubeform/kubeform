@@ -1,3 +1,15 @@
+---
+title: RamResourceAssociation
+menu:
+  docs_v0.0.1:
+    identifier: ramresourceassociation-aws.kubeform.com
+    name: RamResourceAssociation
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## RamResourceAssociation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

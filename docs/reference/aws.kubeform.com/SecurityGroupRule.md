@@ -1,3 +1,15 @@
+---
+title: SecurityGroupRule
+menu:
+  docs_v0.0.1:
+    identifier: securitygrouprule-aws.kubeform.com
+    name: SecurityGroupRule
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SecurityGroupRule
 | Field | Type | Description |
 | ------ | ----- | ----------- |

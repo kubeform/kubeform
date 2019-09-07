@@ -1,3 +1,15 @@
+---
+title: SesEventDestination
+menu:
+  docs_v0.0.1:
+    identifier: seseventdestination-aws.kubeform.com
+    name: SesEventDestination
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SesEventDestination
 | Field | Type | Description |
 | ------ | ----- | ----------- |

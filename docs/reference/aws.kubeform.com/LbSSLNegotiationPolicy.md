@@ -1,3 +1,15 @@
+---
+title: LbSSLNegotiationPolicy
+menu:
+  docs_v0.0.1:
+    identifier: lbsslnegotiationpolicy-aws.kubeform.com
+    name: LbSSLNegotiationPolicy
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## LbSSLNegotiationPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

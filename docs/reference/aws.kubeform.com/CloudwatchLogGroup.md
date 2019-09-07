@@ -1,3 +1,15 @@
+---
+title: CloudwatchLogGroup
+menu:
+  docs_v0.0.1:
+    identifier: cloudwatchloggroup-aws.kubeform.com
+    name: CloudwatchLogGroup
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## CloudwatchLogGroup
 | Field | Type | Description |
 | ------ | ----- | ----------- |

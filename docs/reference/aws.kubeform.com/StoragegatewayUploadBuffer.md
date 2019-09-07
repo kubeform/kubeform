@@ -1,3 +1,15 @@
+---
+title: StoragegatewayUploadBuffer
+menu:
+  docs_v0.0.1:
+    identifier: storagegatewayuploadbuffer-aws.kubeform.com
+    name: StoragegatewayUploadBuffer
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## StoragegatewayUploadBuffer
 | Field | Type | Description |
 | ------ | ----- | ----------- |

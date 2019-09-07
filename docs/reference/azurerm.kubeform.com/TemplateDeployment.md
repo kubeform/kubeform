@@ -1,3 +1,15 @@
+---
+title: TemplateDeployment
+menu:
+  docs_v0.0.1:
+    identifier: templatedeployment-azurerm.kubeform.com
+    name: TemplateDeployment
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## TemplateDeployment
 | Field | Type | Description |
 | ------ | ----- | ----------- |

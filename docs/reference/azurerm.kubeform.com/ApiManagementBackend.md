@@ -1,3 +1,15 @@
+---
+title: ApiManagementBackend
+menu:
+  docs_v0.0.1:
+    identifier: apimanagementbackend-azurerm.kubeform.com
+    name: ApiManagementBackend
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ApiManagementBackend
 | Field | Type | Description |
 | ------ | ----- | ----------- |

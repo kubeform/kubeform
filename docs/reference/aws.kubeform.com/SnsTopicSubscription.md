@@ -1,3 +1,15 @@
+---
+title: SnsTopicSubscription
+menu:
+  docs_v0.0.1:
+    identifier: snstopicsubscription-aws.kubeform.com
+    name: SnsTopicSubscription
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SnsTopicSubscription
 | Field | Type | Description |
 | ------ | ----- | ----------- |

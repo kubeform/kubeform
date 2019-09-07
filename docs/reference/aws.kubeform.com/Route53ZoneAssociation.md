@@ -1,3 +1,15 @@
+---
+title: Route53ZoneAssociation
+menu:
+  docs_v0.0.1:
+    identifier: route53zoneassociation-aws.kubeform.com
+    name: Route53ZoneAssociation
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## Route53ZoneAssociation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

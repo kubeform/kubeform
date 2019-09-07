@@ -1,3 +1,15 @@
+---
+title: Ec2CapacityReservation
+menu:
+  docs_v0.0.1:
+    identifier: ec2capacityreservation-aws.kubeform.com
+    name: Ec2CapacityReservation
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## Ec2CapacityReservation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

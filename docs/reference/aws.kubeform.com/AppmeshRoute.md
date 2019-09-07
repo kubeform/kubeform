@@ -1,3 +1,15 @@
+---
+title: AppmeshRoute
+menu:
+  docs_v0.0.1:
+    identifier: appmeshroute-aws.kubeform.com
+    name: AppmeshRoute
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## AppmeshRoute
 | Field | Type | Description |
 | ------ | ----- | ----------- |

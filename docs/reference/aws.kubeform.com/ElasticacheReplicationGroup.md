@@ -1,3 +1,15 @@
+---
+title: ElasticacheReplicationGroup
+menu:
+  docs_v0.0.1:
+    identifier: elasticachereplicationgroup-aws.kubeform.com
+    name: ElasticacheReplicationGroup
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ElasticacheReplicationGroup
 | Field | Type | Description |
 | ------ | ----- | ----------- |

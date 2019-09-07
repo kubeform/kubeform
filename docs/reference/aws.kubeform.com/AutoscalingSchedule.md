@@ -1,3 +1,15 @@
+---
+title: AutoscalingSchedule
+menu:
+  docs_v0.0.1:
+    identifier: autoscalingschedule-aws.kubeform.com
+    name: AutoscalingSchedule
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## AutoscalingSchedule
 | Field | Type | Description |
 | ------ | ----- | ----------- |

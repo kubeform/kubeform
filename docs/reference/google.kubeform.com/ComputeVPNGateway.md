@@ -1,3 +1,15 @@
+---
+title: ComputeVPNGateway
+menu:
+  docs_v0.0.1:
+    identifier: computevpngateway-google.kubeform.com
+    name: ComputeVPNGateway
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ComputeVPNGateway
 | Field | Type | Description |
 | ------ | ----- | ----------- |

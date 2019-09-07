@@ -1,3 +1,15 @@
+---
+title: BatchComputeEnvironment
+menu:
+  docs_v0.0.1:
+    identifier: batchcomputeenvironment-aws.kubeform.com
+    name: BatchComputeEnvironment
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## BatchComputeEnvironment
 | Field | Type | Description |
 | ------ | ----- | ----------- |

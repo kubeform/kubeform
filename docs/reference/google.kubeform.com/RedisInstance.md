@@ -1,3 +1,15 @@
+---
+title: RedisInstance
+menu:
+  docs_v0.0.1:
+    identifier: redisinstance-google.kubeform.com
+    name: RedisInstance
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## RedisInstance
 | Field | Type | Description |
 | ------ | ----- | ----------- |

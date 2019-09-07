@@ -1,3 +1,15 @@
+---
+title: AppautoscalingPolicy
+menu:
+  docs_v0.0.1:
+    identifier: appautoscalingpolicy-aws.kubeform.com
+    name: AppautoscalingPolicy
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## AppautoscalingPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

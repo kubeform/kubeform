@@ -1,3 +1,15 @@
+---
+title: SesActiveReceiptRuleSet
+menu:
+  docs_v0.0.1:
+    identifier: sesactivereceiptruleset-aws.kubeform.com
+    name: SesActiveReceiptRuleSet
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SesActiveReceiptRuleSet
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: DaxCluster
+menu:
+  docs_v0.0.1:
+    identifier: daxcluster-aws.kubeform.com
+    name: DaxCluster
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DaxCluster
 | Field | Type | Description |
 | ------ | ----- | ----------- |

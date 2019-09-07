@@ -1,3 +1,15 @@
+---
+title: ContainerNodePool
+menu:
+  docs_v0.0.1:
+    identifier: containernodepool-google.kubeform.com
+    name: ContainerNodePool
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ContainerNodePool
 | Field | Type | Description |
 | ------ | ----- | ----------- |

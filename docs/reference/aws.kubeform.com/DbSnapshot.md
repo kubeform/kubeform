@@ -1,3 +1,15 @@
+---
+title: DbSnapshot
+menu:
+  docs_v0.0.1:
+    identifier: dbsnapshot-aws.kubeform.com
+    name: DbSnapshot
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DbSnapshot
 | Field | Type | Description |
 | ------ | ----- | ----------- |

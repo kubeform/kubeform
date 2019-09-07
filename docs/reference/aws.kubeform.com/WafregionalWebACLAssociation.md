@@ -1,3 +1,15 @@
+---
+title: WafregionalWebACLAssociation
+menu:
+  docs_v0.0.1:
+    identifier: wafregionalwebaclassociation-aws.kubeform.com
+    name: WafregionalWebACLAssociation
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## WafregionalWebACLAssociation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

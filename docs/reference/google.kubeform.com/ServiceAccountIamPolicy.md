@@ -1,3 +1,15 @@
+---
+title: ServiceAccountIamPolicy
+menu:
+  docs_v0.0.1:
+    identifier: serviceaccountiampolicy-google.kubeform.com
+    name: ServiceAccountIamPolicy
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ServiceAccountIamPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

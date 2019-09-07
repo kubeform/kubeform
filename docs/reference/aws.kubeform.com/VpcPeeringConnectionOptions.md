@@ -1,3 +1,15 @@
+---
+title: VpcPeeringConnectionOptions
+menu:
+  docs_v0.0.1:
+    identifier: vpcpeeringconnectionoptions-aws.kubeform.com
+    name: VpcPeeringConnectionOptions
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## VpcPeeringConnectionOptions
 | Field | Type | Description |
 | ------ | ----- | ----------- |

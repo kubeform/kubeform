@@ -1,3 +1,15 @@
+---
+title: StorageShareDirectory
+menu:
+  docs_v0.0.1:
+    identifier: storagesharedirectory-azurerm.kubeform.com
+    name: StorageShareDirectory
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## StorageShareDirectory
 | Field | Type | Description |
 | ------ | ----- | ----------- |

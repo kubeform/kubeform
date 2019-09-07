@@ -1,3 +1,15 @@
+---
+title: LbNATRule
+menu:
+  docs_v0.0.1:
+    identifier: lbnatrule-azurerm.kubeform.com
+    name: LbNATRule
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## LbNATRule
 | Field | Type | Description |
 | ------ | ----- | ----------- |

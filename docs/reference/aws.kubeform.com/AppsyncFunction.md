@@ -1,3 +1,15 @@
+---
+title: AppsyncFunction
+menu:
+  docs_v0.0.1:
+    identifier: appsyncfunction-aws.kubeform.com
+    name: AppsyncFunction
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## AppsyncFunction
 | Field | Type | Description |
 | ------ | ----- | ----------- |

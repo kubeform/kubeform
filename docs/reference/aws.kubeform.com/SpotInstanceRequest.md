@@ -1,3 +1,15 @@
+---
+title: SpotInstanceRequest
+menu:
+  docs_v0.0.1:
+    identifier: spotinstancerequest-aws.kubeform.com
+    name: SpotInstanceRequest
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SpotInstanceRequest
 | Field | Type | Description |
 | ------ | ----- | ----------- |

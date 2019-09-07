@@ -1,3 +1,15 @@
+---
+title: VpcDHCPOptions
+menu:
+  docs_v0.0.1:
+    identifier: vpcdhcpoptions-aws.kubeform.com
+    name: VpcDHCPOptions
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## VpcDHCPOptions
 | Field | Type | Description |
 | ------ | ----- | ----------- |

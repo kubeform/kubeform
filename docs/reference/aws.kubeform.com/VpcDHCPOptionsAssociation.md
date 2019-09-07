@@ -1,3 +1,15 @@
+---
+title: VpcDHCPOptionsAssociation
+menu:
+  docs_v0.0.1:
+    identifier: vpcdhcpoptionsassociation-aws.kubeform.com
+    name: VpcDHCPOptionsAssociation
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## VpcDHCPOptionsAssociation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

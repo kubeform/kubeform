@@ -1,3 +1,15 @@
+---
+title: ApiManagement
+menu:
+  docs_v0.0.1:
+    identifier: apimanagement-azurerm.kubeform.com
+    name: ApiManagement
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ApiManagement
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -101,12 +113,12 @@
 ##### (Appears on:[ApiManagementSpec](#ApiManagementSpec))
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `disableBackendSsl30` | ***bool***| ***(Optional)*** |
-| `disableBackendTls10` | ***bool***| ***(Optional)*** |
-| `disableBackendTls11` | ***bool***| ***(Optional)*** |
-| `disableFrontendSsl30` | ***bool***| ***(Optional)*** |
-| `disableFrontendTls10` | ***bool***| ***(Optional)*** |
-| `disableFrontendTls11` | ***bool***| ***(Optional)*** |
+| `disableBackendSSL30` | ***bool***| ***(Optional)*** |
+| `disableBackendTLS10` | ***bool***| ***(Optional)*** |
+| `disableBackendTLS11` | ***bool***| ***(Optional)*** |
+| `disableFrontendSSL30` | ***bool***| ***(Optional)*** |
+| `disableFrontendTLS10` | ***bool***| ***(Optional)*** |
+| `disableFrontendTLS11` | ***bool***| ***(Optional)*** |
 | `disableTripleDESChipers` | ***bool***| ***(Optional)*** Deprecated|
 | `disableTripleDESCiphers` | ***bool***| ***(Optional)*** |
 ## ApiManagementSpecSignIn

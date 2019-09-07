@@ -1,3 +1,15 @@
+---
+title: ComputeVPNTunnel
+menu:
+  docs_v0.0.1:
+    identifier: computevpntunnel-google.kubeform.com
+    name: ComputeVPNTunnel
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ComputeVPNTunnel
 | Field | Type | Description |
 | ------ | ----- | ----------- |

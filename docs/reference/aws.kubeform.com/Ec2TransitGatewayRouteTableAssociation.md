@@ -1,3 +1,15 @@
+---
+title: Ec2TransitGatewayRouteTableAssociation
+menu:
+  docs_v0.0.1:
+    identifier: ec2transitgatewayroutetableassociation-aws.kubeform.com
+    name: Ec2TransitGatewayRouteTableAssociation
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## Ec2TransitGatewayRouteTableAssociation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

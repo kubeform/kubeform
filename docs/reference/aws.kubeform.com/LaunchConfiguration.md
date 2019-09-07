@@ -1,3 +1,15 @@
+---
+title: LaunchConfiguration
+menu:
+  docs_v0.0.1:
+    identifier: launchconfiguration-aws.kubeform.com
+    name: LaunchConfiguration
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## LaunchConfiguration
 | Field | Type | Description |
 | ------ | ----- | ----------- |

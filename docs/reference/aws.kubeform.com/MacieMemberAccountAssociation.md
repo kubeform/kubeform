@@ -1,3 +1,15 @@
+---
+title: MacieMemberAccountAssociation
+menu:
+  docs_v0.0.1:
+    identifier: maciememberaccountassociation-aws.kubeform.com
+    name: MacieMemberAccountAssociation
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## MacieMemberAccountAssociation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

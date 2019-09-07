@@ -1,3 +1,15 @@
+---
+title: ApiGatewayResource
+menu:
+  docs_v0.0.1:
+    identifier: apigatewayresource-aws.kubeform.com
+    name: ApiGatewayResource
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ApiGatewayResource
 | Field | Type | Description |
 | ------ | ----- | ----------- |

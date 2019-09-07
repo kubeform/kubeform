@@ -1,3 +1,15 @@
+---
+title: AzureadApplication
+menu:
+  docs_v0.0.1:
+    identifier: azureadapplication-azurerm.kubeform.com
+    name: AzureadApplication
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## AzureadApplication
 | Field | Type | Description |
 | ------ | ----- | ----------- |

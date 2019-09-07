@@ -1,3 +1,15 @@
+---
+title: RouteTableAssociation
+menu:
+  docs_v0.0.1:
+    identifier: routetableassociation-aws.kubeform.com
+    name: RouteTableAssociation
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## RouteTableAssociation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

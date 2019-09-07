@@ -1,3 +1,15 @@
+---
+title: IamGroupPolicy
+menu:
+  docs_v0.0.1:
+    identifier: iamgrouppolicy-aws.kubeform.com
+    name: IamGroupPolicy
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## IamGroupPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

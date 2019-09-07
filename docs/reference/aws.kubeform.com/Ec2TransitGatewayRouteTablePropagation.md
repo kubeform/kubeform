@@ -1,3 +1,15 @@
+---
+title: Ec2TransitGatewayRouteTablePropagation
+menu:
+  docs_v0.0.1:
+    identifier: ec2transitgatewayroutetablepropagation-aws.kubeform.com
+    name: Ec2TransitGatewayRouteTablePropagation
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## Ec2TransitGatewayRouteTablePropagation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

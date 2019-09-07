@@ -1,3 +1,15 @@
+---
+title: DevTestPolicy
+menu:
+  docs_v0.0.1:
+    identifier: devtestpolicy-azurerm.kubeform.com
+    name: DevTestPolicy
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DevTestPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

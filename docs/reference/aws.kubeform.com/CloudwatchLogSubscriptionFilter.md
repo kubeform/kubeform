@@ -1,3 +1,15 @@
+---
+title: CloudwatchLogSubscriptionFilter
+menu:
+  docs_v0.0.1:
+    identifier: cloudwatchlogsubscriptionfilter-aws.kubeform.com
+    name: CloudwatchLogSubscriptionFilter
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## CloudwatchLogSubscriptionFilter
 | Field | Type | Description |
 | ------ | ----- | ----------- |

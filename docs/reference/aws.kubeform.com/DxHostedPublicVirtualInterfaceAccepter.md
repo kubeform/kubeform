@@ -1,3 +1,15 @@
+---
+title: DxHostedPublicVirtualInterfaceAccepter
+menu:
+  docs_v0.0.1:
+    identifier: dxhostedpublicvirtualinterfaceaccepter-aws.kubeform.com
+    name: DxHostedPublicVirtualInterfaceAccepter
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DxHostedPublicVirtualInterfaceAccepter
 | Field | Type | Description |
 | ------ | ----- | ----------- |

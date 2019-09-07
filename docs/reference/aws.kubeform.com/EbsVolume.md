@@ -1,3 +1,15 @@
+---
+title: EbsVolume
+menu:
+  docs_v0.0.1:
+    identifier: ebsvolume-aws.kubeform.com
+    name: EbsVolume
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## EbsVolume
 | Field | Type | Description |
 | ------ | ----- | ----------- |

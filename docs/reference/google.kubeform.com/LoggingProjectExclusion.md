@@ -1,3 +1,15 @@
+---
+title: LoggingProjectExclusion
+menu:
+  docs_v0.0.1:
+    identifier: loggingprojectexclusion-google.kubeform.com
+    name: LoggingProjectExclusion
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## LoggingProjectExclusion
 | Field | Type | Description |
 | ------ | ----- | ----------- |

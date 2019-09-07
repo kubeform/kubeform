@@ -1,3 +1,15 @@
+---
+title: OpsworksMysqlLayer
+menu:
+  docs_v0.0.1:
+    identifier: opsworksmysqllayer-aws.kubeform.com
+    name: OpsworksMysqlLayer
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## OpsworksMysqlLayer
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: SsmMaintenanceWindow
+menu:
+  docs_v0.0.1:
+    identifier: ssmmaintenancewindow-aws.kubeform.com
+    name: SsmMaintenanceWindow
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SsmMaintenanceWindow
 | Field | Type | Description |
 | ------ | ----- | ----------- |

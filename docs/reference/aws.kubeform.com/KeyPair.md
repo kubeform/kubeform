@@ -1,3 +1,15 @@
+---
+title: KeyPair
+menu:
+  docs_v0.0.1:
+    identifier: keypair-aws.kubeform.com
+    name: KeyPair
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## KeyPair
 | Field | Type | Description |
 | ------ | ----- | ----------- |

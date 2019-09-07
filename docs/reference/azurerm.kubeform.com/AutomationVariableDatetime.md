@@ -1,3 +1,15 @@
+---
+title: AutomationVariableDatetime
+menu:
+  docs_v0.0.1:
+    identifier: automationvariabledatetime-azurerm.kubeform.com
+    name: AutomationVariableDatetime
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## AutomationVariableDatetime
 | Field | Type | Description |
 | ------ | ----- | ----------- |

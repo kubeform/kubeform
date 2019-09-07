@@ -1,3 +1,15 @@
+---
+title: OpsworksCustomLayer
+menu:
+  docs_v0.0.1:
+    identifier: opsworkscustomlayer-aws.kubeform.com
+    name: OpsworksCustomLayer
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## OpsworksCustomLayer
 | Field | Type | Description |
 | ------ | ----- | ----------- |

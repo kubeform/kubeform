@@ -1,3 +1,15 @@
+---
+title: ComputeDisk
+menu:
+  docs_v0.0.1:
+    identifier: computedisk-google.kubeform.com
+    name: ComputeDisk
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ComputeDisk
 | Field | Type | Description |
 | ------ | ----- | ----------- |

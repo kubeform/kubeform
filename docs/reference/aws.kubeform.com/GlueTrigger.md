@@ -1,3 +1,15 @@
+---
+title: GlueTrigger
+menu:
+  docs_v0.0.1:
+    identifier: gluetrigger-aws.kubeform.com
+    name: GlueTrigger
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## GlueTrigger
 | Field | Type | Description |
 | ------ | ----- | ----------- |

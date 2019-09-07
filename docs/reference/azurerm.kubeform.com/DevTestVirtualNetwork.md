@@ -1,3 +1,15 @@
+---
+title: DevTestVirtualNetwork
+menu:
+  docs_v0.0.1:
+    identifier: devtestvirtualnetwork-azurerm.kubeform.com
+    name: DevTestVirtualNetwork
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DevTestVirtualNetwork
 | Field | Type | Description |
 | ------ | ----- | ----------- |

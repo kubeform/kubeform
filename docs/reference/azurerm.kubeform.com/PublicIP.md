@@ -1,3 +1,15 @@
+---
+title: PublicIP
+menu:
+  docs_v0.0.1:
+    identifier: publicip-azurerm.kubeform.com
+    name: PublicIP
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## PublicIP
 | Field | Type | Description |
 | ------ | ----- | ----------- |

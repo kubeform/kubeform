@@ -1,3 +1,15 @@
+---
+title: LogAnalyticsSolution
+menu:
+  docs_v0.0.1:
+    identifier: loganalyticssolution-azurerm.kubeform.com
+    name: LogAnalyticsSolution
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## LogAnalyticsSolution
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: LbTargetGroupAttachment
+menu:
+  docs_v0.0.1:
+    identifier: lbtargetgroupattachment-aws.kubeform.com
+    name: LbTargetGroupAttachment
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## LbTargetGroupAttachment
 | Field | Type | Description |
 | ------ | ----- | ----------- |

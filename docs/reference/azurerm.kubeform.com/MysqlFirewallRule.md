@@ -1,3 +1,15 @@
+---
+title: MysqlFirewallRule
+menu:
+  docs_v0.0.1:
+    identifier: mysqlfirewallrule-azurerm.kubeform.com
+    name: MysqlFirewallRule
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## MysqlFirewallRule
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: AutoscaleSetting
+menu:
+  docs_v0.0.1:
+    identifier: autoscalesetting-azurerm.kubeform.com
+    name: AutoscaleSetting
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## AutoscaleSetting
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: EventgridEventSubscription
+menu:
+  docs_v0.0.1:
+    identifier: eventgrideventsubscription-azurerm.kubeform.com
+    name: EventgridEventSubscription
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## EventgridEventSubscription
 | Field | Type | Description |
 | ------ | ----- | ----------- |

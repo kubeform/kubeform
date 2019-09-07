@@ -1,3 +1,15 @@
+---
+title: Volume
+menu:
+  docs_v0.0.1:
+    identifier: volume-linode.kubeform.com
+    name: Volume
+    parent: linode.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## Volume
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: PinpointApnsVoipChannel
+menu:
+  docs_v0.0.1:
+    identifier: pinpointapnsvoipchannel-aws.kubeform.com
+    name: PinpointApnsVoipChannel
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## PinpointApnsVoipChannel
 | Field | Type | Description |
 | ------ | ----- | ----------- |

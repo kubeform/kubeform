@@ -1,3 +1,15 @@
+---
+title: KmsKeyRingIamMember
+menu:
+  docs_v0.0.1:
+    identifier: kmskeyringiammember-google.kubeform.com
+    name: KmsKeyRingIamMember
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## KmsKeyRingIamMember
 | Field | Type | Description |
 | ------ | ----- | ----------- |

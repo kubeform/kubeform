@@ -1,3 +1,15 @@
+---
+title: VpcIpv4CIDRBlockAssociation
+menu:
+  docs_v0.0.1:
+    identifier: vpcipv4cidrblockassociation-aws.kubeform.com
+    name: VpcIpv4CIDRBlockAssociation
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## VpcIpv4CIDRBlockAssociation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

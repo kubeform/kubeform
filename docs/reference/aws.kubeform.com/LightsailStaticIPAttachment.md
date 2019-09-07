@@ -1,3 +1,15 @@
+---
+title: LightsailStaticIPAttachment
+menu:
+  docs_v0.0.1:
+    identifier: lightsailstaticipattachment-aws.kubeform.com
+    name: LightsailStaticIPAttachment
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## LightsailStaticIPAttachment
 | Field | Type | Description |
 | ------ | ----- | ----------- |

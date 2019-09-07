@@ -1,3 +1,15 @@
+---
+title: SpacesBucket
+menu:
+  docs_v0.0.1:
+    identifier: spacesbucket-digitalocean.kubeform.com
+    name: SpacesBucket
+    parent: digitalocean.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SpacesBucket
 | Field | Type | Description |
 | ------ | ----- | ----------- |

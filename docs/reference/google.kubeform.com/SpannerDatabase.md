@@ -1,3 +1,15 @@
+---
+title: SpannerDatabase
+menu:
+  docs_v0.0.1:
+    identifier: spannerdatabase-google.kubeform.com
+    name: SpannerDatabase
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SpannerDatabase
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: OpsworksRdsDbInstance
+menu:
+  docs_v0.0.1:
+    identifier: opsworksrdsdbinstance-aws.kubeform.com
+    name: OpsworksRdsDbInstance
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## OpsworksRdsDbInstance
 | Field | Type | Description |
 | ------ | ----- | ----------- |

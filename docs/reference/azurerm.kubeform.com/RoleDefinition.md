@@ -1,3 +1,15 @@
+---
+title: RoleDefinition
+menu:
+  docs_v0.0.1:
+    identifier: roledefinition-azurerm.kubeform.com
+    name: RoleDefinition
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## RoleDefinition
 | Field | Type | Description |
 | ------ | ----- | ----------- |

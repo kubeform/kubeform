@@ -1,3 +1,15 @@
+---
+title: ApiGatewayDomainName
+menu:
+  docs_v0.0.1:
+    identifier: apigatewaydomainname-aws.kubeform.com
+    name: ApiGatewayDomainName
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ApiGatewayDomainName
 | Field | Type | Description |
 | ------ | ----- | ----------- |

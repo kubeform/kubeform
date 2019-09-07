@@ -1,3 +1,15 @@
+---
+title: ApiGatewayIntegration
+menu:
+  docs_v0.0.1:
+    identifier: apigatewayintegration-aws.kubeform.com
+    name: ApiGatewayIntegration
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ApiGatewayIntegration
 | Field | Type | Description |
 | ------ | ----- | ----------- |

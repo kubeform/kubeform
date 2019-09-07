@@ -1,3 +1,15 @@
+---
+title: VpcEndpointService
+menu:
+  docs_v0.0.1:
+    identifier: vpcendpointservice-aws.kubeform.com
+    name: VpcEndpointService
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## VpcEndpointService
 | Field | Type | Description |
 | ------ | ----- | ----------- |

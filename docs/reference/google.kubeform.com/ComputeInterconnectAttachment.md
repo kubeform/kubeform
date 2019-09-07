@@ -1,3 +1,15 @@
+---
+title: ComputeInterconnectAttachment
+menu:
+  docs_v0.0.1:
+    identifier: computeinterconnectattachment-google.kubeform.com
+    name: ComputeInterconnectAttachment
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ComputeInterconnectAttachment
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: IamServerCertificate
+menu:
+  docs_v0.0.1:
+    identifier: iamservercertificate-aws.kubeform.com
+    name: IamServerCertificate
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## IamServerCertificate
 | Field | Type | Description |
 | ------ | ----- | ----------- |

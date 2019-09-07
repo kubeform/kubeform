@@ -1,3 +1,15 @@
+---
+title: AppmeshVirtualNode
+menu:
+  docs_v0.0.1:
+    identifier: appmeshvirtualnode-aws.kubeform.com
+    name: AppmeshVirtualNode
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## AppmeshVirtualNode
 | Field | Type | Description |
 | ------ | ----- | ----------- |

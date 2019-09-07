@@ -1,3 +1,15 @@
+---
+title: EbsSnapshotCopy
+menu:
+  docs_v0.0.1:
+    identifier: ebssnapshotcopy-aws.kubeform.com
+    name: EbsSnapshotCopy
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## EbsSnapshotCopy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

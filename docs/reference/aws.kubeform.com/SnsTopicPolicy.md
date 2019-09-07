@@ -1,3 +1,15 @@
+---
+title: SnsTopicPolicy
+menu:
+  docs_v0.0.1:
+    identifier: snstopicpolicy-aws.kubeform.com
+    name: SnsTopicPolicy
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SnsTopicPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

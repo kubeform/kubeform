@@ -1,3 +1,15 @@
+---
+title: MonitorAutoscaleSetting
+menu:
+  docs_v0.0.1:
+    identifier: monitorautoscalesetting-azurerm.kubeform.com
+    name: MonitorAutoscaleSetting
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## MonitorAutoscaleSetting
 | Field | Type | Description |
 | ------ | ----- | ----------- |

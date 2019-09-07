@@ -1,3 +1,15 @@
+---
+title: OpsworksPermission
+menu:
+  docs_v0.0.1:
+    identifier: opsworkspermission-aws.kubeform.com
+    name: OpsworksPermission
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## OpsworksPermission
 | Field | Type | Description |
 | ------ | ----- | ----------- |

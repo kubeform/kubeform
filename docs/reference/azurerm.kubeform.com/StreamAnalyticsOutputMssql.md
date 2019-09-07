@@ -1,3 +1,15 @@
+---
+title: StreamAnalyticsOutputMssql
+menu:
+  docs_v0.0.1:
+    identifier: streamanalyticsoutputmssql-azurerm.kubeform.com
+    name: StreamAnalyticsOutputMssql
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## StreamAnalyticsOutputMssql
 | Field | Type | Description |
 | ------ | ----- | ----------- |

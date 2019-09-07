@@ -1,3 +1,15 @@
+---
+title: VirtualNetworkGatewayConnection
+menu:
+  docs_v0.0.1:
+    identifier: virtualnetworkgatewayconnection-azurerm.kubeform.com
+    name: VirtualNetworkGatewayConnection
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## VirtualNetworkGatewayConnection
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: GuarddutyMember
+menu:
+  docs_v0.0.1:
+    identifier: guarddutymember-aws.kubeform.com
+    name: GuarddutyMember
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## GuarddutyMember
 | Field | Type | Description |
 | ------ | ----- | ----------- |

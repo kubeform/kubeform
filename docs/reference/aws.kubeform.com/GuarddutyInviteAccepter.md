@@ -1,3 +1,15 @@
+---
+title: GuarddutyInviteAccepter
+menu:
+  docs_v0.0.1:
+    identifier: guarddutyinviteaccepter-aws.kubeform.com
+    name: GuarddutyInviteAccepter
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## GuarddutyInviteAccepter
 | Field | Type | Description |
 | ------ | ----- | ----------- |

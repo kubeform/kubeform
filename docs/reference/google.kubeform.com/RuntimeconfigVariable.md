@@ -1,3 +1,15 @@
+---
+title: RuntimeconfigVariable
+menu:
+  docs_v0.0.1:
+    identifier: runtimeconfigvariable-google.kubeform.com
+    name: RuntimeconfigVariable
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## RuntimeconfigVariable
 | Field | Type | Description |
 | ------ | ----- | ----------- |

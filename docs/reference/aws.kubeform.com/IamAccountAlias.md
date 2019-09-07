@@ -1,3 +1,15 @@
+---
+title: IamAccountAlias
+menu:
+  docs_v0.0.1:
+    identifier: iamaccountalias-aws.kubeform.com
+    name: IamAccountAlias
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## IamAccountAlias
 | Field | Type | Description |
 | ------ | ----- | ----------- |

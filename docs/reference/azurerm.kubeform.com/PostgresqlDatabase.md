@@ -1,3 +1,15 @@
+---
+title: PostgresqlDatabase
+menu:
+  docs_v0.0.1:
+    identifier: postgresqldatabase-azurerm.kubeform.com
+    name: PostgresqlDatabase
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## PostgresqlDatabase
 | Field | Type | Description |
 | ------ | ----- | ----------- |

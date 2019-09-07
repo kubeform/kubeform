@@ -1,3 +1,15 @@
+---
+title: ComputeTargetSSLProxy
+menu:
+  docs_v0.0.1:
+    identifier: computetargetsslproxy-google.kubeform.com
+    name: ComputeTargetSSLProxy
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ComputeTargetSSLProxy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

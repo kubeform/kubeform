@@ -1,3 +1,15 @@
+---
+title: Project
+menu:
+  docs_v0.0.1:
+    identifier: project-google.kubeform.com
+    name: Project
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## Project
 | Field | Type | Description |
 | ------ | ----- | ----------- |

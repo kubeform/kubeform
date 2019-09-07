@@ -1,3 +1,15 @@
+---
+title: NetworkPacketCapture
+menu:
+  docs_v0.0.1:
+    identifier: networkpacketcapture-azurerm.kubeform.com
+    name: NetworkPacketCapture
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## NetworkPacketCapture
 | Field | Type | Description |
 | ------ | ----- | ----------- |

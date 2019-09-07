@@ -1,3 +1,15 @@
+---
+title: ElasticsearchDomainPolicy
+menu:
+  docs_v0.0.1:
+    identifier: elasticsearchdomainpolicy-aws.kubeform.com
+    name: ElasticsearchDomainPolicy
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ElasticsearchDomainPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

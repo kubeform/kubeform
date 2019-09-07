@@ -1,3 +1,15 @@
+---
+title: ComputeProjectMetadataItem
+menu:
+  docs_v0.0.1:
+    identifier: computeprojectmetadataitem-google.kubeform.com
+    name: ComputeProjectMetadataItem
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ComputeProjectMetadataItem
 | Field | Type | Description |
 | ------ | ----- | ----------- |

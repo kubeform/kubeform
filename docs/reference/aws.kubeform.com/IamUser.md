@@ -1,3 +1,15 @@
+---
+title: IamUser
+menu:
+  docs_v0.0.1:
+    identifier: iamuser-aws.kubeform.com
+    name: IamUser
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## IamUser
 | Field | Type | Description |
 | ------ | ----- | ----------- |

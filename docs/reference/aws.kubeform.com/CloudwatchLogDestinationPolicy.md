@@ -1,3 +1,15 @@
+---
+title: CloudwatchLogDestinationPolicy
+menu:
+  docs_v0.0.1:
+    identifier: cloudwatchlogdestinationpolicy-aws.kubeform.com
+    name: CloudwatchLogDestinationPolicy
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## CloudwatchLogDestinationPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

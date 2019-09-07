@@ -1,3 +1,15 @@
+---
+title: IamInstanceProfile
+menu:
+  docs_v0.0.1:
+    identifier: iaminstanceprofile-aws.kubeform.com
+    name: IamInstanceProfile
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## IamInstanceProfile
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: ServicebusSubscriptionRule
+menu:
+  docs_v0.0.1:
+    identifier: servicebussubscriptionrule-azurerm.kubeform.com
+    name: ServicebusSubscriptionRule
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ServicebusSubscriptionRule
 | Field | Type | Description |
 | ------ | ----- | ----------- |

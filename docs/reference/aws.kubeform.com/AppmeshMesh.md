@@ -1,3 +1,15 @@
+---
+title: AppmeshMesh
+menu:
+  docs_v0.0.1:
+    identifier: appmeshmesh-aws.kubeform.com
+    name: AppmeshMesh
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## AppmeshMesh
 | Field | Type | Description |
 | ------ | ----- | ----------- |

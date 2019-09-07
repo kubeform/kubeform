@@ -1,3 +1,15 @@
+---
+title: LoadBalancerPolicy
+menu:
+  docs_v0.0.1:
+    identifier: loadbalancerpolicy-aws.kubeform.com
+    name: LoadBalancerPolicy
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## LoadBalancerPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

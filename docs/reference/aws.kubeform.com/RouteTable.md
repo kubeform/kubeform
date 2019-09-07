@@ -1,3 +1,15 @@
+---
+title: RouteTable
+menu:
+  docs_v0.0.1:
+    identifier: routetable-aws.kubeform.com
+    name: RouteTable
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## RouteTable
 | Field | Type | Description |
 | ------ | ----- | ----------- |

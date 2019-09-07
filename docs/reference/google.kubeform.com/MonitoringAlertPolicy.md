@@ -1,3 +1,15 @@
+---
+title: MonitoringAlertPolicy
+menu:
+  docs_v0.0.1:
+    identifier: monitoringalertpolicy-google.kubeform.com
+    name: MonitoringAlertPolicy
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## MonitoringAlertPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

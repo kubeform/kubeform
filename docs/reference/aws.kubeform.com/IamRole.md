@@ -1,3 +1,15 @@
+---
+title: IamRole
+menu:
+  docs_v0.0.1:
+    identifier: iamrole-aws.kubeform.com
+    name: IamRole
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## IamRole
 | Field | Type | Description |
 | ------ | ----- | ----------- |

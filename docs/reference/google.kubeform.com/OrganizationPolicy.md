@@ -1,3 +1,15 @@
+---
+title: OrganizationPolicy
+menu:
+  docs_v0.0.1:
+    identifier: organizationpolicy-google.kubeform.com
+    name: OrganizationPolicy
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## OrganizationPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: DbSecurityGroup
+menu:
+  docs_v0.0.1:
+    identifier: dbsecuritygroup-aws.kubeform.com
+    name: DbSecurityGroup
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DbSecurityGroup
 | Field | Type | Description |
 | ------ | ----- | ----------- |

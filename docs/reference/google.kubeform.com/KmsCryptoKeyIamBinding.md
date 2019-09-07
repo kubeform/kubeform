@@ -1,3 +1,15 @@
+---
+title: KmsCryptoKeyIamBinding
+menu:
+  docs_v0.0.1:
+    identifier: kmscryptokeyiambinding-google.kubeform.com
+    name: KmsCryptoKeyIamBinding
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## KmsCryptoKeyIamBinding
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: GlacierVaultLock
+menu:
+  docs_v0.0.1:
+    identifier: glaciervaultlock-aws.kubeform.com
+    name: GlacierVaultLock
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## GlacierVaultLock
 | Field | Type | Description |
 | ------ | ----- | ----------- |

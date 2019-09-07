@@ -1,3 +1,15 @@
+---
+title: DaxSubnetGroup
+menu:
+  docs_v0.0.1:
+    identifier: daxsubnetgroup-aws.kubeform.com
+    name: DaxSubnetGroup
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DaxSubnetGroup
 | Field | Type | Description |
 | ------ | ----- | ----------- |

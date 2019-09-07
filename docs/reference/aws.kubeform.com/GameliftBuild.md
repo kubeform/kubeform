@@ -1,3 +1,15 @@
+---
+title: GameliftBuild
+menu:
+  docs_v0.0.1:
+    identifier: gameliftbuild-aws.kubeform.com
+    name: GameliftBuild
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## GameliftBuild
 | Field | Type | Description |
 | ------ | ----- | ----------- |

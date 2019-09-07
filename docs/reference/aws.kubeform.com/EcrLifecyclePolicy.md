@@ -1,3 +1,15 @@
+---
+title: EcrLifecyclePolicy
+menu:
+  docs_v0.0.1:
+    identifier: ecrlifecyclepolicy-aws.kubeform.com
+    name: EcrLifecyclePolicy
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## EcrLifecyclePolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

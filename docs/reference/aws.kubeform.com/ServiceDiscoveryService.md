@@ -1,3 +1,15 @@
+---
+title: ServiceDiscoveryService
+menu:
+  docs_v0.0.1:
+    identifier: servicediscoveryservice-aws.kubeform.com
+    name: ServiceDiscoveryService
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ServiceDiscoveryService
 | Field | Type | Description |
 | ------ | ----- | ----------- |

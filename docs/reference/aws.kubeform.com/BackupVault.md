@@ -1,3 +1,15 @@
+---
+title: BackupVault
+menu:
+  docs_v0.0.1:
+    identifier: backupvault-aws.kubeform.com
+    name: BackupVault
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## BackupVault
 | Field | Type | Description |
 | ------ | ----- | ----------- |

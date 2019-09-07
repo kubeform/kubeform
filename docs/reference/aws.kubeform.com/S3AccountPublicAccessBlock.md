@@ -1,3 +1,15 @@
+---
+title: S3AccountPublicAccessBlock
+menu:
+  docs_v0.0.1:
+    identifier: s3accountpublicaccessblock-aws.kubeform.com
+    name: S3AccountPublicAccessBlock
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## S3AccountPublicAccessBlock
 | Field | Type | Description |
 | ------ | ----- | ----------- |

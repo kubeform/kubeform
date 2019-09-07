@@ -1,3 +1,15 @@
+---
+title: RdsClusterParameterGroup
+menu:
+  docs_v0.0.1:
+    identifier: rdsclusterparametergroup-aws.kubeform.com
+    name: RdsClusterParameterGroup
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## RdsClusterParameterGroup
 | Field | Type | Description |
 | ------ | ----- | ----------- |

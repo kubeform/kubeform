@@ -1,3 +1,15 @@
+---
+title: EcrRepository
+menu:
+  docs_v0.0.1:
+    identifier: ecrrepository-aws.kubeform.com
+    name: EcrRepository
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## EcrRepository
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: AppsyncAPIKey
+menu:
+  docs_v0.0.1:
+    identifier: appsyncapikey-aws.kubeform.com
+    name: AppsyncAPIKey
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## AppsyncAPIKey
 | Field | Type | Description |
 | ------ | ----- | ----------- |

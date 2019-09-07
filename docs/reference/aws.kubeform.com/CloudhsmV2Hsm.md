@@ -1,3 +1,15 @@
+---
+title: CloudhsmV2Hsm
+menu:
+  docs_v0.0.1:
+    identifier: cloudhsmv2hsm-aws.kubeform.com
+    name: CloudhsmV2Hsm
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## CloudhsmV2Hsm
 | Field | Type | Description |
 | ------ | ----- | ----------- |

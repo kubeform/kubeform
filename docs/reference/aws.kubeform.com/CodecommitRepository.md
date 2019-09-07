@@ -1,3 +1,15 @@
+---
+title: CodecommitRepository
+menu:
+  docs_v0.0.1:
+    identifier: codecommitrepository-aws.kubeform.com
+    name: CodecommitRepository
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## CodecommitRepository
 | Field | Type | Description |
 | ------ | ----- | ----------- |

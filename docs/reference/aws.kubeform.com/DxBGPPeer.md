@@ -1,3 +1,15 @@
+---
+title: DxBGPPeer
+menu:
+  docs_v0.0.1:
+    identifier: dxbgppeer-aws.kubeform.com
+    name: DxBGPPeer
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DxBGPPeer
 | Field | Type | Description |
 | ------ | ----- | ----------- |

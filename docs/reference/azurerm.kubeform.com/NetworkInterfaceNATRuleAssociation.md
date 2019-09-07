@@ -1,3 +1,15 @@
+---
+title: NetworkInterfaceNATRuleAssociation
+menu:
+  docs_v0.0.1:
+    identifier: networkinterfacenatruleassociation-azurerm.kubeform.com
+    name: NetworkInterfaceNATRuleAssociation
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## NetworkInterfaceNATRuleAssociation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

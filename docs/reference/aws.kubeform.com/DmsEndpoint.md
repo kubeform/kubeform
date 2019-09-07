@@ -1,3 +1,15 @@
+---
+title: DmsEndpoint
+menu:
+  docs_v0.0.1:
+    identifier: dmsendpoint-aws.kubeform.com
+    name: DmsEndpoint
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DmsEndpoint
 | Field | Type | Description |
 | ------ | ----- | ----------- |

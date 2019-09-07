@@ -1,3 +1,15 @@
+---
+title: EcrRepositoryPolicy
+menu:
+  docs_v0.0.1:
+    identifier: ecrrepositorypolicy-aws.kubeform.com
+    name: EcrRepositoryPolicy
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## EcrRepositoryPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

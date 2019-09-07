@@ -1,3 +1,15 @@
+---
+title: SagemakerModel
+menu:
+  docs_v0.0.1:
+    identifier: sagemakermodel-aws.kubeform.com
+    name: SagemakerModel
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SagemakerModel
 | Field | Type | Description |
 | ------ | ----- | ----------- |

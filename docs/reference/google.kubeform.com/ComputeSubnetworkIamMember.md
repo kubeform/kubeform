@@ -1,3 +1,15 @@
+---
+title: ComputeSubnetworkIamMember
+menu:
+  docs_v0.0.1:
+    identifier: computesubnetworkiammember-google.kubeform.com
+    name: ComputeSubnetworkIamMember
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ComputeSubnetworkIamMember
 | Field | Type | Description |
 | ------ | ----- | ----------- |

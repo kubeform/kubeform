@@ -1,3 +1,15 @@
+---
+title: MskConfiguration
+menu:
+  docs_v0.0.1:
+    identifier: mskconfiguration-aws.kubeform.com
+    name: MskConfiguration
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## MskConfiguration
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: KmsKeyRingIamPolicy
+menu:
+  docs_v0.0.1:
+    identifier: kmskeyringiampolicy-google.kubeform.com
+    name: KmsKeyRingIamPolicy
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## KmsKeyRingIamPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

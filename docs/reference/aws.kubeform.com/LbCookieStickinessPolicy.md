@@ -1,3 +1,15 @@
+---
+title: LbCookieStickinessPolicy
+menu:
+  docs_v0.0.1:
+    identifier: lbcookiestickinesspolicy-aws.kubeform.com
+    name: LbCookieStickinessPolicy
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## LbCookieStickinessPolicy
 | Field | Type | Description |
 | ------ | ----- | ----------- |

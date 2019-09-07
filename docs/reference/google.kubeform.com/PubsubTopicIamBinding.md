@@ -1,3 +1,15 @@
+---
+title: PubsubTopicIamBinding
+menu:
+  docs_v0.0.1:
+    identifier: pubsubtopiciambinding-google.kubeform.com
+    name: PubsubTopicIamBinding
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## PubsubTopicIamBinding
 | Field | Type | Description |
 | ------ | ----- | ----------- |

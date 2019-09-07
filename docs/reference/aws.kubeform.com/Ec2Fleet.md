@@ -1,3 +1,15 @@
+---
+title: Ec2Fleet
+menu:
+  docs_v0.0.1:
+    identifier: ec2fleet-aws.kubeform.com
+    name: Ec2Fleet
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## Ec2Fleet
 | Field | Type | Description |
 | ------ | ----- | ----------- |

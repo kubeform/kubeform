@@ -1,3 +1,15 @@
+---
+title: ManagementGroup
+menu:
+  docs_v0.0.1:
+    identifier: managementgroup-azurerm.kubeform.com
+    name: ManagementGroup
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ManagementGroup
 | Field | Type | Description |
 | ------ | ----- | ----------- |

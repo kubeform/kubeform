@@ -1,3 +1,15 @@
+---
+title: ApiManagementAuthorizationServer
+menu:
+  docs_v0.0.1:
+    identifier: apimanagementauthorizationserver-azurerm.kubeform.com
+    name: ApiManagementAuthorizationServer
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ApiManagementAuthorizationServer
 | Field | Type | Description |
 | ------ | ----- | ----------- |

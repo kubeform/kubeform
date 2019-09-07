@@ -1,3 +1,15 @@
+---
+title: EbsSnapshot
+menu:
+  docs_v0.0.1:
+    identifier: ebssnapshot-aws.kubeform.com
+    name: EbsSnapshot
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## EbsSnapshot
 | Field | Type | Description |
 | ------ | ----- | ----------- |

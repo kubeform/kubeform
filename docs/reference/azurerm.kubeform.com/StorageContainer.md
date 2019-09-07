@@ -1,3 +1,15 @@
+---
+title: StorageContainer
+menu:
+  docs_v0.0.1:
+    identifier: storagecontainer-azurerm.kubeform.com
+    name: StorageContainer
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## StorageContainer
 | Field | Type | Description |
 | ------ | ----- | ----------- |

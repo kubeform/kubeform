@@ -1,3 +1,15 @@
+---
+title: ComputeGlobalAddress
+menu:
+  docs_v0.0.1:
+    identifier: computeglobaladdress-google.kubeform.com
+    name: ComputeGlobalAddress
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ComputeGlobalAddress
 | Field | Type | Description |
 | ------ | ----- | ----------- |

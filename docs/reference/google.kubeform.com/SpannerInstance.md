@@ -1,3 +1,15 @@
+---
+title: SpannerInstance
+menu:
+  docs_v0.0.1:
+    identifier: spannerinstance-google.kubeform.com
+    name: SpannerInstance
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SpannerInstance
 | Field | Type | Description |
 | ------ | ----- | ----------- |

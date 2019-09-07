@@ -1,3 +1,15 @@
+---
+title: ComputeInstanceGroupManager
+menu:
+  docs_v0.0.1:
+    identifier: computeinstancegroupmanager-google.kubeform.com
+    name: ComputeInstanceGroupManager
+    parent: google.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ComputeInstanceGroupManager
 | Field | Type | Description |
 | ------ | ----- | ----------- |

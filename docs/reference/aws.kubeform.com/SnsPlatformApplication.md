@@ -1,3 +1,15 @@
+---
+title: SnsPlatformApplication
+menu:
+  docs_v0.0.1:
+    identifier: snsplatformapplication-aws.kubeform.com
+    name: SnsPlatformApplication
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## SnsPlatformApplication
 | Field | Type | Description |
 | ------ | ----- | ----------- |

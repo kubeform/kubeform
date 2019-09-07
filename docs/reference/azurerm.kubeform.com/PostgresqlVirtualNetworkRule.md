@@ -1,3 +1,15 @@
+---
+title: PostgresqlVirtualNetworkRule
+menu:
+  docs_v0.0.1:
+    identifier: postgresqlvirtualnetworkrule-azurerm.kubeform.com
+    name: PostgresqlVirtualNetworkRule
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## PostgresqlVirtualNetworkRule
 | Field | Type | Description |
 | ------ | ----- | ----------- |

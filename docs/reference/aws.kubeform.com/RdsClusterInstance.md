@@ -1,3 +1,15 @@
+---
+title: RdsClusterInstance
+menu:
+  docs_v0.0.1:
+    identifier: rdsclusterinstance-aws.kubeform.com
+    name: RdsClusterInstance
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## RdsClusterInstance
 | Field | Type | Description |
 | ------ | ----- | ----------- |

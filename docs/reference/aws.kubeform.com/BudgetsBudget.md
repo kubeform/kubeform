@@ -1,3 +1,15 @@
+---
+title: BudgetsBudget
+menu:
+  docs_v0.0.1:
+    identifier: budgetsbudget-aws.kubeform.com
+    name: BudgetsBudget
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## BudgetsBudget
 | Field | Type | Description |
 | ------ | ----- | ----------- |

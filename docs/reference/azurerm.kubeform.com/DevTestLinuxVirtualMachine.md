@@ -1,3 +1,15 @@
+---
+title: DevTestLinuxVirtualMachine
+menu:
+  docs_v0.0.1:
+    identifier: devtestlinuxvirtualmachine-azurerm.kubeform.com
+    name: DevTestLinuxVirtualMachine
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DevTestLinuxVirtualMachine
 | Field | Type | Description |
 | ------ | ----- | ----------- |

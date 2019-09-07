@@ -1,3 +1,15 @@
+---
+title: ApiGatewayAccount
+menu:
+  docs_v0.0.1:
+    identifier: apigatewayaccount-aws.kubeform.com
+    name: ApiGatewayAccount
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ApiGatewayAccount
 | Field | Type | Description |
 | ------ | ----- | ----------- |

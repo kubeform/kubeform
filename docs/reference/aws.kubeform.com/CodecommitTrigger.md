@@ -1,3 +1,15 @@
+---
+title: CodecommitTrigger
+menu:
+  docs_v0.0.1:
+    identifier: codecommittrigger-aws.kubeform.com
+    name: CodecommitTrigger
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## CodecommitTrigger
 | Field | Type | Description |
 | ------ | ----- | ----------- |

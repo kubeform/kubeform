@@ -1,3 +1,15 @@
+---
+title: DataFactoryLinkedServiceDataLakeStorageGen2
+menu:
+  docs_v0.0.1:
+    identifier: datafactorylinkedservicedatalakestoragegen2-azurerm.kubeform.com
+    name: DataFactoryLinkedServiceDataLakeStorageGen2
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DataFactoryLinkedServiceDataLakeStorageGen2
 | Field | Type | Description |
 | ------ | ----- | ----------- |

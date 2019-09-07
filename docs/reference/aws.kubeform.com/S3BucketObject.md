@@ -1,3 +1,15 @@
+---
+title: S3BucketObject
+menu:
+  docs_v0.0.1:
+    identifier: s3bucketobject-aws.kubeform.com
+    name: S3BucketObject
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## S3BucketObject
 | Field | Type | Description |
 | ------ | ----- | ----------- |

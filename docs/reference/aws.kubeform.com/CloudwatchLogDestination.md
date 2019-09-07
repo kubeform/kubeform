@@ -1,3 +1,15 @@
+---
+title: CloudwatchLogDestination
+menu:
+  docs_v0.0.1:
+    identifier: cloudwatchlogdestination-aws.kubeform.com
+    name: CloudwatchLogDestination
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## CloudwatchLogDestination
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: RecoveryServicesProtectedVm
+menu:
+  docs_v0.0.1:
+    identifier: recoveryservicesprotectedvm-azurerm.kubeform.com
+    name: RecoveryServicesProtectedVm
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## RecoveryServicesProtectedVm
 | Field | Type | Description |
 | ------ | ----- | ----------- |

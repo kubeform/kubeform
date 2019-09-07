@@ -1,3 +1,15 @@
+---
+title: HdinsightRserverCluster
+menu:
+  docs_v0.0.1:
+    identifier: hdinsightrservercluster-azurerm.kubeform.com
+    name: HdinsightRserverCluster
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## HdinsightRserverCluster
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: CdnEndpoint
+menu:
+  docs_v0.0.1:
+    identifier: cdnendpoint-azurerm.kubeform.com
+    name: CdnEndpoint
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## CdnEndpoint
 | Field | Type | Description |
 | ------ | ----- | ----------- |

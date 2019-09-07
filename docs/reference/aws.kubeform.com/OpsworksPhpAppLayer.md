@@ -1,3 +1,15 @@
+---
+title: OpsworksPhpAppLayer
+menu:
+  docs_v0.0.1:
+    identifier: opsworksphpapplayer-aws.kubeform.com
+    name: OpsworksPhpAppLayer
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## OpsworksPhpAppLayer
 | Field | Type | Description |
 | ------ | ----- | ----------- |

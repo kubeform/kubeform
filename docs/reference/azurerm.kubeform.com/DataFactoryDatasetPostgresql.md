@@ -1,3 +1,15 @@
+---
+title: DataFactoryDatasetPostgresql
+menu:
+  docs_v0.0.1:
+    identifier: datafactorydatasetpostgresql-azurerm.kubeform.com
+    name: DataFactoryDatasetPostgresql
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DataFactoryDatasetPostgresql
 | Field | Type | Description |
 | ------ | ----- | ----------- |

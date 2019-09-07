@@ -1,3 +1,15 @@
+---
+title: KubernetesCluster
+menu:
+  docs_v0.0.1:
+    identifier: kubernetescluster-digitalocean.kubeform.com
+    name: KubernetesCluster
+    parent: digitalocean.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## KubernetesCluster
 | Field | Type | Description |
 | ------ | ----- | ----------- |

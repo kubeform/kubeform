@@ -1,3 +1,15 @@
+---
+title: MediaPackageChannel
+menu:
+  docs_v0.0.1:
+    identifier: mediapackagechannel-aws.kubeform.com
+    name: MediaPackageChannel
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## MediaPackageChannel
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: NetworkInterface
+menu:
+  docs_v0.0.1:
+    identifier: networkinterface-azurerm.kubeform.com
+    name: NetworkInterface
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## NetworkInterface
 | Field | Type | Description |
 | ------ | ----- | ----------- |

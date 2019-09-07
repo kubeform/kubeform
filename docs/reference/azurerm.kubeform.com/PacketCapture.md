@@ -1,3 +1,15 @@
+---
+title: PacketCapture
+menu:
+  docs_v0.0.1:
+    identifier: packetcapture-azurerm.kubeform.com
+    name: PacketCapture
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## PacketCapture
 | Field | Type | Description |
 | ------ | ----- | ----------- |

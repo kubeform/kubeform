@@ -1,3 +1,15 @@
+---
+title: DatabricksWorkspace
+menu:
+  docs_v0.0.1:
+    identifier: databricksworkspace-azurerm.kubeform.com
+    name: DatabricksWorkspace
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## DatabricksWorkspace
 | Field | Type | Description |
 | ------ | ----- | ----------- |

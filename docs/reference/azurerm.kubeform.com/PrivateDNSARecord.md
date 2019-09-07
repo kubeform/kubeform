@@ -1,3 +1,15 @@
+---
+title: PrivateDNSARecord
+menu:
+  docs_v0.0.1:
+    identifier: privatednsarecord-azurerm.kubeform.com
+    name: PrivateDNSARecord
+    parent: azurerm.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## PrivateDNSARecord
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: LightsailStaticIP
+menu:
+  docs_v0.0.1:
+    identifier: lightsailstaticip-aws.kubeform.com
+    name: LightsailStaticIP
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## LightsailStaticIP
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -1,3 +1,15 @@
+---
+title: ServiceDiscoveryPrivateDNSNamespace
+menu:
+  docs_v0.0.1:
+    identifier: servicediscoveryprivatednsnamespace-aws.kubeform.com
+    name: ServiceDiscoveryPrivateDNSNamespace
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ServiceDiscoveryPrivateDNSNamespace
 | Field | Type | Description |
 | ------ | ----- | ----------- |

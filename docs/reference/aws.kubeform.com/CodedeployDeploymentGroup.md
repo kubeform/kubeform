@@ -1,3 +1,15 @@
+---
+title: CodedeployDeploymentGroup
+menu:
+  docs_v0.0.1:
+    identifier: codedeploydeploymentgroup-aws.kubeform.com
+    name: CodedeployDeploymentGroup
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## CodedeployDeploymentGroup
 | Field | Type | Description |
 | ------ | ----- | ----------- |

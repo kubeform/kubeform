@@ -1,3 +1,15 @@
+---
+title: ElasticsearchDomain
+menu:
+  docs_v0.0.1:
+    identifier: elasticsearchdomain-aws.kubeform.com
+    name: ElasticsearchDomain
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## ElasticsearchDomain
 | Field | Type | Description |
 | ------ | ----- | ----------- |

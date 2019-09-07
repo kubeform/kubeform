@@ -1,3 +1,15 @@
+---
+title: LicensemanagerAssociation
+menu:
+  docs_v0.0.1:
+    identifier: licensemanagerassociation-aws.kubeform.com
+    name: LicensemanagerAssociation
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## LicensemanagerAssociation
 | Field | Type | Description |
 | ------ | ----- | ----------- |

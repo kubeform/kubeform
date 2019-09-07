@@ -1,3 +1,15 @@
+---
+title: OrganizationsPolicyAttachment
+menu:
+  docs_v0.0.1:
+    identifier: organizationspolicyattachment-aws.kubeform.com
+    name: OrganizationsPolicyAttachment
+    parent: aws.kubeform.com-reference
+    weight: 1
+menu_name: docs_v0.0.1
+section_menu_id: reference
+---
+
 ## OrganizationsPolicyAttachment
 | Field | Type | Description |
 | ------ | ----- | ----------- |
