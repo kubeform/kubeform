@@ -29,7 +29,6 @@ type LbSSLNegotiationPolicySpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Attribute    []LbSSLNegotiationPolicySpecAttribute `json:"attribute,omitempty" tf:"attribute,omitempty"`
 	LbPort       int                                   `json:"lbPort" tf:"lb_port"`
 	LoadBalancer string                                `json:"loadBalancer" tf:"load_balancer"`

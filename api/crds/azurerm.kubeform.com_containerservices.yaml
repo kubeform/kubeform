@@ -417,7 +417,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             diagnosticsProfile:
               items:
                 properties:
@@ -430,7 +429,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             id:
               type: string
             linuxProfile:
@@ -448,14 +446,12 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
-                    uniqueItems: true
                 required:
                 - adminUsername
                 - sshKey
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             location:
               type: string
             masterProfile:
@@ -472,7 +468,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             name:
               type: string
             orchestrationPlatform:
@@ -507,7 +502,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             tags:
               additionalProperties:
                 type: string
@@ -552,7 +546,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 diagnosticsProfile:
                   items:
                     properties:
@@ -565,7 +558,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 id:
                   type: string
                 linuxProfile:
@@ -583,14 +575,12 @@ spec:
                           type: object
                         maxItems: 1
                         type: array
-                        uniqueItems: true
                     required:
                     - adminUsername
                     - sshKey
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 location:
                   type: string
                 masterProfile:
@@ -607,7 +597,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 name:
                   type: string
                 orchestrationPlatform:
@@ -642,7 +631,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 tags:
                   additionalProperties:
                     type: string
@@ -682,3 +670,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

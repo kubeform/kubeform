@@ -23,7 +23,6 @@ type IotThingTypeSpecProperties struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=3
-	// +kubebuilder:validation:UniqueItems=true
 	SearchableAttributes []string `json:"searchableAttributes,omitempty" tf:"searchable_attributes,omitempty"`
 }
 

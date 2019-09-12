@@ -34,7 +34,6 @@ type EmrInstanceGroupSpec struct {
 
 	ClusterID string `json:"clusterID" tf:"cluster_id"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EbsConfig []EmrInstanceGroupSpecEbsConfig `json:"ebsConfig,omitempty" tf:"ebs_config,omitempty"`
 	// +optional
 	EbsOptimized bool `json:"ebsOptimized,omitempty" tf:"ebs_optimized,omitempty"`

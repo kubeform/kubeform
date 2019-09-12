@@ -46,7 +46,6 @@ type DevTestWindowsVirtualMachineSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	GalleryImageReference []DevTestWindowsVirtualMachineSpecGalleryImageReference `json:"galleryImageReference" tf:"gallery_image_reference"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	InboundNATRule      []DevTestWindowsVirtualMachineSpecInboundNATRule `json:"inboundNATRule,omitempty" tf:"inbound_nat_rule,omitempty"`
 	LabName             string                                           `json:"labName" tf:"lab_name"`
 	LabSubnetName       string                                           `json:"labSubnetName" tf:"lab_subnet_name"`

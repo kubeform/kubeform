@@ -32,7 +32,6 @@ type WafRuleSpec struct {
 	MetricName string `json:"metricName" tf:"metric_name"`
 	Name       string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Predicates []WafRuleSpecPredicates `json:"predicates,omitempty" tf:"predicates,omitempty"`
 }
 

@@ -74,13 +74,10 @@ type ElasticsearchDomainSpecSnapshotOptions struct {
 
 type ElasticsearchDomainSpecVpcOptions struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupIDS []string `json:"securityGroupIDS,omitempty" tf:"security_group_ids,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS,omitempty" tf:"subnet_ids,omitempty"`
 	// +optional
 	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
@@ -119,7 +116,6 @@ type ElasticsearchDomainSpec struct {
 	// +optional
 	KibanaEndpoint string `json:"kibanaEndpoint,omitempty" tf:"kibana_endpoint,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	LogPublishingOptions []ElasticsearchDomainSpecLogPublishingOptions `json:"logPublishingOptions,omitempty" tf:"log_publishing_options,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

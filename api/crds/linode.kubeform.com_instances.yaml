@@ -744,7 +744,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             ipv6:
               description: This Linode's IPv6 SLAAC addresses. This address is specific
                 to a Linode, and may not be shared.
@@ -832,7 +831,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             type:
               description: The type of instance to be deployed, determining the price
                 and size.
@@ -1211,7 +1209,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 ipv6:
                   description: This Linode's IPv6 SLAAC addresses. This address is
                     specific to a Linode, and may not be shared.
@@ -1300,7 +1297,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 type:
                   description: The type of instance to be deployed, determining the
                     price and size.
@@ -1341,3 +1337,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

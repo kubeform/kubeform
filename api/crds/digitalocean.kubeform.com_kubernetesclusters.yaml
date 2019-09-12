@@ -454,7 +454,6 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                 required:
                 - name
                 - nodeCount
@@ -482,7 +481,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             updatedAt:
               type: string
             version:
@@ -560,7 +558,6 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                     required:
                     - name
                     - nodeCount
@@ -588,7 +585,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 updatedAt:
                   type: string
                 version:
@@ -624,3 +620,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

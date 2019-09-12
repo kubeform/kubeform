@@ -422,7 +422,6 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
-                    uniqueItems: true
                   domainArn:
                     type: string
                   indexName:
@@ -494,7 +493,6 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
-                    uniqueItems: true
                   compressionFormat:
                     type: string
                   dataFormatConversionConfiguration:
@@ -693,7 +691,6 @@ spec:
                             type: object
                           maxItems: 1
                           type: array
-                          uniqueItems: true
                         compressionFormat:
                           type: string
                         kmsKeyArn:
@@ -757,7 +754,6 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
-                    uniqueItems: true
                   clusterJdbcurl:
                     type: string
                   copyOptions:
@@ -820,7 +816,6 @@ spec:
                             type: object
                           maxItems: 1
                           type: array
-                          uniqueItems: true
                         compressionFormat:
                           type: string
                         kmsKeyArn:
@@ -868,7 +863,6 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
-                    uniqueItems: true
                   compressionFormat:
                     type: string
                   kmsKeyArn:
@@ -907,7 +901,6 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
-                    uniqueItems: true
                   hecAcknowledgmentTimeout:
                     type: integer
                   hecEndpoint:
@@ -1000,7 +993,6 @@ spec:
                           type: object
                         maxItems: 1
                         type: array
-                        uniqueItems: true
                       domainArn:
                         type: string
                       indexName:
@@ -1072,7 +1064,6 @@ spec:
                           type: object
                         maxItems: 1
                         type: array
-                        uniqueItems: true
                       compressionFormat:
                         type: string
                       dataFormatConversionConfiguration:
@@ -1271,7 +1262,6 @@ spec:
                                 type: object
                               maxItems: 1
                               type: array
-                              uniqueItems: true
                             compressionFormat:
                               type: string
                             kmsKeyArn:
@@ -1335,7 +1325,6 @@ spec:
                           type: object
                         maxItems: 1
                         type: array
-                        uniqueItems: true
                       clusterJdbcurl:
                         type: string
                       copyOptions:
@@ -1398,7 +1387,6 @@ spec:
                                 type: object
                               maxItems: 1
                               type: array
-                              uniqueItems: true
                             compressionFormat:
                               type: string
                             kmsKeyArn:
@@ -1446,7 +1434,6 @@ spec:
                           type: object
                         maxItems: 1
                         type: array
-                        uniqueItems: true
                       compressionFormat:
                         type: string
                       kmsKeyArn:
@@ -1485,7 +1472,6 @@ spec:
                           type: object
                         maxItems: 1
                         type: array
-                        uniqueItems: true
                       hecAcknowledgmentTimeout:
                         type: integer
                       hecEndpoint:
@@ -1568,3 +1554,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

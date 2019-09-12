@@ -65,7 +65,6 @@ type ContainerNodePoolSpecNodeConfig struct {
 	// +optional
 	MinCPUPlatform string `json:"minCPUPlatform,omitempty" tf:"min_cpu_platform,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes,omitempty"`
 	// +optional
 	Preemptible bool `json:"preemptible,omitempty" tf:"preemptible,omitempty"`

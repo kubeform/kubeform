@@ -32,7 +32,6 @@ type DropletSnapshotSpec struct {
 	MinDiskSize int    `json:"minDiskSize,omitempty" tf:"min_disk_size,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Regions []string `json:"regions,omitempty" tf:"regions,omitempty"`
 	// +optional
 	Size json.Number `json:"size,omitempty" tf:"size,omitempty"`

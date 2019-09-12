@@ -420,7 +420,6 @@ spec:
                     type: string
                 type: object
               type: array
-              uniqueItems: true
             enaSupport:
               type: boolean
             encrypted:
@@ -434,7 +433,6 @@ spec:
                     type: string
                 type: object
               type: array
-              uniqueItems: true
             id:
               type: string
             imageLocation:
@@ -512,7 +510,6 @@ spec:
                         type: string
                     type: object
                   type: array
-                  uniqueItems: true
                 enaSupport:
                   type: boolean
                 encrypted:
@@ -526,7 +523,6 @@ spec:
                         type: string
                     type: object
                   type: array
-                  uniqueItems: true
                 id:
                   type: string
                 imageLocation:
@@ -596,3 +592,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

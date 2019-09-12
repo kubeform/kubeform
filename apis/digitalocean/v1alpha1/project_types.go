@@ -45,7 +45,6 @@ type ProjectSpec struct {
 	Purpose string `json:"purpose,omitempty" tf:"purpose,omitempty"`
 	// the resources associated with the project
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Resources []string `json:"resources,omitempty" tf:"resources,omitempty"`
 	// the date and time when the project was last updated, (ISO8601)
 	// +optional

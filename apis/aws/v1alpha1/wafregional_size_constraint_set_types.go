@@ -27,7 +27,6 @@ type WafregionalSizeConstraintSetSpecSizeConstraintsFieldToMatch struct {
 type WafregionalSizeConstraintSetSpecSizeConstraints struct {
 	ComparisonOperator string `json:"comparisonOperator" tf:"comparison_operator"`
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	FieldToMatch       []WafregionalSizeConstraintSetSpecSizeConstraintsFieldToMatch `json:"fieldToMatch" tf:"field_to_match"`
 	Size               int                                                           `json:"size" tf:"size"`
 	TextTransformation string                                                        `json:"textTransformation" tf:"text_transformation"`
@@ -40,7 +39,6 @@ type WafregionalSizeConstraintSetSpec struct {
 
 	Name string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SizeConstraints []WafregionalSizeConstraintSetSpecSizeConstraints `json:"sizeConstraints,omitempty" tf:"size_constraints,omitempty"`
 }
 

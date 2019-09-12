@@ -36,7 +36,6 @@ type BigtableInstanceSpec struct {
 
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Cluster []BigtableInstanceSpecCluster `json:"cluster,omitempty" tf:"cluster,omitempty"`
 	// +optional
 	// Deprecated

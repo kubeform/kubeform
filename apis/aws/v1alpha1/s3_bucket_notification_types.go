@@ -19,7 +19,6 @@ type S3BucketNotification struct {
 }
 
 type S3BucketNotificationSpecLambdaFunction struct {
-	// +kubebuilder:validation:UniqueItems=true
 	Events []string `json:"events" tf:"events"`
 	// +optional
 	FilterPrefix string `json:"filterPrefix,omitempty" tf:"filter_prefix,omitempty"`
@@ -32,7 +31,6 @@ type S3BucketNotificationSpecLambdaFunction struct {
 }
 
 type S3BucketNotificationSpecQueue struct {
-	// +kubebuilder:validation:UniqueItems=true
 	Events []string `json:"events" tf:"events"`
 	// +optional
 	FilterPrefix string `json:"filterPrefix,omitempty" tf:"filter_prefix,omitempty"`
@@ -44,7 +42,6 @@ type S3BucketNotificationSpecQueue struct {
 }
 
 type S3BucketNotificationSpecTopic struct {
-	// +kubebuilder:validation:UniqueItems=true
 	Events []string `json:"events" tf:"events"`
 	// +optional
 	FilterPrefix string `json:"filterPrefix,omitempty" tf:"filter_prefix,omitempty"`

@@ -26,7 +26,6 @@ type WafregionalXssMatchSetSpecXssMatchTupleFieldToMatch struct {
 
 type WafregionalXssMatchSetSpecXssMatchTuple struct {
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	FieldToMatch       []WafregionalXssMatchSetSpecXssMatchTupleFieldToMatch `json:"fieldToMatch" tf:"field_to_match"`
 	TextTransformation string                                                `json:"textTransformation" tf:"text_transformation"`
 }
@@ -38,7 +37,6 @@ type WafregionalXssMatchSetSpec struct {
 
 	Name string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	XssMatchTuple []WafregionalXssMatchSetSpecXssMatchTuple `json:"xssMatchTuple,omitempty" tf:"xss_match_tuple,omitempty"`
 }
 

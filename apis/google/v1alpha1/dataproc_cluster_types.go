@@ -28,7 +28,6 @@ type DataprocClusterSpecClusterConfigGceClusterConfig struct {
 	// +optional
 	ServiceAccount string `json:"serviceAccount,omitempty" tf:"service_account,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ServiceAccountScopes []string `json:"serviceAccountScopes,omitempty" tf:"service_account_scopes,omitempty"`
 	// +optional
 	Subnetwork string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`

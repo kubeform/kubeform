@@ -28,7 +28,6 @@ type Ec2TransitGatewayVpcAttachmentSpec struct {
 	// +optional
 	Ipv6Support string `json:"ipv6Support,omitempty" tf:"ipv6_support,omitempty"`
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

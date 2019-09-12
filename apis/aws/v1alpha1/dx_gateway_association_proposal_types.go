@@ -24,7 +24,6 @@ type DxGatewayAssociationProposalSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AllowedPrefixes         []string `json:"allowedPrefixes,omitempty" tf:"allowed_prefixes,omitempty"`
 	DxGatewayID             string   `json:"dxGatewayID" tf:"dx_gateway_id"`
 	DxGatewayOwnerAccountID string   `json:"dxGatewayOwnerAccountID" tf:"dx_gateway_owner_account_id"`

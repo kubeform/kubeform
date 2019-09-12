@@ -30,7 +30,6 @@ type OrganizationIamCustomRoleSpec struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	OrgID       string `json:"orgID" tf:"org_id"`
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Permissions []string `json:"permissions" tf:"permissions"`
 	RoleID      string   `json:"roleID" tf:"role_id"`
 	// +optional

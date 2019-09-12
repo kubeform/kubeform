@@ -30,8 +30,7 @@ type DnsSrvRecordSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Name string `json:"name" tf:"name"`
-	// +kubebuilder:validation:UniqueItems=true
+	Name              string                   `json:"name" tf:"name"`
 	Record            []DnsSrvRecordSpecRecord `json:"record" tf:"record"`
 	ResourceGroupName string                   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional

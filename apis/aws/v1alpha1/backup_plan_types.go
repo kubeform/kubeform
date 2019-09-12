@@ -47,9 +47,8 @@ type BackupPlanSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn  string `json:"arn,omitempty" tf:"arn,omitempty"`
-	Name string `json:"name" tf:"name"`
-	// +kubebuilder:validation:UniqueItems=true
+	Arn  string               `json:"arn,omitempty" tf:"arn,omitempty"`
+	Name string               `json:"name" tf:"name"`
 	Rule []BackupPlanSpecRule `json:"rule" tf:"rule"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

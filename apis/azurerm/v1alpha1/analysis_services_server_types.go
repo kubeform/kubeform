@@ -30,7 +30,6 @@ type AnalysisServicesServerSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AdminUsers []string `json:"adminUsers,omitempty" tf:"admin_users,omitempty"`
 	// +optional
 	EnablePowerBiService bool `json:"enablePowerBiService,omitempty" tf:"enable_power_bi_service,omitempty"`

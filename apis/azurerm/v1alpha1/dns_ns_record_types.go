@@ -29,7 +29,6 @@ type DnsNsRecordSpec struct {
 
 	Name string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	// Deprecated
 	Record []DnsNsRecordSpecRecord `json:"record,omitempty" tf:"record,omitempty"`
 	// +optional

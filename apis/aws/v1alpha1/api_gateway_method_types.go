@@ -27,7 +27,6 @@ type ApiGatewayMethodSpec struct {
 	ApiKeyRequired bool   `json:"apiKeyRequired,omitempty" tf:"api_key_required,omitempty"`
 	Authorization  string `json:"authorization" tf:"authorization"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AuthorizationScopes []string `json:"authorizationScopes,omitempty" tf:"authorization_scopes,omitempty"`
 	// +optional
 	AuthorizerID string `json:"authorizerID,omitempty" tf:"authorizer_id,omitempty"`

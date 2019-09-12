@@ -49,10 +49,8 @@ type ComputeBackendServiceSpecCdnPolicyCacheKeyPolicy struct {
 	// +optional
 	IncludeQueryString bool `json:"includeQueryString,omitempty" tf:"include_query_string,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	QueryStringBlacklist []string `json:"queryStringBlacklist,omitempty" tf:"query_string_blacklist,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	QueryStringWhitelist []string `json:"queryStringWhitelist,omitempty" tf:"query_string_whitelist,omitempty"`
 }
 
@@ -75,7 +73,6 @@ type ComputeBackendServiceSpec struct {
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Backend []ComputeBackendServiceSpecBackend `json:"backend,omitempty" tf:"backend,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -83,7 +80,6 @@ type ComputeBackendServiceSpec struct {
 	// +optional
 	ConnectionDrainingTimeoutSec int `json:"connectionDrainingTimeoutSec,omitempty" tf:"connection_draining_timeout_sec,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	// Deprecated
 	CustomRequestHeaders []string `json:"customRequestHeaders,omitempty" tf:"custom_request_headers,omitempty"`
 	// +optional
@@ -94,7 +90,6 @@ type ComputeBackendServiceSpec struct {
 	Fingerprint string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	HealthChecks []string `json:"healthChecks" tf:"health_checks"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

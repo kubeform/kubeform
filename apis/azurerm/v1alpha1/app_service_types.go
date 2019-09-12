@@ -145,7 +145,6 @@ type AppServiceSpecLogs struct {
 }
 
 type AppServiceSpecSiteConfigCors struct {
-	// +kubebuilder:validation:UniqueItems=true
 	AllowedOrigins []string `json:"allowedOrigins" tf:"allowed_origins"`
 	// +optional
 	SupportCredentials bool `json:"supportCredentials,omitempty" tf:"support_credentials,omitempty"`
@@ -254,7 +253,6 @@ type AppServiceSpec struct {
 	// +optional
 	ClientCertEnabled bool `json:"clientCertEnabled,omitempty" tf:"client_cert_enabled,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ConnectionString []AppServiceSpecConnectionString `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
 	// +optional
 	DefaultSiteHostname string `json:"defaultSiteHostname,omitempty" tf:"default_site_hostname,omitempty"`
@@ -285,7 +283,6 @@ type AppServiceSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SourceControl []AppServiceSpecSourceControl `json:"sourceControl,omitempty" tf:"source_control,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	StorageAccount []AppServiceSpecStorageAccount `json:"storageAccount,omitempty" tf:"storage_account,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

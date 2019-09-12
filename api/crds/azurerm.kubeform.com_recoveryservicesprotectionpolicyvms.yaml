@@ -408,7 +408,6 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                 required:
                 - frequency
                 - time
@@ -451,12 +450,10 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   weeks:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                 required:
                 - count
                 - weekdays
@@ -473,7 +470,6 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                 required:
                 - count
                 - weekdays
@@ -489,17 +485,14 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   weekdays:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   weeks:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                 required:
                 - count
                 - months
@@ -541,7 +534,6 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                     required:
                     - frequency
                     - time
@@ -584,12 +576,10 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       weeks:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                     required:
                     - count
                     - weekdays
@@ -606,7 +596,6 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                     required:
                     - count
                     - weekdays
@@ -622,17 +611,14 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       weekdays:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       weeks:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                     required:
                     - count
                     - months
@@ -678,3 +664,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

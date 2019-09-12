@@ -24,10 +24,8 @@ type LbBackendAddressPoolSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	BackendIPConfigurations []string `json:"backendIPConfigurations,omitempty" tf:"backend_ip_configurations,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	LoadBalancingRules []string `json:"loadBalancingRules,omitempty" tf:"load_balancing_rules,omitempty"`
 	LoadbalancerID     string   `json:"loadbalancerID" tf:"loadbalancer_id"`
 	// +optional

@@ -421,7 +421,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             badgeEnabled:
               type: boolean
             badgeURL:
@@ -478,7 +477,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             id:
               type: string
             name:
@@ -516,7 +514,6 @@ spec:
                 - type
                 type: object
               type: array
-              uniqueItems: true
             secondarySources:
               items:
                 properties:
@@ -529,7 +526,6 @@ spec:
                       - type
                       type: object
                     type: array
-                    uniqueItems: true
                   buildspec:
                     type: string
                   gitCloneDepth:
@@ -549,7 +545,6 @@ spec:
                 - type
                 type: object
               type: array
-              uniqueItems: true
             secretRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -573,7 +568,6 @@ spec:
                       - type
                       type: object
                     type: array
-                    uniqueItems: true
                   buildspec:
                     type: string
                   gitCloneDepth:
@@ -591,7 +585,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             tags:
               additionalProperties:
                 type: string
@@ -604,13 +597,11 @@ spec:
                       type: string
                     maxItems: 5
                     type: array
-                    uniqueItems: true
                   subnets:
                     items:
                       type: string
                     maxItems: 16
                     type: array
-                    uniqueItems: true
                   vpcID:
                     type: string
                 required:
@@ -661,7 +652,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 badgeEnabled:
                   type: boolean
                 badgeURL:
@@ -718,7 +708,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 id:
                   type: string
                 name:
@@ -756,7 +745,6 @@ spec:
                     - type
                     type: object
                   type: array
-                  uniqueItems: true
                 secondarySources:
                   items:
                     properties:
@@ -769,7 +757,6 @@ spec:
                           - type
                           type: object
                         type: array
-                        uniqueItems: true
                       buildspec:
                         type: string
                       gitCloneDepth:
@@ -789,7 +776,6 @@ spec:
                     - type
                     type: object
                   type: array
-                  uniqueItems: true
                 secretRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -813,7 +799,6 @@ spec:
                           - type
                           type: object
                         type: array
-                        uniqueItems: true
                       buildspec:
                         type: string
                       gitCloneDepth:
@@ -831,7 +816,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 tags:
                   additionalProperties:
                     type: string
@@ -844,13 +828,11 @@ spec:
                           type: string
                         maxItems: 5
                         type: array
-                        uniqueItems: true
                       subnets:
                         items:
                           type: string
                         maxItems: 16
                         type: array
-                        uniqueItems: true
                       vpcID:
                         type: string
                     required:
@@ -892,3 +874,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

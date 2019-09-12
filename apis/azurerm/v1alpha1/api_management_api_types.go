@@ -51,10 +51,9 @@ type ApiManagementAPISpec struct {
 	// +optional
 	IsCurrent bool `json:"isCurrent,omitempty" tf:"is_current,omitempty"`
 	// +optional
-	IsOnline bool   `json:"isOnline,omitempty" tf:"is_online,omitempty"`
-	Name     string `json:"name" tf:"name"`
-	Path     string `json:"path" tf:"path"`
-	// +kubebuilder:validation:UniqueItems=true
+	IsOnline          bool     `json:"isOnline,omitempty" tf:"is_online,omitempty"`
+	Name              string   `json:"name" tf:"name"`
+	Path              string   `json:"path" tf:"path"`
 	Protocols         []string `json:"protocols" tf:"protocols"`
 	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`
 	Revision          string   `json:"revision" tf:"revision"`

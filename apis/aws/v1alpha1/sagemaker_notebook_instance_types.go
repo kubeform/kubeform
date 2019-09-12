@@ -34,7 +34,6 @@ type SagemakerNotebookInstanceSpec struct {
 	RoleArn             string `json:"roleArn" tf:"role_arn"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
 	SubnetID string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`

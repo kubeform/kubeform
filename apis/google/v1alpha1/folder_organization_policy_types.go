@@ -26,7 +26,6 @@ type FolderOrganizationPolicySpecListPolicyAllow struct {
 	// +optional
 	All bool `json:"all,omitempty" tf:"all,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Values []string `json:"values,omitempty" tf:"values,omitempty"`
 }
 
@@ -34,7 +33,6 @@ type FolderOrganizationPolicySpecListPolicyDeny struct {
 	// +optional
 	All bool `json:"all,omitempty" tf:"all,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Values []string `json:"values,omitempty" tf:"values,omitempty"`
 }
 

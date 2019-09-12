@@ -43,7 +43,6 @@ type KubernetesNodePoolSpec struct {
 	Nodes []KubernetesNodePoolSpecNodes `json:"nodes,omitempty" tf:"nodes,omitempty"`
 	Size  string                        `json:"size" tf:"size"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 

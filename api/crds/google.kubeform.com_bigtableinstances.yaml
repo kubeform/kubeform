@@ -411,7 +411,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             clusterID:
               description: Deprecated
               type: string
@@ -470,7 +469,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 clusterID:
                   description: Deprecated
                   type: string
@@ -530,3 +528,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

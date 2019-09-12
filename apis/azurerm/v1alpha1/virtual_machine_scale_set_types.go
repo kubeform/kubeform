@@ -31,7 +31,6 @@ type VirtualMachineScaleSetSpecExtension struct {
 	// +optional
 	ProtectedSettings string `json:"-" sensitive:"true" tf:"protected_settings,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ProvisionAfterExtensions []string `json:"provisionAfterExtensions,omitempty" tf:"provision_after_extensions,omitempty"`
 	Publisher                string   `json:"publisher" tf:"publisher"`
 	// +optional
@@ -60,17 +59,13 @@ type VirtualMachineScaleSetSpecNetworkProfileIpConfigurationPublicIPAddressConfi
 
 type VirtualMachineScaleSetSpecNetworkProfileIpConfiguration struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ApplicationGatewayBackendAddressPoolIDS []string `json:"applicationGatewayBackendAddressPoolIDS,omitempty" tf:"application_gateway_backend_address_pool_ids,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=20
-	// +kubebuilder:validation:UniqueItems=true
 	ApplicationSecurityGroupIDS []string `json:"applicationSecurityGroupIDS,omitempty" tf:"application_security_group_ids,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	LoadBalancerBackendAddressPoolIDS []string `json:"loadBalancerBackendAddressPoolIDS,omitempty" tf:"load_balancer_backend_address_pool_ids,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	LoadBalancerInboundNATRulesIDS []string `json:"loadBalancerInboundNATRulesIDS,omitempty" tf:"load_balancer_inbound_nat_rules_ids,omitempty"`
 	Name                           string   `json:"name" tf:"name"`
 	Primary                        bool     `json:"primary" tf:"primary"`
@@ -214,7 +209,6 @@ type VirtualMachineScaleSetSpecStorageProfileOsDisk struct {
 	// +optional
 	OsType string `json:"osType,omitempty" tf:"os_type,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VhdContainers []string `json:"vhdContainers,omitempty" tf:"vhd_containers,omitempty"`
 }
 
@@ -233,7 +227,6 @@ type VirtualMachineScaleSetSpec struct {
 	// +optional
 	EvictionPolicy string `json:"evictionPolicy,omitempty" tf:"eviction_policy,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Extension []VirtualMachineScaleSetSpecExtension `json:"extension,omitempty" tf:"extension,omitempty"`
 	// +optional
 	HealthProbeID string `json:"healthProbeID,omitempty" tf:"health_probe_id,omitempty"`
@@ -241,29 +234,24 @@ type VirtualMachineScaleSetSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Identity []VirtualMachineScaleSetSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
 	// +optional
-	LicenseType string `json:"licenseType,omitempty" tf:"license_type,omitempty"`
-	Location    string `json:"location" tf:"location"`
-	Name        string `json:"name" tf:"name"`
-	// +kubebuilder:validation:UniqueItems=true
+	LicenseType    string                                     `json:"licenseType,omitempty" tf:"license_type,omitempty"`
+	Location       string                                     `json:"location" tf:"location"`
+	Name           string                                     `json:"name" tf:"name"`
 	NetworkProfile []VirtualMachineScaleSetSpecNetworkProfile `json:"networkProfile" tf:"network_profile"`
 	// +kubebuilder:validation:MaxItems=1
 	OsProfile []VirtualMachineScaleSetSpecOsProfile `json:"osProfile" tf:"os_profile"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	OsProfileLinuxConfig []VirtualMachineScaleSetSpecOsProfileLinuxConfig `json:"osProfileLinuxConfig,omitempty" tf:"os_profile_linux_config,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	OsProfileSecrets []VirtualMachineScaleSetSpecOsProfileSecrets `json:"osProfileSecrets,omitempty" tf:"os_profile_secrets,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	OsProfileWindowsConfig []VirtualMachineScaleSetSpecOsProfileWindowsConfig `json:"osProfileWindowsConfig,omitempty" tf:"os_profile_windows_config,omitempty"`
 	// +optional
 	Overprovision bool `json:"overprovision,omitempty" tf:"overprovision,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Plan []VirtualMachineScaleSetSpecPlan `json:"plan,omitempty" tf:"plan,omitempty"`
 	// +optional
 	Priority          string `json:"priority,omitempty" tf:"priority,omitempty"`
@@ -279,10 +267,8 @@ type VirtualMachineScaleSetSpec struct {
 	StorageProfileDataDisk []VirtualMachineScaleSetSpecStorageProfileDataDisk `json:"storageProfileDataDisk,omitempty" tf:"storage_profile_data_disk,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	StorageProfileImageReference []VirtualMachineScaleSetSpecStorageProfileImageReference `json:"storageProfileImageReference,omitempty" tf:"storage_profile_image_reference,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	StorageProfileOsDisk []VirtualMachineScaleSetSpecStorageProfileOsDisk `json:"storageProfileOsDisk" tf:"storage_profile_os_disk"`
 	// +optional
 	Tags              map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

@@ -20,19 +20,15 @@ type NetworkInterface struct {
 
 type NetworkInterfaceSpecIpConfiguration struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	// Deprecated
 	ApplicationGatewayBackendAddressPoolsIDS []string `json:"applicationGatewayBackendAddressPoolsIDS,omitempty" tf:"application_gateway_backend_address_pools_ids,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	// Deprecated
 	ApplicationSecurityGroupIDS []string `json:"applicationSecurityGroupIDS,omitempty" tf:"application_security_group_ids,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	// Deprecated
 	LoadBalancerBackendAddressPoolsIDS []string `json:"loadBalancerBackendAddressPoolsIDS,omitempty" tf:"load_balancer_backend_address_pools_ids,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	// Deprecated
 	LoadBalancerInboundNATRulesIDS []string `json:"loadBalancerInboundNATRulesIDS,omitempty" tf:"load_balancer_inbound_nat_rules_ids,omitempty"`
 	Name                           string   `json:"name" tf:"name"`
@@ -55,10 +51,8 @@ type NetworkInterfaceSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AppliedDNSServers []string `json:"appliedDNSServers,omitempty" tf:"applied_dns_servers,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DnsServers []string `json:"dnsServers,omitempty" tf:"dns_servers,omitempty"`
 	// +optional
 	EnableAcceleratedNetworking bool `json:"enableAcceleratedNetworking,omitempty" tf:"enable_accelerated_networking,omitempty"`

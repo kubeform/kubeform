@@ -41,7 +41,6 @@ type AutomationScheduleSpec struct {
 	// +optional
 	Interval int `json:"interval,omitempty" tf:"interval,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	MonthDays []int64 `json:"monthDays,omitempty" tf:"month_days,omitempty"`
 	// +optional
 	MonthlyOccurrence []AutomationScheduleSpecMonthlyOccurrence `json:"monthlyOccurrence,omitempty" tf:"monthly_occurrence,omitempty"`
@@ -52,7 +51,6 @@ type AutomationScheduleSpec struct {
 	// +optional
 	Timezone string `json:"timezone,omitempty" tf:"timezone,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	WeekDays []string `json:"weekDays,omitempty" tf:"week_days,omitempty"`
 }
 

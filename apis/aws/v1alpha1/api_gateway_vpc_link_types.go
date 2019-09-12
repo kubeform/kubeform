@@ -27,7 +27,6 @@ type ApiGatewayVpcLinkSpec struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	TargetArns []string `json:"targetArns" tf:"target_arns"`
 }
 

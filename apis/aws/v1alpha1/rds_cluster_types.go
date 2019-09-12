@@ -50,7 +50,6 @@ type RdsClusterSpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	// +optional
 	BacktrackWindow int `json:"backtrackWindow,omitempty" tf:"backtrack_window,omitempty"`
@@ -61,7 +60,6 @@ type RdsClusterSpec struct {
 	// +optional
 	ClusterIdentifierPrefix string `json:"clusterIdentifierPrefix,omitempty" tf:"cluster_identifier_prefix,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ClusterMembers []string `json:"clusterMembers,omitempty" tf:"cluster_members,omitempty"`
 	// +optional
 	ClusterResourceID string `json:"clusterResourceID,omitempty" tf:"cluster_resource_id,omitempty"`
@@ -94,7 +92,6 @@ type RdsClusterSpec struct {
 	// +optional
 	IamDatabaseAuthenticationEnabled bool `json:"iamDatabaseAuthenticationEnabled,omitempty" tf:"iam_database_authentication_enabled,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	IamRoles []string `json:"iamRoles,omitempty" tf:"iam_roles,omitempty"`
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
@@ -129,7 +126,6 @@ type RdsClusterSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VpcSecurityGroupIDS []string `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
 }
 

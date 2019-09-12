@@ -36,10 +36,8 @@ type EcsServiceSpecNetworkConfiguration struct {
 	// +optional
 	AssignPublicIP bool `json:"assignPublicIP,omitempty" tf:"assign_public_ip,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
-	Subnets []string `json:"subnets" tf:"subnets"`
+	Subnets        []string `json:"subnets" tf:"subnets"`
 }
 
 type EcsServiceSpecOrderedPlacementStrategy struct {
@@ -90,7 +88,6 @@ type EcsServiceSpec struct {
 	LaunchType string `json:"launchType,omitempty" tf:"launch_type,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	LoadBalancer []EcsServiceSpecLoadBalancer `json:"loadBalancer,omitempty" tf:"load_balancer,omitempty"`
 	Name         string                       `json:"name" tf:"name"`
 	// +optional
@@ -101,7 +98,6 @@ type EcsServiceSpec struct {
 	OrderedPlacementStrategy []EcsServiceSpecOrderedPlacementStrategy `json:"orderedPlacementStrategy,omitempty" tf:"ordered_placement_strategy,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=10
-	// +kubebuilder:validation:UniqueItems=true
 	PlacementConstraints []EcsServiceSpecPlacementConstraints `json:"placementConstraints,omitempty" tf:"placement_constraints,omitempty"`
 	// +optional
 	PlatformVersion string `json:"platformVersion,omitempty" tf:"platform_version,omitempty"`
@@ -111,7 +107,6 @@ type EcsServiceSpec struct {
 	SchedulingStrategy string `json:"schedulingStrategy,omitempty" tf:"scheduling_strategy,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	ServiceRegistries []EcsServiceSpecServiceRegistries `json:"serviceRegistries,omitempty" tf:"service_registries,omitempty"`
 	// +optional
 	Tags           map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

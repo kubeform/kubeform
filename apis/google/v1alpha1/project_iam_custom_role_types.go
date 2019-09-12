@@ -29,7 +29,6 @@ type ProjectIamCustomRoleSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Permissions []string `json:"permissions" tf:"permissions"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`

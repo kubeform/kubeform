@@ -1,0 +1,9 @@
+[
+    {
+      "name": "RDS",
+      "source": "terraform-aws-modules/rds/aws",
+      "provider": "aws",
+      "url": "https://github.com/terraform-aws-modules/terraform-aws-rds/archive/master.zip",
+      "subDirectory": ""
+    }
+]

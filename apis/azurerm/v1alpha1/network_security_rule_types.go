@@ -29,16 +29,13 @@ type NetworkSecurityRuleSpec struct {
 	// +optional
 	DestinationAddressPrefix string `json:"destinationAddressPrefix,omitempty" tf:"destination_address_prefix,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DestinationAddressPrefixes []string `json:"destinationAddressPrefixes,omitempty" tf:"destination_address_prefixes,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	DestinationApplicationSecurityGroupIDS []string `json:"destinationApplicationSecurityGroupIDS,omitempty" tf:"destination_application_security_group_ids,omitempty"`
 	// +optional
 	DestinationPortRange string `json:"destinationPortRange,omitempty" tf:"destination_port_range,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DestinationPortRanges    []string `json:"destinationPortRanges,omitempty" tf:"destination_port_ranges,omitempty"`
 	Direction                string   `json:"direction" tf:"direction"`
 	Name                     string   `json:"name" tf:"name"`
@@ -49,16 +46,13 @@ type NetworkSecurityRuleSpec struct {
 	// +optional
 	SourceAddressPrefix string `json:"sourceAddressPrefix,omitempty" tf:"source_address_prefix,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SourceAddressPrefixes []string `json:"sourceAddressPrefixes,omitempty" tf:"source_address_prefixes,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	SourceApplicationSecurityGroupIDS []string `json:"sourceApplicationSecurityGroupIDS,omitempty" tf:"source_application_security_group_ids,omitempty"`
 	// +optional
 	SourcePortRange string `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SourcePortRanges []string `json:"sourcePortRanges,omitempty" tf:"source_port_ranges,omitempty"`
 }
 

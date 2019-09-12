@@ -479,7 +479,6 @@ spec:
                       - thumbprint
                       type: object
                     type: array
-                    uniqueItems: true
                   rootCertificate:
                     items:
                       properties:
@@ -492,12 +491,10 @@ spec:
                       - publicCertData
                       type: object
                     type: array
-                    uniqueItems: true
                   vpnClientProtocols:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                 required:
                 - addressSpace
                 type: object
@@ -605,7 +602,6 @@ spec:
                           - thumbprint
                           type: object
                         type: array
-                        uniqueItems: true
                       rootCertificate:
                         items:
                           properties:
@@ -618,12 +614,10 @@ spec:
                           - publicCertData
                           type: object
                         type: array
-                        uniqueItems: true
                       vpnClientProtocols:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                     required:
                     - addressSpace
                     type: object
@@ -664,3 +658,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

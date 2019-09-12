@@ -423,7 +423,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             customSetupRecipes:
               items:
                 type: string
@@ -459,7 +458,6 @@ spec:
                 - size
                 type: object
               type: array
-              uniqueItems: true
             elasticLoadBalancer:
               type: string
             id:
@@ -493,7 +491,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             useEbsOptimizedInstances:
               type: boolean
           required:
@@ -535,7 +532,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 customSetupRecipes:
                   items:
                     type: string
@@ -571,7 +567,6 @@ spec:
                     - size
                     type: object
                   type: array
-                  uniqueItems: true
                 elasticLoadBalancer:
                   type: string
                 id:
@@ -605,7 +600,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 useEbsOptimizedInstances:
                   type: boolean
               required:
@@ -636,3 +630,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

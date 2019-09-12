@@ -37,7 +37,6 @@ type NeptuneParameterGroupSpec struct {
 	Family      string `json:"family" tf:"family"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Parameter []NeptuneParameterGroupSpecParameter `json:"parameter,omitempty" tf:"parameter,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

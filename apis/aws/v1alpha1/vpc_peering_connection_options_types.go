@@ -43,11 +43,9 @@ type VpcPeeringConnectionOptionsSpec struct {
 
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Accepter []VpcPeeringConnectionOptionsSpecAccepter `json:"accepter,omitempty" tf:"accepter,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Requester              []VpcPeeringConnectionOptionsSpecRequester `json:"requester,omitempty" tf:"requester,omitempty"`
 	VpcPeeringConnectionID string                                     `json:"vpcPeeringConnectionID" tf:"vpc_peering_connection_id"`
 }

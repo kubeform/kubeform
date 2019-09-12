@@ -47,9 +47,8 @@ type CloudhsmV2ClusterSpec struct {
 	// +optional
 	SecurityGroupID string `json:"securityGroupID,omitempty" tf:"security_group_id,omitempty"`
 	// +optional
-	SourceBackupIdentifier string `json:"sourceBackupIdentifier,omitempty" tf:"source_backup_identifier,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
-	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
+	SourceBackupIdentifier string   `json:"sourceBackupIdentifier,omitempty" tf:"source_backup_identifier,omitempty"`
+	SubnetIDS              []string `json:"subnetIDS" tf:"subnet_ids"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

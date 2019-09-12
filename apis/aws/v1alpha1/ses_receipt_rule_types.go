@@ -80,38 +80,30 @@ type SesReceiptRuleSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AddHeaderAction []SesReceiptRuleSpecAddHeaderAction `json:"addHeaderAction,omitempty" tf:"add_header_action,omitempty"`
 	// +optional
 	After string `json:"after,omitempty" tf:"after,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	BounceAction []SesReceiptRuleSpecBounceAction `json:"bounceAction,omitempty" tf:"bounce_action,omitempty"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	LambdaAction []SesReceiptRuleSpecLambdaAction `json:"lambdaAction,omitempty" tf:"lambda_action,omitempty"`
 	Name         string                           `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Recipients  []string `json:"recipients,omitempty" tf:"recipients,omitempty"`
 	RuleSetName string   `json:"ruleSetName" tf:"rule_set_name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	S3Action []SesReceiptRuleSpecS3Action `json:"s3Action,omitempty" tf:"s3_action,omitempty"`
 	// +optional
 	ScanEnabled bool `json:"scanEnabled,omitempty" tf:"scan_enabled,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SnsAction []SesReceiptRuleSpecSnsAction `json:"snsAction,omitempty" tf:"sns_action,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	StopAction []SesReceiptRuleSpecStopAction `json:"stopAction,omitempty" tf:"stop_action,omitempty"`
 	// +optional
 	TlsPolicy string `json:"tlsPolicy,omitempty" tf:"tls_policy,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	WorkmailAction []SesReceiptRuleSpecWorkmailAction `json:"workmailAction,omitempty" tf:"workmail_action,omitempty"`
 }
 

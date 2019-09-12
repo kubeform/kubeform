@@ -25,8 +25,7 @@ type KmsCryptoKeyIamBindingSpec struct {
 
 	CryptoKeyID string `json:"cryptoKeyID" tf:"crypto_key_id"`
 	// +optional
-	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
+	Etag    string   `json:"etag,omitempty" tf:"etag,omitempty"`
 	Members []string `json:"members" tf:"members"`
 	Role    string   `json:"role" tf:"role"`
 }

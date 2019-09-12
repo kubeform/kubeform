@@ -19,7 +19,6 @@ type DatasyncLocationNfs struct {
 }
 
 type DatasyncLocationNfsSpecOnPremConfig struct {
-	// +kubebuilder:validation:UniqueItems=true
 	AgentArns []string `json:"agentArns" tf:"agent_arns"`
 }
 

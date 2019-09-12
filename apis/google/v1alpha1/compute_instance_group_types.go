@@ -31,7 +31,6 @@ type ComputeInstanceGroupSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Instances []string `json:"instances,omitempty" tf:"instances,omitempty"`
 	Name      string   `json:"name" tf:"name"`
 	// +optional

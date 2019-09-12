@@ -403,7 +403,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             autoscalingRole:
               type: string
             bootstrapAction:
@@ -422,7 +421,6 @@ spec:
                 - path
                 type: object
               type: array
-              uniqueItems: true
             clusterState:
               type: string
             configurations:
@@ -488,7 +486,6 @@ spec:
                       - type
                       type: object
                     type: array
-                    uniqueItems: true
                   instanceCount:
                     type: integer
                   instanceRole:
@@ -502,7 +499,6 @@ spec:
                 - instanceType
                 type: object
               type: array
-              uniqueItems: true
             keepJobFlowAliveWhenNoSteps:
               type: boolean
             kerberosAttributes:
@@ -613,7 +609,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 autoscalingRole:
                   type: string
                 bootstrapAction:
@@ -632,7 +627,6 @@ spec:
                     - path
                     type: object
                   type: array
-                  uniqueItems: true
                 clusterState:
                   type: string
                 configurations:
@@ -698,7 +692,6 @@ spec:
                           - type
                           type: object
                         type: array
-                        uniqueItems: true
                       instanceCount:
                         type: integer
                       instanceRole:
@@ -712,7 +705,6 @@ spec:
                     - instanceType
                     type: object
                   type: array
-                  uniqueItems: true
                 keepJobFlowAliveWhenNoSteps:
                   type: boolean
                 kerberosAttributes:
@@ -832,3 +824,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

@@ -443,7 +443,6 @@ spec:
                       - deviceName
                       type: object
                     type: array
-                    uniqueItems: true
                   ebsOptimized:
                     type: boolean
                   ephemeralBlockDevice:
@@ -458,7 +457,6 @@ spec:
                       - virtualName
                       type: object
                     type: array
-                    uniqueItems: true
                   iamInstanceProfile:
                     type: string
                   iamInstanceProfileArn:
@@ -486,7 +484,6 @@ spec:
                           type: string
                       type: object
                     type: array
-                    uniqueItems: true
                   spotPrice:
                     type: string
                   subnetID:
@@ -501,7 +498,6 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   weightedCapacity:
                     type: string
                 required:
@@ -509,12 +505,10 @@ spec:
                 - instanceType
                 type: object
               type: array
-              uniqueItems: true
             loadBalancers:
               items:
                 type: string
               type: array
-              uniqueItems: true
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -536,7 +530,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             terminateInstancesWithExpiration:
               type: boolean
             validFrom:
@@ -606,7 +599,6 @@ spec:
                           - deviceName
                           type: object
                         type: array
-                        uniqueItems: true
                       ebsOptimized:
                         type: boolean
                       ephemeralBlockDevice:
@@ -621,7 +613,6 @@ spec:
                           - virtualName
                           type: object
                         type: array
-                        uniqueItems: true
                       iamInstanceProfile:
                         type: string
                       iamInstanceProfileArn:
@@ -649,7 +640,6 @@ spec:
                               type: string
                           type: object
                         type: array
-                        uniqueItems: true
                       spotPrice:
                         type: string
                       subnetID:
@@ -664,7 +654,6 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       weightedCapacity:
                         type: string
                     required:
@@ -672,12 +661,10 @@ spec:
                     - instanceType
                     type: object
                   type: array
-                  uniqueItems: true
                 loadBalancers:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -699,7 +686,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 terminateInstancesWithExpiration:
                   type: boolean
                 validFrom:
@@ -738,3 +724,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

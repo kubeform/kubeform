@@ -63,23 +63,19 @@ type S3BucketSpecLifecycleRule struct {
 	Enabled                            bool `json:"enabled" tf:"enabled"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Expiration []S3BucketSpecLifecycleRuleExpiration `json:"expiration,omitempty" tf:"expiration,omitempty"`
 	// +optional
 	ID string `json:"ID,omitempty" tf:"id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	NoncurrentVersionExpiration []S3BucketSpecLifecycleRuleNoncurrentVersionExpiration `json:"noncurrentVersionExpiration,omitempty" tf:"noncurrent_version_expiration,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	NoncurrentVersionTransition []S3BucketSpecLifecycleRuleNoncurrentVersionTransition `json:"noncurrentVersionTransition,omitempty" tf:"noncurrent_version_transition,omitempty"`
 	// +optional
 	Prefix string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Transition []S3BucketSpecLifecycleRuleTransition `json:"transition,omitempty" tf:"transition,omitempty"`
 }
 
@@ -143,14 +139,12 @@ type S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteria struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	SseKmsEncryptedObjects []S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteriaSseKmsEncryptedObjects `json:"sseKmsEncryptedObjects,omitempty" tf:"sse_kms_encrypted_objects,omitempty"`
 }
 
 type S3BucketSpecReplicationConfigurationRules struct {
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Destination []S3BucketSpecReplicationConfigurationRulesDestination `json:"destination" tf:"destination"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -165,14 +159,12 @@ type S3BucketSpecReplicationConfigurationRules struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	SourceSelectionCriteria []S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteria `json:"sourceSelectionCriteria,omitempty" tf:"source_selection_criteria,omitempty"`
 	Status                  string                                                             `json:"status" tf:"status"`
 }
 
 type S3BucketSpecReplicationConfiguration struct {
-	Role string `json:"role" tf:"role"`
-	// +kubebuilder:validation:UniqueItems=true
+	Role  string                                      `json:"role" tf:"role"`
 	Rules []S3BucketSpecReplicationConfigurationRules `json:"rules" tf:"rules"`
 }
 
@@ -238,7 +230,6 @@ type S3BucketSpec struct {
 	// +optional
 	LifecycleRule []S3BucketSpecLifecycleRule `json:"lifecycleRule,omitempty" tf:"lifecycle_rule,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Logging []S3BucketSpecLogging `json:"logging,omitempty" tf:"logging,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

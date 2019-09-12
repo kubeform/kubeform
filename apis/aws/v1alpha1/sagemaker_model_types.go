@@ -39,10 +39,8 @@ type SagemakerModelSpecPrimaryContainer struct {
 }
 
 type SagemakerModelSpecVpcConfig struct {
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupIDS []string `json:"securityGroupIDS" tf:"security_group_ids"`
-	// +kubebuilder:validation:UniqueItems=true
-	Subnets []string `json:"subnets" tf:"subnets"`
+	Subnets          []string `json:"subnets" tf:"subnets"`
 }
 
 type SagemakerModelSpec struct {

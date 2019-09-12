@@ -448,14 +448,12 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             status:
               type: string
             tags:
               items:
                 type: string
               type: array
-              uniqueItems: true
             urn:
               type: string
             userData:
@@ -466,7 +464,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
           required:
           - image
           - name
@@ -534,14 +531,12 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 status:
                   type: string
                 tags:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 urn:
                   type: string
                 userData:
@@ -552,7 +547,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
               required:
               - image
               - name
@@ -584,3 +578,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

@@ -418,7 +418,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
           required:
           - providerRef
           type: object
@@ -452,7 +451,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
               required:
               - providerRef
               type: object
@@ -480,3 +478,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

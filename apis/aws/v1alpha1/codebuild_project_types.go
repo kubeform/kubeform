@@ -87,7 +87,6 @@ type CodebuildProjectSpecSecondarySourcesAuth struct {
 
 type CodebuildProjectSpecSecondarySources struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Auth []CodebuildProjectSpecSecondarySourcesAuth `json:"auth,omitempty" tf:"auth,omitempty"`
 	// +optional
 	Buildspec string `json:"buildspec,omitempty" tf:"buildspec,omitempty"`
@@ -111,7 +110,6 @@ type CodebuildProjectSpecSourceAuth struct {
 
 type CodebuildProjectSpecSource struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Auth []CodebuildProjectSpecSourceAuth `json:"auth,omitempty" tf:"auth,omitempty"`
 	// +optional
 	Buildspec string `json:"buildspec,omitempty" tf:"buildspec,omitempty"`
@@ -128,10 +126,8 @@ type CodebuildProjectSpecSource struct {
 
 type CodebuildProjectSpecVpcConfig struct {
 	// +kubebuilder:validation:MaxItems=5
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupIDS []string `json:"securityGroupIDS" tf:"security_group_ids"`
 	// +kubebuilder:validation:MaxItems=16
-	// +kubebuilder:validation:UniqueItems=true
 	Subnets []string `json:"subnets" tf:"subnets"`
 	VpcID   string   `json:"vpcID" tf:"vpc_id"`
 }
@@ -146,7 +142,6 @@ type CodebuildProjectSpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Artifacts []CodebuildProjectSpecArtifacts `json:"artifacts" tf:"artifacts"`
 	// +optional
 	BadgeEnabled bool `json:"badgeEnabled,omitempty" tf:"badge_enabled,omitempty"`
@@ -162,18 +157,14 @@ type CodebuildProjectSpec struct {
 	// +optional
 	EncryptionKey string `json:"encryptionKey,omitempty" tf:"encryption_key,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Environment []CodebuildProjectSpecEnvironment `json:"environment" tf:"environment"`
 	Name        string                            `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecondaryArtifacts []CodebuildProjectSpecSecondaryArtifacts `json:"secondaryArtifacts,omitempty" tf:"secondary_artifacts,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecondarySources []CodebuildProjectSpecSecondarySources `json:"secondarySources,omitempty" tf:"secondary_sources,omitempty"`
 	ServiceRole      string                                 `json:"serviceRole" tf:"service_role"`
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Source []CodebuildProjectSpecSource `json:"source" tf:"source"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

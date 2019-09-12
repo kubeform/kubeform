@@ -34,15 +34,12 @@ type StorageAccountSpecIdentity struct {
 
 type StorageAccountSpecNetworkRules struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Bypass []string `json:"bypass,omitempty" tf:"bypass,omitempty"`
 	// +optional
 	DefaultAction string `json:"defaultAction,omitempty" tf:"default_action,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	IpRules []string `json:"ipRules,omitempty" tf:"ip_rules,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VirtualNetworkSubnetIDS []string `json:"virtualNetworkSubnetIDS,omitempty" tf:"virtual_network_subnet_ids,omitempty"`
 }
 

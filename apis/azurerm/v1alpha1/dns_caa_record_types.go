@@ -29,8 +29,7 @@ type DnsCaaRecordSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Name string `json:"name" tf:"name"`
-	// +kubebuilder:validation:UniqueItems=true
+	Name              string                   `json:"name" tf:"name"`
 	Record            []DnsCaaRecordSpecRecord `json:"record" tf:"record"`
 	ResourceGroupName string                   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional

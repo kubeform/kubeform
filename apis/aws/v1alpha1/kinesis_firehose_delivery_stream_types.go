@@ -54,7 +54,6 @@ type KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration struct {
 	BufferingSize int `json:"bufferingSize,omitempty" tf:"buffering_size,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
 	DomainArn                string                                                                                `json:"domainArn" tf:"domain_arn"`
 	IndexName                string                                                                                `json:"indexName" tf:"index_name"`
@@ -219,7 +218,6 @@ type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurati
 	BufferSize int `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
 	// +optional
 	CompressionFormat string `json:"compressionFormat,omitempty" tf:"compression_format,omitempty"`
@@ -238,7 +236,6 @@ type KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration struct {
 	BufferSize int `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
 	// +optional
 	CompressionFormat string `json:"compressionFormat,omitempty" tf:"compression_format,omitempty"`
@@ -311,7 +308,6 @@ type KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfiguration
 	BufferSize int `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
 	// +optional
 	CompressionFormat string `json:"compressionFormat,omitempty" tf:"compression_format,omitempty"`
@@ -325,7 +321,6 @@ type KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfiguration
 type KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
 	ClusterJdbcurl           string                                                                           `json:"clusterJdbcurl" tf:"cluster_jdbcurl"`
 	// +optional
@@ -365,7 +360,6 @@ type KinesisFirehoseDeliveryStreamSpecS3Configuration struct {
 	BufferSize int `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecS3ConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
 	// +optional
 	CompressionFormat string `json:"compressionFormat,omitempty" tf:"compression_format,omitempty"`
@@ -406,7 +400,6 @@ type KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfiguration
 type KinesisFirehoseDeliveryStreamSpecSplunkConfiguration struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
 	// +optional
 	HecAcknowledgmentTimeout int    `json:"hecAcknowledgmentTimeout,omitempty" tf:"hec_acknowledgment_timeout,omitempty"`

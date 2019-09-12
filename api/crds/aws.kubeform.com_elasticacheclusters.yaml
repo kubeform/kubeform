@@ -459,17 +459,14 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             securityGroupNames:
               items:
                 type: string
               type: array
-              uniqueItems: true
             snapshotArns:
               items:
                 type: string
               type: array
-              uniqueItems: true
             snapshotName:
               type: string
             snapshotRetentionLimit:
@@ -557,17 +554,14 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 securityGroupNames:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 snapshotArns:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 snapshotName:
                   type: string
                 snapshotRetentionLimit:
@@ -608,3 +602,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

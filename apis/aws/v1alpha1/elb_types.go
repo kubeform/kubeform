@@ -56,7 +56,6 @@ type ElbSpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	// +optional
 	ConnectionDraining bool `json:"connectionDraining,omitempty" tf:"connection_draining,omitempty"`
@@ -72,25 +71,21 @@ type ElbSpec struct {
 	// +optional
 	IdleTimeout int `json:"idleTimeout,omitempty" tf:"idle_timeout,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Instances []string `json:"instances,omitempty" tf:"instances,omitempty"`
 	// +optional
-	Internal bool `json:"internal,omitempty" tf:"internal,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
+	Internal bool              `json:"internal,omitempty" tf:"internal,omitempty"`
 	Listener []ElbSpecListener `json:"listener" tf:"listener"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
 	SourceSecurityGroup string `json:"sourceSecurityGroup,omitempty" tf:"source_security_group,omitempty"`
 	// +optional
 	SourceSecurityGroupID string `json:"sourceSecurityGroupID,omitempty" tf:"source_security_group_id,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Subnets []string `json:"subnets,omitempty" tf:"subnets,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

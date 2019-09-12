@@ -32,7 +32,6 @@ type AppmeshVirtualRouterSpecSpecListener struct {
 type AppmeshVirtualRouterSpecSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Listener []AppmeshVirtualRouterSpecSpecListener `json:"listener" tf:"listener"`
 }
 

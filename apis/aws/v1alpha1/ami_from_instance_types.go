@@ -52,12 +52,10 @@ type AmiFromInstanceSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EbsBlockDevice []AmiFromInstanceSpecEbsBlockDevice `json:"ebsBlockDevice,omitempty" tf:"ebs_block_device,omitempty"`
 	// +optional
 	EnaSupport bool `json:"enaSupport,omitempty" tf:"ena_support,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EphemeralBlockDevice []AmiFromInstanceSpecEphemeralBlockDevice `json:"ephemeralBlockDevice,omitempty" tf:"ephemeral_block_device,omitempty"`
 	// +optional
 	ImageLocation string `json:"imageLocation,omitempty" tf:"image_location,omitempty"`

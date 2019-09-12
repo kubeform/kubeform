@@ -54,7 +54,6 @@ type EventhubSpec struct {
 	NamespaceName    string `json:"namespaceName" tf:"namespace_name"`
 	PartitionCount   int    `json:"partitionCount" tf:"partition_count"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	PartitionIDS      []string `json:"partitionIDS,omitempty" tf:"partition_ids,omitempty"`
 	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`
 }

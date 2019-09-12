@@ -450,7 +450,6 @@ spec:
                     maxItems: 1
                     minItems: 1
                     type: array
-                    uniqueItems: true
                   condition:
                     items:
                       properties:
@@ -471,7 +470,6 @@ spec:
                     maxItems: 1
                     minItems: 1
                     type: array
-                    uniqueItems: true
                 required:
                 - action
                 - condition
@@ -594,7 +592,6 @@ spec:
                         maxItems: 1
                         minItems: 1
                         type: array
-                        uniqueItems: true
                       condition:
                         items:
                           properties:
@@ -615,7 +612,6 @@ spec:
                         maxItems: 1
                         minItems: 1
                         type: array
-                        uniqueItems: true
                     required:
                     - action
                     - condition
@@ -700,3 +696,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

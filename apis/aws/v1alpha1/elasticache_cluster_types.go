@@ -68,13 +68,10 @@ type ElasticacheClusterSpec struct {
 	// +optional
 	ReplicationGroupID string `json:"replicationGroupID,omitempty" tf:"replication_group_id,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupIDS []string `json:"securityGroupIDS,omitempty" tf:"security_group_ids,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupNames []string `json:"securityGroupNames,omitempty" tf:"security_group_names,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SnapshotArns []string `json:"snapshotArns,omitempty" tf:"snapshot_arns,omitempty"`
 	// +optional
 	SnapshotName string `json:"snapshotName,omitempty" tf:"snapshot_name,omitempty"`

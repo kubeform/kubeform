@@ -57,12 +57,10 @@ type SpotFleetRequestSpecLaunchSpecification struct {
 	// +optional
 	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EbsBlockDevice []SpotFleetRequestSpecLaunchSpecificationEbsBlockDevice `json:"ebsBlockDevice,omitempty" tf:"ebs_block_device,omitempty"`
 	// +optional
 	EbsOptimized bool `json:"ebsOptimized,omitempty" tf:"ebs_optimized,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EphemeralBlockDevice []SpotFleetRequestSpecLaunchSpecificationEphemeralBlockDevice `json:"ephemeralBlockDevice,omitempty" tf:"ephemeral_block_device,omitempty"`
 	// +optional
 	IamInstanceProfile string `json:"iamInstanceProfile,omitempty" tf:"iam_instance_profile,omitempty"`
@@ -78,7 +76,6 @@ type SpotFleetRequestSpecLaunchSpecification struct {
 	// +optional
 	PlacementTenancy string `json:"placementTenancy,omitempty" tf:"placement_tenancy,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	RootBlockDevice []SpotFleetRequestSpecLaunchSpecificationRootBlockDevice `json:"rootBlockDevice,omitempty" tf:"root_block_device,omitempty"`
 	// +optional
 	SpotPrice string `json:"spotPrice,omitempty" tf:"spot_price,omitempty"`
@@ -89,7 +86,6 @@ type SpotFleetRequestSpecLaunchSpecification struct {
 	// +optional
 	UserData string `json:"userData,omitempty" tf:"user_data,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VpcSecurityGroupIDS []string `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
 	// +optional
 	WeightedCapacity string `json:"weightedCapacity,omitempty" tf:"weighted_capacity,omitempty"`
@@ -112,11 +108,9 @@ type SpotFleetRequestSpec struct {
 	// +optional
 	InstanceInterruptionBehaviour string `json:"instanceInterruptionBehaviour,omitempty" tf:"instance_interruption_behaviour,omitempty"`
 	// +optional
-	InstancePoolsToUseCount int `json:"instancePoolsToUseCount,omitempty" tf:"instance_pools_to_use_count,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
-	LaunchSpecification []SpotFleetRequestSpecLaunchSpecification `json:"launchSpecification" tf:"launch_specification"`
+	InstancePoolsToUseCount int                                       `json:"instancePoolsToUseCount,omitempty" tf:"instance_pools_to_use_count,omitempty"`
+	LaunchSpecification     []SpotFleetRequestSpecLaunchSpecification `json:"launchSpecification" tf:"launch_specification"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	LoadBalancers []string `json:"loadBalancers,omitempty" tf:"load_balancers,omitempty"`
 	// +optional
 	ReplaceUnhealthyInstances bool `json:"replaceUnhealthyInstances,omitempty" tf:"replace_unhealthy_instances,omitempty"`
@@ -126,7 +120,6 @@ type SpotFleetRequestSpec struct {
 	SpotRequestState string `json:"spotRequestState,omitempty" tf:"spot_request_state,omitempty"`
 	TargetCapacity   int    `json:"targetCapacity" tf:"target_capacity"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	TargetGroupArns []string `json:"targetGroupArns,omitempty" tf:"target_group_arns,omitempty"`
 	// +optional
 	TerminateInstancesWithExpiration bool `json:"terminateInstancesWithExpiration,omitempty" tf:"terminate_instances_with_expiration,omitempty"`

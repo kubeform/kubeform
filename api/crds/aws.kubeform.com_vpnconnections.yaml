@@ -423,7 +423,6 @@ spec:
                     type: string
                 type: object
               type: array
-              uniqueItems: true
             secretRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -484,7 +483,6 @@ spec:
                     type: string
                 type: object
               type: array
-              uniqueItems: true
             vpnGatewayID:
               type: string
           required:
@@ -527,7 +525,6 @@ spec:
                         type: string
                     type: object
                   type: array
-                  uniqueItems: true
                 secretRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -588,7 +585,6 @@ spec:
                         type: string
                     type: object
                   type: array
-                  uniqueItems: true
                 vpnGatewayID:
                   type: string
               required:
@@ -620,3 +616,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

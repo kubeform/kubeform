@@ -411,7 +411,6 @@ spec:
                 - type
                 type: object
               type: array
-              uniqueItems: true
             billingMode:
               type: string
             globalSecondaryIndex:
@@ -439,7 +438,6 @@ spec:
                 - projectionType
                 type: object
               type: array
-              uniqueItems: true
             hashKey:
               type: string
             id:
@@ -463,7 +461,6 @@ spec:
                 - rangeKey
                 type: object
               type: array
-              uniqueItems: true
             name:
               type: string
             pointInTimeRecovery:
@@ -554,7 +551,6 @@ spec:
                     - type
                     type: object
                   type: array
-                  uniqueItems: true
                 billingMode:
                   type: string
                 globalSecondaryIndex:
@@ -582,7 +578,6 @@ spec:
                     - projectionType
                     type: object
                   type: array
-                  uniqueItems: true
                 hashKey:
                   type: string
                 id:
@@ -606,7 +601,6 @@ spec:
                     - rangeKey
                     type: object
                   type: array
-                  uniqueItems: true
                 name:
                   type: string
                 pointInTimeRecovery:
@@ -698,3 +692,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

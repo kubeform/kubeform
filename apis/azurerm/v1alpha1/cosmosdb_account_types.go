@@ -58,7 +58,6 @@ type CosmosdbAccountSpec struct {
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Capabilities []CosmosdbAccountSpecCapabilities `json:"capabilities,omitempty" tf:"capabilities,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -70,11 +69,9 @@ type CosmosdbAccountSpec struct {
 	// +optional
 	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	// Deprecated
 	FailoverPolicy []CosmosdbAccountSpecFailoverPolicy `json:"failoverPolicy,omitempty" tf:"failover_policy,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	GeoLocation []CosmosdbAccountSpecGeoLocation `json:"geoLocation,omitempty" tf:"geo_location,omitempty"`
 	// +optional
 	IpRangeFilter string `json:"ipRangeFilter,omitempty" tf:"ip_range_filter,omitempty"`
@@ -99,7 +96,6 @@ type CosmosdbAccountSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VirtualNetworkRule []CosmosdbAccountSpecVirtualNetworkRule `json:"virtualNetworkRule,omitempty" tf:"virtual_network_rule,omitempty"`
 	// +optional
 	WriteEndpoints []string `json:"writeEndpoints,omitempty" tf:"write_endpoints,omitempty"`

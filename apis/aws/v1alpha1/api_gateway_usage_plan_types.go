@@ -53,11 +53,9 @@ type ApiGatewayUsagePlanSpec struct {
 	ProductCode string `json:"productCode,omitempty" tf:"product_code,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	QuotaSettings []ApiGatewayUsagePlanSpecQuotaSettings `json:"quotaSettings,omitempty" tf:"quota_settings,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	ThrottleSettings []ApiGatewayUsagePlanSpecThrottleSettings `json:"throttleSettings,omitempty" tf:"throttle_settings,omitempty"`
 }
 

@@ -30,10 +30,8 @@ type MonitorLogProfileSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Categories []string `json:"categories" tf:"categories"`
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Locations []string `json:"locations" tf:"locations"`
 	Name      string   `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1

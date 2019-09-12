@@ -444,7 +444,6 @@ spec:
                 - deviceName
                 type: object
               type: array
-              uniqueItems: true
             ebsOptimized:
               type: boolean
             ephemeralBlockDevice:
@@ -460,7 +459,6 @@ spec:
                 - deviceName
                 type: object
               type: array
-              uniqueItems: true
             getPasswordData:
               type: boolean
             hostID:
@@ -503,7 +501,6 @@ spec:
                 - networkInterfaceID
                 type: object
               type: array
-              uniqueItems: true
             passwordData:
               type: string
             placementGroup:
@@ -547,7 +544,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             sourceDestCheck:
               type: boolean
             spotBidStatus:
@@ -584,7 +580,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             waitForFulfillment:
               type: boolean
           required:
@@ -648,7 +643,6 @@ spec:
                     - deviceName
                     type: object
                   type: array
-                  uniqueItems: true
                 ebsOptimized:
                   type: boolean
                 ephemeralBlockDevice:
@@ -664,7 +658,6 @@ spec:
                     - deviceName
                     type: object
                   type: array
-                  uniqueItems: true
                 getPasswordData:
                   type: boolean
                 hostID:
@@ -707,7 +700,6 @@ spec:
                     - networkInterfaceID
                     type: object
                   type: array
-                  uniqueItems: true
                 passwordData:
                   type: string
                 placementGroup:
@@ -751,7 +743,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 sourceDestCheck:
                   type: boolean
                 spotBidStatus:
@@ -788,7 +779,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 waitForFulfillment:
                   type: boolean
               required:
@@ -820,3 +810,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

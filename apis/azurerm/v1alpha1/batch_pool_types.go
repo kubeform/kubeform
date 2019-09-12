@@ -30,7 +30,6 @@ type BatchPoolSpecCertificate struct {
 	// +optional
 	StoreName string `json:"storeName,omitempty" tf:"store_name,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Visibility []string `json:"visibility,omitempty" tf:"visibility,omitempty"`
 }
 

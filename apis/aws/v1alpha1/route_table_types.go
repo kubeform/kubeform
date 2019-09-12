@@ -47,10 +47,8 @@ type RouteTableSpec struct {
 	// +optional
 	OwnerID string `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	PropagatingVgws []string `json:"propagatingVgws,omitempty" tf:"propagating_vgws,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Route []RouteTableSpecRoute `json:"route,omitempty" tf:"route,omitempty"`
 	// +optional
 	Tags  map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

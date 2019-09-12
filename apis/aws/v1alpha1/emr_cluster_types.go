@@ -58,7 +58,6 @@ type EmrClusterSpecInstanceGroup struct {
 	// +optional
 	BidPrice string `json:"bidPrice,omitempty" tf:"bid_price,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EbsConfig []EmrClusterSpecInstanceGroupEbsConfig `json:"ebsConfig,omitempty" tf:"ebs_config,omitempty"`
 	// +optional
 	ID string `json:"ID,omitempty" tf:"id,omitempty"`
@@ -108,12 +107,10 @@ type EmrClusterSpec struct {
 	// +optional
 	AdditionalInfo string `json:"additionalInfo,omitempty" tf:"additional_info,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Applications []string `json:"applications,omitempty" tf:"applications,omitempty"`
 	// +optional
 	AutoscalingRole string `json:"autoscalingRole,omitempty" tf:"autoscaling_role,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	BootstrapAction []EmrClusterSpecBootstrapAction `json:"bootstrapAction,omitempty" tf:"bootstrap_action,omitempty"`
 	// +optional
 	ClusterState string `json:"clusterState,omitempty" tf:"cluster_state,omitempty"`
@@ -133,7 +130,6 @@ type EmrClusterSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Ec2Attributes []EmrClusterSpecEc2Attributes `json:"ec2Attributes,omitempty" tf:"ec2_attributes,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	InstanceGroup []EmrClusterSpecInstanceGroup `json:"instanceGroup,omitempty" tf:"instance_group,omitempty"`
 	// +optional
 	KeepJobFlowAliveWhenNoSteps bool `json:"keepJobFlowAliveWhenNoSteps,omitempty" tf:"keep_job_flow_alive_when_no_steps,omitempty"`

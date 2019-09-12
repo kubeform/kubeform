@@ -22,12 +22,10 @@ type RoleDefinitionSpecPermissions struct {
 	// +optional
 	Actions []string `json:"actions,omitempty" tf:"actions,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DataActions []string `json:"dataActions,omitempty" tf:"data_actions,omitempty"`
 	// +optional
 	NotActions []string `json:"notActions,omitempty" tf:"not_actions,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	NotDataActions []string `json:"notDataActions,omitempty" tf:"not_data_actions,omitempty"`
 }
 

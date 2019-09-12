@@ -299,7 +299,6 @@ type InstanceSpec struct {
 	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Ipv4 []string `json:"ipv4,omitempty" tf:"ipv4,omitempty"`
 	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.
 	// +optional
@@ -335,7 +334,6 @@ type InstanceSpec struct {
 	SwapSize int `json:"swapSize,omitempty" tf:"swap_size,omitempty"`
 	// An array of tags applied to this object. Tags are for organizational purposes only.
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// The type of instance to be deployed, determining the price and size.
 	// +optional

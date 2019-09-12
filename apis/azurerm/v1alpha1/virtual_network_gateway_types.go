@@ -54,13 +54,10 @@ type VirtualNetworkGatewaySpecVpnClientConfiguration struct {
 	// +optional
 	RadiusServerSecret string `json:"radiusServerSecret,omitempty" tf:"radius_server_secret,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	RevokedCertificate []VirtualNetworkGatewaySpecVpnClientConfigurationRevokedCertificate `json:"revokedCertificate,omitempty" tf:"revoked_certificate,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	RootCertificate []VirtualNetworkGatewaySpecVpnClientConfigurationRootCertificate `json:"rootCertificate,omitempty" tf:"root_certificate,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VpnClientProtocols []string `json:"vpnClientProtocols,omitempty" tf:"vpn_client_protocols,omitempty"`
 }
 

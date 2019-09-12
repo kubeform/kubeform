@@ -107,7 +107,6 @@ type AppServiceSlotSpecIdentity struct {
 }
 
 type AppServiceSlotSpecSiteConfigCors struct {
-	// +kubebuilder:validation:UniqueItems=true
 	AllowedOrigins []string `json:"allowedOrigins" tf:"allowed_origins"`
 	// +optional
 	SupportCredentials bool `json:"supportCredentials,omitempty" tf:"support_credentials,omitempty"`
@@ -195,7 +194,6 @@ type AppServiceSlotSpec struct {
 	// +optional
 	ClientAffinityEnabled bool `json:"clientAffinityEnabled,omitempty" tf:"client_affinity_enabled,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ConnectionString []AppServiceSlotSpecConnectionString `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
 	// +optional
 	DefaultSiteHostname string `json:"defaultSiteHostname,omitempty" tf:"default_site_hostname,omitempty"`

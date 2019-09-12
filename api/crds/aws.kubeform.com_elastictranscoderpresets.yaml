@@ -415,7 +415,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             audioCodecOptions:
               items:
                 properties:
@@ -430,7 +429,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             container:
               type: string
             description:
@@ -470,7 +468,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             type:
               type: string
             video:
@@ -505,7 +502,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             videoCodecOptions:
               additionalProperties:
                 type: string
@@ -535,7 +531,6 @@ spec:
                     type: string
                 type: object
               type: array
-              uniqueItems: true
           required:
           - container
           - providerRef
@@ -567,7 +562,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 audioCodecOptions:
                   items:
                     properties:
@@ -582,7 +576,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 container:
                   type: string
                 description:
@@ -622,7 +615,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 type:
                   type: string
                 video:
@@ -657,7 +649,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 videoCodecOptions:
                   additionalProperties:
                     type: string
@@ -687,7 +678,6 @@ spec:
                         type: string
                     type: object
                   type: array
-                  uniqueItems: true
               required:
               - container
               - providerRef
@@ -716,3 +706,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

@@ -30,7 +30,6 @@ type ManagementGroupSpec struct {
 	// +optional
 	ParentManagementGroupID string `json:"parentManagementGroupID,omitempty" tf:"parent_management_group_id,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SubscriptionIDS []string `json:"subscriptionIDS,omitempty" tf:"subscription_ids,omitempty"`
 }
 

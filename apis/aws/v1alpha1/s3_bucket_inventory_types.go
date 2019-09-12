@@ -77,7 +77,6 @@ type S3BucketInventorySpec struct {
 	IncludedObjectVersions string                        `json:"includedObjectVersions" tf:"included_object_versions"`
 	Name                   string                        `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	OptionalFields []string `json:"optionalFields,omitempty" tf:"optional_fields,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1

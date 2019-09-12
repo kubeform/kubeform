@@ -56,11 +56,9 @@ type StorageBucketSpecLifecycleRuleCondition struct {
 type StorageBucketSpecLifecycleRule struct {
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Action []StorageBucketSpecLifecycleRuleAction `json:"action" tf:"action"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Condition []StorageBucketSpecLifecycleRuleCondition `json:"condition" tf:"condition"`
 }
 

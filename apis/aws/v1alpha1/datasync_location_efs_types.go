@@ -19,7 +19,6 @@ type DatasyncLocationEfs struct {
 }
 
 type DatasyncLocationEfsSpecEc2Config struct {
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupArns []string `json:"securityGroupArns" tf:"security_group_arns"`
 	SubnetArn         string   `json:"subnetArn" tf:"subnet_arn"`
 }

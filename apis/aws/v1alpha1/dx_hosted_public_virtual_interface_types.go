@@ -39,7 +39,6 @@ type DxHostedPublicVirtualInterfaceSpec struct {
 	Name            string `json:"name" tf:"name"`
 	OwnerAccountID  string `json:"ownerAccountID" tf:"owner_account_id"`
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	RouteFilterPrefixes []string `json:"routeFilterPrefixes" tf:"route_filter_prefixes"`
 	Vlan                int      `json:"vlan" tf:"vlan"`
 }

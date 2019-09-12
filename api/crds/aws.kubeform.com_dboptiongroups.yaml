@@ -416,7 +416,6 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   optionName:
                     type: string
                   optionSettings:
@@ -431,7 +430,6 @@ spec:
                       - value
                       type: object
                     type: array
-                    uniqueItems: true
                   port:
                     type: integer
                   version:
@@ -440,12 +438,10 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                 required:
                 - optionName
                 type: object
               type: array
-              uniqueItems: true
             optionGroupDescription:
               type: string
             providerRef:
@@ -494,7 +490,6 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       optionName:
                         type: string
                       optionSettings:
@@ -509,7 +504,6 @@ spec:
                           - value
                           type: object
                         type: array
-                        uniqueItems: true
                       port:
                         type: integer
                       version:
@@ -518,12 +512,10 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                     required:
                     - optionName
                     type: object
                   type: array
-                  uniqueItems: true
                 optionGroupDescription:
                   type: string
                 providerRef:
@@ -568,3 +560,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

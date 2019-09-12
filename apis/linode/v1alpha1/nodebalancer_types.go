@@ -58,7 +58,6 @@ type NodebalancerSpec struct {
 	Region string `json:"region" tf:"region"`
 	// An array of tags applied to this object. Tags are for organizational purposes only.
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	Transfer map[string]NodebalancerSpecTransfer `json:"transfer,omitempty" tf:"transfer,omitempty"`

@@ -460,7 +460,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             osProfileLinuxConfig:
               items:
                 properties:
@@ -483,7 +482,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             osProfileSecrets:
               items:
                 properties:
@@ -542,7 +540,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             plan:
               items:
                 properties:
@@ -624,7 +621,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             storageOsDisk:
               items:
                 properties:
@@ -746,7 +742,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 osProfileLinuxConfig:
                   items:
                     properties:
@@ -769,7 +764,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 osProfileSecrets:
                   items:
                     properties:
@@ -828,7 +822,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 plan:
                   items:
                     properties:
@@ -910,7 +903,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 storageOsDisk:
                   items:
                     properties:
@@ -984,3 +976,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

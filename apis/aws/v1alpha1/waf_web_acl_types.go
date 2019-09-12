@@ -29,7 +29,6 @@ type WafWebACLSpecLoggingConfigurationRedactedFieldsFieldToMatch struct {
 }
 
 type WafWebACLSpecLoggingConfigurationRedactedFields struct {
-	// +kubebuilder:validation:UniqueItems=true
 	FieldToMatch []WafWebACLSpecLoggingConfigurationRedactedFieldsFieldToMatch `json:"fieldToMatch" tf:"field_to_match"`
 }
 
@@ -69,7 +68,6 @@ type WafWebACLSpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	DefaultAction []WafWebACLSpecDefaultAction `json:"defaultAction" tf:"default_action"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -77,7 +75,6 @@ type WafWebACLSpec struct {
 	MetricName           string                              `json:"metricName" tf:"metric_name"`
 	Name                 string                              `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Rules []WafWebACLSpecRules `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 

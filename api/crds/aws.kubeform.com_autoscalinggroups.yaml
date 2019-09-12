@@ -403,7 +403,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             defaultCooldown:
               type: integer
             desiredCapacity:
@@ -412,7 +411,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             forceDelete:
               type: boolean
             healthCheckGracePeriod:
@@ -443,7 +441,6 @@ spec:
                 - name
                 type: object
               type: array
-              uniqueItems: true
             launchConfiguration:
               type: string
             launchTemplate:
@@ -462,7 +459,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             maxSize:
               type: integer
             metricsGranularity:
@@ -549,7 +545,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             tag:
               items:
                 properties:
@@ -565,12 +560,10 @@ spec:
                 - value
                 type: object
               type: array
-              uniqueItems: true
             targetGroupArns:
               items:
                 type: string
               type: array
-              uniqueItems: true
             terminationPolicies:
               items:
                 type: string
@@ -579,7 +572,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             waitForCapacityTimeout:
               type: string
             waitForElbCapacity:
@@ -604,7 +596,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 defaultCooldown:
                   type: integer
                 desiredCapacity:
@@ -613,7 +604,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 forceDelete:
                   type: boolean
                 healthCheckGracePeriod:
@@ -644,7 +634,6 @@ spec:
                     - name
                     type: object
                   type: array
-                  uniqueItems: true
                 launchConfiguration:
                   type: string
                 launchTemplate:
@@ -663,7 +652,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 maxSize:
                   type: integer
                 metricsGranularity:
@@ -750,7 +738,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 tag:
                   items:
                     properties:
@@ -766,12 +753,10 @@ spec:
                     - value
                     type: object
                   type: array
-                  uniqueItems: true
                 targetGroupArns:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 terminationPolicies:
                   items:
                     type: string
@@ -780,7 +765,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 waitForCapacityTimeout:
                   type: string
                 waitForElbCapacity:
@@ -814,3 +798,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

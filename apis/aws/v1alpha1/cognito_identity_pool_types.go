@@ -37,7 +37,6 @@ type CognitoIdentityPoolSpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	CognitoIdentityProviders []CognitoIdentityPoolSpecCognitoIdentityProviders `json:"cognitoIdentityProviders,omitempty" tf:"cognito_identity_providers,omitempty"`
 	// +optional
 	DeveloperProviderName string `json:"developerProviderName,omitempty" tf:"developer_provider_name,omitempty"`

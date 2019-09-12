@@ -432,7 +432,6 @@ spec:
                 - deviceName
                 type: object
               type: array
-              uniqueItems: true
             ebsOptimized:
               type: boolean
             ec2InstanceID:
@@ -453,7 +452,6 @@ spec:
                 - virtualName
                 type: object
               type: array
-              uniqueItems: true
             hostname:
               type: string
             id:
@@ -516,7 +514,6 @@ spec:
                     type: string
                 type: object
               type: array
-              uniqueItems: true
             rootDeviceType:
               type: string
             rootDeviceVolumeID:
@@ -592,7 +589,6 @@ spec:
                     - deviceName
                     type: object
                   type: array
-                  uniqueItems: true
                 ebsOptimized:
                   type: boolean
                 ec2InstanceID:
@@ -613,7 +609,6 @@ spec:
                     - virtualName
                     type: object
                   type: array
-                  uniqueItems: true
                 hostname:
                   type: string
                 id:
@@ -676,7 +671,6 @@ spec:
                         type: string
                     type: object
                   type: array
-                  uniqueItems: true
                 rootDeviceType:
                   type: string
                 rootDeviceVolumeID:
@@ -732,3 +726,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

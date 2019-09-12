@@ -45,7 +45,6 @@ type VpcPeeringConnectionSpec struct {
 	AcceptStatus string `json:"acceptStatus,omitempty" tf:"accept_status,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Accepter []VpcPeeringConnectionSpecAccepter `json:"accepter,omitempty" tf:"accepter,omitempty"`
 	// +optional
 	AutoAccept bool `json:"autoAccept,omitempty" tf:"auto_accept,omitempty"`
@@ -56,7 +55,6 @@ type VpcPeeringConnectionSpec struct {
 	PeerVpcID  string `json:"peerVpcID" tf:"peer_vpc_id"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Requester []VpcPeeringConnectionSpecRequester `json:"requester,omitempty" tf:"requester,omitempty"`
 	// +optional
 	Tags  map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

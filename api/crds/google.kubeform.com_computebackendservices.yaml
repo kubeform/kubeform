@@ -423,7 +423,6 @@ spec:
                     type: string
                 type: object
               type: array
-              uniqueItems: true
             cdnPolicy:
               items:
                 properties:
@@ -440,12 +439,10 @@ spec:
                           items:
                             type: string
                           type: array
-                          uniqueItems: true
                         queryStringWhitelist:
                           items:
                             type: string
                           type: array
-                          uniqueItems: true
                       type: object
                     maxItems: 1
                     type: array
@@ -459,7 +456,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             description:
               type: string
             enableCdn:
@@ -472,7 +468,6 @@ spec:
               maxItems: 1
               minItems: 1
               type: array
-              uniqueItems: true
             iap:
               items:
                 properties:
@@ -559,7 +554,6 @@ spec:
                         type: string
                     type: object
                   type: array
-                  uniqueItems: true
                 cdnPolicy:
                   items:
                     properties:
@@ -576,12 +570,10 @@ spec:
                               items:
                                 type: string
                               type: array
-                              uniqueItems: true
                             queryStringWhitelist:
                               items:
                                 type: string
                               type: array
-                              uniqueItems: true
                           type: object
                         maxItems: 1
                         type: array
@@ -595,7 +587,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 description:
                   type: string
                 enableCdn:
@@ -608,7 +599,6 @@ spec:
                   maxItems: 1
                   minItems: 1
                   type: array
-                  uniqueItems: true
                 iap:
                   items:
                     properties:
@@ -684,3 +674,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

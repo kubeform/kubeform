@@ -90,7 +90,6 @@ type SqlDatabaseInstanceSpecSettingsIpConfigurationAuthorizedNetworks struct {
 
 type SqlDatabaseInstanceSpecSettingsIpConfiguration struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AuthorizedNetworks []SqlDatabaseInstanceSpecSettingsIpConfigurationAuthorizedNetworks `json:"authorizedNetworks,omitempty" tf:"authorized_networks,omitempty"`
 	// +optional
 	Ipv4Enabled bool `json:"ipv4Enabled,omitempty" tf:"ipv4_enabled,omitempty"`

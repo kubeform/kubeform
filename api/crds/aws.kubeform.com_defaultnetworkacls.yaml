@@ -428,7 +428,6 @@ spec:
                 - toPort
                 type: object
               type: array
-              uniqueItems: true
             id:
               type: string
             ingress:
@@ -460,7 +459,6 @@ spec:
                 - toPort
                 type: object
               type: array
-              uniqueItems: true
             ownerID:
               type: string
             providerRef:
@@ -476,7 +474,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             tags:
               additionalProperties:
                 type: string
@@ -527,7 +524,6 @@ spec:
                     - toPort
                     type: object
                   type: array
-                  uniqueItems: true
                 id:
                   type: string
                 ingress:
@@ -559,7 +555,6 @@ spec:
                     - toPort
                     type: object
                   type: array
-                  uniqueItems: true
                 ownerID:
                   type: string
                 providerRef:
@@ -575,7 +570,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 tags:
                   additionalProperties:
                     type: string
@@ -610,3 +604,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

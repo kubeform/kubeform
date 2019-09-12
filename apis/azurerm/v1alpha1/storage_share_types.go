@@ -36,7 +36,6 @@ type StorageShareSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Acl []StorageShareSpecAcl `json:"acl,omitempty" tf:"acl,omitempty"`
 	// +optional
 	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`

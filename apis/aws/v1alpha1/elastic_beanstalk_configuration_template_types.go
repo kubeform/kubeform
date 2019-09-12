@@ -38,7 +38,6 @@ type ElasticBeanstalkConfigurationTemplateSpec struct {
 	EnvironmentID string `json:"environmentID,omitempty" tf:"environment_id,omitempty"`
 	Name          string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Setting []ElasticBeanstalkConfigurationTemplateSpecSetting `json:"setting,omitempty" tf:"setting,omitempty"`
 	// +optional
 	SolutionStackName string `json:"solutionStackName,omitempty" tf:"solution_stack_name,omitempty"`

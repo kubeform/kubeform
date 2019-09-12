@@ -51,7 +51,6 @@ type ComputeForwardingRuleSpec struct {
 	PortRange string `json:"portRange,omitempty" tf:"port_range,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=5
-	// +kubebuilder:validation:UniqueItems=true
 	Ports []string `json:"ports,omitempty" tf:"ports,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`

@@ -35,7 +35,6 @@ type ApiGatewayAuthorizerSpec struct {
 	IdentityValidationExpression string `json:"identityValidationExpression,omitempty" tf:"identity_validation_expression,omitempty"`
 	Name                         string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ProviderArns []string `json:"providerArns,omitempty" tf:"provider_arns,omitempty"`
 	RestAPIID    string   `json:"restAPIID" tf:"rest_api_id"`
 	// +optional

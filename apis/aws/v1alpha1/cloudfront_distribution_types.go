@@ -31,7 +31,6 @@ type CloudfrontDistributionSpecCustomErrorResponse struct {
 type CloudfrontDistributionSpecDefaultCacheBehaviorForwardedValuesCookies struct {
 	Forward string `json:"forward" tf:"forward"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	WhitelistedNames []string `json:"whitelistedNames,omitempty" tf:"whitelisted_names,omitempty"`
 }
 
@@ -39,7 +38,6 @@ type CloudfrontDistributionSpecDefaultCacheBehaviorForwardedValues struct {
 	// +kubebuilder:validation:MaxItems=1
 	Cookies []CloudfrontDistributionSpecDefaultCacheBehaviorForwardedValuesCookies `json:"cookies" tf:"cookies"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Headers     []string `json:"headers,omitempty" tf:"headers,omitempty"`
 	QueryString bool     `json:"queryString" tf:"query_string"`
 	// +optional
@@ -54,10 +52,8 @@ type CloudfrontDistributionSpecDefaultCacheBehaviorLambdaFunctionAssociation str
 }
 
 type CloudfrontDistributionSpecDefaultCacheBehavior struct {
-	// +kubebuilder:validation:UniqueItems=true
 	AllowedMethods []string `json:"allowedMethods" tf:"allowed_methods"`
-	// +kubebuilder:validation:UniqueItems=true
-	CachedMethods []string `json:"cachedMethods" tf:"cached_methods"`
+	CachedMethods  []string `json:"cachedMethods" tf:"cached_methods"`
 	// +optional
 	Compress bool `json:"compress,omitempty" tf:"compress,omitempty"`
 	// +optional
@@ -68,7 +64,6 @@ type CloudfrontDistributionSpecDefaultCacheBehavior struct {
 	ForwardedValues []CloudfrontDistributionSpecDefaultCacheBehaviorForwardedValues `json:"forwardedValues" tf:"forwarded_values"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=4
-	// +kubebuilder:validation:UniqueItems=true
 	LambdaFunctionAssociation []CloudfrontDistributionSpecDefaultCacheBehaviorLambdaFunctionAssociation `json:"lambdaFunctionAssociation,omitempty" tf:"lambda_function_association,omitempty"`
 	// +optional
 	MaxTtl int `json:"maxTtl,omitempty" tf:"max_ttl,omitempty"`
@@ -93,7 +88,6 @@ type CloudfrontDistributionSpecLoggingConfig struct {
 type CloudfrontDistributionSpecOrderedCacheBehaviorForwardedValuesCookies struct {
 	Forward string `json:"forward" tf:"forward"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	WhitelistedNames []string `json:"whitelistedNames,omitempty" tf:"whitelisted_names,omitempty"`
 }
 
@@ -101,7 +95,6 @@ type CloudfrontDistributionSpecOrderedCacheBehaviorForwardedValues struct {
 	// +kubebuilder:validation:MaxItems=1
 	Cookies []CloudfrontDistributionSpecOrderedCacheBehaviorForwardedValuesCookies `json:"cookies" tf:"cookies"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Headers     []string `json:"headers,omitempty" tf:"headers,omitempty"`
 	QueryString bool     `json:"queryString" tf:"query_string"`
 	// +optional
@@ -116,10 +109,8 @@ type CloudfrontDistributionSpecOrderedCacheBehaviorLambdaFunctionAssociation str
 }
 
 type CloudfrontDistributionSpecOrderedCacheBehavior struct {
-	// +kubebuilder:validation:UniqueItems=true
 	AllowedMethods []string `json:"allowedMethods" tf:"allowed_methods"`
-	// +kubebuilder:validation:UniqueItems=true
-	CachedMethods []string `json:"cachedMethods" tf:"cached_methods"`
+	CachedMethods  []string `json:"cachedMethods" tf:"cached_methods"`
 	// +optional
 	Compress bool `json:"compress,omitempty" tf:"compress,omitempty"`
 	// +optional
@@ -130,7 +121,6 @@ type CloudfrontDistributionSpecOrderedCacheBehavior struct {
 	ForwardedValues []CloudfrontDistributionSpecOrderedCacheBehaviorForwardedValues `json:"forwardedValues" tf:"forwarded_values"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=4
-	// +kubebuilder:validation:UniqueItems=true
 	LambdaFunctionAssociation []CloudfrontDistributionSpecOrderedCacheBehaviorLambdaFunctionAssociation `json:"lambdaFunctionAssociation,omitempty" tf:"lambda_function_association,omitempty"`
 	// +optional
 	MaxTtl int `json:"maxTtl,omitempty" tf:"max_ttl,omitempty"`
@@ -157,8 +147,7 @@ type CloudfrontDistributionSpecOriginCustomOriginConfig struct {
 	OriginKeepaliveTimeout int    `json:"originKeepaliveTimeout,omitempty" tf:"origin_keepalive_timeout,omitempty"`
 	OriginProtocolPolicy   string `json:"originProtocolPolicy" tf:"origin_protocol_policy"`
 	// +optional
-	OriginReadTimeout int `json:"originReadTimeout,omitempty" tf:"origin_read_timeout,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
+	OriginReadTimeout  int      `json:"originReadTimeout,omitempty" tf:"origin_read_timeout,omitempty"`
 	OriginSSLProtocols []string `json:"originSSLProtocols" tf:"origin_ssl_protocols"`
 }
 
@@ -168,7 +157,6 @@ type CloudfrontDistributionSpecOriginS3OriginConfig struct {
 
 type CloudfrontDistributionSpecOrigin struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	CustomHeader []CloudfrontDistributionSpecOriginCustomHeader `json:"customHeader,omitempty" tf:"custom_header,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -183,7 +171,6 @@ type CloudfrontDistributionSpecOrigin struct {
 }
 
 type CloudfrontDistributionSpecOriginGroupFailoverCriteria struct {
-	// +kubebuilder:validation:UniqueItems=true
 	StatusCodes []int64 `json:"statusCodes" tf:"status_codes"`
 }
 
@@ -201,7 +188,6 @@ type CloudfrontDistributionSpecOriginGroup struct {
 
 type CloudfrontDistributionSpecRestrictionsGeoRestriction struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Locations       []string `json:"locations,omitempty" tf:"locations,omitempty"`
 	RestrictionType string   `json:"restrictionType" tf:"restriction_type"`
 }
@@ -232,7 +218,6 @@ type CloudfrontDistributionSpec struct {
 	// +optional
 	ActiveTrustedSigners map[string]string `json:"activeTrustedSigners,omitempty" tf:"active_trusted_signers,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Aliases []string `json:"aliases,omitempty" tf:"aliases,omitempty"`
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
@@ -241,7 +226,6 @@ type CloudfrontDistributionSpec struct {
 	// +optional
 	Comment string `json:"comment,omitempty" tf:"comment,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	CustomErrorResponse []CloudfrontDistributionSpecCustomErrorResponse `json:"customErrorResponse,omitempty" tf:"custom_error_response,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	DefaultCacheBehavior []CloudfrontDistributionSpecDefaultCacheBehavior `json:"defaultCacheBehavior" tf:"default_cache_behavior"`
@@ -267,10 +251,8 @@ type CloudfrontDistributionSpec struct {
 	LoggingConfig []CloudfrontDistributionSpecLoggingConfig `json:"loggingConfig,omitempty" tf:"logging_config,omitempty"`
 	// +optional
 	OrderedCacheBehavior []CloudfrontDistributionSpecOrderedCacheBehavior `json:"orderedCacheBehavior,omitempty" tf:"ordered_cache_behavior,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
-	Origin []CloudfrontDistributionSpecOrigin `json:"origin" tf:"origin"`
+	Origin               []CloudfrontDistributionSpecOrigin               `json:"origin" tf:"origin"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	OriginGroup []CloudfrontDistributionSpecOriginGroup `json:"originGroup,omitempty" tf:"origin_group,omitempty"`
 	// +optional
 	PriceClass string `json:"priceClass,omitempty" tf:"price_class,omitempty"`

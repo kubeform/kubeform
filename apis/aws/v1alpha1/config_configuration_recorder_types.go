@@ -24,7 +24,6 @@ type ConfigConfigurationRecorderSpecRecordingGroup struct {
 	// +optional
 	IncludeGlobalResourceTypes bool `json:"includeGlobalResourceTypes,omitempty" tf:"include_global_resource_types,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ResourceTypes []string `json:"resourceTypes,omitempty" tf:"resource_types,omitempty"`
 }
 

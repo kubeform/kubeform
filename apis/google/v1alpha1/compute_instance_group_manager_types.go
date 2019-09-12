@@ -88,7 +88,6 @@ type ComputeInstanceGroupManagerSpec struct {
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	TargetPools []string `json:"targetPools,omitempty" tf:"target_pools,omitempty"`
 	// +optional
 	TargetSize int `json:"targetSize,omitempty" tf:"target_size,omitempty"`

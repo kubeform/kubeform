@@ -26,7 +26,6 @@ type LbProbeSpec struct {
 	// +optional
 	IntervalInSeconds int `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	LoadBalancerRules []string `json:"loadBalancerRules,omitempty" tf:"load_balancer_rules,omitempty"`
 	LoadbalancerID    string   `json:"loadbalancerID" tf:"loadbalancer_id"`
 	// +optional

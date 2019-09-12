@@ -35,7 +35,6 @@ type GlobalacceleratorListenerSpec struct {
 	ClientAffinity string `json:"clientAffinity,omitempty" tf:"client_affinity,omitempty"`
 	// +kubebuilder:validation:MaxItems=10
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	PortRange []GlobalacceleratorListenerSpecPortRange `json:"portRange" tf:"port_range"`
 	Protocol  string                                   `json:"protocol" tf:"protocol"`
 }

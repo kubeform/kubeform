@@ -29,11 +29,10 @@ type MediaServicesAccountSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
-	// +kubebuilder:validation:UniqueItems=true
-	StorageAccount []MediaServicesAccountSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
+	Location          string                                   `json:"location" tf:"location"`
+	Name              string                                   `json:"name" tf:"name"`
+	ResourceGroupName string                                   `json:"resourceGroupName" tf:"resource_group_name"`
+	StorageAccount    []MediaServicesAccountSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
 }
 
 type MediaServicesAccountStatus struct {

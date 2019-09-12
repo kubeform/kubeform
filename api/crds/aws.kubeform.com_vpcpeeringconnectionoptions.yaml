@@ -409,7 +409,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             id:
               type: string
             providerRef:
@@ -433,7 +432,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             vpcPeeringConnectionID:
               type: string
           required:
@@ -461,7 +459,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 id:
                   type: string
                 providerRef:
@@ -485,7 +482,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 vpcPeeringConnectionID:
                   type: string
               required:
@@ -516,3 +512,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

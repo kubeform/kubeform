@@ -32,7 +32,6 @@ type WafregionalRuleSpec struct {
 	MetricName string `json:"metricName" tf:"metric_name"`
 	Name       string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Predicate []WafregionalRuleSpecPredicate `json:"predicate,omitempty" tf:"predicate,omitempty"`
 }
 

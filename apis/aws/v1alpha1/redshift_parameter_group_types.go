@@ -33,7 +33,6 @@ type RedshiftParameterGroupSpec struct {
 	Family      string `json:"family" tf:"family"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Parameter []RedshiftParameterGroupSpecParameter `json:"parameter,omitempty" tf:"parameter,omitempty"`
 }
 

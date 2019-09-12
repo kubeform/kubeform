@@ -25,7 +25,6 @@ type Ec2ClientVPNNetworkAssociationSpec struct {
 
 	ClientVPNEndpointID string `json:"clientVPNEndpointID" tf:"client_vpn_endpoint_id"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
 	Status   string `json:"status,omitempty" tf:"status,omitempty"`

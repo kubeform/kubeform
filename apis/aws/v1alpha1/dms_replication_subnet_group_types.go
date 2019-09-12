@@ -24,11 +24,10 @@ type DmsReplicationSubnetGroupSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	ReplicationSubnetGroupArn         string `json:"replicationSubnetGroupArn,omitempty" tf:"replication_subnet_group_arn,omitempty"`
-	ReplicationSubnetGroupDescription string `json:"replicationSubnetGroupDescription" tf:"replication_subnet_group_description"`
-	ReplicationSubnetGroupID          string `json:"replicationSubnetGroupID" tf:"replication_subnet_group_id"`
-	// +kubebuilder:validation:UniqueItems=true
-	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
+	ReplicationSubnetGroupArn         string   `json:"replicationSubnetGroupArn,omitempty" tf:"replication_subnet_group_arn,omitempty"`
+	ReplicationSubnetGroupDescription string   `json:"replicationSubnetGroupDescription" tf:"replication_subnet_group_description"`
+	ReplicationSubnetGroupID          string   `json:"replicationSubnetGroupID" tf:"replication_subnet_group_id"`
+	SubnetIDS                         []string `json:"subnetIDS" tf:"subnet_ids"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

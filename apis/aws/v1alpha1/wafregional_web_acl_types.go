@@ -29,7 +29,6 @@ type WafregionalWebACLSpecLoggingConfigurationRedactedFieldsFieldToMatch struct 
 }
 
 type WafregionalWebACLSpecLoggingConfigurationRedactedFields struct {
-	// +kubebuilder:validation:UniqueItems=true
 	FieldToMatch []WafregionalWebACLSpecLoggingConfigurationRedactedFieldsFieldToMatch `json:"fieldToMatch" tf:"field_to_match"`
 }
 
@@ -76,7 +75,6 @@ type WafregionalWebACLSpec struct {
 	MetricName           string                                      `json:"metricName" tf:"metric_name"`
 	Name                 string                                      `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Rule []WafregionalWebACLSpecRule `json:"rule,omitempty" tf:"rule,omitempty"`
 }
 

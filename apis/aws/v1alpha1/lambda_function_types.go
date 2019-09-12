@@ -32,10 +32,8 @@ type LambdaFunctionSpecTracingConfig struct {
 }
 
 type LambdaFunctionSpecVpcConfig struct {
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupIDS []string `json:"securityGroupIDS" tf:"security_group_ids"`
-	// +kubebuilder:validation:UniqueItems=true
-	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
+	SubnetIDS        []string `json:"subnetIDS" tf:"subnet_ids"`
 	// +optional
 	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
 }

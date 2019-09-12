@@ -39,7 +39,6 @@ type RouteTableSpec struct {
 	// +optional
 	Route []RouteTableSpecRoute `json:"route,omitempty" tf:"route,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Subnets []string `json:"subnets,omitempty" tf:"subnets,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

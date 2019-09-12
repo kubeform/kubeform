@@ -31,7 +31,6 @@ type WafIpsetSpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	IpSetDescriptors []WafIpsetSpecIpSetDescriptors `json:"ipSetDescriptors,omitempty" tf:"ip_set_descriptors,omitempty"`
 	Name             string                         `json:"name" tf:"name"`
 }

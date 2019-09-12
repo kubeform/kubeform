@@ -91,12 +91,10 @@ type InstanceSpec struct {
 	// +optional
 	DisableAPITermination bool `json:"disableAPITermination,omitempty" tf:"disable_api_termination,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EbsBlockDevice []InstanceSpecEbsBlockDevice `json:"ebsBlockDevice,omitempty" tf:"ebs_block_device,omitempty"`
 	// +optional
 	EbsOptimized bool `json:"ebsOptimized,omitempty" tf:"ebs_optimized,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EphemeralBlockDevice []InstanceSpecEphemeralBlockDevice `json:"ephemeralBlockDevice,omitempty" tf:"ephemeral_block_device,omitempty"`
 	// +optional
 	GetPasswordData bool `json:"getPasswordData,omitempty" tf:"get_password_data,omitempty"`
@@ -118,7 +116,6 @@ type InstanceSpec struct {
 	// +optional
 	Monitoring bool `json:"monitoring,omitempty" tf:"monitoring,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	NetworkInterface []InstanceSpecNetworkInterface `json:"networkInterface,omitempty" tf:"network_interface,omitempty"`
 	// +optional
 	PasswordData string `json:"passwordData,omitempty" tf:"password_data,omitempty"`
@@ -138,7 +135,6 @@ type InstanceSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	RootBlockDevice []InstanceSpecRootBlockDevice `json:"rootBlockDevice,omitempty" tf:"root_block_device,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
 	SourceDestCheck bool `json:"sourceDestCheck,omitempty" tf:"source_dest_check,omitempty"`
@@ -155,7 +151,6 @@ type InstanceSpec struct {
 	// +optional
 	VolumeTags map[string]string `json:"volumeTags,omitempty" tf:"volume_tags,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VpcSecurityGroupIDS []string `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
 }
 

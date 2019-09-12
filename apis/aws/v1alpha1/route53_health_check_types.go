@@ -26,7 +26,6 @@ type Route53HealthCheckSpec struct {
 	// +optional
 	ChildHealthThreshold int `json:"childHealthThreshold,omitempty" tf:"child_health_threshold,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ChildHealthchecks []string `json:"childHealthchecks,omitempty" tf:"child_healthchecks,omitempty"`
 	// +optional
 	CloudwatchAlarmName string `json:"cloudwatchAlarmName,omitempty" tf:"cloudwatch_alarm_name,omitempty"`
@@ -51,7 +50,6 @@ type Route53HealthCheckSpec struct {
 	// +optional
 	ReferenceName string `json:"referenceName,omitempty" tf:"reference_name,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Regions []string `json:"regions,omitempty" tf:"regions,omitempty"`
 	// +optional
 	RequestInterval int `json:"requestInterval,omitempty" tf:"request_interval,omitempty"`

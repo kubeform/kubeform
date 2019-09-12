@@ -28,9 +28,8 @@ type DynamodbGlobalTableSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn  string `json:"arn,omitempty" tf:"arn,omitempty"`
-	Name string `json:"name" tf:"name"`
-	// +kubebuilder:validation:UniqueItems=true
+	Arn     string                           `json:"arn,omitempty" tf:"arn,omitempty"`
+	Name    string                           `json:"name" tf:"name"`
 	Replica []DynamodbGlobalTableSpecReplica `json:"replica" tf:"replica"`
 }
 

@@ -118,7 +118,6 @@ type ContainerGroupSpecContainer struct {
 	// Deprecated
 	Port int `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Ports []ContainerGroupSpecContainerPorts `json:"ports,omitempty" tf:"ports,omitempty"`
 	// +optional
 	// Deprecated

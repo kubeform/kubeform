@@ -30,7 +30,6 @@ type DefaultSecurityGroupSpecEgress struct {
 	PrefixListIDS []string `json:"prefixListIDS,omitempty" tf:"prefix_list_ids,omitempty"`
 	Protocol      string   `json:"protocol" tf:"protocol"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
 	Self   bool `json:"self,omitempty" tf:"self,omitempty"`
@@ -49,7 +48,6 @@ type DefaultSecurityGroupSpecIngress struct {
 	PrefixListIDS []string `json:"prefixListIDS,omitempty" tf:"prefix_list_ids,omitempty"`
 	Protocol      string   `json:"protocol" tf:"protocol"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
 	Self   bool `json:"self,omitempty" tf:"self,omitempty"`
@@ -64,10 +62,8 @@ type DefaultSecurityGroupSpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Egress []DefaultSecurityGroupSpecEgress `json:"egress,omitempty" tf:"egress,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Ingress []DefaultSecurityGroupSpecIngress `json:"ingress,omitempty" tf:"ingress,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`

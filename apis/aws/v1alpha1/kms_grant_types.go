@@ -31,10 +31,8 @@ type KmsGrantSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Constraints []KmsGrantSpecConstraints `json:"constraints,omitempty" tf:"constraints,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	GrantCreationTokens []string `json:"grantCreationTokens,omitempty" tf:"grant_creation_tokens,omitempty"`
 	// +optional
 	GrantID string `json:"grantID,omitempty" tf:"grant_id,omitempty"`
@@ -43,8 +41,7 @@ type KmsGrantSpec struct {
 	GranteePrincipal string `json:"granteePrincipal" tf:"grantee_principal"`
 	KeyID            string `json:"keyID" tf:"key_id"`
 	// +optional
-	Name string `json:"name,omitempty" tf:"name,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
+	Name       string   `json:"name,omitempty" tf:"name,omitempty"`
 	Operations []string `json:"operations" tf:"operations"`
 	// +optional
 	RetireOnDelete bool `json:"retireOnDelete,omitempty" tf:"retire_on_delete,omitempty"`

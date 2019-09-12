@@ -23,7 +23,6 @@ type ConfigConfigRuleSpecScope struct {
 	ComplianceResourceID string `json:"complianceResourceID,omitempty" tf:"compliance_resource_id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=100
-	// +kubebuilder:validation:UniqueItems=true
 	ComplianceResourceTypes []string `json:"complianceResourceTypes,omitempty" tf:"compliance_resource_types,omitempty"`
 	// +optional
 	TagKey string `json:"tagKey,omitempty" tf:"tag_key,omitempty"`
@@ -44,7 +43,6 @@ type ConfigConfigRuleSpecSource struct {
 	Owner string `json:"owner" tf:"owner"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=25
-	// +kubebuilder:validation:UniqueItems=true
 	SourceDetail     []ConfigConfigRuleSpecSourceSourceDetail `json:"sourceDetail,omitempty" tf:"source_detail,omitempty"`
 	SourceIdentifier string                                   `json:"sourceIdentifier" tf:"source_identifier"`
 }

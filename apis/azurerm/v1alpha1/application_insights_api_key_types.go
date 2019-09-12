@@ -30,10 +30,8 @@ type ApplicationInsightsAPIKeySpec struct {
 	ApplicationInsightsID string `json:"applicationInsightsID" tf:"application_insights_id"`
 	Name                  string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ReadPermissions []string `json:"readPermissions,omitempty" tf:"read_permissions,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	WritePermissions []string `json:"writePermissions,omitempty" tf:"write_permissions,omitempty"`
 }
 

@@ -35,7 +35,6 @@ type StoragegatewaySmbFileShareSpec struct {
 	// +optional
 	GuessMimeTypeEnabled bool `json:"guessMimeTypeEnabled,omitempty" tf:"guess_mime_type_enabled,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	InvalidUserList []string `json:"invalidUserList,omitempty" tf:"invalid_user_list,omitempty"`
 	// +optional
 	KmsEncrypted bool `json:"kmsEncrypted,omitempty" tf:"kms_encrypted,omitempty"`
@@ -50,7 +49,6 @@ type StoragegatewaySmbFileShareSpec struct {
 	RequesterPays bool   `json:"requesterPays,omitempty" tf:"requester_pays,omitempty"`
 	RoleArn       string `json:"roleArn" tf:"role_arn"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ValidUserList []string `json:"validUserList,omitempty" tf:"valid_user_list,omitempty"`
 }
 

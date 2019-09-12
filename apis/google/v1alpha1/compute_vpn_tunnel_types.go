@@ -38,7 +38,6 @@ type ComputeVPNTunnelSpec struct {
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	LocalTrafficSelector []string `json:"localTrafficSelector,omitempty" tf:"local_traffic_selector,omitempty"`
 	Name                 string   `json:"name" tf:"name"`
 	PeerIP               string   `json:"peerIP" tf:"peer_ip"`
@@ -47,7 +46,6 @@ type ComputeVPNTunnelSpec struct {
 	// +optional
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	RemoteTrafficSelector []string `json:"remoteTrafficSelector,omitempty" tf:"remote_traffic_selector,omitempty"`
 	// +optional
 	Router string `json:"router,omitempty" tf:"router,omitempty"`

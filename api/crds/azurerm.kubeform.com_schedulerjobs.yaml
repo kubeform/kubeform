@@ -576,7 +576,6 @@ spec:
                       format: int64
                       type: integer
                     type: array
-                    uniqueItems: true
                   interval:
                     type: integer
                   minutes:
@@ -584,14 +583,12 @@ spec:
                       format: int64
                       type: integer
                     type: array
-                    uniqueItems: true
                   monthDays:
                     items:
                       format: int64
                       type: integer
                     minItems: 1
                     type: array
-                    uniqueItems: true
                   monthlyOccurrences:
                     items:
                       properties:
@@ -605,12 +602,10 @@ spec:
                       type: object
                     minItems: 1
                     type: array
-                    uniqueItems: true
                   weekDays:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                 required:
                 - frequency
                 type: object
@@ -836,7 +831,6 @@ spec:
                           format: int64
                           type: integer
                         type: array
-                        uniqueItems: true
                       interval:
                         type: integer
                       minutes:
@@ -844,14 +838,12 @@ spec:
                           format: int64
                           type: integer
                         type: array
-                        uniqueItems: true
                       monthDays:
                         items:
                           format: int64
                           type: integer
                         minItems: 1
                         type: array
-                        uniqueItems: true
                       monthlyOccurrences:
                         items:
                           properties:
@@ -865,12 +857,10 @@ spec:
                           type: object
                         minItems: 1
                         type: array
-                        uniqueItems: true
                       weekDays:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                     required:
                     - frequency
                     type: object
@@ -932,3 +922,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

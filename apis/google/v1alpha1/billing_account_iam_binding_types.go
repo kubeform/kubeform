@@ -25,8 +25,7 @@ type BillingAccountIamBindingSpec struct {
 
 	BillingAccountID string `json:"billingAccountID" tf:"billing_account_id"`
 	// +optional
-	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
+	Etag    string   `json:"etag,omitempty" tf:"etag,omitempty"`
 	Members []string `json:"members" tf:"members"`
 	Role    string   `json:"role" tf:"role"`
 }

@@ -70,7 +70,6 @@ type OpsworksInstanceSpec struct {
 	// +optional
 	DeleteEip bool `json:"deleteEip,omitempty" tf:"delete_eip,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EbsBlockDevice []OpsworksInstanceSpecEbsBlockDevice `json:"ebsBlockDevice,omitempty" tf:"ebs_block_device,omitempty"`
 	// +optional
 	EbsOptimized bool `json:"ebsOptimized,omitempty" tf:"ebs_optimized,omitempty"`
@@ -81,7 +80,6 @@ type OpsworksInstanceSpec struct {
 	// +optional
 	ElasticIP string `json:"elasticIP,omitempty" tf:"elastic_ip,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EphemeralBlockDevice []OpsworksInstanceSpecEphemeralBlockDevice `json:"ephemeralBlockDevice,omitempty" tf:"ephemeral_block_device,omitempty"`
 	// +optional
 	Hostname string `json:"hostname,omitempty" tf:"hostname,omitempty"`
@@ -119,7 +117,6 @@ type OpsworksInstanceSpec struct {
 	// +optional
 	ReportedOsVersion string `json:"reportedOsVersion,omitempty" tf:"reported_os_version,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	RootBlockDevice []OpsworksInstanceSpecRootBlockDevice `json:"rootBlockDevice,omitempty" tf:"root_block_device,omitempty"`
 	// +optional
 	RootDeviceType string `json:"rootDeviceType,omitempty" tf:"root_device_type,omitempty"`

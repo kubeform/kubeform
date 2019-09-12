@@ -36,7 +36,6 @@ type StorageTableSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Acl  []StorageTableSpecAcl `json:"acl,omitempty" tf:"acl,omitempty"`
 	Name string                `json:"name" tf:"name"`
 	// +optional

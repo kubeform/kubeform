@@ -83,11 +83,9 @@ type AppmeshVirtualNodeSpecSpecServiceDiscovery struct {
 type AppmeshVirtualNodeSpecSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=25
-	// +kubebuilder:validation:UniqueItems=true
 	Backend []AppmeshVirtualNodeSpecSpecBackend `json:"backend,omitempty" tf:"backend,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Listener []AppmeshVirtualNodeSpecSpecListener `json:"listener,omitempty" tf:"listener,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

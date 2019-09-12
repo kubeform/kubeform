@@ -25,7 +25,6 @@ type DomainSpec struct {
 
 	// The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AxfrIPS []string `json:"axfrIPS,omitempty" tf:"axfr_ips,omitempty"`
 	// A description for this Domain. This is for display purposes only.
 	// +optional
@@ -40,7 +39,6 @@ type DomainSpec struct {
 	Group string `json:"group,omitempty" tf:"group,omitempty"`
 	// The IP addresses representing the master DNS for this Domain.
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	MasterIPS []string `json:"masterIPS,omitempty" tf:"master_ips,omitempty"`
 	// The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	// +optional
@@ -56,7 +54,6 @@ type DomainSpec struct {
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// An array of tags applied to this object. Tags are for organizational purposes only.
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	// +optional

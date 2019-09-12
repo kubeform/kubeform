@@ -41,7 +41,6 @@ type ContainerServiceSpecLinuxProfileSshKey struct {
 type ContainerServiceSpecLinuxProfile struct {
 	AdminUsername string `json:"adminUsername" tf:"admin_username"`
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	SshKey []ContainerServiceSpecLinuxProfileSshKey `json:"sshKey" tf:"ssh_key"`
 }
 
@@ -66,24 +65,19 @@ type ContainerServiceSpec struct {
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	AgentPoolProfile []ContainerServiceSpecAgentPoolProfile `json:"agentPoolProfile" tf:"agent_pool_profile"`
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	DiagnosticsProfile []ContainerServiceSpecDiagnosticsProfile `json:"diagnosticsProfile" tf:"diagnostics_profile"`
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	LinuxProfile []ContainerServiceSpecLinuxProfile `json:"linuxProfile" tf:"linux_profile"`
 	Location     string                             `json:"location" tf:"location"`
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	MasterProfile         []ContainerServiceSpecMasterProfile `json:"masterProfile" tf:"master_profile"`
 	Name                  string                              `json:"name" tf:"name"`
 	OrchestrationPlatform string                              `json:"orchestrationPlatform" tf:"orchestration_platform"`
 	ResourceGroupName     string                              `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	ServicePrincipal []ContainerServiceSpecServicePrincipal `json:"servicePrincipal,omitempty" tf:"service_principal,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

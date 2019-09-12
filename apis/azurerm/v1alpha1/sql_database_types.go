@@ -31,12 +31,10 @@ type SqlDatabaseSpecImport struct {
 
 type SqlDatabaseSpecThreatDetectionPolicy struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DisabledAlerts []string `json:"disabledAlerts,omitempty" tf:"disabled_alerts,omitempty"`
 	// +optional
 	EmailAccountAdmins string `json:"emailAccountAdmins,omitempty" tf:"email_account_admins,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EmailAddresses []string `json:"emailAddresses,omitempty" tf:"email_addresses,omitempty"`
 	// +optional
 	RetentionDays int `json:"retentionDays,omitempty" tf:"retention_days,omitempty"`

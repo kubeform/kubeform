@@ -53,7 +53,6 @@ type CloudwatchMetricAlarmSpec struct {
 	// +optional
 	ActionsEnabled bool `json:"actionsEnabled,omitempty" tf:"actions_enabled,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AlarmActions []string `json:"alarmActions,omitempty" tf:"alarm_actions,omitempty"`
 	// +optional
 	AlarmDescription string `json:"alarmDescription,omitempty" tf:"alarm_description,omitempty"`
@@ -71,17 +70,14 @@ type CloudwatchMetricAlarmSpec struct {
 	// +optional
 	ExtendedStatistic string `json:"extendedStatistic,omitempty" tf:"extended_statistic,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	InsufficientDataActions []string `json:"insufficientDataActions,omitempty" tf:"insufficient_data_actions,omitempty"`
 	// +optional
 	MetricName string `json:"metricName,omitempty" tf:"metric_name,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	MetricQuery []CloudwatchMetricAlarmSpecMetricQuery `json:"metricQuery,omitempty" tf:"metric_query,omitempty"`
 	// +optional
 	Namespace string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	OkActions []string `json:"okActions,omitempty" tf:"ok_actions,omitempty"`
 	// +optional
 	Period int `json:"period,omitempty" tf:"period,omitempty"`

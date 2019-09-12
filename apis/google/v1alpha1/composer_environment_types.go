@@ -26,14 +26,12 @@ type ComposerEnvironmentSpecConfigNodeConfig struct {
 	// +optional
 	Network string `json:"network,omitempty" tf:"network,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes,omitempty"`
 	// +optional
 	ServiceAccount string `json:"serviceAccount,omitempty" tf:"service_account,omitempty"`
 	// +optional
 	Subnetwork string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`

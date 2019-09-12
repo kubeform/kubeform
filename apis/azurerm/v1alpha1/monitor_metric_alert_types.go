@@ -49,7 +49,6 @@ type MonitorMetricAlertSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Action []MonitorMetricAlertSpecAction `json:"action,omitempty" tf:"action,omitempty"`
 	// +optional
 	AutoMitigate bool `json:"autoMitigate,omitempty" tf:"auto_mitigate,omitempty"`
@@ -65,7 +64,6 @@ type MonitorMetricAlertSpec struct {
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Scopes []string `json:"scopes" tf:"scopes"`
 	// +optional
 	Severity int `json:"severity,omitempty" tf:"severity,omitempty"`

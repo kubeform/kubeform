@@ -21,7 +21,6 @@ type CodedeployDeploymentGroup struct {
 type CodedeployDeploymentGroupSpecAlarmConfiguration struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=10
-	// +kubebuilder:validation:UniqueItems=true
 	Alarms []string `json:"alarms,omitempty" tf:"alarms,omitempty"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
@@ -33,7 +32,6 @@ type CodedeployDeploymentGroupSpecAutoRollbackConfiguration struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Events []string `json:"events,omitempty" tf:"events,omitempty"`
 }
 
@@ -95,7 +93,6 @@ type CodedeployDeploymentGroupSpecEc2TagSetEc2TagFilter struct {
 
 type CodedeployDeploymentGroupSpecEc2TagSet struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Ec2TagFilter []CodedeployDeploymentGroupSpecEc2TagSetEc2TagFilter `json:"ec2TagFilter,omitempty" tf:"ec2_tag_filter,omitempty"`
 }
 
@@ -115,7 +112,6 @@ type CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupInfo struct {
 }
 
 type CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute struct {
-	// +kubebuilder:validation:UniqueItems=true
 	ListenerArns []string `json:"listenerArns" tf:"listener_arns"`
 }
 
@@ -124,7 +120,6 @@ type CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfoTargetGroup
 }
 
 type CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute struct {
-	// +kubebuilder:validation:UniqueItems=true
 	ListenerArns []string `json:"listenerArns" tf:"listener_arns"`
 }
 
@@ -142,10 +137,8 @@ type CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo struct {
 
 type CodedeployDeploymentGroupSpecLoadBalancerInfo struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ElbInfo []CodedeployDeploymentGroupSpecLoadBalancerInfoElbInfo `json:"elbInfo,omitempty" tf:"elb_info,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	TargetGroupInfo []CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupInfo `json:"targetGroupInfo,omitempty" tf:"target_group_info,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -162,7 +155,6 @@ type CodedeployDeploymentGroupSpecOnPremisesInstanceTagFilter struct {
 }
 
 type CodedeployDeploymentGroupSpecTriggerConfiguration struct {
-	// +kubebuilder:validation:UniqueItems=true
 	TriggerEvents    []string `json:"triggerEvents" tf:"trigger_events"`
 	TriggerName      string   `json:"triggerName" tf:"trigger_name"`
 	TriggerTargetArn string   `json:"triggerTargetArn" tf:"trigger_target_arn"`
@@ -181,7 +173,6 @@ type CodedeployDeploymentGroupSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	AutoRollbackConfiguration []CodedeployDeploymentGroupSpecAutoRollbackConfiguration `json:"autoRollbackConfiguration,omitempty" tf:"auto_rollback_configuration,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AutoscalingGroups []string `json:"autoscalingGroups,omitempty" tf:"autoscaling_groups,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -193,10 +184,8 @@ type CodedeployDeploymentGroupSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	DeploymentStyle []CodedeployDeploymentGroupSpecDeploymentStyle `json:"deploymentStyle,omitempty" tf:"deployment_style,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Ec2TagFilter []CodedeployDeploymentGroupSpecEc2TagFilter `json:"ec2TagFilter,omitempty" tf:"ec2_tag_filter,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Ec2TagSet []CodedeployDeploymentGroupSpecEc2TagSet `json:"ec2TagSet,omitempty" tf:"ec2_tag_set,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -205,11 +194,9 @@ type CodedeployDeploymentGroupSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	LoadBalancerInfo []CodedeployDeploymentGroupSpecLoadBalancerInfo `json:"loadBalancerInfo,omitempty" tf:"load_balancer_info,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	OnPremisesInstanceTagFilter []CodedeployDeploymentGroupSpecOnPremisesInstanceTagFilter `json:"onPremisesInstanceTagFilter,omitempty" tf:"on_premises_instance_tag_filter,omitempty"`
 	ServiceRoleArn              string                                                     `json:"serviceRoleArn" tf:"service_role_arn"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	TriggerConfiguration []CodedeployDeploymentGroupSpecTriggerConfiguration `json:"triggerConfiguration,omitempty" tf:"trigger_configuration,omitempty"`
 }
 

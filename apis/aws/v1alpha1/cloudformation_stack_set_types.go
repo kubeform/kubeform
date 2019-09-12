@@ -27,7 +27,6 @@ type CloudformationStackSetSpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Capabilities []string `json:"capabilities,omitempty" tf:"capabilities,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`

@@ -43,7 +43,6 @@ type CodepipelineWebhookSpec struct {
 	// +kubebuilder:validation:MinItems=1
 	AuthenticationConfiguration []CodepipelineWebhookSpecAuthenticationConfiguration `json:"authenticationConfiguration,omitempty" tf:"authentication_configuration,omitempty"`
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Filter         []CodepipelineWebhookSpecFilter `json:"filter" tf:"filter"`
 	Name           string                          `json:"name" tf:"name"`
 	TargetAction   string                          `json:"targetAction" tf:"target_action"`

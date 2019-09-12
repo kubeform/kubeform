@@ -19,16 +19,13 @@ type DirectoryServiceDirectory struct {
 }
 
 type DirectoryServiceDirectorySpecConnectSettings struct {
-	// +kubebuilder:validation:UniqueItems=true
 	CustomerDNSIPS   []string `json:"customerDNSIPS" tf:"customer_dns_ips"`
 	CustomerUsername string   `json:"customerUsername" tf:"customer_username"`
-	// +kubebuilder:validation:UniqueItems=true
-	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
-	VpcID     string   `json:"vpcID" tf:"vpc_id"`
+	SubnetIDS        []string `json:"subnetIDS" tf:"subnet_ids"`
+	VpcID            string   `json:"vpcID" tf:"vpc_id"`
 }
 
 type DirectoryServiceDirectorySpecVpcSettings struct {
-	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
 	VpcID     string   `json:"vpcID" tf:"vpc_id"`
 }
@@ -50,7 +47,6 @@ type DirectoryServiceDirectorySpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DnsIPAddresses []string `json:"dnsIPAddresses,omitempty" tf:"dns_ip_addresses,omitempty"`
 	// +optional
 	Edition string `json:"edition,omitempty" tf:"edition,omitempty"`

@@ -39,7 +39,6 @@ type SubnetSpec struct {
 	// +optional
 	Delegation []SubnetSpecDelegation `json:"delegation,omitempty" tf:"delegation,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	IpConfigurations []string `json:"ipConfigurations,omitempty" tf:"ip_configurations,omitempty"`
 	Name             string   `json:"name" tf:"name"`
 	// +optional

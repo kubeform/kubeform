@@ -61,7 +61,6 @@ type LoadbalancerSpec struct {
 	// +optional
 	Algorithm string `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DropletIDS []int64 `json:"dropletIDS,omitempty" tf:"droplet_ids,omitempty"`
 	// +optional
 	DropletTag string `json:"dropletTag,omitempty" tf:"droplet_tag,omitempty"`

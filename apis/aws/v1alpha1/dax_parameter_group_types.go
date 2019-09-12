@@ -32,7 +32,6 @@ type DaxParameterGroupSpec struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Parameters []DaxParameterGroupSpecParameters `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 

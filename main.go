@@ -16,11 +16,9 @@ import (
 )
 
 func main() {
-	var providersMap map[string]terraform.ResourceProvider
-
 	version := "v1alpha1"
 
-	providersMap = map[string]terraform.ResourceProvider{
+	providersMap := map[string]terraform.ResourceProvider{
 		"linode":       linode.Provider(),
 		"digitalocean": digitalocean.Provider(),
 		"aws":          aws.Provider(),
@@ -45,5 +43,10 @@ func main() {
 				fmt.Println(err.Error())
 			}
 		}
+	}
+
+	err := util.GenerateProviderAPIS("modules", version, nil, nil)
+	if err != nil {
+		fmt.Println(err.Error())
 	}
 }

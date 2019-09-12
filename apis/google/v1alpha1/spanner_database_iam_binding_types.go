@@ -25,10 +25,9 @@ type SpannerDatabaseIamBindingSpec struct {
 
 	Database string `json:"database" tf:"database"`
 	// +optional
-	Etag     string `json:"etag,omitempty" tf:"etag,omitempty"`
-	Instance string `json:"instance" tf:"instance"`
-	// +kubebuilder:validation:UniqueItems=true
-	Members []string `json:"members" tf:"members"`
+	Etag     string   `json:"etag,omitempty" tf:"etag,omitempty"`
+	Instance string   `json:"instance" tf:"instance"`
+	Members  []string `json:"members" tf:"members"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	Role    string `json:"role" tf:"role"`

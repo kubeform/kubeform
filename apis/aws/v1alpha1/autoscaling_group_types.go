@@ -102,14 +102,12 @@ type AutoscalingGroupSpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	// +optional
 	DefaultCooldown int `json:"defaultCooldown,omitempty" tf:"default_cooldown,omitempty"`
 	// +optional
 	DesiredCapacity int `json:"desiredCapacity,omitempty" tf:"desired_capacity,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EnabledMetrics []string `json:"enabledMetrics,omitempty" tf:"enabled_metrics,omitempty"`
 	// +optional
 	ForceDelete bool `json:"forceDelete,omitempty" tf:"force_delete,omitempty"`
@@ -118,7 +116,6 @@ type AutoscalingGroupSpec struct {
 	// +optional
 	HealthCheckType string `json:"healthCheckType,omitempty" tf:"health_check_type,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	InitialLifecycleHook []AutoscalingGroupSpecInitialLifecycleHook `json:"initialLifecycleHook,omitempty" tf:"initial_lifecycle_hook,omitempty"`
 	// +optional
 	LaunchConfiguration string `json:"launchConfiguration,omitempty" tf:"launch_configuration,omitempty"`
@@ -126,7 +123,6 @@ type AutoscalingGroupSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	LaunchTemplate []AutoscalingGroupSpecLaunchTemplate `json:"launchTemplate,omitempty" tf:"launch_template,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	LoadBalancers []string `json:"loadBalancers,omitempty" tf:"load_balancers,omitempty"`
 	MaxSize       int      `json:"maxSize" tf:"max_size"`
 	// +optional
@@ -148,19 +144,15 @@ type AutoscalingGroupSpec struct {
 	// +optional
 	ServiceLinkedRoleArn string `json:"serviceLinkedRoleArn,omitempty" tf:"service_linked_role_arn,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SuspendedProcesses []string `json:"suspendedProcesses,omitempty" tf:"suspended_processes,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Tag []AutoscalingGroupSpecTag `json:"tag,omitempty" tf:"tag,omitempty"`
 	// +optional
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	TargetGroupArns []string `json:"targetGroupArns,omitempty" tf:"target_group_arns,omitempty"`
 	// +optional
 	TerminationPolicies []string `json:"terminationPolicies,omitempty" tf:"termination_policies,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VpcZoneIdentifier []string `json:"vpcZoneIdentifier,omitempty" tf:"vpc_zone_identifier,omitempty"`
 	// +optional
 	WaitForCapacityTimeout string `json:"waitForCapacityTimeout,omitempty" tf:"wait_for_capacity_timeout,omitempty"`

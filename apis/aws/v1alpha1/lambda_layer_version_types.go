@@ -27,7 +27,6 @@ type LambdaLayerVersionSpec struct {
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=5
-	// +kubebuilder:validation:UniqueItems=true
 	CompatibleRuntimes []string `json:"compatibleRuntimes,omitempty" tf:"compatible_runtimes,omitempty"`
 	// +optional
 	CreatedDate string `json:"createdDate,omitempty" tf:"created_date,omitempty"`

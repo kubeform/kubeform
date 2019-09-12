@@ -49,7 +49,6 @@ type Ec2ClientVPNEndpointSpec struct {
 	// +optional
 	DnsName string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DnsServers           []string `json:"dnsServers,omitempty" tf:"dns_servers,omitempty"`
 	ServerCertificateArn string   `json:"serverCertificateArn" tf:"server_certificate_arn"`
 	// +optional

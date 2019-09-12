@@ -122,19 +122,16 @@ type LaunchTemplateSpecNetworkInterfaces struct {
 	// +optional
 	Ipv4AddressCount int `json:"ipv4AddressCount,omitempty" tf:"ipv4_address_count,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Ipv4Addresses []string `json:"ipv4Addresses,omitempty" tf:"ipv4_addresses,omitempty"`
 	// +optional
 	Ipv6AddressCount int `json:"ipv6AddressCount,omitempty" tf:"ipv6_address_count,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Ipv6Addresses []string `json:"ipv6Addresses,omitempty" tf:"ipv6_addresses,omitempty"`
 	// +optional
 	NetworkInterfaceID string `json:"networkInterfaceID,omitempty" tf:"network_interface_id,omitempty"`
 	// +optional
 	PrivateIPAddress string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
 	SubnetID string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
@@ -209,7 +206,6 @@ type LaunchTemplateSpec struct {
 	// +optional
 	LatestVersion int `json:"latestVersion,omitempty" tf:"latest_version,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	LicenseSpecification []LaunchTemplateSpecLicenseSpecification `json:"licenseSpecification,omitempty" tf:"license_specification,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -226,7 +222,6 @@ type LaunchTemplateSpec struct {
 	// +optional
 	RamDiskID string `json:"ramDiskID,omitempty" tf:"ram_disk_id,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupNames []string `json:"securityGroupNames,omitempty" tf:"security_group_names,omitempty"`
 	// +optional
 	TagSpecifications []LaunchTemplateSpecTagSpecifications `json:"tagSpecifications,omitempty" tf:"tag_specifications,omitempty"`
@@ -235,7 +230,6 @@ type LaunchTemplateSpec struct {
 	// +optional
 	UserData string `json:"userData,omitempty" tf:"user_data,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VpcSecurityGroupIDS []string `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
 }
 

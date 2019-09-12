@@ -28,14 +28,12 @@ type RedshiftEventSubscriptionSpec struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EventCategories []string `json:"eventCategories,omitempty" tf:"event_categories,omitempty"`
 	Name            string   `json:"name" tf:"name"`
 	// +optional
 	Severity    string `json:"severity,omitempty" tf:"severity,omitempty"`
 	SnsTopicArn string `json:"snsTopicArn" tf:"sns_topic_arn"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SourceIDS []string `json:"sourceIDS,omitempty" tf:"source_ids,omitempty"`
 	// +optional
 	SourceType string `json:"sourceType,omitempty" tf:"source_type,omitempty"`

@@ -49,7 +49,6 @@ type CognitoIdentityPoolRolesAttachmentSpec struct {
 
 	IdentityPoolID string `json:"identityPoolID" tf:"identity_pool_id"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	RoleMapping []CognitoIdentityPoolRolesAttachmentSpecRoleMapping    `json:"roleMapping,omitempty" tf:"role_mapping,omitempty"`
 	Roles       map[string]CognitoIdentityPoolRolesAttachmentSpecRoles `json:"roles" tf:"roles"`
 }

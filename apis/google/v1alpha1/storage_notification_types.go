@@ -27,7 +27,6 @@ type StorageNotificationSpec struct {
 	// +optional
 	CustomAttributes map[string]string `json:"customAttributes,omitempty" tf:"custom_attributes,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EventTypes []string `json:"eventTypes,omitempty" tf:"event_types,omitempty"`
 	// +optional
 	ObjectNamePrefix string `json:"objectNamePrefix,omitempty" tf:"object_name_prefix,omitempty"`

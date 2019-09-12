@@ -20,18 +20,14 @@ type FirewallNATRuleCollection struct {
 
 type FirewallNATRuleCollectionSpecRule struct {
 	// +optional
-	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
+	Description          string   `json:"description,omitempty" tf:"description,omitempty"`
 	DestinationAddresses []string `json:"destinationAddresses" tf:"destination_addresses"`
-	// +kubebuilder:validation:UniqueItems=true
-	DestinationPorts []string `json:"destinationPorts" tf:"destination_ports"`
-	Name             string   `json:"name" tf:"name"`
-	// +kubebuilder:validation:UniqueItems=true
-	Protocols []string `json:"protocols" tf:"protocols"`
-	// +kubebuilder:validation:UniqueItems=true
-	SourceAddresses   []string `json:"sourceAddresses" tf:"source_addresses"`
-	TranslatedAddress string   `json:"translatedAddress" tf:"translated_address"`
-	TranslatedPort    string   `json:"translatedPort" tf:"translated_port"`
+	DestinationPorts     []string `json:"destinationPorts" tf:"destination_ports"`
+	Name                 string   `json:"name" tf:"name"`
+	Protocols            []string `json:"protocols" tf:"protocols"`
+	SourceAddresses      []string `json:"sourceAddresses" tf:"source_addresses"`
+	TranslatedAddress    string   `json:"translatedAddress" tf:"translated_address"`
+	TranslatedPort       string   `json:"translatedPort" tf:"translated_port"`
 }
 
 type FirewallNATRuleCollectionSpec struct {
@@ -45,7 +41,6 @@ type FirewallNATRuleCollectionSpec struct {
 	Priority          int    `json:"priority" tf:"priority"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Rule []FirewallNATRuleCollectionSpecRule `json:"rule" tf:"rule"`
 }
 

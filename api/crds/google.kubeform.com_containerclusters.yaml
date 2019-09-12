@@ -401,7 +401,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             addonsConfig:
               items:
                 properties:
@@ -543,7 +542,6 @@ spec:
                       type: object
                     maxItems: 20
                     type: array
-                    uniqueItems: true
                 type: object
               maxItems: 1
               type: array
@@ -609,7 +607,6 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   preemptible:
                     type: boolean
                   serviceAccount:
@@ -727,7 +724,6 @@ spec:
                           items:
                             type: string
                           type: array
-                          uniqueItems: true
                         preemptible:
                           type: boolean
                         serviceAccount:
@@ -853,7 +849,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 addonsConfig:
                   items:
                     properties:
@@ -995,7 +990,6 @@ spec:
                           type: object
                         maxItems: 20
                         type: array
-                        uniqueItems: true
                     type: object
                   maxItems: 1
                   type: array
@@ -1061,7 +1055,6 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       preemptible:
                         type: boolean
                       serviceAccount:
@@ -1179,7 +1172,6 @@ spec:
                               items:
                                 type: string
                               type: array
-                              uniqueItems: true
                             preemptible:
                               type: boolean
                             serviceAccount:
@@ -1316,3 +1308,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

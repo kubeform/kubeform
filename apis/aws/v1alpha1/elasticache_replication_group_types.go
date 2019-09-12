@@ -41,7 +41,6 @@ type ElasticacheReplicationGroupSpec struct {
 	// +optional
 	AutomaticFailoverEnabled bool `json:"automaticFailoverEnabled,omitempty" tf:"automatic_failover_enabled,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -55,7 +54,6 @@ type ElasticacheReplicationGroupSpec struct {
 	// +optional
 	MaintenanceWindow string `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	MemberClusters []string `json:"memberClusters,omitempty" tf:"member_clusters,omitempty"`
 	// +optional
 	NodeType string `json:"nodeType,omitempty" tf:"node_type,omitempty"`
@@ -72,13 +70,10 @@ type ElasticacheReplicationGroupSpec struct {
 	ReplicationGroupDescription string `json:"replicationGroupDescription" tf:"replication_group_description"`
 	ReplicationGroupID          string `json:"replicationGroupID" tf:"replication_group_id"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupIDS []string `json:"securityGroupIDS,omitempty" tf:"security_group_ids,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupNames []string `json:"securityGroupNames,omitempty" tf:"security_group_names,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SnapshotArns []string `json:"snapshotArns,omitempty" tf:"snapshot_arns,omitempty"`
 	// +optional
 	SnapshotName string `json:"snapshotName,omitempty" tf:"snapshot_name,omitempty"`

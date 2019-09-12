@@ -34,7 +34,6 @@ type KinesisStreamSpec struct {
 	RetentionPeriod int `json:"retentionPeriod,omitempty" tf:"retention_period,omitempty"`
 	ShardCount      int `json:"shardCount" tf:"shard_count"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ShardLevelMetrics []string `json:"shardLevelMetrics,omitempty" tf:"shard_level_metrics,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

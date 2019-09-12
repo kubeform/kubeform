@@ -50,7 +50,6 @@ type OpsworksGangliaLayerSpec struct {
 	// +optional
 	CustomJSON string `json:"customJSON,omitempty" tf:"custom_json,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	CustomSecurityGroupIDS []string `json:"customSecurityGroupIDS,omitempty" tf:"custom_security_group_ids,omitempty"`
 	// +optional
 	CustomSetupRecipes []string `json:"customSetupRecipes,omitempty" tf:"custom_setup_recipes,omitempty"`
@@ -61,7 +60,6 @@ type OpsworksGangliaLayerSpec struct {
 	// +optional
 	DrainElbOnShutdown bool `json:"drainElbOnShutdown,omitempty" tf:"drain_elb_on_shutdown,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EbsVolume []OpsworksGangliaLayerSpecEbsVolume `json:"ebsVolume,omitempty" tf:"ebs_volume,omitempty"`
 	// +optional
 	ElasticLoadBalancer string `json:"elasticLoadBalancer,omitempty" tf:"elastic_load_balancer,omitempty"`
@@ -74,7 +72,6 @@ type OpsworksGangliaLayerSpec struct {
 	Password string `json:"password" tf:"password"`
 	StackID  string `json:"stackID" tf:"stack_id"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SystemPackages []string `json:"systemPackages,omitempty" tf:"system_packages,omitempty"`
 	// +optional
 	Url string `json:"url,omitempty" tf:"url,omitempty"`

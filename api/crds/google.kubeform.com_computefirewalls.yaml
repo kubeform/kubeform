@@ -410,7 +410,6 @@ spec:
                 - protocol
                 type: object
               type: array
-              uniqueItems: true
             creationTimestamp:
               type: string
             deny:
@@ -426,14 +425,12 @@ spec:
                 - protocol
                 type: object
               type: array
-              uniqueItems: true
             description:
               type: string
             destinationRanges:
               items:
                 type: string
               type: array
-              uniqueItems: true
             direction:
               type: string
             disabled:
@@ -466,29 +463,24 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             sourceServiceAccounts:
               items:
                 type: string
               maxItems: 1
               type: array
-              uniqueItems: true
             sourceTags:
               items:
                 type: string
               type: array
-              uniqueItems: true
             targetServiceAccounts:
               items:
                 type: string
               maxItems: 1
               type: array
-              uniqueItems: true
             targetTags:
               items:
                 type: string
               type: array
-              uniqueItems: true
           required:
           - name
           - network
@@ -516,7 +508,6 @@ spec:
                     - protocol
                     type: object
                   type: array
-                  uniqueItems: true
                 creationTimestamp:
                   type: string
                 deny:
@@ -532,14 +523,12 @@ spec:
                     - protocol
                     type: object
                   type: array
-                  uniqueItems: true
                 description:
                   type: string
                 destinationRanges:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 direction:
                   type: string
                 disabled:
@@ -572,29 +561,24 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 sourceServiceAccounts:
                   items:
                     type: string
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 sourceTags:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 targetServiceAccounts:
                   items:
                     type: string
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 targetTags:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
               required:
               - name
               - network
@@ -624,3 +608,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

@@ -106,7 +106,6 @@ type ContainerClusterSpecMasterAuthorizedNetworksConfigCidrBlocks struct {
 type ContainerClusterSpecMasterAuthorizedNetworksConfig struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=20
-	// +kubebuilder:validation:UniqueItems=true
 	CidrBlocks []ContainerClusterSpecMasterAuthorizedNetworksConfigCidrBlocks `json:"cidrBlocks,omitempty" tf:"cidr_blocks,omitempty"`
 }
 
@@ -152,7 +151,6 @@ type ContainerClusterSpecNodeConfig struct {
 	// +optional
 	MinCPUPlatform string `json:"minCPUPlatform,omitempty" tf:"min_cpu_platform,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes,omitempty"`
 	// +optional
 	Preemptible bool `json:"preemptible,omitempty" tf:"preemptible,omitempty"`
@@ -216,7 +214,6 @@ type ContainerClusterSpecNodePoolNodeConfig struct {
 	// +optional
 	MinCPUPlatform string `json:"minCPUPlatform,omitempty" tf:"min_cpu_platform,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes,omitempty"`
 	// +optional
 	Preemptible bool `json:"preemptible,omitempty" tf:"preemptible,omitempty"`
@@ -286,7 +283,6 @@ type ContainerClusterSpec struct {
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AdditionalZones []string `json:"additionalZones,omitempty" tf:"additional_zones,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

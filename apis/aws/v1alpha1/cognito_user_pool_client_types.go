@@ -25,13 +25,11 @@ type CognitoUserPoolClientSpec struct {
 
 	// +optional
 	// +kubebuilder:validation:MaxItems=3
-	// +kubebuilder:validation:UniqueItems=true
 	AllowedOauthFlows []string `json:"allowedOauthFlows,omitempty" tf:"allowed_oauth_flows,omitempty"`
 	// +optional
 	AllowedOauthFlowsUserPoolClient bool `json:"allowedOauthFlowsUserPoolClient,omitempty" tf:"allowed_oauth_flows_user_pool_client,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=25
-	// +kubebuilder:validation:UniqueItems=true
 	AllowedOauthScopes []string `json:"allowedOauthScopes,omitempty" tf:"allowed_oauth_scopes,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=100
@@ -41,7 +39,6 @@ type CognitoUserPoolClientSpec struct {
 	// +optional
 	DefaultRedirectURI string `json:"defaultRedirectURI,omitempty" tf:"default_redirect_uri,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ExplicitAuthFlows []string `json:"explicitAuthFlows,omitempty" tf:"explicit_auth_flows,omitempty"`
 	// +optional
 	GenerateSecret bool `json:"generateSecret,omitempty" tf:"generate_secret,omitempty"`
@@ -50,7 +47,6 @@ type CognitoUserPoolClientSpec struct {
 	LogoutUrls []string `json:"logoutUrls,omitempty" tf:"logout_urls,omitempty"`
 	Name       string   `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ReadAttributes []string `json:"readAttributes,omitempty" tf:"read_attributes,omitempty"`
 	// +optional
 	RefreshTokenValidity int `json:"refreshTokenValidity,omitempty" tf:"refresh_token_validity,omitempty"`
@@ -58,7 +54,6 @@ type CognitoUserPoolClientSpec struct {
 	SupportedIdentityProviders []string `json:"supportedIdentityProviders,omitempty" tf:"supported_identity_providers,omitempty"`
 	UserPoolID                 string   `json:"userPoolID" tf:"user_pool_id"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	WriteAttributes []string `json:"writeAttributes,omitempty" tf:"write_attributes,omitempty"`
 }
 

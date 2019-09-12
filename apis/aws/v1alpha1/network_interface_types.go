@@ -31,7 +31,6 @@ type NetworkInterfaceSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Attachment []NetworkInterfaceSpecAttachment `json:"attachment,omitempty" tf:"attachment,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
@@ -40,12 +39,10 @@ type NetworkInterfaceSpec struct {
 	// +optional
 	PrivateIP string `json:"privateIP,omitempty" tf:"private_ip,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	PrivateIPS []string `json:"privateIPS,omitempty" tf:"private_ips,omitempty"`
 	// +optional
 	PrivateIPSCount int `json:"privateIPSCount,omitempty" tf:"private_ips_count,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
 	SourceDestCheck bool   `json:"sourceDestCheck,omitempty" tf:"source_dest_check,omitempty"`

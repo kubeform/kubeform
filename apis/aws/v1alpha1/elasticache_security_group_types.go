@@ -24,9 +24,8 @@ type ElasticacheSecurityGroupSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	Name        string `json:"name" tf:"name"`
-	// +kubebuilder:validation:UniqueItems=true
+	Description        string   `json:"description,omitempty" tf:"description,omitempty"`
+	Name               string   `json:"name" tf:"name"`
 	SecurityGroupNames []string `json:"securityGroupNames" tf:"security_group_names"`
 }
 

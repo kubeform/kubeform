@@ -39,7 +39,6 @@ type CdnEndpointSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ContentTypesToCompress []string `json:"contentTypesToCompress,omitempty" tf:"content_types_to_compress,omitempty"`
 	// +optional
 	GeoFilter []CdnEndpointSpecGeoFilter `json:"geoFilter,omitempty" tf:"geo_filter,omitempty"`
@@ -54,9 +53,8 @@ type CdnEndpointSpec struct {
 	Location       string `json:"location" tf:"location"`
 	Name           string `json:"name" tf:"name"`
 	// +optional
-	OptimizationType string `json:"optimizationType,omitempty" tf:"optimization_type,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
-	Origin []CdnEndpointSpecOrigin `json:"origin" tf:"origin"`
+	OptimizationType string                  `json:"optimizationType,omitempty" tf:"optimization_type,omitempty"`
+	Origin           []CdnEndpointSpecOrigin `json:"origin" tf:"origin"`
 	// +optional
 	OriginHostHeader string `json:"originHostHeader,omitempty" tf:"origin_host_header,omitempty"`
 	// +optional

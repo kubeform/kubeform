@@ -464,7 +464,6 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
-                    uniqueItems: true
                   noncurrentVersionExpiration:
                     items:
                       properties:
@@ -473,7 +472,6 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
-                    uniqueItems: true
                   noncurrentVersionTransition:
                     items:
                       properties:
@@ -485,7 +483,6 @@ spec:
                       - storageClass
                       type: object
                     type: array
-                    uniqueItems: true
                   prefix:
                     type: string
                   tags:
@@ -505,7 +502,6 @@ spec:
                       - storageClass
                       type: object
                     type: array
-                    uniqueItems: true
                 required:
                 - enabled
                 type: object
@@ -521,7 +517,6 @@ spec:
                 - targetBucket
                 type: object
               type: array
-              uniqueItems: true
             objectLockConfiguration:
               items:
                 properties:
@@ -606,7 +601,6 @@ spec:
                           maxItems: 1
                           minItems: 1
                           type: array
-                          uniqueItems: true
                         filter:
                           items:
                             properties:
@@ -638,12 +632,10 @@ spec:
                                 maxItems: 1
                                 minItems: 1
                                 type: array
-                                uniqueItems: true
                             type: object
                           maxItems: 1
                           minItems: 1
                           type: array
-                          uniqueItems: true
                         status:
                           type: string
                       required:
@@ -651,7 +643,6 @@ spec:
                       - status
                       type: object
                     type: array
-                    uniqueItems: true
                 required:
                 - role
                 - rules
@@ -799,7 +790,6 @@ spec:
                           type: object
                         maxItems: 1
                         type: array
-                        uniqueItems: true
                       noncurrentVersionExpiration:
                         items:
                           properties:
@@ -808,7 +798,6 @@ spec:
                           type: object
                         maxItems: 1
                         type: array
-                        uniqueItems: true
                       noncurrentVersionTransition:
                         items:
                           properties:
@@ -820,7 +809,6 @@ spec:
                           - storageClass
                           type: object
                         type: array
-                        uniqueItems: true
                       prefix:
                         type: string
                       tags:
@@ -840,7 +828,6 @@ spec:
                           - storageClass
                           type: object
                         type: array
-                        uniqueItems: true
                     required:
                     - enabled
                     type: object
@@ -856,7 +843,6 @@ spec:
                     - targetBucket
                     type: object
                   type: array
-                  uniqueItems: true
                 objectLockConfiguration:
                   items:
                     properties:
@@ -941,7 +927,6 @@ spec:
                               maxItems: 1
                               minItems: 1
                               type: array
-                              uniqueItems: true
                             filter:
                               items:
                                 properties:
@@ -973,12 +958,10 @@ spec:
                                     maxItems: 1
                                     minItems: 1
                                     type: array
-                                    uniqueItems: true
                                 type: object
                               maxItems: 1
                               minItems: 1
                               type: array
-                              uniqueItems: true
                             status:
                               type: string
                           required:
@@ -986,7 +969,6 @@ spec:
                           - status
                           type: object
                         type: array
-                        uniqueItems: true
                     required:
                     - role
                     - rules
@@ -1082,3 +1064,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

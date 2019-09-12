@@ -26,7 +26,6 @@ type WafByteMatchSetSpecByteMatchTuplesFieldToMatch struct {
 
 type WafByteMatchSetSpecByteMatchTuples struct {
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	FieldToMatch         []WafByteMatchSetSpecByteMatchTuplesFieldToMatch `json:"fieldToMatch" tf:"field_to_match"`
 	PositionalConstraint string                                           `json:"positionalConstraint" tf:"positional_constraint"`
 	// +optional
@@ -40,7 +39,6 @@ type WafByteMatchSetSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ByteMatchTuples []WafByteMatchSetSpecByteMatchTuples `json:"byteMatchTuples,omitempty" tf:"byte_match_tuples,omitempty"`
 	Name            string                               `json:"name" tf:"name"`
 }

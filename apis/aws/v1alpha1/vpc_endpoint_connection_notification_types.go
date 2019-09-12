@@ -24,7 +24,6 @@ type VpcEndpointConnectionNotificationSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	ConnectionEvents          []string `json:"connectionEvents" tf:"connection_events"`
 	ConnectionNotificationArn string   `json:"connectionNotificationArn" tf:"connection_notification_arn"`
 	// +optional

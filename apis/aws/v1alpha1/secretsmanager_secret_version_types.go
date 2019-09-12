@@ -35,7 +35,6 @@ type SecretsmanagerSecretVersionSpec struct {
 	// +optional
 	VersionID string `json:"versionID,omitempty" tf:"version_id,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VersionStages []string `json:"versionStages,omitempty" tf:"version_stages,omitempty"`
 }
 

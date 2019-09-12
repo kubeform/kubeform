@@ -38,7 +38,6 @@ type AppautoscalingPolicySpecStepScalingPolicyConfiguration struct {
 	// +optional
 	MinAdjustmentMagnitude int `json:"minAdjustmentMagnitude,omitempty" tf:"min_adjustment_magnitude,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	StepAdjustment []AppautoscalingPolicySpecStepScalingPolicyConfigurationStepAdjustment `json:"stepAdjustment,omitempty" tf:"step_adjustment,omitempty"`
 }
 
@@ -49,7 +48,6 @@ type AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedM
 
 type AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Dimensions []AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensions `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 	MetricName string                                                                                                    `json:"metricName" tf:"metric_name"`
 	Namespace  string                                                                                                    `json:"namespace" tf:"namespace"`

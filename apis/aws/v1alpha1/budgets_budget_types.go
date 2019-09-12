@@ -49,10 +49,8 @@ type BudgetsBudgetSpecNotification struct {
 	ComparisonOperator string `json:"comparisonOperator" tf:"comparison_operator"`
 	NotificationType   string `json:"notificationType" tf:"notification_type"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SubscriberEmailAddresses []string `json:"subscriberEmailAddresses,omitempty" tf:"subscriber_email_addresses,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SubscriberSnsTopicArns []string    `json:"subscriberSnsTopicArns,omitempty" tf:"subscriber_sns_topic_arns,omitempty"`
 	Threshold              json.Number `json:"threshold" tf:"threshold"`
 	ThresholdType          string      `json:"thresholdType" tf:"threshold_type"`
@@ -78,7 +76,6 @@ type BudgetsBudgetSpec struct {
 	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Notification []BudgetsBudgetSpecNotification `json:"notification,omitempty" tf:"notification,omitempty"`
 	// +optional
 	TimePeriodEnd   string `json:"timePeriodEnd,omitempty" tf:"time_period_end,omitempty"`

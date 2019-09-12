@@ -36,7 +36,6 @@ type IamInstanceProfileSpec struct {
 	// +optional
 	Role string `json:"role,omitempty" tf:"role,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	// Deprecated
 	Roles []string `json:"roles,omitempty" tf:"roles,omitempty"`
 	// +optional

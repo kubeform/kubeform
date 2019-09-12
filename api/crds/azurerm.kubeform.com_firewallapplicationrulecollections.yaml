@@ -427,7 +427,6 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   name:
                     type: string
                   protocol:
@@ -446,12 +445,10 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   targetFqdns:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                 required:
                 - name
                 - sourceAddresses
@@ -506,7 +503,6 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       name:
                         type: string
                       protocol:
@@ -525,12 +521,10 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       targetFqdns:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                     required:
                     - name
                     - sourceAddresses
@@ -570,3 +564,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

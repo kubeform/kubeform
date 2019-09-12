@@ -495,7 +495,6 @@ spec:
                 - logType
                 type: object
               type: array
-              uniqueItems: true
             nodeToNodeEncryption:
               items:
                 properties:
@@ -536,17 +535,14 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   securityGroupIDS:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   subnetIDS:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   vpcID:
                     type: string
                 type: object
@@ -663,7 +659,6 @@ spec:
                     - logType
                     type: object
                   type: array
-                  uniqueItems: true
                 nodeToNodeEncryption:
                   items:
                     properties:
@@ -704,17 +699,14 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       securityGroupIDS:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       subnetIDS:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       vpcID:
                         type: string
                     type: object
@@ -748,3 +740,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

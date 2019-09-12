@@ -37,10 +37,8 @@ type KeyVaultSpecNetworkAcls struct {
 	Bypass        string `json:"bypass" tf:"bypass"`
 	DefaultAction string `json:"defaultAction" tf:"default_action"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	IpRules []string `json:"ipRules,omitempty" tf:"ip_rules,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VirtualNetworkSubnetIDS []string `json:"virtualNetworkSubnetIDS,omitempty" tf:"virtual_network_subnet_ids,omitempty"`
 }
 

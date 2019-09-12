@@ -1,19 +1,26 @@
 package util
 
 import (
+	"archive/zip"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"os"
 	"path/filepath"
 	"sort"
 	"strconv"
+	"strings"
 	"text/template"
 
 	. "github.com/dave/jennifer/jen"
 	"github.com/gobuffalo/flect"
+	"github.com/hashicorp/terraform-config-inspect/tfconfig"
 	"github.com/hashicorp/terraform/helper/schema"
+	"kubeform.dev/kubeform/data"
 )
 
 type TypeData struct {
@@ -36,32 +43,51 @@ var execeptionList = map[string]string{
 func GenerateProviderAPIS(providerName, version string, schmeas []map[string]*schema.Schema, structNames []string) error {
 	templatePath := "templates"
 	goPath := os.Getenv("GOPATH")
-	providerPath := filepath.Join(goPath,
+	basePath := filepath.Join(goPath,
 		filepath.Join("src",
 			filepath.Join("kubeform.dev",
-				filepath.Join("kubeform",
-					filepath.Join("apis", providerName)))))
+				filepath.Join("kubeform"))))
+	providerPath := filepath.Join(basePath,
+		filepath.Join("apis", providerName))
 	versionPath := filepath.Join(providerPath, version)
+	dataPath := filepath.Join(basePath, "data")
 
 	err := os.MkdirAll(versionPath, 0777)
 	if err != nil {
 		return err
 	}
-
-	for i, structName := range structNames {
-		var out string
-		if val, ok := execeptionList[structName]; ok {
-			structName = val
-			structNames[i] = val
+	if providerName == "modules" {
+		var modulePaths []string
+		modulePaths, structNames, err = GenerateModuleData(filepath.Join(basePath, "module-sources.json"), filepath.Join(templatePath, "cfg_data.tmpl"), dataPath)
+		if err != nil {
+			return err
 		}
-		genSecret := false
-		TerraformSchemaToStruct(schmeas[i], structName+"Spec", providerName, true, &genSecret, &out)
-		typeData := TypeData{
-			Name: structName,
-			Spec: out,
+		for i, modulePath := range modulePaths {
+			name := structNames[i]
+			out := GenerateModuleCRD(modulePath, name)
+			typeData := TypeData{
+				Name: name,
+				Spec: out,
+			}
+			modulePaths[i] = name
+			templateToGoFile(filepath.Join(templatePath, "module_types.tmpl"), filepath.Join(versionPath, flect.Underscore(name)+"_types.go"), typeData)
 		}
+	} else {
+		for i, structName := range structNames {
+			var out string
+			if val, ok := execeptionList[structName]; ok {
+				structName = val
+				structNames[i] = val
+			}
+			genSecret := false
+			TerraformSchemaToStruct(schmeas[i], structName+"Spec", providerName, true, &genSecret, &out)
+			typeData := TypeData{
+				Name: structName,
+				Spec: out,
+			}
 
-		templateToGoFile(filepath.Join(templatePath, "types.tmpl"), filepath.Join(versionPath, flect.Underscore(structName)+"_types.go"), typeData)
+			templateToGoFile(filepath.Join(templatePath, "types.tmpl"), filepath.Join(versionPath, flect.Underscore(structName)+"_types.go"), typeData)
+		}
 	}
 
 	apiData := ApisData{
@@ -110,10 +136,6 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 
 		if value.MinItems != 0 {
 			statements = append(statements, Comment("// +kubebuilder:validation:MinItems="+strconv.Itoa(value.MinItems)))
-		}
-
-		if value.Type == schema.TypeSet {
-			statements = append(statements, Comment("// +kubebuilder:validation:UniqueItems=true"))
 		}
 
 		if value.Sensitive {
@@ -209,4 +231,241 @@ func templateToGoFile(templateFile, generatedFilePath string, templateData inter
 	if err != nil {
 		fmt.Println(err.Error())
 	}
+}
+
+func GenerateModuleCRD(path, name string) string {
+	if tfconfig.IsModuleDir(path) {
+		m, _ := tfconfig.LoadModule(path)
+		var specStatements Statement
+		variables := m.Variables
+		outputs := m.Outputs
+
+		var keys []string
+		for k := range variables {
+			keys = append(keys, k)
+		}
+
+		sort.Strings(keys)
+
+		for _, key := range keys {
+			variable := variables[key]
+			varName := key
+			tk := varName + ",omitempty"
+			jk := flect.Camelize(varName)
+			id := flect.Capitalize(jk)
+			jk = jk + ",omitempty"
+			specStatements = append(specStatements, Comment("// +optional"))
+			specStatements = append(specStatements, Comment(variable.Description))
+
+			if variable.Type == "number" {
+				specStatements = append(specStatements, Id(id).Qual("encoding/json", "Number").Tag(map[string]string{"json": jk, "tf": tk}))
+			} else if variable.Type == "string" {
+				specStatements = append(specStatements, Id(id).String().Tag(map[string]string{"json": jk, "tf": tk}))
+			} else if variable.Type == "bool" {
+				specStatements = append(specStatements, Id(id).Bool().Tag(map[string]string{"json": jk, "tf": tk}))
+			} else if variable.Type == "any" {
+				specStatements = append(specStatements, Id(id).Qual("encoding/json", "RawMessage").Tag(map[string]string{"json": jk, "tf": tk}))
+			} else if strings.Contains(variable.Type, "list") || strings.Contains(variable.Type, "set") {
+				typ := strings.FieldsFunc(variable.Type, func(r rune) bool {
+					return r == '(' || r == ')'
+				})
+
+				if typ[1] == "bool" {
+					specStatements = append(specStatements, Id(id).Index().Bool().Tag(map[string]string{"json": jk, "tf": tk}))
+				} else if typ[1] == "number" {
+					specStatements = append(specStatements, Id(id).Index().Qual("encoding/json", "Number").Tag(map[string]string{"json": jk, "tf": tk}))
+				} else if typ[1] == "string" {
+					specStatements = append(specStatements, Id(id).Index().String().Tag(map[string]string{"json": jk, "tf": tk}))
+				} else if strings.Contains(variable.Type, "map") {
+					specStatements = append(specStatements, Id(id).Qual("encoding/json", "RawMessage").Tag(map[string]string{"json": jk, "tf": tk}))
+				} else {
+					fmt.Println(name, variable.Name, variable.Type)
+				}
+			} else if strings.Contains(variable.Type, "map") {
+				typ := strings.FieldsFunc(variable.Type, func(r rune) bool {
+					return r == '(' || r == ')'
+				})
+
+				if typ[1] == "bool" {
+					specStatements = append(specStatements, Id(id).Map(String()).Bool().Tag(map[string]string{"json": jk, "tf": tk}))
+				} else if typ[1] == "number" {
+					specStatements = append(specStatements, Id(id).Map(String()).Qual("encoding/json", "Number").Tag(map[string]string{"json": jk, "tf": tk}))
+				} else if typ[1] == "string" {
+					specStatements = append(specStatements, Id(id).Map(String()).String().Tag(map[string]string{"json": jk, "tf": tk}))
+				} else {
+					fmt.Println(name, variable.Name, variable.Type)
+				}
+			} else {
+				fmt.Println(name, variable.Name, variable.Type)
+			}
+		}
+
+		specStatements = append(Statement{Id("Source").String().Tag(map[string]string{"json": "source", "tf": "source"}).Line()}, specStatements...)
+		specStatements = append(Statement{Comment("// +optional")}, specStatements...)
+		specStatements = append(Statement{Id("ProviderRef").Id("core.LocalObjectReference").Tag(map[string]string{"json": "providerRef", "tf": "-"})}, specStatements...)
+		specStatements = append(Statement{Id("SecretRef").Id("*core.LocalObjectReference").Tag(map[string]string{"json": "secretRef,omitempty", "tf": "-"})}, specStatements...)
+		specStatements = append(Statement{Comment("// +optional")}, specStatements...)
+
+		out := fmt.Sprintf("%#v\n\n", Type().Id(name+"Spec").Struct(specStatements...))
+
+		var outputStatements Statement
+		keys = []string{}
+		for k := range outputs {
+			keys = append(keys, k)
+		}
+
+		sort.Strings(keys)
+
+		for _, key := range keys {
+			varName := key
+			out := outputs[key]
+			tk := varName
+			jk := flect.Camelize(varName)
+			id := flect.Capitalize(jk)
+			outputStatements = append(outputStatements, Comment(out.Description))
+			outputStatements = append(outputStatements, Id(id).String().Tag(map[string]string{"json": jk, "tf": tk}))
+		}
+		out = out + fmt.Sprintf("%#v\n", Type().Id(name+"Output").Struct(outputStatements...))
+
+		return out
+	}
+
+	return ""
+}
+
+func DownloadRepository(name, link, outputPath string) (string, error) {
+	tempDirPath, err := ioutil.TempDir(os.TempDir(), "")
+	if err != nil {
+		return "", err
+	}
+	defer os.RemoveAll(tempDirPath)
+
+	zipPath := filepath.Join(tempDirPath, name+".zip")
+
+	resp, err := http.Get(link)
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("%s is not a valid github url", link)
+	}
+
+	out, err := os.Create(zipPath)
+	if err != nil {
+		return "", err
+	}
+	defer out.Close()
+
+	_, err = io.Copy(out, resp.Body)
+	if err != nil {
+		return "", err
+	}
+
+	log.Println("Downloading zip completed")
+
+	extractedRepoPath, err := Unzip(zipPath, outputPath)
+	if err != nil {
+		return "", err
+	}
+	return extractedRepoPath[0], nil
+}
+
+func Unzip(src string, dest string) ([]string, error) {
+	log.Println("Unzipping zip in the directory : ", dest)
+
+	var filenames []string
+
+	r, err := zip.OpenReader(src)
+	if err != nil {
+		return filenames, err
+	}
+	defer r.Close()
+
+	for _, f := range r.File {
+
+		fpath := filepath.Join(dest, f.Name)
+
+		filenames = append(filenames, fpath)
+
+		if f.FileInfo().IsDir() {
+			err := os.MkdirAll(fpath, os.ModePerm)
+			if err != nil {
+				return filenames, err
+			}
+			continue
+		}
+
+		if err = os.MkdirAll(filepath.Dir(fpath), os.ModePerm); err != nil {
+			return filenames, err
+		}
+
+		outFile, err := os.OpenFile(fpath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, f.Mode())
+		if err != nil {
+			return filenames, err
+		}
+
+		rc, err := f.Open()
+		if err != nil {
+			return filenames, err
+		}
+
+		_, err = io.Copy(outFile, rc)
+
+		outFile.Close()
+		rc.Close()
+
+		if err != nil {
+			return filenames, err
+		}
+	}
+	log.Println("Unzipping completed")
+	return filenames, nil
+}
+
+func GenerateModuleData(fileName, templateFile, generatedFilePath string) (modulePaths []string, structNames []string, err error) {
+	byt, err := ioutil.ReadFile(fileName)
+	if err != nil {
+		return
+	}
+	var config []data.Config
+
+	err = json.Unmarshal(byt, &config)
+	if err != nil {
+		return
+	}
+
+	var cfgStr string
+	for _, cfg := range config {
+		cfgStr = cfgStr + `{
+"` + cfg.Name + `","` + cfg.Source + `","` + cfg.Provider + `","","",
+},
+`
+		path, err := DownloadRepository(cfg.Name, cfg.URL, "/tmp")
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		modulePaths = append(modulePaths, filepath.Join(path, cfg.SubDirectory))
+		structNames = append(structNames, cfg.Name)
+	}
+
+	tmpl := template.Must(template.ParseFiles(templateFile))
+	var buffer bytes.Buffer
+	err = tmpl.Execute(&buffer, struct {
+		Data string
+	}{
+		cfgStr,
+	})
+	if err != nil {
+		return
+	}
+	configFile := filepath.Join(generatedFilePath, "config_data.go")
+	_, err = os.Create(configFile)
+	if err != nil {
+		return
+	}
+	err = ioutil.WriteFile(configFile, buffer.Bytes(), 0644)
+	return
 }

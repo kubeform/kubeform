@@ -39,7 +39,6 @@ type ServiceFabricClusterSpecCertificateCommonNamesCommonNames struct {
 
 type ServiceFabricClusterSpecCertificateCommonNames struct {
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	CommonNames   []ServiceFabricClusterSpecCertificateCommonNamesCommonNames `json:"commonNames" tf:"common_names"`
 	X509StoreName string                                                      `json:"x509StoreName" tf:"x509_store_name"`
 }
@@ -108,7 +107,6 @@ type ServiceFabricClusterSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AddOnFeatures []string `json:"addOnFeatures,omitempty" tf:"add_on_features,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

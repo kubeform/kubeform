@@ -21,10 +21,8 @@ type ComputeRouterNAT struct {
 type ComputeRouterNATSpecSubnetwork struct {
 	Name string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecondaryIPRangeNames []string `json:"secondaryIPRangeNames,omitempty" tf:"secondary_ip_range_names,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SourceIPRangesToNAT []string `json:"sourceIPRangesToNAT,omitempty" tf:"source_ip_ranges_to_nat,omitempty"`
 }
 
@@ -40,7 +38,6 @@ type ComputeRouterNATSpec struct {
 	Name                string `json:"name" tf:"name"`
 	NatIPAllocateOption string `json:"natIPAllocateOption" tf:"nat_ip_allocate_option"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	NatIPS []string `json:"natIPS,omitempty" tf:"nat_ips,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
@@ -50,7 +47,6 @@ type ComputeRouterNATSpec struct {
 	// +optional
 	SourceSubnetworkIPRangesToNAT string `json:"sourceSubnetworkIPRangesToNAT,omitempty" tf:"source_subnetwork_ip_ranges_to_nat,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Subnetwork []ComputeRouterNATSpecSubnetwork `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
 	// +optional
 	TcpEstablishedIdleTimeoutSec int `json:"tcpEstablishedIdleTimeoutSec,omitempty" tf:"tcp_established_idle_timeout_sec,omitempty"`

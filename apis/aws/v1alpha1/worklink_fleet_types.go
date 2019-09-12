@@ -24,11 +24,9 @@ type WorklinkFleetSpecIdentityProvider struct {
 }
 
 type WorklinkFleetSpecNetwork struct {
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupIDS []string `json:"securityGroupIDS" tf:"security_group_ids"`
-	// +kubebuilder:validation:UniqueItems=true
-	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
-	VpcID     string   `json:"vpcID" tf:"vpc_id"`
+	SubnetIDS        []string `json:"subnetIDS" tf:"subnet_ids"`
+	VpcID            string   `json:"vpcID" tf:"vpc_id"`
 }
 
 type WorklinkFleetSpec struct {

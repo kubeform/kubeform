@@ -26,7 +26,6 @@ type LoadBalancerBackendServerPolicySpec struct {
 	InstancePort     int    `json:"instancePort" tf:"instance_port"`
 	LoadBalancerName string `json:"loadBalancerName" tf:"load_balancer_name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	PolicyNames []string `json:"policyNames,omitempty" tf:"policy_names,omitempty"`
 }
 

@@ -28,16 +28,13 @@ type FirewallApplicationRuleCollectionSpecRule struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	FqdnTags []string `json:"fqdnTags,omitempty" tf:"fqdn_tags,omitempty"`
 	Name     string   `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
-	Protocol []FirewallApplicationRuleCollectionSpecRuleProtocol `json:"protocol,omitempty" tf:"protocol,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
-	SourceAddresses []string `json:"sourceAddresses" tf:"source_addresses"`
+	Protocol        []FirewallApplicationRuleCollectionSpecRuleProtocol `json:"protocol,omitempty" tf:"protocol,omitempty"`
+	SourceAddresses []string                                            `json:"sourceAddresses" tf:"source_addresses"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	TargetFqdns []string `json:"targetFqdns,omitempty" tf:"target_fqdns,omitempty"`
 }
 

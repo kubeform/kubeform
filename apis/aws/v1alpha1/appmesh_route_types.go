@@ -26,7 +26,6 @@ type AppmeshRouteSpecSpecHttpRouteActionWeightedTarget struct {
 type AppmeshRouteSpecSpecHttpRouteAction struct {
 	// +kubebuilder:validation:MaxItems=10
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	WeightedTarget []AppmeshRouteSpecSpecHttpRouteActionWeightedTarget `json:"weightedTarget" tf:"weighted_target"`
 }
 
@@ -51,7 +50,6 @@ type AppmeshRouteSpecSpecTcpRouteActionWeightedTarget struct {
 type AppmeshRouteSpecSpecTcpRouteAction struct {
 	// +kubebuilder:validation:MaxItems=10
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	WeightedTarget []AppmeshRouteSpecSpecTcpRouteActionWeightedTarget `json:"weightedTarget" tf:"weighted_target"`
 }
 

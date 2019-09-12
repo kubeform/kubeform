@@ -116,7 +116,6 @@ type KinesisAnalyticsApplicationSpecInputs struct {
 	// +optional
 	StartingPositionConfiguration []KinesisAnalyticsApplicationSpecInputsStartingPositionConfiguration `json:"startingPositionConfiguration,omitempty" tf:"starting_position_configuration,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	StreamNames []string `json:"streamNames,omitempty" tf:"stream_names,omitempty"`
 }
 

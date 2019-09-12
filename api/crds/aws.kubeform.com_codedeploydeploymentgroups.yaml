@@ -405,7 +405,6 @@ spec:
                       type: string
                     maxItems: 10
                     type: array
-                    uniqueItems: true
                   enabled:
                     type: boolean
                   ignorePollAlarmFailure:
@@ -424,7 +423,6 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                 type: object
               maxItems: 1
               type: array
@@ -432,7 +430,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             blueGreenDeploymentConfig:
               items:
                 properties:
@@ -492,7 +489,6 @@ spec:
                     type: string
                 type: object
               type: array
-              uniqueItems: true
             ec2TagSet:
               items:
                 properties:
@@ -507,10 +503,8 @@ spec:
                           type: string
                       type: object
                     type: array
-                    uniqueItems: true
                 type: object
               type: array
-              uniqueItems: true
             ecsService:
               items:
                 properties:
@@ -536,7 +530,6 @@ spec:
                           type: string
                       type: object
                     type: array
-                    uniqueItems: true
                   targetGroupInfo:
                     items:
                       properties:
@@ -544,7 +537,6 @@ spec:
                           type: string
                       type: object
                     type: array
-                    uniqueItems: true
                   targetGroupPairInfo:
                     items:
                       properties:
@@ -555,7 +547,6 @@ spec:
                                 items:
                                   type: string
                                 type: array
-                                uniqueItems: true
                             required:
                             - listenerArns
                             type: object
@@ -580,7 +571,6 @@ spec:
                                 items:
                                   type: string
                                 type: array
-                                uniqueItems: true
                             required:
                             - listenerArns
                             type: object
@@ -606,7 +596,6 @@ spec:
                     type: string
                 type: object
               type: array
-              uniqueItems: true
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -625,7 +614,6 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   triggerName:
                     type: string
                   triggerTargetArn:
@@ -636,7 +624,6 @@ spec:
                 - triggerTargetArn
                 type: object
               type: array
-              uniqueItems: true
           required:
           - appName
           - deploymentGroupName
@@ -660,7 +647,6 @@ spec:
                           type: string
                         maxItems: 10
                         type: array
-                        uniqueItems: true
                       enabled:
                         type: boolean
                       ignorePollAlarmFailure:
@@ -679,7 +665,6 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                     type: object
                   maxItems: 1
                   type: array
@@ -687,7 +672,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 blueGreenDeploymentConfig:
                   items:
                     properties:
@@ -747,7 +731,6 @@ spec:
                         type: string
                     type: object
                   type: array
-                  uniqueItems: true
                 ec2TagSet:
                   items:
                     properties:
@@ -762,10 +745,8 @@ spec:
                               type: string
                           type: object
                         type: array
-                        uniqueItems: true
                     type: object
                   type: array
-                  uniqueItems: true
                 ecsService:
                   items:
                     properties:
@@ -791,7 +772,6 @@ spec:
                               type: string
                           type: object
                         type: array
-                        uniqueItems: true
                       targetGroupInfo:
                         items:
                           properties:
@@ -799,7 +779,6 @@ spec:
                               type: string
                           type: object
                         type: array
-                        uniqueItems: true
                       targetGroupPairInfo:
                         items:
                           properties:
@@ -810,7 +789,6 @@ spec:
                                     items:
                                       type: string
                                     type: array
-                                    uniqueItems: true
                                 required:
                                 - listenerArns
                                 type: object
@@ -835,7 +813,6 @@ spec:
                                     items:
                                       type: string
                                     type: array
-                                    uniqueItems: true
                                 required:
                                 - listenerArns
                                 type: object
@@ -861,7 +838,6 @@ spec:
                         type: string
                     type: object
                   type: array
-                  uniqueItems: true
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -880,7 +856,6 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       triggerName:
                         type: string
                       triggerTargetArn:
@@ -891,7 +866,6 @@ spec:
                     - triggerTargetArn
                     type: object
                   type: array
-                  uniqueItems: true
               required:
               - appName
               - deploymentGroupName
@@ -922,3 +896,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

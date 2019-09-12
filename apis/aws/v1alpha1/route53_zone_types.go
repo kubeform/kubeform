@@ -42,7 +42,6 @@ type Route53ZoneSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Vpc []Route53ZoneSpecVpc `json:"vpc,omitempty" tf:"vpc,omitempty"`
 	// +optional
 	ZoneID string `json:"zoneID,omitempty" tf:"zone_id,omitempty"`

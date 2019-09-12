@@ -419,7 +419,6 @@ spec:
                           items:
                             type: string
                           type: array
-                          uniqueItems: true
                         serviceAccount:
                           type: string
                         subnetwork:
@@ -428,7 +427,6 @@ spec:
                           items:
                             type: string
                           type: array
-                          uniqueItems: true
                         zone:
                           type: string
                       type: object
@@ -515,7 +513,6 @@ spec:
                               items:
                                 type: string
                               type: array
-                              uniqueItems: true
                             serviceAccount:
                               type: string
                             subnetwork:
@@ -524,7 +521,6 @@ spec:
                               items:
                                 type: string
                               type: array
-                              uniqueItems: true
                             zone:
                               type: string
                           type: object
@@ -604,3 +600,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

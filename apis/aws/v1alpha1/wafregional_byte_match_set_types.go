@@ -39,7 +39,6 @@ type WafregionalByteMatchSetSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ByteMatchTuples []WafregionalByteMatchSetSpecByteMatchTuples `json:"byteMatchTuples,omitempty" tf:"byte_match_tuples,omitempty"`
 	Name            string                                       `json:"name" tf:"name"`
 }

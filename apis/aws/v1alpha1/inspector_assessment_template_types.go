@@ -24,10 +24,9 @@ type InspectorAssessmentTemplateSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Arn      string `json:"arn,omitempty" tf:"arn,omitempty"`
-	Duration int    `json:"duration" tf:"duration"`
-	Name     string `json:"name" tf:"name"`
-	// +kubebuilder:validation:UniqueItems=true
+	Arn              string   `json:"arn,omitempty" tf:"arn,omitempty"`
+	Duration         int      `json:"duration" tf:"duration"`
+	Name             string   `json:"name" tf:"name"`
 	RulesPackageArns []string `json:"rulesPackageArns" tf:"rules_package_arns"`
 	TargetArn        string   `json:"targetArn" tf:"target_arn"`
 }

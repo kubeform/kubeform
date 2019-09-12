@@ -46,7 +46,6 @@ type SsmPatchBaselineSpec struct {
 	// +optional
 	ApprovalRule []SsmPatchBaselineSpecApprovalRule `json:"approvalRule,omitempty" tf:"approval_rule,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ApprovedPatches []string `json:"approvedPatches,omitempty" tf:"approved_patches,omitempty"`
 	// +optional
 	ApprovedPatchesComplianceLevel string `json:"approvedPatchesComplianceLevel,omitempty" tf:"approved_patches_compliance_level,omitempty"`
@@ -59,7 +58,6 @@ type SsmPatchBaselineSpec struct {
 	// +optional
 	OperatingSystem string `json:"operatingSystem,omitempty" tf:"operating_system,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	RejectedPatches []string `json:"rejectedPatches,omitempty" tf:"rejected_patches,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

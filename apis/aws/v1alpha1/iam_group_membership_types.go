@@ -23,9 +23,8 @@ type IamGroupMembershipSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Group string `json:"group" tf:"group"`
-	Name  string `json:"name" tf:"name"`
-	// +kubebuilder:validation:UniqueItems=true
+	Group string   `json:"group" tf:"group"`
+	Name  string   `json:"name" tf:"name"`
 	Users []string `json:"users" tf:"users"`
 }
 

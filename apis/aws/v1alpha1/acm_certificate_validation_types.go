@@ -25,7 +25,6 @@ type AcmCertificateValidationSpec struct {
 
 	CertificateArn string `json:"certificateArn" tf:"certificate_arn"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ValidationRecordFqdns []string `json:"validationRecordFqdns,omitempty" tf:"validation_record_fqdns,omitempty"`
 }
 

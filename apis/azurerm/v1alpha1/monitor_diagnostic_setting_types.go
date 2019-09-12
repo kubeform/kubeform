@@ -56,12 +56,10 @@ type MonitorDiagnosticSettingSpec struct {
 	// +optional
 	EventhubName string `json:"eventhubName,omitempty" tf:"eventhub_name,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Log []MonitorDiagnosticSettingSpecLog `json:"log,omitempty" tf:"log,omitempty"`
 	// +optional
 	LogAnalyticsWorkspaceID string `json:"logAnalyticsWorkspaceID,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Metric []MonitorDiagnosticSettingSpecMetric `json:"metric,omitempty" tf:"metric,omitempty"`
 	Name   string                               `json:"name" tf:"name"`
 	// +optional

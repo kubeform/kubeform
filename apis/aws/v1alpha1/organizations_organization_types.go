@@ -57,10 +57,8 @@ type OrganizationsOrganizationSpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AwsServiceAccessPrincipals []string `json:"awsServiceAccessPrincipals,omitempty" tf:"aws_service_access_principals,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EnabledPolicyTypes []string `json:"enabledPolicyTypes,omitempty" tf:"enabled_policy_types,omitempty"`
 	// +optional
 	FeatureSet string `json:"featureSet,omitempty" tf:"feature_set,omitempty"`

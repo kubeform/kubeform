@@ -51,7 +51,6 @@ type MqBrokerSpecUser struct {
 	// +optional
 	ConsoleAccess bool `json:"consoleAccess,omitempty" tf:"console_access,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Groups   []string `json:"groups,omitempty" tf:"groups,omitempty"`
 	Password string   `json:"-" sensitive:"true" tf:"password"`
 	Username string   `json:"username" tf:"username"`
@@ -88,15 +87,12 @@ type MqBrokerSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	MaintenanceWindowStartTime []MqBrokerSpecMaintenanceWindowStartTime `json:"maintenanceWindowStartTime,omitempty" tf:"maintenance_window_start_time,omitempty"`
 	// +optional
-	PubliclyAccessible bool `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
-	SecurityGroups []string `json:"securityGroups" tf:"security_groups"`
+	PubliclyAccessible bool     `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
+	SecurityGroups     []string `json:"securityGroups" tf:"security_groups"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS,omitempty" tf:"subnet_ids,omitempty"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
+	Tags map[string]string  `json:"tags,omitempty" tf:"tags,omitempty"`
 	User []MqBrokerSpecUser `json:"user" tf:"user"`
 }
 

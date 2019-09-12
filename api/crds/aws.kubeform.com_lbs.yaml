@@ -450,7 +450,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             subnetMapping:
               items:
                 properties:
@@ -462,12 +461,10 @@ spec:
                 - subnetID
                 type: object
               type: array
-              uniqueItems: true
             subnets:
               items:
                 type: string
               type: array
-              uniqueItems: true
             tags:
               additionalProperties:
                 type: string
@@ -541,7 +538,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 subnetMapping:
                   items:
                     properties:
@@ -553,12 +549,10 @@ spec:
                     - subnetID
                     type: object
                   type: array
-                  uniqueItems: true
                 subnets:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 tags:
                   additionalProperties:
                     type: string
@@ -594,3 +588,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

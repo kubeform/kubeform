@@ -26,7 +26,6 @@ type VolumeSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DropletIDS []int64 `json:"dropletIDS,omitempty" tf:"droplet_ids,omitempty"`
 	// +optional
 	FilesystemLabel string `json:"filesystemLabel,omitempty" tf:"filesystem_label,omitempty"`

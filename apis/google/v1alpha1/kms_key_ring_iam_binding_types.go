@@ -24,11 +24,10 @@ type KmsKeyRingIamBindingSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Etag      string `json:"etag,omitempty" tf:"etag,omitempty"`
-	KeyRingID string `json:"keyRingID" tf:"key_ring_id"`
-	// +kubebuilder:validation:UniqueItems=true
-	Members []string `json:"members" tf:"members"`
-	Role    string   `json:"role" tf:"role"`
+	Etag      string   `json:"etag,omitempty" tf:"etag,omitempty"`
+	KeyRingID string   `json:"keyRingID" tf:"key_ring_id"`
+	Members   []string `json:"members" tf:"members"`
+	Role      string   `json:"role" tf:"role"`
 }
 
 type KmsKeyRingIamBindingStatus struct {

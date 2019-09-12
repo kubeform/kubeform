@@ -50,15 +50,12 @@ type ApiManagementBackendSpecServiceFabricClusterServerX509Name struct {
 }
 
 type ApiManagementBackendSpecServiceFabricCluster struct {
-	ClientCertificateThumbprint string `json:"clientCertificateThumbprint" tf:"client_certificate_thumbprint"`
-	// +kubebuilder:validation:UniqueItems=true
+	ClientCertificateThumbprint   string   `json:"clientCertificateThumbprint" tf:"client_certificate_thumbprint"`
 	ManagementEndpoints           []string `json:"managementEndpoints" tf:"management_endpoints"`
 	MaxPartitionResolutionRetries int      `json:"maxPartitionResolutionRetries" tf:"max_partition_resolution_retries"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ServerCertificateThumbprints []string `json:"serverCertificateThumbprints,omitempty" tf:"server_certificate_thumbprints,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ServerX509Name []ApiManagementBackendSpecServiceFabricClusterServerX509Name `json:"serverX509Name,omitempty" tf:"server_x509_name,omitempty"`
 }
 

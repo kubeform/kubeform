@@ -85,7 +85,6 @@ type AutoscalingPolicySpec struct {
 	// +optional
 	ScalingAdjustment int `json:"scalingAdjustment,omitempty" tf:"scaling_adjustment,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	StepAdjustment []AutoscalingPolicySpecStepAdjustment `json:"stepAdjustment,omitempty" tf:"step_adjustment,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

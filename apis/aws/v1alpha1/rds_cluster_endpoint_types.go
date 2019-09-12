@@ -31,10 +31,8 @@ type RdsClusterEndpointSpec struct {
 	// +optional
 	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ExcludedMembers []string `json:"excludedMembers,omitempty" tf:"excluded_members,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	StaticMembers []string `json:"staticMembers,omitempty" tf:"static_members,omitempty"`
 }
 

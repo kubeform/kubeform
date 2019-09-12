@@ -38,13 +38,11 @@ type Route53ResolverEndpointSpec struct {
 	HostVpcID string `json:"hostVpcID,omitempty" tf:"host_vpc_id,omitempty"`
 	// +kubebuilder:validation:MaxItems=10
 	// +kubebuilder:validation:MinItems=2
-	// +kubebuilder:validation:UniqueItems=true
 	IpAddress []Route53ResolverEndpointSpecIpAddress `json:"ipAddress" tf:"ip_address"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +kubebuilder:validation:MaxItems=64
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupIDS []string `json:"securityGroupIDS" tf:"security_group_ids"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

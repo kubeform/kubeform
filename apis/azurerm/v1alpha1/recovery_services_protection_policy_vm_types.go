@@ -22,7 +22,6 @@ type RecoveryServicesProtectionPolicyVmSpecBackup struct {
 	Frequency string `json:"frequency" tf:"frequency"`
 	Time      string `json:"time" tf:"time"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Weekdays []string `json:"weekdays,omitempty" tf:"weekdays,omitempty"`
 }
 
@@ -31,27 +30,21 @@ type RecoveryServicesProtectionPolicyVmSpecRetentionDaily struct {
 }
 
 type RecoveryServicesProtectionPolicyVmSpecRetentionMonthly struct {
-	Count int `json:"count" tf:"count"`
-	// +kubebuilder:validation:UniqueItems=true
+	Count    int      `json:"count" tf:"count"`
 	Weekdays []string `json:"weekdays" tf:"weekdays"`
-	// +kubebuilder:validation:UniqueItems=true
-	Weeks []string `json:"weeks" tf:"weeks"`
+	Weeks    []string `json:"weeks" tf:"weeks"`
 }
 
 type RecoveryServicesProtectionPolicyVmSpecRetentionWeekly struct {
-	Count int `json:"count" tf:"count"`
-	// +kubebuilder:validation:UniqueItems=true
+	Count    int      `json:"count" tf:"count"`
 	Weekdays []string `json:"weekdays" tf:"weekdays"`
 }
 
 type RecoveryServicesProtectionPolicyVmSpecRetentionYearly struct {
-	Count int `json:"count" tf:"count"`
-	// +kubebuilder:validation:UniqueItems=true
-	Months []string `json:"months" tf:"months"`
-	// +kubebuilder:validation:UniqueItems=true
+	Count    int      `json:"count" tf:"count"`
+	Months   []string `json:"months" tf:"months"`
 	Weekdays []string `json:"weekdays" tf:"weekdays"`
-	// +kubebuilder:validation:UniqueItems=true
-	Weeks []string `json:"weeks" tf:"weeks"`
+	Weeks    []string `json:"weeks" tf:"weeks"`
 }
 
 type RecoveryServicesProtectionPolicyVmSpec struct {

@@ -32,7 +32,6 @@ type CognitoResourceServerSpec struct {
 	Name       string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=25
-	// +kubebuilder:validation:UniqueItems=true
 	Scope []CognitoResourceServerSpecScope `json:"scope,omitempty" tf:"scope,omitempty"`
 	// +optional
 	ScopeIdentifiers []string `json:"scopeIdentifiers,omitempty" tf:"scope_identifiers,omitempty"`

@@ -417,7 +417,6 @@ spec:
                 format: int64
                 type: integer
               type: array
-              uniqueItems: true
             monthlyOccurrence:
               items:
                 properties:
@@ -451,7 +450,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
           required:
           - frequency
           - name
@@ -487,7 +485,6 @@ spec:
                     format: int64
                     type: integer
                   type: array
-                  uniqueItems: true
                 monthlyOccurrence:
                   items:
                     properties:
@@ -521,7 +518,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
               required:
               - frequency
               - name
@@ -552,3 +548,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

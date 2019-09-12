@@ -122,11 +122,9 @@ type ElastictranscoderPresetSpec struct {
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Audio []ElastictranscoderPresetSpecAudio `json:"audio,omitempty" tf:"audio,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	AudioCodecOptions []ElastictranscoderPresetSpecAudioCodecOptions `json:"audioCodecOptions,omitempty" tf:"audio_codec_options,omitempty"`
 	Container         string                                         `json:"container" tf:"container"`
 	// +optional
@@ -135,18 +133,15 @@ type ElastictranscoderPresetSpec struct {
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Thumbnails []ElastictranscoderPresetSpecThumbnails `json:"thumbnails,omitempty" tf:"thumbnails,omitempty"`
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Video []ElastictranscoderPresetSpecVideo `json:"video,omitempty" tf:"video,omitempty"`
 	// +optional
 	VideoCodecOptions map[string]string `json:"videoCodecOptions,omitempty" tf:"video_codec_options,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VideoWatermarks []ElastictranscoderPresetSpecVideoWatermarks `json:"videoWatermarks,omitempty" tf:"video_watermarks,omitempty"`
 }
 

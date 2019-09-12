@@ -401,12 +401,10 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             dnsServers:
               items:
                 type: string
               type: array
-              uniqueItems: true
             enableAcceleratedNetworking:
               type: boolean
             enableIPForwarding:
@@ -426,25 +424,21 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   applicationSecurityGroupIDS:
                     description: Deprecated
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   loadBalancerBackendAddressPoolsIDS:
                     description: Deprecated
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   loadBalancerInboundNATRulesIDS:
                     description: Deprecated
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   name:
                     type: string
                   primary:
@@ -515,12 +509,10 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 dnsServers:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 enableAcceleratedNetworking:
                   type: boolean
                 enableIPForwarding:
@@ -540,25 +532,21 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       applicationSecurityGroupIDS:
                         description: Deprecated
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       loadBalancerBackendAddressPoolsIDS:
                         description: Deprecated
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       loadBalancerInboundNATRulesIDS:
                         description: Deprecated
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       name:
                         type: string
                       primary:
@@ -640,3 +628,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

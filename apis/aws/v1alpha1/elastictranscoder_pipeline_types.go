@@ -72,27 +72,22 @@ type ElastictranscoderPipelineSpec struct {
 	AwsKmsKeyArn string `json:"awsKmsKeyArn,omitempty" tf:"aws_kms_key_arn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	ContentConfig []ElastictranscoderPipelineSpecContentConfig `json:"contentConfig,omitempty" tf:"content_config,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ContentConfigPermissions []ElastictranscoderPipelineSpecContentConfigPermissions `json:"contentConfigPermissions,omitempty" tf:"content_config_permissions,omitempty"`
 	InputBucket              string                                                  `json:"inputBucket" tf:"input_bucket"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	Notifications []ElastictranscoderPipelineSpecNotifications `json:"notifications,omitempty" tf:"notifications,omitempty"`
 	// +optional
 	OutputBucket string `json:"outputBucket,omitempty" tf:"output_bucket,omitempty"`
 	Role         string `json:"role" tf:"role"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	ThumbnailConfig []ElastictranscoderPipelineSpecThumbnailConfig `json:"thumbnailConfig,omitempty" tf:"thumbnail_config,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	ThumbnailConfigPermissions []ElastictranscoderPipelineSpecThumbnailConfigPermissions `json:"thumbnailConfigPermissions,omitempty" tf:"thumbnail_config_permissions,omitempty"`
 }
 

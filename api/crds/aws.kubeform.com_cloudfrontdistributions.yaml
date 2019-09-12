@@ -405,7 +405,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             arn:
               type: string
             callerReference:
@@ -427,7 +426,6 @@ spec:
                 - errorCode
                 type: object
               type: array
-              uniqueItems: true
             defaultCacheBehavior:
               items:
                 properties:
@@ -435,12 +433,10 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   cachedMethods:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   compress:
                     type: boolean
                   defaultTtl:
@@ -459,7 +455,6 @@ spec:
                                 items:
                                   type: string
                                 type: array
-                                uniqueItems: true
                             required:
                             - forward
                             type: object
@@ -469,7 +464,6 @@ spec:
                           items:
                             type: string
                           type: array
-                          uniqueItems: true
                         queryString:
                           type: boolean
                         queryStringCacheKeys:
@@ -497,7 +491,6 @@ spec:
                       type: object
                     maxItems: 4
                     type: array
-                    uniqueItems: true
                   maxTtl:
                     type: integer
                   minTtl:
@@ -562,12 +555,10 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   cachedMethods:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   compress:
                     type: boolean
                   defaultTtl:
@@ -586,7 +577,6 @@ spec:
                                 items:
                                   type: string
                                 type: array
-                                uniqueItems: true
                             required:
                             - forward
                             type: object
@@ -596,7 +586,6 @@ spec:
                           items:
                             type: string
                           type: array
-                          uniqueItems: true
                         queryString:
                           type: boolean
                         queryStringCacheKeys:
@@ -624,7 +613,6 @@ spec:
                       type: object
                     maxItems: 4
                     type: array
-                    uniqueItems: true
                   maxTtl:
                     type: integer
                   minTtl:
@@ -665,7 +653,6 @@ spec:
                       - value
                       type: object
                     type: array
-                    uniqueItems: true
                   customOriginConfig:
                     items:
                       properties:
@@ -683,7 +670,6 @@ spec:
                           items:
                             type: string
                           type: array
-                          uniqueItems: true
                       required:
                       - httpPort
                       - httpsPort
@@ -713,7 +699,6 @@ spec:
                 - originID
                 type: object
               type: array
-              uniqueItems: true
             originGroup:
               items:
                 properties:
@@ -725,7 +710,6 @@ spec:
                             format: int64
                             type: integer
                           type: array
-                          uniqueItems: true
                       required:
                       - statusCodes
                       type: object
@@ -749,7 +733,6 @@ spec:
                 - originID
                 type: object
               type: array
-              uniqueItems: true
             priceClass:
               type: string
             providerRef:
@@ -771,7 +754,6 @@ spec:
                           items:
                             type: string
                           type: array
-                          uniqueItems: true
                         restrictionType:
                           type: string
                       required:
@@ -837,7 +819,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 arn:
                   type: string
                 callerReference:
@@ -859,7 +840,6 @@ spec:
                     - errorCode
                     type: object
                   type: array
-                  uniqueItems: true
                 defaultCacheBehavior:
                   items:
                     properties:
@@ -867,12 +847,10 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       cachedMethods:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       compress:
                         type: boolean
                       defaultTtl:
@@ -891,7 +869,6 @@ spec:
                                     items:
                                       type: string
                                     type: array
-                                    uniqueItems: true
                                 required:
                                 - forward
                                 type: object
@@ -901,7 +878,6 @@ spec:
                               items:
                                 type: string
                               type: array
-                              uniqueItems: true
                             queryString:
                               type: boolean
                             queryStringCacheKeys:
@@ -929,7 +905,6 @@ spec:
                           type: object
                         maxItems: 4
                         type: array
-                        uniqueItems: true
                       maxTtl:
                         type: integer
                       minTtl:
@@ -994,12 +969,10 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       cachedMethods:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       compress:
                         type: boolean
                       defaultTtl:
@@ -1018,7 +991,6 @@ spec:
                                     items:
                                       type: string
                                     type: array
-                                    uniqueItems: true
                                 required:
                                 - forward
                                 type: object
@@ -1028,7 +1000,6 @@ spec:
                               items:
                                 type: string
                               type: array
-                              uniqueItems: true
                             queryString:
                               type: boolean
                             queryStringCacheKeys:
@@ -1056,7 +1027,6 @@ spec:
                           type: object
                         maxItems: 4
                         type: array
-                        uniqueItems: true
                       maxTtl:
                         type: integer
                       minTtl:
@@ -1097,7 +1067,6 @@ spec:
                           - value
                           type: object
                         type: array
-                        uniqueItems: true
                       customOriginConfig:
                         items:
                           properties:
@@ -1115,7 +1084,6 @@ spec:
                               items:
                                 type: string
                               type: array
-                              uniqueItems: true
                           required:
                           - httpPort
                           - httpsPort
@@ -1145,7 +1113,6 @@ spec:
                     - originID
                     type: object
                   type: array
-                  uniqueItems: true
                 originGroup:
                   items:
                     properties:
@@ -1157,7 +1124,6 @@ spec:
                                 format: int64
                                 type: integer
                               type: array
-                              uniqueItems: true
                           required:
                           - statusCodes
                           type: object
@@ -1181,7 +1147,6 @@ spec:
                     - originID
                     type: object
                   type: array
-                  uniqueItems: true
                 priceClass:
                   type: string
                 providerRef:
@@ -1203,7 +1168,6 @@ spec:
                               items:
                                 type: string
                               type: array
-                              uniqueItems: true
                             restrictionType:
                               type: string
                           required:
@@ -1276,3 +1240,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

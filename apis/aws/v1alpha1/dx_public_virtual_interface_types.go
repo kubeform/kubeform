@@ -38,7 +38,6 @@ type DxPublicVirtualInterfaceSpec struct {
 	CustomerAddress string `json:"customerAddress,omitempty" tf:"customer_address,omitempty"`
 	Name            string `json:"name" tf:"name"`
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	RouteFilterPrefixes []string `json:"routeFilterPrefixes" tf:"route_filter_prefixes"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

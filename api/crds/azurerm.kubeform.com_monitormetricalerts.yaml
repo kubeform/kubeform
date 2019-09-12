@@ -410,7 +410,6 @@ spec:
                 - actionGroupID
                 type: object
               type: array
-              uniqueItems: true
             autoMitigate:
               type: boolean
             criteria:
@@ -481,7 +480,6 @@ spec:
               maxItems: 1
               minItems: 1
               type: array
-              uniqueItems: true
             severity:
               type: integer
             tags:
@@ -519,7 +517,6 @@ spec:
                     - actionGroupID
                     type: object
                   type: array
-                  uniqueItems: true
                 autoMitigate:
                   type: boolean
                 criteria:
@@ -590,7 +587,6 @@ spec:
                   maxItems: 1
                   minItems: 1
                   type: array
-                  uniqueItems: true
                 severity:
                   type: integer
                 tags:
@@ -630,3 +626,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

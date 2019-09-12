@@ -33,10 +33,8 @@ type BackupSelectionSpec struct {
 	Name       string `json:"name" tf:"name"`
 	PlanID     string `json:"planID" tf:"plan_id"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Resources []string `json:"resources,omitempty" tf:"resources,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SelectionTag []BackupSelectionSpecSelectionTag `json:"selectionTag,omitempty" tf:"selection_tag,omitempty"`
 }
 

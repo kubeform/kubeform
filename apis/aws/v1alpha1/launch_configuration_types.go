@@ -60,14 +60,12 @@ type LaunchConfigurationSpec struct {
 	// +optional
 	AssociatePublicIPAddress bool `json:"associatePublicIPAddress,omitempty" tf:"associate_public_ip_address,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EbsBlockDevice []LaunchConfigurationSpecEbsBlockDevice `json:"ebsBlockDevice,omitempty" tf:"ebs_block_device,omitempty"`
 	// +optional
 	EbsOptimized bool `json:"ebsOptimized,omitempty" tf:"ebs_optimized,omitempty"`
 	// +optional
 	EnableMonitoring bool `json:"enableMonitoring,omitempty" tf:"enable_monitoring,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EphemeralBlockDevice []LaunchConfigurationSpecEphemeralBlockDevice `json:"ephemeralBlockDevice,omitempty" tf:"ephemeral_block_device,omitempty"`
 	// +optional
 	IamInstanceProfile string `json:"iamInstanceProfile,omitempty" tf:"iam_instance_profile,omitempty"`
@@ -85,7 +83,6 @@ type LaunchConfigurationSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	RootBlockDevice []LaunchConfigurationSpecRootBlockDevice `json:"rootBlockDevice,omitempty" tf:"root_block_device,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
 	SpotPrice string `json:"spotPrice,omitempty" tf:"spot_price,omitempty"`
@@ -96,7 +93,6 @@ type LaunchConfigurationSpec struct {
 	// +optional
 	VpcClassicLinkID string `json:"vpcClassicLinkID,omitempty" tf:"vpc_classic_link_id,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VpcClassicLinkSecurityGroups []string `json:"vpcClassicLinkSecurityGroups,omitempty" tf:"vpc_classic_link_security_groups,omitempty"`
 }
 

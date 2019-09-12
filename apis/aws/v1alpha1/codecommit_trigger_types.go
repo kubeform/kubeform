@@ -37,7 +37,6 @@ type CodecommitTriggerSpec struct {
 	ConfigurationID string `json:"configurationID,omitempty" tf:"configuration_id,omitempty"`
 	RepositoryName  string `json:"repositoryName" tf:"repository_name"`
 	// +kubebuilder:validation:MaxItems=10
-	// +kubebuilder:validation:UniqueItems=true
 	Trigger []CodecommitTriggerSpecTrigger `json:"trigger" tf:"trigger"`
 }
 

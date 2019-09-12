@@ -31,10 +31,8 @@ type CloudwatchEventTargetSpecEcsTargetNetworkConfiguration struct {
 	// +optional
 	AssignPublicIP bool `json:"assignPublicIP,omitempty" tf:"assign_public_ip,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
-	Subnets []string `json:"subnets" tf:"subnets"`
+	Subnets        []string `json:"subnets" tf:"subnets"`
 }
 
 type CloudwatchEventTargetSpecEcsTarget struct {

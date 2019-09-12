@@ -23,9 +23,7 @@ type AutoscalingNotificationSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// +kubebuilder:validation:UniqueItems=true
-	GroupNames []string `json:"groupNames" tf:"group_names"`
-	// +kubebuilder:validation:UniqueItems=true
+	GroupNames    []string `json:"groupNames" tf:"group_names"`
 	Notifications []string `json:"notifications" tf:"notifications"`
 	TopicArn      string   `json:"topicArn" tf:"topic_arn"`
 }

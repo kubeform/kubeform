@@ -24,9 +24,7 @@ type CurReportDefinitionSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
-	AdditionalArtifacts []string `json:"additionalArtifacts,omitempty" tf:"additional_artifacts,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
+	AdditionalArtifacts      []string `json:"additionalArtifacts,omitempty" tf:"additional_artifacts,omitempty"`
 	AdditionalSchemaElements []string `json:"additionalSchemaElements" tf:"additional_schema_elements"`
 	Compression              string   `json:"compression" tf:"compression"`
 	Format                   string   `json:"format" tf:"format"`

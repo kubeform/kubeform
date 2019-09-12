@@ -26,8 +26,7 @@ type ProjectServicesSpec struct {
 	// +optional
 	DisableOnDestroy bool `json:"disableOnDestroy,omitempty" tf:"disable_on_destroy,omitempty"`
 	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
+	Project  string   `json:"project,omitempty" tf:"project,omitempty"`
 	Services []string `json:"services" tf:"services"`
 }
 

@@ -417,7 +417,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             name:
               type: string
             peerIP:
@@ -439,7 +438,6 @@ spec:
               items:
                 type: string
               type: array
-              uniqueItems: true
             router:
               type: string
             secretRef:
@@ -492,7 +490,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 name:
                   type: string
                 peerIP:
@@ -514,7 +511,6 @@ spec:
                   items:
                     type: string
                   type: array
-                  uniqueItems: true
                 router:
                   type: string
                 secretRef:
@@ -562,3 +558,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

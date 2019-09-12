@@ -40,7 +40,6 @@ type ElasticBeanstalkEnvironmentSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AllSettings []ElasticBeanstalkEnvironmentSpecAllSettings `json:"allSettings,omitempty" tf:"all_settings,omitempty"`
 	Application string                                       `json:"application" tf:"application"`
 	// +optional
@@ -67,7 +66,6 @@ type ElasticBeanstalkEnvironmentSpec struct {
 	// +optional
 	Queues []string `json:"queues,omitempty" tf:"queues,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Setting []ElasticBeanstalkEnvironmentSpecSetting `json:"setting,omitempty" tf:"setting,omitempty"`
 	// +optional
 	SolutionStackName string `json:"solutionStackName,omitempty" tf:"solution_stack_name,omitempty"`

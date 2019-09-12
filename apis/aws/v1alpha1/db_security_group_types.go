@@ -37,10 +37,9 @@ type DbSecurityGroupSpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
-	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
-	Ingress []DbSecurityGroupSpecIngress `json:"ingress" tf:"ingress"`
-	Name    string                       `json:"name" tf:"name"`
+	Description string                       `json:"description,omitempty" tf:"description,omitempty"`
+	Ingress     []DbSecurityGroupSpecIngress `json:"ingress" tf:"ingress"`
+	Name        string                       `json:"name" tf:"name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

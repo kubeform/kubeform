@@ -27,7 +27,6 @@ type DnsZoneSpec struct {
 	MaxNumberOfRecordSets int    `json:"maxNumberOfRecordSets,omitempty" tf:"max_number_of_record_sets,omitempty"`
 	Name                  string `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	NameServers []string `json:"nameServers,omitempty" tf:"name_servers,omitempty"`
 	// +optional
 	NumberOfRecordSets int `json:"numberOfRecordSets,omitempty" tf:"number_of_record_sets,omitempty"`

@@ -27,7 +27,6 @@ type ApiManagementAPIOperationSpecRequestHeader struct {
 	Required    bool   `json:"required" tf:"required"`
 	Type        string `json:"type" tf:"type"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Values []string `json:"values,omitempty" tf:"values,omitempty"`
 }
 
@@ -40,7 +39,6 @@ type ApiManagementAPIOperationSpecRequestQueryParameter struct {
 	Required    bool   `json:"required" tf:"required"`
 	Type        string `json:"type" tf:"type"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Values []string `json:"values,omitempty" tf:"values,omitempty"`
 }
 
@@ -53,7 +51,6 @@ type ApiManagementAPIOperationSpecRequestRepresentationFormParameter struct {
 	Required    bool   `json:"required" tf:"required"`
 	Type        string `json:"type" tf:"type"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Values []string `json:"values,omitempty" tf:"values,omitempty"`
 }
 
@@ -89,7 +86,6 @@ type ApiManagementAPIOperationSpecResponseHeader struct {
 	Required    bool   `json:"required" tf:"required"`
 	Type        string `json:"type" tf:"type"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Values []string `json:"values,omitempty" tf:"values,omitempty"`
 }
 
@@ -102,7 +98,6 @@ type ApiManagementAPIOperationSpecResponseRepresentationFormParameter struct {
 	Required    bool   `json:"required" tf:"required"`
 	Type        string `json:"type" tf:"type"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Values []string `json:"values,omitempty" tf:"values,omitempty"`
 }
 
@@ -137,7 +132,6 @@ type ApiManagementAPIOperationSpecTemplateParameter struct {
 	Required    bool   `json:"required" tf:"required"`
 	Type        string `json:"type" tf:"type"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Values []string `json:"values,omitempty" tf:"values,omitempty"`
 }
 

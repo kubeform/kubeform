@@ -424,7 +424,6 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                   publisher:
                     type: string
                   settings:
@@ -440,7 +439,6 @@ spec:
                 - typeHandlerVersion
                 type: object
               type: array
-              uniqueItems: true
             healthProbeID:
               type: string
             id:
@@ -491,23 +489,19 @@ spec:
                           items:
                             type: string
                           type: array
-                          uniqueItems: true
                         applicationSecurityGroupIDS:
                           items:
                             type: string
                           maxItems: 20
                           type: array
-                          uniqueItems: true
                         loadBalancerBackendAddressPoolIDS:
                           items:
                             type: string
                           type: array
-                          uniqueItems: true
                         loadBalancerInboundNATRulesIDS:
                           items:
                             type: string
                           type: array
-                          uniqueItems: true
                         name:
                           type: string
                         primary:
@@ -550,7 +544,6 @@ spec:
                 - primary
                 type: object
               type: array
-              uniqueItems: true
             osProfile:
               items:
                 properties:
@@ -585,7 +578,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             osProfileSecrets:
               items:
                 properties:
@@ -606,7 +598,6 @@ spec:
                 - sourceVaultID
                 type: object
               type: array
-              uniqueItems: true
             osProfileWindowsConfig:
               items:
                 properties:
@@ -643,7 +634,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             overprovision:
               type: boolean
             plan:
@@ -662,7 +652,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             priority:
               type: string
             providerRef:
@@ -750,7 +739,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             storageProfileOsDisk:
               items:
                 properties:
@@ -770,13 +758,11 @@ spec:
                     items:
                       type: string
                     type: array
-                    uniqueItems: true
                 required:
                 - createOption
                 type: object
               maxItems: 1
               type: array
-              uniqueItems: true
             tags:
               additionalProperties:
                 type: string
@@ -834,7 +820,6 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                       publisher:
                         type: string
                       settings:
@@ -850,7 +835,6 @@ spec:
                     - typeHandlerVersion
                     type: object
                   type: array
-                  uniqueItems: true
                 healthProbeID:
                   type: string
                 id:
@@ -901,23 +885,19 @@ spec:
                               items:
                                 type: string
                               type: array
-                              uniqueItems: true
                             applicationSecurityGroupIDS:
                               items:
                                 type: string
                               maxItems: 20
                               type: array
-                              uniqueItems: true
                             loadBalancerBackendAddressPoolIDS:
                               items:
                                 type: string
                               type: array
-                              uniqueItems: true
                             loadBalancerInboundNATRulesIDS:
                               items:
                                 type: string
                               type: array
-                              uniqueItems: true
                             name:
                               type: string
                             primary:
@@ -960,7 +940,6 @@ spec:
                     - primary
                     type: object
                   type: array
-                  uniqueItems: true
                 osProfile:
                   items:
                     properties:
@@ -995,7 +974,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 osProfileSecrets:
                   items:
                     properties:
@@ -1016,7 +994,6 @@ spec:
                     - sourceVaultID
                     type: object
                   type: array
-                  uniqueItems: true
                 osProfileWindowsConfig:
                   items:
                     properties:
@@ -1053,7 +1030,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 overprovision:
                   type: boolean
                 plan:
@@ -1072,7 +1048,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 priority:
                   type: string
                 providerRef:
@@ -1160,7 +1135,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 storageProfileOsDisk:
                   items:
                     properties:
@@ -1180,13 +1154,11 @@ spec:
                         items:
                           type: string
                         type: array
-                        uniqueItems: true
                     required:
                     - createOption
                     type: object
                   maxItems: 1
                   type: array
-                  uniqueItems: true
                 tags:
                   additionalProperties:
                     type: string
@@ -1232,3 +1204,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

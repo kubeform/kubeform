@@ -30,7 +30,6 @@ type NeptuneEventSubscriptionSpec struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EventCategories []string `json:"eventCategories,omitempty" tf:"event_categories,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
@@ -38,7 +37,6 @@ type NeptuneEventSubscriptionSpec struct {
 	NamePrefix  string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	SnsTopicArn string `json:"snsTopicArn" tf:"sns_topic_arn"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SourceIDS []string `json:"sourceIDS,omitempty" tf:"source_ids,omitempty"`
 	// +optional
 	SourceType string `json:"sourceType,omitempty" tf:"source_type,omitempty"`

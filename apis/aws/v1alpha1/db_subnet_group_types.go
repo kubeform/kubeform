@@ -30,9 +30,8 @@ type DbSubnetGroupSpec struct {
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
-	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
+	NamePrefix string   `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
+	SubnetIDS  []string `json:"subnetIDS" tf:"subnet_ids"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

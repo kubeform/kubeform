@@ -118,7 +118,6 @@ type IothubSpec struct {
 	// +optional
 	Hostname string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	IpFilterRule      []IothubSpecIpFilterRule `json:"ipFilterRule,omitempty" tf:"ip_filter_rule,omitempty"`
 	Location          string                   `json:"location" tf:"location"`
 	Name              string                   `json:"name" tf:"name"`

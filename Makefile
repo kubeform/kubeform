@@ -202,10 +202,8 @@ fmt: $(BUILD_DIRS)
 	    $(BUILD_IMAGE)                                          \
 	    ./hack/fmt.sh $(SRC_DIRS)
 
-build: $(OUTBIN)
-
-.PHONY: .go/$(OUTBIN)
-$(OUTBIN): $(BUILD_DIRS)
+.PHONY: build
+build: $(BUILD_DIRS)
 	@echo "making $(OUTBIN)"
 	@docker run                                                 \
 	    -i                                                      \
@@ -231,6 +229,7 @@ $(OUTBIN): $(BUILD_DIRS)
 	        ./hack/build.sh                                     \
 	    "
 	@echo
+	@cp -r .go/bin .
 
 test: $(BUILD_DIRS)
 	@docker run                                                 \
@@ -277,7 +276,7 @@ $(BUILD_DIRS):
 	@mkdir -p $@
 
 .PHONY: dev
-dev: gen fmt push
+dev: build run gen fmt #push
 
 .PHONY: ci
 ci: lint test build #cover
@@ -285,3 +284,7 @@ ci: lint test build #cover
 .PHONY: clean
 clean:
 	rm -rf .go bin
+
+.PHONY: run
+run:
+	@./bin/$(OS)_$(ARCH)/kubeform

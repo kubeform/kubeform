@@ -19,7 +19,6 @@ type GlacierVault struct {
 }
 
 type GlacierVaultSpecNotification struct {
-	// +kubebuilder:validation:UniqueItems=true
 	Events   []string `json:"events" tf:"events"`
 	SnsTopic string   `json:"snsTopic" tf:"sns_topic"`
 }

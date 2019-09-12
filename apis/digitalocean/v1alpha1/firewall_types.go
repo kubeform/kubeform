@@ -23,31 +23,23 @@ type FirewallSpecInboundRule struct {
 	PortRange string `json:"portRange,omitempty" tf:"port_range,omitempty"`
 	Protocol  string `json:"protocol" tf:"protocol"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SourceAddresses []string `json:"sourceAddresses,omitempty" tf:"source_addresses,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SourceDropletIDS []int64 `json:"sourceDropletIDS,omitempty" tf:"source_droplet_ids,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SourceLoadBalancerUids []string `json:"sourceLoadBalancerUids,omitempty" tf:"source_load_balancer_uids,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SourceTags []string `json:"sourceTags,omitempty" tf:"source_tags,omitempty"`
 }
 
 type FirewallSpecOutboundRule struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DestinationAddresses []string `json:"destinationAddresses,omitempty" tf:"destination_addresses,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DestinationDropletIDS []int64 `json:"destinationDropletIDS,omitempty" tf:"destination_droplet_ids,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DestinationLoadBalancerUids []string `json:"destinationLoadBalancerUids,omitempty" tf:"destination_load_balancer_uids,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DestinationTags []string `json:"destinationTags,omitempty" tf:"destination_tags,omitempty"`
 	// +optional
 	PortRange string `json:"portRange,omitempty" tf:"port_range,omitempty"`
@@ -71,21 +63,17 @@ type FirewallSpec struct {
 	// +optional
 	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DropletIDS []int64 `json:"dropletIDS,omitempty" tf:"droplet_ids,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	InboundRule []FirewallSpecInboundRule `json:"inboundRule,omitempty" tf:"inbound_rule,omitempty"`
 	Name        string                    `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	OutboundRule []FirewallSpecOutboundRule `json:"outboundRule,omitempty" tf:"outbound_rule,omitempty"`
 	// +optional
 	PendingChanges []FirewallSpecPendingChanges `json:"pendingChanges,omitempty" tf:"pending_changes,omitempty"`
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 

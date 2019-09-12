@@ -112,8 +112,7 @@ type AlbListenerRuleSpec struct {
 
 	Action []AlbListenerRuleSpecAction `json:"action" tf:"action"`
 	// +optional
-	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
+	Arn         string                         `json:"arn,omitempty" tf:"arn,omitempty"`
 	Condition   []AlbListenerRuleSpecCondition `json:"condition" tf:"condition"`
 	ListenerArn string                         `json:"listenerArn" tf:"listener_arn"`
 	// +optional

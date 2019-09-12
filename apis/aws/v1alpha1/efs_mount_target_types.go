@@ -33,7 +33,6 @@ type EfsMountTargetSpec struct {
 	// +optional
 	NetworkInterfaceID string `json:"networkInterfaceID,omitempty" tf:"network_interface_id,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	SubnetID       string   `json:"subnetID" tf:"subnet_id"`
 }

@@ -27,7 +27,6 @@ type ContainerRegistrySpecNetworkRuleSet struct {
 	// +optional
 	DefaultAction string `json:"defaultAction,omitempty" tf:"default_action,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	IpRule []ContainerRegistrySpecNetworkRuleSetIpRule `json:"ipRule,omitempty" tf:"ip_rule,omitempty"`
 }
 
@@ -51,7 +50,6 @@ type ContainerRegistrySpec struct {
 	AdminUsername string `json:"adminUsername,omitempty" tf:"admin_username,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	GeoreplicationLocations []string `json:"georeplicationLocations,omitempty" tf:"georeplication_locations,omitempty"`
 	Location                string   `json:"location" tf:"location"`
 	// +optional

@@ -58,7 +58,6 @@ type ComputeURLMapSpec struct {
 	// +optional
 	Fingerprint string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	HostRule []ComputeURLMapSpecHostRule `json:"hostRule,omitempty" tf:"host_rule,omitempty"`
 	// +optional
 	MapID string `json:"mapID,omitempty" tf:"map_id,omitempty"`

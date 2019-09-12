@@ -21,7 +21,6 @@ type ComputeSecurityPolicy struct {
 type ComputeSecurityPolicySpecRuleMatchConfig struct {
 	// +kubebuilder:validation:MaxItems=5
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	SrcIPRanges []string `json:"srcIPRanges" tf:"src_ip_ranges"`
 }
 
@@ -55,7 +54,6 @@ type ComputeSecurityPolicySpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Rule []ComputeSecurityPolicySpecRule `json:"rule,omitempty" tf:"rule,omitempty"`
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`

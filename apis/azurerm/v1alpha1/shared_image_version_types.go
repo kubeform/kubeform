@@ -37,8 +37,7 @@ type SharedImageVersionSpec struct {
 	Name              string `json:"name" tf:"name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
+	Tags         map[string]string                    `json:"tags,omitempty" tf:"tags,omitempty"`
 	TargetRegion []SharedImageVersionSpecTargetRegion `json:"targetRegion" tf:"target_region"`
 }
 

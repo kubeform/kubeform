@@ -38,7 +38,6 @@ type StoragegatewayNfsFileShareSpec struct {
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +kubebuilder:validation:MaxItems=100
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	ClientList []string `json:"clientList" tf:"client_list"`
 	// +optional
 	DefaultStorageClass string `json:"defaultStorageClass,omitempty" tf:"default_storage_class,omitempty"`

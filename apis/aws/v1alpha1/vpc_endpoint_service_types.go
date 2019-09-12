@@ -25,16 +25,12 @@ type VpcEndpointServiceSpec struct {
 
 	AcceptanceRequired bool `json:"acceptanceRequired" tf:"acceptance_required"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AllowedPrincipals []string `json:"allowedPrincipals,omitempty" tf:"allowed_principals,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	BaseEndpointDNSNames []string `json:"baseEndpointDNSNames,omitempty" tf:"base_endpoint_dns_names,omitempty"`
 	// +kubebuilder:validation:MinItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	NetworkLoadBalancerArns []string `json:"networkLoadBalancerArns" tf:"network_load_balancer_arns"`
 	// +optional
 	PrivateDNSName string `json:"privateDNSName,omitempty" tf:"private_dns_name,omitempty"`

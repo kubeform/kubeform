@@ -36,17 +36,14 @@ type ComputeFirewallSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Allow []ComputeFirewallSpecAllow `json:"allow,omitempty" tf:"allow,omitempty"`
 	// +optional
 	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Deny []ComputeFirewallSpecDeny `json:"deny,omitempty" tf:"deny,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	DestinationRanges []string `json:"destinationRanges,omitempty" tf:"destination_ranges,omitempty"`
 	// +optional
 	Direction string `json:"direction,omitempty" tf:"direction,omitempty"`
@@ -64,21 +61,16 @@ type ComputeFirewallSpec struct {
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SourceRanges []string `json:"sourceRanges,omitempty" tf:"source_ranges,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	SourceServiceAccounts []string `json:"sourceServiceAccounts,omitempty" tf:"source_service_accounts,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SourceTags []string `json:"sourceTags,omitempty" tf:"source_tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	// +kubebuilder:validation:UniqueItems=true
 	TargetServiceAccounts []string `json:"targetServiceAccounts,omitempty" tf:"target_service_accounts,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	TargetTags []string `json:"targetTags,omitempty" tf:"target_tags,omitempty"`
 }
 

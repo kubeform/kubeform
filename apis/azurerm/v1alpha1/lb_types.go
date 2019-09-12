@@ -20,14 +20,11 @@ type Lb struct {
 
 type LbSpecFrontendIPConfiguration struct {
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	InboundNATRules []string `json:"inboundNATRules,omitempty" tf:"inbound_nat_rules,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	LoadBalancerRules []string `json:"loadBalancerRules,omitempty" tf:"load_balancer_rules,omitempty"`
 	Name              string   `json:"name" tf:"name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	OutboundRules []string `json:"outboundRules,omitempty" tf:"outbound_rules,omitempty"`
 	// +optional
 	PrivateIPAddress string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`

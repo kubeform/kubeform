@@ -24,8 +24,7 @@ type ProjectIamBindingSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`
-	// +kubebuilder:validation:UniqueItems=true
+	Etag    string   `json:"etag,omitempty" tf:"etag,omitempty"`
 	Members []string `json:"members" tf:"members"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`

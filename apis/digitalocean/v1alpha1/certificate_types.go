@@ -28,7 +28,6 @@ type CertificateSpec struct {
 	// +optional
 	CertificateChain string `json:"certificateChain,omitempty" tf:"certificate_chain,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Domains []string `json:"domains,omitempty" tf:"domains,omitempty"`
 	// +optional
 	LeafCertificate string `json:"leafCertificate,omitempty" tf:"leaf_certificate,omitempty"`

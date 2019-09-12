@@ -30,7 +30,6 @@ type DbEventSubscriptionSpec struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	EventCategories []string `json:"eventCategories,omitempty" tf:"event_categories,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
@@ -38,7 +37,6 @@ type DbEventSubscriptionSpec struct {
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	SnsTopic   string `json:"snsTopic" tf:"sns_topic"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SourceIDS []string `json:"sourceIDS,omitempty" tf:"source_ids,omitempty"`
 	// +optional
 	SourceType string `json:"sourceType,omitempty" tf:"source_type,omitempty"`

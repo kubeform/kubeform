@@ -32,7 +32,6 @@ type LoadBalancerPolicySpec struct {
 
 	LoadBalancerName string `json:"loadBalancerName" tf:"load_balancer_name"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	PolicyAttribute []LoadBalancerPolicySpecPolicyAttribute `json:"policyAttribute,omitempty" tf:"policy_attribute,omitempty"`
 	PolicyName      string                                  `json:"policyName" tf:"policy_name"`
 	PolicyTypeName  string                                  `json:"policyTypeName" tf:"policy_type_name"`

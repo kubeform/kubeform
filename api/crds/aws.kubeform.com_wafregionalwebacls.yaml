@@ -430,7 +430,6 @@ spec:
                             - type
                             type: object
                           type: array
-                          uniqueItems: true
                       required:
                       - fieldToMatch
                       type: object
@@ -488,7 +487,6 @@ spec:
                 - ruleID
                 type: object
               type: array
-              uniqueItems: true
           required:
           - defaultAction
           - metricName
@@ -537,7 +535,6 @@ spec:
                                 - type
                                 type: object
                               type: array
-                              uniqueItems: true
                           required:
                           - fieldToMatch
                           type: object
@@ -595,7 +592,6 @@ spec:
                     - ruleID
                     type: object
                   type: array
-                  uniqueItems: true
               required:
               - defaultAction
               - metricName
@@ -626,3 +622,9 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

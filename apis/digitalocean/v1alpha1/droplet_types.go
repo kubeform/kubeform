@@ -56,12 +56,10 @@ type DropletSpec struct {
 	ResizeDisk bool   `json:"resizeDisk,omitempty" tf:"resize_disk,omitempty"`
 	Size       string `json:"size" tf:"size"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	Urn string `json:"urn,omitempty" tf:"urn,omitempty"`
@@ -70,7 +68,6 @@ type DropletSpec struct {
 	// +optional
 	Vcpus int `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	VolumeIDS []string `json:"volumeIDS,omitempty" tf:"volume_ids,omitempty"`
 }
 

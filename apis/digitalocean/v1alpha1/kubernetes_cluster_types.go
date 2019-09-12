@@ -53,7 +53,6 @@ type KubernetesClusterSpecNodePool struct {
 	Nodes []KubernetesClusterSpecNodePoolNodes `json:"nodes,omitempty" tf:"nodes,omitempty"`
 	Size  string                               `json:"size" tf:"size"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
@@ -82,7 +81,6 @@ type KubernetesClusterSpec struct {
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
-	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	UpdatedAt string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
