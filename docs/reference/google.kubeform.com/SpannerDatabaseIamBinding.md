@@ -1,12 +1,12 @@
 ---
 title: SpannerDatabaseIamBinding
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: spannerdatabaseiambinding-google.kubeform.com
     name: SpannerDatabaseIamBinding
     parent: google.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

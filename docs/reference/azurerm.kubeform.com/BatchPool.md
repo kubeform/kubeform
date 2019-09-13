@@ -1,12 +1,12 @@
 ---
 title: BatchPool
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: batchpool-azurerm.kubeform.com
     name: BatchPool
     parent: azurerm.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

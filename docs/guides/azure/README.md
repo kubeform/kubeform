@@ -1,23 +1,23 @@
 ---
 title: Azure
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: readme-azure
     name: Azure
     parent: azure-guides
     weight: 10
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: guides
-url: /docs/v0.0.1/guides/azure/
+url: /docs/{{ .version }}/guides/azure/
 aliases:
-  - /docs/v0.0.1/guides/azure/README/
+  - /docs/{{ .version }}/guides/azure/README/
 ---
 
 # Azure
 
 This guide will show you how to provision a Azure Redis Cache using Kubeform.
 
-> Examples used in this guide can be found [here](https://github.com/kubeform/docs/tree/v0.0.1/docs/examples/azure).
+> Examples used in this guide can be found [here](https://github.com/kubeform/docs/tree/{{< param "info.version" >}}/docs/examples/azure).
 
 Look at the `Terraform` configuration below:
 

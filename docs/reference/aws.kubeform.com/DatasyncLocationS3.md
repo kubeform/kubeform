@@ -1,12 +1,12 @@
 ---
 title: DatasyncLocationS3
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: datasynclocations3-aws.kubeform.com
     name: DatasyncLocationS3
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

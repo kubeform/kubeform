@@ -1,12 +1,12 @@
 ---
 title: Ec2TransitGatewayVpcAttachment
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: ec2transitgatewayvpcattachment-aws.kubeform.com
     name: Ec2TransitGatewayVpcAttachment
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

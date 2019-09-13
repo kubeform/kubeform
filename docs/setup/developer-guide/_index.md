@@ -1,10 +1,10 @@
 ---
 title: Developer Guide
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: developer-guide
     name: Developer Guide
     parent: setup
     weight: 50
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 ---

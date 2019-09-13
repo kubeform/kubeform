@@ -1,16 +1,16 @@
 ---
 title: Concepts | Kubeform
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: concepts-readme
     name: README
     parent: concepts
     weight: -1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: concepts
-url: /docs/v0.0.1/concepts/
+url: /docs/{{ .version }}/concepts/
 aliases:
-  - /docs/v0.0.1/concepts/README/
+  - /docs/{{ .version }}/concepts/README/
 ---
 
 # Concepts

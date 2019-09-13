@@ -1,12 +1,12 @@
 ---
 title: ComputeProjectMetadataItem
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: computeprojectmetadataitem-google.kubeform.com
     name: ComputeProjectMetadataItem
     parent: google.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

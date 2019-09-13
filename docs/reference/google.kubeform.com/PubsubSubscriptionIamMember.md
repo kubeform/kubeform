@@ -1,12 +1,12 @@
 ---
 title: PubsubSubscriptionIamMember
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: pubsubsubscriptioniammember-google.kubeform.com
     name: PubsubSubscriptionIamMember
     parent: google.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

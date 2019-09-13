@@ -1,12 +1,12 @@
 ---
 title: AppmeshMesh
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: appmeshmesh-aws.kubeform.com
     name: AppmeshMesh
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

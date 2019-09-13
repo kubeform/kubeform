@@ -1,12 +1,12 @@
 ---
 title: Uninstall | Kubeform
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: uninstall-kubeform
     name: Uninstall
     parent: setup
     weight: 20
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: setup
 ---
 

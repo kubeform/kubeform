@@ -1,12 +1,12 @@
 ---
 title: CloudhsmV2Hsm
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: cloudhsmv2hsm-aws.kubeform.com
     name: CloudhsmV2Hsm
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

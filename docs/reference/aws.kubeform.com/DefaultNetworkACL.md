@@ -1,12 +1,12 @@
 ---
 title: DefaultNetworkACL
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: defaultnetworkacl-aws.kubeform.com
     name: DefaultNetworkACL
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

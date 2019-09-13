@@ -1,12 +1,12 @@
 ---
 title: AppServicePlan
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: appserviceplan-azurerm.kubeform.com
     name: AppServicePlan
     parent: azurerm.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

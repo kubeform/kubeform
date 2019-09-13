@@ -1,12 +1,12 @@
 ---
 title: ComputeBackendService
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: computebackendservice-google.kubeform.com
     name: ComputeBackendService
     parent: google.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: LbListenerRule
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: lblistenerrule-aws.kubeform.com
     name: LbListenerRule
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

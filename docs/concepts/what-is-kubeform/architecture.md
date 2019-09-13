@@ -1,12 +1,12 @@
 ---
 title: Kubeform Architecture
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: kubeform-architecture
     name: Kubeform Architecture
     parent: what-is-kubeform
     weight: 20
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: concepts
 ---
 

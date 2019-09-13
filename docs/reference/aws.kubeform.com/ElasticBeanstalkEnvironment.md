@@ -1,12 +1,12 @@
 ---
 title: ElasticBeanstalkEnvironment
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: elasticbeanstalkenvironment-aws.kubeform.com
     name: ElasticBeanstalkEnvironment
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

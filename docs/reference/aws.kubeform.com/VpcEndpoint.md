@@ -1,12 +1,12 @@
 ---
 title: VpcEndpoint
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: vpcendpoint-aws.kubeform.com
     name: VpcEndpoint
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

@@ -2,17 +2,17 @@
 title: Welcome | Kubeform
 description: Welcome to Kubeform
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: readme
     name: Readme
     parent: welcome
     weight: -1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: welcome
-url: /docs/v0.0.1/welcome/
+url: /docs/{{ .version }}/welcome/
 aliases:
-  - /docs/v0.0.1/
-  - /docs/v0.0.1/README/
+  - /docs/{{ .version }}/
+  - /docs/{{ .version }}/README/
 ---
 
 # Kubeform

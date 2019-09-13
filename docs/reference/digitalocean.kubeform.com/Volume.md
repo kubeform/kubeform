@@ -1,12 +1,12 @@
 ---
 title: Volume
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: volume-digitalocean.kubeform.com
     name: Volume
     parent: digitalocean.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

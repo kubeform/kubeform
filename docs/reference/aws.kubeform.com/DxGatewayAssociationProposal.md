@@ -1,12 +1,12 @@
 ---
 title: DxGatewayAssociationProposal
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: dxgatewayassociationproposal-aws.kubeform.com
     name: DxGatewayAssociationProposal
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

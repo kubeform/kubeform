@@ -1,12 +1,12 @@
 ---
 title: LoggingFolderExclusion
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: loggingfolderexclusion-google.kubeform.com
     name: LoggingFolderExclusion
     parent: google.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: SagemakerNotebookInstanceLifecycleConfiguration
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: sagemakernotebookinstancelifecycleconfiguration-aws.kubeform.com
     name: SagemakerNotebookInstanceLifecycleConfiguration
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

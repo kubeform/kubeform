@@ -1,12 +1,12 @@
 ---
 title: Token
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: token-linode.kubeform.com
     name: Token
     parent: linode.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

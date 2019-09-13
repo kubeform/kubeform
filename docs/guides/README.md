@@ -1,16 +1,16 @@
 ---
 title: Guides | Kubeform
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: guides-readme
     name: Readme
     parent: guides
     weight: -1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: guides
-url: /docs/v0.0.1/guides/
+url: /docs/{{ .version }}/guides/
 aliases:
-  - /docs/v0.0.1/guides/README/
+  - /docs/{{ .version }}/guides/README/
 ---
 
 # Guides

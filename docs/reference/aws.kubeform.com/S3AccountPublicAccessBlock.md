@@ -1,12 +1,12 @@
 ---
 title: S3AccountPublicAccessBlock
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: s3accountpublicaccessblock-aws.kubeform.com
     name: S3AccountPublicAccessBlock
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

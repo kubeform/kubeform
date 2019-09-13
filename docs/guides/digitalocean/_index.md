@@ -1,10 +1,10 @@
 ---
 title: DigitalOcean
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: digitalocean-guides
     name: DigitalOcean
     parent: guides
     weight: 10
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 ---

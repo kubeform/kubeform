@@ -2,16 +2,16 @@
 title: Acknowledgement | Kubeform
 description: Acknowledgement
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: acknowledgement
     name: Acknowledgement
     parent: welcome
     weight: 20
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: welcome
-url: /docs/v0.0.1/welcome/acknowledgement/
+url: /docs/{{ .version }}/welcome/acknowledgement/
 aliases:
-  - /docs/v0.0.1/acknowledgement/
+  - /docs/{{ .version }}/acknowledgement/
 ---
 
 # Acknowledgement

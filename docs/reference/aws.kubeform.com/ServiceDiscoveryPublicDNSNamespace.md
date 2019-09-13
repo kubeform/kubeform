@@ -1,12 +1,12 @@
 ---
 title: ServiceDiscoveryPublicDNSNamespace
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: servicediscoverypublicdnsnamespace-aws.kubeform.com
     name: ServiceDiscoveryPublicDNSNamespace
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

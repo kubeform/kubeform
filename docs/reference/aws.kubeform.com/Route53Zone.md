@@ -1,12 +1,12 @@
 ---
 title: Route53Zone
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: route53zone-aws.kubeform.com
     name: Route53Zone
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

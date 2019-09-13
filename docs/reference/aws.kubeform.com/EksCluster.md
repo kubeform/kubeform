@@ -1,12 +1,12 @@
 ---
 title: EksCluster
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: ekscluster-aws.kubeform.com
     name: EksCluster
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

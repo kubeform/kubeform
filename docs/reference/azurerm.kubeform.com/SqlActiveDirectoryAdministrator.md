@@ -1,12 +1,12 @@
 ---
 title: SqlActiveDirectoryAdministrator
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: sqlactivedirectoryadministrator-azurerm.kubeform.com
     name: SqlActiveDirectoryAdministrator
     parent: azurerm.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: Route53ResolverRule
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: route53resolverrule-aws.kubeform.com
     name: Route53ResolverRule
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

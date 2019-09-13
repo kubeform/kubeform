@@ -1,12 +1,12 @@
 ---
 title: AutomationVariableInt
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: automationvariableint-azurerm.kubeform.com
     name: AutomationVariableInt
     parent: azurerm.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

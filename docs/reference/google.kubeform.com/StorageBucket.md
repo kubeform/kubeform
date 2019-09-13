@@ -1,12 +1,12 @@
 ---
 title: StorageBucket
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: storagebucket-google.kubeform.com
     name: StorageBucket
     parent: google.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

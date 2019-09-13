@@ -1,12 +1,12 @@
 ---
 title: PublicIP
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: publicip-azurerm.kubeform.com
     name: PublicIP
     parent: azurerm.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

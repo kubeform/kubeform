@@ -1,12 +1,12 @@
 ---
 title: VpcIpv4CIDRBlockAssociation
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: vpcipv4cidrblockassociation-aws.kubeform.com
     name: VpcIpv4CIDRBlockAssociation
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

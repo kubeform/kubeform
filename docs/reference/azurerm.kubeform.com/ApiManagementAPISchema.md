@@ -1,12 +1,12 @@
 ---
 title: ApiManagementAPISchema
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: apimanagementapischema-azurerm.kubeform.com
     name: ApiManagementAPISchema
     parent: azurerm.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

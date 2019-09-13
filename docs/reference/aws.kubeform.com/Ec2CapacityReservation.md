@@ -1,12 +1,12 @@
 ---
 title: Ec2CapacityReservation
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: ec2capacityreservation-aws.kubeform.com
     name: Ec2CapacityReservation
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

@@ -1,10 +1,10 @@
 ---
 title: Guides | Kubeform
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: guides
     name: Guides
     weight: 40
     pre: dropdown
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 ---

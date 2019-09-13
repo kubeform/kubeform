@@ -1,12 +1,12 @@
 ---
 title: ApiGatewayDeployment
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: apigatewaydeployment-aws.kubeform.com
     name: ApiGatewayDeployment
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

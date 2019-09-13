@@ -1,23 +1,23 @@
 ---
 title: Linode
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: readme-linode
     name: Linode
     parent: linode-guides
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: guides
-url: /docs/v0.0.1/guides/linode/
+url: /docs/{{ .version }}/guides/linode/
 aliases:
-  - /docs/v0.0.1/guides/linode/README/
+  - /docs/{{ .version }}/guides/linode/README/
 ---
 
 # Linode
 
 This guide will show you how to provision a Linode Instance using Kubeform.
 
-> Examples used in this guide can be found [here](https://github.com/kubeform/docs/tree/v0.0.1/docs/examples/linode).
+> Examples used in this guide can be found [here](https://github.com/kubeform/docs/tree/{{< param "info.version" >}}/docs/examples/linode).
 
 Look at the `Terraform` configuration below:
 

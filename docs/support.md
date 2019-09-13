@@ -2,16 +2,16 @@
 title: Support | Kubeform
 description: Support
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: support
     name: Support
     parent: welcome
     weight: 25
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: welcome
-url: /docs/v0.0.1/welcome/support/
+url: /docs/{{ .version }}/welcome/support/
 aliases:
-  - /docs/v0.0.1/support/
+  - /docs/{{ .version }}/support/
 ---
 # Support
 

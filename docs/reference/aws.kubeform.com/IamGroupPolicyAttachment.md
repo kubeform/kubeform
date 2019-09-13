@@ -1,12 +1,12 @@
 ---
 title: IamGroupPolicyAttachment
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: iamgrouppolicyattachment-aws.kubeform.com
     name: IamGroupPolicyAttachment
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

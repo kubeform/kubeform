@@ -1,12 +1,12 @@
 ---
 title: StorageBucketIamPolicy
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: storagebucketiampolicy-google.kubeform.com
     name: StorageBucketIamPolicy
     parent: google.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

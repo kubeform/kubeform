@@ -1,23 +1,23 @@
 ---
 title: Google
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: readme-google
     name: Google
     parent: google-guides
     weight: 10
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: guides
-url: /docs/v0.0.1/guides/google/
+url: /docs/{{ .version }}/guides/google/
 aliases:
-  - /docs/v0.0.1/guides/google/README/
+  - /docs/{{ .version }}/guides/google/README/
 ---
 
 # Google
 
 This guide will show you how to provision a Google Storage Bucket using Kubeform.
 
-> Examples used in this guide can be found [here](https://github.com/kubeform/docs/tree/v0.0.1/docs/examples/google).
+> Examples used in this guide can be found [here](https://github.com/kubeform/docs/tree/{{< param "info.version" >}}/docs/examples/google).
 
 Look at the `Terraform` configuration below:
 

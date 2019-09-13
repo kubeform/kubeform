@@ -1,12 +1,12 @@
 ---
 title: ServicebusTopicAuthorizationRule
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: servicebustopicauthorizationrule-azurerm.kubeform.com
     name: ServicebusTopicAuthorizationRule
     parent: azurerm.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

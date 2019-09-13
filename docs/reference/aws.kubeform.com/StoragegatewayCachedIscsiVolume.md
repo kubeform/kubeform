@@ -1,12 +1,12 @@
 ---
 title: StoragegatewayCachedIscsiVolume
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: storagegatewaycachediscsivolume-aws.kubeform.com
     name: StoragegatewayCachedIscsiVolume
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

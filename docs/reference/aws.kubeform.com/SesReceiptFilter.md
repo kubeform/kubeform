@@ -1,12 +1,12 @@
 ---
 title: SesReceiptFilter
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: sesreceiptfilter-aws.kubeform.com
     name: SesReceiptFilter
     parent: aws.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

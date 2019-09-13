@@ -1,12 +1,12 @@
 ---
 title: ComputeTargetTcpProxy
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: computetargettcpproxy-google.kubeform.com
     name: ComputeTargetTcpProxy
     parent: google.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: ComputeImage
 menu:
-  docs_v0.0.1:
+  docs_{{ .version }}:
     identifier: computeimage-google.kubeform.com
     name: ComputeImage
     parent: google.kubeform.com-reference
     weight: 1
-menu_name: docs_v0.0.1
+menu_name: docs_{{ .version }}
 section_menu_id: reference
 ---
 
