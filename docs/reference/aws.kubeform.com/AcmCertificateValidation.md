@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AcmCertificateValidation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AcmCertificateValidationSpec](#AcmCertificateValidationSpec)***||
-| `status` | ***[AcmCertificateValidationStatus](#AcmCertificateValidationStatus)***||
+| `spec` | ***[AcmCertificateValidationSpec](#acmcertificatevalidationspec)***||
+| `status` | ***[AcmCertificateValidationStatus](#acmcertificatevalidationstatus)***||
 ## AcmCertificateValidationSpec
 
-Appears on:[AcmCertificateValidation](#AcmCertificateValidation), [AcmCertificateValidationStatus](#AcmCertificateValidationStatus)
+Appears on:[AcmCertificateValidation](#acmcertificatevalidation), [AcmCertificateValidationStatus](#acmcertificatevalidationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[AcmCertificateValidation](#AcmCertificateValidation), [AcmCertificat
 | `validationRecordFqdns` | ***[]string***| ***(Optional)*** |
 ## AcmCertificateValidationStatus
 
-Appears on:[AcmCertificateValidation](#AcmCertificateValidation)
+Appears on:[AcmCertificateValidation](#acmcertificatevalidation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AcmCertificateValidationSpec](#AcmCertificateValidationSpec)***| ***(Optional)*** |
+| `output` | ***[AcmCertificateValidationSpec](#acmcertificatevalidationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

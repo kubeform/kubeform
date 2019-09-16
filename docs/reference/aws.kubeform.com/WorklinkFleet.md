@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `WorklinkFleet` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[WorklinkFleetSpec](#WorklinkFleetSpec)***||
-| `status` | ***[WorklinkFleetStatus](#WorklinkFleetStatus)***||
+| `spec` | ***[WorklinkFleetSpec](#worklinkfleetspec)***||
+| `status` | ***[WorklinkFleetStatus](#worklinkfleetstatus)***||
 ## WorklinkFleetSpec
 
-Appears on:[WorklinkFleet](#WorklinkFleet), [WorklinkFleetStatus](#WorklinkFleetStatus)
+Appears on:[WorklinkFleet](#worklinkfleet), [WorklinkFleetStatus](#worklinkfleetstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,14 +32,14 @@ Appears on:[WorklinkFleet](#WorklinkFleet), [WorklinkFleetStatus](#WorklinkFleet
 | `createdTime` | ***string***| ***(Optional)*** |
 | `deviceCaCertificate` | ***string***| ***(Optional)*** |
 | `displayName` | ***string***| ***(Optional)*** |
-| `identityProvider` | ***[[]WorklinkFleetSpecIdentityProvider](#WorklinkFleetSpecIdentityProvider)***| ***(Optional)*** |
+| `identityProvider` | ***[[]WorklinkFleetSpecIdentityProvider](#worklinkfleetspecidentityprovider)***| ***(Optional)*** |
 | `lastUpdatedTime` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `network` | ***[[]WorklinkFleetSpecNetwork](#WorklinkFleetSpecNetwork)***| ***(Optional)*** |
+| `network` | ***[[]WorklinkFleetSpecNetwork](#worklinkfleetspecnetwork)***| ***(Optional)*** |
 | `optimizeForEndUserLocation` | ***bool***| ***(Optional)*** |
 ## WorklinkFleetSpecIdentityProvider
 
-Appears on:[WorklinkFleetSpec](#WorklinkFleetSpec)
+Appears on:[WorklinkFleetSpec](#worklinkfleetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -47,7 +47,7 @@ Appears on:[WorklinkFleetSpec](#WorklinkFleetSpec)
 | `type` | ***string***||
 ## WorklinkFleetSpecNetwork
 
-Appears on:[WorklinkFleetSpec](#WorklinkFleetSpec)
+Appears on:[WorklinkFleetSpec](#worklinkfleetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -56,11 +56,11 @@ Appears on:[WorklinkFleetSpec](#WorklinkFleetSpec)
 | `vpcID` | ***string***||
 ## WorklinkFleetStatus
 
-Appears on:[WorklinkFleet](#WorklinkFleet)
+Appears on:[WorklinkFleet](#worklinkfleet)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[WorklinkFleetSpec](#WorklinkFleetSpec)***| ***(Optional)*** |
+| `output` | ***[WorklinkFleetSpec](#worklinkfleetspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

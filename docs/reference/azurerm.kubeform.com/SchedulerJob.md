@@ -16,31 +16,31 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `SchedulerJob` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SchedulerJobSpec](#SchedulerJobSpec)***||
-| `status` | ***[SchedulerJobStatus](#SchedulerJobStatus)***||
+| `spec` | ***[SchedulerJobSpec](#schedulerjobspec)***||
+| `status` | ***[SchedulerJobStatus](#schedulerjobstatus)***||
 ## SchedulerJobSpec
 
-Appears on:[SchedulerJob](#SchedulerJob), [SchedulerJobStatus](#SchedulerJobStatus)
+Appears on:[SchedulerJob](#schedulerjob), [SchedulerJobStatus](#schedulerjobstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
-| `actionStorageQueue` | ***[[]SchedulerJobSpecActionStorageQueue](#SchedulerJobSpecActionStorageQueue)***| ***(Optional)*** |
-| `actionWeb` | ***[[]SchedulerJobSpecActionWeb](#SchedulerJobSpecActionWeb)***| ***(Optional)*** |
-| `errorActionStorageQueue` | ***[[]SchedulerJobSpecErrorActionStorageQueue](#SchedulerJobSpecErrorActionStorageQueue)***| ***(Optional)*** |
-| `errorActionWeb` | ***[[]SchedulerJobSpecErrorActionWeb](#SchedulerJobSpecErrorActionWeb)***| ***(Optional)*** |
+| `actionStorageQueue` | ***[[]SchedulerJobSpecActionStorageQueue](#schedulerjobspecactionstoragequeue)***| ***(Optional)*** |
+| `actionWeb` | ***[[]SchedulerJobSpecActionWeb](#schedulerjobspecactionweb)***| ***(Optional)*** |
+| `errorActionStorageQueue` | ***[[]SchedulerJobSpecErrorActionStorageQueue](#schedulerjobspecerroractionstoragequeue)***| ***(Optional)*** |
+| `errorActionWeb` | ***[[]SchedulerJobSpecErrorActionWeb](#schedulerjobspecerroractionweb)***| ***(Optional)*** |
 | `jobCollectionName` | ***string***||
 | `name` | ***string***||
-| `recurrence` | ***[[]SchedulerJobSpecRecurrence](#SchedulerJobSpecRecurrence)***| ***(Optional)*** |
+| `recurrence` | ***[[]SchedulerJobSpecRecurrence](#schedulerjobspecrecurrence)***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
-| `retry` | ***[[]SchedulerJobSpecRetry](#SchedulerJobSpecRetry)***| ***(Optional)*** |
+| `retry` | ***[[]SchedulerJobSpecRetry](#schedulerjobspecretry)***| ***(Optional)*** |
 | `startTime` | ***string***| ***(Optional)*** |
 | `state` | ***string***| ***(Optional)*** |
 ## SchedulerJobSpecActionStorageQueue
 
-Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
+Appears on:[SchedulerJobSpec](#schedulerjobspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -50,20 +50,20 @@ Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
 | `storageQueueName` | ***string***||
 ## SchedulerJobSpecActionWeb
 
-Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
+Appears on:[SchedulerJobSpec](#schedulerjobspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `authenticationActiveDirectory` | ***[[]SchedulerJobSpecActionWebAuthenticationActiveDirectory](#SchedulerJobSpecActionWebAuthenticationActiveDirectory)***| ***(Optional)*** |
-| `authenticationBasic` | ***[[]SchedulerJobSpecActionWebAuthenticationBasic](#SchedulerJobSpecActionWebAuthenticationBasic)***| ***(Optional)*** |
-| `authenticationCertificate` | ***[[]SchedulerJobSpecActionWebAuthenticationCertificate](#SchedulerJobSpecActionWebAuthenticationCertificate)***| ***(Optional)*** |
+| `authenticationActiveDirectory` | ***[[]SchedulerJobSpecActionWebAuthenticationActiveDirectory](#schedulerjobspecactionwebauthenticationactivedirectory)***| ***(Optional)*** |
+| `authenticationBasic` | ***[[]SchedulerJobSpecActionWebAuthenticationBasic](#schedulerjobspecactionwebauthenticationbasic)***| ***(Optional)*** |
+| `authenticationCertificate` | ***[[]SchedulerJobSpecActionWebAuthenticationCertificate](#schedulerjobspecactionwebauthenticationcertificate)***| ***(Optional)*** |
 | `body` | ***string***| ***(Optional)*** |
 | `headers` | ***map[string]string***| ***(Optional)*** |
 | `method` | ***string***||
 | `url` | ***string***||
 ## SchedulerJobSpecActionWebAuthenticationActiveDirectory
 
-Appears on:[SchedulerJobSpecActionWeb](#SchedulerJobSpecActionWeb)
+Appears on:[SchedulerJobSpecActionWeb](#schedulerjobspecactionweb)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -72,14 +72,14 @@ Appears on:[SchedulerJobSpecActionWeb](#SchedulerJobSpecActionWeb)
 | `tenantID` | ***string***||
 ## SchedulerJobSpecActionWebAuthenticationBasic
 
-Appears on:[SchedulerJobSpecActionWeb](#SchedulerJobSpecActionWeb)
+Appears on:[SchedulerJobSpecActionWeb](#schedulerjobspecactionweb)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `username` | ***string***||
 ## SchedulerJobSpecActionWebAuthenticationCertificate
 
-Appears on:[SchedulerJobSpecActionWeb](#SchedulerJobSpecActionWeb)
+Appears on:[SchedulerJobSpecActionWeb](#schedulerjobspecactionweb)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -88,7 +88,7 @@ Appears on:[SchedulerJobSpecActionWeb](#SchedulerJobSpecActionWeb)
 | `thumbprint` | ***string***| ***(Optional)*** |
 ## SchedulerJobSpecErrorActionStorageQueue
 
-Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
+Appears on:[SchedulerJobSpec](#schedulerjobspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -98,20 +98,20 @@ Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
 | `storageQueueName` | ***string***||
 ## SchedulerJobSpecErrorActionWeb
 
-Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
+Appears on:[SchedulerJobSpec](#schedulerjobspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `authenticationActiveDirectory` | ***[[]SchedulerJobSpecErrorActionWebAuthenticationActiveDirectory](#SchedulerJobSpecErrorActionWebAuthenticationActiveDirectory)***| ***(Optional)*** |
-| `authenticationBasic` | ***[[]SchedulerJobSpecErrorActionWebAuthenticationBasic](#SchedulerJobSpecErrorActionWebAuthenticationBasic)***| ***(Optional)*** |
-| `authenticationCertificate` | ***[[]SchedulerJobSpecErrorActionWebAuthenticationCertificate](#SchedulerJobSpecErrorActionWebAuthenticationCertificate)***| ***(Optional)*** |
+| `authenticationActiveDirectory` | ***[[]SchedulerJobSpecErrorActionWebAuthenticationActiveDirectory](#schedulerjobspecerroractionwebauthenticationactivedirectory)***| ***(Optional)*** |
+| `authenticationBasic` | ***[[]SchedulerJobSpecErrorActionWebAuthenticationBasic](#schedulerjobspecerroractionwebauthenticationbasic)***| ***(Optional)*** |
+| `authenticationCertificate` | ***[[]SchedulerJobSpecErrorActionWebAuthenticationCertificate](#schedulerjobspecerroractionwebauthenticationcertificate)***| ***(Optional)*** |
 | `body` | ***string***| ***(Optional)*** |
 | `headers` | ***map[string]string***| ***(Optional)*** |
 | `method` | ***string***||
 | `url` | ***string***||
 ## SchedulerJobSpecErrorActionWebAuthenticationActiveDirectory
 
-Appears on:[SchedulerJobSpecErrorActionWeb](#SchedulerJobSpecErrorActionWeb)
+Appears on:[SchedulerJobSpecErrorActionWeb](#schedulerjobspecerroractionweb)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -120,14 +120,14 @@ Appears on:[SchedulerJobSpecErrorActionWeb](#SchedulerJobSpecErrorActionWeb)
 | `tenantID` | ***string***||
 ## SchedulerJobSpecErrorActionWebAuthenticationBasic
 
-Appears on:[SchedulerJobSpecErrorActionWeb](#SchedulerJobSpecErrorActionWeb)
+Appears on:[SchedulerJobSpecErrorActionWeb](#schedulerjobspecerroractionweb)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `username` | ***string***||
 ## SchedulerJobSpecErrorActionWebAuthenticationCertificate
 
-Appears on:[SchedulerJobSpecErrorActionWeb](#SchedulerJobSpecErrorActionWeb)
+Appears on:[SchedulerJobSpecErrorActionWeb](#schedulerjobspecerroractionweb)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -136,7 +136,7 @@ Appears on:[SchedulerJobSpecErrorActionWeb](#SchedulerJobSpecErrorActionWeb)
 | `thumbprint` | ***string***| ***(Optional)*** |
 ## SchedulerJobSpecRecurrence
 
-Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
+Appears on:[SchedulerJobSpec](#schedulerjobspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -147,11 +147,11 @@ Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
 | `interval` | ***int***| ***(Optional)*** |
 | `minutes` | ***[]int64***| ***(Optional)*** |
 | `monthDays` | ***[]int64***| ***(Optional)*** |
-| `monthlyOccurrences` | ***[[]SchedulerJobSpecRecurrenceMonthlyOccurrences](#SchedulerJobSpecRecurrenceMonthlyOccurrences)***| ***(Optional)*** |
+| `monthlyOccurrences` | ***[[]SchedulerJobSpecRecurrenceMonthlyOccurrences](#schedulerjobspecrecurrencemonthlyoccurrences)***| ***(Optional)*** |
 | `weekDays` | ***[]string***| ***(Optional)*** |
 ## SchedulerJobSpecRecurrenceMonthlyOccurrences
 
-Appears on:[SchedulerJobSpecRecurrence](#SchedulerJobSpecRecurrence)
+Appears on:[SchedulerJobSpecRecurrence](#schedulerjobspecrecurrence)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -159,7 +159,7 @@ Appears on:[SchedulerJobSpecRecurrence](#SchedulerJobSpecRecurrence)
 | `occurrence` | ***int***||
 ## SchedulerJobSpecRetry
 
-Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
+Appears on:[SchedulerJobSpec](#schedulerjobspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -167,12 +167,12 @@ Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
 | `interval` | ***string***| ***(Optional)*** |
 ## SchedulerJobStatus
 
-Appears on:[SchedulerJob](#SchedulerJob)
+Appears on:[SchedulerJob](#schedulerjob)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SchedulerJobSpec](#SchedulerJobSpec)***| ***(Optional)*** |
+| `output` | ***[SchedulerJobSpec](#schedulerjobspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

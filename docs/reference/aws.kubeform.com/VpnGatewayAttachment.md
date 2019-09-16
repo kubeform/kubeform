@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `VpnGatewayAttachment` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[VpnGatewayAttachmentSpec](#VpnGatewayAttachmentSpec)***||
-| `status` | ***[VpnGatewayAttachmentStatus](#VpnGatewayAttachmentStatus)***||
+| `spec` | ***[VpnGatewayAttachmentSpec](#vpngatewayattachmentspec)***||
+| `status` | ***[VpnGatewayAttachmentStatus](#vpngatewayattachmentstatus)***||
 ## VpnGatewayAttachmentSpec
 
-Appears on:[VpnGatewayAttachment](#VpnGatewayAttachment), [VpnGatewayAttachmentStatus](#VpnGatewayAttachmentStatus)
+Appears on:[VpnGatewayAttachment](#vpngatewayattachment), [VpnGatewayAttachmentStatus](#vpngatewayattachmentstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[VpnGatewayAttachment](#VpnGatewayAttachment), [VpnGatewayAttachmentS
 | `vpnGatewayID` | ***string***||
 ## VpnGatewayAttachmentStatus
 
-Appears on:[VpnGatewayAttachment](#VpnGatewayAttachment)
+Appears on:[VpnGatewayAttachment](#vpngatewayattachment)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[VpnGatewayAttachmentSpec](#VpnGatewayAttachmentSpec)***| ***(Optional)*** |
+| `output` | ***[VpnGatewayAttachmentSpec](#vpngatewayattachmentspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

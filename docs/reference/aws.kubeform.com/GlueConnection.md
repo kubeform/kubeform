@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `GlueConnection` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[GlueConnectionSpec](#GlueConnectionSpec)***||
-| `status` | ***[GlueConnectionStatus](#GlueConnectionStatus)***||
+| `spec` | ***[GlueConnectionSpec](#glueconnectionspec)***||
+| `status` | ***[GlueConnectionStatus](#glueconnectionstatus)***||
 ## GlueConnectionSpec
 
-Appears on:[GlueConnection](#GlueConnection), [GlueConnectionStatus](#GlueConnectionStatus)
+Appears on:[GlueConnection](#glueconnection), [GlueConnectionStatus](#glueconnectionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,10 +32,10 @@ Appears on:[GlueConnection](#GlueConnection), [GlueConnectionStatus](#GlueConnec
 | `description` | ***string***| ***(Optional)*** |
 | `matchCriteria` | ***[]string***| ***(Optional)*** |
 | `name` | ***string***||
-| `physicalConnectionRequirements` | ***[[]GlueConnectionSpecPhysicalConnectionRequirements](#GlueConnectionSpecPhysicalConnectionRequirements)***| ***(Optional)*** |
+| `physicalConnectionRequirements` | ***[[]GlueConnectionSpecPhysicalConnectionRequirements](#glueconnectionspecphysicalconnectionrequirements)***| ***(Optional)*** |
 ## GlueConnectionSpecPhysicalConnectionRequirements
 
-Appears on:[GlueConnectionSpec](#GlueConnectionSpec)
+Appears on:[GlueConnectionSpec](#glueconnectionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -44,11 +44,11 @@ Appears on:[GlueConnectionSpec](#GlueConnectionSpec)
 | `subnetID` | ***string***| ***(Optional)*** |
 ## GlueConnectionStatus
 
-Appears on:[GlueConnection](#GlueConnection)
+Appears on:[GlueConnection](#glueconnection)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[GlueConnectionSpec](#GlueConnectionSpec)***| ***(Optional)*** |
+| `output` | ***[GlueConnectionSpec](#glueconnectionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

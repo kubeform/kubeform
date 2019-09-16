@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SwfDomain` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SwfDomainSpec](#SwfDomainSpec)***||
-| `status` | ***[SwfDomainStatus](#SwfDomainStatus)***||
+| `spec` | ***[SwfDomainSpec](#swfdomainspec)***||
+| `status` | ***[SwfDomainStatus](#swfdomainstatus)***||
 ## SwfDomainSpec
 
-Appears on:[SwfDomain](#SwfDomain), [SwfDomainStatus](#SwfDomainStatus)
+Appears on:[SwfDomain](#swfdomain), [SwfDomainStatus](#swfdomainstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[SwfDomain](#SwfDomain), [SwfDomainStatus](#SwfDomainStatus)
 | `workflowExecutionRetentionPeriodInDays` | ***string***||
 ## SwfDomainStatus
 
-Appears on:[SwfDomain](#SwfDomain)
+Appears on:[SwfDomain](#swfdomain)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SwfDomainSpec](#SwfDomainSpec)***| ***(Optional)*** |
+| `output` | ***[SwfDomainSpec](#swfdomainspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

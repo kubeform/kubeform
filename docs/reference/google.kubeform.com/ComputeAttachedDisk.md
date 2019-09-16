@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeAttachedDisk` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeAttachedDiskSpec](#ComputeAttachedDiskSpec)***||
-| `status` | ***[ComputeAttachedDiskStatus](#ComputeAttachedDiskStatus)***||
+| `spec` | ***[ComputeAttachedDiskSpec](#computeattacheddiskspec)***||
+| `status` | ***[ComputeAttachedDiskStatus](#computeattacheddiskstatus)***||
 ## ComputeAttachedDiskSpec
 
-Appears on:[ComputeAttachedDisk](#ComputeAttachedDisk), [ComputeAttachedDiskStatus](#ComputeAttachedDiskStatus)
+Appears on:[ComputeAttachedDisk](#computeattacheddisk), [ComputeAttachedDiskStatus](#computeattacheddiskstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[ComputeAttachedDisk](#ComputeAttachedDisk), [ComputeAttachedDiskStat
 | `zone` | ***string***| ***(Optional)*** |
 ## ComputeAttachedDiskStatus
 
-Appears on:[ComputeAttachedDisk](#ComputeAttachedDisk)
+Appears on:[ComputeAttachedDisk](#computeattacheddisk)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeAttachedDiskSpec](#ComputeAttachedDiskSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeAttachedDiskSpec](#computeattacheddiskspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

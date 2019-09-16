@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DbEventSubscription` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DbEventSubscriptionSpec](#DbEventSubscriptionSpec)***||
-| `status` | ***[DbEventSubscriptionStatus](#DbEventSubscriptionStatus)***||
+| `spec` | ***[DbEventSubscriptionSpec](#dbeventsubscriptionspec)***||
+| `status` | ***[DbEventSubscriptionStatus](#dbeventsubscriptionstatus)***||
 ## DbEventSubscriptionSpec
 
-Appears on:[DbEventSubscription](#DbEventSubscription), [DbEventSubscriptionStatus](#DbEventSubscriptionStatus)
+Appears on:[DbEventSubscription](#dbeventsubscription), [DbEventSubscriptionStatus](#dbeventsubscriptionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,11 +38,11 @@ Appears on:[DbEventSubscription](#DbEventSubscription), [DbEventSubscriptionStat
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DbEventSubscriptionStatus
 
-Appears on:[DbEventSubscription](#DbEventSubscription)
+Appears on:[DbEventSubscription](#dbeventsubscription)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DbEventSubscriptionSpec](#DbEventSubscriptionSpec)***| ***(Optional)*** |
+| `output` | ***[DbEventSubscriptionSpec](#dbeventsubscriptionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

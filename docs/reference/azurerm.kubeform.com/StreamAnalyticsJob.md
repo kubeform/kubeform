@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `StreamAnalyticsJob` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[StreamAnalyticsJobSpec](#StreamAnalyticsJobSpec)***||
-| `status` | ***[StreamAnalyticsJobStatus](#StreamAnalyticsJobStatus)***||
+| `spec` | ***[StreamAnalyticsJobSpec](#streamanalyticsjobspec)***||
+| `status` | ***[StreamAnalyticsJobStatus](#streamanalyticsjobstatus)***||
 ## StreamAnalyticsJobSpec
 
-Appears on:[StreamAnalyticsJob](#StreamAnalyticsJob), [StreamAnalyticsJobStatus](#StreamAnalyticsJobStatus)
+Appears on:[StreamAnalyticsJob](#streamanalyticsjob), [StreamAnalyticsJobStatus](#streamanalyticsjobstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -41,11 +41,11 @@ Appears on:[StreamAnalyticsJob](#StreamAnalyticsJob), [StreamAnalyticsJobStatus]
 | `transformationQuery` | ***string***||
 ## StreamAnalyticsJobStatus
 
-Appears on:[StreamAnalyticsJob](#StreamAnalyticsJob)
+Appears on:[StreamAnalyticsJob](#streamanalyticsjob)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[StreamAnalyticsJobSpec](#StreamAnalyticsJobSpec)***| ***(Optional)*** |
+| `output` | ***[StreamAnalyticsJobSpec](#streamanalyticsjobspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

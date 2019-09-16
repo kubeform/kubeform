@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `IotThingType` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[IotThingTypeSpec](#IotThingTypeSpec)***||
-| `status` | ***[IotThingTypeStatus](#IotThingTypeStatus)***||
+| `spec` | ***[IotThingTypeSpec](#iotthingtypespec)***||
+| `status` | ***[IotThingTypeStatus](#iotthingtypestatus)***||
 ## IotThingTypeSpec
 
-Appears on:[IotThingType](#IotThingType), [IotThingTypeStatus](#IotThingTypeStatus)
+Appears on:[IotThingType](#iotthingtype), [IotThingTypeStatus](#iotthingtypestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,10 +29,10 @@ Appears on:[IotThingType](#IotThingType), [IotThingTypeStatus](#IotThingTypeStat
 | `arn` | ***string***| ***(Optional)*** |
 | `deprecated` | ***bool***| ***(Optional)*** |
 | `name` | ***string***||
-| `properties` | ***[[]IotThingTypeSpecProperties](#IotThingTypeSpecProperties)***| ***(Optional)*** |
+| `properties` | ***[[]IotThingTypeSpecProperties](#iotthingtypespecproperties)***| ***(Optional)*** |
 ## IotThingTypeSpecProperties
 
-Appears on:[IotThingTypeSpec](#IotThingTypeSpec)
+Appears on:[IotThingTypeSpec](#iotthingtypespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -40,11 +40,11 @@ Appears on:[IotThingTypeSpec](#IotThingTypeSpec)
 | `searchableAttributes` | ***[]string***| ***(Optional)*** |
 ## IotThingTypeStatus
 
-Appears on:[IotThingType](#IotThingType)
+Appears on:[IotThingType](#iotthingtype)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[IotThingTypeSpec](#IotThingTypeSpec)***| ***(Optional)*** |
+| `output` | ***[IotThingTypeSpec](#iotthingtypespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `OpsworksNodejsAppLayer` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[OpsworksNodejsAppLayerSpec](#OpsworksNodejsAppLayerSpec)***||
-| `status` | ***[OpsworksNodejsAppLayerStatus](#OpsworksNodejsAppLayerStatus)***||
+| `spec` | ***[OpsworksNodejsAppLayerSpec](#opsworksnodejsapplayerspec)***||
+| `status` | ***[OpsworksNodejsAppLayerStatus](#opsworksnodejsapplayerstatus)***||
 ## OpsworksNodejsAppLayerSpec
 
-Appears on:[OpsworksNodejsAppLayer](#OpsworksNodejsAppLayer), [OpsworksNodejsAppLayerStatus](#OpsworksNodejsAppLayerStatus)
+Appears on:[OpsworksNodejsAppLayer](#opsworksnodejsapplayer), [OpsworksNodejsAppLayerStatus](#opsworksnodejsapplayerstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,7 +38,7 @@ Appears on:[OpsworksNodejsAppLayer](#OpsworksNodejsAppLayer), [OpsworksNodejsApp
 | `customShutdownRecipes` | ***[]string***| ***(Optional)*** |
 | `customUndeployRecipes` | ***[]string***| ***(Optional)*** |
 | `drainElbOnShutdown` | ***bool***| ***(Optional)*** |
-| `ebsVolume` | ***[[]OpsworksNodejsAppLayerSpecEbsVolume](#OpsworksNodejsAppLayerSpecEbsVolume)***| ***(Optional)*** |
+| `ebsVolume` | ***[[]OpsworksNodejsAppLayerSpecEbsVolume](#opsworksnodejsapplayerspecebsvolume)***| ***(Optional)*** |
 | `elasticLoadBalancer` | ***string***| ***(Optional)*** |
 | `installUpdatesOnBoot` | ***bool***| ***(Optional)*** |
 | `instanceShutdownTimeout` | ***int***| ***(Optional)*** |
@@ -49,7 +49,7 @@ Appears on:[OpsworksNodejsAppLayer](#OpsworksNodejsAppLayer), [OpsworksNodejsApp
 | `useEbsOptimizedInstances` | ***bool***| ***(Optional)*** |
 ## OpsworksNodejsAppLayerSpecEbsVolume
 
-Appears on:[OpsworksNodejsAppLayerSpec](#OpsworksNodejsAppLayerSpec)
+Appears on:[OpsworksNodejsAppLayerSpec](#opsworksnodejsapplayerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -61,11 +61,11 @@ Appears on:[OpsworksNodejsAppLayerSpec](#OpsworksNodejsAppLayerSpec)
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksNodejsAppLayerStatus
 
-Appears on:[OpsworksNodejsAppLayer](#OpsworksNodejsAppLayer)
+Appears on:[OpsworksNodejsAppLayer](#opsworksnodejsapplayer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[OpsworksNodejsAppLayerSpec](#OpsworksNodejsAppLayerSpec)***| ***(Optional)*** |
+| `output` | ***[OpsworksNodejsAppLayerSpec](#opsworksnodejsapplayerspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

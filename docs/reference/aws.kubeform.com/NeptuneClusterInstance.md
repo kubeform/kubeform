@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `NeptuneClusterInstance` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NeptuneClusterInstanceSpec](#NeptuneClusterInstanceSpec)***||
-| `status` | ***[NeptuneClusterInstanceStatus](#NeptuneClusterInstanceStatus)***||
+| `spec` | ***[NeptuneClusterInstanceSpec](#neptuneclusterinstancespec)***||
+| `status` | ***[NeptuneClusterInstanceStatus](#neptuneclusterinstancestatus)***||
 ## NeptuneClusterInstanceSpec
 
-Appears on:[NeptuneClusterInstance](#NeptuneClusterInstance), [NeptuneClusterInstanceStatus](#NeptuneClusterInstanceStatus)
+Appears on:[NeptuneClusterInstance](#neptuneclusterinstance), [NeptuneClusterInstanceStatus](#neptuneclusterinstancestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -52,11 +52,11 @@ Appears on:[NeptuneClusterInstance](#NeptuneClusterInstance), [NeptuneClusterIns
 | `writer` | ***bool***| ***(Optional)*** |
 ## NeptuneClusterInstanceStatus
 
-Appears on:[NeptuneClusterInstance](#NeptuneClusterInstance)
+Appears on:[NeptuneClusterInstance](#neptuneclusterinstance)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NeptuneClusterInstanceSpec](#NeptuneClusterInstanceSpec)***| ***(Optional)*** |
+| `output` | ***[NeptuneClusterInstanceSpec](#neptuneclusterinstancespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

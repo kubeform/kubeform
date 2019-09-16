@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `S3BucketObject` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[S3BucketObjectSpec](#S3BucketObjectSpec)***||
-| `status` | ***[S3BucketObjectStatus](#S3BucketObjectStatus)***||
+| `spec` | ***[S3BucketObjectSpec](#s3bucketobjectspec)***||
+| `status` | ***[S3BucketObjectStatus](#s3bucketobjectstatus)***||
 ## S3BucketObjectSpec
 
-Appears on:[S3BucketObject](#S3BucketObject), [S3BucketObjectStatus](#S3BucketObjectStatus)
+Appears on:[S3BucketObject](#s3bucketobject), [S3BucketObjectStatus](#s3bucketobjectstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -46,11 +46,11 @@ Appears on:[S3BucketObject](#S3BucketObject), [S3BucketObjectStatus](#S3BucketOb
 | `websiteRedirect` | ***string***| ***(Optional)*** |
 ## S3BucketObjectStatus
 
-Appears on:[S3BucketObject](#S3BucketObject)
+Appears on:[S3BucketObject](#s3bucketobject)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[S3BucketObjectSpec](#S3BucketObjectSpec)***| ***(Optional)*** |
+| `output` | ***[S3BucketObjectSpec](#s3bucketobjectspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

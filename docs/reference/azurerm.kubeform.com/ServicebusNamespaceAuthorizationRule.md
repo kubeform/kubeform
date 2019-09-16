@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ServicebusNamespaceAuthorizationRule` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ServicebusNamespaceAuthorizationRuleSpec](#ServicebusNamespaceAuthorizationRuleSpec)***||
-| `status` | ***[ServicebusNamespaceAuthorizationRuleStatus](#ServicebusNamespaceAuthorizationRuleStatus)***||
+| `spec` | ***[ServicebusNamespaceAuthorizationRuleSpec](#servicebusnamespaceauthorizationrulespec)***||
+| `status` | ***[ServicebusNamespaceAuthorizationRuleStatus](#servicebusnamespaceauthorizationrulestatus)***||
 ## ServicebusNamespaceAuthorizationRuleSpec
 
-Appears on:[ServicebusNamespaceAuthorizationRule](#ServicebusNamespaceAuthorizationRule), [ServicebusNamespaceAuthorizationRuleStatus](#ServicebusNamespaceAuthorizationRuleStatus)
+Appears on:[ServicebusNamespaceAuthorizationRule](#servicebusnamespaceauthorizationrule), [ServicebusNamespaceAuthorizationRuleStatus](#servicebusnamespaceauthorizationrulestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,12 +35,12 @@ Appears on:[ServicebusNamespaceAuthorizationRule](#ServicebusNamespaceAuthorizat
 | `send` | ***bool***| ***(Optional)*** |
 ## ServicebusNamespaceAuthorizationRuleStatus
 
-Appears on:[ServicebusNamespaceAuthorizationRule](#ServicebusNamespaceAuthorizationRule)
+Appears on:[ServicebusNamespaceAuthorizationRule](#servicebusnamespaceauthorizationrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ServicebusNamespaceAuthorizationRuleSpec](#ServicebusNamespaceAuthorizationRuleSpec)***| ***(Optional)*** |
+| `output` | ***[ServicebusNamespaceAuthorizationRuleSpec](#servicebusnamespaceauthorizationrulespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

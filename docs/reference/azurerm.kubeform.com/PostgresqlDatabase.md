@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `PostgresqlDatabase` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PostgresqlDatabaseSpec](#PostgresqlDatabaseSpec)***||
-| `status` | ***[PostgresqlDatabaseStatus](#PostgresqlDatabaseStatus)***||
+| `spec` | ***[PostgresqlDatabaseSpec](#postgresqldatabasespec)***||
+| `status` | ***[PostgresqlDatabaseStatus](#postgresqldatabasestatus)***||
 ## PostgresqlDatabaseSpec
 
-Appears on:[PostgresqlDatabase](#PostgresqlDatabase), [PostgresqlDatabaseStatus](#PostgresqlDatabaseStatus)
+Appears on:[PostgresqlDatabase](#postgresqldatabase), [PostgresqlDatabaseStatus](#postgresqldatabasestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[PostgresqlDatabase](#PostgresqlDatabase), [PostgresqlDatabaseStatus]
 | `serverName` | ***string***||
 ## PostgresqlDatabaseStatus
 
-Appears on:[PostgresqlDatabase](#PostgresqlDatabase)
+Appears on:[PostgresqlDatabase](#postgresqldatabase)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PostgresqlDatabaseSpec](#PostgresqlDatabaseSpec)***| ***(Optional)*** |
+| `output` | ***[PostgresqlDatabaseSpec](#postgresqldatabasespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

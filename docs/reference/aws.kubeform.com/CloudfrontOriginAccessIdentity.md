@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CloudfrontOriginAccessIdentity` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CloudfrontOriginAccessIdentitySpec](#CloudfrontOriginAccessIdentitySpec)***||
-| `status` | ***[CloudfrontOriginAccessIdentityStatus](#CloudfrontOriginAccessIdentityStatus)***||
+| `spec` | ***[CloudfrontOriginAccessIdentitySpec](#cloudfrontoriginaccessidentityspec)***||
+| `status` | ***[CloudfrontOriginAccessIdentityStatus](#cloudfrontoriginaccessidentitystatus)***||
 ## CloudfrontOriginAccessIdentitySpec
 
-Appears on:[CloudfrontOriginAccessIdentity](#CloudfrontOriginAccessIdentity), [CloudfrontOriginAccessIdentityStatus](#CloudfrontOriginAccessIdentityStatus)
+Appears on:[CloudfrontOriginAccessIdentity](#cloudfrontoriginaccessidentity), [CloudfrontOriginAccessIdentityStatus](#cloudfrontoriginaccessidentitystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[CloudfrontOriginAccessIdentity](#CloudfrontOriginAccessIdentity), [C
 | `s3CanonicalUserID` | ***string***| ***(Optional)*** |
 ## CloudfrontOriginAccessIdentityStatus
 
-Appears on:[CloudfrontOriginAccessIdentity](#CloudfrontOriginAccessIdentity)
+Appears on:[CloudfrontOriginAccessIdentity](#cloudfrontoriginaccessidentity)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CloudfrontOriginAccessIdentitySpec](#CloudfrontOriginAccessIdentitySpec)***| ***(Optional)*** |
+| `output` | ***[CloudfrontOriginAccessIdentitySpec](#cloudfrontoriginaccessidentityspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `AppService` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AppServiceSpec](#AppServiceSpec)***||
-| `status` | ***[AppServiceStatus](#AppServiceStatus)***||
+| `spec` | ***[AppServiceSpec](#appservicespec)***||
+| `status` | ***[AppServiceStatus](#appservicestatus)***||
 ## AppServiceSpec
 
-Appears on:[AppService](#AppService), [AppServiceStatus](#AppServiceStatus)
+Appears on:[AppService](#appservice), [AppServiceStatus](#appservicestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,49 +29,49 @@ Appears on:[AppService](#AppService), [AppServiceStatus](#AppServiceStatus)
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `appServicePlanID` | ***string***||
 | `appSettings` | ***map[string]string***| ***(Optional)*** |
-| `authSettings` | ***[[]AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)***| ***(Optional)*** |
-| `backup` | ***[[]AppServiceSpecBackup](#AppServiceSpecBackup)***| ***(Optional)*** |
+| `authSettings` | ***[[]AppServiceSpecAuthSettings](#appservicespecauthsettings)***| ***(Optional)*** |
+| `backup` | ***[[]AppServiceSpecBackup](#appservicespecbackup)***| ***(Optional)*** |
 | `clientAffinityEnabled` | ***bool***| ***(Optional)*** |
 | `clientCertEnabled` | ***bool***| ***(Optional)*** |
-| `connectionString` | ***[[]AppServiceSpecConnectionString](#AppServiceSpecConnectionString)***| ***(Optional)*** |
+| `connectionString` | ***[[]AppServiceSpecConnectionString](#appservicespecconnectionstring)***| ***(Optional)*** |
 | `defaultSiteHostname` | ***string***| ***(Optional)*** |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `httpsOnly` | ***bool***| ***(Optional)*** |
-| `identity` | ***[[]AppServiceSpecIdentity](#AppServiceSpecIdentity)***| ***(Optional)*** |
+| `identity` | ***[[]AppServiceSpecIdentity](#appservicespecidentity)***| ***(Optional)*** |
 | `location` | ***string***||
-| `logs` | ***[[]AppServiceSpecLogs](#AppServiceSpecLogs)***| ***(Optional)*** |
+| `logs` | ***[[]AppServiceSpecLogs](#appservicespeclogs)***| ***(Optional)*** |
 | `name` | ***string***||
 | `outboundIPAddresses` | ***string***| ***(Optional)*** |
 | `possibleOutboundIPAddresses` | ***string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
-| `siteConfig` | ***[[]AppServiceSpecSiteConfig](#AppServiceSpecSiteConfig)***| ***(Optional)*** |
-| `siteCredential` | ***[[]AppServiceSpecSiteCredential](#AppServiceSpecSiteCredential)***| ***(Optional)*** |
-| `sourceControl` | ***[[]AppServiceSpecSourceControl](#AppServiceSpecSourceControl)***| ***(Optional)*** |
-| `storageAccount` | ***[[]AppServiceSpecStorageAccount](#AppServiceSpecStorageAccount)***| ***(Optional)*** |
+| `siteConfig` | ***[[]AppServiceSpecSiteConfig](#appservicespecsiteconfig)***| ***(Optional)*** |
+| `siteCredential` | ***[[]AppServiceSpecSiteCredential](#appservicespecsitecredential)***| ***(Optional)*** |
+| `sourceControl` | ***[[]AppServiceSpecSourceControl](#appservicespecsourcecontrol)***| ***(Optional)*** |
+| `storageAccount` | ***[[]AppServiceSpecStorageAccount](#appservicespecstorageaccount)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## AppServiceSpecAuthSettings
 
-Appears on:[AppServiceSpec](#AppServiceSpec)
+Appears on:[AppServiceSpec](#appservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `activeDirectory` | ***[[]AppServiceSpecAuthSettingsActiveDirectory](#AppServiceSpecAuthSettingsActiveDirectory)***| ***(Optional)*** |
+| `activeDirectory` | ***[[]AppServiceSpecAuthSettingsActiveDirectory](#appservicespecauthsettingsactivedirectory)***| ***(Optional)*** |
 | `additionalLoginParams` | ***map[string]string***| ***(Optional)*** |
 | `allowedExternalRedirectUrls` | ***[]string***| ***(Optional)*** |
 | `defaultProvider` | ***string***| ***(Optional)*** |
 | `enabled` | ***bool***||
-| `facebook` | ***[[]AppServiceSpecAuthSettingsFacebook](#AppServiceSpecAuthSettingsFacebook)***| ***(Optional)*** |
-| `google` | ***[[]AppServiceSpecAuthSettingsGoogle](#AppServiceSpecAuthSettingsGoogle)***| ***(Optional)*** |
+| `facebook` | ***[[]AppServiceSpecAuthSettingsFacebook](#appservicespecauthsettingsfacebook)***| ***(Optional)*** |
+| `google` | ***[[]AppServiceSpecAuthSettingsGoogle](#appservicespecauthsettingsgoogle)***| ***(Optional)*** |
 | `issuer` | ***string***| ***(Optional)*** |
-| `microsoft` | ***[[]AppServiceSpecAuthSettingsMicrosoft](#AppServiceSpecAuthSettingsMicrosoft)***| ***(Optional)*** |
+| `microsoft` | ***[[]AppServiceSpecAuthSettingsMicrosoft](#appservicespecauthsettingsmicrosoft)***| ***(Optional)*** |
 | `runtimeVersion` | ***string***| ***(Optional)*** |
 | `tokenRefreshExtensionHours` | ***encoding/json.Number***| ***(Optional)*** |
 | `tokenStoreEnabled` | ***bool***| ***(Optional)*** |
-| `twitter` | ***[[]AppServiceSpecAuthSettingsTwitter](#AppServiceSpecAuthSettingsTwitter)***| ***(Optional)*** |
+| `twitter` | ***[[]AppServiceSpecAuthSettingsTwitter](#appservicespecauthsettingstwitter)***| ***(Optional)*** |
 | `unauthenticatedClientAction` | ***string***| ***(Optional)*** |
 ## AppServiceSpecAuthSettingsActiveDirectory
 
-Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
+Appears on:[AppServiceSpecAuthSettings](#appservicespecauthsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -79,7 +79,7 @@ Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
 | `clientID` | ***string***||
 ## AppServiceSpecAuthSettingsFacebook
 
-Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
+Appears on:[AppServiceSpecAuthSettings](#appservicespecauthsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -87,7 +87,7 @@ Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
 | `oauthScopes` | ***[]string***| ***(Optional)*** |
 ## AppServiceSpecAuthSettingsGoogle
 
-Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
+Appears on:[AppServiceSpecAuthSettings](#appservicespecauthsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -95,7 +95,7 @@ Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
 | `oauthScopes` | ***[]string***| ***(Optional)*** |
 ## AppServiceSpecAuthSettingsMicrosoft
 
-Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
+Appears on:[AppServiceSpecAuthSettings](#appservicespecauthsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -103,23 +103,23 @@ Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
 | `oauthScopes` | ***[]string***| ***(Optional)*** |
 ## AppServiceSpecAuthSettingsTwitter
 
-Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
+Appears on:[AppServiceSpecAuthSettings](#appservicespecauthsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `consumerKey` | ***string***||
 ## AppServiceSpecBackup
 
-Appears on:[AppServiceSpec](#AppServiceSpec)
+Appears on:[AppServiceSpec](#appservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `name` | ***string***||
-| `schedule` | ***[[]AppServiceSpecBackupSchedule](#AppServiceSpecBackupSchedule)***||
+| `schedule` | ***[[]AppServiceSpecBackupSchedule](#appservicespecbackupschedule)***||
 ## AppServiceSpecBackupSchedule
 
-Appears on:[AppServiceSpecBackup](#AppServiceSpecBackup)
+Appears on:[AppServiceSpecBackup](#appservicespecbackup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -130,7 +130,7 @@ Appears on:[AppServiceSpecBackup](#AppServiceSpecBackup)
 | `startTime` | ***string***| ***(Optional)*** |
 ## AppServiceSpecConnectionString
 
-Appears on:[AppServiceSpec](#AppServiceSpec)
+Appears on:[AppServiceSpec](#appservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -138,7 +138,7 @@ Appears on:[AppServiceSpec](#AppServiceSpec)
 | `type` | ***string***||
 ## AppServiceSpecIdentity
 
-Appears on:[AppServiceSpec](#AppServiceSpec)
+Appears on:[AppServiceSpec](#appservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -148,21 +148,21 @@ Appears on:[AppServiceSpec](#AppServiceSpec)
 | `type` | ***string***||
 ## AppServiceSpecLogs
 
-Appears on:[AppServiceSpec](#AppServiceSpec)
+Appears on:[AppServiceSpec](#appservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `applicationLogs` | ***[[]AppServiceSpecLogsApplicationLogs](#AppServiceSpecLogsApplicationLogs)***| ***(Optional)*** |
+| `applicationLogs` | ***[[]AppServiceSpecLogsApplicationLogs](#appservicespeclogsapplicationlogs)***| ***(Optional)*** |
 ## AppServiceSpecLogsApplicationLogs
 
-Appears on:[AppServiceSpecLogs](#AppServiceSpecLogs)
+Appears on:[AppServiceSpecLogs](#appservicespeclogs)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `azureBlobStorage` | ***[[]AppServiceSpecLogsApplicationLogsAzureBlobStorage](#AppServiceSpecLogsApplicationLogsAzureBlobStorage)***| ***(Optional)*** |
+| `azureBlobStorage` | ***[[]AppServiceSpecLogsApplicationLogsAzureBlobStorage](#appservicespeclogsapplicationlogsazureblobstorage)***| ***(Optional)*** |
 ## AppServiceSpecLogsApplicationLogsAzureBlobStorage
 
-Appears on:[AppServiceSpecLogsApplicationLogs](#AppServiceSpecLogsApplicationLogs)
+Appears on:[AppServiceSpecLogsApplicationLogs](#appservicespeclogsapplicationlogs)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -170,18 +170,18 @@ Appears on:[AppServiceSpecLogsApplicationLogs](#AppServiceSpecLogsApplicationLog
 | `retentionInDays` | ***int***||
 ## AppServiceSpecSiteConfig
 
-Appears on:[AppServiceSpec](#AppServiceSpec)
+Appears on:[AppServiceSpec](#appservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `alwaysOn` | ***bool***| ***(Optional)*** |
 | `appCommandLine` | ***string***| ***(Optional)*** |
-| `cors` | ***[[]AppServiceSpecSiteConfigCors](#AppServiceSpecSiteConfigCors)***| ***(Optional)*** |
+| `cors` | ***[[]AppServiceSpecSiteConfigCors](#appservicespecsiteconfigcors)***| ***(Optional)*** |
 | `defaultDocuments` | ***[]string***| ***(Optional)*** |
 | `dotnetFrameworkVersion` | ***string***| ***(Optional)*** |
 | `ftpsState` | ***string***| ***(Optional)*** |
 | `http2Enabled` | ***bool***| ***(Optional)*** |
-| `ipRestriction` | ***[[]AppServiceSpecSiteConfigIpRestriction](#AppServiceSpecSiteConfigIpRestriction)***| ***(Optional)*** |
+| `ipRestriction` | ***[[]AppServiceSpecSiteConfigIpRestriction](#appservicespecsiteconfigiprestriction)***| ***(Optional)*** |
 | `javaContainer` | ***string***| ***(Optional)*** |
 | `javaContainerVersion` | ***string***| ***(Optional)*** |
 | `javaVersion` | ***string***| ***(Optional)*** |
@@ -200,7 +200,7 @@ Appears on:[AppServiceSpec](#AppServiceSpec)
 | `windowsFxVersion` | ***string***| ***(Optional)*** |
 ## AppServiceSpecSiteConfigCors
 
-Appears on:[AppServiceSpecSiteConfig](#AppServiceSpecSiteConfig)
+Appears on:[AppServiceSpecSiteConfig](#appservicespecsiteconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -208,7 +208,7 @@ Appears on:[AppServiceSpecSiteConfig](#AppServiceSpecSiteConfig)
 | `supportCredentials` | ***bool***| ***(Optional)*** |
 ## AppServiceSpecSiteConfigIpRestriction
 
-Appears on:[AppServiceSpecSiteConfig](#AppServiceSpecSiteConfig)
+Appears on:[AppServiceSpecSiteConfig](#appservicespecsiteconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -216,14 +216,14 @@ Appears on:[AppServiceSpecSiteConfig](#AppServiceSpecSiteConfig)
 | `subnetMask` | ***string***| ***(Optional)*** |
 ## AppServiceSpecSiteCredential
 
-Appears on:[AppServiceSpec](#AppServiceSpec)
+Appears on:[AppServiceSpec](#appservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `username` | ***string***| ***(Optional)*** |
 ## AppServiceSpecSourceControl
 
-Appears on:[AppServiceSpec](#AppServiceSpec)
+Appears on:[AppServiceSpec](#appservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -231,7 +231,7 @@ Appears on:[AppServiceSpec](#AppServiceSpec)
 | `repoURL` | ***string***| ***(Optional)*** |
 ## AppServiceSpecStorageAccount
 
-Appears on:[AppServiceSpec](#AppServiceSpec)
+Appears on:[AppServiceSpec](#appservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -242,12 +242,12 @@ Appears on:[AppServiceSpec](#AppServiceSpec)
 | `type` | ***string***||
 ## AppServiceStatus
 
-Appears on:[AppService](#AppService)
+Appears on:[AppService](#appservice)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AppServiceSpec](#AppServiceSpec)***| ***(Optional)*** |
+| `output` | ***[AppServiceSpec](#appservicespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

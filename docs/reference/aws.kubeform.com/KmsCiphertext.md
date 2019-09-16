@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `KmsCiphertext` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[KmsCiphertextSpec](#KmsCiphertextSpec)***||
-| `status` | ***[KmsCiphertextStatus](#KmsCiphertextStatus)***||
+| `spec` | ***[KmsCiphertextSpec](#kmsciphertextspec)***||
+| `status` | ***[KmsCiphertextStatus](#kmsciphertextstatus)***||
 ## KmsCiphertextSpec
 
-Appears on:[KmsCiphertext](#KmsCiphertext), [KmsCiphertextStatus](#KmsCiphertextStatus)
+Appears on:[KmsCiphertext](#kmsciphertext), [KmsCiphertextStatus](#kmsciphertextstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,12 +32,12 @@ Appears on:[KmsCiphertext](#KmsCiphertext), [KmsCiphertextStatus](#KmsCiphertext
 | `keyID` | ***string***||
 ## KmsCiphertextStatus
 
-Appears on:[KmsCiphertext](#KmsCiphertext)
+Appears on:[KmsCiphertext](#kmsciphertext)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[KmsCiphertextSpec](#KmsCiphertextSpec)***| ***(Optional)*** |
+| `output` | ***[KmsCiphertextSpec](#kmsciphertextspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

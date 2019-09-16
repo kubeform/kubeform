@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `WafregionalRule` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[WafregionalRuleSpec](#WafregionalRuleSpec)***||
-| `status` | ***[WafregionalRuleStatus](#WafregionalRuleStatus)***||
+| `spec` | ***[WafregionalRuleSpec](#wafregionalrulespec)***||
+| `status` | ***[WafregionalRuleStatus](#wafregionalrulestatus)***||
 ## WafregionalRuleSpec
 
-Appears on:[WafregionalRule](#WafregionalRule), [WafregionalRuleStatus](#WafregionalRuleStatus)
+Appears on:[WafregionalRule](#wafregionalrule), [WafregionalRuleStatus](#wafregionalrulestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,10 +28,10 @@ Appears on:[WafregionalRule](#WafregionalRule), [WafregionalRuleStatus](#Wafregi
 | `id` | ***string***||
 | `metricName` | ***string***||
 | `name` | ***string***||
-| `predicate` | ***[[]WafregionalRuleSpecPredicate](#WafregionalRuleSpecPredicate)***| ***(Optional)*** |
+| `predicate` | ***[[]WafregionalRuleSpecPredicate](#wafregionalrulespecpredicate)***| ***(Optional)*** |
 ## WafregionalRuleSpecPredicate
 
-Appears on:[WafregionalRuleSpec](#WafregionalRuleSpec)
+Appears on:[WafregionalRuleSpec](#wafregionalrulespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -40,11 +40,11 @@ Appears on:[WafregionalRuleSpec](#WafregionalRuleSpec)
 | `type` | ***string***||
 ## WafregionalRuleStatus
 
-Appears on:[WafregionalRule](#WafregionalRule)
+Appears on:[WafregionalRule](#wafregionalrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[WafregionalRuleSpec](#WafregionalRuleSpec)***| ***(Optional)*** |
+| `output` | ***[WafregionalRuleSpec](#wafregionalrulespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

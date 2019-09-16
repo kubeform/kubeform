@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `OrganizationsPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[OrganizationsPolicySpec](#OrganizationsPolicySpec)***||
-| `status` | ***[OrganizationsPolicyStatus](#OrganizationsPolicyStatus)***||
+| `spec` | ***[OrganizationsPolicySpec](#organizationspolicyspec)***||
+| `status` | ***[OrganizationsPolicyStatus](#organizationspolicystatus)***||
 ## OrganizationsPolicySpec
 
-Appears on:[OrganizationsPolicy](#OrganizationsPolicy), [OrganizationsPolicyStatus](#OrganizationsPolicyStatus)
+Appears on:[OrganizationsPolicy](#organizationspolicy), [OrganizationsPolicyStatus](#organizationspolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[OrganizationsPolicy](#OrganizationsPolicy), [OrganizationsPolicyStat
 | `type` | ***string***| ***(Optional)*** |
 ## OrganizationsPolicyStatus
 
-Appears on:[OrganizationsPolicy](#OrganizationsPolicy)
+Appears on:[OrganizationsPolicy](#organizationspolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[OrganizationsPolicySpec](#OrganizationsPolicySpec)***| ***(Optional)*** |
+| `output` | ***[OrganizationsPolicySpec](#organizationspolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `LambdaAlias` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LambdaAliasSpec](#LambdaAliasSpec)***||
-| `status` | ***[LambdaAliasStatus](#LambdaAliasStatus)***||
+| `spec` | ***[LambdaAliasSpec](#lambdaaliasspec)***||
+| `status` | ***[LambdaAliasStatus](#lambdaaliasstatus)***||
 ## LambdaAliasSpec
 
-Appears on:[LambdaAlias](#LambdaAlias), [LambdaAliasStatus](#LambdaAliasStatus)
+Appears on:[LambdaAlias](#lambdaalias), [LambdaAliasStatus](#lambdaaliasstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,21 +32,21 @@ Appears on:[LambdaAlias](#LambdaAlias), [LambdaAliasStatus](#LambdaAliasStatus)
 | `functionVersion` | ***string***||
 | `invokeArn` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `routingConfig` | ***[[]LambdaAliasSpecRoutingConfig](#LambdaAliasSpecRoutingConfig)***| ***(Optional)*** |
+| `routingConfig` | ***[[]LambdaAliasSpecRoutingConfig](#lambdaaliasspecroutingconfig)***| ***(Optional)*** |
 ## LambdaAliasSpecRoutingConfig
 
-Appears on:[LambdaAliasSpec](#LambdaAliasSpec)
+Appears on:[LambdaAliasSpec](#lambdaaliasspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `additionalVersionWeights` | ***map[string]encoding/json.Number***| ***(Optional)*** |
 ## LambdaAliasStatus
 
-Appears on:[LambdaAlias](#LambdaAlias)
+Appears on:[LambdaAlias](#lambdaalias)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LambdaAliasSpec](#LambdaAliasSpec)***| ***(Optional)*** |
+| `output` | ***[LambdaAliasSpec](#lambdaaliasspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

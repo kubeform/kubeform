@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeTargetPool` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeTargetPoolSpec](#ComputeTargetPoolSpec)***||
-| `status` | ***[ComputeTargetPoolStatus](#ComputeTargetPoolStatus)***||
+| `spec` | ***[ComputeTargetPoolSpec](#computetargetpoolspec)***||
+| `status` | ***[ComputeTargetPoolStatus](#computetargetpoolstatus)***||
 ## ComputeTargetPoolSpec
 
-Appears on:[ComputeTargetPool](#ComputeTargetPool), [ComputeTargetPoolStatus](#ComputeTargetPoolStatus)
+Appears on:[ComputeTargetPool](#computetargetpool), [ComputeTargetPoolStatus](#computetargetpoolstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,11 +38,11 @@ Appears on:[ComputeTargetPool](#ComputeTargetPool), [ComputeTargetPoolStatus](#C
 | `sessionAffinity` | ***string***| ***(Optional)*** |
 ## ComputeTargetPoolStatus
 
-Appears on:[ComputeTargetPool](#ComputeTargetPool)
+Appears on:[ComputeTargetPool](#computetargetpool)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeTargetPoolSpec](#ComputeTargetPoolSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeTargetPoolSpec](#computetargetpoolspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

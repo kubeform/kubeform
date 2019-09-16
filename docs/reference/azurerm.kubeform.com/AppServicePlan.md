@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `AppServicePlan` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AppServicePlanSpec](#AppServicePlanSpec)***||
-| `status` | ***[AppServicePlanStatus](#AppServicePlanStatus)***||
+| `spec` | ***[AppServicePlanSpec](#appserviceplanspec)***||
+| `status` | ***[AppServicePlanStatus](#appserviceplanstatus)***||
 ## AppServicePlanSpec
 
-Appears on:[AppServicePlan](#AppServicePlan), [AppServicePlanStatus](#AppServicePlanStatus)
+Appears on:[AppServicePlan](#appserviceplan), [AppServicePlanStatus](#appserviceplanstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,14 +34,14 @@ Appears on:[AppServicePlan](#AppServicePlan), [AppServicePlanStatus](#AppService
 | `maximumNumberOfWorkers` | ***int***| ***(Optional)*** |
 | `name` | ***string***||
 | `perSiteScaling` | ***bool***| ***(Optional)*** |
-| `properties` | ***[[]AppServicePlanSpecProperties](#AppServicePlanSpecProperties)***| ***(Optional)*** Deprecated|
+| `properties` | ***[[]AppServicePlanSpecProperties](#appserviceplanspecproperties)***| ***(Optional)*** Deprecated|
 | `reserved` | ***bool***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
-| `sku` | ***[[]AppServicePlanSpecSku](#AppServicePlanSpecSku)***||
+| `sku` | ***[[]AppServicePlanSpecSku](#appserviceplanspecsku)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## AppServicePlanSpecProperties
 
-Appears on:[AppServicePlanSpec](#AppServicePlanSpec)
+Appears on:[AppServicePlanSpec](#appserviceplanspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -50,7 +50,7 @@ Appears on:[AppServicePlanSpec](#AppServicePlanSpec)
 | `reserved` | ***bool***| ***(Optional)*** Deprecated|
 ## AppServicePlanSpecSku
 
-Appears on:[AppServicePlanSpec](#AppServicePlanSpec)
+Appears on:[AppServicePlanSpec](#appserviceplanspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -59,11 +59,11 @@ Appears on:[AppServicePlanSpec](#AppServicePlanSpec)
 | `tier` | ***string***||
 ## AppServicePlanStatus
 
-Appears on:[AppServicePlan](#AppServicePlan)
+Appears on:[AppServicePlan](#appserviceplan)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AppServicePlanSpec](#AppServicePlanSpec)***| ***(Optional)*** |
+| `output` | ***[AppServicePlanSpec](#appserviceplanspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

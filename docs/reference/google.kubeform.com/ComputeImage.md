@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeImage` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeImageSpec](#ComputeImageSpec)***||
-| `status` | ***[ComputeImageStatus](#ComputeImageStatus)***||
+| `spec` | ***[ComputeImageSpec](#computeimagespec)***||
+| `status` | ***[ComputeImageStatus](#computeimagestatus)***||
 ## ComputeImageSpec
 
-Appears on:[ComputeImage](#ComputeImage), [ComputeImageStatus](#ComputeImageStatus)
+Appears on:[ComputeImage](#computeimage), [ComputeImageStatus](#computeimagestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,12 +34,12 @@ Appears on:[ComputeImage](#ComputeImage), [ComputeImageStatus](#ComputeImageStat
 | `licenses` | ***[]string***| ***(Optional)*** |
 | `name` | ***string***||
 | `project` | ***string***| ***(Optional)*** |
-| `rawDisk` | ***[[]ComputeImageSpecRawDisk](#ComputeImageSpecRawDisk)***| ***(Optional)*** |
+| `rawDisk` | ***[[]ComputeImageSpecRawDisk](#computeimagespecrawdisk)***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `sourceDisk` | ***string***| ***(Optional)*** |
 ## ComputeImageSpecRawDisk
 
-Appears on:[ComputeImageSpec](#ComputeImageSpec)
+Appears on:[ComputeImageSpec](#computeimagespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -48,11 +48,11 @@ Appears on:[ComputeImageSpec](#ComputeImageSpec)
 | `source` | ***string***||
 ## ComputeImageStatus
 
-Appears on:[ComputeImage](#ComputeImage)
+Appears on:[ComputeImage](#computeimage)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeImageSpec](#ComputeImageSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeImageSpec](#computeimagespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

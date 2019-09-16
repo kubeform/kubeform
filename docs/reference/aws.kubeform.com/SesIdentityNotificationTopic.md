@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SesIdentityNotificationTopic` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SesIdentityNotificationTopicSpec](#SesIdentityNotificationTopicSpec)***||
-| `status` | ***[SesIdentityNotificationTopicStatus](#SesIdentityNotificationTopicStatus)***||
+| `spec` | ***[SesIdentityNotificationTopicSpec](#sesidentitynotificationtopicspec)***||
+| `status` | ***[SesIdentityNotificationTopicStatus](#sesidentitynotificationtopicstatus)***||
 ## SesIdentityNotificationTopicSpec
 
-Appears on:[SesIdentityNotificationTopic](#SesIdentityNotificationTopic), [SesIdentityNotificationTopicStatus](#SesIdentityNotificationTopicStatus)
+Appears on:[SesIdentityNotificationTopic](#sesidentitynotificationtopic), [SesIdentityNotificationTopicStatus](#sesidentitynotificationtopicstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[SesIdentityNotificationTopic](#SesIdentityNotificationTopic), [SesId
 | `topicArn` | ***string***| ***(Optional)*** |
 ## SesIdentityNotificationTopicStatus
 
-Appears on:[SesIdentityNotificationTopic](#SesIdentityNotificationTopic)
+Appears on:[SesIdentityNotificationTopic](#sesidentitynotificationtopic)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SesIdentityNotificationTopicSpec](#SesIdentityNotificationTopicSpec)***| ***(Optional)*** |
+| `output` | ***[SesIdentityNotificationTopicSpec](#sesidentitynotificationtopicspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

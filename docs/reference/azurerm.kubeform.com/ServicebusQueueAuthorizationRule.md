@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ServicebusQueueAuthorizationRule` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ServicebusQueueAuthorizationRuleSpec](#ServicebusQueueAuthorizationRuleSpec)***||
-| `status` | ***[ServicebusQueueAuthorizationRuleStatus](#ServicebusQueueAuthorizationRuleStatus)***||
+| `spec` | ***[ServicebusQueueAuthorizationRuleSpec](#servicebusqueueauthorizationrulespec)***||
+| `status` | ***[ServicebusQueueAuthorizationRuleStatus](#servicebusqueueauthorizationrulestatus)***||
 ## ServicebusQueueAuthorizationRuleSpec
 
-Appears on:[ServicebusQueueAuthorizationRule](#ServicebusQueueAuthorizationRule), [ServicebusQueueAuthorizationRuleStatus](#ServicebusQueueAuthorizationRuleStatus)
+Appears on:[ServicebusQueueAuthorizationRule](#servicebusqueueauthorizationrule), [ServicebusQueueAuthorizationRuleStatus](#servicebusqueueauthorizationrulestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -36,12 +36,12 @@ Appears on:[ServicebusQueueAuthorizationRule](#ServicebusQueueAuthorizationRule)
 | `send` | ***bool***| ***(Optional)*** |
 ## ServicebusQueueAuthorizationRuleStatus
 
-Appears on:[ServicebusQueueAuthorizationRule](#ServicebusQueueAuthorizationRule)
+Appears on:[ServicebusQueueAuthorizationRule](#servicebusqueueauthorizationrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ServicebusQueueAuthorizationRuleSpec](#ServicebusQueueAuthorizationRuleSpec)***| ***(Optional)*** |
+| `output` | ***[ServicebusQueueAuthorizationRuleSpec](#servicebusqueueauthorizationrulespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

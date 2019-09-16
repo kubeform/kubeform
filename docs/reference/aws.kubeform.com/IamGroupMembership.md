@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `IamGroupMembership` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[IamGroupMembershipSpec](#IamGroupMembershipSpec)***||
-| `status` | ***[IamGroupMembershipStatus](#IamGroupMembershipStatus)***||
+| `spec` | ***[IamGroupMembershipSpec](#iamgroupmembershipspec)***||
+| `status` | ***[IamGroupMembershipStatus](#iamgroupmembershipstatus)***||
 ## IamGroupMembershipSpec
 
-Appears on:[IamGroupMembership](#IamGroupMembership), [IamGroupMembershipStatus](#IamGroupMembershipStatus)
+Appears on:[IamGroupMembership](#iamgroupmembership), [IamGroupMembershipStatus](#iamgroupmembershipstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[IamGroupMembership](#IamGroupMembership), [IamGroupMembershipStatus]
 | `users` | ***[]string***||
 ## IamGroupMembershipStatus
 
-Appears on:[IamGroupMembership](#IamGroupMembership)
+Appears on:[IamGroupMembership](#iamgroupmembership)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[IamGroupMembershipSpec](#IamGroupMembershipSpec)***| ***(Optional)*** |
+| `output` | ***[IamGroupMembershipSpec](#iamgroupmembershipspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

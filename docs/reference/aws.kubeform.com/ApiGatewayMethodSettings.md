@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiGatewayMethodSettings` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiGatewayMethodSettingsSpec](#ApiGatewayMethodSettingsSpec)***||
-| `status` | ***[ApiGatewayMethodSettingsStatus](#ApiGatewayMethodSettingsStatus)***||
+| `spec` | ***[ApiGatewayMethodSettingsSpec](#apigatewaymethodsettingsspec)***||
+| `status` | ***[ApiGatewayMethodSettingsStatus](#apigatewaymethodsettingsstatus)***||
 ## ApiGatewayMethodSettingsSpec
 
-Appears on:[ApiGatewayMethodSettings](#ApiGatewayMethodSettings), [ApiGatewayMethodSettingsStatus](#ApiGatewayMethodSettingsStatus)
+Appears on:[ApiGatewayMethodSettings](#apigatewaymethodsettings), [ApiGatewayMethodSettingsStatus](#apigatewaymethodsettingsstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,11 +28,11 @@ Appears on:[ApiGatewayMethodSettings](#ApiGatewayMethodSettings), [ApiGatewayMet
 | `id` | ***string***||
 | `methodPath` | ***string***||
 | `restAPIID` | ***string***||
-| `settings` | ***[[]ApiGatewayMethodSettingsSpecSettings](#ApiGatewayMethodSettingsSpecSettings)***||
+| `settings` | ***[[]ApiGatewayMethodSettingsSpecSettings](#apigatewaymethodsettingsspecsettings)***||
 | `stageName` | ***string***||
 ## ApiGatewayMethodSettingsSpecSettings
 
-Appears on:[ApiGatewayMethodSettingsSpec](#ApiGatewayMethodSettingsSpec)
+Appears on:[ApiGatewayMethodSettingsSpec](#apigatewaymethodsettingsspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -48,11 +48,11 @@ Appears on:[ApiGatewayMethodSettingsSpec](#ApiGatewayMethodSettingsSpec)
 | `unauthorizedCacheControlHeaderStrategy` | ***string***| ***(Optional)*** |
 ## ApiGatewayMethodSettingsStatus
 
-Appears on:[ApiGatewayMethodSettings](#ApiGatewayMethodSettings)
+Appears on:[ApiGatewayMethodSettings](#apigatewaymethodsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiGatewayMethodSettingsSpec](#ApiGatewayMethodSettingsSpec)***| ***(Optional)*** |
+| `output` | ***[ApiGatewayMethodSettingsSpec](#apigatewaymethodsettingsspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

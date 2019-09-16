@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SnsTopicSubscription` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SnsTopicSubscriptionSpec](#SnsTopicSubscriptionSpec)***||
-| `status` | ***[SnsTopicSubscriptionStatus](#SnsTopicSubscriptionStatus)***||
+| `spec` | ***[SnsTopicSubscriptionSpec](#snstopicsubscriptionspec)***||
+| `status` | ***[SnsTopicSubscriptionStatus](#snstopicsubscriptionstatus)***||
 ## SnsTopicSubscriptionSpec
 
-Appears on:[SnsTopicSubscription](#SnsTopicSubscription), [SnsTopicSubscriptionStatus](#SnsTopicSubscriptionStatus)
+Appears on:[SnsTopicSubscription](#snstopicsubscription), [SnsTopicSubscriptionStatus](#snstopicsubscriptionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,11 +37,11 @@ Appears on:[SnsTopicSubscription](#SnsTopicSubscription), [SnsTopicSubscriptionS
 | `topicArn` | ***string***||
 ## SnsTopicSubscriptionStatus
 
-Appears on:[SnsTopicSubscription](#SnsTopicSubscription)
+Appears on:[SnsTopicSubscription](#snstopicsubscription)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SnsTopicSubscriptionSpec](#SnsTopicSubscriptionSpec)***| ***(Optional)*** |
+| `output` | ***[SnsTopicSubscriptionSpec](#snstopicsubscriptionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

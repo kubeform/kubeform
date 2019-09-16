@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiGatewayModel` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiGatewayModelSpec](#ApiGatewayModelSpec)***||
-| `status` | ***[ApiGatewayModelStatus](#ApiGatewayModelStatus)***||
+| `spec` | ***[ApiGatewayModelSpec](#apigatewaymodelspec)***||
+| `status` | ***[ApiGatewayModelStatus](#apigatewaymodelstatus)***||
 ## ApiGatewayModelSpec
 
-Appears on:[ApiGatewayModel](#ApiGatewayModel), [ApiGatewayModelStatus](#ApiGatewayModelStatus)
+Appears on:[ApiGatewayModel](#apigatewaymodel), [ApiGatewayModelStatus](#apigatewaymodelstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[ApiGatewayModel](#ApiGatewayModel), [ApiGatewayModelStatus](#ApiGate
 | `schema` | ***string***| ***(Optional)*** |
 ## ApiGatewayModelStatus
 
-Appears on:[ApiGatewayModel](#ApiGatewayModel)
+Appears on:[ApiGatewayModel](#apigatewaymodel)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiGatewayModelSpec](#ApiGatewayModelSpec)***| ***(Optional)*** |
+| `output` | ***[ApiGatewayModelSpec](#apigatewaymodelspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

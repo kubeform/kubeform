@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `BatchCertificate` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[BatchCertificateSpec](#BatchCertificateSpec)***||
-| `status` | ***[BatchCertificateStatus](#BatchCertificateStatus)***||
+| `spec` | ***[BatchCertificateSpec](#batchcertificatespec)***||
+| `status` | ***[BatchCertificateStatus](#batchcertificatestatus)***||
 ## BatchCertificateSpec
 
-Appears on:[BatchCertificate](#BatchCertificate), [BatchCertificateStatus](#BatchCertificateStatus)
+Appears on:[BatchCertificate](#batchcertificate), [BatchCertificateStatus](#batchcertificatestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -36,12 +36,12 @@ Appears on:[BatchCertificate](#BatchCertificate), [BatchCertificateStatus](#Batc
 | `thumbprintAlgorithm` | ***string***||
 ## BatchCertificateStatus
 
-Appears on:[BatchCertificate](#BatchCertificate)
+Appears on:[BatchCertificate](#batchcertificate)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[BatchCertificateSpec](#BatchCertificateSpec)***| ***(Optional)*** |
+| `output` | ***[BatchCertificateSpec](#batchcertificatespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

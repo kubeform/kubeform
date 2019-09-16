@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `EbsSnapshotCopy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[EbsSnapshotCopySpec](#EbsSnapshotCopySpec)***||
-| `status` | ***[EbsSnapshotCopyStatus](#EbsSnapshotCopyStatus)***||
+| `spec` | ***[EbsSnapshotCopySpec](#ebssnapshotcopyspec)***||
+| `status` | ***[EbsSnapshotCopyStatus](#ebssnapshotcopystatus)***||
 ## EbsSnapshotCopySpec
 
-Appears on:[EbsSnapshotCopy](#EbsSnapshotCopy), [EbsSnapshotCopyStatus](#EbsSnapshotCopyStatus)
+Appears on:[EbsSnapshotCopy](#ebssnapshotcopy), [EbsSnapshotCopyStatus](#ebssnapshotcopystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -39,11 +39,11 @@ Appears on:[EbsSnapshotCopy](#EbsSnapshotCopy), [EbsSnapshotCopyStatus](#EbsSnap
 | `volumeSize` | ***int***| ***(Optional)*** |
 ## EbsSnapshotCopyStatus
 
-Appears on:[EbsSnapshotCopy](#EbsSnapshotCopy)
+Appears on:[EbsSnapshotCopy](#ebssnapshotcopy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[EbsSnapshotCopySpec](#EbsSnapshotCopySpec)***| ***(Optional)*** |
+| `output` | ***[EbsSnapshotCopySpec](#ebssnapshotcopyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

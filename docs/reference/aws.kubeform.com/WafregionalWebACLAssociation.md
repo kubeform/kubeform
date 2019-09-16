@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `WafregionalWebACLAssociation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[WafregionalWebACLAssociationSpec](#WafregionalWebACLAssociationSpec)***||
-| `status` | ***[WafregionalWebACLAssociationStatus](#WafregionalWebACLAssociationStatus)***||
+| `spec` | ***[WafregionalWebACLAssociationSpec](#wafregionalwebaclassociationspec)***||
+| `status` | ***[WafregionalWebACLAssociationStatus](#wafregionalwebaclassociationstatus)***||
 ## WafregionalWebACLAssociationSpec
 
-Appears on:[WafregionalWebACLAssociation](#WafregionalWebACLAssociation), [WafregionalWebACLAssociationStatus](#WafregionalWebACLAssociationStatus)
+Appears on:[WafregionalWebACLAssociation](#wafregionalwebaclassociation), [WafregionalWebACLAssociationStatus](#wafregionalwebaclassociationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[WafregionalWebACLAssociation](#WafregionalWebACLAssociation), [Wafre
 | `webACLID` | ***string***||
 ## WafregionalWebACLAssociationStatus
 
-Appears on:[WafregionalWebACLAssociation](#WafregionalWebACLAssociation)
+Appears on:[WafregionalWebACLAssociation](#wafregionalwebaclassociation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[WafregionalWebACLAssociationSpec](#WafregionalWebACLAssociationSpec)***| ***(Optional)*** |
+| `output` | ***[WafregionalWebACLAssociationSpec](#wafregionalwebaclassociationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

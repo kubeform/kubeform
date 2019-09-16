@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `RedshiftEventSubscription` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[RedshiftEventSubscriptionSpec](#RedshiftEventSubscriptionSpec)***||
-| `status` | ***[RedshiftEventSubscriptionStatus](#RedshiftEventSubscriptionStatus)***||
+| `spec` | ***[RedshiftEventSubscriptionSpec](#redshifteventsubscriptionspec)***||
+| `status` | ***[RedshiftEventSubscriptionStatus](#redshifteventsubscriptionstatus)***||
 ## RedshiftEventSubscriptionSpec
 
-Appears on:[RedshiftEventSubscription](#RedshiftEventSubscription), [RedshiftEventSubscriptionStatus](#RedshiftEventSubscriptionStatus)
+Appears on:[RedshiftEventSubscription](#redshifteventsubscription), [RedshiftEventSubscriptionStatus](#redshifteventsubscriptionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,11 +38,11 @@ Appears on:[RedshiftEventSubscription](#RedshiftEventSubscription), [RedshiftEve
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## RedshiftEventSubscriptionStatus
 
-Appears on:[RedshiftEventSubscription](#RedshiftEventSubscription)
+Appears on:[RedshiftEventSubscription](#redshifteventsubscription)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[RedshiftEventSubscriptionSpec](#RedshiftEventSubscriptionSpec)***| ***(Optional)*** |
+| `output` | ***[RedshiftEventSubscriptionSpec](#redshifteventsubscriptionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

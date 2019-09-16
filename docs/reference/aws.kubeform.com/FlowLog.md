@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `FlowLog` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[FlowLogSpec](#FlowLogSpec)***||
-| `status` | ***[FlowLogStatus](#FlowLogStatus)***||
+| `spec` | ***[FlowLogSpec](#flowlogspec)***||
+| `status` | ***[FlowLogStatus](#flowlogstatus)***||
 ## FlowLogSpec
 
-Appears on:[FlowLog](#FlowLog), [FlowLogStatus](#FlowLogStatus)
+Appears on:[FlowLog](#flowlog), [FlowLogStatus](#flowlogstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -36,11 +36,11 @@ Appears on:[FlowLog](#FlowLog), [FlowLogStatus](#FlowLogStatus)
 | `vpcID` | ***string***| ***(Optional)*** |
 ## FlowLogStatus
 
-Appears on:[FlowLog](#FlowLog)
+Appears on:[FlowLog](#flowlog)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[FlowLogSpec](#FlowLogSpec)***| ***(Optional)*** |
+| `output` | ***[FlowLogSpec](#flowlogspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

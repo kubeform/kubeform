@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AlbTargetGroupAttachment` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AlbTargetGroupAttachmentSpec](#AlbTargetGroupAttachmentSpec)***||
-| `status` | ***[AlbTargetGroupAttachmentStatus](#AlbTargetGroupAttachmentStatus)***||
+| `spec` | ***[AlbTargetGroupAttachmentSpec](#albtargetgroupattachmentspec)***||
+| `status` | ***[AlbTargetGroupAttachmentStatus](#albtargetgroupattachmentstatus)***||
 ## AlbTargetGroupAttachmentSpec
 
-Appears on:[AlbTargetGroupAttachment](#AlbTargetGroupAttachment), [AlbTargetGroupAttachmentStatus](#AlbTargetGroupAttachmentStatus)
+Appears on:[AlbTargetGroupAttachment](#albtargetgroupattachment), [AlbTargetGroupAttachmentStatus](#albtargetgroupattachmentstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[AlbTargetGroupAttachment](#AlbTargetGroupAttachment), [AlbTargetGrou
 | `targetID` | ***string***||
 ## AlbTargetGroupAttachmentStatus
 
-Appears on:[AlbTargetGroupAttachment](#AlbTargetGroupAttachment)
+Appears on:[AlbTargetGroupAttachment](#albtargetgroupattachment)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AlbTargetGroupAttachmentSpec](#AlbTargetGroupAttachmentSpec)***| ***(Optional)*** |
+| `output` | ***[AlbTargetGroupAttachmentSpec](#albtargetgroupattachmentspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

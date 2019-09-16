@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CognitoIdentityPool` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CognitoIdentityPoolSpec](#CognitoIdentityPoolSpec)***||
-| `status` | ***[CognitoIdentityPoolStatus](#CognitoIdentityPoolStatus)***||
+| `spec` | ***[CognitoIdentityPoolSpec](#cognitoidentitypoolspec)***||
+| `status` | ***[CognitoIdentityPoolStatus](#cognitoidentitypoolstatus)***||
 ## CognitoIdentityPoolSpec
 
-Appears on:[CognitoIdentityPool](#CognitoIdentityPool), [CognitoIdentityPoolStatus](#CognitoIdentityPoolStatus)
+Appears on:[CognitoIdentityPool](#cognitoidentitypool), [CognitoIdentityPoolStatus](#cognitoidentitypoolstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,7 +28,7 @@ Appears on:[CognitoIdentityPool](#CognitoIdentityPool), [CognitoIdentityPoolStat
 | `id` | ***string***||
 | `allowUnauthenticatedIdentities` | ***bool***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
-| `cognitoIdentityProviders` | ***[[]CognitoIdentityPoolSpecCognitoIdentityProviders](#CognitoIdentityPoolSpecCognitoIdentityProviders)***| ***(Optional)*** |
+| `cognitoIdentityProviders` | ***[[]CognitoIdentityPoolSpecCognitoIdentityProviders](#cognitoidentitypoolspeccognitoidentityproviders)***| ***(Optional)*** |
 | `developerProviderName` | ***string***| ***(Optional)*** |
 | `identityPoolName` | ***string***||
 | `openidConnectProviderArns` | ***[]string***| ***(Optional)*** |
@@ -36,7 +36,7 @@ Appears on:[CognitoIdentityPool](#CognitoIdentityPool), [CognitoIdentityPoolStat
 | `supportedLoginProviders` | ***map[string]string***| ***(Optional)*** |
 ## CognitoIdentityPoolSpecCognitoIdentityProviders
 
-Appears on:[CognitoIdentityPoolSpec](#CognitoIdentityPoolSpec)
+Appears on:[CognitoIdentityPoolSpec](#cognitoidentitypoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -45,11 +45,11 @@ Appears on:[CognitoIdentityPoolSpec](#CognitoIdentityPoolSpec)
 | `serverSideTokenCheck` | ***bool***| ***(Optional)*** |
 ## CognitoIdentityPoolStatus
 
-Appears on:[CognitoIdentityPool](#CognitoIdentityPool)
+Appears on:[CognitoIdentityPool](#cognitoidentitypool)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CognitoIdentityPoolSpec](#CognitoIdentityPoolSpec)***| ***(Optional)*** |
+| `output` | ***[CognitoIdentityPoolSpec](#cognitoidentitypoolspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

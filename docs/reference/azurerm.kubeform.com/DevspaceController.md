@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `DevspaceController` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DevspaceControllerSpec](#DevspaceControllerSpec)***||
-| `status` | ***[DevspaceControllerStatus](#DevspaceControllerStatus)***||
+| `spec` | ***[DevspaceControllerSpec](#devspacecontrollerspec)***||
+| `status` | ***[DevspaceControllerStatus](#devspacecontrollerstatus)***||
 ## DevspaceControllerSpec
 
-Appears on:[DevspaceController](#DevspaceController), [DevspaceControllerStatus](#DevspaceControllerStatus)
+Appears on:[DevspaceController](#devspacecontroller), [DevspaceControllerStatus](#devspacecontrollerstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,12 +32,12 @@ Appears on:[DevspaceController](#DevspaceController), [DevspaceControllerStatus]
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
-| `sku` | ***[[]DevspaceControllerSpecSku](#DevspaceControllerSpecSku)***||
+| `sku` | ***[[]DevspaceControllerSpecSku](#devspacecontrollerspecsku)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `targetContainerHostResourceID` | ***string***||
 ## DevspaceControllerSpecSku
 
-Appears on:[DevspaceControllerSpec](#DevspaceControllerSpec)
+Appears on:[DevspaceControllerSpec](#devspacecontrollerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -45,12 +45,12 @@ Appears on:[DevspaceControllerSpec](#DevspaceControllerSpec)
 | `tier` | ***string***||
 ## DevspaceControllerStatus
 
-Appears on:[DevspaceController](#DevspaceController)
+Appears on:[DevspaceController](#devspacecontroller)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DevspaceControllerSpec](#DevspaceControllerSpec)***| ***(Optional)*** |
+| `output` | ***[DevspaceControllerSpec](#devspacecontrollerspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

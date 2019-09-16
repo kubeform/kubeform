@@ -16,59 +16,59 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `LaunchTemplate` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LaunchTemplateSpec](#LaunchTemplateSpec)***||
-| `status` | ***[LaunchTemplateStatus](#LaunchTemplateStatus)***||
+| `spec` | ***[LaunchTemplateSpec](#launchtemplatespec)***||
+| `status` | ***[LaunchTemplateStatus](#launchtemplatestatus)***||
 ## LaunchTemplateSpec
 
-Appears on:[LaunchTemplate](#LaunchTemplate), [LaunchTemplateStatus](#LaunchTemplateStatus)
+Appears on:[LaunchTemplate](#launchtemplate), [LaunchTemplateStatus](#launchtemplatestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
-| `blockDeviceMappings` | ***[[]LaunchTemplateSpecBlockDeviceMappings](#LaunchTemplateSpecBlockDeviceMappings)***| ***(Optional)*** |
-| `capacityReservationSpecification` | ***[[]LaunchTemplateSpecCapacityReservationSpecification](#LaunchTemplateSpecCapacityReservationSpecification)***| ***(Optional)*** |
-| `creditSpecification` | ***[[]LaunchTemplateSpecCreditSpecification](#LaunchTemplateSpecCreditSpecification)***| ***(Optional)*** |
+| `blockDeviceMappings` | ***[[]LaunchTemplateSpecBlockDeviceMappings](#launchtemplatespecblockdevicemappings)***| ***(Optional)*** |
+| `capacityReservationSpecification` | ***[[]LaunchTemplateSpecCapacityReservationSpecification](#launchtemplatespeccapacityreservationspecification)***| ***(Optional)*** |
+| `creditSpecification` | ***[[]LaunchTemplateSpecCreditSpecification](#launchtemplatespeccreditspecification)***| ***(Optional)*** |
 | `defaultVersion` | ***int***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `disableAPITermination` | ***bool***| ***(Optional)*** |
 | `ebsOptimized` | ***string***| ***(Optional)*** |
-| `elasticGpuSpecifications` | ***[[]LaunchTemplateSpecElasticGpuSpecifications](#LaunchTemplateSpecElasticGpuSpecifications)***| ***(Optional)*** |
-| `elasticInferenceAccelerator` | ***[[]LaunchTemplateSpecElasticInferenceAccelerator](#LaunchTemplateSpecElasticInferenceAccelerator)***| ***(Optional)*** |
-| `iamInstanceProfile` | ***[[]LaunchTemplateSpecIamInstanceProfile](#LaunchTemplateSpecIamInstanceProfile)***| ***(Optional)*** |
+| `elasticGpuSpecifications` | ***[[]LaunchTemplateSpecElasticGpuSpecifications](#launchtemplatespecelasticgpuspecifications)***| ***(Optional)*** |
+| `elasticInferenceAccelerator` | ***[[]LaunchTemplateSpecElasticInferenceAccelerator](#launchtemplatespecelasticinferenceaccelerator)***| ***(Optional)*** |
+| `iamInstanceProfile` | ***[[]LaunchTemplateSpecIamInstanceProfile](#launchtemplatespeciaminstanceprofile)***| ***(Optional)*** |
 | `imageID` | ***string***| ***(Optional)*** |
 | `instanceInitiatedShutdownBehavior` | ***string***| ***(Optional)*** |
-| `instanceMarketOptions` | ***[[]LaunchTemplateSpecInstanceMarketOptions](#LaunchTemplateSpecInstanceMarketOptions)***| ***(Optional)*** |
+| `instanceMarketOptions` | ***[[]LaunchTemplateSpecInstanceMarketOptions](#launchtemplatespecinstancemarketoptions)***| ***(Optional)*** |
 | `instanceType` | ***string***| ***(Optional)*** |
 | `kernelID` | ***string***| ***(Optional)*** |
 | `keyName` | ***string***| ***(Optional)*** |
 | `latestVersion` | ***int***| ***(Optional)*** |
-| `licenseSpecification` | ***[[]LaunchTemplateSpecLicenseSpecification](#LaunchTemplateSpecLicenseSpecification)***| ***(Optional)*** |
-| `monitoring` | ***[[]LaunchTemplateSpecMonitoring](#LaunchTemplateSpecMonitoring)***| ***(Optional)*** |
+| `licenseSpecification` | ***[[]LaunchTemplateSpecLicenseSpecification](#launchtemplatespeclicensespecification)***| ***(Optional)*** |
+| `monitoring` | ***[[]LaunchTemplateSpecMonitoring](#launchtemplatespecmonitoring)***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
-| `networkInterfaces` | ***[[]LaunchTemplateSpecNetworkInterfaces](#LaunchTemplateSpecNetworkInterfaces)***| ***(Optional)*** |
-| `placement` | ***[[]LaunchTemplateSpecPlacement](#LaunchTemplateSpecPlacement)***| ***(Optional)*** |
+| `networkInterfaces` | ***[[]LaunchTemplateSpecNetworkInterfaces](#launchtemplatespecnetworkinterfaces)***| ***(Optional)*** |
+| `placement` | ***[[]LaunchTemplateSpecPlacement](#launchtemplatespecplacement)***| ***(Optional)*** |
 | `ramDiskID` | ***string***| ***(Optional)*** |
 | `securityGroupNames` | ***[]string***| ***(Optional)*** |
-| `tagSpecifications` | ***[[]LaunchTemplateSpecTagSpecifications](#LaunchTemplateSpecTagSpecifications)***| ***(Optional)*** |
+| `tagSpecifications` | ***[[]LaunchTemplateSpecTagSpecifications](#launchtemplatespectagspecifications)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `userData` | ***string***| ***(Optional)*** |
 | `vpcSecurityGroupIDS` | ***[]string***| ***(Optional)*** |
 ## LaunchTemplateSpecBlockDeviceMappings
 
-Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
+Appears on:[LaunchTemplateSpec](#launchtemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deviceName` | ***string***| ***(Optional)*** |
-| `ebs` | ***[[]LaunchTemplateSpecBlockDeviceMappingsEbs](#LaunchTemplateSpecBlockDeviceMappingsEbs)***| ***(Optional)*** |
+| `ebs` | ***[[]LaunchTemplateSpecBlockDeviceMappingsEbs](#launchtemplatespecblockdevicemappingsebs)***| ***(Optional)*** |
 | `noDevice` | ***string***| ***(Optional)*** |
 | `virtualName` | ***string***| ***(Optional)*** |
 ## LaunchTemplateSpecBlockDeviceMappingsEbs
 
-Appears on:[LaunchTemplateSpecBlockDeviceMappings](#LaunchTemplateSpecBlockDeviceMappings)
+Appears on:[LaunchTemplateSpecBlockDeviceMappings](#launchtemplatespecblockdevicemappings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -81,43 +81,43 @@ Appears on:[LaunchTemplateSpecBlockDeviceMappings](#LaunchTemplateSpecBlockDevic
 | `volumeType` | ***string***| ***(Optional)*** |
 ## LaunchTemplateSpecCapacityReservationSpecification
 
-Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
+Appears on:[LaunchTemplateSpec](#launchtemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `capacityReservationPreference` | ***string***| ***(Optional)*** |
-| `capacityReservationTarget` | ***[[]LaunchTemplateSpecCapacityReservationSpecificationCapacityReservationTarget](#LaunchTemplateSpecCapacityReservationSpecificationCapacityReservationTarget)***| ***(Optional)*** |
+| `capacityReservationTarget` | ***[[]LaunchTemplateSpecCapacityReservationSpecificationCapacityReservationTarget](#launchtemplatespeccapacityreservationspecificationcapacityreservationtarget)***| ***(Optional)*** |
 ## LaunchTemplateSpecCapacityReservationSpecificationCapacityReservationTarget
 
-Appears on:[LaunchTemplateSpecCapacityReservationSpecification](#LaunchTemplateSpecCapacityReservationSpecification)
+Appears on:[LaunchTemplateSpecCapacityReservationSpecification](#launchtemplatespeccapacityreservationspecification)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `capacityReservationID` | ***string***| ***(Optional)*** |
 ## LaunchTemplateSpecCreditSpecification
 
-Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
+Appears on:[LaunchTemplateSpec](#launchtemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cpuCredits` | ***string***| ***(Optional)*** |
 ## LaunchTemplateSpecElasticGpuSpecifications
 
-Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
+Appears on:[LaunchTemplateSpec](#launchtemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 ## LaunchTemplateSpecElasticInferenceAccelerator
 
-Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
+Appears on:[LaunchTemplateSpec](#launchtemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 ## LaunchTemplateSpecIamInstanceProfile
 
-Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
+Appears on:[LaunchTemplateSpec](#launchtemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -125,15 +125,15 @@ Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
 | `name` | ***string***| ***(Optional)*** |
 ## LaunchTemplateSpecInstanceMarketOptions
 
-Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
+Appears on:[LaunchTemplateSpec](#launchtemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `marketType` | ***string***| ***(Optional)*** |
-| `spotOptions` | ***[[]LaunchTemplateSpecInstanceMarketOptionsSpotOptions](#LaunchTemplateSpecInstanceMarketOptionsSpotOptions)***| ***(Optional)*** |
+| `spotOptions` | ***[[]LaunchTemplateSpecInstanceMarketOptionsSpotOptions](#launchtemplatespecinstancemarketoptionsspotoptions)***| ***(Optional)*** |
 ## LaunchTemplateSpecInstanceMarketOptionsSpotOptions
 
-Appears on:[LaunchTemplateSpecInstanceMarketOptions](#LaunchTemplateSpecInstanceMarketOptions)
+Appears on:[LaunchTemplateSpecInstanceMarketOptions](#launchtemplatespecinstancemarketoptions)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -144,21 +144,21 @@ Appears on:[LaunchTemplateSpecInstanceMarketOptions](#LaunchTemplateSpecInstance
 | `validUntil` | ***string***| ***(Optional)*** |
 ## LaunchTemplateSpecLicenseSpecification
 
-Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
+Appears on:[LaunchTemplateSpec](#launchtemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `licenseConfigurationArn` | ***string***||
 ## LaunchTemplateSpecMonitoring
 
-Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
+Appears on:[LaunchTemplateSpec](#launchtemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 ## LaunchTemplateSpecNetworkInterfaces
 
-Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
+Appears on:[LaunchTemplateSpec](#launchtemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -176,7 +176,7 @@ Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
 | `subnetID` | ***string***| ***(Optional)*** |
 ## LaunchTemplateSpecPlacement
 
-Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
+Appears on:[LaunchTemplateSpec](#launchtemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -188,7 +188,7 @@ Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
 | `tenancy` | ***string***| ***(Optional)*** |
 ## LaunchTemplateSpecTagSpecifications
 
-Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
+Appears on:[LaunchTemplateSpec](#launchtemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -196,11 +196,11 @@ Appears on:[LaunchTemplateSpec](#LaunchTemplateSpec)
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## LaunchTemplateStatus
 
-Appears on:[LaunchTemplate](#LaunchTemplate)
+Appears on:[LaunchTemplate](#launchtemplate)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LaunchTemplateSpec](#LaunchTemplateSpec)***| ***(Optional)*** |
+| `output` | ***[LaunchTemplateSpec](#launchtemplatespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiManagementBackend` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiManagementBackendSpec](#ApiManagementBackendSpec)***||
-| `status` | ***[ApiManagementBackendStatus](#ApiManagementBackendStatus)***||
+| `spec` | ***[ApiManagementBackendSpec](#apimanagementbackendspec)***||
+| `status` | ***[ApiManagementBackendStatus](#apimanagementbackendstatus)***||
 ## ApiManagementBackendSpec
 
-Appears on:[ApiManagementBackend](#ApiManagementBackend), [ApiManagementBackendStatus](#ApiManagementBackendStatus)
+Appears on:[ApiManagementBackend](#apimanagementbackend), [ApiManagementBackendStatus](#apimanagementbackendstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,30 +28,30 @@ Appears on:[ApiManagementBackend](#ApiManagementBackend), [ApiManagementBackendS
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `apiManagementName` | ***string***||
-| `credentials` | ***[[]ApiManagementBackendSpecCredentials](#ApiManagementBackendSpecCredentials)***| ***(Optional)*** |
+| `credentials` | ***[[]ApiManagementBackendSpecCredentials](#apimanagementbackendspeccredentials)***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `protocol` | ***string***||
-| `proxy` | ***[[]ApiManagementBackendSpecProxy](#ApiManagementBackendSpecProxy)***| ***(Optional)*** |
+| `proxy` | ***[[]ApiManagementBackendSpecProxy](#apimanagementbackendspecproxy)***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 | `resourceID` | ***string***| ***(Optional)*** |
-| `serviceFabricCluster` | ***[[]ApiManagementBackendSpecServiceFabricCluster](#ApiManagementBackendSpecServiceFabricCluster)***| ***(Optional)*** |
+| `serviceFabricCluster` | ***[[]ApiManagementBackendSpecServiceFabricCluster](#apimanagementbackendspecservicefabriccluster)***| ***(Optional)*** |
 | `title` | ***string***| ***(Optional)*** |
-| `tls` | ***[[]ApiManagementBackendSpecTls](#ApiManagementBackendSpecTls)***| ***(Optional)*** |
+| `tls` | ***[[]ApiManagementBackendSpecTls](#apimanagementbackendspectls)***| ***(Optional)*** |
 | `url` | ***string***||
 ## ApiManagementBackendSpecCredentials
 
-Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec)
+Appears on:[ApiManagementBackendSpec](#apimanagementbackendspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `authorization` | ***[[]ApiManagementBackendSpecCredentialsAuthorization](#ApiManagementBackendSpecCredentialsAuthorization)***| ***(Optional)*** |
+| `authorization` | ***[[]ApiManagementBackendSpecCredentialsAuthorization](#apimanagementbackendspeccredentialsauthorization)***| ***(Optional)*** |
 | `certificate` | ***[]string***| ***(Optional)*** |
 | `header` | ***map[string]string***| ***(Optional)*** |
 | `query` | ***map[string]string***| ***(Optional)*** |
 ## ApiManagementBackendSpecCredentialsAuthorization
 
-Appears on:[ApiManagementBackendSpecCredentials](#ApiManagementBackendSpecCredentials)
+Appears on:[ApiManagementBackendSpecCredentials](#apimanagementbackendspeccredentials)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -59,7 +59,7 @@ Appears on:[ApiManagementBackendSpecCredentials](#ApiManagementBackendSpecCreden
 | `scheme` | ***string***| ***(Optional)*** |
 ## ApiManagementBackendSpecProxy
 
-Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec)
+Appears on:[ApiManagementBackendSpec](#apimanagementbackendspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -67,7 +67,7 @@ Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec)
 | `username` | ***string***||
 ## ApiManagementBackendSpecServiceFabricCluster
 
-Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec)
+Appears on:[ApiManagementBackendSpec](#apimanagementbackendspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -75,10 +75,10 @@ Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec)
 | `managementEndpoints` | ***[]string***||
 | `maxPartitionResolutionRetries` | ***int***||
 | `serverCertificateThumbprints` | ***[]string***| ***(Optional)*** |
-| `serverX509Name` | ***[[]ApiManagementBackendSpecServiceFabricClusterServerX509Name](#ApiManagementBackendSpecServiceFabricClusterServerX509Name)***| ***(Optional)*** |
+| `serverX509Name` | ***[[]ApiManagementBackendSpecServiceFabricClusterServerX509Name](#apimanagementbackendspecservicefabricclusterserverx509name)***| ***(Optional)*** |
 ## ApiManagementBackendSpecServiceFabricClusterServerX509Name
 
-Appears on:[ApiManagementBackendSpecServiceFabricCluster](#ApiManagementBackendSpecServiceFabricCluster)
+Appears on:[ApiManagementBackendSpecServiceFabricCluster](#apimanagementbackendspecservicefabriccluster)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -86,7 +86,7 @@ Appears on:[ApiManagementBackendSpecServiceFabricCluster](#ApiManagementBackendS
 | `name` | ***string***||
 ## ApiManagementBackendSpecTls
 
-Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec)
+Appears on:[ApiManagementBackendSpec](#apimanagementbackendspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -94,12 +94,12 @@ Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec)
 | `validateCertificateName` | ***bool***| ***(Optional)*** |
 ## ApiManagementBackendStatus
 
-Appears on:[ApiManagementBackend](#ApiManagementBackend)
+Appears on:[ApiManagementBackend](#apimanagementbackend)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiManagementBackendSpec](#ApiManagementBackendSpec)***| ***(Optional)*** |
+| `output` | ***[ApiManagementBackendSpec](#apimanagementbackendspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `PubsubSubscriptionIamPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PubsubSubscriptionIamPolicySpec](#PubsubSubscriptionIamPolicySpec)***||
-| `status` | ***[PubsubSubscriptionIamPolicyStatus](#PubsubSubscriptionIamPolicyStatus)***||
+| `spec` | ***[PubsubSubscriptionIamPolicySpec](#pubsubsubscriptioniampolicyspec)***||
+| `status` | ***[PubsubSubscriptionIamPolicyStatus](#pubsubsubscriptioniampolicystatus)***||
 ## PubsubSubscriptionIamPolicySpec
 
-Appears on:[PubsubSubscriptionIamPolicy](#PubsubSubscriptionIamPolicy), [PubsubSubscriptionIamPolicyStatus](#PubsubSubscriptionIamPolicyStatus)
+Appears on:[PubsubSubscriptionIamPolicy](#pubsubsubscriptioniampolicy), [PubsubSubscriptionIamPolicyStatus](#pubsubsubscriptioniampolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[PubsubSubscriptionIamPolicy](#PubsubSubscriptionIamPolicy), [PubsubS
 | `subscription` | ***string***||
 ## PubsubSubscriptionIamPolicyStatus
 
-Appears on:[PubsubSubscriptionIamPolicy](#PubsubSubscriptionIamPolicy)
+Appears on:[PubsubSubscriptionIamPolicy](#pubsubsubscriptioniampolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PubsubSubscriptionIamPolicySpec](#PubsubSubscriptionIamPolicySpec)***| ***(Optional)*** |
+| `output` | ***[PubsubSubscriptionIamPolicySpec](#pubsubsubscriptioniampolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

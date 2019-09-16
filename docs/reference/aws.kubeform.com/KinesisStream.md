@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `KinesisStream` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[KinesisStreamSpec](#KinesisStreamSpec)***||
-| `status` | ***[KinesisStreamStatus](#KinesisStreamStatus)***||
+| `spec` | ***[KinesisStreamSpec](#kinesisstreamspec)***||
+| `status` | ***[KinesisStreamStatus](#kinesisstreamstatus)***||
 ## KinesisStreamSpec
 
-Appears on:[KinesisStream](#KinesisStream), [KinesisStreamStatus](#KinesisStreamStatus)
+Appears on:[KinesisStream](#kinesisstream), [KinesisStreamStatus](#kinesisstreamstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -36,11 +36,11 @@ Appears on:[KinesisStream](#KinesisStream), [KinesisStreamStatus](#KinesisStream
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## KinesisStreamStatus
 
-Appears on:[KinesisStream](#KinesisStream)
+Appears on:[KinesisStream](#kinesisstream)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[KinesisStreamSpec](#KinesisStreamSpec)***| ***(Optional)*** |
+| `output` | ***[KinesisStreamSpec](#kinesisstreamspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

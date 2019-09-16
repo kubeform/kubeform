@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CloudwatchDashboard` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CloudwatchDashboardSpec](#CloudwatchDashboardSpec)***||
-| `status` | ***[CloudwatchDashboardStatus](#CloudwatchDashboardStatus)***||
+| `spec` | ***[CloudwatchDashboardSpec](#cloudwatchdashboardspec)***||
+| `status` | ***[CloudwatchDashboardStatus](#cloudwatchdashboardstatus)***||
 ## CloudwatchDashboardSpec
 
-Appears on:[CloudwatchDashboard](#CloudwatchDashboard), [CloudwatchDashboardStatus](#CloudwatchDashboardStatus)
+Appears on:[CloudwatchDashboard](#cloudwatchdashboard), [CloudwatchDashboardStatus](#cloudwatchdashboardstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[CloudwatchDashboard](#CloudwatchDashboard), [CloudwatchDashboardStat
 | `dashboardName` | ***string***||
 ## CloudwatchDashboardStatus
 
-Appears on:[CloudwatchDashboard](#CloudwatchDashboard)
+Appears on:[CloudwatchDashboard](#cloudwatchdashboard)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CloudwatchDashboardSpec](#CloudwatchDashboardSpec)***| ***(Optional)*** |
+| `output` | ***[CloudwatchDashboardSpec](#cloudwatchdashboardspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AutoscalingNotification` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AutoscalingNotificationSpec](#AutoscalingNotificationSpec)***||
-| `status` | ***[AutoscalingNotificationStatus](#AutoscalingNotificationStatus)***||
+| `spec` | ***[AutoscalingNotificationSpec](#autoscalingnotificationspec)***||
+| `status` | ***[AutoscalingNotificationStatus](#autoscalingnotificationstatus)***||
 ## AutoscalingNotificationSpec
 
-Appears on:[AutoscalingNotification](#AutoscalingNotification), [AutoscalingNotificationStatus](#AutoscalingNotificationStatus)
+Appears on:[AutoscalingNotification](#autoscalingnotification), [AutoscalingNotificationStatus](#autoscalingnotificationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[AutoscalingNotification](#AutoscalingNotification), [AutoscalingNoti
 | `topicArn` | ***string***||
 ## AutoscalingNotificationStatus
 
-Appears on:[AutoscalingNotification](#AutoscalingNotification)
+Appears on:[AutoscalingNotification](#autoscalingnotification)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AutoscalingNotificationSpec](#AutoscalingNotificationSpec)***| ***(Optional)*** |
+| `output` | ***[AutoscalingNotificationSpec](#autoscalingnotificationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

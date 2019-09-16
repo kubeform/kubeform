@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `MonitorDiagnosticSetting` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[MonitorDiagnosticSettingSpec](#MonitorDiagnosticSettingSpec)***||
-| `status` | ***[MonitorDiagnosticSettingStatus](#MonitorDiagnosticSettingStatus)***||
+| `spec` | ***[MonitorDiagnosticSettingSpec](#monitordiagnosticsettingspec)***||
+| `status` | ***[MonitorDiagnosticSettingStatus](#monitordiagnosticsettingstatus)***||
 ## MonitorDiagnosticSettingSpec
 
-Appears on:[MonitorDiagnosticSetting](#MonitorDiagnosticSetting), [MonitorDiagnosticSettingStatus](#MonitorDiagnosticSettingStatus)
+Appears on:[MonitorDiagnosticSetting](#monitordiagnosticsetting), [MonitorDiagnosticSettingStatus](#monitordiagnosticsettingstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,24 +28,24 @@ Appears on:[MonitorDiagnosticSetting](#MonitorDiagnosticSetting), [MonitorDiagno
 | `id` | ***string***||
 | `eventhubAuthorizationRuleID` | ***string***| ***(Optional)*** |
 | `eventhubName` | ***string***| ***(Optional)*** |
-| `log` | ***[[]MonitorDiagnosticSettingSpecLog](#MonitorDiagnosticSettingSpecLog)***| ***(Optional)*** |
+| `log` | ***[[]MonitorDiagnosticSettingSpecLog](#monitordiagnosticsettingspeclog)***| ***(Optional)*** |
 | `logAnalyticsWorkspaceID` | ***string***| ***(Optional)*** |
-| `metric` | ***[[]MonitorDiagnosticSettingSpecMetric](#MonitorDiagnosticSettingSpecMetric)***| ***(Optional)*** |
+| `metric` | ***[[]MonitorDiagnosticSettingSpecMetric](#monitordiagnosticsettingspecmetric)***| ***(Optional)*** |
 | `name` | ***string***||
 | `storageAccountID` | ***string***| ***(Optional)*** |
 | `targetResourceID` | ***string***||
 ## MonitorDiagnosticSettingSpecLog
 
-Appears on:[MonitorDiagnosticSettingSpec](#MonitorDiagnosticSettingSpec)
+Appears on:[MonitorDiagnosticSettingSpec](#monitordiagnosticsettingspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `category` | ***string***||
 | `enabled` | ***bool***| ***(Optional)*** |
-| `retentionPolicy` | ***[[]MonitorDiagnosticSettingSpecLogRetentionPolicy](#MonitorDiagnosticSettingSpecLogRetentionPolicy)***||
+| `retentionPolicy` | ***[[]MonitorDiagnosticSettingSpecLogRetentionPolicy](#monitordiagnosticsettingspeclogretentionpolicy)***||
 ## MonitorDiagnosticSettingSpecLogRetentionPolicy
 
-Appears on:[MonitorDiagnosticSettingSpecLog](#MonitorDiagnosticSettingSpecLog)
+Appears on:[MonitorDiagnosticSettingSpecLog](#monitordiagnosticsettingspeclog)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -53,16 +53,16 @@ Appears on:[MonitorDiagnosticSettingSpecLog](#MonitorDiagnosticSettingSpecLog)
 | `enabled` | ***bool***||
 ## MonitorDiagnosticSettingSpecMetric
 
-Appears on:[MonitorDiagnosticSettingSpec](#MonitorDiagnosticSettingSpec)
+Appears on:[MonitorDiagnosticSettingSpec](#monitordiagnosticsettingspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `category` | ***string***||
 | `enabled` | ***bool***| ***(Optional)*** |
-| `retentionPolicy` | ***[[]MonitorDiagnosticSettingSpecMetricRetentionPolicy](#MonitorDiagnosticSettingSpecMetricRetentionPolicy)***||
+| `retentionPolicy` | ***[[]MonitorDiagnosticSettingSpecMetricRetentionPolicy](#monitordiagnosticsettingspecmetricretentionpolicy)***||
 ## MonitorDiagnosticSettingSpecMetricRetentionPolicy
 
-Appears on:[MonitorDiagnosticSettingSpecMetric](#MonitorDiagnosticSettingSpecMetric)
+Appears on:[MonitorDiagnosticSettingSpecMetric](#monitordiagnosticsettingspecmetric)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -70,11 +70,11 @@ Appears on:[MonitorDiagnosticSettingSpecMetric](#MonitorDiagnosticSettingSpecMet
 | `enabled` | ***bool***||
 ## MonitorDiagnosticSettingStatus
 
-Appears on:[MonitorDiagnosticSetting](#MonitorDiagnosticSetting)
+Appears on:[MonitorDiagnosticSetting](#monitordiagnosticsetting)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[MonitorDiagnosticSettingSpec](#MonitorDiagnosticSettingSpec)***| ***(Optional)*** |
+| `output` | ***[MonitorDiagnosticSettingSpec](#monitordiagnosticsettingspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

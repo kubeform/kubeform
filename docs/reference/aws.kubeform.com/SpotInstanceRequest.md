@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SpotInstanceRequest` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)***||
-| `status` | ***[SpotInstanceRequestStatus](#SpotInstanceRequestStatus)***||
+| `spec` | ***[SpotInstanceRequestSpec](#spotinstancerequestspec)***||
+| `status` | ***[SpotInstanceRequestStatus](#spotinstancerequeststatus)***||
 ## SpotInstanceRequestSpec
 
-Appears on:[SpotInstanceRequest](#SpotInstanceRequest), [SpotInstanceRequestStatus](#SpotInstanceRequestStatus)
+Appears on:[SpotInstanceRequest](#spotinstancerequest), [SpotInstanceRequestStatus](#spotinstancerequeststatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[SpotInstanceRequest](#SpotInstanceRequest), [SpotInstanceRequestStat
 | `blockDurationMinutes` | ***int***| ***(Optional)*** |
 | `cpuCoreCount` | ***int***| ***(Optional)*** |
 | `cpuThreadsPerCore` | ***int***| ***(Optional)*** |
-| `creditSpecification` | ***[[]SpotInstanceRequestSpecCreditSpecification](#SpotInstanceRequestSpecCreditSpecification)***| ***(Optional)*** |
+| `creditSpecification` | ***[[]SpotInstanceRequestSpecCreditSpecification](#spotinstancerequestspeccreditspecification)***| ***(Optional)*** |
 | `disableAPITermination` | ***bool***| ***(Optional)*** |
-| `ebsBlockDevice` | ***[[]SpotInstanceRequestSpecEbsBlockDevice](#SpotInstanceRequestSpecEbsBlockDevice)***| ***(Optional)*** |
+| `ebsBlockDevice` | ***[[]SpotInstanceRequestSpecEbsBlockDevice](#spotinstancerequestspecebsblockdevice)***| ***(Optional)*** |
 | `ebsOptimized` | ***bool***| ***(Optional)*** |
-| `ephemeralBlockDevice` | ***[[]SpotInstanceRequestSpecEphemeralBlockDevice](#SpotInstanceRequestSpecEphemeralBlockDevice)***| ***(Optional)*** |
+| `ephemeralBlockDevice` | ***[[]SpotInstanceRequestSpecEphemeralBlockDevice](#spotinstancerequestspecephemeralblockdevice)***| ***(Optional)*** |
 | `getPasswordData` | ***bool***| ***(Optional)*** |
 | `hostID` | ***string***| ***(Optional)*** |
 | `iamInstanceProfile` | ***string***| ***(Optional)*** |
@@ -50,7 +50,7 @@ Appears on:[SpotInstanceRequest](#SpotInstanceRequest), [SpotInstanceRequestStat
 | `keyName` | ***string***| ***(Optional)*** |
 | `launchGroup` | ***string***| ***(Optional)*** |
 | `monitoring` | ***bool***| ***(Optional)*** |
-| `networkInterface` | ***[[]SpotInstanceRequestSpecNetworkInterface](#SpotInstanceRequestSpecNetworkInterface)***| ***(Optional)*** |
+| `networkInterface` | ***[[]SpotInstanceRequestSpecNetworkInterface](#spotinstancerequestspecnetworkinterface)***| ***(Optional)*** |
 | `passwordData` | ***string***| ***(Optional)*** |
 | `placementGroup` | ***string***| ***(Optional)*** |
 | `primaryNetworkInterfaceID` | ***string***| ***(Optional)*** |
@@ -58,7 +58,7 @@ Appears on:[SpotInstanceRequest](#SpotInstanceRequest), [SpotInstanceRequestStat
 | `privateIP` | ***string***| ***(Optional)*** |
 | `publicDNS` | ***string***| ***(Optional)*** |
 | `publicIP` | ***string***| ***(Optional)*** |
-| `rootBlockDevice` | ***[[]SpotInstanceRequestSpecRootBlockDevice](#SpotInstanceRequestSpecRootBlockDevice)***| ***(Optional)*** |
+| `rootBlockDevice` | ***[[]SpotInstanceRequestSpecRootBlockDevice](#spotinstancerequestspecrootblockdevice)***| ***(Optional)*** |
 | `securityGroups` | ***[]string***| ***(Optional)*** |
 | `sourceDestCheck` | ***bool***| ***(Optional)*** |
 | `spotBidStatus` | ***string***| ***(Optional)*** |
@@ -78,14 +78,14 @@ Appears on:[SpotInstanceRequest](#SpotInstanceRequest), [SpotInstanceRequestStat
 | `waitForFulfillment` | ***bool***| ***(Optional)*** |
 ## SpotInstanceRequestSpecCreditSpecification
 
-Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
+Appears on:[SpotInstanceRequestSpec](#spotinstancerequestspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cpuCredits` | ***string***| ***(Optional)*** |
 ## SpotInstanceRequestSpecEbsBlockDevice
 
-Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
+Appears on:[SpotInstanceRequestSpec](#spotinstancerequestspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -99,7 +99,7 @@ Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
 | `volumeType` | ***string***| ***(Optional)*** |
 ## SpotInstanceRequestSpecEphemeralBlockDevice
 
-Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
+Appears on:[SpotInstanceRequestSpec](#spotinstancerequestspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -108,7 +108,7 @@ Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
 | `virtualName` | ***string***| ***(Optional)*** |
 ## SpotInstanceRequestSpecNetworkInterface
 
-Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
+Appears on:[SpotInstanceRequestSpec](#spotinstancerequestspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -117,7 +117,7 @@ Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
 | `networkInterfaceID` | ***string***||
 ## SpotInstanceRequestSpecRootBlockDevice
 
-Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
+Appears on:[SpotInstanceRequestSpec](#spotinstancerequestspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -128,11 +128,11 @@ Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
 | `volumeType` | ***string***| ***(Optional)*** |
 ## SpotInstanceRequestStatus
 
-Appears on:[SpotInstanceRequest](#SpotInstanceRequest)
+Appears on:[SpotInstanceRequest](#spotinstancerequest)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)***| ***(Optional)*** |
+| `output` | ***[SpotInstanceRequestSpec](#spotinstancerequestspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

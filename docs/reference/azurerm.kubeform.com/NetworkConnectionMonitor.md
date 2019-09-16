@@ -16,28 +16,28 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `NetworkConnectionMonitor` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NetworkConnectionMonitorSpec](#NetworkConnectionMonitorSpec)***||
-| `status` | ***[NetworkConnectionMonitorStatus](#NetworkConnectionMonitorStatus)***||
+| `spec` | ***[NetworkConnectionMonitorSpec](#networkconnectionmonitorspec)***||
+| `status` | ***[NetworkConnectionMonitorStatus](#networkconnectionmonitorstatus)***||
 ## NetworkConnectionMonitorSpec
 
-Appears on:[NetworkConnectionMonitor](#NetworkConnectionMonitor), [NetworkConnectionMonitorStatus](#NetworkConnectionMonitorStatus)
+Appears on:[NetworkConnectionMonitor](#networkconnectionmonitor), [NetworkConnectionMonitorStatus](#networkconnectionmonitorstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `autoStart` | ***bool***| ***(Optional)*** |
-| `destination` | ***[[]NetworkConnectionMonitorSpecDestination](#NetworkConnectionMonitorSpecDestination)***||
+| `destination` | ***[[]NetworkConnectionMonitorSpecDestination](#networkconnectionmonitorspecdestination)***||
 | `intervalInSeconds` | ***int***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
 | `networkWatcherName` | ***string***||
 | `resourceGroupName` | ***string***||
-| `source` | ***[[]NetworkConnectionMonitorSpecSource](#NetworkConnectionMonitorSpecSource)***||
+| `source` | ***[[]NetworkConnectionMonitorSpecSource](#networkconnectionmonitorspecsource)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## NetworkConnectionMonitorSpecDestination
 
-Appears on:[NetworkConnectionMonitorSpec](#NetworkConnectionMonitorSpec)
+Appears on:[NetworkConnectionMonitorSpec](#networkconnectionmonitorspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -46,7 +46,7 @@ Appears on:[NetworkConnectionMonitorSpec](#NetworkConnectionMonitorSpec)
 | `virtualMachineID` | ***string***| ***(Optional)*** |
 ## NetworkConnectionMonitorSpecSource
 
-Appears on:[NetworkConnectionMonitorSpec](#NetworkConnectionMonitorSpec)
+Appears on:[NetworkConnectionMonitorSpec](#networkconnectionmonitorspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -54,11 +54,11 @@ Appears on:[NetworkConnectionMonitorSpec](#NetworkConnectionMonitorSpec)
 | `virtualMachineID` | ***string***||
 ## NetworkConnectionMonitorStatus
 
-Appears on:[NetworkConnectionMonitor](#NetworkConnectionMonitor)
+Appears on:[NetworkConnectionMonitor](#networkconnectionmonitor)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NetworkConnectionMonitorSpec](#NetworkConnectionMonitorSpec)***| ***(Optional)*** |
+| `output` | ***[NetworkConnectionMonitorSpec](#networkconnectionmonitorspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

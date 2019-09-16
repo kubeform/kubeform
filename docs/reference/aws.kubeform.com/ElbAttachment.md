@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ElbAttachment` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ElbAttachmentSpec](#ElbAttachmentSpec)***||
-| `status` | ***[ElbAttachmentStatus](#ElbAttachmentStatus)***||
+| `spec` | ***[ElbAttachmentSpec](#elbattachmentspec)***||
+| `status` | ***[ElbAttachmentStatus](#elbattachmentstatus)***||
 ## ElbAttachmentSpec
 
-Appears on:[ElbAttachment](#ElbAttachment), [ElbAttachmentStatus](#ElbAttachmentStatus)
+Appears on:[ElbAttachment](#elbattachment), [ElbAttachmentStatus](#elbattachmentstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[ElbAttachment](#ElbAttachment), [ElbAttachmentStatus](#ElbAttachment
 | `instance` | ***string***||
 ## ElbAttachmentStatus
 
-Appears on:[ElbAttachment](#ElbAttachment)
+Appears on:[ElbAttachment](#elbattachment)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ElbAttachmentSpec](#ElbAttachmentSpec)***| ***(Optional)*** |
+| `output` | ***[ElbAttachmentSpec](#elbattachmentspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

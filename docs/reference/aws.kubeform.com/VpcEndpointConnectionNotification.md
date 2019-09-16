@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `VpcEndpointConnectionNotification` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[VpcEndpointConnectionNotificationSpec](#VpcEndpointConnectionNotificationSpec)***||
-| `status` | ***[VpcEndpointConnectionNotificationStatus](#VpcEndpointConnectionNotificationStatus)***||
+| `spec` | ***[VpcEndpointConnectionNotificationSpec](#vpcendpointconnectionnotificationspec)***||
+| `status` | ***[VpcEndpointConnectionNotificationStatus](#vpcendpointconnectionnotificationstatus)***||
 ## VpcEndpointConnectionNotificationSpec
 
-Appears on:[VpcEndpointConnectionNotification](#VpcEndpointConnectionNotification), [VpcEndpointConnectionNotificationStatus](#VpcEndpointConnectionNotificationStatus)
+Appears on:[VpcEndpointConnectionNotification](#vpcendpointconnectionnotification), [VpcEndpointConnectionNotificationStatus](#vpcendpointconnectionnotificationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[VpcEndpointConnectionNotification](#VpcEndpointConnectionNotificatio
 | `vpcEndpointServiceID` | ***string***| ***(Optional)*** |
 ## VpcEndpointConnectionNotificationStatus
 
-Appears on:[VpcEndpointConnectionNotification](#VpcEndpointConnectionNotification)
+Appears on:[VpcEndpointConnectionNotification](#vpcendpointconnectionnotification)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[VpcEndpointConnectionNotificationSpec](#VpcEndpointConnectionNotificationSpec)***| ***(Optional)*** |
+| `output` | ***[VpcEndpointConnectionNotificationSpec](#vpcendpointconnectionnotificationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

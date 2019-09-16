@@ -16,17 +16,17 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `Project` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ProjectSpec](#ProjectSpec)***||
-| `status` | ***[ProjectStatus](#ProjectStatus)***||
+| `spec` | ***[ProjectSpec](#projectspec)***||
+| `status` | ***[ProjectStatus](#projectstatus)***||
 ## ProjectSpec
 
-Appears on:[Project](#Project), [ProjectStatus](#ProjectStatus)
+Appears on:[Project](#project), [ProjectStatus](#projectstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `appEngine` | ***[[]ProjectSpecAppEngine](#ProjectSpecAppEngine)***| ***(Optional)*** Deprecated|
+| `appEngine` | ***[[]ProjectSpecAppEngine](#projectspecappengine)***| ***(Optional)*** Deprecated|
 | `autoCreateNetwork` | ***bool***| ***(Optional)*** |
 | `billingAccount` | ***string***| ***(Optional)*** |
 | `folderID` | ***string***| ***(Optional)*** |
@@ -38,7 +38,7 @@ Appears on:[Project](#Project), [ProjectStatus](#ProjectStatus)
 | `skipDelete` | ***bool***| ***(Optional)*** |
 ## ProjectSpecAppEngine
 
-Appears on:[ProjectSpec](#ProjectSpec)
+Appears on:[ProjectSpec](#projectspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -46,22 +46,22 @@ Appears on:[ProjectSpec](#ProjectSpec)
 | `codeBucket` | ***string***| ***(Optional)*** |
 | `defaultBucket` | ***string***| ***(Optional)*** |
 | `defaultHostname` | ***string***| ***(Optional)*** |
-| `featureSettings` | ***[[]ProjectSpecAppEngineFeatureSettings](#ProjectSpecAppEngineFeatureSettings)***| ***(Optional)*** |
+| `featureSettings` | ***[[]ProjectSpecAppEngineFeatureSettings](#projectspecappenginefeaturesettings)***| ***(Optional)*** |
 | `gcrDomain` | ***string***| ***(Optional)*** |
 | `locationID` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `servingStatus` | ***string***| ***(Optional)*** |
-| `urlDispatchRule` | ***[[]ProjectSpecAppEngineUrlDispatchRule](#ProjectSpecAppEngineUrlDispatchRule)***| ***(Optional)*** |
+| `urlDispatchRule` | ***[[]ProjectSpecAppEngineUrlDispatchRule](#projectspecappengineurldispatchrule)***| ***(Optional)*** |
 ## ProjectSpecAppEngineFeatureSettings
 
-Appears on:[ProjectSpecAppEngine](#ProjectSpecAppEngine)
+Appears on:[ProjectSpecAppEngine](#projectspecappengine)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `splitHealthChecks` | ***bool***| ***(Optional)*** |
 ## ProjectSpecAppEngineUrlDispatchRule
 
-Appears on:[ProjectSpecAppEngine](#ProjectSpecAppEngine)
+Appears on:[ProjectSpecAppEngine](#projectspecappengine)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -70,11 +70,11 @@ Appears on:[ProjectSpecAppEngine](#ProjectSpecAppEngine)
 | `service` | ***string***| ***(Optional)*** |
 ## ProjectStatus
 
-Appears on:[Project](#Project)
+Appears on:[Project](#project)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ProjectSpec](#ProjectSpec)***| ***(Optional)*** |
+| `output` | ***[ProjectSpec](#projectspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DxConnection` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DxConnectionSpec](#DxConnectionSpec)***||
-| `status` | ***[DxConnectionStatus](#DxConnectionStatus)***||
+| `spec` | ***[DxConnectionSpec](#dxconnectionspec)***||
+| `status` | ***[DxConnectionStatus](#dxconnectionstatus)***||
 ## DxConnectionSpec
 
-Appears on:[DxConnection](#DxConnection), [DxConnectionStatus](#DxConnectionStatus)
+Appears on:[DxConnection](#dxconnection), [DxConnectionStatus](#dxconnectionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -36,11 +36,11 @@ Appears on:[DxConnection](#DxConnection), [DxConnectionStatus](#DxConnectionStat
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DxConnectionStatus
 
-Appears on:[DxConnection](#DxConnection)
+Appears on:[DxConnection](#dxconnection)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DxConnectionSpec](#DxConnectionSpec)***| ***(Optional)*** |
+| `output` | ***[DxConnectionSpec](#dxconnectionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DxLag` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DxLagSpec](#DxLagSpec)***||
-| `status` | ***[DxLagStatus](#DxLagStatus)***||
+| `spec` | ***[DxLagSpec](#dxlagspec)***||
+| `status` | ***[DxLagStatus](#dxlagstatus)***||
 ## DxLagSpec
 
-Appears on:[DxLag](#DxLag), [DxLagStatus](#DxLagStatus)
+Appears on:[DxLag](#dxlag), [DxLagStatus](#dxlagstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -36,11 +36,11 @@ Appears on:[DxLag](#DxLag), [DxLagStatus](#DxLagStatus)
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DxLagStatus
 
-Appears on:[DxLag](#DxLag)
+Appears on:[DxLag](#dxlag)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DxLagSpec](#DxLagSpec)***| ***(Optional)*** |
+| `output` | ***[DxLagSpec](#dxlagspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

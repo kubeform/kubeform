@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ResourceGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ResourceGroupSpec](#ResourceGroupSpec)***||
-| `status` | ***[ResourceGroupStatus](#ResourceGroupStatus)***||
+| `spec` | ***[ResourceGroupSpec](#resourcegroupspec)***||
+| `status` | ***[ResourceGroupStatus](#resourcegroupstatus)***||
 ## ResourceGroupSpec
 
-Appears on:[ResourceGroup](#ResourceGroup), [ResourceGroupStatus](#ResourceGroupStatus)
+Appears on:[ResourceGroup](#resourcegroup), [ResourceGroupStatus](#resourcegroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[ResourceGroup](#ResourceGroup), [ResourceGroupStatus](#ResourceGroup
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ResourceGroupStatus
 
-Appears on:[ResourceGroup](#ResourceGroup)
+Appears on:[ResourceGroup](#resourcegroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ResourceGroupSpec](#ResourceGroupSpec)***| ***(Optional)*** |
+| `output` | ***[ResourceGroupSpec](#resourcegroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

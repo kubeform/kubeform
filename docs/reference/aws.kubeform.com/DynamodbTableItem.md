@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DynamodbTableItem` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DynamodbTableItemSpec](#DynamodbTableItemSpec)***||
-| `status` | ***[DynamodbTableItemStatus](#DynamodbTableItemStatus)***||
+| `spec` | ***[DynamodbTableItemSpec](#dynamodbtableitemspec)***||
+| `status` | ***[DynamodbTableItemStatus](#dynamodbtableitemstatus)***||
 ## DynamodbTableItemSpec
 
-Appears on:[DynamodbTableItem](#DynamodbTableItem), [DynamodbTableItemStatus](#DynamodbTableItemStatus)
+Appears on:[DynamodbTableItem](#dynamodbtableitem), [DynamodbTableItemStatus](#dynamodbtableitemstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[DynamodbTableItem](#DynamodbTableItem), [DynamodbTableItemStatus](#D
 | `tableName` | ***string***||
 ## DynamodbTableItemStatus
 
-Appears on:[DynamodbTableItem](#DynamodbTableItem)
+Appears on:[DynamodbTableItem](#dynamodbtableitem)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DynamodbTableItemSpec](#DynamodbTableItemSpec)***| ***(Optional)*** |
+| `output` | ***[DynamodbTableItemSpec](#dynamodbtableitemspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

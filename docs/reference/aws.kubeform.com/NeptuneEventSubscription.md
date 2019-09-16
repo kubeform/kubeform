@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `NeptuneEventSubscription` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NeptuneEventSubscriptionSpec](#NeptuneEventSubscriptionSpec)***||
-| `status` | ***[NeptuneEventSubscriptionStatus](#NeptuneEventSubscriptionStatus)***||
+| `spec` | ***[NeptuneEventSubscriptionSpec](#neptuneeventsubscriptionspec)***||
+| `status` | ***[NeptuneEventSubscriptionStatus](#neptuneeventsubscriptionstatus)***||
 ## NeptuneEventSubscriptionSpec
 
-Appears on:[NeptuneEventSubscription](#NeptuneEventSubscription), [NeptuneEventSubscriptionStatus](#NeptuneEventSubscriptionStatus)
+Appears on:[NeptuneEventSubscription](#neptuneeventsubscription), [NeptuneEventSubscriptionStatus](#neptuneeventsubscriptionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,11 +38,11 @@ Appears on:[NeptuneEventSubscription](#NeptuneEventSubscription), [NeptuneEventS
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## NeptuneEventSubscriptionStatus
 
-Appears on:[NeptuneEventSubscription](#NeptuneEventSubscription)
+Appears on:[NeptuneEventSubscription](#neptuneeventsubscription)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NeptuneEventSubscriptionSpec](#NeptuneEventSubscriptionSpec)***| ***(Optional)*** |
+| `output` | ***[NeptuneEventSubscriptionSpec](#neptuneeventsubscriptionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

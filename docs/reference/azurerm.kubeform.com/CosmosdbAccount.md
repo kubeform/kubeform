@@ -16,24 +16,24 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `CosmosdbAccount` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CosmosdbAccountSpec](#CosmosdbAccountSpec)***||
-| `status` | ***[CosmosdbAccountStatus](#CosmosdbAccountStatus)***||
+| `spec` | ***[CosmosdbAccountSpec](#cosmosdbaccountspec)***||
+| `status` | ***[CosmosdbAccountStatus](#cosmosdbaccountstatus)***||
 ## CosmosdbAccountSpec
 
-Appears on:[CosmosdbAccount](#CosmosdbAccount), [CosmosdbAccountStatus](#CosmosdbAccountStatus)
+Appears on:[CosmosdbAccount](#cosmosdbaccount), [CosmosdbAccountStatus](#cosmosdbaccountstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
-| `capabilities` | ***[[]CosmosdbAccountSpecCapabilities](#CosmosdbAccountSpecCapabilities)***| ***(Optional)*** |
-| `consistencyPolicy` | ***[[]CosmosdbAccountSpecConsistencyPolicy](#CosmosdbAccountSpecConsistencyPolicy)***| ***(Optional)*** |
+| `capabilities` | ***[[]CosmosdbAccountSpecCapabilities](#cosmosdbaccountspeccapabilities)***| ***(Optional)*** |
+| `consistencyPolicy` | ***[[]CosmosdbAccountSpecConsistencyPolicy](#cosmosdbaccountspecconsistencypolicy)***| ***(Optional)*** |
 | `enableAutomaticFailover` | ***bool***| ***(Optional)*** |
 | `enableMultipleWriteLocations` | ***bool***| ***(Optional)*** |
 | `endpoint` | ***string***| ***(Optional)*** |
-| `failoverPolicy` | ***[[]CosmosdbAccountSpecFailoverPolicy](#CosmosdbAccountSpecFailoverPolicy)***| ***(Optional)*** Deprecated|
-| `geoLocation` | ***[[]CosmosdbAccountSpecGeoLocation](#CosmosdbAccountSpecGeoLocation)***| ***(Optional)*** |
+| `failoverPolicy` | ***[[]CosmosdbAccountSpecFailoverPolicy](#cosmosdbaccountspecfailoverpolicy)***| ***(Optional)*** Deprecated|
+| `geoLocation` | ***[[]CosmosdbAccountSpecGeoLocation](#cosmosdbaccountspecgeolocation)***| ***(Optional)*** |
 | `ipRangeFilter` | ***string***| ***(Optional)*** |
 | `isVirtualNetworkFilterEnabled` | ***bool***| ***(Optional)*** |
 | `kind` | ***string***| ***(Optional)*** |
@@ -43,18 +43,18 @@ Appears on:[CosmosdbAccount](#CosmosdbAccount), [CosmosdbAccountStatus](#Cosmosd
 | `readEndpoints` | ***[]string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `virtualNetworkRule` | ***[[]CosmosdbAccountSpecVirtualNetworkRule](#CosmosdbAccountSpecVirtualNetworkRule)***| ***(Optional)*** |
+| `virtualNetworkRule` | ***[[]CosmosdbAccountSpecVirtualNetworkRule](#cosmosdbaccountspecvirtualnetworkrule)***| ***(Optional)*** |
 | `writeEndpoints` | ***[]string***| ***(Optional)*** |
 ## CosmosdbAccountSpecCapabilities
 
-Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec)
+Appears on:[CosmosdbAccountSpec](#cosmosdbaccountspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 ## CosmosdbAccountSpecConsistencyPolicy
 
-Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec)
+Appears on:[CosmosdbAccountSpec](#cosmosdbaccountspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -63,7 +63,7 @@ Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec)
 | `maxStalenessPrefix` | ***int***| ***(Optional)*** |
 ## CosmosdbAccountSpecFailoverPolicy
 
-Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec)
+Appears on:[CosmosdbAccountSpec](#cosmosdbaccountspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -72,7 +72,7 @@ Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec)
 | `priority` | ***int***||
 ## CosmosdbAccountSpecGeoLocation
 
-Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec)
+Appears on:[CosmosdbAccountSpec](#cosmosdbaccountspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -82,19 +82,19 @@ Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec)
 | `prefix` | ***string***| ***(Optional)*** |
 ## CosmosdbAccountSpecVirtualNetworkRule
 
-Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec)
+Appears on:[CosmosdbAccountSpec](#cosmosdbaccountspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***||
 ## CosmosdbAccountStatus
 
-Appears on:[CosmosdbAccount](#CosmosdbAccount)
+Appears on:[CosmosdbAccount](#cosmosdbaccount)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CosmosdbAccountSpec](#CosmosdbAccountSpec)***| ***(Optional)*** |
+| `output` | ***[CosmosdbAccountSpec](#cosmosdbaccountspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

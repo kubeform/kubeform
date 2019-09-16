@@ -16,51 +16,51 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CognitoUserPool` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CognitoUserPoolSpec](#CognitoUserPoolSpec)***||
-| `status` | ***[CognitoUserPoolStatus](#CognitoUserPoolStatus)***||
+| `spec` | ***[CognitoUserPoolSpec](#cognitouserpoolspec)***||
+| `status` | ***[CognitoUserPoolStatus](#cognitouserpoolstatus)***||
 ## CognitoUserPoolSpec
 
-Appears on:[CognitoUserPool](#CognitoUserPool), [CognitoUserPoolStatus](#CognitoUserPoolStatus)
+Appears on:[CognitoUserPool](#cognitouserpool), [CognitoUserPoolStatus](#cognitouserpoolstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `adminCreateUserConfig` | ***[[]CognitoUserPoolSpecAdminCreateUserConfig](#CognitoUserPoolSpecAdminCreateUserConfig)***| ***(Optional)*** |
+| `adminCreateUserConfig` | ***[[]CognitoUserPoolSpecAdminCreateUserConfig](#cognitouserpoolspecadmincreateuserconfig)***| ***(Optional)*** |
 | `aliasAttributes` | ***[]string***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `autoVerifiedAttributes` | ***[]string***| ***(Optional)*** |
 | `creationDate` | ***string***| ***(Optional)*** |
-| `deviceConfiguration` | ***[[]CognitoUserPoolSpecDeviceConfiguration](#CognitoUserPoolSpecDeviceConfiguration)***| ***(Optional)*** |
-| `emailConfiguration` | ***[[]CognitoUserPoolSpecEmailConfiguration](#CognitoUserPoolSpecEmailConfiguration)***| ***(Optional)*** |
+| `deviceConfiguration` | ***[[]CognitoUserPoolSpecDeviceConfiguration](#cognitouserpoolspecdeviceconfiguration)***| ***(Optional)*** |
+| `emailConfiguration` | ***[[]CognitoUserPoolSpecEmailConfiguration](#cognitouserpoolspecemailconfiguration)***| ***(Optional)*** |
 | `emailVerificationMessage` | ***string***| ***(Optional)*** |
 | `emailVerificationSubject` | ***string***| ***(Optional)*** |
 | `endpoint` | ***string***| ***(Optional)*** |
-| `lambdaConfig` | ***[[]CognitoUserPoolSpecLambdaConfig](#CognitoUserPoolSpecLambdaConfig)***| ***(Optional)*** |
+| `lambdaConfig` | ***[[]CognitoUserPoolSpecLambdaConfig](#cognitouserpoolspeclambdaconfig)***| ***(Optional)*** |
 | `lastModifiedDate` | ***string***| ***(Optional)*** |
 | `mfaConfiguration` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `passwordPolicy` | ***[[]CognitoUserPoolSpecPasswordPolicy](#CognitoUserPoolSpecPasswordPolicy)***| ***(Optional)*** |
-| `schema` | ***[[]CognitoUserPoolSpecSchema](#CognitoUserPoolSpecSchema)***| ***(Optional)*** |
+| `passwordPolicy` | ***[[]CognitoUserPoolSpecPasswordPolicy](#cognitouserpoolspecpasswordpolicy)***| ***(Optional)*** |
+| `schema` | ***[[]CognitoUserPoolSpecSchema](#cognitouserpoolspecschema)***| ***(Optional)*** |
 | `smsAuthenticationMessage` | ***string***| ***(Optional)*** |
-| `smsConfiguration` | ***[[]CognitoUserPoolSpecSmsConfiguration](#CognitoUserPoolSpecSmsConfiguration)***| ***(Optional)*** |
+| `smsConfiguration` | ***[[]CognitoUserPoolSpecSmsConfiguration](#cognitouserpoolspecsmsconfiguration)***| ***(Optional)*** |
 | `smsVerificationMessage` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `userPoolAddOns` | ***[[]CognitoUserPoolSpecUserPoolAddOns](#CognitoUserPoolSpecUserPoolAddOns)***| ***(Optional)*** |
+| `userPoolAddOns` | ***[[]CognitoUserPoolSpecUserPoolAddOns](#cognitouserpoolspecuserpooladdons)***| ***(Optional)*** |
 | `usernameAttributes` | ***[]string***| ***(Optional)*** |
-| `verificationMessageTemplate` | ***[[]CognitoUserPoolSpecVerificationMessageTemplate](#CognitoUserPoolSpecVerificationMessageTemplate)***| ***(Optional)*** |
+| `verificationMessageTemplate` | ***[[]CognitoUserPoolSpecVerificationMessageTemplate](#cognitouserpoolspecverificationmessagetemplate)***| ***(Optional)*** |
 ## CognitoUserPoolSpecAdminCreateUserConfig
 
-Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
+Appears on:[CognitoUserPoolSpec](#cognitouserpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowAdminCreateUserOnly` | ***bool***| ***(Optional)*** |
-| `inviteMessageTemplate` | ***[[]CognitoUserPoolSpecAdminCreateUserConfigInviteMessageTemplate](#CognitoUserPoolSpecAdminCreateUserConfigInviteMessageTemplate)***| ***(Optional)*** |
+| `inviteMessageTemplate` | ***[[]CognitoUserPoolSpecAdminCreateUserConfigInviteMessageTemplate](#cognitouserpoolspecadmincreateuserconfiginvitemessagetemplate)***| ***(Optional)*** |
 | `unusedAccountValidityDays` | ***int***| ***(Optional)*** |
 ## CognitoUserPoolSpecAdminCreateUserConfigInviteMessageTemplate
 
-Appears on:[CognitoUserPoolSpecAdminCreateUserConfig](#CognitoUserPoolSpecAdminCreateUserConfig)
+Appears on:[CognitoUserPoolSpecAdminCreateUserConfig](#cognitouserpoolspecadmincreateuserconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -69,7 +69,7 @@ Appears on:[CognitoUserPoolSpecAdminCreateUserConfig](#CognitoUserPoolSpecAdminC
 | `smsMessage` | ***string***| ***(Optional)*** |
 ## CognitoUserPoolSpecDeviceConfiguration
 
-Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
+Appears on:[CognitoUserPoolSpec](#cognitouserpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -77,7 +77,7 @@ Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
 | `deviceOnlyRememberedOnUserPrompt` | ***bool***| ***(Optional)*** |
 ## CognitoUserPoolSpecEmailConfiguration
 
-Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
+Appears on:[CognitoUserPoolSpec](#cognitouserpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -85,7 +85,7 @@ Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
 | `sourceArn` | ***string***| ***(Optional)*** |
 ## CognitoUserPoolSpecLambdaConfig
 
-Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
+Appears on:[CognitoUserPoolSpec](#cognitouserpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -101,7 +101,7 @@ Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
 | `verifyAuthChallengeResponse` | ***string***| ***(Optional)*** |
 ## CognitoUserPoolSpecPasswordPolicy
 
-Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
+Appears on:[CognitoUserPoolSpec](#cognitouserpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -112,7 +112,7 @@ Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
 | `requireUppercase` | ***bool***| ***(Optional)*** |
 ## CognitoUserPoolSpecSchema
 
-Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
+Appears on:[CognitoUserPoolSpec](#cognitouserpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -120,12 +120,12 @@ Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
 | `developerOnlyAttribute` | ***bool***| ***(Optional)*** |
 | `mutable` | ***bool***| ***(Optional)*** |
 | `name` | ***string***||
-| `numberAttributeConstraints` | ***[[]CognitoUserPoolSpecSchemaNumberAttributeConstraints](#CognitoUserPoolSpecSchemaNumberAttributeConstraints)***| ***(Optional)*** |
+| `numberAttributeConstraints` | ***[[]CognitoUserPoolSpecSchemaNumberAttributeConstraints](#cognitouserpoolspecschemanumberattributeconstraints)***| ***(Optional)*** |
 | `required` | ***bool***| ***(Optional)*** |
-| `stringAttributeConstraints` | ***[[]CognitoUserPoolSpecSchemaStringAttributeConstraints](#CognitoUserPoolSpecSchemaStringAttributeConstraints)***| ***(Optional)*** |
+| `stringAttributeConstraints` | ***[[]CognitoUserPoolSpecSchemaStringAttributeConstraints](#cognitouserpoolspecschemastringattributeconstraints)***| ***(Optional)*** |
 ## CognitoUserPoolSpecSchemaNumberAttributeConstraints
 
-Appears on:[CognitoUserPoolSpecSchema](#CognitoUserPoolSpecSchema)
+Appears on:[CognitoUserPoolSpecSchema](#cognitouserpoolspecschema)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -133,7 +133,7 @@ Appears on:[CognitoUserPoolSpecSchema](#CognitoUserPoolSpecSchema)
 | `minValue` | ***string***| ***(Optional)*** |
 ## CognitoUserPoolSpecSchemaStringAttributeConstraints
 
-Appears on:[CognitoUserPoolSpecSchema](#CognitoUserPoolSpecSchema)
+Appears on:[CognitoUserPoolSpecSchema](#cognitouserpoolspecschema)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -141,7 +141,7 @@ Appears on:[CognitoUserPoolSpecSchema](#CognitoUserPoolSpecSchema)
 | `minLength` | ***string***| ***(Optional)*** |
 ## CognitoUserPoolSpecSmsConfiguration
 
-Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
+Appears on:[CognitoUserPoolSpec](#cognitouserpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -149,14 +149,14 @@ Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
 | `snsCallerArn` | ***string***||
 ## CognitoUserPoolSpecUserPoolAddOns
 
-Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
+Appears on:[CognitoUserPoolSpec](#cognitouserpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `advancedSecurityMode` | ***string***||
 ## CognitoUserPoolSpecVerificationMessageTemplate
 
-Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
+Appears on:[CognitoUserPoolSpec](#cognitouserpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -168,11 +168,11 @@ Appears on:[CognitoUserPoolSpec](#CognitoUserPoolSpec)
 | `smsMessage` | ***string***| ***(Optional)*** |
 ## CognitoUserPoolStatus
 
-Appears on:[CognitoUserPool](#CognitoUserPool)
+Appears on:[CognitoUserPool](#cognitouserpool)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CognitoUserPoolSpec](#CognitoUserPoolSpec)***| ***(Optional)*** |
+| `output` | ***[CognitoUserPoolSpec](#cognitouserpoolspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `MysqlDatabase` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[MysqlDatabaseSpec](#MysqlDatabaseSpec)***||
-| `status` | ***[MysqlDatabaseStatus](#MysqlDatabaseStatus)***||
+| `spec` | ***[MysqlDatabaseSpec](#mysqldatabasespec)***||
+| `status` | ***[MysqlDatabaseStatus](#mysqldatabasestatus)***||
 ## MysqlDatabaseSpec
 
-Appears on:[MysqlDatabase](#MysqlDatabase), [MysqlDatabaseStatus](#MysqlDatabaseStatus)
+Appears on:[MysqlDatabase](#mysqldatabase), [MysqlDatabaseStatus](#mysqldatabasestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[MysqlDatabase](#MysqlDatabase), [MysqlDatabaseStatus](#MysqlDatabase
 | `serverName` | ***string***||
 ## MysqlDatabaseStatus
 
-Appears on:[MysqlDatabase](#MysqlDatabase)
+Appears on:[MysqlDatabase](#mysqldatabase)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[MysqlDatabaseSpec](#MysqlDatabaseSpec)***| ***(Optional)*** |
+| `output` | ***[MysqlDatabaseSpec](#mysqldatabasespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

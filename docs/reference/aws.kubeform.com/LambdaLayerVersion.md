@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `LambdaLayerVersion` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LambdaLayerVersionSpec](#LambdaLayerVersionSpec)***||
-| `status` | ***[LambdaLayerVersionStatus](#LambdaLayerVersionStatus)***||
+| `spec` | ***[LambdaLayerVersionSpec](#lambdalayerversionspec)***||
+| `status` | ***[LambdaLayerVersionStatus](#lambdalayerversionstatus)***||
 ## LambdaLayerVersionSpec
 
-Appears on:[LambdaLayerVersion](#LambdaLayerVersion), [LambdaLayerVersionStatus](#LambdaLayerVersionStatus)
+Appears on:[LambdaLayerVersion](#lambdalayerversion), [LambdaLayerVersionStatus](#lambdalayerversionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -42,11 +42,11 @@ Appears on:[LambdaLayerVersion](#LambdaLayerVersion), [LambdaLayerVersionStatus]
 | `version` | ***string***| ***(Optional)*** |
 ## LambdaLayerVersionStatus
 
-Appears on:[LambdaLayerVersion](#LambdaLayerVersion)
+Appears on:[LambdaLayerVersion](#lambdalayerversion)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LambdaLayerVersionSpec](#LambdaLayerVersionSpec)***| ***(Optional)*** |
+| `output` | ***[LambdaLayerVersionSpec](#lambdalayerversionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

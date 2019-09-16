@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SqsQueuePolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SqsQueuePolicySpec](#SqsQueuePolicySpec)***||
-| `status` | ***[SqsQueuePolicyStatus](#SqsQueuePolicyStatus)***||
+| `spec` | ***[SqsQueuePolicySpec](#sqsqueuepolicyspec)***||
+| `status` | ***[SqsQueuePolicyStatus](#sqsqueuepolicystatus)***||
 ## SqsQueuePolicySpec
 
-Appears on:[SqsQueuePolicy](#SqsQueuePolicy), [SqsQueuePolicyStatus](#SqsQueuePolicyStatus)
+Appears on:[SqsQueuePolicy](#sqsqueuepolicy), [SqsQueuePolicyStatus](#sqsqueuepolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[SqsQueuePolicy](#SqsQueuePolicy), [SqsQueuePolicyStatus](#SqsQueuePo
 | `queueURL` | ***string***||
 ## SqsQueuePolicyStatus
 
-Appears on:[SqsQueuePolicy](#SqsQueuePolicy)
+Appears on:[SqsQueuePolicy](#sqsqueuepolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SqsQueuePolicySpec](#SqsQueuePolicySpec)***| ***(Optional)*** |
+| `output` | ***[SqsQueuePolicySpec](#sqsqueuepolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

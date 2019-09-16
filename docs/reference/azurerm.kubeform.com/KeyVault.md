@@ -16,32 +16,32 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `KeyVault` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[KeyVaultSpec](#KeyVaultSpec)***||
-| `status` | ***[KeyVaultStatus](#KeyVaultStatus)***||
+| `spec` | ***[KeyVaultSpec](#keyvaultspec)***||
+| `status` | ***[KeyVaultStatus](#keyvaultstatus)***||
 ## KeyVaultSpec
 
-Appears on:[KeyVault](#KeyVault), [KeyVaultStatus](#KeyVaultStatus)
+Appears on:[KeyVault](#keyvault), [KeyVaultStatus](#keyvaultstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `accessPolicy` | ***[[]KeyVaultSpecAccessPolicy](#KeyVaultSpecAccessPolicy)***| ***(Optional)*** |
+| `accessPolicy` | ***[[]KeyVaultSpecAccessPolicy](#keyvaultspecaccesspolicy)***| ***(Optional)*** |
 | `enabledForDeployment` | ***bool***| ***(Optional)*** |
 | `enabledForDiskEncryption` | ***bool***| ***(Optional)*** |
 | `enabledForTemplateDeployment` | ***bool***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
-| `networkAcls` | ***[[]KeyVaultSpecNetworkAcls](#KeyVaultSpecNetworkAcls)***| ***(Optional)*** |
+| `networkAcls` | ***[[]KeyVaultSpecNetworkAcls](#keyvaultspecnetworkacls)***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
-| `sku` | ***[[]KeyVaultSpecSku](#KeyVaultSpecSku)***| ***(Optional)*** Deprecated|
+| `sku` | ***[[]KeyVaultSpecSku](#keyvaultspecsku)***| ***(Optional)*** Deprecated|
 | `skuName` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `tenantID` | ***string***||
 | `vaultURI` | ***string***| ***(Optional)*** |
 ## KeyVaultSpecAccessPolicy
 
-Appears on:[KeyVaultSpec](#KeyVaultSpec)
+Appears on:[KeyVaultSpec](#keyvaultspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -54,7 +54,7 @@ Appears on:[KeyVaultSpec](#KeyVaultSpec)
 | `tenantID` | ***string***||
 ## KeyVaultSpecNetworkAcls
 
-Appears on:[KeyVaultSpec](#KeyVaultSpec)
+Appears on:[KeyVaultSpec](#keyvaultspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -64,18 +64,18 @@ Appears on:[KeyVaultSpec](#KeyVaultSpec)
 | `virtualNetworkSubnetIDS` | ***[]string***| ***(Optional)*** |
 ## KeyVaultSpecSku
 
-Appears on:[KeyVaultSpec](#KeyVaultSpec)
+Appears on:[KeyVaultSpec](#keyvaultspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***| ***(Optional)*** |
 ## KeyVaultStatus
 
-Appears on:[KeyVault](#KeyVault)
+Appears on:[KeyVault](#keyvault)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[KeyVaultSpec](#KeyVaultSpec)***| ***(Optional)*** |
+| `output` | ***[KeyVaultSpec](#keyvaultspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

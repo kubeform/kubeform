@@ -16,26 +16,26 @@ section_menu_id: reference
 | `apiVersion` | string | `linode.kubeform.com/v1alpha1` |
 |    `kind` | string | `Instance` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[InstanceSpec](#InstanceSpec)***||
-| `status` | ***[InstanceStatus](#InstanceStatus)***||
+| `spec` | ***[InstanceSpec](#instancespec)***||
+| `status` | ***[InstanceStatus](#instancestatus)***||
 ## InstanceSpec
 
-Appears on:[Instance](#Instance), [InstanceStatus](#InstanceStatus)
+Appears on:[Instance](#instance), [InstanceStatus](#instancestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
-| `alerts` | ***[[]InstanceSpecAlerts](#InstanceSpecAlerts)***| ***(Optional)*** |
+| `alerts` | ***[[]InstanceSpecAlerts](#instancespecalerts)***| ***(Optional)*** |
 | `authorizedKeys` | ***[]string***| ***(Optional)*** A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.|
 | `authorizedUsers` | ***[]string***| ***(Optional)*** A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.|
 | `backupID` | ***int***| ***(Optional)*** A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.|
-| `backups` | ***[[]InstanceSpecBackups](#InstanceSpecBackups)***| ***(Optional)*** Information about this Linode's backups status.|
+| `backups` | ***[[]InstanceSpecBackups](#instancespecbackups)***| ***(Optional)*** Information about this Linode's backups status.|
 | `backupsEnabled` | ***bool***| ***(Optional)*** If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.|
 | `bootConfigLabel` | ***string***| ***(Optional)*** The Label of the Instance Config that should be used to boot the Linode instance.|
-| `config` | ***[[]InstanceSpecConfig](#InstanceSpecConfig)***| ***(Optional)*** Configuration profiles define the VM settings and boot behavior of the Linode Instance.|
-| `disk` | ***[[]InstanceSpecDisk](#InstanceSpecDisk)***| ***(Optional)*** |
+| `config` | ***[[]InstanceSpecConfig](#instancespecconfig)***| ***(Optional)*** Configuration profiles define the VM settings and boot behavior of the Linode Instance.|
+| `disk` | ***[[]InstanceSpecDisk](#instancespecdisk)***| ***(Optional)*** |
 | `group` | ***string***| ***(Optional)*** The display group of the Linode instance.|
 | `image` | ***string***| ***(Optional)*** An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.|
 | `ipAddress` | ***string***| ***(Optional)*** This Linode's Public IPv4 Address. If there are multiple public IPv4 addresses on this Instance, an arbitrary address will be used for this field.|
@@ -45,7 +45,7 @@ Appears on:[Instance](#Instance), [InstanceStatus](#InstanceStatus)
 | `privateIP` | ***bool***| ***(Optional)*** If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region.|
 | `privateIPAddress` | ***string***| ***(Optional)*** This Linode's Private IPv4 Address.  The regional private IP address range is 192.168.128/17 address shared by all Linode Instances in a region.|
 | `region` | ***string***|This is the location where the Linode was deployed. This cannot be changed without opening a support ticket.|
-| `specs` | ***[[]InstanceSpecSpecs](#InstanceSpecSpecs)***| ***(Optional)*** |
+| `specs` | ***[[]InstanceSpecSpecs](#instancespecspecs)***| ***(Optional)*** |
 | `stackscriptID` | ***int***| ***(Optional)*** The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.|
 | `status` | ***string***| ***(Optional)*** The status of the instance, indicating the current readiness state.|
 | `swapSize` | ***int***| ***(Optional)*** When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.|
@@ -54,7 +54,7 @@ Appears on:[Instance](#Instance), [InstanceStatus](#InstanceStatus)
 | `watchdogEnabled` | ***bool***| ***(Optional)*** The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.|
 ## InstanceSpecAlerts
 
-Appears on:[InstanceSpec](#InstanceSpec)
+Appears on:[InstanceSpec](#instancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -65,15 +65,15 @@ Appears on:[InstanceSpec](#InstanceSpec)
 | `transferQuota` | ***int***| ***(Optional)*** The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.|
 ## InstanceSpecBackups
 
-Appears on:[InstanceSpec](#InstanceSpec)
+Appears on:[InstanceSpec](#instancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** If this Linode has the Backup service enabled.|
-| `schedule` | ***[[]InstanceSpecBackupsSchedule](#InstanceSpecBackupsSchedule)***| ***(Optional)*** |
+| `schedule` | ***[[]InstanceSpecBackupsSchedule](#instancespecbackupsschedule)***| ***(Optional)*** |
 ## InstanceSpecBackupsSchedule
 
-Appears on:[InstanceSpecBackups](#InstanceSpecBackups)
+Appears on:[InstanceSpecBackups](#instancespecbackups)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -81,13 +81,13 @@ Appears on:[InstanceSpecBackups](#InstanceSpecBackups)
 | `window` | ***string***| ***(Optional)*** The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.|
 ## InstanceSpecConfig
 
-Appears on:[InstanceSpec](#InstanceSpec)
+Appears on:[InstanceSpec](#instancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `comments` | ***string***| ***(Optional)*** Optional field for arbitrary User comments on this Config.|
-| `devices` | ***[[]InstanceSpecConfigDevices](#InstanceSpecConfigDevices)***| ***(Optional)*** Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.|
-| `helpers` | ***[[]InstanceSpecConfigHelpers](#InstanceSpecConfigHelpers)***| ***(Optional)*** Helpers enabled when booting to this Linode Config.|
+| `devices` | ***[[]InstanceSpecConfigDevices](#instancespecconfigdevices)***| ***(Optional)*** Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.|
+| `helpers` | ***[[]InstanceSpecConfigHelpers](#instancespecconfighelpers)***| ***(Optional)*** Helpers enabled when booting to this Linode Config.|
 | `kernel` | ***string***| ***(Optional)*** A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)|
 | `label` | ***string***|The Config's label for display purposes.  Also used by `boot_config_label`.|
 | `memoryLimit` | ***int***| ***(Optional)*** Defaults to the total RAM of the Linode|
@@ -96,21 +96,21 @@ Appears on:[InstanceSpec](#InstanceSpec)
 | `virtMode` | ***string***| ***(Optional)*** Controls the virtualization mode. Defaults to paravirt.|
 ## InstanceSpecConfigDevices
 
-Appears on:[InstanceSpecConfig](#InstanceSpecConfig)
+Appears on:[InstanceSpecConfig](#instancespecconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `sda` | ***[[]InstanceSpecConfigDevicesSda](#InstanceSpecConfigDevicesSda)***| ***(Optional)*** |
-| `sdb` | ***[[]InstanceSpecConfigDevicesSdb](#InstanceSpecConfigDevicesSdb)***| ***(Optional)*** |
-| `sdc` | ***[[]InstanceSpecConfigDevicesSdc](#InstanceSpecConfigDevicesSdc)***| ***(Optional)*** |
-| `sdd` | ***[[]InstanceSpecConfigDevicesSdd](#InstanceSpecConfigDevicesSdd)***| ***(Optional)*** |
-| `sde` | ***[[]InstanceSpecConfigDevicesSde](#InstanceSpecConfigDevicesSde)***| ***(Optional)*** |
-| `sdf` | ***[[]InstanceSpecConfigDevicesSdf](#InstanceSpecConfigDevicesSdf)***| ***(Optional)*** |
-| `sdg` | ***[[]InstanceSpecConfigDevicesSdg](#InstanceSpecConfigDevicesSdg)***| ***(Optional)*** |
-| `sdh` | ***[[]InstanceSpecConfigDevicesSdh](#InstanceSpecConfigDevicesSdh)***| ***(Optional)*** |
+| `sda` | ***[[]InstanceSpecConfigDevicesSda](#instancespecconfigdevicessda)***| ***(Optional)*** |
+| `sdb` | ***[[]InstanceSpecConfigDevicesSdb](#instancespecconfigdevicessdb)***| ***(Optional)*** |
+| `sdc` | ***[[]InstanceSpecConfigDevicesSdc](#instancespecconfigdevicessdc)***| ***(Optional)*** |
+| `sdd` | ***[[]InstanceSpecConfigDevicesSdd](#instancespecconfigdevicessdd)***| ***(Optional)*** |
+| `sde` | ***[[]InstanceSpecConfigDevicesSde](#instancespecconfigdevicessde)***| ***(Optional)*** |
+| `sdf` | ***[[]InstanceSpecConfigDevicesSdf](#instancespecconfigdevicessdf)***| ***(Optional)*** |
+| `sdg` | ***[[]InstanceSpecConfigDevicesSdg](#instancespecconfigdevicessdg)***| ***(Optional)*** |
+| `sdh` | ***[[]InstanceSpecConfigDevicesSdh](#instancespecconfigdevicessdh)***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSda
 
-Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -119,7 +119,7 @@ Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
 | `volumeID` | ***int***| ***(Optional)*** The Block Storage volume ID to map to this disk slot|
 ## InstanceSpecConfigDevicesSdb
 
-Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -128,7 +128,7 @@ Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdc
 
-Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -137,7 +137,7 @@ Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdd
 
-Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -146,7 +146,7 @@ Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSde
 
-Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -155,7 +155,7 @@ Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdf
 
-Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -164,7 +164,7 @@ Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdg
 
-Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -173,7 +173,7 @@ Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdh
 
-Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -182,7 +182,7 @@ Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigHelpers
 
-Appears on:[InstanceSpecConfig](#InstanceSpecConfig)
+Appears on:[InstanceSpecConfig](#instancespecconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -193,7 +193,7 @@ Appears on:[InstanceSpecConfig](#InstanceSpecConfig)
 | `updatedbDisabled` | ***bool***| ***(Optional)*** Disables updatedb cron job to avoid disk thrashing.|
 ## InstanceSpecDisk
 
-Appears on:[InstanceSpec](#InstanceSpec)
+Appears on:[InstanceSpec](#instancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -208,7 +208,7 @@ Appears on:[InstanceSpec](#InstanceSpec)
 | `stackscriptID` | ***int***| ***(Optional)*** The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.|
 ## InstanceSpecSpecs
 
-Appears on:[InstanceSpec](#InstanceSpec)
+Appears on:[InstanceSpec](#instancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -218,12 +218,12 @@ Appears on:[InstanceSpec](#InstanceSpec)
 | `vcpus` | ***int***| ***(Optional)*** The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.|
 ## InstanceStatus
 
-Appears on:[Instance](#Instance)
+Appears on:[Instance](#instance)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[InstanceSpec](#InstanceSpec)***| ***(Optional)*** |
+| `output` | ***[InstanceSpec](#instancespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

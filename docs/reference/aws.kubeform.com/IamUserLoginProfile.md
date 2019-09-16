@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `IamUserLoginProfile` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[IamUserLoginProfileSpec](#IamUserLoginProfileSpec)***||
-| `status` | ***[IamUserLoginProfileStatus](#IamUserLoginProfileStatus)***||
+| `spec` | ***[IamUserLoginProfileSpec](#iamuserloginprofilespec)***||
+| `status` | ***[IamUserLoginProfileStatus](#iamuserloginprofilestatus)***||
 ## IamUserLoginProfileSpec
 
-Appears on:[IamUserLoginProfile](#IamUserLoginProfile), [IamUserLoginProfileStatus](#IamUserLoginProfileStatus)
+Appears on:[IamUserLoginProfile](#iamuserloginprofile), [IamUserLoginProfileStatus](#iamuserloginprofilestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[IamUserLoginProfile](#IamUserLoginProfile), [IamUserLoginProfileStat
 | `user` | ***string***||
 ## IamUserLoginProfileStatus
 
-Appears on:[IamUserLoginProfile](#IamUserLoginProfile)
+Appears on:[IamUserLoginProfile](#iamuserloginprofile)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[IamUserLoginProfileSpec](#IamUserLoginProfileSpec)***| ***(Optional)*** |
+| `output` | ***[IamUserLoginProfileSpec](#iamuserloginprofilespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

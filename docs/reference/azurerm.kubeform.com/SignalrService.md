@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `SignalrService` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SignalrServiceSpec](#SignalrServiceSpec)***||
-| `status` | ***[SignalrServiceStatus](#SignalrServiceStatus)***||
+| `spec` | ***[SignalrServiceSpec](#signalrservicespec)***||
+| `status` | ***[SignalrServiceStatus](#signalrservicestatus)***||
 ## SignalrServiceSpec
 
-Appears on:[SignalrService](#SignalrService), [SignalrServiceStatus](#SignalrServiceStatus)
+Appears on:[SignalrService](#signalrservice), [SignalrServiceStatus](#signalrservicestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[SignalrService](#SignalrService), [SignalrServiceStatus](#SignalrSer
 | `publicPort` | ***int***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 | `serverPort` | ***int***| ***(Optional)*** |
-| `sku` | ***[[]SignalrServiceSpecSku](#SignalrServiceSpecSku)***||
+| `sku` | ***[[]SignalrServiceSpecSku](#signalrservicespecsku)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SignalrServiceSpecSku
 
-Appears on:[SignalrServiceSpec](#SignalrServiceSpec)
+Appears on:[SignalrServiceSpec](#signalrservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -46,12 +46,12 @@ Appears on:[SignalrServiceSpec](#SignalrServiceSpec)
 | `name` | ***string***||
 ## SignalrServiceStatus
 
-Appears on:[SignalrService](#SignalrService)
+Appears on:[SignalrService](#signalrservice)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SignalrServiceSpec](#SignalrServiceSpec)***| ***(Optional)*** |
+| `output` | ***[SignalrServiceSpec](#signalrservicespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

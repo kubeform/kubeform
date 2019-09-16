@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DirectoryServiceLogSubscription` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DirectoryServiceLogSubscriptionSpec](#DirectoryServiceLogSubscriptionSpec)***||
-| `status` | ***[DirectoryServiceLogSubscriptionStatus](#DirectoryServiceLogSubscriptionStatus)***||
+| `spec` | ***[DirectoryServiceLogSubscriptionSpec](#directoryservicelogsubscriptionspec)***||
+| `status` | ***[DirectoryServiceLogSubscriptionStatus](#directoryservicelogsubscriptionstatus)***||
 ## DirectoryServiceLogSubscriptionSpec
 
-Appears on:[DirectoryServiceLogSubscription](#DirectoryServiceLogSubscription), [DirectoryServiceLogSubscriptionStatus](#DirectoryServiceLogSubscriptionStatus)
+Appears on:[DirectoryServiceLogSubscription](#directoryservicelogsubscription), [DirectoryServiceLogSubscriptionStatus](#directoryservicelogsubscriptionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[DirectoryServiceLogSubscription](#DirectoryServiceLogSubscription), 
 | `logGroupName` | ***string***||
 ## DirectoryServiceLogSubscriptionStatus
 
-Appears on:[DirectoryServiceLogSubscription](#DirectoryServiceLogSubscription)
+Appears on:[DirectoryServiceLogSubscription](#directoryservicelogsubscription)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DirectoryServiceLogSubscriptionSpec](#DirectoryServiceLogSubscriptionSpec)***| ***(Optional)*** |
+| `output` | ***[DirectoryServiceLogSubscriptionSpec](#directoryservicelogsubscriptionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

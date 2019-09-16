@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `EventgridTopic` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[EventgridTopicSpec](#EventgridTopicSpec)***||
-| `status` | ***[EventgridTopicStatus](#EventgridTopicStatus)***||
+| `spec` | ***[EventgridTopicSpec](#eventgridtopicspec)***||
+| `status` | ***[EventgridTopicStatus](#eventgridtopicstatus)***||
 ## EventgridTopicSpec
 
-Appears on:[EventgridTopic](#EventgridTopic), [EventgridTopicStatus](#EventgridTopicStatus)
+Appears on:[EventgridTopic](#eventgridtopic), [EventgridTopicStatus](#eventgridtopicstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,12 +34,12 @@ Appears on:[EventgridTopic](#EventgridTopic), [EventgridTopicStatus](#EventgridT
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## EventgridTopicStatus
 
-Appears on:[EventgridTopic](#EventgridTopic)
+Appears on:[EventgridTopic](#eventgridtopic)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[EventgridTopicSpec](#EventgridTopicSpec)***| ***(Optional)*** |
+| `output` | ***[EventgridTopicSpec](#eventgridtopicspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

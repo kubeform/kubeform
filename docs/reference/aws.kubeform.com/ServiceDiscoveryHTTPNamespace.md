@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ServiceDiscoveryHTTPNamespace` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ServiceDiscoveryHTTPNamespaceSpec](#ServiceDiscoveryHTTPNamespaceSpec)***||
-| `status` | ***[ServiceDiscoveryHTTPNamespaceStatus](#ServiceDiscoveryHTTPNamespaceStatus)***||
+| `spec` | ***[ServiceDiscoveryHTTPNamespaceSpec](#servicediscoveryhttpnamespacespec)***||
+| `status` | ***[ServiceDiscoveryHTTPNamespaceStatus](#servicediscoveryhttpnamespacestatus)***||
 ## ServiceDiscoveryHTTPNamespaceSpec
 
-Appears on:[ServiceDiscoveryHTTPNamespace](#ServiceDiscoveryHTTPNamespace), [ServiceDiscoveryHTTPNamespaceStatus](#ServiceDiscoveryHTTPNamespaceStatus)
+Appears on:[ServiceDiscoveryHTTPNamespace](#servicediscoveryhttpnamespace), [ServiceDiscoveryHTTPNamespaceStatus](#servicediscoveryhttpnamespacestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[ServiceDiscoveryHTTPNamespace](#ServiceDiscoveryHTTPNamespace), [Ser
 | `name` | ***string***||
 ## ServiceDiscoveryHTTPNamespaceStatus
 
-Appears on:[ServiceDiscoveryHTTPNamespace](#ServiceDiscoveryHTTPNamespace)
+Appears on:[ServiceDiscoveryHTTPNamespace](#servicediscoveryhttpnamespace)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ServiceDiscoveryHTTPNamespaceSpec](#ServiceDiscoveryHTTPNamespaceSpec)***| ***(Optional)*** |
+| `output` | ***[ServiceDiscoveryHTTPNamespaceSpec](#servicediscoveryhttpnamespacespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

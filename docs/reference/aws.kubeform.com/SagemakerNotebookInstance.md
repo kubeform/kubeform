@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SagemakerNotebookInstance` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SagemakerNotebookInstanceSpec](#SagemakerNotebookInstanceSpec)***||
-| `status` | ***[SagemakerNotebookInstanceStatus](#SagemakerNotebookInstanceStatus)***||
+| `spec` | ***[SagemakerNotebookInstanceSpec](#sagemakernotebookinstancespec)***||
+| `status` | ***[SagemakerNotebookInstanceStatus](#sagemakernotebookinstancestatus)***||
 ## SagemakerNotebookInstanceSpec
 
-Appears on:[SagemakerNotebookInstance](#SagemakerNotebookInstance), [SagemakerNotebookInstanceStatus](#SagemakerNotebookInstanceStatus)
+Appears on:[SagemakerNotebookInstance](#sagemakernotebookinstance), [SagemakerNotebookInstanceStatus](#sagemakernotebookinstancestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,11 +37,11 @@ Appears on:[SagemakerNotebookInstance](#SagemakerNotebookInstance), [SagemakerNo
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SagemakerNotebookInstanceStatus
 
-Appears on:[SagemakerNotebookInstance](#SagemakerNotebookInstance)
+Appears on:[SagemakerNotebookInstance](#sagemakernotebookinstance)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SagemakerNotebookInstanceSpec](#SagemakerNotebookInstanceSpec)***| ***(Optional)*** |
+| `output` | ***[SagemakerNotebookInstanceSpec](#sagemakernotebookinstancespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

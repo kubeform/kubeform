@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SnsTopic` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SnsTopicSpec](#SnsTopicSpec)***||
-| `status` | ***[SnsTopicStatus](#SnsTopicStatus)***||
+| `spec` | ***[SnsTopicSpec](#snstopicspec)***||
+| `status` | ***[SnsTopicStatus](#snstopicstatus)***||
 ## SnsTopicSpec
 
-Appears on:[SnsTopic](#SnsTopic), [SnsTopicStatus](#SnsTopicStatus)
+Appears on:[SnsTopic](#snstopic), [SnsTopicStatus](#snstopicstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -47,11 +47,11 @@ Appears on:[SnsTopic](#SnsTopic), [SnsTopicStatus](#SnsTopicStatus)
 | `sqsSuccessFeedbackSampleRate` | ***int***| ***(Optional)*** |
 ## SnsTopicStatus
 
-Appears on:[SnsTopic](#SnsTopic)
+Appears on:[SnsTopic](#snstopic)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SnsTopicSpec](#SnsTopicSpec)***| ***(Optional)*** |
+| `output` | ***[SnsTopicSpec](#snstopicspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

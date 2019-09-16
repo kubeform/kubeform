@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `Ec2TransitGatewayVpcAttachmentAccepter` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[Ec2TransitGatewayVpcAttachmentAccepterSpec](#Ec2TransitGatewayVpcAttachmentAccepterSpec)***||
-| `status` | ***[Ec2TransitGatewayVpcAttachmentAccepterStatus](#Ec2TransitGatewayVpcAttachmentAccepterStatus)***||
+| `spec` | ***[Ec2TransitGatewayVpcAttachmentAccepterSpec](#ec2transitgatewayvpcattachmentaccepterspec)***||
+| `status` | ***[Ec2TransitGatewayVpcAttachmentAccepterStatus](#ec2transitgatewayvpcattachmentaccepterstatus)***||
 ## Ec2TransitGatewayVpcAttachmentAccepterSpec
 
-Appears on:[Ec2TransitGatewayVpcAttachmentAccepter](#Ec2TransitGatewayVpcAttachmentAccepter), [Ec2TransitGatewayVpcAttachmentAccepterStatus](#Ec2TransitGatewayVpcAttachmentAccepterStatus)
+Appears on:[Ec2TransitGatewayVpcAttachmentAccepter](#ec2transitgatewayvpcattachmentaccepter), [Ec2TransitGatewayVpcAttachmentAccepterStatus](#ec2transitgatewayvpcattachmentaccepterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,11 +38,11 @@ Appears on:[Ec2TransitGatewayVpcAttachmentAccepter](#Ec2TransitGatewayVpcAttachm
 | `vpcOwnerID` | ***string***| ***(Optional)*** |
 ## Ec2TransitGatewayVpcAttachmentAccepterStatus
 
-Appears on:[Ec2TransitGatewayVpcAttachmentAccepter](#Ec2TransitGatewayVpcAttachmentAccepter)
+Appears on:[Ec2TransitGatewayVpcAttachmentAccepter](#ec2transitgatewayvpcattachmentaccepter)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[Ec2TransitGatewayVpcAttachmentAccepterSpec](#Ec2TransitGatewayVpcAttachmentAccepterSpec)***| ***(Optional)*** |
+| `output` | ***[Ec2TransitGatewayVpcAttachmentAccepterSpec](#ec2transitgatewayvpcattachmentaccepterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

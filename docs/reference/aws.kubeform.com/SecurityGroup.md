@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SecurityGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SecurityGroupSpec](#SecurityGroupSpec)***||
-| `status` | ***[SecurityGroupStatus](#SecurityGroupStatus)***||
+| `spec` | ***[SecurityGroupSpec](#securitygroupspec)***||
+| `status` | ***[SecurityGroupStatus](#securitygroupstatus)***||
 ## SecurityGroupSpec
 
-Appears on:[SecurityGroup](#SecurityGroup), [SecurityGroupStatus](#SecurityGroupStatus)
+Appears on:[SecurityGroup](#securitygroup), [SecurityGroupStatus](#securitygroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,8 +28,8 @@ Appears on:[SecurityGroup](#SecurityGroup), [SecurityGroupStatus](#SecurityGroup
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `egress` | ***[[]SecurityGroupSpecEgress](#SecurityGroupSpecEgress)***| ***(Optional)*** |
-| `ingress` | ***[[]SecurityGroupSpecIngress](#SecurityGroupSpecIngress)***| ***(Optional)*** |
+| `egress` | ***[[]SecurityGroupSpecEgress](#securitygroupspecegress)***| ***(Optional)*** |
+| `ingress` | ***[[]SecurityGroupSpecIngress](#securitygroupspecingress)***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
 | `ownerID` | ***string***| ***(Optional)*** |
@@ -38,7 +38,7 @@ Appears on:[SecurityGroup](#SecurityGroup), [SecurityGroupStatus](#SecurityGroup
 | `vpcID` | ***string***| ***(Optional)*** |
 ## SecurityGroupSpecEgress
 
-Appears on:[SecurityGroupSpec](#SecurityGroupSpec)
+Appears on:[SecurityGroupSpec](#securitygroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -53,7 +53,7 @@ Appears on:[SecurityGroupSpec](#SecurityGroupSpec)
 | `toPort` | ***int***||
 ## SecurityGroupSpecIngress
 
-Appears on:[SecurityGroupSpec](#SecurityGroupSpec)
+Appears on:[SecurityGroupSpec](#securitygroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -68,11 +68,11 @@ Appears on:[SecurityGroupSpec](#SecurityGroupSpec)
 | `toPort` | ***int***||
 ## SecurityGroupStatus
 
-Appears on:[SecurityGroup](#SecurityGroup)
+Appears on:[SecurityGroup](#securitygroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SecurityGroupSpec](#SecurityGroupSpec)***| ***(Optional)*** |
+| `output` | ***[SecurityGroupSpec](#securitygroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `SharedImageGallery` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SharedImageGallerySpec](#SharedImageGallerySpec)***||
-| `status` | ***[SharedImageGalleryStatus](#SharedImageGalleryStatus)***||
+| `spec` | ***[SharedImageGallerySpec](#sharedimagegalleryspec)***||
+| `status` | ***[SharedImageGalleryStatus](#sharedimagegallerystatus)***||
 ## SharedImageGallerySpec
 
-Appears on:[SharedImageGallery](#SharedImageGallery), [SharedImageGalleryStatus](#SharedImageGalleryStatus)
+Appears on:[SharedImageGallery](#sharedimagegallery), [SharedImageGalleryStatus](#sharedimagegallerystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[SharedImageGallery](#SharedImageGallery), [SharedImageGalleryStatus]
 | `uniqueName` | ***string***| ***(Optional)*** |
 ## SharedImageGalleryStatus
 
-Appears on:[SharedImageGallery](#SharedImageGallery)
+Appears on:[SharedImageGallery](#sharedimagegallery)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SharedImageGallerySpec](#SharedImageGallerySpec)***| ***(Optional)*** |
+| `output` | ***[SharedImageGallerySpec](#sharedimagegalleryspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

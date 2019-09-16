@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `PinpointApnsSandboxChannel` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PinpointApnsSandboxChannelSpec](#PinpointApnsSandboxChannelSpec)***||
-| `status` | ***[PinpointApnsSandboxChannelStatus](#PinpointApnsSandboxChannelStatus)***||
+| `spec` | ***[PinpointApnsSandboxChannelSpec](#pinpointapnssandboxchannelspec)***||
+| `status` | ***[PinpointApnsSandboxChannelStatus](#pinpointapnssandboxchannelstatus)***||
 ## PinpointApnsSandboxChannelSpec
 
-Appears on:[PinpointApnsSandboxChannel](#PinpointApnsSandboxChannel), [PinpointApnsSandboxChannelStatus](#PinpointApnsSandboxChannelStatus)
+Appears on:[PinpointApnsSandboxChannel](#pinpointapnssandboxchannel), [PinpointApnsSandboxChannelStatus](#pinpointapnssandboxchannelstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,12 +32,12 @@ Appears on:[PinpointApnsSandboxChannel](#PinpointApnsSandboxChannel), [PinpointA
 | `enabled` | ***bool***| ***(Optional)*** |
 ## PinpointApnsSandboxChannelStatus
 
-Appears on:[PinpointApnsSandboxChannel](#PinpointApnsSandboxChannel)
+Appears on:[PinpointApnsSandboxChannel](#pinpointapnssandboxchannel)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PinpointApnsSandboxChannelSpec](#PinpointApnsSandboxChannelSpec)***| ***(Optional)*** |
+| `output` | ***[PinpointApnsSandboxChannelSpec](#pinpointapnssandboxchannelspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

@@ -16,26 +16,26 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `DataFactory` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DataFactorySpec](#DataFactorySpec)***||
-| `status` | ***[DataFactoryStatus](#DataFactoryStatus)***||
+| `spec` | ***[DataFactorySpec](#datafactoryspec)***||
+| `status` | ***[DataFactoryStatus](#datafactorystatus)***||
 ## DataFactorySpec
 
-Appears on:[DataFactory](#DataFactory), [DataFactoryStatus](#DataFactoryStatus)
+Appears on:[DataFactory](#datafactory), [DataFactoryStatus](#datafactorystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `githubConfiguration` | ***[[]DataFactorySpecGithubConfiguration](#DataFactorySpecGithubConfiguration)***| ***(Optional)*** |
-| `identity` | ***[[]DataFactorySpecIdentity](#DataFactorySpecIdentity)***| ***(Optional)*** |
+| `githubConfiguration` | ***[[]DataFactorySpecGithubConfiguration](#datafactoryspecgithubconfiguration)***| ***(Optional)*** |
+| `identity` | ***[[]DataFactorySpecIdentity](#datafactoryspecidentity)***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `vstsConfiguration` | ***[[]DataFactorySpecVstsConfiguration](#DataFactorySpecVstsConfiguration)***| ***(Optional)*** |
+| `vstsConfiguration` | ***[[]DataFactorySpecVstsConfiguration](#datafactoryspecvstsconfiguration)***| ***(Optional)*** |
 ## DataFactorySpecGithubConfiguration
 
-Appears on:[DataFactorySpec](#DataFactorySpec)
+Appears on:[DataFactorySpec](#datafactoryspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -46,7 +46,7 @@ Appears on:[DataFactorySpec](#DataFactorySpec)
 | `rootFolder` | ***string***||
 ## DataFactorySpecIdentity
 
-Appears on:[DataFactorySpec](#DataFactorySpec)
+Appears on:[DataFactorySpec](#datafactoryspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -55,7 +55,7 @@ Appears on:[DataFactorySpec](#DataFactorySpec)
 | `type` | ***string***||
 ## DataFactorySpecVstsConfiguration
 
-Appears on:[DataFactorySpec](#DataFactorySpec)
+Appears on:[DataFactorySpec](#datafactoryspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -67,11 +67,11 @@ Appears on:[DataFactorySpec](#DataFactorySpec)
 | `tenantID` | ***string***||
 ## DataFactoryStatus
 
-Appears on:[DataFactory](#DataFactory)
+Appears on:[DataFactory](#datafactory)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DataFactorySpec](#DataFactorySpec)***| ***(Optional)*** |
+| `output` | ***[DataFactorySpec](#datafactoryspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

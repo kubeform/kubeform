@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CloudhsmV2Hsm` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CloudhsmV2HsmSpec](#CloudhsmV2HsmSpec)***||
-| `status` | ***[CloudhsmV2HsmStatus](#CloudhsmV2HsmStatus)***||
+| `spec` | ***[CloudhsmV2HsmSpec](#cloudhsmv2hsmspec)***||
+| `status` | ***[CloudhsmV2HsmStatus](#cloudhsmv2hsmstatus)***||
 ## CloudhsmV2HsmSpec
 
-Appears on:[CloudhsmV2Hsm](#CloudhsmV2Hsm), [CloudhsmV2HsmStatus](#CloudhsmV2HsmStatus)
+Appears on:[CloudhsmV2Hsm](#cloudhsmv2hsm), [CloudhsmV2HsmStatus](#cloudhsmv2hsmstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,11 +35,11 @@ Appears on:[CloudhsmV2Hsm](#CloudhsmV2Hsm), [CloudhsmV2HsmStatus](#CloudhsmV2Hsm
 | `subnetID` | ***string***| ***(Optional)*** |
 ## CloudhsmV2HsmStatus
 
-Appears on:[CloudhsmV2Hsm](#CloudhsmV2Hsm)
+Appears on:[CloudhsmV2Hsm](#cloudhsmv2hsm)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CloudhsmV2HsmSpec](#CloudhsmV2HsmSpec)***| ***(Optional)*** |
+| `output` | ***[CloudhsmV2HsmSpec](#cloudhsmv2hsmspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

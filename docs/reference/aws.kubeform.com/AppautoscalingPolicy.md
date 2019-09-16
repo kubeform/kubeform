@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AppautoscalingPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AppautoscalingPolicySpec](#AppautoscalingPolicySpec)***||
-| `status` | ***[AppautoscalingPolicyStatus](#AppautoscalingPolicyStatus)***||
+| `spec` | ***[AppautoscalingPolicySpec](#appautoscalingpolicyspec)***||
+| `status` | ***[AppautoscalingPolicyStatus](#appautoscalingpolicystatus)***||
 ## AppautoscalingPolicySpec
 
-Appears on:[AppautoscalingPolicy](#AppautoscalingPolicy), [AppautoscalingPolicyStatus](#AppautoscalingPolicyStatus)
+Appears on:[AppautoscalingPolicy](#appautoscalingpolicy), [AppautoscalingPolicyStatus](#appautoscalingpolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[AppautoscalingPolicy](#AppautoscalingPolicy), [AppautoscalingPolicyS
 | `resourceID` | ***string***||
 | `scalableDimension` | ***string***||
 | `serviceNamespace` | ***string***||
-| `stepScalingPolicyConfiguration` | ***[[]AppautoscalingPolicySpecStepScalingPolicyConfiguration](#AppautoscalingPolicySpecStepScalingPolicyConfiguration)***| ***(Optional)*** |
-| `targetTrackingScalingPolicyConfiguration` | ***[[]AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration](#AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration)***| ***(Optional)*** |
+| `stepScalingPolicyConfiguration` | ***[[]AppautoscalingPolicySpecStepScalingPolicyConfiguration](#appautoscalingpolicyspecstepscalingpolicyconfiguration)***| ***(Optional)*** |
+| `targetTrackingScalingPolicyConfiguration` | ***[[]AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration](#appautoscalingpolicyspectargettrackingscalingpolicyconfiguration)***| ***(Optional)*** |
 ## AppautoscalingPolicySpecStepScalingPolicyConfiguration
 
-Appears on:[AppautoscalingPolicySpec](#AppautoscalingPolicySpec)
+Appears on:[AppautoscalingPolicySpec](#appautoscalingpolicyspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -45,10 +45,10 @@ Appears on:[AppautoscalingPolicySpec](#AppautoscalingPolicySpec)
 | `cooldown` | ***int***| ***(Optional)*** |
 | `metricAggregationType` | ***string***| ***(Optional)*** |
 | `minAdjustmentMagnitude` | ***int***| ***(Optional)*** |
-| `stepAdjustment` | ***[[]AppautoscalingPolicySpecStepScalingPolicyConfigurationStepAdjustment](#AppautoscalingPolicySpecStepScalingPolicyConfigurationStepAdjustment)***| ***(Optional)*** |
+| `stepAdjustment` | ***[[]AppautoscalingPolicySpecStepScalingPolicyConfigurationStepAdjustment](#appautoscalingpolicyspecstepscalingpolicyconfigurationstepadjustment)***| ***(Optional)*** |
 ## AppautoscalingPolicySpecStepScalingPolicyConfigurationStepAdjustment
 
-Appears on:[AppautoscalingPolicySpecStepScalingPolicyConfiguration](#AppautoscalingPolicySpecStepScalingPolicyConfiguration)
+Appears on:[AppautoscalingPolicySpecStepScalingPolicyConfiguration](#appautoscalingpolicyspecstepscalingpolicyconfiguration)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -57,30 +57,30 @@ Appears on:[AppautoscalingPolicySpecStepScalingPolicyConfiguration](#Appautoscal
 | `scalingAdjustment` | ***int***||
 ## AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration
 
-Appears on:[AppautoscalingPolicySpec](#AppautoscalingPolicySpec)
+Appears on:[AppautoscalingPolicySpec](#appautoscalingpolicyspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `customizedMetricSpecification` | ***[[]AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification](#AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification)***| ***(Optional)*** |
+| `customizedMetricSpecification` | ***[[]AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification](#appautoscalingpolicyspectargettrackingscalingpolicyconfigurationcustomizedmetricspecification)***| ***(Optional)*** |
 | `disableScaleIn` | ***bool***| ***(Optional)*** |
-| `predefinedMetricSpecification` | ***[[]AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification](#AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification)***| ***(Optional)*** |
+| `predefinedMetricSpecification` | ***[[]AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification](#appautoscalingpolicyspectargettrackingscalingpolicyconfigurationpredefinedmetricspecification)***| ***(Optional)*** |
 | `scaleInCooldown` | ***int***| ***(Optional)*** |
 | `scaleOutCooldown` | ***int***| ***(Optional)*** |
 | `targetValue` | ***encoding/json.Number***||
 ## AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification
 
-Appears on:[AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration](#AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration)
+Appears on:[AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration](#appautoscalingpolicyspectargettrackingscalingpolicyconfiguration)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `dimensions` | ***[[]AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensions](#AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensions)***| ***(Optional)*** |
+| `dimensions` | ***[[]AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensions](#appautoscalingpolicyspectargettrackingscalingpolicyconfigurationcustomizedmetricspecificationdimensions)***| ***(Optional)*** |
 | `metricName` | ***string***||
 | `namespace` | ***string***||
 | `statistic` | ***string***||
 | `unit` | ***string***| ***(Optional)*** |
 ## AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensions
 
-Appears on:[AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification](#AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification)
+Appears on:[AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification](#appautoscalingpolicyspectargettrackingscalingpolicyconfigurationcustomizedmetricspecification)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -88,7 +88,7 @@ Appears on:[AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCust
 | `value` | ***string***||
 ## AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification
 
-Appears on:[AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration](#AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration)
+Appears on:[AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration](#appautoscalingpolicyspectargettrackingscalingpolicyconfiguration)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -96,11 +96,11 @@ Appears on:[AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration](#A
 | `resourceLabel` | ***string***| ***(Optional)*** |
 ## AppautoscalingPolicyStatus
 
-Appears on:[AppautoscalingPolicy](#AppautoscalingPolicy)
+Appears on:[AppautoscalingPolicy](#appautoscalingpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AppautoscalingPolicySpec](#AppautoscalingPolicySpec)***| ***(Optional)*** |
+| `output` | ***[AppautoscalingPolicySpec](#appautoscalingpolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

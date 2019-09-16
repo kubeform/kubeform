@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `VpcDHCPOptions` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[VpcDHCPOptionsSpec](#VpcDHCPOptionsSpec)***||
-| `status` | ***[VpcDHCPOptionsStatus](#VpcDHCPOptionsStatus)***||
+| `spec` | ***[VpcDHCPOptionsSpec](#vpcdhcpoptionsspec)***||
+| `status` | ***[VpcDHCPOptionsStatus](#vpcdhcpoptionsstatus)***||
 ## VpcDHCPOptionsSpec
 
-Appears on:[VpcDHCPOptions](#VpcDHCPOptions), [VpcDHCPOptionsStatus](#VpcDHCPOptionsStatus)
+Appears on:[VpcDHCPOptions](#vpcdhcpoptions), [VpcDHCPOptionsStatus](#vpcdhcpoptionsstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,11 +35,11 @@ Appears on:[VpcDHCPOptions](#VpcDHCPOptions), [VpcDHCPOptionsStatus](#VpcDHCPOpt
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## VpcDHCPOptionsStatus
 
-Appears on:[VpcDHCPOptions](#VpcDHCPOptions)
+Appears on:[VpcDHCPOptions](#vpcdhcpoptions)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[VpcDHCPOptionsSpec](#VpcDHCPOptionsSpec)***| ***(Optional)*** |
+| `output` | ***[VpcDHCPOptionsSpec](#vpcdhcpoptionsspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

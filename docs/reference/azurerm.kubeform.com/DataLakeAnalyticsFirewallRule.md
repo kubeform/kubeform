@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `DataLakeAnalyticsFirewallRule` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DataLakeAnalyticsFirewallRuleSpec](#DataLakeAnalyticsFirewallRuleSpec)***||
-| `status` | ***[DataLakeAnalyticsFirewallRuleStatus](#DataLakeAnalyticsFirewallRuleStatus)***||
+| `spec` | ***[DataLakeAnalyticsFirewallRuleSpec](#datalakeanalyticsfirewallrulespec)***||
+| `status` | ***[DataLakeAnalyticsFirewallRuleStatus](#datalakeanalyticsfirewallrulestatus)***||
 ## DataLakeAnalyticsFirewallRuleSpec
 
-Appears on:[DataLakeAnalyticsFirewallRule](#DataLakeAnalyticsFirewallRule), [DataLakeAnalyticsFirewallRuleStatus](#DataLakeAnalyticsFirewallRuleStatus)
+Appears on:[DataLakeAnalyticsFirewallRule](#datalakeanalyticsfirewallrule), [DataLakeAnalyticsFirewallRuleStatus](#datalakeanalyticsfirewallrulestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[DataLakeAnalyticsFirewallRule](#DataLakeAnalyticsFirewallRule), [Dat
 | `startIPAddress` | ***string***||
 ## DataLakeAnalyticsFirewallRuleStatus
 
-Appears on:[DataLakeAnalyticsFirewallRule](#DataLakeAnalyticsFirewallRule)
+Appears on:[DataLakeAnalyticsFirewallRule](#datalakeanalyticsfirewallrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DataLakeAnalyticsFirewallRuleSpec](#DataLakeAnalyticsFirewallRuleSpec)***| ***(Optional)*** |
+| `output` | ***[DataLakeAnalyticsFirewallRuleSpec](#datalakeanalyticsfirewallrulespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `LoggingFolderExclusion` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LoggingFolderExclusionSpec](#LoggingFolderExclusionSpec)***||
-| `status` | ***[LoggingFolderExclusionStatus](#LoggingFolderExclusionStatus)***||
+| `spec` | ***[LoggingFolderExclusionSpec](#loggingfolderexclusionspec)***||
+| `status` | ***[LoggingFolderExclusionStatus](#loggingfolderexclusionstatus)***||
 ## LoggingFolderExclusionSpec
 
-Appears on:[LoggingFolderExclusion](#LoggingFolderExclusion), [LoggingFolderExclusionStatus](#LoggingFolderExclusionStatus)
+Appears on:[LoggingFolderExclusion](#loggingfolderexclusion), [LoggingFolderExclusionStatus](#loggingfolderexclusionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[LoggingFolderExclusion](#LoggingFolderExclusion), [LoggingFolderExcl
 | `name` | ***string***||
 ## LoggingFolderExclusionStatus
 
-Appears on:[LoggingFolderExclusion](#LoggingFolderExclusion)
+Appears on:[LoggingFolderExclusion](#loggingfolderexclusion)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LoggingFolderExclusionSpec](#LoggingFolderExclusionSpec)***| ***(Optional)*** |
+| `output` | ***[LoggingFolderExclusionSpec](#loggingfolderexclusionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

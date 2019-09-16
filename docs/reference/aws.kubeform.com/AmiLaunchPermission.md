@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AmiLaunchPermission` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AmiLaunchPermissionSpec](#AmiLaunchPermissionSpec)***||
-| `status` | ***[AmiLaunchPermissionStatus](#AmiLaunchPermissionStatus)***||
+| `spec` | ***[AmiLaunchPermissionSpec](#amilaunchpermissionspec)***||
+| `status` | ***[AmiLaunchPermissionStatus](#amilaunchpermissionstatus)***||
 ## AmiLaunchPermissionSpec
 
-Appears on:[AmiLaunchPermission](#AmiLaunchPermission), [AmiLaunchPermissionStatus](#AmiLaunchPermissionStatus)
+Appears on:[AmiLaunchPermission](#amilaunchpermission), [AmiLaunchPermissionStatus](#amilaunchpermissionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[AmiLaunchPermission](#AmiLaunchPermission), [AmiLaunchPermissionStat
 | `imageID` | ***string***||
 ## AmiLaunchPermissionStatus
 
-Appears on:[AmiLaunchPermission](#AmiLaunchPermission)
+Appears on:[AmiLaunchPermission](#amilaunchpermission)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AmiLaunchPermissionSpec](#AmiLaunchPermissionSpec)***| ***(Optional)*** |
+| `output` | ***[AmiLaunchPermissionSpec](#amilaunchpermissionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

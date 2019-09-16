@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `BillingAccountIamMember` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[BillingAccountIamMemberSpec](#BillingAccountIamMemberSpec)***||
-| `status` | ***[BillingAccountIamMemberStatus](#BillingAccountIamMemberStatus)***||
+| `spec` | ***[BillingAccountIamMemberSpec](#billingaccountiammemberspec)***||
+| `status` | ***[BillingAccountIamMemberStatus](#billingaccountiammemberstatus)***||
 ## BillingAccountIamMemberSpec
 
-Appears on:[BillingAccountIamMember](#BillingAccountIamMember), [BillingAccountIamMemberStatus](#BillingAccountIamMemberStatus)
+Appears on:[BillingAccountIamMember](#billingaccountiammember), [BillingAccountIamMemberStatus](#billingaccountiammemberstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[BillingAccountIamMember](#BillingAccountIamMember), [BillingAccountI
 | `role` | ***string***||
 ## BillingAccountIamMemberStatus
 
-Appears on:[BillingAccountIamMember](#BillingAccountIamMember)
+Appears on:[BillingAccountIamMember](#billingaccountiammember)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[BillingAccountIamMemberSpec](#BillingAccountIamMemberSpec)***| ***(Optional)*** |
+| `output` | ***[BillingAccountIamMemberSpec](#billingaccountiammemberspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

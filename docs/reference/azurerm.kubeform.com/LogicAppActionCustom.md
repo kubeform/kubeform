@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `LogicAppActionCustom` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LogicAppActionCustomSpec](#LogicAppActionCustomSpec)***||
-| `status` | ***[LogicAppActionCustomStatus](#LogicAppActionCustomStatus)***||
+| `spec` | ***[LogicAppActionCustomSpec](#logicappactioncustomspec)***||
+| `status` | ***[LogicAppActionCustomStatus](#logicappactioncustomstatus)***||
 ## LogicAppActionCustomSpec
 
-Appears on:[LogicAppActionCustom](#LogicAppActionCustom), [LogicAppActionCustomStatus](#LogicAppActionCustomStatus)
+Appears on:[LogicAppActionCustom](#logicappactioncustom), [LogicAppActionCustomStatus](#logicappactioncustomstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[LogicAppActionCustom](#LogicAppActionCustom), [LogicAppActionCustomS
 | `name` | ***string***||
 ## LogicAppActionCustomStatus
 
-Appears on:[LogicAppActionCustom](#LogicAppActionCustom)
+Appears on:[LogicAppActionCustom](#logicappactioncustom)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LogicAppActionCustomSpec](#LogicAppActionCustomSpec)***| ***(Optional)*** |
+| `output` | ***[LogicAppActionCustomSpec](#logicappactioncustomspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

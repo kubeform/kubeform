@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `MonitorLogProfile` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[MonitorLogProfileSpec](#MonitorLogProfileSpec)***||
-| `status` | ***[MonitorLogProfileStatus](#MonitorLogProfileStatus)***||
+| `spec` | ***[MonitorLogProfileSpec](#monitorlogprofilespec)***||
+| `status` | ***[MonitorLogProfileStatus](#monitorlogprofilestatus)***||
 ## MonitorLogProfileSpec
 
-Appears on:[MonitorLogProfile](#MonitorLogProfile), [MonitorLogProfileStatus](#MonitorLogProfileStatus)
+Appears on:[MonitorLogProfile](#monitorlogprofile), [MonitorLogProfileStatus](#monitorlogprofilestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,12 +29,12 @@ Appears on:[MonitorLogProfile](#MonitorLogProfile), [MonitorLogProfileStatus](#M
 | `categories` | ***[]string***||
 | `locations` | ***[]string***||
 | `name` | ***string***||
-| `retentionPolicy` | ***[[]MonitorLogProfileSpecRetentionPolicy](#MonitorLogProfileSpecRetentionPolicy)***||
+| `retentionPolicy` | ***[[]MonitorLogProfileSpecRetentionPolicy](#monitorlogprofilespecretentionpolicy)***||
 | `servicebusRuleID` | ***string***| ***(Optional)*** |
 | `storageAccountID` | ***string***| ***(Optional)*** |
 ## MonitorLogProfileSpecRetentionPolicy
 
-Appears on:[MonitorLogProfileSpec](#MonitorLogProfileSpec)
+Appears on:[MonitorLogProfileSpec](#monitorlogprofilespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -42,11 +42,11 @@ Appears on:[MonitorLogProfileSpec](#MonitorLogProfileSpec)
 | `enabled` | ***bool***||
 ## MonitorLogProfileStatus
 
-Appears on:[MonitorLogProfile](#MonitorLogProfile)
+Appears on:[MonitorLogProfile](#monitorlogprofile)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[MonitorLogProfileSpec](#MonitorLogProfileSpec)***| ***(Optional)*** |
+| `output` | ***[MonitorLogProfileSpec](#monitorlogprofilespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

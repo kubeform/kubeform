@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ElasticacheCluster` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ElasticacheClusterSpec](#ElasticacheClusterSpec)***||
-| `status` | ***[ElasticacheClusterStatus](#ElasticacheClusterStatus)***||
+| `spec` | ***[ElasticacheClusterSpec](#elasticacheclusterspec)***||
+| `status` | ***[ElasticacheClusterStatus](#elasticacheclusterstatus)***||
 ## ElasticacheClusterSpec
 
-Appears on:[ElasticacheCluster](#ElasticacheCluster), [ElasticacheClusterStatus](#ElasticacheClusterStatus)
+Appears on:[ElasticacheCluster](#elasticachecluster), [ElasticacheClusterStatus](#elasticacheclusterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,7 +29,7 @@ Appears on:[ElasticacheCluster](#ElasticacheCluster), [ElasticacheClusterStatus]
 | `applyImmediately` | ***bool***| ***(Optional)*** |
 | `availabilityZone` | ***string***| ***(Optional)*** |
 | `azMode` | ***string***| ***(Optional)*** |
-| `cacheNodes` | ***[[]ElasticacheClusterSpecCacheNodes](#ElasticacheClusterSpecCacheNodes)***| ***(Optional)*** |
+| `cacheNodes` | ***[[]ElasticacheClusterSpecCacheNodes](#elasticacheclusterspeccachenodes)***| ***(Optional)*** |
 | `clusterAddress` | ***string***| ***(Optional)*** |
 | `clusterID` | ***string***||
 | `configurationEndpoint` | ***string***| ***(Optional)*** |
@@ -53,7 +53,7 @@ Appears on:[ElasticacheCluster](#ElasticacheCluster), [ElasticacheClusterStatus]
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ElasticacheClusterSpecCacheNodes
 
-Appears on:[ElasticacheClusterSpec](#ElasticacheClusterSpec)
+Appears on:[ElasticacheClusterSpec](#elasticacheclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -63,11 +63,11 @@ Appears on:[ElasticacheClusterSpec](#ElasticacheClusterSpec)
 | `port` | ***int***| ***(Optional)*** |
 ## ElasticacheClusterStatus
 
-Appears on:[ElasticacheCluster](#ElasticacheCluster)
+Appears on:[ElasticacheCluster](#elasticachecluster)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ElasticacheClusterSpec](#ElasticacheClusterSpec)***| ***(Optional)*** |
+| `output` | ***[ElasticacheClusterSpec](#elasticacheclusterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

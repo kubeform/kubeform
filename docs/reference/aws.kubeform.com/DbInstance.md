@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DbInstance` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DbInstanceSpec](#DbInstanceSpec)***||
-| `status` | ***[DbInstanceStatus](#DbInstanceStatus)***||
+| `spec` | ***[DbInstanceSpec](#dbinstancespec)***||
+| `status` | ***[DbInstanceStatus](#dbinstancestatus)***||
 ## DbInstanceSpec
 
-Appears on:[DbInstance](#DbInstance), [DbInstanceStatus](#DbInstanceStatus)
+Appears on:[DbInstance](#dbinstance), [DbInstanceStatus](#dbinstancestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -68,7 +68,7 @@ Appears on:[DbInstance](#DbInstance), [DbInstanceStatus](#DbInstanceStatus)
 | `replicas` | ***[]string***| ***(Optional)*** |
 | `replicateSourceDb` | ***string***| ***(Optional)*** |
 | `resourceID` | ***string***| ***(Optional)*** |
-| `s3Import` | ***[[]DbInstanceSpecS3Import](#DbInstanceSpecS3Import)***| ***(Optional)*** |
+| `s3Import` | ***[[]DbInstanceSpecS3Import](#dbinstancespecs3import)***| ***(Optional)*** |
 | `securityGroupNames` | ***[]string***| ***(Optional)*** |
 | `skipFinalSnapshot` | ***bool***| ***(Optional)*** |
 | `snapshotIdentifier` | ***string***| ***(Optional)*** |
@@ -81,7 +81,7 @@ Appears on:[DbInstance](#DbInstance), [DbInstanceStatus](#DbInstanceStatus)
 | `vpcSecurityGroupIDS` | ***[]string***| ***(Optional)*** |
 ## DbInstanceSpecS3Import
 
-Appears on:[DbInstanceSpec](#DbInstanceSpec)
+Appears on:[DbInstanceSpec](#dbinstancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -92,12 +92,12 @@ Appears on:[DbInstanceSpec](#DbInstanceSpec)
 | `sourceEngineVersion` | ***string***||
 ## DbInstanceStatus
 
-Appears on:[DbInstance](#DbInstance)
+Appears on:[DbInstance](#dbinstance)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DbInstanceSpec](#DbInstanceSpec)***| ***(Optional)*** |
+| `output` | ***[DbInstanceSpec](#dbinstancespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

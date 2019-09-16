@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `Route53HealthCheck` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[Route53HealthCheckSpec](#Route53HealthCheckSpec)***||
-| `status` | ***[Route53HealthCheckStatus](#Route53HealthCheckStatus)***||
+| `spec` | ***[Route53HealthCheckSpec](#route53healthcheckspec)***||
+| `status` | ***[Route53HealthCheckStatus](#route53healthcheckstatus)***||
 ## Route53HealthCheckSpec
 
-Appears on:[Route53HealthCheck](#Route53HealthCheck), [Route53HealthCheckStatus](#Route53HealthCheckStatus)
+Appears on:[Route53HealthCheck](#route53healthcheck), [Route53HealthCheckStatus](#route53healthcheckstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -47,11 +47,11 @@ Appears on:[Route53HealthCheck](#Route53HealthCheck), [Route53HealthCheckStatus]
 | `type` | ***string***||
 ## Route53HealthCheckStatus
 
-Appears on:[Route53HealthCheck](#Route53HealthCheck)
+Appears on:[Route53HealthCheck](#route53healthcheck)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[Route53HealthCheckSpec](#Route53HealthCheckSpec)***| ***(Optional)*** |
+| `output` | ***[Route53HealthCheckSpec](#route53healthcheckspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

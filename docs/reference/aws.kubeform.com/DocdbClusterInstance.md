@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DocdbClusterInstance` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DocdbClusterInstanceSpec](#DocdbClusterInstanceSpec)***||
-| `status` | ***[DocdbClusterInstanceStatus](#DocdbClusterInstanceStatus)***||
+| `spec` | ***[DocdbClusterInstanceSpec](#docdbclusterinstancespec)***||
+| `status` | ***[DocdbClusterInstanceStatus](#docdbclusterinstancestatus)***||
 ## DocdbClusterInstanceSpec
 
-Appears on:[DocdbClusterInstance](#DocdbClusterInstance), [DocdbClusterInstanceStatus](#DocdbClusterInstanceStatus)
+Appears on:[DocdbClusterInstance](#docdbclusterinstance), [DocdbClusterInstanceStatus](#docdbclusterinstancestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -50,11 +50,11 @@ Appears on:[DocdbClusterInstance](#DocdbClusterInstance), [DocdbClusterInstanceS
 | `writer` | ***bool***| ***(Optional)*** |
 ## DocdbClusterInstanceStatus
 
-Appears on:[DocdbClusterInstance](#DocdbClusterInstance)
+Appears on:[DocdbClusterInstance](#docdbclusterinstance)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DocdbClusterInstanceSpec](#DocdbClusterInstanceSpec)***| ***(Optional)*** |
+| `output` | ***[DocdbClusterInstanceSpec](#docdbclusterinstancespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

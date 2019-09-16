@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `BillingAccountIamBinding` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[BillingAccountIamBindingSpec](#BillingAccountIamBindingSpec)***||
-| `status` | ***[BillingAccountIamBindingStatus](#BillingAccountIamBindingStatus)***||
+| `spec` | ***[BillingAccountIamBindingSpec](#billingaccountiambindingspec)***||
+| `status` | ***[BillingAccountIamBindingStatus](#billingaccountiambindingstatus)***||
 ## BillingAccountIamBindingSpec
 
-Appears on:[BillingAccountIamBinding](#BillingAccountIamBinding), [BillingAccountIamBindingStatus](#BillingAccountIamBindingStatus)
+Appears on:[BillingAccountIamBinding](#billingaccountiambinding), [BillingAccountIamBindingStatus](#billingaccountiambindingstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[BillingAccountIamBinding](#BillingAccountIamBinding), [BillingAccoun
 | `role` | ***string***||
 ## BillingAccountIamBindingStatus
 
-Appears on:[BillingAccountIamBinding](#BillingAccountIamBinding)
+Appears on:[BillingAccountIamBinding](#billingaccountiambinding)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[BillingAccountIamBindingSpec](#BillingAccountIamBindingSpec)***| ***(Optional)*** |
+| `output` | ***[BillingAccountIamBindingSpec](#billingaccountiambindingspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `PubsubTopicIamBinding` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PubsubTopicIamBindingSpec](#PubsubTopicIamBindingSpec)***||
-| `status` | ***[PubsubTopicIamBindingStatus](#PubsubTopicIamBindingStatus)***||
+| `spec` | ***[PubsubTopicIamBindingSpec](#pubsubtopiciambindingspec)***||
+| `status` | ***[PubsubTopicIamBindingStatus](#pubsubtopiciambindingstatus)***||
 ## PubsubTopicIamBindingSpec
 
-Appears on:[PubsubTopicIamBinding](#PubsubTopicIamBinding), [PubsubTopicIamBindingStatus](#PubsubTopicIamBindingStatus)
+Appears on:[PubsubTopicIamBinding](#pubsubtopiciambinding), [PubsubTopicIamBindingStatus](#pubsubtopiciambindingstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[PubsubTopicIamBinding](#PubsubTopicIamBinding), [PubsubTopicIamBindi
 | `topic` | ***string***||
 ## PubsubTopicIamBindingStatus
 
-Appears on:[PubsubTopicIamBinding](#PubsubTopicIamBinding)
+Appears on:[PubsubTopicIamBinding](#pubsubtopiciambinding)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PubsubTopicIamBindingSpec](#PubsubTopicIamBindingSpec)***| ***(Optional)*** |
+| `output` | ***[PubsubTopicIamBindingSpec](#pubsubtopiciambindingspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `RdsClusterInstance` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[RdsClusterInstanceSpec](#RdsClusterInstanceSpec)***||
-| `status` | ***[RdsClusterInstanceStatus](#RdsClusterInstanceStatus)***||
+| `spec` | ***[RdsClusterInstanceSpec](#rdsclusterinstancespec)***||
+| `status` | ***[RdsClusterInstanceStatus](#rdsclusterinstancestatus)***||
 ## RdsClusterInstanceSpec
 
-Appears on:[RdsClusterInstance](#RdsClusterInstance), [RdsClusterInstanceStatus](#RdsClusterInstanceStatus)
+Appears on:[RdsClusterInstance](#rdsclusterinstance), [RdsClusterInstanceStatus](#rdsclusterinstancestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -56,11 +56,11 @@ Appears on:[RdsClusterInstance](#RdsClusterInstance), [RdsClusterInstanceStatus]
 | `writer` | ***bool***| ***(Optional)*** |
 ## RdsClusterInstanceStatus
 
-Appears on:[RdsClusterInstance](#RdsClusterInstance)
+Appears on:[RdsClusterInstance](#rdsclusterinstance)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[RdsClusterInstanceSpec](#RdsClusterInstanceSpec)***| ***(Optional)*** |
+| `output` | ***[RdsClusterInstanceSpec](#rdsclusterinstancespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

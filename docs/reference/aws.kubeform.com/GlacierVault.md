@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `GlacierVault` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[GlacierVaultSpec](#GlacierVaultSpec)***||
-| `status` | ***[GlacierVaultStatus](#GlacierVaultStatus)***||
+| `spec` | ***[GlacierVaultSpec](#glaciervaultspec)***||
+| `status` | ***[GlacierVaultStatus](#glaciervaultstatus)***||
 ## GlacierVaultSpec
 
-Appears on:[GlacierVault](#GlacierVault), [GlacierVaultStatus](#GlacierVaultStatus)
+Appears on:[GlacierVault](#glaciervault), [GlacierVaultStatus](#glaciervaultstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[GlacierVault](#GlacierVault), [GlacierVaultStatus](#GlacierVaultStat
 | `arn` | ***string***| ***(Optional)*** |
 | `location` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `notification` | ***[[]GlacierVaultSpecNotification](#GlacierVaultSpecNotification)***| ***(Optional)*** |
+| `notification` | ***[[]GlacierVaultSpecNotification](#glaciervaultspecnotification)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## GlacierVaultSpecNotification
 
-Appears on:[GlacierVaultSpec](#GlacierVaultSpec)
+Appears on:[GlacierVaultSpec](#glaciervaultspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -42,11 +42,11 @@ Appears on:[GlacierVaultSpec](#GlacierVaultSpec)
 | `snsTopic` | ***string***||
 ## GlacierVaultStatus
 
-Appears on:[GlacierVault](#GlacierVault)
+Appears on:[GlacierVault](#glaciervault)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[GlacierVaultSpec](#GlacierVaultSpec)***| ***(Optional)*** |
+| `output` | ***[GlacierVaultSpec](#glaciervaultspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

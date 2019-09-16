@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `OpsworksRailsAppLayer` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[OpsworksRailsAppLayerSpec](#OpsworksRailsAppLayerSpec)***||
-| `status` | ***[OpsworksRailsAppLayerStatus](#OpsworksRailsAppLayerStatus)***||
+| `spec` | ***[OpsworksRailsAppLayerSpec](#opsworksrailsapplayerspec)***||
+| `status` | ***[OpsworksRailsAppLayerStatus](#opsworksrailsapplayerstatus)***||
 ## OpsworksRailsAppLayerSpec
 
-Appears on:[OpsworksRailsAppLayer](#OpsworksRailsAppLayer), [OpsworksRailsAppLayerStatus](#OpsworksRailsAppLayerStatus)
+Appears on:[OpsworksRailsAppLayer](#opsworksrailsapplayer), [OpsworksRailsAppLayerStatus](#opsworksrailsapplayerstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -40,7 +40,7 @@ Appears on:[OpsworksRailsAppLayer](#OpsworksRailsAppLayer), [OpsworksRailsAppLay
 | `customShutdownRecipes` | ***[]string***| ***(Optional)*** |
 | `customUndeployRecipes` | ***[]string***| ***(Optional)*** |
 | `drainElbOnShutdown` | ***bool***| ***(Optional)*** |
-| `ebsVolume` | ***[[]OpsworksRailsAppLayerSpecEbsVolume](#OpsworksRailsAppLayerSpecEbsVolume)***| ***(Optional)*** |
+| `ebsVolume` | ***[[]OpsworksRailsAppLayerSpecEbsVolume](#opsworksrailsapplayerspecebsvolume)***| ***(Optional)*** |
 | `elasticLoadBalancer` | ***string***| ***(Optional)*** |
 | `installUpdatesOnBoot` | ***bool***| ***(Optional)*** |
 | `instanceShutdownTimeout` | ***int***| ***(Optional)*** |
@@ -54,7 +54,7 @@ Appears on:[OpsworksRailsAppLayer](#OpsworksRailsAppLayer), [OpsworksRailsAppLay
 | `useEbsOptimizedInstances` | ***bool***| ***(Optional)*** |
 ## OpsworksRailsAppLayerSpecEbsVolume
 
-Appears on:[OpsworksRailsAppLayerSpec](#OpsworksRailsAppLayerSpec)
+Appears on:[OpsworksRailsAppLayerSpec](#opsworksrailsapplayerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -66,11 +66,11 @@ Appears on:[OpsworksRailsAppLayerSpec](#OpsworksRailsAppLayerSpec)
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksRailsAppLayerStatus
 
-Appears on:[OpsworksRailsAppLayer](#OpsworksRailsAppLayer)
+Appears on:[OpsworksRailsAppLayer](#opsworksrailsapplayer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[OpsworksRailsAppLayerSpec](#OpsworksRailsAppLayerSpec)***| ***(Optional)*** |
+| `output` | ***[OpsworksRailsAppLayerSpec](#opsworksrailsapplayerspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

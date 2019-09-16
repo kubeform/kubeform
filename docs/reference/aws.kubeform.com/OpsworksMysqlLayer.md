@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `OpsworksMysqlLayer` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[OpsworksMysqlLayerSpec](#OpsworksMysqlLayerSpec)***||
-| `status` | ***[OpsworksMysqlLayerStatus](#OpsworksMysqlLayerStatus)***||
+| `spec` | ***[OpsworksMysqlLayerSpec](#opsworksmysqllayerspec)***||
+| `status` | ***[OpsworksMysqlLayerStatus](#opsworksmysqllayerstatus)***||
 ## OpsworksMysqlLayerSpec
 
-Appears on:[OpsworksMysqlLayer](#OpsworksMysqlLayer), [OpsworksMysqlLayerStatus](#OpsworksMysqlLayerStatus)
+Appears on:[OpsworksMysqlLayer](#opsworksmysqllayer), [OpsworksMysqlLayerStatus](#opsworksmysqllayerstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,7 +38,7 @@ Appears on:[OpsworksMysqlLayer](#OpsworksMysqlLayer), [OpsworksMysqlLayerStatus]
 | `customShutdownRecipes` | ***[]string***| ***(Optional)*** |
 | `customUndeployRecipes` | ***[]string***| ***(Optional)*** |
 | `drainElbOnShutdown` | ***bool***| ***(Optional)*** |
-| `ebsVolume` | ***[[]OpsworksMysqlLayerSpecEbsVolume](#OpsworksMysqlLayerSpecEbsVolume)***| ***(Optional)*** |
+| `ebsVolume` | ***[[]OpsworksMysqlLayerSpecEbsVolume](#opsworksmysqllayerspecebsvolume)***| ***(Optional)*** |
 | `elasticLoadBalancer` | ***string***| ***(Optional)*** |
 | `installUpdatesOnBoot` | ***bool***| ***(Optional)*** |
 | `instanceShutdownTimeout` | ***int***| ***(Optional)*** |
@@ -50,7 +50,7 @@ Appears on:[OpsworksMysqlLayer](#OpsworksMysqlLayer), [OpsworksMysqlLayerStatus]
 | `useEbsOptimizedInstances` | ***bool***| ***(Optional)*** |
 ## OpsworksMysqlLayerSpecEbsVolume
 
-Appears on:[OpsworksMysqlLayerSpec](#OpsworksMysqlLayerSpec)
+Appears on:[OpsworksMysqlLayerSpec](#opsworksmysqllayerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -62,11 +62,11 @@ Appears on:[OpsworksMysqlLayerSpec](#OpsworksMysqlLayerSpec)
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksMysqlLayerStatus
 
-Appears on:[OpsworksMysqlLayer](#OpsworksMysqlLayer)
+Appears on:[OpsworksMysqlLayer](#opsworksmysqllayer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[OpsworksMysqlLayerSpec](#OpsworksMysqlLayerSpec)***| ***(Optional)*** |
+| `output` | ***[OpsworksMysqlLayerSpec](#opsworksmysqllayerspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `NeptuneClusterSnapshot` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NeptuneClusterSnapshotSpec](#NeptuneClusterSnapshotSpec)***||
-| `status` | ***[NeptuneClusterSnapshotStatus](#NeptuneClusterSnapshotStatus)***||
+| `spec` | ***[NeptuneClusterSnapshotSpec](#neptuneclustersnapshotspec)***||
+| `status` | ***[NeptuneClusterSnapshotStatus](#neptuneclustersnapshotstatus)***||
 ## NeptuneClusterSnapshotSpec
 
-Appears on:[NeptuneClusterSnapshot](#NeptuneClusterSnapshot), [NeptuneClusterSnapshotStatus](#NeptuneClusterSnapshotStatus)
+Appears on:[NeptuneClusterSnapshot](#neptuneclustersnapshot), [NeptuneClusterSnapshotStatus](#neptuneclustersnapshotstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -43,11 +43,11 @@ Appears on:[NeptuneClusterSnapshot](#NeptuneClusterSnapshot), [NeptuneClusterSna
 | `vpcID` | ***string***| ***(Optional)*** |
 ## NeptuneClusterSnapshotStatus
 
-Appears on:[NeptuneClusterSnapshot](#NeptuneClusterSnapshot)
+Appears on:[NeptuneClusterSnapshot](#neptuneclustersnapshot)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NeptuneClusterSnapshotSpec](#NeptuneClusterSnapshotSpec)***| ***(Optional)*** |
+| `output` | ***[NeptuneClusterSnapshotSpec](#neptuneclustersnapshotspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

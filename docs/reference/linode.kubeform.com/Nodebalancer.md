@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `linode.kubeform.com/v1alpha1` |
 |    `kind` | string | `Nodebalancer` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NodebalancerSpec](#NodebalancerSpec)***||
-| `status` | ***[NodebalancerStatus](#NodebalancerStatus)***||
+| `spec` | ***[NodebalancerSpec](#nodebalancerspec)***||
+| `status` | ***[NodebalancerStatus](#nodebalancerstatus)***||
 ## NodebalancerSpec
 
-Appears on:[Nodebalancer](#Nodebalancer), [NodebalancerStatus](#NodebalancerStatus)
+Appears on:[Nodebalancer](#nodebalancer), [NodebalancerStatus](#nodebalancerstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,11 +38,11 @@ Appears on:[Nodebalancer](#Nodebalancer), [NodebalancerStatus](#NodebalancerStat
 | `updated` | ***string***| ***(Optional)*** |
 ## NodebalancerStatus
 
-Appears on:[Nodebalancer](#Nodebalancer)
+Appears on:[Nodebalancer](#nodebalancer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NodebalancerSpec](#NodebalancerSpec)***| ***(Optional)*** |
+| `output` | ***[NodebalancerSpec](#nodebalancerspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

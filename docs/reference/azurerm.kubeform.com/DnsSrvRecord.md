@@ -16,25 +16,25 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `DnsSrvRecord` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DnsSrvRecordSpec](#DnsSrvRecordSpec)***||
-| `status` | ***[DnsSrvRecordStatus](#DnsSrvRecordStatus)***||
+| `spec` | ***[DnsSrvRecordSpec](#dnssrvrecordspec)***||
+| `status` | ***[DnsSrvRecordStatus](#dnssrvrecordstatus)***||
 ## DnsSrvRecordSpec
 
-Appears on:[DnsSrvRecord](#DnsSrvRecord), [DnsSrvRecordStatus](#DnsSrvRecordStatus)
+Appears on:[DnsSrvRecord](#dnssrvrecord), [DnsSrvRecordStatus](#dnssrvrecordstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `name` | ***string***||
-| `record` | ***[[]DnsSrvRecordSpecRecord](#DnsSrvRecordSpecRecord)***||
+| `record` | ***[[]DnsSrvRecordSpecRecord](#dnssrvrecordspecrecord)***||
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `ttl` | ***int***||
 | `zoneName` | ***string***||
 ## DnsSrvRecordSpecRecord
 
-Appears on:[DnsSrvRecordSpec](#DnsSrvRecordSpec)
+Appears on:[DnsSrvRecordSpec](#dnssrvrecordspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -44,11 +44,11 @@ Appears on:[DnsSrvRecordSpec](#DnsSrvRecordSpec)
 | `weight` | ***int***||
 ## DnsSrvRecordStatus
 
-Appears on:[DnsSrvRecord](#DnsSrvRecord)
+Appears on:[DnsSrvRecord](#dnssrvrecord)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DnsSrvRecordSpec](#DnsSrvRecordSpec)***| ***(Optional)*** |
+| `output` | ***[DnsSrvRecordSpec](#dnssrvrecordspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `digitalocean.kubeform.com/v1alpha1` |
 |    `kind` | string | `FloatingIPAssignment` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[FloatingIPAssignmentSpec](#FloatingIPAssignmentSpec)***||
-| `status` | ***[FloatingIPAssignmentStatus](#FloatingIPAssignmentStatus)***||
+| `spec` | ***[FloatingIPAssignmentSpec](#floatingipassignmentspec)***||
+| `status` | ***[FloatingIPAssignmentStatus](#floatingipassignmentstatus)***||
 ## FloatingIPAssignmentSpec
 
-Appears on:[FloatingIPAssignment](#FloatingIPAssignment), [FloatingIPAssignmentStatus](#FloatingIPAssignmentStatus)
+Appears on:[FloatingIPAssignment](#floatingipassignment), [FloatingIPAssignmentStatus](#floatingipassignmentstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[FloatingIPAssignment](#FloatingIPAssignment), [FloatingIPAssignmentS
 | `ipAddress` | ***string***||
 ## FloatingIPAssignmentStatus
 
-Appears on:[FloatingIPAssignment](#FloatingIPAssignment)
+Appears on:[FloatingIPAssignment](#floatingipassignment)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[FloatingIPAssignmentSpec](#FloatingIPAssignmentSpec)***| ***(Optional)*** |
+| `output` | ***[FloatingIPAssignmentSpec](#floatingipassignmentspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

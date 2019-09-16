@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `BudgetsBudget` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[BudgetsBudgetSpec](#BudgetsBudgetSpec)***||
-| `status` | ***[BudgetsBudgetStatus](#BudgetsBudgetStatus)***||
+| `spec` | ***[BudgetsBudgetSpec](#budgetsbudgetspec)***||
+| `status` | ***[BudgetsBudgetStatus](#budgetsbudgetstatus)***||
 ## BudgetsBudgetSpec
 
-Appears on:[BudgetsBudget](#BudgetsBudget), [BudgetsBudgetStatus](#BudgetsBudgetStatus)
+Appears on:[BudgetsBudget](#budgetsbudget), [BudgetsBudgetStatus](#budgetsbudgetstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,18 +29,18 @@ Appears on:[BudgetsBudget](#BudgetsBudget), [BudgetsBudgetStatus](#BudgetsBudget
 | `accountID` | ***string***| ***(Optional)*** |
 | `budgetType` | ***string***||
 | `costFilters` | ***map[string]string***| ***(Optional)*** |
-| `costTypes` | ***[[]BudgetsBudgetSpecCostTypes](#BudgetsBudgetSpecCostTypes)***| ***(Optional)*** |
+| `costTypes` | ***[[]BudgetsBudgetSpecCostTypes](#budgetsbudgetspeccosttypes)***| ***(Optional)*** |
 | `limitAmount` | ***string***||
 | `limitUnit` | ***string***||
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
-| `notification` | ***[[]BudgetsBudgetSpecNotification](#BudgetsBudgetSpecNotification)***| ***(Optional)*** |
+| `notification` | ***[[]BudgetsBudgetSpecNotification](#budgetsbudgetspecnotification)***| ***(Optional)*** |
 | `timePeriodEnd` | ***string***| ***(Optional)*** |
 | `timePeriodStart` | ***string***||
 | `timeUnit` | ***string***||
 ## BudgetsBudgetSpecCostTypes
 
-Appears on:[BudgetsBudgetSpec](#BudgetsBudgetSpec)
+Appears on:[BudgetsBudgetSpec](#budgetsbudgetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -57,7 +57,7 @@ Appears on:[BudgetsBudgetSpec](#BudgetsBudgetSpec)
 | `useBlended` | ***bool***| ***(Optional)*** |
 ## BudgetsBudgetSpecNotification
 
-Appears on:[BudgetsBudgetSpec](#BudgetsBudgetSpec)
+Appears on:[BudgetsBudgetSpec](#budgetsbudgetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -69,11 +69,11 @@ Appears on:[BudgetsBudgetSpec](#BudgetsBudgetSpec)
 | `thresholdType` | ***string***||
 ## BudgetsBudgetStatus
 
-Appears on:[BudgetsBudget](#BudgetsBudget)
+Appears on:[BudgetsBudget](#budgetsbudget)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[BudgetsBudgetSpec](#BudgetsBudgetSpec)***| ***(Optional)*** |
+| `output` | ***[BudgetsBudgetSpec](#budgetsbudgetspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `PolicyAssignment` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PolicyAssignmentSpec](#PolicyAssignmentSpec)***||
-| `status` | ***[PolicyAssignmentStatus](#PolicyAssignmentStatus)***||
+| `spec` | ***[PolicyAssignmentSpec](#policyassignmentspec)***||
+| `status` | ***[PolicyAssignmentStatus](#policyassignmentstatus)***||
 ## PolicyAssignmentSpec
 
-Appears on:[PolicyAssignment](#PolicyAssignment), [PolicyAssignmentStatus](#PolicyAssignmentStatus)
+Appears on:[PolicyAssignment](#policyassignment), [PolicyAssignmentStatus](#policyassignmentstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,7 +28,7 @@ Appears on:[PolicyAssignment](#PolicyAssignment), [PolicyAssignmentStatus](#Poli
 | `id` | ***string***||
 | `description` | ***string***| ***(Optional)*** |
 | `displayName` | ***string***| ***(Optional)*** |
-| `identity` | ***[[]PolicyAssignmentSpecIdentity](#PolicyAssignmentSpecIdentity)***| ***(Optional)*** |
+| `identity` | ***[[]PolicyAssignmentSpecIdentity](#policyassignmentspecidentity)***| ***(Optional)*** |
 | `location` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `notScopes` | ***[]string***| ***(Optional)*** |
@@ -37,7 +37,7 @@ Appears on:[PolicyAssignment](#PolicyAssignment), [PolicyAssignmentStatus](#Poli
 | `scope` | ***string***||
 ## PolicyAssignmentSpecIdentity
 
-Appears on:[PolicyAssignmentSpec](#PolicyAssignmentSpec)
+Appears on:[PolicyAssignmentSpec](#policyassignmentspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -46,11 +46,11 @@ Appears on:[PolicyAssignmentSpec](#PolicyAssignmentSpec)
 | `type` | ***string***| ***(Optional)*** |
 ## PolicyAssignmentStatus
 
-Appears on:[PolicyAssignment](#PolicyAssignment)
+Appears on:[PolicyAssignment](#policyassignment)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PolicyAssignmentSpec](#PolicyAssignmentSpec)***| ***(Optional)*** |
+| `output` | ***[PolicyAssignmentSpec](#policyassignmentspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

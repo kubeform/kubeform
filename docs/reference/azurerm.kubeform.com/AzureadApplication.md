@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `AzureadApplication` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AzureadApplicationSpec](#AzureadApplicationSpec)***||
-| `status` | ***[AzureadApplicationStatus](#AzureadApplicationStatus)***||
+| `spec` | ***[AzureadApplicationSpec](#azureadapplicationspec)***||
+| `status` | ***[AzureadApplicationStatus](#azureadapplicationstatus)***||
 ## AzureadApplicationSpec
 
-Appears on:[AzureadApplication](#AzureadApplication), [AzureadApplicationStatus](#AzureadApplicationStatus)
+Appears on:[AzureadApplication](#azureadapplication), [AzureadApplicationStatus](#azureadapplicationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,11 +35,11 @@ Appears on:[AzureadApplication](#AzureadApplication), [AzureadApplicationStatus]
 | `replyUrls` | ***[]string***| ***(Optional)*** |
 ## AzureadApplicationStatus
 
-Appears on:[AzureadApplication](#AzureadApplication)
+Appears on:[AzureadApplication](#azureadapplication)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AzureadApplicationSpec](#AzureadApplicationSpec)***| ***(Optional)*** |
+| `output` | ***[AzureadApplicationSpec](#azureadapplicationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

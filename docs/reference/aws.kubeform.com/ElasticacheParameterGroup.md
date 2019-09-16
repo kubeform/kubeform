@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ElasticacheParameterGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ElasticacheParameterGroupSpec](#ElasticacheParameterGroupSpec)***||
-| `status` | ***[ElasticacheParameterGroupStatus](#ElasticacheParameterGroupStatus)***||
+| `spec` | ***[ElasticacheParameterGroupSpec](#elasticacheparametergroupspec)***||
+| `status` | ***[ElasticacheParameterGroupStatus](#elasticacheparametergroupstatus)***||
 ## ElasticacheParameterGroupSpec
 
-Appears on:[ElasticacheParameterGroup](#ElasticacheParameterGroup), [ElasticacheParameterGroupStatus](#ElasticacheParameterGroupStatus)
+Appears on:[ElasticacheParameterGroup](#elasticacheparametergroup), [ElasticacheParameterGroupStatus](#elasticacheparametergroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,10 +29,10 @@ Appears on:[ElasticacheParameterGroup](#ElasticacheParameterGroup), [Elasticache
 | `description` | ***string***| ***(Optional)*** |
 | `family` | ***string***||
 | `name` | ***string***||
-| `parameter` | ***[[]ElasticacheParameterGroupSpecParameter](#ElasticacheParameterGroupSpecParameter)***| ***(Optional)*** |
+| `parameter` | ***[[]ElasticacheParameterGroupSpecParameter](#elasticacheparametergroupspecparameter)***| ***(Optional)*** |
 ## ElasticacheParameterGroupSpecParameter
 
-Appears on:[ElasticacheParameterGroupSpec](#ElasticacheParameterGroupSpec)
+Appears on:[ElasticacheParameterGroupSpec](#elasticacheparametergroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -40,11 +40,11 @@ Appears on:[ElasticacheParameterGroupSpec](#ElasticacheParameterGroupSpec)
 | `value` | ***string***||
 ## ElasticacheParameterGroupStatus
 
-Appears on:[ElasticacheParameterGroup](#ElasticacheParameterGroup)
+Appears on:[ElasticacheParameterGroup](#elasticacheparametergroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ElasticacheParameterGroupSpec](#ElasticacheParameterGroupSpec)***| ***(Optional)*** |
+| `output` | ***[ElasticacheParameterGroupSpec](#elasticacheparametergroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

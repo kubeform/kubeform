@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `MainRouteTableAssociation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[MainRouteTableAssociationSpec](#MainRouteTableAssociationSpec)***||
-| `status` | ***[MainRouteTableAssociationStatus](#MainRouteTableAssociationStatus)***||
+| `spec` | ***[MainRouteTableAssociationSpec](#mainroutetableassociationspec)***||
+| `status` | ***[MainRouteTableAssociationStatus](#mainroutetableassociationstatus)***||
 ## MainRouteTableAssociationSpec
 
-Appears on:[MainRouteTableAssociation](#MainRouteTableAssociation), [MainRouteTableAssociationStatus](#MainRouteTableAssociationStatus)
+Appears on:[MainRouteTableAssociation](#mainroutetableassociation), [MainRouteTableAssociationStatus](#mainroutetableassociationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[MainRouteTableAssociation](#MainRouteTableAssociation), [MainRouteTa
 | `vpcID` | ***string***||
 ## MainRouteTableAssociationStatus
 
-Appears on:[MainRouteTableAssociation](#MainRouteTableAssociation)
+Appears on:[MainRouteTableAssociation](#mainroutetableassociation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[MainRouteTableAssociationSpec](#MainRouteTableAssociationSpec)***| ***(Optional)*** |
+| `output` | ***[MainRouteTableAssociationSpec](#mainroutetableassociationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `GlueCatalogTable` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[GlueCatalogTableSpec](#GlueCatalogTableSpec)***||
-| `status` | ***[GlueCatalogTableStatus](#GlueCatalogTableStatus)***||
+| `spec` | ***[GlueCatalogTableSpec](#gluecatalogtablespec)***||
+| `status` | ***[GlueCatalogTableStatus](#gluecatalogtablestatus)***||
 ## GlueCatalogTableSpec
 
-Appears on:[GlueCatalogTable](#GlueCatalogTable), [GlueCatalogTableStatus](#GlueCatalogTableStatus)
+Appears on:[GlueCatalogTable](#gluecatalogtable), [GlueCatalogTableStatus](#gluecatalogtablestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,15 +32,15 @@ Appears on:[GlueCatalogTable](#GlueCatalogTable), [GlueCatalogTableStatus](#Glue
 | `name` | ***string***||
 | `owner` | ***string***| ***(Optional)*** |
 | `parameters` | ***map[string]string***| ***(Optional)*** |
-| `partitionKeys` | ***[[]GlueCatalogTableSpecPartitionKeys](#GlueCatalogTableSpecPartitionKeys)***| ***(Optional)*** |
+| `partitionKeys` | ***[[]GlueCatalogTableSpecPartitionKeys](#gluecatalogtablespecpartitionkeys)***| ***(Optional)*** |
 | `retention` | ***int***| ***(Optional)*** |
-| `storageDescriptor` | ***[[]GlueCatalogTableSpecStorageDescriptor](#GlueCatalogTableSpecStorageDescriptor)***| ***(Optional)*** |
+| `storageDescriptor` | ***[[]GlueCatalogTableSpecStorageDescriptor](#gluecatalogtablespecstoragedescriptor)***| ***(Optional)*** |
 | `tableType` | ***string***| ***(Optional)*** |
 | `viewExpandedText` | ***string***| ***(Optional)*** |
 | `viewOriginalText` | ***string***| ***(Optional)*** |
 ## GlueCatalogTableSpecPartitionKeys
 
-Appears on:[GlueCatalogTableSpec](#GlueCatalogTableSpec)
+Appears on:[GlueCatalogTableSpec](#gluecatalogtablespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -49,25 +49,25 @@ Appears on:[GlueCatalogTableSpec](#GlueCatalogTableSpec)
 | `type` | ***string***| ***(Optional)*** |
 ## GlueCatalogTableSpecStorageDescriptor
 
-Appears on:[GlueCatalogTableSpec](#GlueCatalogTableSpec)
+Appears on:[GlueCatalogTableSpec](#gluecatalogtablespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketColumns` | ***[]string***| ***(Optional)*** |
-| `columns` | ***[[]GlueCatalogTableSpecStorageDescriptorColumns](#GlueCatalogTableSpecStorageDescriptorColumns)***| ***(Optional)*** |
+| `columns` | ***[[]GlueCatalogTableSpecStorageDescriptorColumns](#gluecatalogtablespecstoragedescriptorcolumns)***| ***(Optional)*** |
 | `compressed` | ***bool***| ***(Optional)*** |
 | `inputFormat` | ***string***| ***(Optional)*** |
 | `location` | ***string***| ***(Optional)*** |
 | `numberOfBuckets` | ***int***| ***(Optional)*** |
 | `outputFormat` | ***string***| ***(Optional)*** |
 | `parameters` | ***map[string]string***| ***(Optional)*** |
-| `serDeInfo` | ***[[]GlueCatalogTableSpecStorageDescriptorSerDeInfo](#GlueCatalogTableSpecStorageDescriptorSerDeInfo)***| ***(Optional)*** |
-| `skewedInfo` | ***[[]GlueCatalogTableSpecStorageDescriptorSkewedInfo](#GlueCatalogTableSpecStorageDescriptorSkewedInfo)***| ***(Optional)*** |
-| `sortColumns` | ***[[]GlueCatalogTableSpecStorageDescriptorSortColumns](#GlueCatalogTableSpecStorageDescriptorSortColumns)***| ***(Optional)*** |
+| `serDeInfo` | ***[[]GlueCatalogTableSpecStorageDescriptorSerDeInfo](#gluecatalogtablespecstoragedescriptorserdeinfo)***| ***(Optional)*** |
+| `skewedInfo` | ***[[]GlueCatalogTableSpecStorageDescriptorSkewedInfo](#gluecatalogtablespecstoragedescriptorskewedinfo)***| ***(Optional)*** |
+| `sortColumns` | ***[[]GlueCatalogTableSpecStorageDescriptorSortColumns](#gluecatalogtablespecstoragedescriptorsortcolumns)***| ***(Optional)*** |
 | `storedAsSubDirectories` | ***bool***| ***(Optional)*** |
 ## GlueCatalogTableSpecStorageDescriptorColumns
 
-Appears on:[GlueCatalogTableSpecStorageDescriptor](#GlueCatalogTableSpecStorageDescriptor)
+Appears on:[GlueCatalogTableSpecStorageDescriptor](#gluecatalogtablespecstoragedescriptor)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -76,7 +76,7 @@ Appears on:[GlueCatalogTableSpecStorageDescriptor](#GlueCatalogTableSpecStorageD
 | `type` | ***string***| ***(Optional)*** |
 ## GlueCatalogTableSpecStorageDescriptorSerDeInfo
 
-Appears on:[GlueCatalogTableSpecStorageDescriptor](#GlueCatalogTableSpecStorageDescriptor)
+Appears on:[GlueCatalogTableSpecStorageDescriptor](#gluecatalogtablespecstoragedescriptor)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -85,7 +85,7 @@ Appears on:[GlueCatalogTableSpecStorageDescriptor](#GlueCatalogTableSpecStorageD
 | `serializationLibrary` | ***string***| ***(Optional)*** |
 ## GlueCatalogTableSpecStorageDescriptorSkewedInfo
 
-Appears on:[GlueCatalogTableSpecStorageDescriptor](#GlueCatalogTableSpecStorageDescriptor)
+Appears on:[GlueCatalogTableSpecStorageDescriptor](#gluecatalogtablespecstoragedescriptor)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -94,7 +94,7 @@ Appears on:[GlueCatalogTableSpecStorageDescriptor](#GlueCatalogTableSpecStorageD
 | `skewedColumnValues` | ***[]string***| ***(Optional)*** |
 ## GlueCatalogTableSpecStorageDescriptorSortColumns
 
-Appears on:[GlueCatalogTableSpecStorageDescriptor](#GlueCatalogTableSpecStorageDescriptor)
+Appears on:[GlueCatalogTableSpecStorageDescriptor](#gluecatalogtablespecstoragedescriptor)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -102,11 +102,11 @@ Appears on:[GlueCatalogTableSpecStorageDescriptor](#GlueCatalogTableSpecStorageD
 | `sortOrder` | ***int***||
 ## GlueCatalogTableStatus
 
-Appears on:[GlueCatalogTable](#GlueCatalogTable)
+Appears on:[GlueCatalogTable](#gluecatalogtable)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[GlueCatalogTableSpec](#GlueCatalogTableSpec)***| ***(Optional)*** |
+| `output` | ***[GlueCatalogTableSpec](#gluecatalogtablespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

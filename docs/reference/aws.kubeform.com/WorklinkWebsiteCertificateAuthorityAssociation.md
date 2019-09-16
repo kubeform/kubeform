@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `WorklinkWebsiteCertificateAuthorityAssociation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[WorklinkWebsiteCertificateAuthorityAssociationSpec](#WorklinkWebsiteCertificateAuthorityAssociationSpec)***||
-| `status` | ***[WorklinkWebsiteCertificateAuthorityAssociationStatus](#WorklinkWebsiteCertificateAuthorityAssociationStatus)***||
+| `spec` | ***[WorklinkWebsiteCertificateAuthorityAssociationSpec](#worklinkwebsitecertificateauthorityassociationspec)***||
+| `status` | ***[WorklinkWebsiteCertificateAuthorityAssociationStatus](#worklinkwebsitecertificateauthorityassociationstatus)***||
 ## WorklinkWebsiteCertificateAuthorityAssociationSpec
 
-Appears on:[WorklinkWebsiteCertificateAuthorityAssociation](#WorklinkWebsiteCertificateAuthorityAssociation), [WorklinkWebsiteCertificateAuthorityAssociationStatus](#WorklinkWebsiteCertificateAuthorityAssociationStatus)
+Appears on:[WorklinkWebsiteCertificateAuthorityAssociation](#worklinkwebsitecertificateauthorityassociation), [WorklinkWebsiteCertificateAuthorityAssociationStatus](#worklinkwebsitecertificateauthorityassociationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[WorklinkWebsiteCertificateAuthorityAssociation](#WorklinkWebsiteCert
 | `websiteCaID` | ***string***| ***(Optional)*** |
 ## WorklinkWebsiteCertificateAuthorityAssociationStatus
 
-Appears on:[WorklinkWebsiteCertificateAuthorityAssociation](#WorklinkWebsiteCertificateAuthorityAssociation)
+Appears on:[WorklinkWebsiteCertificateAuthorityAssociation](#worklinkwebsitecertificateauthorityassociation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[WorklinkWebsiteCertificateAuthorityAssociationSpec](#WorklinkWebsiteCertificateAuthorityAssociationSpec)***| ***(Optional)*** |
+| `output` | ***[WorklinkWebsiteCertificateAuthorityAssociationSpec](#worklinkwebsitecertificateauthorityassociationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

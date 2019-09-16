@@ -16,31 +16,31 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `AutomationModule` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AutomationModuleSpec](#AutomationModuleSpec)***||
-| `status` | ***[AutomationModuleStatus](#AutomationModuleStatus)***||
+| `spec` | ***[AutomationModuleSpec](#automationmodulespec)***||
+| `status` | ***[AutomationModuleStatus](#automationmodulestatus)***||
 ## AutomationModuleSpec
 
-Appears on:[AutomationModule](#AutomationModule), [AutomationModuleStatus](#AutomationModuleStatus)
+Appears on:[AutomationModule](#automationmodule), [AutomationModuleStatus](#automationmodulestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `automationAccountName` | ***string***||
-| `moduleLink` | ***[[]AutomationModuleSpecModuleLink](#AutomationModuleSpecModuleLink)***||
+| `moduleLink` | ***[[]AutomationModuleSpecModuleLink](#automationmodulespecmodulelink)***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 ## AutomationModuleSpecModuleLink
 
-Appears on:[AutomationModuleSpec](#AutomationModuleSpec)
+Appears on:[AutomationModuleSpec](#automationmodulespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `hash` | ***[[]AutomationModuleSpecModuleLinkHash](#AutomationModuleSpecModuleLinkHash)***| ***(Optional)*** |
+| `hash` | ***[[]AutomationModuleSpecModuleLinkHash](#automationmodulespecmodulelinkhash)***| ***(Optional)*** |
 | `uri` | ***string***||
 ## AutomationModuleSpecModuleLinkHash
 
-Appears on:[AutomationModuleSpecModuleLink](#AutomationModuleSpecModuleLink)
+Appears on:[AutomationModuleSpecModuleLink](#automationmodulespecmodulelink)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -48,11 +48,11 @@ Appears on:[AutomationModuleSpecModuleLink](#AutomationModuleSpecModuleLink)
 | `value` | ***string***||
 ## AutomationModuleStatus
 
-Appears on:[AutomationModule](#AutomationModule)
+Appears on:[AutomationModule](#automationmodule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AutomationModuleSpec](#AutomationModuleSpec)***| ***(Optional)*** |
+| `output` | ***[AutomationModuleSpec](#automationmodulespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

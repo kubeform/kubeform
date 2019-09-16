@@ -16,22 +16,22 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ConfigConfigurationRecorder` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ConfigConfigurationRecorderSpec](#ConfigConfigurationRecorderSpec)***||
-| `status` | ***[ConfigConfigurationRecorderStatus](#ConfigConfigurationRecorderStatus)***||
+| `spec` | ***[ConfigConfigurationRecorderSpec](#configconfigurationrecorderspec)***||
+| `status` | ***[ConfigConfigurationRecorderStatus](#configconfigurationrecorderstatus)***||
 ## ConfigConfigurationRecorderSpec
 
-Appears on:[ConfigConfigurationRecorder](#ConfigConfigurationRecorder), [ConfigConfigurationRecorderStatus](#ConfigConfigurationRecorderStatus)
+Appears on:[ConfigConfigurationRecorder](#configconfigurationrecorder), [ConfigConfigurationRecorderStatus](#configconfigurationrecorderstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `name` | ***string***| ***(Optional)*** |
-| `recordingGroup` | ***[[]ConfigConfigurationRecorderSpecRecordingGroup](#ConfigConfigurationRecorderSpecRecordingGroup)***| ***(Optional)*** |
+| `recordingGroup` | ***[[]ConfigConfigurationRecorderSpecRecordingGroup](#configconfigurationrecorderspecrecordinggroup)***| ***(Optional)*** |
 | `roleArn` | ***string***||
 ## ConfigConfigurationRecorderSpecRecordingGroup
 
-Appears on:[ConfigConfigurationRecorderSpec](#ConfigConfigurationRecorderSpec)
+Appears on:[ConfigConfigurationRecorderSpec](#configconfigurationrecorderspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -40,11 +40,11 @@ Appears on:[ConfigConfigurationRecorderSpec](#ConfigConfigurationRecorderSpec)
 | `resourceTypes` | ***[]string***| ***(Optional)*** |
 ## ConfigConfigurationRecorderStatus
 
-Appears on:[ConfigConfigurationRecorder](#ConfigConfigurationRecorder)
+Appears on:[ConfigConfigurationRecorder](#configconfigurationrecorder)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ConfigConfigurationRecorderSpec](#ConfigConfigurationRecorderSpec)***| ***(Optional)*** |
+| `output` | ***[ConfigConfigurationRecorderSpec](#configconfigurationrecorderspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

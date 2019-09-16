@@ -16,25 +16,25 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `NetworkACL` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NetworkACLSpec](#NetworkACLSpec)***||
-| `status` | ***[NetworkACLStatus](#NetworkACLStatus)***||
+| `spec` | ***[NetworkACLSpec](#networkaclspec)***||
+| `status` | ***[NetworkACLStatus](#networkaclstatus)***||
 ## NetworkACLSpec
 
-Appears on:[NetworkACL](#NetworkACL), [NetworkACLStatus](#NetworkACLStatus)
+Appears on:[NetworkACL](#networkacl), [NetworkACLStatus](#networkaclstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `egress` | ***[[]NetworkACLSpecEgress](#NetworkACLSpecEgress)***| ***(Optional)*** |
-| `ingress` | ***[[]NetworkACLSpecIngress](#NetworkACLSpecIngress)***| ***(Optional)*** |
+| `egress` | ***[[]NetworkACLSpecEgress](#networkaclspecegress)***| ***(Optional)*** |
+| `ingress` | ***[[]NetworkACLSpecIngress](#networkaclspecingress)***| ***(Optional)*** |
 | `ownerID` | ***string***| ***(Optional)*** |
 | `subnetIDS` | ***[]string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpcID` | ***string***||
 ## NetworkACLSpecEgress
 
-Appears on:[NetworkACLSpec](#NetworkACLSpec)
+Appears on:[NetworkACLSpec](#networkaclspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -49,7 +49,7 @@ Appears on:[NetworkACLSpec](#NetworkACLSpec)
 | `toPort` | ***int***||
 ## NetworkACLSpecIngress
 
-Appears on:[NetworkACLSpec](#NetworkACLSpec)
+Appears on:[NetworkACLSpec](#networkaclspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -64,11 +64,11 @@ Appears on:[NetworkACLSpec](#NetworkACLSpec)
 | `toPort` | ***int***||
 ## NetworkACLStatus
 
-Appears on:[NetworkACL](#NetworkACL)
+Appears on:[NetworkACL](#networkacl)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NetworkACLSpec](#NetworkACLSpec)***| ***(Optional)*** |
+| `output` | ***[NetworkACLSpec](#networkaclspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

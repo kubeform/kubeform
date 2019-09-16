@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `CognitiveAccount` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CognitiveAccountSpec](#CognitiveAccountSpec)***||
-| `status` | ***[CognitiveAccountStatus](#CognitiveAccountStatus)***||
+| `spec` | ***[CognitiveAccountSpec](#cognitiveaccountspec)***||
+| `status` | ***[CognitiveAccountStatus](#cognitiveaccountstatus)***||
 ## CognitiveAccountSpec
 
-Appears on:[CognitiveAccount](#CognitiveAccount), [CognitiveAccountStatus](#CognitiveAccountStatus)
+Appears on:[CognitiveAccount](#cognitiveaccount), [CognitiveAccountStatus](#cognitiveaccountstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[CognitiveAccount](#CognitiveAccount), [CognitiveAccountStatus](#Cogn
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
-| `sku` | ***[[]CognitiveAccountSpecSku](#CognitiveAccountSpecSku)***||
+| `sku` | ***[[]CognitiveAccountSpecSku](#cognitiveaccountspecsku)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## CognitiveAccountSpecSku
 
-Appears on:[CognitiveAccountSpec](#CognitiveAccountSpec)
+Appears on:[CognitiveAccountSpec](#cognitiveaccountspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -44,12 +44,12 @@ Appears on:[CognitiveAccountSpec](#CognitiveAccountSpec)
 | `tier` | ***string***||
 ## CognitiveAccountStatus
 
-Appears on:[CognitiveAccount](#CognitiveAccount)
+Appears on:[CognitiveAccount](#cognitiveaccount)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CognitiveAccountSpec](#CognitiveAccountSpec)***| ***(Optional)*** |
+| `output` | ***[CognitiveAccountSpec](#cognitiveaccountspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

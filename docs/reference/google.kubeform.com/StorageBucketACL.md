@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `StorageBucketACL` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[StorageBucketACLSpec](#StorageBucketACLSpec)***||
-| `status` | ***[StorageBucketACLStatus](#StorageBucketACLStatus)***||
+| `spec` | ***[StorageBucketACLSpec](#storagebucketaclspec)***||
+| `status` | ***[StorageBucketACLStatus](#storagebucketaclstatus)***||
 ## StorageBucketACLSpec
 
-Appears on:[StorageBucketACL](#StorageBucketACL), [StorageBucketACLStatus](#StorageBucketACLStatus)
+Appears on:[StorageBucketACL](#storagebucketacl), [StorageBucketACLStatus](#storagebucketaclstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[StorageBucketACL](#StorageBucketACL), [StorageBucketACLStatus](#Stor
 | `roleEntity` | ***[]string***| ***(Optional)*** |
 ## StorageBucketACLStatus
 
-Appears on:[StorageBucketACL](#StorageBucketACL)
+Appears on:[StorageBucketACL](#storagebucketacl)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[StorageBucketACLSpec](#StorageBucketACLSpec)***| ***(Optional)*** |
+| `output` | ***[StorageBucketACLSpec](#storagebucketaclspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

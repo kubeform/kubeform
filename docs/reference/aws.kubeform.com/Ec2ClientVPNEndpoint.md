@@ -16,19 +16,19 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `Ec2ClientVPNEndpoint` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[Ec2ClientVPNEndpointSpec](#Ec2ClientVPNEndpointSpec)***||
-| `status` | ***[Ec2ClientVPNEndpointStatus](#Ec2ClientVPNEndpointStatus)***||
+| `spec` | ***[Ec2ClientVPNEndpointSpec](#ec2clientvpnendpointspec)***||
+| `status` | ***[Ec2ClientVPNEndpointStatus](#ec2clientvpnendpointstatus)***||
 ## Ec2ClientVPNEndpointSpec
 
-Appears on:[Ec2ClientVPNEndpoint](#Ec2ClientVPNEndpoint), [Ec2ClientVPNEndpointStatus](#Ec2ClientVPNEndpointStatus)
+Appears on:[Ec2ClientVPNEndpoint](#ec2clientvpnendpoint), [Ec2ClientVPNEndpointStatus](#ec2clientvpnendpointstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `authenticationOptions` | ***[[]Ec2ClientVPNEndpointSpecAuthenticationOptions](#Ec2ClientVPNEndpointSpecAuthenticationOptions)***||
+| `authenticationOptions` | ***[[]Ec2ClientVPNEndpointSpecAuthenticationOptions](#ec2clientvpnendpointspecauthenticationoptions)***||
 | `clientCIDRBlock` | ***string***||
-| `connectionLogOptions` | ***[[]Ec2ClientVPNEndpointSpecConnectionLogOptions](#Ec2ClientVPNEndpointSpecConnectionLogOptions)***||
+| `connectionLogOptions` | ***[[]Ec2ClientVPNEndpointSpecConnectionLogOptions](#ec2clientvpnendpointspecconnectionlogoptions)***||
 | `description` | ***string***| ***(Optional)*** |
 | `dnsName` | ***string***| ***(Optional)*** |
 | `dnsServers` | ***[]string***| ***(Optional)*** |
@@ -38,7 +38,7 @@ Appears on:[Ec2ClientVPNEndpoint](#Ec2ClientVPNEndpoint), [Ec2ClientVPNEndpointS
 | `transportProtocol` | ***string***| ***(Optional)*** |
 ## Ec2ClientVPNEndpointSpecAuthenticationOptions
 
-Appears on:[Ec2ClientVPNEndpointSpec](#Ec2ClientVPNEndpointSpec)
+Appears on:[Ec2ClientVPNEndpointSpec](#ec2clientvpnendpointspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -47,7 +47,7 @@ Appears on:[Ec2ClientVPNEndpointSpec](#Ec2ClientVPNEndpointSpec)
 | `type` | ***string***||
 ## Ec2ClientVPNEndpointSpecConnectionLogOptions
 
-Appears on:[Ec2ClientVPNEndpointSpec](#Ec2ClientVPNEndpointSpec)
+Appears on:[Ec2ClientVPNEndpointSpec](#ec2clientvpnendpointspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -56,11 +56,11 @@ Appears on:[Ec2ClientVPNEndpointSpec](#Ec2ClientVPNEndpointSpec)
 | `enabled` | ***bool***||
 ## Ec2ClientVPNEndpointStatus
 
-Appears on:[Ec2ClientVPNEndpoint](#Ec2ClientVPNEndpoint)
+Appears on:[Ec2ClientVPNEndpoint](#ec2clientvpnendpoint)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[Ec2ClientVPNEndpointSpec](#Ec2ClientVPNEndpointSpec)***| ***(Optional)*** |
+| `output` | ***[Ec2ClientVPNEndpointSpec](#ec2clientvpnendpointspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

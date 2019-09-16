@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiManagementLogger` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiManagementLoggerSpec](#ApiManagementLoggerSpec)***||
-| `status` | ***[ApiManagementLoggerStatus](#ApiManagementLoggerStatus)***||
+| `spec` | ***[ApiManagementLoggerSpec](#apimanagementloggerspec)***||
+| `status` | ***[ApiManagementLoggerStatus](#apimanagementloggerstatus)***||
 ## ApiManagementLoggerSpec
 
-Appears on:[ApiManagementLogger](#ApiManagementLogger), [ApiManagementLoggerStatus](#ApiManagementLoggerStatus)
+Appears on:[ApiManagementLogger](#apimanagementlogger), [ApiManagementLoggerStatus](#apimanagementloggerstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,33 +28,33 @@ Appears on:[ApiManagementLogger](#ApiManagementLogger), [ApiManagementLoggerStat
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `apiManagementName` | ***string***||
-| `applicationInsights` | ***[[]ApiManagementLoggerSpecApplicationInsights](#ApiManagementLoggerSpecApplicationInsights)***| ***(Optional)*** |
+| `applicationInsights` | ***[[]ApiManagementLoggerSpecApplicationInsights](#apimanagementloggerspecapplicationinsights)***| ***(Optional)*** |
 | `buffered` | ***bool***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `eventhub` | ***[[]ApiManagementLoggerSpecEventhub](#ApiManagementLoggerSpecEventhub)***| ***(Optional)*** |
+| `eventhub` | ***[[]ApiManagementLoggerSpecEventhub](#apimanagementloggerspeceventhub)***| ***(Optional)*** |
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 ## ApiManagementLoggerSpecApplicationInsights
 
-Appears on:[ApiManagementLoggerSpec](#ApiManagementLoggerSpec)
+Appears on:[ApiManagementLoggerSpec](#apimanagementloggerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 ## ApiManagementLoggerSpecEventhub
 
-Appears on:[ApiManagementLoggerSpec](#ApiManagementLoggerSpec)
+Appears on:[ApiManagementLoggerSpec](#apimanagementloggerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 ## ApiManagementLoggerStatus
 
-Appears on:[ApiManagementLogger](#ApiManagementLogger)
+Appears on:[ApiManagementLogger](#apimanagementlogger)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiManagementLoggerSpec](#ApiManagementLoggerSpec)***| ***(Optional)*** |
+| `output` | ***[ApiManagementLoggerSpec](#apimanagementloggerspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

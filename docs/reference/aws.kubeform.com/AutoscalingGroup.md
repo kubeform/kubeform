@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AutoscalingGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AutoscalingGroupSpec](#AutoscalingGroupSpec)***||
-| `status` | ***[AutoscalingGroupStatus](#AutoscalingGroupStatus)***||
+| `spec` | ***[AutoscalingGroupSpec](#autoscalinggroupspec)***||
+| `status` | ***[AutoscalingGroupStatus](#autoscalinggroupstatus)***||
 ## AutoscalingGroupSpec
 
-Appears on:[AutoscalingGroup](#AutoscalingGroup), [AutoscalingGroupStatus](#AutoscalingGroupStatus)
+Appears on:[AutoscalingGroup](#autoscalinggroup), [AutoscalingGroupStatus](#autoscalinggroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,22 +34,22 @@ Appears on:[AutoscalingGroup](#AutoscalingGroup), [AutoscalingGroupStatus](#Auto
 | `forceDelete` | ***bool***| ***(Optional)*** |
 | `healthCheckGracePeriod` | ***int***| ***(Optional)*** |
 | `healthCheckType` | ***string***| ***(Optional)*** |
-| `initialLifecycleHook` | ***[[]AutoscalingGroupSpecInitialLifecycleHook](#AutoscalingGroupSpecInitialLifecycleHook)***| ***(Optional)*** |
+| `initialLifecycleHook` | ***[[]AutoscalingGroupSpecInitialLifecycleHook](#autoscalinggroupspecinitiallifecyclehook)***| ***(Optional)*** |
 | `launchConfiguration` | ***string***| ***(Optional)*** |
-| `launchTemplate` | ***[[]AutoscalingGroupSpecLaunchTemplate](#AutoscalingGroupSpecLaunchTemplate)***| ***(Optional)*** |
+| `launchTemplate` | ***[[]AutoscalingGroupSpecLaunchTemplate](#autoscalinggroupspeclaunchtemplate)***| ***(Optional)*** |
 | `loadBalancers` | ***[]string***| ***(Optional)*** |
 | `maxSize` | ***int***||
 | `metricsGranularity` | ***string***| ***(Optional)*** |
 | `minElbCapacity` | ***int***| ***(Optional)*** |
 | `minSize` | ***int***||
-| `mixedInstancesPolicy` | ***[[]AutoscalingGroupSpecMixedInstancesPolicy](#AutoscalingGroupSpecMixedInstancesPolicy)***| ***(Optional)*** |
+| `mixedInstancesPolicy` | ***[[]AutoscalingGroupSpecMixedInstancesPolicy](#autoscalinggroupspecmixedinstancespolicy)***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
 | `placementGroup` | ***string***| ***(Optional)*** |
 | `protectFromScaleIn` | ***bool***| ***(Optional)*** |
 | `serviceLinkedRoleArn` | ***string***| ***(Optional)*** |
 | `suspendedProcesses` | ***[]string***| ***(Optional)*** |
-| `tag` | ***[[]AutoscalingGroupSpecTag](#AutoscalingGroupSpecTag)***| ***(Optional)*** |
+| `tag` | ***[[]AutoscalingGroupSpecTag](#autoscalinggroupspectag)***| ***(Optional)*** |
 | `targetGroupArns` | ***[]string***| ***(Optional)*** |
 | `terminationPolicies` | ***[]string***| ***(Optional)*** |
 | `vpcZoneIdentifier` | ***[]string***| ***(Optional)*** |
@@ -57,7 +57,7 @@ Appears on:[AutoscalingGroup](#AutoscalingGroup), [AutoscalingGroupStatus](#Auto
 | `waitForElbCapacity` | ***int***| ***(Optional)*** |
 ## AutoscalingGroupSpecInitialLifecycleHook
 
-Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec)
+Appears on:[AutoscalingGroupSpec](#autoscalinggroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -70,7 +70,7 @@ Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec)
 | `roleArn` | ***string***| ***(Optional)*** |
 ## AutoscalingGroupSpecLaunchTemplate
 
-Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec)
+Appears on:[AutoscalingGroupSpec](#autoscalinggroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -79,15 +79,15 @@ Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec)
 | `version` | ***string***| ***(Optional)*** |
 ## AutoscalingGroupSpecMixedInstancesPolicy
 
-Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec)
+Appears on:[AutoscalingGroupSpec](#autoscalinggroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `instancesDistribution` | ***[[]AutoscalingGroupSpecMixedInstancesPolicyInstancesDistribution](#AutoscalingGroupSpecMixedInstancesPolicyInstancesDistribution)***| ***(Optional)*** |
-| `launchTemplate` | ***[[]AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate](#AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate)***||
+| `instancesDistribution` | ***[[]AutoscalingGroupSpecMixedInstancesPolicyInstancesDistribution](#autoscalinggroupspecmixedinstancespolicyinstancesdistribution)***| ***(Optional)*** |
+| `launchTemplate` | ***[[]AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate](#autoscalinggroupspecmixedinstancespolicylaunchtemplate)***||
 ## AutoscalingGroupSpecMixedInstancesPolicyInstancesDistribution
 
-Appears on:[AutoscalingGroupSpecMixedInstancesPolicy](#AutoscalingGroupSpecMixedInstancesPolicy)
+Appears on:[AutoscalingGroupSpecMixedInstancesPolicy](#autoscalinggroupspecmixedinstancespolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -99,15 +99,15 @@ Appears on:[AutoscalingGroupSpecMixedInstancesPolicy](#AutoscalingGroupSpecMixed
 | `spotMaxPrice` | ***string***| ***(Optional)*** |
 ## AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate
 
-Appears on:[AutoscalingGroupSpecMixedInstancesPolicy](#AutoscalingGroupSpecMixedInstancesPolicy)
+Appears on:[AutoscalingGroupSpecMixedInstancesPolicy](#autoscalinggroupspecmixedinstancespolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `launchTemplateSpecification` | ***[[]AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification](#AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification)***||
-| `override` | ***[[]AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateOverride](#AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateOverride)***| ***(Optional)*** |
+| `launchTemplateSpecification` | ***[[]AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification](#autoscalinggroupspecmixedinstancespolicylaunchtemplatelaunchtemplatespecification)***||
+| `override` | ***[[]AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateOverride](#autoscalinggroupspecmixedinstancespolicylaunchtemplateoverride)***| ***(Optional)*** |
 ## AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification
 
-Appears on:[AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate](#AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate)
+Appears on:[AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate](#autoscalinggroupspecmixedinstancespolicylaunchtemplate)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -116,14 +116,14 @@ Appears on:[AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate](#Autoscaling
 | `version` | ***string***| ***(Optional)*** |
 ## AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateOverride
 
-Appears on:[AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate](#AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate)
+Appears on:[AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate](#autoscalinggroupspecmixedinstancespolicylaunchtemplate)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `instanceType` | ***string***| ***(Optional)*** |
 ## AutoscalingGroupSpecTag
 
-Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec)
+Appears on:[AutoscalingGroupSpec](#autoscalinggroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -132,11 +132,11 @@ Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec)
 | `value` | ***string***||
 ## AutoscalingGroupStatus
 
-Appears on:[AutoscalingGroup](#AutoscalingGroup)
+Appears on:[AutoscalingGroup](#autoscalinggroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AutoscalingGroupSpec](#AutoscalingGroupSpec)***| ***(Optional)*** |
+| `output` | ***[AutoscalingGroupSpec](#autoscalinggroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

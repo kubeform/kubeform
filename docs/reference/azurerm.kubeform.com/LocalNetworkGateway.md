@@ -16,18 +16,18 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `LocalNetworkGateway` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LocalNetworkGatewaySpec](#LocalNetworkGatewaySpec)***||
-| `status` | ***[LocalNetworkGatewayStatus](#LocalNetworkGatewayStatus)***||
+| `spec` | ***[LocalNetworkGatewaySpec](#localnetworkgatewayspec)***||
+| `status` | ***[LocalNetworkGatewayStatus](#localnetworkgatewaystatus)***||
 ## LocalNetworkGatewaySpec
 
-Appears on:[LocalNetworkGateway](#LocalNetworkGateway), [LocalNetworkGatewayStatus](#LocalNetworkGatewayStatus)
+Appears on:[LocalNetworkGateway](#localnetworkgateway), [LocalNetworkGatewayStatus](#localnetworkgatewaystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `addressSpace` | ***[]string***||
-| `bgpSettings` | ***[[]LocalNetworkGatewaySpecBgpSettings](#LocalNetworkGatewaySpecBgpSettings)***| ***(Optional)*** |
+| `bgpSettings` | ***[[]LocalNetworkGatewaySpecBgpSettings](#localnetworkgatewayspecbgpsettings)***| ***(Optional)*** |
 | `gatewayAddress` | ***string***||
 | `location` | ***string***||
 | `name` | ***string***||
@@ -35,7 +35,7 @@ Appears on:[LocalNetworkGateway](#LocalNetworkGateway), [LocalNetworkGatewayStat
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## LocalNetworkGatewaySpecBgpSettings
 
-Appears on:[LocalNetworkGatewaySpec](#LocalNetworkGatewaySpec)
+Appears on:[LocalNetworkGatewaySpec](#localnetworkgatewayspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -44,11 +44,11 @@ Appears on:[LocalNetworkGatewaySpec](#LocalNetworkGatewaySpec)
 | `peerWeight` | ***int***| ***(Optional)*** |
 ## LocalNetworkGatewayStatus
 
-Appears on:[LocalNetworkGateway](#LocalNetworkGateway)
+Appears on:[LocalNetworkGateway](#localnetworkgateway)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LocalNetworkGatewaySpec](#LocalNetworkGatewaySpec)***| ***(Optional)*** |
+| `output` | ***[LocalNetworkGatewaySpec](#localnetworkgatewayspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

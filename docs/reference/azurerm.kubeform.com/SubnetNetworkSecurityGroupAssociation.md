@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `SubnetNetworkSecurityGroupAssociation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SubnetNetworkSecurityGroupAssociationSpec](#SubnetNetworkSecurityGroupAssociationSpec)***||
-| `status` | ***[SubnetNetworkSecurityGroupAssociationStatus](#SubnetNetworkSecurityGroupAssociationStatus)***||
+| `spec` | ***[SubnetNetworkSecurityGroupAssociationSpec](#subnetnetworksecuritygroupassociationspec)***||
+| `status` | ***[SubnetNetworkSecurityGroupAssociationStatus](#subnetnetworksecuritygroupassociationstatus)***||
 ## SubnetNetworkSecurityGroupAssociationSpec
 
-Appears on:[SubnetNetworkSecurityGroupAssociation](#SubnetNetworkSecurityGroupAssociation), [SubnetNetworkSecurityGroupAssociationStatus](#SubnetNetworkSecurityGroupAssociationStatus)
+Appears on:[SubnetNetworkSecurityGroupAssociation](#subnetnetworksecuritygroupassociation), [SubnetNetworkSecurityGroupAssociationStatus](#subnetnetworksecuritygroupassociationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[SubnetNetworkSecurityGroupAssociation](#SubnetNetworkSecurityGroupAs
 | `subnetID` | ***string***||
 ## SubnetNetworkSecurityGroupAssociationStatus
 
-Appears on:[SubnetNetworkSecurityGroupAssociation](#SubnetNetworkSecurityGroupAssociation)
+Appears on:[SubnetNetworkSecurityGroupAssociation](#subnetnetworksecuritygroupassociation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SubnetNetworkSecurityGroupAssociationSpec](#SubnetNetworkSecurityGroupAssociationSpec)***| ***(Optional)*** |
+| `output` | ***[SubnetNetworkSecurityGroupAssociationSpec](#subnetnetworksecuritygroupassociationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

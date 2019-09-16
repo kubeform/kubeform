@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ServicebusNamespace` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ServicebusNamespaceSpec](#ServicebusNamespaceSpec)***||
-| `status` | ***[ServicebusNamespaceStatus](#ServicebusNamespaceStatus)***||
+| `spec` | ***[ServicebusNamespaceSpec](#servicebusnamespacespec)***||
+| `status` | ***[ServicebusNamespaceStatus](#servicebusnamespacestatus)***||
 ## ServicebusNamespaceSpec
 
-Appears on:[ServicebusNamespace](#ServicebusNamespace), [ServicebusNamespaceStatus](#ServicebusNamespaceStatus)
+Appears on:[ServicebusNamespace](#servicebusnamespace), [ServicebusNamespaceStatus](#servicebusnamespacestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,12 +35,12 @@ Appears on:[ServicebusNamespace](#ServicebusNamespace), [ServicebusNamespaceStat
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ServicebusNamespaceStatus
 
-Appears on:[ServicebusNamespace](#ServicebusNamespace)
+Appears on:[ServicebusNamespace](#servicebusnamespace)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ServicebusNamespaceSpec](#ServicebusNamespaceSpec)***| ***(Optional)*** |
+| `output` | ***[ServicebusNamespaceSpec](#servicebusnamespacespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

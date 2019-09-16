@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `EfsFileSystem` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[EfsFileSystemSpec](#EfsFileSystemSpec)***||
-| `status` | ***[EfsFileSystemStatus](#EfsFileSystemStatus)***||
+| `spec` | ***[EfsFileSystemSpec](#efsfilesystemspec)***||
+| `status` | ***[EfsFileSystemStatus](#efsfilesystemstatus)***||
 ## EfsFileSystemSpec
 
-Appears on:[EfsFileSystem](#EfsFileSystem), [EfsFileSystemStatus](#EfsFileSystemStatus)
+Appears on:[EfsFileSystem](#efsfilesystem), [EfsFileSystemStatus](#efsfilesystemstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,11 +37,11 @@ Appears on:[EfsFileSystem](#EfsFileSystem), [EfsFileSystemStatus](#EfsFileSystem
 | `throughputMode` | ***string***| ***(Optional)*** |
 ## EfsFileSystemStatus
 
-Appears on:[EfsFileSystem](#EfsFileSystem)
+Appears on:[EfsFileSystem](#efsfilesystem)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[EfsFileSystemSpec](#EfsFileSystemSpec)***| ***(Optional)*** |
+| `output` | ***[EfsFileSystemSpec](#efsfilesystemspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

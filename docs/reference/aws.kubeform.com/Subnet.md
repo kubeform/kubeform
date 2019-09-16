@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `Subnet` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SubnetSpec](#SubnetSpec)***||
-| `status` | ***[SubnetStatus](#SubnetStatus)***||
+| `spec` | ***[SubnetSpec](#subnetspec)***||
+| `status` | ***[SubnetStatus](#subnetstatus)***||
 ## SubnetSpec
 
-Appears on:[Subnet](#Subnet), [SubnetStatus](#SubnetStatus)
+Appears on:[Subnet](#subnet), [SubnetStatus](#subnetstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -39,11 +39,11 @@ Appears on:[Subnet](#Subnet), [SubnetStatus](#SubnetStatus)
 | `vpcID` | ***string***||
 ## SubnetStatus
 
-Appears on:[Subnet](#Subnet)
+Appears on:[Subnet](#subnet)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SubnetSpec](#SubnetSpec)***| ***(Optional)*** |
+| `output` | ***[SubnetSpec](#subnetspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

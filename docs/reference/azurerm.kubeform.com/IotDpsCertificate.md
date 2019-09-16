@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `IotDpsCertificate` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[IotDpsCertificateSpec](#IotDpsCertificateSpec)***||
-| `status` | ***[IotDpsCertificateStatus](#IotDpsCertificateStatus)***||
+| `spec` | ***[IotDpsCertificateSpec](#iotdpscertificatespec)***||
+| `status` | ***[IotDpsCertificateStatus](#iotdpscertificatestatus)***||
 ## IotDpsCertificateSpec
 
-Appears on:[IotDpsCertificate](#IotDpsCertificate), [IotDpsCertificateStatus](#IotDpsCertificateStatus)
+Appears on:[IotDpsCertificate](#iotdpscertificate), [IotDpsCertificateStatus](#iotdpscertificatestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,12 +32,12 @@ Appears on:[IotDpsCertificate](#IotDpsCertificate), [IotDpsCertificateStatus](#I
 | `resourceGroupName` | ***string***||
 ## IotDpsCertificateStatus
 
-Appears on:[IotDpsCertificate](#IotDpsCertificate)
+Appears on:[IotDpsCertificate](#iotdpscertificate)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[IotDpsCertificateSpec](#IotDpsCertificateSpec)***| ***(Optional)*** |
+| `output` | ***[IotDpsCertificateSpec](#iotdpscertificatespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `LogAnalyticsWorkspace` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LogAnalyticsWorkspaceSpec](#LogAnalyticsWorkspaceSpec)***||
-| `status` | ***[LogAnalyticsWorkspaceStatus](#LogAnalyticsWorkspaceStatus)***||
+| `spec` | ***[LogAnalyticsWorkspaceSpec](#loganalyticsworkspacespec)***||
+| `status` | ***[LogAnalyticsWorkspaceStatus](#loganalyticsworkspacestatus)***||
 ## LogAnalyticsWorkspaceSpec
 
-Appears on:[LogAnalyticsWorkspace](#LogAnalyticsWorkspace), [LogAnalyticsWorkspaceStatus](#LogAnalyticsWorkspaceStatus)
+Appears on:[LogAnalyticsWorkspace](#loganalyticsworkspace), [LogAnalyticsWorkspaceStatus](#loganalyticsworkspacestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,12 +37,12 @@ Appears on:[LogAnalyticsWorkspace](#LogAnalyticsWorkspace), [LogAnalyticsWorkspa
 | `workspaceID` | ***string***| ***(Optional)*** |
 ## LogAnalyticsWorkspaceStatus
 
-Appears on:[LogAnalyticsWorkspace](#LogAnalyticsWorkspace)
+Appears on:[LogAnalyticsWorkspace](#loganalyticsworkspace)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LogAnalyticsWorkspaceSpec](#LogAnalyticsWorkspaceSpec)***| ***(Optional)*** |
+| `output` | ***[LogAnalyticsWorkspaceSpec](#loganalyticsworkspacespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

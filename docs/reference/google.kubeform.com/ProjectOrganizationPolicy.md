@@ -16,43 +16,43 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ProjectOrganizationPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ProjectOrganizationPolicySpec](#ProjectOrganizationPolicySpec)***||
-| `status` | ***[ProjectOrganizationPolicyStatus](#ProjectOrganizationPolicyStatus)***||
+| `spec` | ***[ProjectOrganizationPolicySpec](#projectorganizationpolicyspec)***||
+| `status` | ***[ProjectOrganizationPolicyStatus](#projectorganizationpolicystatus)***||
 ## ProjectOrganizationPolicySpec
 
-Appears on:[ProjectOrganizationPolicy](#ProjectOrganizationPolicy), [ProjectOrganizationPolicyStatus](#ProjectOrganizationPolicyStatus)
+Appears on:[ProjectOrganizationPolicy](#projectorganizationpolicy), [ProjectOrganizationPolicyStatus](#projectorganizationpolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `booleanPolicy` | ***[[]ProjectOrganizationPolicySpecBooleanPolicy](#ProjectOrganizationPolicySpecBooleanPolicy)***| ***(Optional)*** |
+| `booleanPolicy` | ***[[]ProjectOrganizationPolicySpecBooleanPolicy](#projectorganizationpolicyspecbooleanpolicy)***| ***(Optional)*** |
 | `constraint` | ***string***||
 | `etag` | ***string***| ***(Optional)*** |
-| `listPolicy` | ***[[]ProjectOrganizationPolicySpecListPolicy](#ProjectOrganizationPolicySpecListPolicy)***| ***(Optional)*** |
+| `listPolicy` | ***[[]ProjectOrganizationPolicySpecListPolicy](#projectorganizationpolicyspeclistpolicy)***| ***(Optional)*** |
 | `project` | ***string***||
-| `restorePolicy` | ***[[]ProjectOrganizationPolicySpecRestorePolicy](#ProjectOrganizationPolicySpecRestorePolicy)***| ***(Optional)*** |
+| `restorePolicy` | ***[[]ProjectOrganizationPolicySpecRestorePolicy](#projectorganizationpolicyspecrestorepolicy)***| ***(Optional)*** |
 | `updateTime` | ***string***| ***(Optional)*** |
 | `version` | ***int***| ***(Optional)*** |
 ## ProjectOrganizationPolicySpecBooleanPolicy
 
-Appears on:[ProjectOrganizationPolicySpec](#ProjectOrganizationPolicySpec)
+Appears on:[ProjectOrganizationPolicySpec](#projectorganizationpolicyspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enforced` | ***bool***||
 ## ProjectOrganizationPolicySpecListPolicy
 
-Appears on:[ProjectOrganizationPolicySpec](#ProjectOrganizationPolicySpec)
+Appears on:[ProjectOrganizationPolicySpec](#projectorganizationpolicyspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `allow` | ***[[]ProjectOrganizationPolicySpecListPolicyAllow](#ProjectOrganizationPolicySpecListPolicyAllow)***| ***(Optional)*** |
-| `deny` | ***[[]ProjectOrganizationPolicySpecListPolicyDeny](#ProjectOrganizationPolicySpecListPolicyDeny)***| ***(Optional)*** |
+| `allow` | ***[[]ProjectOrganizationPolicySpecListPolicyAllow](#projectorganizationpolicyspeclistpolicyallow)***| ***(Optional)*** |
+| `deny` | ***[[]ProjectOrganizationPolicySpecListPolicyDeny](#projectorganizationpolicyspeclistpolicydeny)***| ***(Optional)*** |
 | `suggestedValue` | ***string***| ***(Optional)*** |
 ## ProjectOrganizationPolicySpecListPolicyAllow
 
-Appears on:[ProjectOrganizationPolicySpecListPolicy](#ProjectOrganizationPolicySpecListPolicy)
+Appears on:[ProjectOrganizationPolicySpecListPolicy](#projectorganizationpolicyspeclistpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -60,7 +60,7 @@ Appears on:[ProjectOrganizationPolicySpecListPolicy](#ProjectOrganizationPolicyS
 | `values` | ***[]string***| ***(Optional)*** |
 ## ProjectOrganizationPolicySpecListPolicyDeny
 
-Appears on:[ProjectOrganizationPolicySpecListPolicy](#ProjectOrganizationPolicySpecListPolicy)
+Appears on:[ProjectOrganizationPolicySpecListPolicy](#projectorganizationpolicyspeclistpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -68,18 +68,18 @@ Appears on:[ProjectOrganizationPolicySpecListPolicy](#ProjectOrganizationPolicyS
 | `values` | ***[]string***| ***(Optional)*** |
 ## ProjectOrganizationPolicySpecRestorePolicy
 
-Appears on:[ProjectOrganizationPolicySpec](#ProjectOrganizationPolicySpec)
+Appears on:[ProjectOrganizationPolicySpec](#projectorganizationpolicyspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `default` | ***bool***||
 ## ProjectOrganizationPolicyStatus
 
-Appears on:[ProjectOrganizationPolicy](#ProjectOrganizationPolicy)
+Appears on:[ProjectOrganizationPolicy](#projectorganizationpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ProjectOrganizationPolicySpec](#ProjectOrganizationPolicySpec)***| ***(Optional)*** |
+| `output` | ***[ProjectOrganizationPolicySpec](#projectorganizationpolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

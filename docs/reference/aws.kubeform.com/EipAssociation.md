@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `EipAssociation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[EipAssociationSpec](#EipAssociationSpec)***||
-| `status` | ***[EipAssociationStatus](#EipAssociationStatus)***||
+| `spec` | ***[EipAssociationSpec](#eipassociationspec)***||
+| `status` | ***[EipAssociationStatus](#eipassociationstatus)***||
 ## EipAssociationSpec
 
-Appears on:[EipAssociation](#EipAssociation), [EipAssociationStatus](#EipAssociationStatus)
+Appears on:[EipAssociation](#eipassociation), [EipAssociationStatus](#eipassociationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[EipAssociation](#EipAssociation), [EipAssociationStatus](#EipAssocia
 | `publicIP` | ***string***| ***(Optional)*** |
 ## EipAssociationStatus
 
-Appears on:[EipAssociation](#EipAssociation)
+Appears on:[EipAssociation](#eipassociation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[EipAssociationSpec](#EipAssociationSpec)***| ***(Optional)*** |
+| `output` | ***[EipAssociationSpec](#eipassociationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

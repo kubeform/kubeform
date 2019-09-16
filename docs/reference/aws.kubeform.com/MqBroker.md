@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `MqBroker` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[MqBrokerSpec](#MqBrokerSpec)***||
-| `status` | ***[MqBrokerStatus](#MqBrokerStatus)***||
+| `spec` | ***[MqBrokerSpec](#mqbrokerspec)***||
+| `status` | ***[MqBrokerStatus](#mqbrokerstatus)***||
 ## MqBrokerSpec
 
-Appears on:[MqBroker](#MqBroker), [MqBrokerStatus](#MqBrokerStatus)
+Appears on:[MqBroker](#mqbroker), [MqBrokerStatus](#mqbrokerstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,22 +31,22 @@ Appears on:[MqBroker](#MqBroker), [MqBrokerStatus](#MqBrokerStatus)
 | `arn` | ***string***| ***(Optional)*** |
 | `autoMinorVersionUpgrade` | ***bool***| ***(Optional)*** |
 | `brokerName` | ***string***||
-| `configuration` | ***[[]MqBrokerSpecConfiguration](#MqBrokerSpecConfiguration)***| ***(Optional)*** |
+| `configuration` | ***[[]MqBrokerSpecConfiguration](#mqbrokerspecconfiguration)***| ***(Optional)*** |
 | `deploymentMode` | ***string***| ***(Optional)*** |
 | `engineType` | ***string***||
 | `engineVersion` | ***string***||
 | `hostInstanceType` | ***string***||
-| `instances` | ***[[]MqBrokerSpecInstances](#MqBrokerSpecInstances)***| ***(Optional)*** |
-| `logs` | ***[[]MqBrokerSpecLogs](#MqBrokerSpecLogs)***| ***(Optional)*** |
-| `maintenanceWindowStartTime` | ***[[]MqBrokerSpecMaintenanceWindowStartTime](#MqBrokerSpecMaintenanceWindowStartTime)***| ***(Optional)*** |
+| `instances` | ***[[]MqBrokerSpecInstances](#mqbrokerspecinstances)***| ***(Optional)*** |
+| `logs` | ***[[]MqBrokerSpecLogs](#mqbrokerspeclogs)***| ***(Optional)*** |
+| `maintenanceWindowStartTime` | ***[[]MqBrokerSpecMaintenanceWindowStartTime](#mqbrokerspecmaintenancewindowstarttime)***| ***(Optional)*** |
 | `publiclyAccessible` | ***bool***| ***(Optional)*** |
 | `securityGroups` | ***[]string***||
 | `subnetIDS` | ***[]string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `user` | ***[[]MqBrokerSpecUser](#MqBrokerSpecUser)***||
+| `user` | ***[[]MqBrokerSpecUser](#mqbrokerspecuser)***||
 ## MqBrokerSpecConfiguration
 
-Appears on:[MqBrokerSpec](#MqBrokerSpec)
+Appears on:[MqBrokerSpec](#mqbrokerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -54,7 +54,7 @@ Appears on:[MqBrokerSpec](#MqBrokerSpec)
 | `revision` | ***int***| ***(Optional)*** |
 ## MqBrokerSpecInstances
 
-Appears on:[MqBrokerSpec](#MqBrokerSpec)
+Appears on:[MqBrokerSpec](#mqbrokerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -63,7 +63,7 @@ Appears on:[MqBrokerSpec](#MqBrokerSpec)
 | `ipAddress` | ***string***| ***(Optional)*** |
 ## MqBrokerSpecLogs
 
-Appears on:[MqBrokerSpec](#MqBrokerSpec)
+Appears on:[MqBrokerSpec](#mqbrokerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -71,7 +71,7 @@ Appears on:[MqBrokerSpec](#MqBrokerSpec)
 | `general` | ***bool***| ***(Optional)*** |
 ## MqBrokerSpecMaintenanceWindowStartTime
 
-Appears on:[MqBrokerSpec](#MqBrokerSpec)
+Appears on:[MqBrokerSpec](#mqbrokerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -80,7 +80,7 @@ Appears on:[MqBrokerSpec](#MqBrokerSpec)
 | `timeZone` | ***string***||
 ## MqBrokerSpecUser
 
-Appears on:[MqBrokerSpec](#MqBrokerSpec)
+Appears on:[MqBrokerSpec](#mqbrokerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -89,12 +89,12 @@ Appears on:[MqBrokerSpec](#MqBrokerSpec)
 | `username` | ***string***||
 ## MqBrokerStatus
 
-Appears on:[MqBroker](#MqBroker)
+Appears on:[MqBroker](#mqbroker)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[MqBrokerSpec](#MqBrokerSpec)***| ***(Optional)*** |
+| `output` | ***[MqBrokerSpec](#mqbrokerspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

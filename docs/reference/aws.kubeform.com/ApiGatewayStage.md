@@ -16,17 +16,17 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiGatewayStage` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiGatewayStageSpec](#ApiGatewayStageSpec)***||
-| `status` | ***[ApiGatewayStageStatus](#ApiGatewayStageStatus)***||
+| `spec` | ***[ApiGatewayStageSpec](#apigatewaystagespec)***||
+| `status` | ***[ApiGatewayStageStatus](#apigatewaystagestatus)***||
 ## ApiGatewayStageSpec
 
-Appears on:[ApiGatewayStage](#ApiGatewayStage), [ApiGatewayStageStatus](#ApiGatewayStageStatus)
+Appears on:[ApiGatewayStage](#apigatewaystage), [ApiGatewayStageStatus](#apigatewaystagestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `accessLogSettings` | ***[[]ApiGatewayStageSpecAccessLogSettings](#ApiGatewayStageSpecAccessLogSettings)***| ***(Optional)*** |
+| `accessLogSettings` | ***[[]ApiGatewayStageSpecAccessLogSettings](#apigatewaystagespecaccesslogsettings)***| ***(Optional)*** |
 | `cacheClusterEnabled` | ***bool***| ***(Optional)*** |
 | `cacheClusterSize` | ***string***| ***(Optional)*** |
 | `clientCertificateID` | ***string***| ***(Optional)*** |
@@ -42,7 +42,7 @@ Appears on:[ApiGatewayStage](#ApiGatewayStage), [ApiGatewayStageStatus](#ApiGate
 | `xrayTracingEnabled` | ***bool***| ***(Optional)*** |
 ## ApiGatewayStageSpecAccessLogSettings
 
-Appears on:[ApiGatewayStageSpec](#ApiGatewayStageSpec)
+Appears on:[ApiGatewayStageSpec](#apigatewaystagespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -50,11 +50,11 @@ Appears on:[ApiGatewayStageSpec](#ApiGatewayStageSpec)
 | `format` | ***string***||
 ## ApiGatewayStageStatus
 
-Appears on:[ApiGatewayStage](#ApiGatewayStage)
+Appears on:[ApiGatewayStage](#apigatewaystage)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiGatewayStageSpec](#ApiGatewayStageSpec)***| ***(Optional)*** |
+| `output` | ***[ApiGatewayStageSpec](#apigatewaystagespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

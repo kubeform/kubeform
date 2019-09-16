@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `PinpointApnsVoipChannel` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PinpointApnsVoipChannelSpec](#PinpointApnsVoipChannelSpec)***||
-| `status` | ***[PinpointApnsVoipChannelStatus](#PinpointApnsVoipChannelStatus)***||
+| `spec` | ***[PinpointApnsVoipChannelSpec](#pinpointapnsvoipchannelspec)***||
+| `status` | ***[PinpointApnsVoipChannelStatus](#pinpointapnsvoipchannelstatus)***||
 ## PinpointApnsVoipChannelSpec
 
-Appears on:[PinpointApnsVoipChannel](#PinpointApnsVoipChannel), [PinpointApnsVoipChannelStatus](#PinpointApnsVoipChannelStatus)
+Appears on:[PinpointApnsVoipChannel](#pinpointapnsvoipchannel), [PinpointApnsVoipChannelStatus](#pinpointapnsvoipchannelstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,12 +32,12 @@ Appears on:[PinpointApnsVoipChannel](#PinpointApnsVoipChannel), [PinpointApnsVoi
 | `enabled` | ***bool***| ***(Optional)*** |
 ## PinpointApnsVoipChannelStatus
 
-Appears on:[PinpointApnsVoipChannel](#PinpointApnsVoipChannel)
+Appears on:[PinpointApnsVoipChannel](#pinpointapnsvoipchannel)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PinpointApnsVoipChannelSpec](#PinpointApnsVoipChannelSpec)***| ***(Optional)*** |
+| `output` | ***[PinpointApnsVoipChannelSpec](#pinpointapnsvoipchannelspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

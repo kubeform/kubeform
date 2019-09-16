@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ElasticsearchDomainPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ElasticsearchDomainPolicySpec](#ElasticsearchDomainPolicySpec)***||
-| `status` | ***[ElasticsearchDomainPolicyStatus](#ElasticsearchDomainPolicyStatus)***||
+| `spec` | ***[ElasticsearchDomainPolicySpec](#elasticsearchdomainpolicyspec)***||
+| `status` | ***[ElasticsearchDomainPolicyStatus](#elasticsearchdomainpolicystatus)***||
 ## ElasticsearchDomainPolicySpec
 
-Appears on:[ElasticsearchDomainPolicy](#ElasticsearchDomainPolicy), [ElasticsearchDomainPolicyStatus](#ElasticsearchDomainPolicyStatus)
+Appears on:[ElasticsearchDomainPolicy](#elasticsearchdomainpolicy), [ElasticsearchDomainPolicyStatus](#elasticsearchdomainpolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[ElasticsearchDomainPolicy](#ElasticsearchDomainPolicy), [Elasticsear
 | `domainName` | ***string***||
 ## ElasticsearchDomainPolicyStatus
 
-Appears on:[ElasticsearchDomainPolicy](#ElasticsearchDomainPolicy)
+Appears on:[ElasticsearchDomainPolicy](#elasticsearchdomainpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ElasticsearchDomainPolicySpec](#ElasticsearchDomainPolicySpec)***| ***(Optional)*** |
+| `output` | ***[ElasticsearchDomainPolicySpec](#elasticsearchdomainpolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

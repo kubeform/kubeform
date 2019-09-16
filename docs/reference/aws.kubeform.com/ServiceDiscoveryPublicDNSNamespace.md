@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ServiceDiscoveryPublicDNSNamespace` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ServiceDiscoveryPublicDNSNamespaceSpec](#ServiceDiscoveryPublicDNSNamespaceSpec)***||
-| `status` | ***[ServiceDiscoveryPublicDNSNamespaceStatus](#ServiceDiscoveryPublicDNSNamespaceStatus)***||
+| `spec` | ***[ServiceDiscoveryPublicDNSNamespaceSpec](#servicediscoverypublicdnsnamespacespec)***||
+| `status` | ***[ServiceDiscoveryPublicDNSNamespaceStatus](#servicediscoverypublicdnsnamespacestatus)***||
 ## ServiceDiscoveryPublicDNSNamespaceSpec
 
-Appears on:[ServiceDiscoveryPublicDNSNamespace](#ServiceDiscoveryPublicDNSNamespace), [ServiceDiscoveryPublicDNSNamespaceStatus](#ServiceDiscoveryPublicDNSNamespaceStatus)
+Appears on:[ServiceDiscoveryPublicDNSNamespace](#servicediscoverypublicdnsnamespace), [ServiceDiscoveryPublicDNSNamespaceStatus](#servicediscoverypublicdnsnamespacestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[ServiceDiscoveryPublicDNSNamespace](#ServiceDiscoveryPublicDNSNamesp
 | `name` | ***string***||
 ## ServiceDiscoveryPublicDNSNamespaceStatus
 
-Appears on:[ServiceDiscoveryPublicDNSNamespace](#ServiceDiscoveryPublicDNSNamespace)
+Appears on:[ServiceDiscoveryPublicDNSNamespace](#servicediscoverypublicdnsnamespace)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ServiceDiscoveryPublicDNSNamespaceSpec](#ServiceDiscoveryPublicDNSNamespaceSpec)***| ***(Optional)*** |
+| `output` | ***[ServiceDiscoveryPublicDNSNamespaceSpec](#servicediscoverypublicdnsnamespacespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

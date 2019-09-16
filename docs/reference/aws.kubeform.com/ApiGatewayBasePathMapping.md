@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiGatewayBasePathMapping` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiGatewayBasePathMappingSpec](#ApiGatewayBasePathMappingSpec)***||
-| `status` | ***[ApiGatewayBasePathMappingStatus](#ApiGatewayBasePathMappingStatus)***||
+| `spec` | ***[ApiGatewayBasePathMappingSpec](#apigatewaybasepathmappingspec)***||
+| `status` | ***[ApiGatewayBasePathMappingStatus](#apigatewaybasepathmappingstatus)***||
 ## ApiGatewayBasePathMappingSpec
 
-Appears on:[ApiGatewayBasePathMapping](#ApiGatewayBasePathMapping), [ApiGatewayBasePathMappingStatus](#ApiGatewayBasePathMappingStatus)
+Appears on:[ApiGatewayBasePathMapping](#apigatewaybasepathmapping), [ApiGatewayBasePathMappingStatus](#apigatewaybasepathmappingstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[ApiGatewayBasePathMapping](#ApiGatewayBasePathMapping), [ApiGatewayB
 | `stageName` | ***string***| ***(Optional)*** |
 ## ApiGatewayBasePathMappingStatus
 
-Appears on:[ApiGatewayBasePathMapping](#ApiGatewayBasePathMapping)
+Appears on:[ApiGatewayBasePathMapping](#apigatewaybasepathmapping)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiGatewayBasePathMappingSpec](#ApiGatewayBasePathMappingSpec)***| ***(Optional)*** |
+| `output` | ***[ApiGatewayBasePathMappingSpec](#apigatewaybasepathmappingspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

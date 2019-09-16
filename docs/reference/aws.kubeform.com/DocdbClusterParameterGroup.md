@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DocdbClusterParameterGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DocdbClusterParameterGroupSpec](#DocdbClusterParameterGroupSpec)***||
-| `status` | ***[DocdbClusterParameterGroupStatus](#DocdbClusterParameterGroupStatus)***||
+| `spec` | ***[DocdbClusterParameterGroupSpec](#docdbclusterparametergroupspec)***||
+| `status` | ***[DocdbClusterParameterGroupStatus](#docdbclusterparametergroupstatus)***||
 ## DocdbClusterParameterGroupSpec
 
-Appears on:[DocdbClusterParameterGroup](#DocdbClusterParameterGroup), [DocdbClusterParameterGroupStatus](#DocdbClusterParameterGroupStatus)
+Appears on:[DocdbClusterParameterGroup](#docdbclusterparametergroup), [DocdbClusterParameterGroupStatus](#docdbclusterparametergroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[DocdbClusterParameterGroup](#DocdbClusterParameterGroup), [DocdbClus
 | `family` | ***string***||
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
-| `parameter` | ***[[]DocdbClusterParameterGroupSpecParameter](#DocdbClusterParameterGroupSpecParameter)***| ***(Optional)*** |
+| `parameter` | ***[[]DocdbClusterParameterGroupSpecParameter](#docdbclusterparametergroupspecparameter)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DocdbClusterParameterGroupSpecParameter
 
-Appears on:[DocdbClusterParameterGroupSpec](#DocdbClusterParameterGroupSpec)
+Appears on:[DocdbClusterParameterGroupSpec](#docdbclusterparametergroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -44,11 +44,11 @@ Appears on:[DocdbClusterParameterGroupSpec](#DocdbClusterParameterGroupSpec)
 | `value` | ***string***||
 ## DocdbClusterParameterGroupStatus
 
-Appears on:[DocdbClusterParameterGroup](#DocdbClusterParameterGroup)
+Appears on:[DocdbClusterParameterGroup](#docdbclusterparametergroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DocdbClusterParameterGroupSpec](#DocdbClusterParameterGroupSpec)***| ***(Optional)*** |
+| `output` | ***[DocdbClusterParameterGroupSpec](#docdbclusterparametergroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

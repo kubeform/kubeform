@@ -16,43 +16,43 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `FolderOrganizationPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[FolderOrganizationPolicySpec](#FolderOrganizationPolicySpec)***||
-| `status` | ***[FolderOrganizationPolicyStatus](#FolderOrganizationPolicyStatus)***||
+| `spec` | ***[FolderOrganizationPolicySpec](#folderorganizationpolicyspec)***||
+| `status` | ***[FolderOrganizationPolicyStatus](#folderorganizationpolicystatus)***||
 ## FolderOrganizationPolicySpec
 
-Appears on:[FolderOrganizationPolicy](#FolderOrganizationPolicy), [FolderOrganizationPolicyStatus](#FolderOrganizationPolicyStatus)
+Appears on:[FolderOrganizationPolicy](#folderorganizationpolicy), [FolderOrganizationPolicyStatus](#folderorganizationpolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `booleanPolicy` | ***[[]FolderOrganizationPolicySpecBooleanPolicy](#FolderOrganizationPolicySpecBooleanPolicy)***| ***(Optional)*** |
+| `booleanPolicy` | ***[[]FolderOrganizationPolicySpecBooleanPolicy](#folderorganizationpolicyspecbooleanpolicy)***| ***(Optional)*** |
 | `constraint` | ***string***||
 | `etag` | ***string***| ***(Optional)*** |
 | `folder` | ***string***||
-| `listPolicy` | ***[[]FolderOrganizationPolicySpecListPolicy](#FolderOrganizationPolicySpecListPolicy)***| ***(Optional)*** |
-| `restorePolicy` | ***[[]FolderOrganizationPolicySpecRestorePolicy](#FolderOrganizationPolicySpecRestorePolicy)***| ***(Optional)*** |
+| `listPolicy` | ***[[]FolderOrganizationPolicySpecListPolicy](#folderorganizationpolicyspeclistpolicy)***| ***(Optional)*** |
+| `restorePolicy` | ***[[]FolderOrganizationPolicySpecRestorePolicy](#folderorganizationpolicyspecrestorepolicy)***| ***(Optional)*** |
 | `updateTime` | ***string***| ***(Optional)*** |
 | `version` | ***int***| ***(Optional)*** |
 ## FolderOrganizationPolicySpecBooleanPolicy
 
-Appears on:[FolderOrganizationPolicySpec](#FolderOrganizationPolicySpec)
+Appears on:[FolderOrganizationPolicySpec](#folderorganizationpolicyspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enforced` | ***bool***||
 ## FolderOrganizationPolicySpecListPolicy
 
-Appears on:[FolderOrganizationPolicySpec](#FolderOrganizationPolicySpec)
+Appears on:[FolderOrganizationPolicySpec](#folderorganizationpolicyspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `allow` | ***[[]FolderOrganizationPolicySpecListPolicyAllow](#FolderOrganizationPolicySpecListPolicyAllow)***| ***(Optional)*** |
-| `deny` | ***[[]FolderOrganizationPolicySpecListPolicyDeny](#FolderOrganizationPolicySpecListPolicyDeny)***| ***(Optional)*** |
+| `allow` | ***[[]FolderOrganizationPolicySpecListPolicyAllow](#folderorganizationpolicyspeclistpolicyallow)***| ***(Optional)*** |
+| `deny` | ***[[]FolderOrganizationPolicySpecListPolicyDeny](#folderorganizationpolicyspeclistpolicydeny)***| ***(Optional)*** |
 | `suggestedValue` | ***string***| ***(Optional)*** |
 ## FolderOrganizationPolicySpecListPolicyAllow
 
-Appears on:[FolderOrganizationPolicySpecListPolicy](#FolderOrganizationPolicySpecListPolicy)
+Appears on:[FolderOrganizationPolicySpecListPolicy](#folderorganizationpolicyspeclistpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -60,7 +60,7 @@ Appears on:[FolderOrganizationPolicySpecListPolicy](#FolderOrganizationPolicySpe
 | `values` | ***[]string***| ***(Optional)*** |
 ## FolderOrganizationPolicySpecListPolicyDeny
 
-Appears on:[FolderOrganizationPolicySpecListPolicy](#FolderOrganizationPolicySpecListPolicy)
+Appears on:[FolderOrganizationPolicySpecListPolicy](#folderorganizationpolicyspeclistpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -68,18 +68,18 @@ Appears on:[FolderOrganizationPolicySpecListPolicy](#FolderOrganizationPolicySpe
 | `values` | ***[]string***| ***(Optional)*** |
 ## FolderOrganizationPolicySpecRestorePolicy
 
-Appears on:[FolderOrganizationPolicySpec](#FolderOrganizationPolicySpec)
+Appears on:[FolderOrganizationPolicySpec](#folderorganizationpolicyspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `default` | ***bool***||
 ## FolderOrganizationPolicyStatus
 
-Appears on:[FolderOrganizationPolicy](#FolderOrganizationPolicy)
+Appears on:[FolderOrganizationPolicy](#folderorganizationpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[FolderOrganizationPolicySpec](#FolderOrganizationPolicySpec)***| ***(Optional)*** |
+| `output` | ***[FolderOrganizationPolicySpec](#folderorganizationpolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

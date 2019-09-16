@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DxPrivateVirtualInterface` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DxPrivateVirtualInterfaceSpec](#DxPrivateVirtualInterfaceSpec)***||
-| `status` | ***[DxPrivateVirtualInterfaceStatus](#DxPrivateVirtualInterfaceStatus)***||
+| `spec` | ***[DxPrivateVirtualInterfaceSpec](#dxprivatevirtualinterfacespec)***||
+| `status` | ***[DxPrivateVirtualInterfaceStatus](#dxprivatevirtualinterfacestatus)***||
 ## DxPrivateVirtualInterfaceSpec
 
-Appears on:[DxPrivateVirtualInterface](#DxPrivateVirtualInterface), [DxPrivateVirtualInterfaceStatus](#DxPrivateVirtualInterfaceStatus)
+Appears on:[DxPrivateVirtualInterface](#dxprivatevirtualinterface), [DxPrivateVirtualInterfaceStatus](#dxprivatevirtualinterfacestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -43,11 +43,11 @@ Appears on:[DxPrivateVirtualInterface](#DxPrivateVirtualInterface), [DxPrivateVi
 | `vpnGatewayID` | ***string***| ***(Optional)*** |
 ## DxPrivateVirtualInterfaceStatus
 
-Appears on:[DxPrivateVirtualInterface](#DxPrivateVirtualInterface)
+Appears on:[DxPrivateVirtualInterface](#dxprivatevirtualinterface)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DxPrivateVirtualInterfaceSpec](#DxPrivateVirtualInterfaceSpec)***| ***(Optional)*** |
+| `output` | ***[DxPrivateVirtualInterfaceSpec](#dxprivatevirtualinterfacespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

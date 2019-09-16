@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `EventhubAuthorizationRule` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[EventhubAuthorizationRuleSpec](#EventhubAuthorizationRuleSpec)***||
-| `status` | ***[EventhubAuthorizationRuleStatus](#EventhubAuthorizationRuleStatus)***||
+| `spec` | ***[EventhubAuthorizationRuleSpec](#eventhubauthorizationrulespec)***||
+| `status` | ***[EventhubAuthorizationRuleStatus](#eventhubauthorizationrulestatus)***||
 ## EventhubAuthorizationRuleSpec
 
-Appears on:[EventhubAuthorizationRule](#EventhubAuthorizationRule), [EventhubAuthorizationRuleStatus](#EventhubAuthorizationRuleStatus)
+Appears on:[EventhubAuthorizationRule](#eventhubauthorizationrule), [EventhubAuthorizationRuleStatus](#eventhubauthorizationrulestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,12 +37,12 @@ Appears on:[EventhubAuthorizationRule](#EventhubAuthorizationRule), [EventhubAut
 | `send` | ***bool***| ***(Optional)*** |
 ## EventhubAuthorizationRuleStatus
 
-Appears on:[EventhubAuthorizationRule](#EventhubAuthorizationRule)
+Appears on:[EventhubAuthorizationRule](#eventhubauthorizationrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[EventhubAuthorizationRuleSpec](#EventhubAuthorizationRuleSpec)***| ***(Optional)*** |
+| `output` | ***[EventhubAuthorizationRuleSpec](#eventhubauthorizationrulespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SsmMaintenanceWindow` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SsmMaintenanceWindowSpec](#SsmMaintenanceWindowSpec)***||
-| `status` | ***[SsmMaintenanceWindowStatus](#SsmMaintenanceWindowStatus)***||
+| `spec` | ***[SsmMaintenanceWindowSpec](#ssmmaintenancewindowspec)***||
+| `status` | ***[SsmMaintenanceWindowStatus](#ssmmaintenancewindowstatus)***||
 ## SsmMaintenanceWindowSpec
 
-Appears on:[SsmMaintenanceWindow](#SsmMaintenanceWindow), [SsmMaintenanceWindowStatus](#SsmMaintenanceWindowStatus)
+Appears on:[SsmMaintenanceWindow](#ssmmaintenancewindow), [SsmMaintenanceWindowStatus](#ssmmaintenancewindowstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,11 +38,11 @@ Appears on:[SsmMaintenanceWindow](#SsmMaintenanceWindow), [SsmMaintenanceWindowS
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SsmMaintenanceWindowStatus
 
-Appears on:[SsmMaintenanceWindow](#SsmMaintenanceWindow)
+Appears on:[SsmMaintenanceWindow](#ssmmaintenancewindow)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SsmMaintenanceWindowSpec](#SsmMaintenanceWindowSpec)***| ***(Optional)*** |
+| `output` | ***[SsmMaintenanceWindowSpec](#ssmmaintenancewindowspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

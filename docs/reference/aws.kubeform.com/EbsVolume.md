@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `EbsVolume` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[EbsVolumeSpec](#EbsVolumeSpec)***||
-| `status` | ***[EbsVolumeStatus](#EbsVolumeStatus)***||
+| `spec` | ***[EbsVolumeSpec](#ebsvolumespec)***||
+| `status` | ***[EbsVolumeStatus](#ebsvolumestatus)***||
 ## EbsVolumeSpec
 
-Appears on:[EbsVolume](#EbsVolume), [EbsVolumeStatus](#EbsVolumeStatus)
+Appears on:[EbsVolume](#ebsvolume), [EbsVolumeStatus](#ebsvolumestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,11 +37,11 @@ Appears on:[EbsVolume](#EbsVolume), [EbsVolumeStatus](#EbsVolumeStatus)
 | `type` | ***string***| ***(Optional)*** |
 ## EbsVolumeStatus
 
-Appears on:[EbsVolume](#EbsVolume)
+Appears on:[EbsVolume](#ebsvolume)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[EbsVolumeSpec](#EbsVolumeSpec)***| ***(Optional)*** |
+| `output` | ***[EbsVolumeSpec](#ebsvolumespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

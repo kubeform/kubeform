@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `RoleAssignment` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[RoleAssignmentSpec](#RoleAssignmentSpec)***||
-| `status` | ***[RoleAssignmentStatus](#RoleAssignmentStatus)***||
+| `spec` | ***[RoleAssignmentSpec](#roleassignmentspec)***||
+| `status` | ***[RoleAssignmentStatus](#roleassignmentstatus)***||
 ## RoleAssignmentSpec
 
-Appears on:[RoleAssignment](#RoleAssignment), [RoleAssignmentStatus](#RoleAssignmentStatus)
+Appears on:[RoleAssignment](#roleassignment), [RoleAssignmentStatus](#roleassignmentstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[RoleAssignment](#RoleAssignment), [RoleAssignmentStatus](#RoleAssign
 | `scope` | ***string***||
 ## RoleAssignmentStatus
 
-Appears on:[RoleAssignment](#RoleAssignment)
+Appears on:[RoleAssignment](#roleassignment)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[RoleAssignmentSpec](#RoleAssignmentSpec)***| ***(Optional)*** |
+| `output` | ***[RoleAssignmentSpec](#roleassignmentspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

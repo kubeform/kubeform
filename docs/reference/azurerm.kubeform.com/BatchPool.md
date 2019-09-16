@@ -16,33 +16,33 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `BatchPool` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[BatchPoolSpec](#BatchPoolSpec)***||
-| `status` | ***[BatchPoolStatus](#BatchPoolStatus)***||
+| `spec` | ***[BatchPoolSpec](#batchpoolspec)***||
+| `status` | ***[BatchPoolStatus](#batchpoolstatus)***||
 ## BatchPoolSpec
 
-Appears on:[BatchPool](#BatchPool), [BatchPoolStatus](#BatchPoolStatus)
+Appears on:[BatchPool](#batchpool), [BatchPoolStatus](#batchpoolstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `accountName` | ***string***||
-| `autoScale` | ***[[]BatchPoolSpecAutoScale](#BatchPoolSpecAutoScale)***| ***(Optional)*** |
-| `certificate` | ***[[]BatchPoolSpecCertificate](#BatchPoolSpecCertificate)***| ***(Optional)*** |
-| `containerConfiguration` | ***[[]BatchPoolSpecContainerConfiguration](#BatchPoolSpecContainerConfiguration)***| ***(Optional)*** |
+| `autoScale` | ***[[]BatchPoolSpecAutoScale](#batchpoolspecautoscale)***| ***(Optional)*** |
+| `certificate` | ***[[]BatchPoolSpecCertificate](#batchpoolspeccertificate)***| ***(Optional)*** |
+| `containerConfiguration` | ***[[]BatchPoolSpecContainerConfiguration](#batchpoolspeccontainerconfiguration)***| ***(Optional)*** |
 | `displayName` | ***string***| ***(Optional)*** |
-| `fixedScale` | ***[[]BatchPoolSpecFixedScale](#BatchPoolSpecFixedScale)***| ***(Optional)*** |
+| `fixedScale` | ***[[]BatchPoolSpecFixedScale](#batchpoolspecfixedscale)***| ***(Optional)*** |
 | `maxTasksPerNode` | ***int***| ***(Optional)*** |
 | `name` | ***string***||
 | `nodeAgentSkuID` | ***string***||
 | `resourceGroupName` | ***string***||
-| `startTask` | ***[[]BatchPoolSpecStartTask](#BatchPoolSpecStartTask)***| ***(Optional)*** |
+| `startTask` | ***[[]BatchPoolSpecStartTask](#batchpoolspecstarttask)***| ***(Optional)*** |
 | `stopPendingResizeOperation` | ***bool***| ***(Optional)*** |
-| `storageImageReference` | ***[[]BatchPoolSpecStorageImageReference](#BatchPoolSpecStorageImageReference)***||
+| `storageImageReference` | ***[[]BatchPoolSpecStorageImageReference](#batchpoolspecstorageimagereference)***||
 | `vmSize` | ***string***||
 ## BatchPoolSpecAutoScale
 
-Appears on:[BatchPoolSpec](#BatchPoolSpec)
+Appears on:[BatchPoolSpec](#batchpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -50,7 +50,7 @@ Appears on:[BatchPoolSpec](#BatchPoolSpec)
 | `formula` | ***string***||
 ## BatchPoolSpecCertificate
 
-Appears on:[BatchPoolSpec](#BatchPoolSpec)
+Appears on:[BatchPoolSpec](#batchpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -60,14 +60,14 @@ Appears on:[BatchPoolSpec](#BatchPoolSpec)
 | `visibility` | ***[]string***| ***(Optional)*** |
 ## BatchPoolSpecContainerConfiguration
 
-Appears on:[BatchPoolSpec](#BatchPoolSpec)
+Appears on:[BatchPoolSpec](#batchpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***| ***(Optional)*** |
 ## BatchPoolSpecFixedScale
 
-Appears on:[BatchPoolSpec](#BatchPoolSpec)
+Appears on:[BatchPoolSpec](#batchpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -76,19 +76,19 @@ Appears on:[BatchPoolSpec](#BatchPoolSpec)
 | `targetLowPriorityNodes` | ***int***| ***(Optional)*** |
 ## BatchPoolSpecStartTask
 
-Appears on:[BatchPoolSpec](#BatchPoolSpec)
+Appears on:[BatchPoolSpec](#batchpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `commandLine` | ***string***||
 | `environment` | ***map[string]string***| ***(Optional)*** |
 | `maxTaskRetryCount` | ***int***| ***(Optional)*** |
-| `resourceFile` | ***[[]BatchPoolSpecStartTaskResourceFile](#BatchPoolSpecStartTaskResourceFile)***| ***(Optional)*** |
-| `userIdentity` | ***[[]BatchPoolSpecStartTaskUserIdentity](#BatchPoolSpecStartTaskUserIdentity)***||
+| `resourceFile` | ***[[]BatchPoolSpecStartTaskResourceFile](#batchpoolspecstarttaskresourcefile)***| ***(Optional)*** |
+| `userIdentity` | ***[[]BatchPoolSpecStartTaskUserIdentity](#batchpoolspecstarttaskuseridentity)***||
 | `waitForSuccess` | ***bool***| ***(Optional)*** |
 ## BatchPoolSpecStartTaskResourceFile
 
-Appears on:[BatchPoolSpecStartTask](#BatchPoolSpecStartTask)
+Appears on:[BatchPoolSpecStartTask](#batchpoolspecstarttask)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -100,15 +100,15 @@ Appears on:[BatchPoolSpecStartTask](#BatchPoolSpecStartTask)
 | `storageContainerURL` | ***string***| ***(Optional)*** |
 ## BatchPoolSpecStartTaskUserIdentity
 
-Appears on:[BatchPoolSpecStartTask](#BatchPoolSpecStartTask)
+Appears on:[BatchPoolSpecStartTask](#batchpoolspecstarttask)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `autoUser` | ***[[]BatchPoolSpecStartTaskUserIdentityAutoUser](#BatchPoolSpecStartTaskUserIdentityAutoUser)***| ***(Optional)*** |
+| `autoUser` | ***[[]BatchPoolSpecStartTaskUserIdentityAutoUser](#batchpoolspecstarttaskuseridentityautouser)***| ***(Optional)*** |
 | `userName` | ***string***| ***(Optional)*** |
 ## BatchPoolSpecStartTaskUserIdentityAutoUser
 
-Appears on:[BatchPoolSpecStartTaskUserIdentity](#BatchPoolSpecStartTaskUserIdentity)
+Appears on:[BatchPoolSpecStartTaskUserIdentity](#batchpoolspecstarttaskuseridentity)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -116,7 +116,7 @@ Appears on:[BatchPoolSpecStartTaskUserIdentity](#BatchPoolSpecStartTaskUserIdent
 | `scope` | ***string***| ***(Optional)*** |
 ## BatchPoolSpecStorageImageReference
 
-Appears on:[BatchPoolSpec](#BatchPoolSpec)
+Appears on:[BatchPoolSpec](#batchpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -127,11 +127,11 @@ Appears on:[BatchPoolSpec](#BatchPoolSpec)
 | `version` | ***string***| ***(Optional)*** |
 ## BatchPoolStatus
 
-Appears on:[BatchPool](#BatchPool)
+Appears on:[BatchPool](#batchpool)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[BatchPoolSpec](#BatchPoolSpec)***| ***(Optional)*** |
+| `output` | ***[BatchPoolSpec](#batchpoolspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

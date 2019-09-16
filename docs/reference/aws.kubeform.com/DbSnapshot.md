@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DbSnapshot` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DbSnapshotSpec](#DbSnapshotSpec)***||
-| `status` | ***[DbSnapshotStatus](#DbSnapshotStatus)***||
+| `spec` | ***[DbSnapshotSpec](#dbsnapshotspec)***||
+| `status` | ***[DbSnapshotStatus](#dbsnapshotstatus)***||
 ## DbSnapshotSpec
 
-Appears on:[DbSnapshot](#DbSnapshot), [DbSnapshotStatus](#DbSnapshotStatus)
+Appears on:[DbSnapshot](#dbsnapshot), [DbSnapshotStatus](#dbsnapshotstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -48,11 +48,11 @@ Appears on:[DbSnapshot](#DbSnapshot), [DbSnapshotStatus](#DbSnapshotStatus)
 | `vpcID` | ***string***| ***(Optional)*** |
 ## DbSnapshotStatus
 
-Appears on:[DbSnapshot](#DbSnapshot)
+Appears on:[DbSnapshot](#dbsnapshot)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DbSnapshotSpec](#DbSnapshotSpec)***| ***(Optional)*** |
+| `output` | ***[DbSnapshotSpec](#dbsnapshotspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

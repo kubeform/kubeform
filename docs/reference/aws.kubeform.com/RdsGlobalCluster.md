@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `RdsGlobalCluster` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[RdsGlobalClusterSpec](#RdsGlobalClusterSpec)***||
-| `status` | ***[RdsGlobalClusterStatus](#RdsGlobalClusterStatus)***||
+| `spec` | ***[RdsGlobalClusterSpec](#rdsglobalclusterspec)***||
+| `status` | ***[RdsGlobalClusterStatus](#rdsglobalclusterstatus)***||
 ## RdsGlobalClusterSpec
 
-Appears on:[RdsGlobalCluster](#RdsGlobalCluster), [RdsGlobalClusterStatus](#RdsGlobalClusterStatus)
+Appears on:[RdsGlobalCluster](#rdsglobalcluster), [RdsGlobalClusterStatus](#rdsglobalclusterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -36,11 +36,11 @@ Appears on:[RdsGlobalCluster](#RdsGlobalCluster), [RdsGlobalClusterStatus](#RdsG
 | `storageEncrypted` | ***bool***| ***(Optional)*** |
 ## RdsGlobalClusterStatus
 
-Appears on:[RdsGlobalCluster](#RdsGlobalCluster)
+Appears on:[RdsGlobalCluster](#rdsglobalcluster)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[RdsGlobalClusterSpec](#RdsGlobalClusterSpec)***| ***(Optional)*** |
+| `output` | ***[RdsGlobalClusterSpec](#rdsglobalclusterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

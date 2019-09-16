@@ -16,17 +16,17 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeRouter` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeRouterSpec](#ComputeRouterSpec)***||
-| `status` | ***[ComputeRouterStatus](#ComputeRouterStatus)***||
+| `spec` | ***[ComputeRouterSpec](#computerouterspec)***||
+| `status` | ***[ComputeRouterStatus](#computerouterstatus)***||
 ## ComputeRouterSpec
 
-Appears on:[ComputeRouter](#ComputeRouter), [ComputeRouterStatus](#ComputeRouterStatus)
+Appears on:[ComputeRouter](#computerouter), [ComputeRouterStatus](#computerouterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `bgp` | ***[[]ComputeRouterSpecBgp](#ComputeRouterSpecBgp)***| ***(Optional)*** |
+| `bgp` | ***[[]ComputeRouterSpecBgp](#computerouterspecbgp)***| ***(Optional)*** |
 | `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
@@ -36,17 +36,17 @@ Appears on:[ComputeRouter](#ComputeRouter), [ComputeRouterStatus](#ComputeRouter
 | `selfLink` | ***string***| ***(Optional)*** |
 ## ComputeRouterSpecBgp
 
-Appears on:[ComputeRouterSpec](#ComputeRouterSpec)
+Appears on:[ComputeRouterSpec](#computerouterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `advertiseMode` | ***string***| ***(Optional)*** |
 | `advertisedGroups` | ***[]string***| ***(Optional)*** |
-| `advertisedIPRanges` | ***[[]ComputeRouterSpecBgpAdvertisedIPRanges](#ComputeRouterSpecBgpAdvertisedIPRanges)***| ***(Optional)*** |
+| `advertisedIPRanges` | ***[[]ComputeRouterSpecBgpAdvertisedIPRanges](#computerouterspecbgpadvertisedipranges)***| ***(Optional)*** |
 | `asn` | ***int***||
 ## ComputeRouterSpecBgpAdvertisedIPRanges
 
-Appears on:[ComputeRouterSpecBgp](#ComputeRouterSpecBgp)
+Appears on:[ComputeRouterSpecBgp](#computerouterspecbgp)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -54,11 +54,11 @@ Appears on:[ComputeRouterSpecBgp](#ComputeRouterSpecBgp)
 | `range` | ***string***| ***(Optional)*** |
 ## ComputeRouterStatus
 
-Appears on:[ComputeRouter](#ComputeRouter)
+Appears on:[ComputeRouter](#computerouter)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeRouterSpec](#ComputeRouterSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeRouterSpec](#computerouterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,23 +16,23 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ContainerGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ContainerGroupSpec](#ContainerGroupSpec)***||
-| `status` | ***[ContainerGroupStatus](#ContainerGroupStatus)***||
+| `spec` | ***[ContainerGroupSpec](#containergroupspec)***||
+| `status` | ***[ContainerGroupStatus](#containergroupstatus)***||
 ## ContainerGroupSpec
 
-Appears on:[ContainerGroup](#ContainerGroup), [ContainerGroupStatus](#ContainerGroupStatus)
+Appears on:[ContainerGroup](#containergroup), [ContainerGroupStatus](#containergroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
-| `container` | ***[[]ContainerGroupSpecContainer](#ContainerGroupSpecContainer)***||
-| `diagnostics` | ***[[]ContainerGroupSpecDiagnostics](#ContainerGroupSpecDiagnostics)***| ***(Optional)*** |
+| `container` | ***[[]ContainerGroupSpecContainer](#containergroupspeccontainer)***||
+| `diagnostics` | ***[[]ContainerGroupSpecDiagnostics](#containergroupspecdiagnostics)***| ***(Optional)*** |
 | `dnsNameLabel` | ***string***| ***(Optional)*** |
 | `fqdn` | ***string***| ***(Optional)*** |
-| `identity` | ***[[]ContainerGroupSpecIdentity](#ContainerGroupSpecIdentity)***| ***(Optional)*** |
-| `imageRegistryCredential` | ***[[]ContainerGroupSpecImageRegistryCredential](#ContainerGroupSpecImageRegistryCredential)***| ***(Optional)*** |
+| `identity` | ***[[]ContainerGroupSpecIdentity](#containergroupspecidentity)***| ***(Optional)*** |
+| `imageRegistryCredential` | ***[[]ContainerGroupSpecImageRegistryCredential](#containergroupspecimageregistrycredential)***| ***(Optional)*** |
 | `ipAddress` | ***string***| ***(Optional)*** |
 | `ipAddressType` | ***string***| ***(Optional)*** |
 | `location` | ***string***||
@@ -43,7 +43,7 @@ Appears on:[ContainerGroup](#ContainerGroup), [ContainerGroupStatus](#ContainerG
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ContainerGroupSpecContainer
 
-Appears on:[ContainerGroupSpec](#ContainerGroupSpec)
+Appears on:[ContainerGroupSpec](#containergroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -51,19 +51,19 @@ Appears on:[ContainerGroupSpec](#ContainerGroupSpec)
 | `commands` | ***[]string***| ***(Optional)*** |
 | `cpu` | ***encoding/json.Number***||
 | `environmentVariables` | ***map[string]string***| ***(Optional)*** |
-| `gpu` | ***[[]ContainerGroupSpecContainerGpu](#ContainerGroupSpecContainerGpu)***| ***(Optional)*** |
+| `gpu` | ***[[]ContainerGroupSpecContainerGpu](#containergroupspeccontainergpu)***| ***(Optional)*** |
 | `image` | ***string***||
-| `livenessProbe` | ***[[]ContainerGroupSpecContainerLivenessProbe](#ContainerGroupSpecContainerLivenessProbe)***| ***(Optional)*** |
+| `livenessProbe` | ***[[]ContainerGroupSpecContainerLivenessProbe](#containergroupspeccontainerlivenessprobe)***| ***(Optional)*** |
 | `memory` | ***encoding/json.Number***||
 | `name` | ***string***||
 | `port` | ***int***| ***(Optional)*** Deprecated|
-| `ports` | ***[[]ContainerGroupSpecContainerPorts](#ContainerGroupSpecContainerPorts)***| ***(Optional)*** |
+| `ports` | ***[[]ContainerGroupSpecContainerPorts](#containergroupspeccontainerports)***| ***(Optional)*** |
 | `protocol` | ***string***| ***(Optional)*** Deprecated|
-| `readinessProbe` | ***[[]ContainerGroupSpecContainerReadinessProbe](#ContainerGroupSpecContainerReadinessProbe)***| ***(Optional)*** |
-| `volume` | ***[[]ContainerGroupSpecContainerVolume](#ContainerGroupSpecContainerVolume)***| ***(Optional)*** |
+| `readinessProbe` | ***[[]ContainerGroupSpecContainerReadinessProbe](#containergroupspeccontainerreadinessprobe)***| ***(Optional)*** |
+| `volume` | ***[[]ContainerGroupSpecContainerVolume](#containergroupspeccontainervolume)***| ***(Optional)*** |
 ## ContainerGroupSpecContainerGpu
 
-Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer)
+Appears on:[ContainerGroupSpecContainer](#containergroupspeccontainer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -71,20 +71,20 @@ Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer)
 | `sku` | ***string***| ***(Optional)*** |
 ## ContainerGroupSpecContainerLivenessProbe
 
-Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer)
+Appears on:[ContainerGroupSpecContainer](#containergroupspeccontainer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `exec` | ***[]string***| ***(Optional)*** |
 | `failureThreshold` | ***int***| ***(Optional)*** |
-| `httpGet` | ***[[]ContainerGroupSpecContainerLivenessProbeHttpGet](#ContainerGroupSpecContainerLivenessProbeHttpGet)***| ***(Optional)*** |
+| `httpGet` | ***[[]ContainerGroupSpecContainerLivenessProbeHttpGet](#containergroupspeccontainerlivenessprobehttpget)***| ***(Optional)*** |
 | `initialDelaySeconds` | ***int***| ***(Optional)*** |
 | `periodSeconds` | ***int***| ***(Optional)*** |
 | `successThreshold` | ***int***| ***(Optional)*** |
 | `timeoutSeconds` | ***int***| ***(Optional)*** |
 ## ContainerGroupSpecContainerLivenessProbeHttpGet
 
-Appears on:[ContainerGroupSpecContainerLivenessProbe](#ContainerGroupSpecContainerLivenessProbe)
+Appears on:[ContainerGroupSpecContainerLivenessProbe](#containergroupspeccontainerlivenessprobe)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -93,7 +93,7 @@ Appears on:[ContainerGroupSpecContainerLivenessProbe](#ContainerGroupSpecContain
 | `scheme` | ***string***| ***(Optional)*** |
 ## ContainerGroupSpecContainerPorts
 
-Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer)
+Appears on:[ContainerGroupSpecContainer](#containergroupspeccontainer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -101,20 +101,20 @@ Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer)
 | `protocol` | ***string***| ***(Optional)*** |
 ## ContainerGroupSpecContainerReadinessProbe
 
-Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer)
+Appears on:[ContainerGroupSpecContainer](#containergroupspeccontainer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `exec` | ***[]string***| ***(Optional)*** |
 | `failureThreshold` | ***int***| ***(Optional)*** |
-| `httpGet` | ***[[]ContainerGroupSpecContainerReadinessProbeHttpGet](#ContainerGroupSpecContainerReadinessProbeHttpGet)***| ***(Optional)*** |
+| `httpGet` | ***[[]ContainerGroupSpecContainerReadinessProbeHttpGet](#containergroupspeccontainerreadinessprobehttpget)***| ***(Optional)*** |
 | `initialDelaySeconds` | ***int***| ***(Optional)*** |
 | `periodSeconds` | ***int***| ***(Optional)*** |
 | `successThreshold` | ***int***| ***(Optional)*** |
 | `timeoutSeconds` | ***int***| ***(Optional)*** |
 ## ContainerGroupSpecContainerReadinessProbeHttpGet
 
-Appears on:[ContainerGroupSpecContainerReadinessProbe](#ContainerGroupSpecContainerReadinessProbe)
+Appears on:[ContainerGroupSpecContainerReadinessProbe](#containergroupspeccontainerreadinessprobe)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -123,7 +123,7 @@ Appears on:[ContainerGroupSpecContainerReadinessProbe](#ContainerGroupSpecContai
 | `scheme` | ***string***| ***(Optional)*** |
 ## ContainerGroupSpecContainerVolume
 
-Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer)
+Appears on:[ContainerGroupSpecContainer](#containergroupspeccontainer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -135,14 +135,14 @@ Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer)
 | `storageAccountName` | ***string***||
 ## ContainerGroupSpecDiagnostics
 
-Appears on:[ContainerGroupSpec](#ContainerGroupSpec)
+Appears on:[ContainerGroupSpec](#containergroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `logAnalytics` | ***[[]ContainerGroupSpecDiagnosticsLogAnalytics](#ContainerGroupSpecDiagnosticsLogAnalytics)***||
+| `logAnalytics` | ***[[]ContainerGroupSpecDiagnosticsLogAnalytics](#containergroupspecdiagnosticsloganalytics)***||
 ## ContainerGroupSpecDiagnosticsLogAnalytics
 
-Appears on:[ContainerGroupSpecDiagnostics](#ContainerGroupSpecDiagnostics)
+Appears on:[ContainerGroupSpecDiagnostics](#containergroupspecdiagnostics)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -151,7 +151,7 @@ Appears on:[ContainerGroupSpecDiagnostics](#ContainerGroupSpecDiagnostics)
 | `workspaceID` | ***string***||
 ## ContainerGroupSpecIdentity
 
-Appears on:[ContainerGroupSpec](#ContainerGroupSpec)
+Appears on:[ContainerGroupSpec](#containergroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -160,7 +160,7 @@ Appears on:[ContainerGroupSpec](#ContainerGroupSpec)
 | `type` | ***string***||
 ## ContainerGroupSpecImageRegistryCredential
 
-Appears on:[ContainerGroupSpec](#ContainerGroupSpec)
+Appears on:[ContainerGroupSpec](#containergroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -168,12 +168,12 @@ Appears on:[ContainerGroupSpec](#ContainerGroupSpec)
 | `username` | ***string***||
 ## ContainerGroupStatus
 
-Appears on:[ContainerGroup](#ContainerGroup)
+Appears on:[ContainerGroup](#containergroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ContainerGroupSpec](#ContainerGroupSpec)***| ***(Optional)*** |
+| `output` | ***[ContainerGroupSpec](#containergroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

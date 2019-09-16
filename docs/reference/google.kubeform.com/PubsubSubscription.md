@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `PubsubSubscription` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PubsubSubscriptionSpec](#PubsubSubscriptionSpec)***||
-| `status` | ***[PubsubSubscriptionStatus](#PubsubSubscriptionStatus)***||
+| `spec` | ***[PubsubSubscriptionSpec](#pubsubsubscriptionspec)***||
+| `status` | ***[PubsubSubscriptionStatus](#pubsubsubscriptionstatus)***||
 ## PubsubSubscriptionSpec
 
-Appears on:[PubsubSubscription](#PubsubSubscription), [PubsubSubscriptionStatus](#PubsubSubscriptionStatus)
+Appears on:[PubsubSubscription](#pubsubsubscription), [PubsubSubscriptionStatus](#pubsubsubscriptionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[PubsubSubscription](#PubsubSubscription), [PubsubSubscriptionStatus]
 | `name` | ***string***||
 | `path` | ***string***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
-| `pushConfig` | ***[[]PubsubSubscriptionSpecPushConfig](#PubsubSubscriptionSpecPushConfig)***| ***(Optional)*** |
+| `pushConfig` | ***[[]PubsubSubscriptionSpecPushConfig](#pubsubsubscriptionspecpushconfig)***| ***(Optional)*** |
 | `topic` | ***string***||
 ## PubsubSubscriptionSpecPushConfig
 
-Appears on:[PubsubSubscriptionSpec](#PubsubSubscriptionSpec)
+Appears on:[PubsubSubscriptionSpec](#pubsubsubscriptionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -42,11 +42,11 @@ Appears on:[PubsubSubscriptionSpec](#PubsubSubscriptionSpec)
 | `pushEndpoint` | ***string***||
 ## PubsubSubscriptionStatus
 
-Appears on:[PubsubSubscription](#PubsubSubscription)
+Appears on:[PubsubSubscription](#pubsubsubscription)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PubsubSubscriptionSpec](#PubsubSubscriptionSpec)***| ***(Optional)*** |
+| `output` | ***[PubsubSubscriptionSpec](#pubsubsubscriptionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

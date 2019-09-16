@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiManagementCertificate` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiManagementCertificateSpec](#ApiManagementCertificateSpec)***||
-| `status` | ***[ApiManagementCertificateStatus](#ApiManagementCertificateStatus)***||
+| `spec` | ***[ApiManagementCertificateSpec](#apimanagementcertificatespec)***||
+| `status` | ***[ApiManagementCertificateStatus](#apimanagementcertificatestatus)***||
 ## ApiManagementCertificateSpec
 
-Appears on:[ApiManagementCertificate](#ApiManagementCertificate), [ApiManagementCertificateStatus](#ApiManagementCertificateStatus)
+Appears on:[ApiManagementCertificate](#apimanagementcertificate), [ApiManagementCertificateStatus](#apimanagementcertificatestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,12 +35,12 @@ Appears on:[ApiManagementCertificate](#ApiManagementCertificate), [ApiManagement
 | `thumbprint` | ***string***| ***(Optional)*** |
 ## ApiManagementCertificateStatus
 
-Appears on:[ApiManagementCertificate](#ApiManagementCertificate)
+Appears on:[ApiManagementCertificate](#apimanagementcertificate)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiManagementCertificateSpec](#ApiManagementCertificateSpec)***| ***(Optional)*** |
+| `output` | ***[ApiManagementCertificateSpec](#apimanagementcertificatespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

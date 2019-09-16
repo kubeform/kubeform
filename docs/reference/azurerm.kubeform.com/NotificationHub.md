@@ -16,26 +16,26 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `NotificationHub` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NotificationHubSpec](#NotificationHubSpec)***||
-| `status` | ***[NotificationHubStatus](#NotificationHubStatus)***||
+| `spec` | ***[NotificationHubSpec](#notificationhubspec)***||
+| `status` | ***[NotificationHubStatus](#notificationhubstatus)***||
 ## NotificationHubSpec
 
-Appears on:[NotificationHub](#NotificationHub), [NotificationHubStatus](#NotificationHubStatus)
+Appears on:[NotificationHub](#notificationhub), [NotificationHubStatus](#notificationhubstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
-| `apnsCredential` | ***[[]NotificationHubSpecApnsCredential](#NotificationHubSpecApnsCredential)***| ***(Optional)*** |
-| `gcmCredential` | ***[[]NotificationHubSpecGcmCredential](#NotificationHubSpecGcmCredential)***| ***(Optional)*** |
+| `apnsCredential` | ***[[]NotificationHubSpecApnsCredential](#notificationhubspecapnscredential)***| ***(Optional)*** |
+| `gcmCredential` | ***[[]NotificationHubSpecGcmCredential](#notificationhubspecgcmcredential)***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
 | `namespaceName` | ***string***||
 | `resourceGroupName` | ***string***||
 ## NotificationHubSpecApnsCredential
 
-Appears on:[NotificationHubSpec](#NotificationHubSpec)
+Appears on:[NotificationHubSpec](#notificationhubspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -45,18 +45,18 @@ Appears on:[NotificationHubSpec](#NotificationHubSpec)
 | `teamID` | ***string***||
 ## NotificationHubSpecGcmCredential
 
-Appears on:[NotificationHubSpec](#NotificationHubSpec)
+Appears on:[NotificationHubSpec](#notificationhubspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 ## NotificationHubStatus
 
-Appears on:[NotificationHub](#NotificationHub)
+Appears on:[NotificationHub](#notificationhub)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NotificationHubSpec](#NotificationHubSpec)***| ***(Optional)*** |
+| `output` | ***[NotificationHubSpec](#notificationhubspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `SecurityCenterContact` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SecurityCenterContactSpec](#SecurityCenterContactSpec)***||
-| `status` | ***[SecurityCenterContactStatus](#SecurityCenterContactStatus)***||
+| `spec` | ***[SecurityCenterContactSpec](#securitycentercontactspec)***||
+| `status` | ***[SecurityCenterContactStatus](#securitycentercontactstatus)***||
 ## SecurityCenterContactSpec
 
-Appears on:[SecurityCenterContact](#SecurityCenterContact), [SecurityCenterContactStatus](#SecurityCenterContactStatus)
+Appears on:[SecurityCenterContact](#securitycentercontact), [SecurityCenterContactStatus](#securitycentercontactstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[SecurityCenterContact](#SecurityCenterContact), [SecurityCenterConta
 | `phone` | ***string***| ***(Optional)*** |
 ## SecurityCenterContactStatus
 
-Appears on:[SecurityCenterContact](#SecurityCenterContact)
+Appears on:[SecurityCenterContact](#securitycentercontact)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SecurityCenterContactSpec](#SecurityCenterContactSpec)***| ***(Optional)*** |
+| `output` | ***[SecurityCenterContactSpec](#securitycentercontactspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

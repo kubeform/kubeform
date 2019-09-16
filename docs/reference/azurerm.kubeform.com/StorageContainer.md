@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `StorageContainer` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[StorageContainerSpec](#StorageContainerSpec)***||
-| `status` | ***[StorageContainerStatus](#StorageContainerStatus)***||
+| `spec` | ***[StorageContainerSpec](#storagecontainerspec)***||
+| `status` | ***[StorageContainerStatus](#storagecontainerstatus)***||
 ## StorageContainerSpec
 
-Appears on:[StorageContainer](#StorageContainer), [StorageContainerStatus](#StorageContainerStatus)
+Appears on:[StorageContainer](#storagecontainer), [StorageContainerStatus](#storagecontainerstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -36,11 +36,11 @@ Appears on:[StorageContainer](#StorageContainer), [StorageContainerStatus](#Stor
 | `storageAccountName` | ***string***||
 ## StorageContainerStatus
 
-Appears on:[StorageContainer](#StorageContainer)
+Appears on:[StorageContainer](#storagecontainer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[StorageContainerSpec](#StorageContainerSpec)***| ***(Optional)*** |
+| `output` | ***[StorageContainerSpec](#storagecontainerspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

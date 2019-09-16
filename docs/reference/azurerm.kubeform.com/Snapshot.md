@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `Snapshot` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SnapshotSpec](#SnapshotSpec)***||
-| `status` | ***[SnapshotStatus](#SnapshotStatus)***||
+| `spec` | ***[SnapshotSpec](#snapshotspec)***||
+| `status` | ***[SnapshotStatus](#snapshotstatus)***||
 ## SnapshotSpec
 
-Appears on:[Snapshot](#Snapshot), [SnapshotStatus](#SnapshotStatus)
+Appears on:[Snapshot](#snapshot), [SnapshotStatus](#snapshotstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,7 +28,7 @@ Appears on:[Snapshot](#Snapshot), [SnapshotStatus](#SnapshotStatus)
 | `id` | ***string***||
 | `createOption` | ***string***||
 | `diskSizeGb` | ***int***| ***(Optional)*** |
-| `encryptionSettings` | ***[[]SnapshotSpecEncryptionSettings](#SnapshotSpecEncryptionSettings)***| ***(Optional)*** |
+| `encryptionSettings` | ***[[]SnapshotSpecEncryptionSettings](#snapshotspecencryptionsettings)***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
@@ -38,16 +38,16 @@ Appears on:[Snapshot](#Snapshot), [SnapshotStatus](#SnapshotStatus)
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SnapshotSpecEncryptionSettings
 
-Appears on:[SnapshotSpec](#SnapshotSpec)
+Appears on:[SnapshotSpec](#snapshotspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskEncryptionKey` | ***[[]SnapshotSpecEncryptionSettingsDiskEncryptionKey](#SnapshotSpecEncryptionSettingsDiskEncryptionKey)***| ***(Optional)*** |
+| `diskEncryptionKey` | ***[[]SnapshotSpecEncryptionSettingsDiskEncryptionKey](#snapshotspecencryptionsettingsdiskencryptionkey)***| ***(Optional)*** |
 | `enabled` | ***bool***||
-| `keyEncryptionKey` | ***[[]SnapshotSpecEncryptionSettingsKeyEncryptionKey](#SnapshotSpecEncryptionSettingsKeyEncryptionKey)***| ***(Optional)*** |
+| `keyEncryptionKey` | ***[[]SnapshotSpecEncryptionSettingsKeyEncryptionKey](#snapshotspecencryptionsettingskeyencryptionkey)***| ***(Optional)*** |
 ## SnapshotSpecEncryptionSettingsDiskEncryptionKey
 
-Appears on:[SnapshotSpecEncryptionSettings](#SnapshotSpecEncryptionSettings)
+Appears on:[SnapshotSpecEncryptionSettings](#snapshotspecencryptionsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -55,7 +55,7 @@ Appears on:[SnapshotSpecEncryptionSettings](#SnapshotSpecEncryptionSettings)
 | `sourceVaultID` | ***string***||
 ## SnapshotSpecEncryptionSettingsKeyEncryptionKey
 
-Appears on:[SnapshotSpecEncryptionSettings](#SnapshotSpecEncryptionSettings)
+Appears on:[SnapshotSpecEncryptionSettings](#snapshotspecencryptionsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -63,11 +63,11 @@ Appears on:[SnapshotSpecEncryptionSettings](#SnapshotSpecEncryptionSettings)
 | `sourceVaultID` | ***string***||
 ## SnapshotStatus
 
-Appears on:[Snapshot](#Snapshot)
+Appears on:[Snapshot](#snapshot)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SnapshotSpec](#SnapshotSpec)***| ***(Optional)*** |
+| `output` | ***[SnapshotSpec](#snapshotspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

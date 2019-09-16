@@ -16,29 +16,29 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `VpcPeeringConnectionAccepter` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[VpcPeeringConnectionAccepterSpec](#VpcPeeringConnectionAccepterSpec)***||
-| `status` | ***[VpcPeeringConnectionAccepterStatus](#VpcPeeringConnectionAccepterStatus)***||
+| `spec` | ***[VpcPeeringConnectionAccepterSpec](#vpcpeeringconnectionaccepterspec)***||
+| `status` | ***[VpcPeeringConnectionAccepterStatus](#vpcpeeringconnectionaccepterstatus)***||
 ## VpcPeeringConnectionAccepterSpec
 
-Appears on:[VpcPeeringConnectionAccepter](#VpcPeeringConnectionAccepter), [VpcPeeringConnectionAccepterStatus](#VpcPeeringConnectionAccepterStatus)
+Appears on:[VpcPeeringConnectionAccepter](#vpcpeeringconnectionaccepter), [VpcPeeringConnectionAccepterStatus](#vpcpeeringconnectionaccepterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `acceptStatus` | ***string***| ***(Optional)*** |
-| `accepter` | ***[[]VpcPeeringConnectionAccepterSpecAccepter](#VpcPeeringConnectionAccepterSpecAccepter)***| ***(Optional)*** |
+| `accepter` | ***[[]VpcPeeringConnectionAccepterSpecAccepter](#vpcpeeringconnectionaccepterspecaccepter)***| ***(Optional)*** |
 | `autoAccept` | ***bool***| ***(Optional)*** |
 | `peerOwnerID` | ***string***| ***(Optional)*** |
 | `peerRegion` | ***string***| ***(Optional)*** |
 | `peerVpcID` | ***string***| ***(Optional)*** |
-| `requester` | ***[[]VpcPeeringConnectionAccepterSpecRequester](#VpcPeeringConnectionAccepterSpecRequester)***| ***(Optional)*** |
+| `requester` | ***[[]VpcPeeringConnectionAccepterSpecRequester](#vpcpeeringconnectionaccepterspecrequester)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpcID` | ***string***| ***(Optional)*** |
 | `vpcPeeringConnectionID` | ***string***||
 ## VpcPeeringConnectionAccepterSpecAccepter
 
-Appears on:[VpcPeeringConnectionAccepterSpec](#VpcPeeringConnectionAccepterSpec)
+Appears on:[VpcPeeringConnectionAccepterSpec](#vpcpeeringconnectionaccepterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -47,7 +47,7 @@ Appears on:[VpcPeeringConnectionAccepterSpec](#VpcPeeringConnectionAccepterSpec)
 | `allowVpcToRemoteClassicLink` | ***bool***| ***(Optional)*** |
 ## VpcPeeringConnectionAccepterSpecRequester
 
-Appears on:[VpcPeeringConnectionAccepterSpec](#VpcPeeringConnectionAccepterSpec)
+Appears on:[VpcPeeringConnectionAccepterSpec](#vpcpeeringconnectionaccepterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -56,11 +56,11 @@ Appears on:[VpcPeeringConnectionAccepterSpec](#VpcPeeringConnectionAccepterSpec)
 | `allowVpcToRemoteClassicLink` | ***bool***| ***(Optional)*** |
 ## VpcPeeringConnectionAccepterStatus
 
-Appears on:[VpcPeeringConnectionAccepter](#VpcPeeringConnectionAccepter)
+Appears on:[VpcPeeringConnectionAccepter](#vpcpeeringconnectionaccepter)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[VpcPeeringConnectionAccepterSpec](#VpcPeeringConnectionAccepterSpec)***| ***(Optional)*** |
+| `output` | ***[VpcPeeringConnectionAccepterSpec](#vpcpeeringconnectionaccepterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

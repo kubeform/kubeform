@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `WafregionalRateBasedRule` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[WafregionalRateBasedRuleSpec](#WafregionalRateBasedRuleSpec)***||
-| `status` | ***[WafregionalRateBasedRuleStatus](#WafregionalRateBasedRuleStatus)***||
+| `spec` | ***[WafregionalRateBasedRuleSpec](#wafregionalratebasedrulespec)***||
+| `status` | ***[WafregionalRateBasedRuleStatus](#wafregionalratebasedrulestatus)***||
 ## WafregionalRateBasedRuleSpec
 
-Appears on:[WafregionalRateBasedRule](#WafregionalRateBasedRule), [WafregionalRateBasedRuleStatus](#WafregionalRateBasedRuleStatus)
+Appears on:[WafregionalRateBasedRule](#wafregionalratebasedrule), [WafregionalRateBasedRuleStatus](#wafregionalratebasedrulestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,12 +28,12 @@ Appears on:[WafregionalRateBasedRule](#WafregionalRateBasedRule), [WafregionalRa
 | `id` | ***string***||
 | `metricName` | ***string***||
 | `name` | ***string***||
-| `predicate` | ***[[]WafregionalRateBasedRuleSpecPredicate](#WafregionalRateBasedRuleSpecPredicate)***| ***(Optional)*** |
+| `predicate` | ***[[]WafregionalRateBasedRuleSpecPredicate](#wafregionalratebasedrulespecpredicate)***| ***(Optional)*** |
 | `rateKey` | ***string***||
 | `rateLimit` | ***int***||
 ## WafregionalRateBasedRuleSpecPredicate
 
-Appears on:[WafregionalRateBasedRuleSpec](#WafregionalRateBasedRuleSpec)
+Appears on:[WafregionalRateBasedRuleSpec](#wafregionalratebasedrulespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -42,11 +42,11 @@ Appears on:[WafregionalRateBasedRuleSpec](#WafregionalRateBasedRuleSpec)
 | `type` | ***string***||
 ## WafregionalRateBasedRuleStatus
 
-Appears on:[WafregionalRateBasedRule](#WafregionalRateBasedRule)
+Appears on:[WafregionalRateBasedRule](#wafregionalratebasedrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[WafregionalRateBasedRuleSpec](#WafregionalRateBasedRuleSpec)***| ***(Optional)*** |
+| `output` | ***[WafregionalRateBasedRuleSpec](#wafregionalratebasedrulespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

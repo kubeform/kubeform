@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `LightsailKeyPair` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LightsailKeyPairSpec](#LightsailKeyPairSpec)***||
-| `status` | ***[LightsailKeyPairStatus](#LightsailKeyPairStatus)***||
+| `spec` | ***[LightsailKeyPairSpec](#lightsailkeypairspec)***||
+| `status` | ***[LightsailKeyPairStatus](#lightsailkeypairstatus)***||
 ## LightsailKeyPairSpec
 
-Appears on:[LightsailKeyPair](#LightsailKeyPair), [LightsailKeyPairStatus](#LightsailKeyPairStatus)
+Appears on:[LightsailKeyPair](#lightsailkeypair), [LightsailKeyPairStatus](#lightsailkeypairstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,11 +37,11 @@ Appears on:[LightsailKeyPair](#LightsailKeyPair), [LightsailKeyPairStatus](#Ligh
 | `publicKey` | ***string***| ***(Optional)*** |
 ## LightsailKeyPairStatus
 
-Appears on:[LightsailKeyPair](#LightsailKeyPair)
+Appears on:[LightsailKeyPair](#lightsailkeypair)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LightsailKeyPairSpec](#LightsailKeyPairSpec)***| ***(Optional)*** |
+| `output` | ***[LightsailKeyPairSpec](#lightsailkeypairspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

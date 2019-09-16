@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `LightsailInstance` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LightsailInstanceSpec](#LightsailInstanceSpec)***||
-| `status` | ***[LightsailInstanceStatus](#LightsailInstanceStatus)***||
+| `spec` | ***[LightsailInstanceSpec](#lightsailinstancespec)***||
+| `status` | ***[LightsailInstanceStatus](#lightsailinstancestatus)***||
 ## LightsailInstanceSpec
 
-Appears on:[LightsailInstance](#LightsailInstance), [LightsailInstanceStatus](#LightsailInstanceStatus)
+Appears on:[LightsailInstance](#lightsailinstance), [LightsailInstanceStatus](#lightsailinstancestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -43,11 +43,11 @@ Appears on:[LightsailInstance](#LightsailInstance), [LightsailInstanceStatus](#L
 | `username` | ***string***| ***(Optional)*** |
 ## LightsailInstanceStatus
 
-Appears on:[LightsailInstance](#LightsailInstance)
+Appears on:[LightsailInstance](#lightsailinstance)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LightsailInstanceSpec](#LightsailInstanceSpec)***| ***(Optional)*** |
+| `output` | ***[LightsailInstanceSpec](#lightsailinstancespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

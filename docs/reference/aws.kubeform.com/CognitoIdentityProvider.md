@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CognitoIdentityProvider` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CognitoIdentityProviderSpec](#CognitoIdentityProviderSpec)***||
-| `status` | ***[CognitoIdentityProviderStatus](#CognitoIdentityProviderStatus)***||
+| `spec` | ***[CognitoIdentityProviderSpec](#cognitoidentityproviderspec)***||
+| `status` | ***[CognitoIdentityProviderStatus](#cognitoidentityproviderstatus)***||
 ## CognitoIdentityProviderSpec
 
-Appears on:[CognitoIdentityProvider](#CognitoIdentityProvider), [CognitoIdentityProviderStatus](#CognitoIdentityProviderStatus)
+Appears on:[CognitoIdentityProvider](#cognitoidentityprovider), [CognitoIdentityProviderStatus](#cognitoidentityproviderstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[CognitoIdentityProvider](#CognitoIdentityProvider), [CognitoIdentity
 | `userPoolID` | ***string***||
 ## CognitoIdentityProviderStatus
 
-Appears on:[CognitoIdentityProvider](#CognitoIdentityProvider)
+Appears on:[CognitoIdentityProvider](#cognitoidentityprovider)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CognitoIdentityProviderSpec](#CognitoIdentityProviderSpec)***| ***(Optional)*** |
+| `output` | ***[CognitoIdentityProviderSpec](#cognitoidentityproviderspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

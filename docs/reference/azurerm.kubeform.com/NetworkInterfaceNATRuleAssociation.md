@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `NetworkInterfaceNATRuleAssociation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NetworkInterfaceNATRuleAssociationSpec](#NetworkInterfaceNATRuleAssociationSpec)***||
-| `status` | ***[NetworkInterfaceNATRuleAssociationStatus](#NetworkInterfaceNATRuleAssociationStatus)***||
+| `spec` | ***[NetworkInterfaceNATRuleAssociationSpec](#networkinterfacenatruleassociationspec)***||
+| `status` | ***[NetworkInterfaceNATRuleAssociationStatus](#networkinterfacenatruleassociationstatus)***||
 ## NetworkInterfaceNATRuleAssociationSpec
 
-Appears on:[NetworkInterfaceNATRuleAssociation](#NetworkInterfaceNATRuleAssociation), [NetworkInterfaceNATRuleAssociationStatus](#NetworkInterfaceNATRuleAssociationStatus)
+Appears on:[NetworkInterfaceNATRuleAssociation](#networkinterfacenatruleassociation), [NetworkInterfaceNATRuleAssociationStatus](#networkinterfacenatruleassociationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[NetworkInterfaceNATRuleAssociation](#NetworkInterfaceNATRuleAssociat
 | `networkInterfaceID` | ***string***||
 ## NetworkInterfaceNATRuleAssociationStatus
 
-Appears on:[NetworkInterfaceNATRuleAssociation](#NetworkInterfaceNATRuleAssociation)
+Appears on:[NetworkInterfaceNATRuleAssociation](#networkinterfacenatruleassociation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NetworkInterfaceNATRuleAssociationSpec](#NetworkInterfaceNATRuleAssociationSpec)***| ***(Optional)*** |
+| `output` | ***[NetworkInterfaceNATRuleAssociationSpec](#networkinterfacenatruleassociationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

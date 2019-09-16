@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `BackupVault` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[BackupVaultSpec](#BackupVaultSpec)***||
-| `status` | ***[BackupVaultStatus](#BackupVaultStatus)***||
+| `spec` | ***[BackupVaultSpec](#backupvaultspec)***||
+| `status` | ***[BackupVaultStatus](#backupvaultstatus)***||
 ## BackupVaultSpec
 
-Appears on:[BackupVault](#BackupVault), [BackupVaultStatus](#BackupVaultStatus)
+Appears on:[BackupVault](#backupvault), [BackupVaultStatus](#backupvaultstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[BackupVault](#BackupVault), [BackupVaultStatus](#BackupVaultStatus)
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## BackupVaultStatus
 
-Appears on:[BackupVault](#BackupVault)
+Appears on:[BackupVault](#backupvault)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[BackupVaultSpec](#BackupVaultSpec)***| ***(Optional)*** |
+| `output` | ***[BackupVaultSpec](#backupvaultspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

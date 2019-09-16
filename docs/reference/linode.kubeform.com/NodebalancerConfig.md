@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `linode.kubeform.com/v1alpha1` |
 |    `kind` | string | `NodebalancerConfig` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NodebalancerConfigSpec](#NodebalancerConfigSpec)***||
-| `status` | ***[NodebalancerConfigStatus](#NodebalancerConfigStatus)***||
+| `spec` | ***[NodebalancerConfigSpec](#nodebalancerconfigspec)***||
+| `status` | ***[NodebalancerConfigStatus](#nodebalancerconfigstatus)***||
 ## NodebalancerConfigSpec
 
-Appears on:[NodebalancerConfig](#NodebalancerConfig), [NodebalancerConfigStatus](#NodebalancerConfigStatus)
+Appears on:[NodebalancerConfig](#nodebalancerconfig), [NodebalancerConfigStatus](#nodebalancerconfigstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -46,12 +46,12 @@ Appears on:[NodebalancerConfig](#NodebalancerConfig), [NodebalancerConfigStatus]
 | `stickiness` | ***string***| ***(Optional)*** Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'|
 ## NodebalancerConfigStatus
 
-Appears on:[NodebalancerConfig](#NodebalancerConfig)
+Appears on:[NodebalancerConfig](#nodebalancerconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NodebalancerConfigSpec](#NodebalancerConfigSpec)***| ***(Optional)*** |
+| `output` | ***[NodebalancerConfigSpec](#nodebalancerconfigspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

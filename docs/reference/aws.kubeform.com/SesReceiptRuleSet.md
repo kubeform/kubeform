@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SesReceiptRuleSet` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SesReceiptRuleSetSpec](#SesReceiptRuleSetSpec)***||
-| `status` | ***[SesReceiptRuleSetStatus](#SesReceiptRuleSetStatus)***||
+| `spec` | ***[SesReceiptRuleSetSpec](#sesreceiptrulesetspec)***||
+| `status` | ***[SesReceiptRuleSetStatus](#sesreceiptrulesetstatus)***||
 ## SesReceiptRuleSetSpec
 
-Appears on:[SesReceiptRuleSet](#SesReceiptRuleSet), [SesReceiptRuleSetStatus](#SesReceiptRuleSetStatus)
+Appears on:[SesReceiptRuleSet](#sesreceiptruleset), [SesReceiptRuleSetStatus](#sesreceiptrulesetstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,11 +29,11 @@ Appears on:[SesReceiptRuleSet](#SesReceiptRuleSet), [SesReceiptRuleSetStatus](#S
 | `ruleSetName` | ***string***||
 ## SesReceiptRuleSetStatus
 
-Appears on:[SesReceiptRuleSet](#SesReceiptRuleSet)
+Appears on:[SesReceiptRuleSet](#sesreceiptruleset)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SesReceiptRuleSetSpec](#SesReceiptRuleSetSpec)***| ***(Optional)*** |
+| `output` | ***[SesReceiptRuleSetSpec](#sesreceiptrulesetspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `digitalocean.kubeform.com/v1alpha1` |
 |    `kind` | string | `FloatingIP` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[FloatingIPSpec](#FloatingIPSpec)***||
-| `status` | ***[FloatingIPStatus](#FloatingIPStatus)***||
+| `spec` | ***[FloatingIPSpec](#floatingipspec)***||
+| `status` | ***[FloatingIPStatus](#floatingipstatus)***||
 ## FloatingIPSpec
 
-Appears on:[FloatingIP](#FloatingIP), [FloatingIPStatus](#FloatingIPStatus)
+Appears on:[FloatingIP](#floatingip), [FloatingIPStatus](#floatingipstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[FloatingIP](#FloatingIP), [FloatingIPStatus](#FloatingIPStatus)
 | `urn` | ***string***| ***(Optional)*** the uniform resource name for the floating ip|
 ## FloatingIPStatus
 
-Appears on:[FloatingIP](#FloatingIP)
+Appears on:[FloatingIP](#floatingip)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[FloatingIPSpec](#FloatingIPSpec)***| ***(Optional)*** |
+| `output` | ***[FloatingIPSpec](#floatingipspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

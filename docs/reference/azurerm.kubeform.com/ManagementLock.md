@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ManagementLock` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ManagementLockSpec](#ManagementLockSpec)***||
-| `status` | ***[ManagementLockStatus](#ManagementLockStatus)***||
+| `spec` | ***[ManagementLockSpec](#managementlockspec)***||
+| `status` | ***[ManagementLockStatus](#managementlockstatus)***||
 ## ManagementLockSpec
 
-Appears on:[ManagementLock](#ManagementLock), [ManagementLockStatus](#ManagementLockStatus)
+Appears on:[ManagementLock](#managementlock), [ManagementLockStatus](#managementlockstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[ManagementLock](#ManagementLock), [ManagementLockStatus](#Management
 | `scope` | ***string***||
 ## ManagementLockStatus
 
-Appears on:[ManagementLock](#ManagementLock)
+Appears on:[ManagementLock](#managementlock)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ManagementLockSpec](#ManagementLockSpec)***| ***(Optional)*** |
+| `output` | ***[ManagementLockSpec](#managementlockspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

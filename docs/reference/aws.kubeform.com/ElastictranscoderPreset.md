@@ -16,30 +16,30 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ElastictranscoderPreset` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ElastictranscoderPresetSpec](#ElastictranscoderPresetSpec)***||
-| `status` | ***[ElastictranscoderPresetStatus](#ElastictranscoderPresetStatus)***||
+| `spec` | ***[ElastictranscoderPresetSpec](#elastictranscoderpresetspec)***||
+| `status` | ***[ElastictranscoderPresetStatus](#elastictranscoderpresetstatus)***||
 ## ElastictranscoderPresetSpec
 
-Appears on:[ElastictranscoderPreset](#ElastictranscoderPreset), [ElastictranscoderPresetStatus](#ElastictranscoderPresetStatus)
+Appears on:[ElastictranscoderPreset](#elastictranscoderpreset), [ElastictranscoderPresetStatus](#elastictranscoderpresetstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
-| `audio` | ***[[]ElastictranscoderPresetSpecAudio](#ElastictranscoderPresetSpecAudio)***| ***(Optional)*** |
-| `audioCodecOptions` | ***[[]ElastictranscoderPresetSpecAudioCodecOptions](#ElastictranscoderPresetSpecAudioCodecOptions)***| ***(Optional)*** |
+| `audio` | ***[[]ElastictranscoderPresetSpecAudio](#elastictranscoderpresetspecaudio)***| ***(Optional)*** |
+| `audioCodecOptions` | ***[[]ElastictranscoderPresetSpecAudioCodecOptions](#elastictranscoderpresetspecaudiocodecoptions)***| ***(Optional)*** |
 | `container` | ***string***||
 | `description` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
-| `thumbnails` | ***[[]ElastictranscoderPresetSpecThumbnails](#ElastictranscoderPresetSpecThumbnails)***| ***(Optional)*** |
+| `thumbnails` | ***[[]ElastictranscoderPresetSpecThumbnails](#elastictranscoderpresetspecthumbnails)***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
-| `video` | ***[[]ElastictranscoderPresetSpecVideo](#ElastictranscoderPresetSpecVideo)***| ***(Optional)*** |
+| `video` | ***[[]ElastictranscoderPresetSpecVideo](#elastictranscoderpresetspecvideo)***| ***(Optional)*** |
 | `videoCodecOptions` | ***map[string]string***| ***(Optional)*** |
-| `videoWatermarks` | ***[[]ElastictranscoderPresetSpecVideoWatermarks](#ElastictranscoderPresetSpecVideoWatermarks)***| ***(Optional)*** |
+| `videoWatermarks` | ***[[]ElastictranscoderPresetSpecVideoWatermarks](#elastictranscoderpresetspecvideowatermarks)***| ***(Optional)*** |
 ## ElastictranscoderPresetSpecAudio
 
-Appears on:[ElastictranscoderPresetSpec](#ElastictranscoderPresetSpec)
+Appears on:[ElastictranscoderPresetSpec](#elastictranscoderpresetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -50,7 +50,7 @@ Appears on:[ElastictranscoderPresetSpec](#ElastictranscoderPresetSpec)
 | `sampleRate` | ***string***| ***(Optional)*** |
 ## ElastictranscoderPresetSpecAudioCodecOptions
 
-Appears on:[ElastictranscoderPresetSpec](#ElastictranscoderPresetSpec)
+Appears on:[ElastictranscoderPresetSpec](#elastictranscoderpresetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -60,7 +60,7 @@ Appears on:[ElastictranscoderPresetSpec](#ElastictranscoderPresetSpec)
 | `signed` | ***string***| ***(Optional)*** |
 ## ElastictranscoderPresetSpecThumbnails
 
-Appears on:[ElastictranscoderPresetSpec](#ElastictranscoderPresetSpec)
+Appears on:[ElastictranscoderPresetSpec](#elastictranscoderpresetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -74,7 +74,7 @@ Appears on:[ElastictranscoderPresetSpec](#ElastictranscoderPresetSpec)
 | `sizingPolicy` | ***string***| ***(Optional)*** |
 ## ElastictranscoderPresetSpecVideo
 
-Appears on:[ElastictranscoderPresetSpec](#ElastictranscoderPresetSpec)
+Appears on:[ElastictranscoderPresetSpec](#elastictranscoderpresetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -93,7 +93,7 @@ Appears on:[ElastictranscoderPresetSpec](#ElastictranscoderPresetSpec)
 | `sizingPolicy` | ***string***| ***(Optional)*** |
 ## ElastictranscoderPresetSpecVideoWatermarks
 
-Appears on:[ElastictranscoderPresetSpec](#ElastictranscoderPresetSpec)
+Appears on:[ElastictranscoderPresetSpec](#elastictranscoderpresetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -109,11 +109,11 @@ Appears on:[ElastictranscoderPresetSpec](#ElastictranscoderPresetSpec)
 | `verticalOffset` | ***string***| ***(Optional)*** |
 ## ElastictranscoderPresetStatus
 
-Appears on:[ElastictranscoderPreset](#ElastictranscoderPreset)
+Appears on:[ElastictranscoderPreset](#elastictranscoderpreset)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ElastictranscoderPresetSpec](#ElastictranscoderPresetSpec)***| ***(Optional)*** |
+| `output` | ***[ElastictranscoderPresetSpec](#elastictranscoderpresetspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

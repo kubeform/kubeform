@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `LbOutboundRule` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LbOutboundRuleSpec](#LbOutboundRuleSpec)***||
-| `status` | ***[LbOutboundRuleStatus](#LbOutboundRuleStatus)***||
+| `spec` | ***[LbOutboundRuleSpec](#lboutboundrulespec)***||
+| `status` | ***[LbOutboundRuleStatus](#lboutboundrulestatus)***||
 ## LbOutboundRuleSpec
 
-Appears on:[LbOutboundRule](#LbOutboundRule), [LbOutboundRuleStatus](#LbOutboundRuleStatus)
+Appears on:[LbOutboundRule](#lboutboundrule), [LbOutboundRuleStatus](#lboutboundrulestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,7 +29,7 @@ Appears on:[LbOutboundRule](#LbOutboundRule), [LbOutboundRuleStatus](#LbOutbound
 | `allocatedOutboundPorts` | ***int***| ***(Optional)*** |
 | `backendAddressPoolID` | ***string***||
 | `enableTcpReset` | ***bool***| ***(Optional)*** |
-| `frontendIPConfiguration` | ***[[]LbOutboundRuleSpecFrontendIPConfiguration](#LbOutboundRuleSpecFrontendIPConfiguration)***| ***(Optional)*** |
+| `frontendIPConfiguration` | ***[[]LbOutboundRuleSpecFrontendIPConfiguration](#lboutboundrulespecfrontendipconfiguration)***| ***(Optional)*** |
 | `idleTimeoutInMinutes` | ***int***| ***(Optional)*** |
 | `loadbalancerID` | ***string***||
 | `name` | ***string***||
@@ -37,7 +37,7 @@ Appears on:[LbOutboundRule](#LbOutboundRule), [LbOutboundRuleStatus](#LbOutbound
 | `resourceGroupName` | ***string***||
 ## LbOutboundRuleSpecFrontendIPConfiguration
 
-Appears on:[LbOutboundRuleSpec](#LbOutboundRuleSpec)
+Appears on:[LbOutboundRuleSpec](#lboutboundrulespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -45,11 +45,11 @@ Appears on:[LbOutboundRuleSpec](#LbOutboundRuleSpec)
 | `name` | ***string***||
 ## LbOutboundRuleStatus
 
-Appears on:[LbOutboundRule](#LbOutboundRule)
+Appears on:[LbOutboundRule](#lboutboundrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LbOutboundRuleSpec](#LbOutboundRuleSpec)***| ***(Optional)*** |
+| `output` | ***[LbOutboundRuleSpec](#lboutboundrulespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

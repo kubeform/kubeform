@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `PubsubTopic` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PubsubTopicSpec](#PubsubTopicSpec)***||
-| `status` | ***[PubsubTopicStatus](#PubsubTopicStatus)***||
+| `spec` | ***[PubsubTopicSpec](#pubsubtopicspec)***||
+| `status` | ***[PubsubTopicStatus](#pubsubtopicstatus)***||
 ## PubsubTopicSpec
 
-Appears on:[PubsubTopic](#PubsubTopic), [PubsubTopicStatus](#PubsubTopicStatus)
+Appears on:[PubsubTopic](#pubsubtopic), [PubsubTopicStatus](#pubsubtopicstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[PubsubTopic](#PubsubTopic), [PubsubTopicStatus](#PubsubTopicStatus)
 | `project` | ***string***| ***(Optional)*** |
 ## PubsubTopicStatus
 
-Appears on:[PubsubTopic](#PubsubTopic)
+Appears on:[PubsubTopic](#pubsubtopic)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PubsubTopicSpec](#PubsubTopicSpec)***| ***(Optional)*** |
+| `output` | ***[PubsubTopicSpec](#pubsubtopicspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

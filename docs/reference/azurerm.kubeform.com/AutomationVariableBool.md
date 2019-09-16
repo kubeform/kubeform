@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `AutomationVariableBool` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AutomationVariableBoolSpec](#AutomationVariableBoolSpec)***||
-| `status` | ***[AutomationVariableBoolStatus](#AutomationVariableBoolStatus)***||
+| `spec` | ***[AutomationVariableBoolSpec](#automationvariableboolspec)***||
+| `status` | ***[AutomationVariableBoolStatus](#automationvariableboolstatus)***||
 ## AutomationVariableBoolSpec
 
-Appears on:[AutomationVariableBool](#AutomationVariableBool), [AutomationVariableBoolStatus](#AutomationVariableBoolStatus)
+Appears on:[AutomationVariableBool](#automationvariablebool), [AutomationVariableBoolStatus](#automationvariableboolstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[AutomationVariableBool](#AutomationVariableBool), [AutomationVariabl
 | `value` | ***bool***| ***(Optional)*** |
 ## AutomationVariableBoolStatus
 
-Appears on:[AutomationVariableBool](#AutomationVariableBool)
+Appears on:[AutomationVariableBool](#automationvariablebool)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AutomationVariableBoolSpec](#AutomationVariableBoolSpec)***| ***(Optional)*** |
+| `output` | ***[AutomationVariableBoolSpec](#automationvariableboolspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

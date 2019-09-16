@@ -16,47 +16,47 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `KubernetesCluster` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[KubernetesClusterSpec](#KubernetesClusterSpec)***||
-| `status` | ***[KubernetesClusterStatus](#KubernetesClusterStatus)***||
+| `spec` | ***[KubernetesClusterSpec](#kubernetesclusterspec)***||
+| `status` | ***[KubernetesClusterStatus](#kubernetesclusterstatus)***||
 ## KubernetesClusterSpec
 
-Appears on:[KubernetesCluster](#KubernetesCluster), [KubernetesClusterStatus](#KubernetesClusterStatus)
+Appears on:[KubernetesCluster](#kubernetescluster), [KubernetesClusterStatus](#kubernetesclusterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
-| `addonProfile` | ***[[]KubernetesClusterSpecAddonProfile](#KubernetesClusterSpecAddonProfile)***| ***(Optional)*** |
-| `agentPoolProfile` | ***[[]KubernetesClusterSpecAgentPoolProfile](#KubernetesClusterSpecAgentPoolProfile)***||
+| `addonProfile` | ***[[]KubernetesClusterSpecAddonProfile](#kubernetesclusterspecaddonprofile)***| ***(Optional)*** |
+| `agentPoolProfile` | ***[[]KubernetesClusterSpecAgentPoolProfile](#kubernetesclusterspecagentpoolprofile)***||
 | `apiServerAuthorizedIPRanges` | ***[]string***| ***(Optional)*** |
 | `dnsPrefix` | ***string***||
 | `fqdn` | ***string***| ***(Optional)*** |
-| `kubeAdminConfig` | ***[[]KubernetesClusterSpecKubeAdminConfig](#KubernetesClusterSpecKubeAdminConfig)***| ***(Optional)*** |
-| `kubeConfig` | ***[[]KubernetesClusterSpecKubeConfig](#KubernetesClusterSpecKubeConfig)***| ***(Optional)*** |
+| `kubeAdminConfig` | ***[[]KubernetesClusterSpecKubeAdminConfig](#kubernetesclusterspeckubeadminconfig)***| ***(Optional)*** |
+| `kubeConfig` | ***[[]KubernetesClusterSpecKubeConfig](#kubernetesclusterspeckubeconfig)***| ***(Optional)*** |
 | `kubernetesVersion` | ***string***| ***(Optional)*** |
-| `linuxProfile` | ***[[]KubernetesClusterSpecLinuxProfile](#KubernetesClusterSpecLinuxProfile)***| ***(Optional)*** |
+| `linuxProfile` | ***[[]KubernetesClusterSpecLinuxProfile](#kubernetesclusterspeclinuxprofile)***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
-| `networkProfile` | ***[[]KubernetesClusterSpecNetworkProfile](#KubernetesClusterSpecNetworkProfile)***| ***(Optional)*** |
+| `networkProfile` | ***[[]KubernetesClusterSpecNetworkProfile](#kubernetesclusterspecnetworkprofile)***| ***(Optional)*** |
 | `nodeResourceGroup` | ***string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
-| `roleBasedAccessControl` | ***[[]KubernetesClusterSpecRoleBasedAccessControl](#KubernetesClusterSpecRoleBasedAccessControl)***| ***(Optional)*** |
-| `servicePrincipal` | ***[[]KubernetesClusterSpecServicePrincipal](#KubernetesClusterSpecServicePrincipal)***||
+| `roleBasedAccessControl` | ***[[]KubernetesClusterSpecRoleBasedAccessControl](#kubernetesclusterspecrolebasedaccesscontrol)***| ***(Optional)*** |
+| `servicePrincipal` | ***[[]KubernetesClusterSpecServicePrincipal](#kubernetesclusterspecserviceprincipal)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `windowsProfile` | ***[[]KubernetesClusterSpecWindowsProfile](#KubernetesClusterSpecWindowsProfile)***| ***(Optional)*** |
+| `windowsProfile` | ***[[]KubernetesClusterSpecWindowsProfile](#kubernetesclusterspecwindowsprofile)***| ***(Optional)*** |
 ## KubernetesClusterSpecAddonProfile
 
-Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
+Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `aciConnectorLinux` | ***[[]KubernetesClusterSpecAddonProfileAciConnectorLinux](#KubernetesClusterSpecAddonProfileAciConnectorLinux)***| ***(Optional)*** |
-| `httpApplicationRouting` | ***[[]KubernetesClusterSpecAddonProfileHttpApplicationRouting](#KubernetesClusterSpecAddonProfileHttpApplicationRouting)***| ***(Optional)*** |
-| `omsAgent` | ***[[]KubernetesClusterSpecAddonProfileOmsAgent](#KubernetesClusterSpecAddonProfileOmsAgent)***| ***(Optional)*** |
+| `aciConnectorLinux` | ***[[]KubernetesClusterSpecAddonProfileAciConnectorLinux](#kubernetesclusterspecaddonprofileaciconnectorlinux)***| ***(Optional)*** |
+| `httpApplicationRouting` | ***[[]KubernetesClusterSpecAddonProfileHttpApplicationRouting](#kubernetesclusterspecaddonprofilehttpapplicationrouting)***| ***(Optional)*** |
+| `omsAgent` | ***[[]KubernetesClusterSpecAddonProfileOmsAgent](#kubernetesclusterspecaddonprofileomsagent)***| ***(Optional)*** |
 ## KubernetesClusterSpecAddonProfileAciConnectorLinux
 
-Appears on:[KubernetesClusterSpecAddonProfile](#KubernetesClusterSpecAddonProfile)
+Appears on:[KubernetesClusterSpecAddonProfile](#kubernetesclusterspecaddonprofile)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -64,7 +64,7 @@ Appears on:[KubernetesClusterSpecAddonProfile](#KubernetesClusterSpecAddonProfil
 | `subnetName` | ***string***||
 ## KubernetesClusterSpecAddonProfileHttpApplicationRouting
 
-Appears on:[KubernetesClusterSpecAddonProfile](#KubernetesClusterSpecAddonProfile)
+Appears on:[KubernetesClusterSpecAddonProfile](#kubernetesclusterspecaddonprofile)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -72,7 +72,7 @@ Appears on:[KubernetesClusterSpecAddonProfile](#KubernetesClusterSpecAddonProfil
 | `httpApplicationRoutingZoneName` | ***string***| ***(Optional)*** |
 ## KubernetesClusterSpecAddonProfileOmsAgent
 
-Appears on:[KubernetesClusterSpecAddonProfile](#KubernetesClusterSpecAddonProfile)
+Appears on:[KubernetesClusterSpecAddonProfile](#kubernetesclusterspecaddonprofile)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -80,7 +80,7 @@ Appears on:[KubernetesClusterSpecAddonProfile](#KubernetesClusterSpecAddonProfil
 | `logAnalyticsWorkspaceID` | ***string***||
 ## KubernetesClusterSpecAgentPoolProfile
 
-Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
+Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -101,7 +101,7 @@ Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
 | `vnetSubnetID` | ***string***| ***(Optional)*** |
 ## KubernetesClusterSpecKubeAdminConfig
 
-Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
+Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -111,7 +111,7 @@ Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
 | `username` | ***string***| ***(Optional)*** |
 ## KubernetesClusterSpecKubeConfig
 
-Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
+Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -121,22 +121,22 @@ Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
 | `username` | ***string***| ***(Optional)*** |
 ## KubernetesClusterSpecLinuxProfile
 
-Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
+Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `adminUsername` | ***string***||
-| `sshKey` | ***[[]KubernetesClusterSpecLinuxProfileSshKey](#KubernetesClusterSpecLinuxProfileSshKey)***||
+| `sshKey` | ***[[]KubernetesClusterSpecLinuxProfileSshKey](#kubernetesclusterspeclinuxprofilesshkey)***||
 ## KubernetesClusterSpecLinuxProfileSshKey
 
-Appears on:[KubernetesClusterSpecLinuxProfile](#KubernetesClusterSpecLinuxProfile)
+Appears on:[KubernetesClusterSpecLinuxProfile](#kubernetesclusterspeclinuxprofile)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `keyData` | ***string***||
 ## KubernetesClusterSpecNetworkProfile
 
-Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
+Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -149,15 +149,15 @@ Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
 | `serviceCIDR` | ***string***| ***(Optional)*** |
 ## KubernetesClusterSpecRoleBasedAccessControl
 
-Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
+Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `azureActiveDirectory` | ***[[]KubernetesClusterSpecRoleBasedAccessControlAzureActiveDirectory](#KubernetesClusterSpecRoleBasedAccessControlAzureActiveDirectory)***| ***(Optional)*** |
+| `azureActiveDirectory` | ***[[]KubernetesClusterSpecRoleBasedAccessControlAzureActiveDirectory](#kubernetesclusterspecrolebasedaccesscontrolazureactivedirectory)***| ***(Optional)*** |
 | `enabled` | ***bool***||
 ## KubernetesClusterSpecRoleBasedAccessControlAzureActiveDirectory
 
-Appears on:[KubernetesClusterSpecRoleBasedAccessControl](#KubernetesClusterSpecRoleBasedAccessControl)
+Appears on:[KubernetesClusterSpecRoleBasedAccessControl](#kubernetesclusterspecrolebasedaccesscontrol)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -166,26 +166,26 @@ Appears on:[KubernetesClusterSpecRoleBasedAccessControl](#KubernetesClusterSpecR
 | `tenantID` | ***string***| ***(Optional)*** |
 ## KubernetesClusterSpecServicePrincipal
 
-Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
+Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `clientID` | ***string***||
 ## KubernetesClusterSpecWindowsProfile
 
-Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
+Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `adminUsername` | ***string***||
 ## KubernetesClusterStatus
 
-Appears on:[KubernetesCluster](#KubernetesCluster)
+Appears on:[KubernetesCluster](#kubernetescluster)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[KubernetesClusterSpec](#KubernetesClusterSpec)***| ***(Optional)*** |
+| `output` | ***[KubernetesClusterSpec](#kubernetesclusterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

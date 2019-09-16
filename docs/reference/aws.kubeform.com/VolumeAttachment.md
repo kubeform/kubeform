@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `VolumeAttachment` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[VolumeAttachmentSpec](#VolumeAttachmentSpec)***||
-| `status` | ***[VolumeAttachmentStatus](#VolumeAttachmentStatus)***||
+| `spec` | ***[VolumeAttachmentSpec](#volumeattachmentspec)***||
+| `status` | ***[VolumeAttachmentStatus](#volumeattachmentstatus)***||
 ## VolumeAttachmentSpec
 
-Appears on:[VolumeAttachment](#VolumeAttachment), [VolumeAttachmentStatus](#VolumeAttachmentStatus)
+Appears on:[VolumeAttachment](#volumeattachment), [VolumeAttachmentStatus](#volumeattachmentstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[VolumeAttachment](#VolumeAttachment), [VolumeAttachmentStatus](#Volu
 | `volumeID` | ***string***||
 ## VolumeAttachmentStatus
 
-Appears on:[VolumeAttachment](#VolumeAttachment)
+Appears on:[VolumeAttachment](#volumeattachment)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[VolumeAttachmentSpec](#VolumeAttachmentSpec)***| ***(Optional)*** |
+| `output` | ***[VolumeAttachmentSpec](#volumeattachmentspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `LbListenerCertificate` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LbListenerCertificateSpec](#LbListenerCertificateSpec)***||
-| `status` | ***[LbListenerCertificateStatus](#LbListenerCertificateStatus)***||
+| `spec` | ***[LbListenerCertificateSpec](#lblistenercertificatespec)***||
+| `status` | ***[LbListenerCertificateStatus](#lblistenercertificatestatus)***||
 ## LbListenerCertificateSpec
 
-Appears on:[LbListenerCertificate](#LbListenerCertificate), [LbListenerCertificateStatus](#LbListenerCertificateStatus)
+Appears on:[LbListenerCertificate](#lblistenercertificate), [LbListenerCertificateStatus](#lblistenercertificatestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[LbListenerCertificate](#LbListenerCertificate), [LbListenerCertifica
 | `listenerArn` | ***string***||
 ## LbListenerCertificateStatus
 
-Appears on:[LbListenerCertificate](#LbListenerCertificate)
+Appears on:[LbListenerCertificate](#lblistenercertificate)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LbListenerCertificateSpec](#LbListenerCertificateSpec)***| ***(Optional)*** |
+| `output` | ***[LbListenerCertificateSpec](#lblistenercertificatespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

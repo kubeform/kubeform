@@ -16,22 +16,22 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `RedshiftSecurityGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[RedshiftSecurityGroupSpec](#RedshiftSecurityGroupSpec)***||
-| `status` | ***[RedshiftSecurityGroupStatus](#RedshiftSecurityGroupStatus)***||
+| `spec` | ***[RedshiftSecurityGroupSpec](#redshiftsecuritygroupspec)***||
+| `status` | ***[RedshiftSecurityGroupStatus](#redshiftsecuritygroupstatus)***||
 ## RedshiftSecurityGroupSpec
 
-Appears on:[RedshiftSecurityGroup](#RedshiftSecurityGroup), [RedshiftSecurityGroupStatus](#RedshiftSecurityGroupStatus)
+Appears on:[RedshiftSecurityGroup](#redshiftsecuritygroup), [RedshiftSecurityGroupStatus](#redshiftsecuritygroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `description` | ***string***| ***(Optional)*** |
-| `ingress` | ***[[]RedshiftSecurityGroupSpecIngress](#RedshiftSecurityGroupSpecIngress)***||
+| `ingress` | ***[[]RedshiftSecurityGroupSpecIngress](#redshiftsecuritygroupspecingress)***||
 | `name` | ***string***||
 ## RedshiftSecurityGroupSpecIngress
 
-Appears on:[RedshiftSecurityGroupSpec](#RedshiftSecurityGroupSpec)
+Appears on:[RedshiftSecurityGroupSpec](#redshiftsecuritygroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -40,11 +40,11 @@ Appears on:[RedshiftSecurityGroupSpec](#RedshiftSecurityGroupSpec)
 | `securityGroupOwnerID` | ***string***| ***(Optional)*** |
 ## RedshiftSecurityGroupStatus
 
-Appears on:[RedshiftSecurityGroup](#RedshiftSecurityGroup)
+Appears on:[RedshiftSecurityGroup](#redshiftsecuritygroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[RedshiftSecurityGroupSpec](#RedshiftSecurityGroupSpec)***| ***(Optional)*** |
+| `output` | ***[RedshiftSecurityGroupSpec](#redshiftsecuritygroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

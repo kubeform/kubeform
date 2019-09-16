@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `BillingAccountIamPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[BillingAccountIamPolicySpec](#BillingAccountIamPolicySpec)***||
-| `status` | ***[BillingAccountIamPolicyStatus](#BillingAccountIamPolicyStatus)***||
+| `spec` | ***[BillingAccountIamPolicySpec](#billingaccountiampolicyspec)***||
+| `status` | ***[BillingAccountIamPolicyStatus](#billingaccountiampolicystatus)***||
 ## BillingAccountIamPolicySpec
 
-Appears on:[BillingAccountIamPolicy](#BillingAccountIamPolicy), [BillingAccountIamPolicyStatus](#BillingAccountIamPolicyStatus)
+Appears on:[BillingAccountIamPolicy](#billingaccountiampolicy), [BillingAccountIamPolicyStatus](#billingaccountiampolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[BillingAccountIamPolicy](#BillingAccountIamPolicy), [BillingAccountI
 | `policyData` | ***string***||
 ## BillingAccountIamPolicyStatus
 
-Appears on:[BillingAccountIamPolicy](#BillingAccountIamPolicy)
+Appears on:[BillingAccountIamPolicy](#billingaccountiampolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[BillingAccountIamPolicySpec](#BillingAccountIamPolicySpec)***| ***(Optional)*** |
+| `output` | ***[BillingAccountIamPolicySpec](#billingaccountiampolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

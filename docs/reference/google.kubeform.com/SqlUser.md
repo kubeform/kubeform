@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `SqlUser` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SqlUserSpec](#SqlUserSpec)***||
-| `status` | ***[SqlUserStatus](#SqlUserStatus)***||
+| `spec` | ***[SqlUserSpec](#sqluserspec)***||
+| `status` | ***[SqlUserStatus](#sqluserstatus)***||
 ## SqlUserSpec
 
-Appears on:[SqlUser](#SqlUser), [SqlUserStatus](#SqlUserStatus)
+Appears on:[SqlUser](#sqluser), [SqlUserStatus](#sqluserstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,12 +33,12 @@ Appears on:[SqlUser](#SqlUser), [SqlUserStatus](#SqlUserStatus)
 | `project` | ***string***| ***(Optional)*** |
 ## SqlUserStatus
 
-Appears on:[SqlUser](#SqlUser)
+Appears on:[SqlUser](#sqluser)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SqlUserSpec](#SqlUserSpec)***| ***(Optional)*** |
+| `output` | ***[SqlUserSpec](#sqluserspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

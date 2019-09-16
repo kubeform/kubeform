@@ -16,26 +16,26 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SesEventDestination` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SesEventDestinationSpec](#SesEventDestinationSpec)***||
-| `status` | ***[SesEventDestinationStatus](#SesEventDestinationStatus)***||
+| `spec` | ***[SesEventDestinationSpec](#seseventdestinationspec)***||
+| `status` | ***[SesEventDestinationStatus](#seseventdestinationstatus)***||
 ## SesEventDestinationSpec
 
-Appears on:[SesEventDestination](#SesEventDestination), [SesEventDestinationStatus](#SesEventDestinationStatus)
+Appears on:[SesEventDestination](#seseventdestination), [SesEventDestinationStatus](#seseventdestinationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `cloudwatchDestination` | ***[[]SesEventDestinationSpecCloudwatchDestination](#SesEventDestinationSpecCloudwatchDestination)***| ***(Optional)*** |
+| `cloudwatchDestination` | ***[[]SesEventDestinationSpecCloudwatchDestination](#seseventdestinationspeccloudwatchdestination)***| ***(Optional)*** |
 | `configurationSetName` | ***string***||
 | `enabled` | ***bool***| ***(Optional)*** |
-| `kinesisDestination` | ***[[]SesEventDestinationSpecKinesisDestination](#SesEventDestinationSpecKinesisDestination)***| ***(Optional)*** |
+| `kinesisDestination` | ***[[]SesEventDestinationSpecKinesisDestination](#seseventdestinationspeckinesisdestination)***| ***(Optional)*** |
 | `matchingTypes` | ***[]string***||
 | `name` | ***string***||
-| `snsDestination` | ***[[]SesEventDestinationSpecSnsDestination](#SesEventDestinationSpecSnsDestination)***| ***(Optional)*** |
+| `snsDestination` | ***[[]SesEventDestinationSpecSnsDestination](#seseventdestinationspecsnsdestination)***| ***(Optional)*** |
 ## SesEventDestinationSpecCloudwatchDestination
 
-Appears on:[SesEventDestinationSpec](#SesEventDestinationSpec)
+Appears on:[SesEventDestinationSpec](#seseventdestinationspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -44,7 +44,7 @@ Appears on:[SesEventDestinationSpec](#SesEventDestinationSpec)
 | `valueSource` | ***string***||
 ## SesEventDestinationSpecKinesisDestination
 
-Appears on:[SesEventDestinationSpec](#SesEventDestinationSpec)
+Appears on:[SesEventDestinationSpec](#seseventdestinationspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -52,18 +52,18 @@ Appears on:[SesEventDestinationSpec](#SesEventDestinationSpec)
 | `streamArn` | ***string***||
 ## SesEventDestinationSpecSnsDestination
 
-Appears on:[SesEventDestinationSpec](#SesEventDestinationSpec)
+Appears on:[SesEventDestinationSpec](#seseventdestinationspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `topicArn` | ***string***||
 ## SesEventDestinationStatus
 
-Appears on:[SesEventDestination](#SesEventDestination)
+Appears on:[SesEventDestination](#seseventdestination)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SesEventDestinationSpec](#SesEventDestinationSpec)***| ***(Optional)*** |
+| `output` | ***[SesEventDestinationSpec](#seseventdestinationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

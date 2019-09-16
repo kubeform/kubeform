@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CognitoUserPoolClient` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CognitoUserPoolClientSpec](#CognitoUserPoolClientSpec)***||
-| `status` | ***[CognitoUserPoolClientStatus](#CognitoUserPoolClientStatus)***||
+| `spec` | ***[CognitoUserPoolClientSpec](#cognitouserpoolclientspec)***||
+| `status` | ***[CognitoUserPoolClientStatus](#cognitouserpoolclientstatus)***||
 ## CognitoUserPoolClientSpec
 
-Appears on:[CognitoUserPoolClient](#CognitoUserPoolClient), [CognitoUserPoolClientStatus](#CognitoUserPoolClientStatus)
+Appears on:[CognitoUserPoolClient](#cognitouserpoolclient), [CognitoUserPoolClientStatus](#cognitouserpoolclientstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -43,11 +43,11 @@ Appears on:[CognitoUserPoolClient](#CognitoUserPoolClient), [CognitoUserPoolClie
 | `writeAttributes` | ***[]string***| ***(Optional)*** |
 ## CognitoUserPoolClientStatus
 
-Appears on:[CognitoUserPoolClient](#CognitoUserPoolClient)
+Appears on:[CognitoUserPoolClient](#cognitouserpoolclient)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CognitoUserPoolClientSpec](#CognitoUserPoolClientSpec)***| ***(Optional)*** |
+| `output` | ***[CognitoUserPoolClientSpec](#cognitouserpoolclientspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

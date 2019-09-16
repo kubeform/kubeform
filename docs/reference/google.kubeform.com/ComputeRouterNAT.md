@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeRouterNAT` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeRouterNATSpec](#ComputeRouterNATSpec)***||
-| `status` | ***[ComputeRouterNATStatus](#ComputeRouterNATStatus)***||
+| `spec` | ***[ComputeRouterNATSpec](#computerouternatspec)***||
+| `status` | ***[ComputeRouterNATStatus](#computerouternatstatus)***||
 ## ComputeRouterNATSpec
 
-Appears on:[ComputeRouterNAT](#ComputeRouterNAT), [ComputeRouterNATStatus](#ComputeRouterNATStatus)
+Appears on:[ComputeRouterNAT](#computerouternat), [ComputeRouterNATStatus](#computerouternatstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,13 +35,13 @@ Appears on:[ComputeRouterNAT](#ComputeRouterNAT), [ComputeRouterNATStatus](#Comp
 | `region` | ***string***| ***(Optional)*** |
 | `router` | ***string***||
 | `sourceSubnetworkIPRangesToNAT` | ***string***| ***(Optional)*** |
-| `subnetwork` | ***[[]ComputeRouterNATSpecSubnetwork](#ComputeRouterNATSpecSubnetwork)***| ***(Optional)*** |
+| `subnetwork` | ***[[]ComputeRouterNATSpecSubnetwork](#computerouternatspecsubnetwork)***| ***(Optional)*** |
 | `tcpEstablishedIdleTimeoutSec` | ***int***| ***(Optional)*** |
 | `tcpTransitoryIdleTimeoutSec` | ***int***| ***(Optional)*** |
 | `udpIdleTimeoutSec` | ***int***| ***(Optional)*** |
 ## ComputeRouterNATSpecSubnetwork
 
-Appears on:[ComputeRouterNATSpec](#ComputeRouterNATSpec)
+Appears on:[ComputeRouterNATSpec](#computerouternatspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -50,11 +50,11 @@ Appears on:[ComputeRouterNATSpec](#ComputeRouterNATSpec)
 | `sourceIPRangesToNAT` | ***[]string***| ***(Optional)*** |
 ## ComputeRouterNATStatus
 
-Appears on:[ComputeRouterNAT](#ComputeRouterNAT)
+Appears on:[ComputeRouterNAT](#computerouternat)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeRouterNATSpec](#ComputeRouterNATSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeRouterNATSpec](#computerouternatspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

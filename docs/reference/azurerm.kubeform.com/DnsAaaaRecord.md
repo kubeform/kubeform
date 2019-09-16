@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `DnsAaaaRecord` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DnsAaaaRecordSpec](#DnsAaaaRecordSpec)***||
-| `status` | ***[DnsAaaaRecordStatus](#DnsAaaaRecordStatus)***||
+| `spec` | ***[DnsAaaaRecordSpec](#dnsaaaarecordspec)***||
+| `status` | ***[DnsAaaaRecordStatus](#dnsaaaarecordstatus)***||
 ## DnsAaaaRecordSpec
 
-Appears on:[DnsAaaaRecord](#DnsAaaaRecord), [DnsAaaaRecordStatus](#DnsAaaaRecordStatus)
+Appears on:[DnsAaaaRecord](#dnsaaaarecord), [DnsAaaaRecordStatus](#dnsaaaarecordstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[DnsAaaaRecord](#DnsAaaaRecord), [DnsAaaaRecordStatus](#DnsAaaaRecord
 | `zoneName` | ***string***||
 ## DnsAaaaRecordStatus
 
-Appears on:[DnsAaaaRecord](#DnsAaaaRecord)
+Appears on:[DnsAaaaRecord](#dnsaaaarecord)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DnsAaaaRecordSpec](#DnsAaaaRecordSpec)***| ***(Optional)*** |
+| `output` | ***[DnsAaaaRecordSpec](#dnsaaaarecordspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

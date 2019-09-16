@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `OpsworksStack` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[OpsworksStackSpec](#OpsworksStackSpec)***||
-| `status` | ***[OpsworksStackStatus](#OpsworksStackStatus)***||
+| `spec` | ***[OpsworksStackSpec](#opsworksstackspec)***||
+| `status` | ***[OpsworksStackStatus](#opsworksstackstatus)***||
 ## OpsworksStackSpec
 
-Appears on:[OpsworksStack](#OpsworksStack), [OpsworksStackStatus](#OpsworksStackStatus)
+Appears on:[OpsworksStack](#opsworksstack), [OpsworksStackStatus](#opsworksstackstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,7 +33,7 @@ Appears on:[OpsworksStack](#OpsworksStack), [OpsworksStackStatus](#OpsworksStack
 | `color` | ***string***| ***(Optional)*** |
 | `configurationManagerName` | ***string***| ***(Optional)*** |
 | `configurationManagerVersion` | ***string***| ***(Optional)*** |
-| `customCookbooksSource` | ***[[]OpsworksStackSpecCustomCookbooksSource](#OpsworksStackSpecCustomCookbooksSource)***| ***(Optional)*** |
+| `customCookbooksSource` | ***[[]OpsworksStackSpecCustomCookbooksSource](#opsworksstackspeccustomcookbookssource)***| ***(Optional)*** |
 | `customJSON` | ***string***| ***(Optional)*** |
 | `defaultAvailabilityZone` | ***string***| ***(Optional)*** |
 | `defaultInstanceProfileArn` | ***string***||
@@ -53,7 +53,7 @@ Appears on:[OpsworksStack](#OpsworksStack), [OpsworksStackStatus](#OpsworksStack
 | `vpcID` | ***string***| ***(Optional)*** |
 ## OpsworksStackSpecCustomCookbooksSource
 
-Appears on:[OpsworksStackSpec](#OpsworksStackSpec)
+Appears on:[OpsworksStackSpec](#opsworksstackspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -64,12 +64,12 @@ Appears on:[OpsworksStackSpec](#OpsworksStackSpec)
 | `username` | ***string***| ***(Optional)*** |
 ## OpsworksStackStatus
 
-Appears on:[OpsworksStack](#OpsworksStack)
+Appears on:[OpsworksStack](#opsworksstack)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[OpsworksStackSpec](#OpsworksStackSpec)***| ***(Optional)*** |
+| `output` | ***[OpsworksStackSpec](#opsworksstackspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

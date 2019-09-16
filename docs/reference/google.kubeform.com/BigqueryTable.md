@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `BigqueryTable` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[BigqueryTableSpec](#BigqueryTableSpec)***||
-| `status` | ***[BigqueryTableStatus](#BigqueryTableStatus)***||
+| `spec` | ***[BigqueryTableSpec](#bigquerytablespec)***||
+| `status` | ***[BigqueryTableStatus](#bigquerytablestatus)***||
 ## BigqueryTableSpec
 
-Appears on:[BigqueryTable](#BigqueryTable), [BigqueryTableStatus](#BigqueryTableStatus)
+Appears on:[BigqueryTable](#bigquerytable), [BigqueryTableStatus](#bigquerytablestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -42,12 +42,12 @@ Appears on:[BigqueryTable](#BigqueryTable), [BigqueryTableStatus](#BigqueryTable
 | `schema` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `tableID` | ***string***||
-| `timePartitioning` | ***[[]BigqueryTableSpecTimePartitioning](#BigqueryTableSpecTimePartitioning)***| ***(Optional)*** |
+| `timePartitioning` | ***[[]BigqueryTableSpecTimePartitioning](#bigquerytablespectimepartitioning)***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
-| `view` | ***[[]BigqueryTableSpecView](#BigqueryTableSpecView)***| ***(Optional)*** |
+| `view` | ***[[]BigqueryTableSpecView](#bigquerytablespecview)***| ***(Optional)*** |
 ## BigqueryTableSpecTimePartitioning
 
-Appears on:[BigqueryTableSpec](#BigqueryTableSpec)
+Appears on:[BigqueryTableSpec](#bigquerytablespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -56,7 +56,7 @@ Appears on:[BigqueryTableSpec](#BigqueryTableSpec)
 | `type` | ***string***||
 ## BigqueryTableSpecView
 
-Appears on:[BigqueryTableSpec](#BigqueryTableSpec)
+Appears on:[BigqueryTableSpec](#bigquerytablespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -64,11 +64,11 @@ Appears on:[BigqueryTableSpec](#BigqueryTableSpec)
 | `useLegacySQL` | ***bool***| ***(Optional)*** |
 ## BigqueryTableStatus
 
-Appears on:[BigqueryTable](#BigqueryTable)
+Appears on:[BigqueryTable](#bigquerytable)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[BigqueryTableSpec](#BigqueryTableSpec)***| ***(Optional)*** |
+| `output` | ***[BigqueryTableSpec](#bigquerytablespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

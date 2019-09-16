@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ElasticsearchDomain` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)***||
-| `status` | ***[ElasticsearchDomainStatus](#ElasticsearchDomainStatus)***||
+| `spec` | ***[ElasticsearchDomainSpec](#elasticsearchdomainspec)***||
+| `status` | ***[ElasticsearchDomainStatus](#elasticsearchdomainstatus)***||
 ## ElasticsearchDomainSpec
 
-Appears on:[ElasticsearchDomain](#ElasticsearchDomain), [ElasticsearchDomainStatus](#ElasticsearchDomainStatus)
+Appears on:[ElasticsearchDomain](#elasticsearchdomain), [ElasticsearchDomainStatus](#elasticsearchdomainstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,23 +29,23 @@ Appears on:[ElasticsearchDomain](#ElasticsearchDomain), [ElasticsearchDomainStat
 | `accessPolicies` | ***string***| ***(Optional)*** |
 | `advancedOptions` | ***map[string]string***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
-| `clusterConfig` | ***[[]ElasticsearchDomainSpecClusterConfig](#ElasticsearchDomainSpecClusterConfig)***| ***(Optional)*** |
-| `cognitoOptions` | ***[[]ElasticsearchDomainSpecCognitoOptions](#ElasticsearchDomainSpecCognitoOptions)***| ***(Optional)*** |
+| `clusterConfig` | ***[[]ElasticsearchDomainSpecClusterConfig](#elasticsearchdomainspecclusterconfig)***| ***(Optional)*** |
+| `cognitoOptions` | ***[[]ElasticsearchDomainSpecCognitoOptions](#elasticsearchdomainspeccognitooptions)***| ***(Optional)*** |
 | `domainID` | ***string***| ***(Optional)*** |
 | `domainName` | ***string***||
-| `ebsOptions` | ***[[]ElasticsearchDomainSpecEbsOptions](#ElasticsearchDomainSpecEbsOptions)***| ***(Optional)*** |
+| `ebsOptions` | ***[[]ElasticsearchDomainSpecEbsOptions](#elasticsearchdomainspecebsoptions)***| ***(Optional)*** |
 | `elasticsearchVersion` | ***string***| ***(Optional)*** |
-| `encryptAtRest` | ***[[]ElasticsearchDomainSpecEncryptAtRest](#ElasticsearchDomainSpecEncryptAtRest)***| ***(Optional)*** |
+| `encryptAtRest` | ***[[]ElasticsearchDomainSpecEncryptAtRest](#elasticsearchdomainspecencryptatrest)***| ***(Optional)*** |
 | `endpoint` | ***string***| ***(Optional)*** |
 | `kibanaEndpoint` | ***string***| ***(Optional)*** |
-| `logPublishingOptions` | ***[[]ElasticsearchDomainSpecLogPublishingOptions](#ElasticsearchDomainSpecLogPublishingOptions)***| ***(Optional)*** |
-| `nodeToNodeEncryption` | ***[[]ElasticsearchDomainSpecNodeToNodeEncryption](#ElasticsearchDomainSpecNodeToNodeEncryption)***| ***(Optional)*** |
-| `snapshotOptions` | ***[[]ElasticsearchDomainSpecSnapshotOptions](#ElasticsearchDomainSpecSnapshotOptions)***| ***(Optional)*** |
+| `logPublishingOptions` | ***[[]ElasticsearchDomainSpecLogPublishingOptions](#elasticsearchdomainspeclogpublishingoptions)***| ***(Optional)*** |
+| `nodeToNodeEncryption` | ***[[]ElasticsearchDomainSpecNodeToNodeEncryption](#elasticsearchdomainspecnodetonodeencryption)***| ***(Optional)*** |
+| `snapshotOptions` | ***[[]ElasticsearchDomainSpecSnapshotOptions](#elasticsearchdomainspecsnapshotoptions)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `vpcOptions` | ***[[]ElasticsearchDomainSpecVpcOptions](#ElasticsearchDomainSpecVpcOptions)***| ***(Optional)*** |
+| `vpcOptions` | ***[[]ElasticsearchDomainSpecVpcOptions](#elasticsearchdomainspecvpcoptions)***| ***(Optional)*** |
 ## ElasticsearchDomainSpecClusterConfig
 
-Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -57,7 +57,7 @@ Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
 | `zoneAwarenessEnabled` | ***bool***| ***(Optional)*** |
 ## ElasticsearchDomainSpecCognitoOptions
 
-Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -67,7 +67,7 @@ Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
 | `userPoolID` | ***string***||
 ## ElasticsearchDomainSpecEbsOptions
 
-Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -77,7 +77,7 @@ Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
 | `volumeType` | ***string***| ***(Optional)*** |
 ## ElasticsearchDomainSpecEncryptAtRest
 
-Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -85,7 +85,7 @@ Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
 | `kmsKeyID` | ***string***| ***(Optional)*** |
 ## ElasticsearchDomainSpecLogPublishingOptions
 
-Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -94,21 +94,21 @@ Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
 | `logType` | ***string***||
 ## ElasticsearchDomainSpecNodeToNodeEncryption
 
-Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 ## ElasticsearchDomainSpecSnapshotOptions
 
-Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `automatedSnapshotStartHour` | ***int***||
 ## ElasticsearchDomainSpecVpcOptions
 
-Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -118,11 +118,11 @@ Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
 | `vpcID` | ***string***| ***(Optional)*** |
 ## ElasticsearchDomainStatus
 
-Appears on:[ElasticsearchDomain](#ElasticsearchDomain)
+Appears on:[ElasticsearchDomain](#elasticsearchdomain)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)***| ***(Optional)*** |
+| `output` | ***[ElasticsearchDomainSpec](#elasticsearchdomainspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,36 +16,36 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComposerEnvironment` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComposerEnvironmentSpec](#ComposerEnvironmentSpec)***||
-| `status` | ***[ComposerEnvironmentStatus](#ComposerEnvironmentStatus)***||
+| `spec` | ***[ComposerEnvironmentSpec](#composerenvironmentspec)***||
+| `status` | ***[ComposerEnvironmentStatus](#composerenvironmentstatus)***||
 ## ComposerEnvironmentSpec
 
-Appears on:[ComposerEnvironment](#ComposerEnvironment), [ComposerEnvironmentStatus](#ComposerEnvironmentStatus)
+Appears on:[ComposerEnvironment](#composerenvironment), [ComposerEnvironmentStatus](#composerenvironmentstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `config` | ***[[]ComposerEnvironmentSpecConfig](#ComposerEnvironmentSpecConfig)***| ***(Optional)*** |
+| `config` | ***[[]ComposerEnvironmentSpecConfig](#composerenvironmentspecconfig)***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
 | `name` | ***string***||
 | `project` | ***string***| ***(Optional)*** |
 | `region` | ***string***| ***(Optional)*** |
 ## ComposerEnvironmentSpecConfig
 
-Appears on:[ComposerEnvironmentSpec](#ComposerEnvironmentSpec)
+Appears on:[ComposerEnvironmentSpec](#composerenvironmentspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `airflowURI` | ***string***| ***(Optional)*** |
 | `dagGcsPrefix` | ***string***| ***(Optional)*** |
 | `gkeCluster` | ***string***| ***(Optional)*** |
-| `nodeConfig` | ***[[]ComposerEnvironmentSpecConfigNodeConfig](#ComposerEnvironmentSpecConfigNodeConfig)***| ***(Optional)*** |
+| `nodeConfig` | ***[[]ComposerEnvironmentSpecConfigNodeConfig](#composerenvironmentspecconfignodeconfig)***| ***(Optional)*** |
 | `nodeCount` | ***int***| ***(Optional)*** |
-| `softwareConfig` | ***[[]ComposerEnvironmentSpecConfigSoftwareConfig](#ComposerEnvironmentSpecConfigSoftwareConfig)***| ***(Optional)*** |
+| `softwareConfig` | ***[[]ComposerEnvironmentSpecConfigSoftwareConfig](#composerenvironmentspecconfigsoftwareconfig)***| ***(Optional)*** |
 ## ComposerEnvironmentSpecConfigNodeConfig
 
-Appears on:[ComposerEnvironmentSpecConfig](#ComposerEnvironmentSpecConfig)
+Appears on:[ComposerEnvironmentSpecConfig](#composerenvironmentspecconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -59,7 +59,7 @@ Appears on:[ComposerEnvironmentSpecConfig](#ComposerEnvironmentSpecConfig)
 | `zone` | ***string***| ***(Optional)*** |
 ## ComposerEnvironmentSpecConfigSoftwareConfig
 
-Appears on:[ComposerEnvironmentSpecConfig](#ComposerEnvironmentSpecConfig)
+Appears on:[ComposerEnvironmentSpecConfig](#composerenvironmentspecconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -69,11 +69,11 @@ Appears on:[ComposerEnvironmentSpecConfig](#ComposerEnvironmentSpecConfig)
 | `pypiPackages` | ***map[string]string***| ***(Optional)*** |
 ## ComposerEnvironmentStatus
 
-Appears on:[ComposerEnvironment](#ComposerEnvironment)
+Appears on:[ComposerEnvironment](#composerenvironment)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComposerEnvironmentSpec](#ComposerEnvironmentSpec)***| ***(Optional)*** |
+| `output` | ***[ComposerEnvironmentSpec](#composerenvironmentspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

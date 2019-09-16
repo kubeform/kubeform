@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `Ec2TransitGatewayRouteTablePropagation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[Ec2TransitGatewayRouteTablePropagationSpec](#Ec2TransitGatewayRouteTablePropagationSpec)***||
-| `status` | ***[Ec2TransitGatewayRouteTablePropagationStatus](#Ec2TransitGatewayRouteTablePropagationStatus)***||
+| `spec` | ***[Ec2TransitGatewayRouteTablePropagationSpec](#ec2transitgatewayroutetablepropagationspec)***||
+| `status` | ***[Ec2TransitGatewayRouteTablePropagationStatus](#ec2transitgatewayroutetablepropagationstatus)***||
 ## Ec2TransitGatewayRouteTablePropagationSpec
 
-Appears on:[Ec2TransitGatewayRouteTablePropagation](#Ec2TransitGatewayRouteTablePropagation), [Ec2TransitGatewayRouteTablePropagationStatus](#Ec2TransitGatewayRouteTablePropagationStatus)
+Appears on:[Ec2TransitGatewayRouteTablePropagation](#ec2transitgatewayroutetablepropagation), [Ec2TransitGatewayRouteTablePropagationStatus](#ec2transitgatewayroutetablepropagationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[Ec2TransitGatewayRouteTablePropagation](#Ec2TransitGatewayRouteTable
 | `transitGatewayRouteTableID` | ***string***||
 ## Ec2TransitGatewayRouteTablePropagationStatus
 
-Appears on:[Ec2TransitGatewayRouteTablePropagation](#Ec2TransitGatewayRouteTablePropagation)
+Appears on:[Ec2TransitGatewayRouteTablePropagation](#ec2transitgatewayroutetablepropagation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[Ec2TransitGatewayRouteTablePropagationSpec](#Ec2TransitGatewayRouteTablePropagationSpec)***| ***(Optional)*** |
+| `output` | ***[Ec2TransitGatewayRouteTablePropagationSpec](#ec2transitgatewayroutetablepropagationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

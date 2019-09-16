@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `TransferServer` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[TransferServerSpec](#TransferServerSpec)***||
-| `status` | ***[TransferServerStatus](#TransferServerStatus)***||
+| `spec` | ***[TransferServerSpec](#transferserverspec)***||
+| `status` | ***[TransferServerStatus](#transferserverstatus)***||
 ## TransferServerSpec
 
-Appears on:[TransferServer](#TransferServer), [TransferServerStatus](#TransferServerStatus)
+Appears on:[TransferServer](#transferserver), [TransferServerStatus](#transferserverstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,7 +28,7 @@ Appears on:[TransferServer](#TransferServer), [TransferServerStatus](#TransferSe
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `endpoint` | ***string***| ***(Optional)*** |
-| `endpointDetails` | ***[[]TransferServerSpecEndpointDetails](#TransferServerSpecEndpointDetails)***| ***(Optional)*** |
+| `endpointDetails` | ***[[]TransferServerSpecEndpointDetails](#transferserverspecendpointdetails)***| ***(Optional)*** |
 | `endpointType` | ***string***| ***(Optional)*** |
 | `forceDestroy` | ***bool***| ***(Optional)*** |
 | `identityProviderType` | ***string***| ***(Optional)*** |
@@ -38,18 +38,18 @@ Appears on:[TransferServer](#TransferServer), [TransferServerStatus](#TransferSe
 | `url` | ***string***| ***(Optional)*** |
 ## TransferServerSpecEndpointDetails
 
-Appears on:[TransferServerSpec](#TransferServerSpec)
+Appears on:[TransferServerSpec](#transferserverspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `vpcEndpointID` | ***string***||
 ## TransferServerStatus
 
-Appears on:[TransferServer](#TransferServer)
+Appears on:[TransferServer](#transferserver)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[TransferServerSpec](#TransferServerSpec)***| ***(Optional)*** |
+| `output` | ***[TransferServerSpec](#transferserverspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

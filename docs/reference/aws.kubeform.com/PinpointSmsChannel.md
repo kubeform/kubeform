@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `PinpointSmsChannel` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PinpointSmsChannelSpec](#PinpointSmsChannelSpec)***||
-| `status` | ***[PinpointSmsChannelStatus](#PinpointSmsChannelStatus)***||
+| `spec` | ***[PinpointSmsChannelSpec](#pinpointsmschannelspec)***||
+| `status` | ***[PinpointSmsChannelStatus](#pinpointsmschannelstatus)***||
 ## PinpointSmsChannelSpec
 
-Appears on:[PinpointSmsChannel](#PinpointSmsChannel), [PinpointSmsChannelStatus](#PinpointSmsChannelStatus)
+Appears on:[PinpointSmsChannel](#pinpointsmschannel), [PinpointSmsChannelStatus](#pinpointsmschannelstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[PinpointSmsChannel](#PinpointSmsChannel), [PinpointSmsChannelStatus]
 | `transactionalMessagesPerSecond` | ***int***| ***(Optional)*** |
 ## PinpointSmsChannelStatus
 
-Appears on:[PinpointSmsChannel](#PinpointSmsChannel)
+Appears on:[PinpointSmsChannel](#pinpointsmschannel)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PinpointSmsChannelSpec](#PinpointSmsChannelSpec)***| ***(Optional)*** |
+| `output` | ***[PinpointSmsChannelSpec](#pinpointsmschannelspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

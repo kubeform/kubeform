@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApplicationInsightsAPIKey` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApplicationInsightsAPIKeySpec](#ApplicationInsightsAPIKeySpec)***||
-| `status` | ***[ApplicationInsightsAPIKeyStatus](#ApplicationInsightsAPIKeyStatus)***||
+| `spec` | ***[ApplicationInsightsAPIKeySpec](#applicationinsightsapikeyspec)***||
+| `status` | ***[ApplicationInsightsAPIKeyStatus](#applicationinsightsapikeystatus)***||
 ## ApplicationInsightsAPIKeySpec
 
-Appears on:[ApplicationInsightsAPIKey](#ApplicationInsightsAPIKey), [ApplicationInsightsAPIKeyStatus](#ApplicationInsightsAPIKeyStatus)
+Appears on:[ApplicationInsightsAPIKey](#applicationinsightsapikey), [ApplicationInsightsAPIKeyStatus](#applicationinsightsapikeystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,12 +33,12 @@ Appears on:[ApplicationInsightsAPIKey](#ApplicationInsightsAPIKey), [Application
 | `writePermissions` | ***[]string***| ***(Optional)*** |
 ## ApplicationInsightsAPIKeyStatus
 
-Appears on:[ApplicationInsightsAPIKey](#ApplicationInsightsAPIKey)
+Appears on:[ApplicationInsightsAPIKey](#applicationinsightsapikey)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApplicationInsightsAPIKeySpec](#ApplicationInsightsAPIKeySpec)***| ***(Optional)*** |
+| `output` | ***[ApplicationInsightsAPIKeySpec](#applicationinsightsapikeyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

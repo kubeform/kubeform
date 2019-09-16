@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `Folder` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[FolderSpec](#FolderSpec)***||
-| `status` | ***[FolderStatus](#FolderStatus)***||
+| `spec` | ***[FolderSpec](#folderspec)***||
+| `status` | ***[FolderStatus](#folderstatus)***||
 ## FolderSpec
 
-Appears on:[Folder](#Folder), [FolderStatus](#FolderStatus)
+Appears on:[Folder](#folder), [FolderStatus](#folderstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[Folder](#Folder), [FolderStatus](#FolderStatus)
 | `parent` | ***string***||
 ## FolderStatus
 
-Appears on:[Folder](#Folder)
+Appears on:[Folder](#folder)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[FolderSpec](#FolderSpec)***| ***(Optional)*** |
+| `output` | ***[FolderSpec](#folderspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

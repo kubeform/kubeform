@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `RouteTableAssociation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[RouteTableAssociationSpec](#RouteTableAssociationSpec)***||
-| `status` | ***[RouteTableAssociationStatus](#RouteTableAssociationStatus)***||
+| `spec` | ***[RouteTableAssociationSpec](#routetableassociationspec)***||
+| `status` | ***[RouteTableAssociationStatus](#routetableassociationstatus)***||
 ## RouteTableAssociationSpec
 
-Appears on:[RouteTableAssociation](#RouteTableAssociation), [RouteTableAssociationStatus](#RouteTableAssociationStatus)
+Appears on:[RouteTableAssociation](#routetableassociation), [RouteTableAssociationStatus](#routetableassociationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[RouteTableAssociation](#RouteTableAssociation), [RouteTableAssociati
 | `subnetID` | ***string***||
 ## RouteTableAssociationStatus
 
-Appears on:[RouteTableAssociation](#RouteTableAssociation)
+Appears on:[RouteTableAssociation](#routetableassociation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[RouteTableAssociationSpec](#RouteTableAssociationSpec)***| ***(Optional)*** |
+| `output` | ***[RouteTableAssociationSpec](#routetableassociationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

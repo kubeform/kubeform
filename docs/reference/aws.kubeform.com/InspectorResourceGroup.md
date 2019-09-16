@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `InspectorResourceGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[InspectorResourceGroupSpec](#InspectorResourceGroupSpec)***||
-| `status` | ***[InspectorResourceGroupStatus](#InspectorResourceGroupStatus)***||
+| `spec` | ***[InspectorResourceGroupSpec](#inspectorresourcegroupspec)***||
+| `status` | ***[InspectorResourceGroupStatus](#inspectorresourcegroupstatus)***||
 ## InspectorResourceGroupSpec
 
-Appears on:[InspectorResourceGroup](#InspectorResourceGroup), [InspectorResourceGroupStatus](#InspectorResourceGroupStatus)
+Appears on:[InspectorResourceGroup](#inspectorresourcegroup), [InspectorResourceGroupStatus](#inspectorresourcegroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[InspectorResourceGroup](#InspectorResourceGroup), [InspectorResource
 | `tags` | ***map[string]string***||
 ## InspectorResourceGroupStatus
 
-Appears on:[InspectorResourceGroup](#InspectorResourceGroup)
+Appears on:[InspectorResourceGroup](#inspectorresourcegroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[InspectorResourceGroupSpec](#InspectorResourceGroupSpec)***| ***(Optional)*** |
+| `output` | ***[InspectorResourceGroupSpec](#inspectorresourcegroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

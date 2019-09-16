@@ -16,23 +16,23 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ConfigConfigurationAggregator` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ConfigConfigurationAggregatorSpec](#ConfigConfigurationAggregatorSpec)***||
-| `status` | ***[ConfigConfigurationAggregatorStatus](#ConfigConfigurationAggregatorStatus)***||
+| `spec` | ***[ConfigConfigurationAggregatorSpec](#configconfigurationaggregatorspec)***||
+| `status` | ***[ConfigConfigurationAggregatorStatus](#configconfigurationaggregatorstatus)***||
 ## ConfigConfigurationAggregatorSpec
 
-Appears on:[ConfigConfigurationAggregator](#ConfigConfigurationAggregator), [ConfigConfigurationAggregatorStatus](#ConfigConfigurationAggregatorStatus)
+Appears on:[ConfigConfigurationAggregator](#configconfigurationaggregator), [ConfigConfigurationAggregatorStatus](#configconfigurationaggregatorstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `accountAggregationSource` | ***[[]ConfigConfigurationAggregatorSpecAccountAggregationSource](#ConfigConfigurationAggregatorSpecAccountAggregationSource)***| ***(Optional)*** |
+| `accountAggregationSource` | ***[[]ConfigConfigurationAggregatorSpecAccountAggregationSource](#configconfigurationaggregatorspecaccountaggregationsource)***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `organizationAggregationSource` | ***[[]ConfigConfigurationAggregatorSpecOrganizationAggregationSource](#ConfigConfigurationAggregatorSpecOrganizationAggregationSource)***| ***(Optional)*** |
+| `organizationAggregationSource` | ***[[]ConfigConfigurationAggregatorSpecOrganizationAggregationSource](#configconfigurationaggregatorspecorganizationaggregationsource)***| ***(Optional)*** |
 ## ConfigConfigurationAggregatorSpecAccountAggregationSource
 
-Appears on:[ConfigConfigurationAggregatorSpec](#ConfigConfigurationAggregatorSpec)
+Appears on:[ConfigConfigurationAggregatorSpec](#configconfigurationaggregatorspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -41,7 +41,7 @@ Appears on:[ConfigConfigurationAggregatorSpec](#ConfigConfigurationAggregatorSpe
 | `regions` | ***[]string***| ***(Optional)*** |
 ## ConfigConfigurationAggregatorSpecOrganizationAggregationSource
 
-Appears on:[ConfigConfigurationAggregatorSpec](#ConfigConfigurationAggregatorSpec)
+Appears on:[ConfigConfigurationAggregatorSpec](#configconfigurationaggregatorspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -50,11 +50,11 @@ Appears on:[ConfigConfigurationAggregatorSpec](#ConfigConfigurationAggregatorSpe
 | `roleArn` | ***string***||
 ## ConfigConfigurationAggregatorStatus
 
-Appears on:[ConfigConfigurationAggregator](#ConfigConfigurationAggregator)
+Appears on:[ConfigConfigurationAggregator](#configconfigurationaggregator)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ConfigConfigurationAggregatorSpec](#ConfigConfigurationAggregatorSpec)***| ***(Optional)*** |
+| `output` | ***[ConfigConfigurationAggregatorSpec](#configconfigurationaggregatorspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CognitoUserGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CognitoUserGroupSpec](#CognitoUserGroupSpec)***||
-| `status` | ***[CognitoUserGroupStatus](#CognitoUserGroupStatus)***||
+| `spec` | ***[CognitoUserGroupSpec](#cognitousergroupspec)***||
+| `status` | ***[CognitoUserGroupStatus](#cognitousergroupstatus)***||
 ## CognitoUserGroupSpec
 
-Appears on:[CognitoUserGroup](#CognitoUserGroup), [CognitoUserGroupStatus](#CognitoUserGroupStatus)
+Appears on:[CognitoUserGroup](#cognitousergroup), [CognitoUserGroupStatus](#cognitousergroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[CognitoUserGroup](#CognitoUserGroup), [CognitoUserGroupStatus](#Cogn
 | `userPoolID` | ***string***||
 ## CognitoUserGroupStatus
 
-Appears on:[CognitoUserGroup](#CognitoUserGroup)
+Appears on:[CognitoUserGroup](#cognitousergroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CognitoUserGroupSpec](#CognitoUserGroupSpec)***| ***(Optional)*** |
+| `output` | ***[CognitoUserGroupSpec](#cognitousergroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

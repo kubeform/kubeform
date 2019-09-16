@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `Route53ResolverRuleAssociation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[Route53ResolverRuleAssociationSpec](#Route53ResolverRuleAssociationSpec)***||
-| `status` | ***[Route53ResolverRuleAssociationStatus](#Route53ResolverRuleAssociationStatus)***||
+| `spec` | ***[Route53ResolverRuleAssociationSpec](#route53resolverruleassociationspec)***||
+| `status` | ***[Route53ResolverRuleAssociationStatus](#route53resolverruleassociationstatus)***||
 ## Route53ResolverRuleAssociationSpec
 
-Appears on:[Route53ResolverRuleAssociation](#Route53ResolverRuleAssociation), [Route53ResolverRuleAssociationStatus](#Route53ResolverRuleAssociationStatus)
+Appears on:[Route53ResolverRuleAssociation](#route53resolverruleassociation), [Route53ResolverRuleAssociationStatus](#route53resolverruleassociationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[Route53ResolverRuleAssociation](#Route53ResolverRuleAssociation), [R
 | `vpcID` | ***string***||
 ## Route53ResolverRuleAssociationStatus
 
-Appears on:[Route53ResolverRuleAssociation](#Route53ResolverRuleAssociation)
+Appears on:[Route53ResolverRuleAssociation](#route53resolverruleassociation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[Route53ResolverRuleAssociationSpec](#Route53ResolverRuleAssociationSpec)***| ***(Optional)*** |
+| `output` | ***[Route53ResolverRuleAssociationSpec](#route53resolverruleassociationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

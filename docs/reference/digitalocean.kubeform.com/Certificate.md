@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `digitalocean.kubeform.com/v1alpha1` |
 |    `kind` | string | `Certificate` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CertificateSpec](#CertificateSpec)***||
-| `status` | ***[CertificateStatus](#CertificateStatus)***||
+| `spec` | ***[CertificateSpec](#certificatespec)***||
+| `status` | ***[CertificateStatus](#certificatestatus)***||
 ## CertificateSpec
 
-Appears on:[Certificate](#Certificate), [CertificateStatus](#CertificateStatus)
+Appears on:[Certificate](#certificate), [CertificateStatus](#certificatestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,12 +37,12 @@ Appears on:[Certificate](#Certificate), [CertificateStatus](#CertificateStatus)
 | `type` | ***string***| ***(Optional)*** |
 ## CertificateStatus
 
-Appears on:[Certificate](#Certificate)
+Appears on:[Certificate](#certificate)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CertificateSpec](#CertificateSpec)***| ***(Optional)*** |
+| `output` | ***[CertificateSpec](#certificatespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

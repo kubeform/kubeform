@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `IamUser` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[IamUserSpec](#IamUserSpec)***||
-| `status` | ***[IamUserStatus](#IamUserStatus)***||
+| `spec` | ***[IamUserSpec](#iamuserspec)***||
+| `status` | ***[IamUserStatus](#iamuserstatus)***||
 ## IamUserSpec
 
-Appears on:[IamUser](#IamUser), [IamUserStatus](#IamUserStatus)
+Appears on:[IamUser](#iamuser), [IamUserStatus](#iamuserstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,11 +35,11 @@ Appears on:[IamUser](#IamUser), [IamUserStatus](#IamUserStatus)
 | `uniqueID` | ***string***| ***(Optional)*** |
 ## IamUserStatus
 
-Appears on:[IamUser](#IamUser)
+Appears on:[IamUser](#iamuser)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[IamUserSpec](#IamUserSpec)***| ***(Optional)*** |
+| `output` | ***[IamUserSpec](#iamuserspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

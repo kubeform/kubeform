@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiGatewayDomainName` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiGatewayDomainNameSpec](#ApiGatewayDomainNameSpec)***||
-| `status` | ***[ApiGatewayDomainNameStatus](#ApiGatewayDomainNameStatus)***||
+| `spec` | ***[ApiGatewayDomainNameSpec](#apigatewaydomainnamespec)***||
+| `status` | ***[ApiGatewayDomainNameStatus](#apigatewaydomainnamestatus)***||
 ## ApiGatewayDomainNameSpec
 
-Appears on:[ApiGatewayDomainName](#ApiGatewayDomainName), [ApiGatewayDomainNameStatus](#ApiGatewayDomainNameStatus)
+Appears on:[ApiGatewayDomainName](#apigatewaydomainname), [ApiGatewayDomainNameStatus](#apigatewaydomainnamestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,26 +35,26 @@ Appears on:[ApiGatewayDomainName](#ApiGatewayDomainName), [ApiGatewayDomainNameS
 | `cloudfrontDomainName` | ***string***| ***(Optional)*** |
 | `cloudfrontZoneID` | ***string***| ***(Optional)*** |
 | `domainName` | ***string***||
-| `endpointConfiguration` | ***[[]ApiGatewayDomainNameSpecEndpointConfiguration](#ApiGatewayDomainNameSpecEndpointConfiguration)***| ***(Optional)*** |
+| `endpointConfiguration` | ***[[]ApiGatewayDomainNameSpecEndpointConfiguration](#apigatewaydomainnamespecendpointconfiguration)***| ***(Optional)*** |
 | `regionalCertificateArn` | ***string***| ***(Optional)*** |
 | `regionalCertificateName` | ***string***| ***(Optional)*** |
 | `regionalDomainName` | ***string***| ***(Optional)*** |
 | `regionalZoneID` | ***string***| ***(Optional)*** |
 ## ApiGatewayDomainNameSpecEndpointConfiguration
 
-Appears on:[ApiGatewayDomainNameSpec](#ApiGatewayDomainNameSpec)
+Appears on:[ApiGatewayDomainNameSpec](#apigatewaydomainnamespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `types` | ***[]string***||
 ## ApiGatewayDomainNameStatus
 
-Appears on:[ApiGatewayDomainName](#ApiGatewayDomainName)
+Appears on:[ApiGatewayDomainName](#apigatewaydomainname)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiGatewayDomainNameSpec](#ApiGatewayDomainNameSpec)***| ***(Optional)*** |
+| `output` | ***[ApiGatewayDomainNameSpec](#apigatewaydomainnamespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

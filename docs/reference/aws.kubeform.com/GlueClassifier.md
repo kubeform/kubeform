@@ -16,23 +16,23 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `GlueClassifier` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[GlueClassifierSpec](#GlueClassifierSpec)***||
-| `status` | ***[GlueClassifierStatus](#GlueClassifierStatus)***||
+| `spec` | ***[GlueClassifierSpec](#glueclassifierspec)***||
+| `status` | ***[GlueClassifierStatus](#glueclassifierstatus)***||
 ## GlueClassifierSpec
 
-Appears on:[GlueClassifier](#GlueClassifier), [GlueClassifierStatus](#GlueClassifierStatus)
+Appears on:[GlueClassifier](#glueclassifier), [GlueClassifierStatus](#glueclassifierstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `grokClassifier` | ***[[]GlueClassifierSpecGrokClassifier](#GlueClassifierSpecGrokClassifier)***| ***(Optional)*** |
-| `jsonClassifier` | ***[[]GlueClassifierSpecJsonClassifier](#GlueClassifierSpecJsonClassifier)***| ***(Optional)*** |
+| `grokClassifier` | ***[[]GlueClassifierSpecGrokClassifier](#glueclassifierspecgrokclassifier)***| ***(Optional)*** |
+| `jsonClassifier` | ***[[]GlueClassifierSpecJsonClassifier](#glueclassifierspecjsonclassifier)***| ***(Optional)*** |
 | `name` | ***string***||
-| `xmlClassifier` | ***[[]GlueClassifierSpecXmlClassifier](#GlueClassifierSpecXmlClassifier)***| ***(Optional)*** |
+| `xmlClassifier` | ***[[]GlueClassifierSpecXmlClassifier](#glueclassifierspecxmlclassifier)***| ***(Optional)*** |
 ## GlueClassifierSpecGrokClassifier
 
-Appears on:[GlueClassifierSpec](#GlueClassifierSpec)
+Appears on:[GlueClassifierSpec](#glueclassifierspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -41,14 +41,14 @@ Appears on:[GlueClassifierSpec](#GlueClassifierSpec)
 | `grokPattern` | ***string***||
 ## GlueClassifierSpecJsonClassifier
 
-Appears on:[GlueClassifierSpec](#GlueClassifierSpec)
+Appears on:[GlueClassifierSpec](#glueclassifierspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `jsonPath` | ***string***||
 ## GlueClassifierSpecXmlClassifier
 
-Appears on:[GlueClassifierSpec](#GlueClassifierSpec)
+Appears on:[GlueClassifierSpec](#glueclassifierspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -56,11 +56,11 @@ Appears on:[GlueClassifierSpec](#GlueClassifierSpec)
 | `rowTag` | ***string***||
 ## GlueClassifierStatus
 
-Appears on:[GlueClassifier](#GlueClassifier)
+Appears on:[GlueClassifier](#glueclassifier)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[GlueClassifierSpec](#GlueClassifierSpec)***| ***(Optional)*** |
+| `output` | ***[GlueClassifierSpec](#glueclassifierspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

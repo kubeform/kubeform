@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `PlacementGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PlacementGroupSpec](#PlacementGroupSpec)***||
-| `status` | ***[PlacementGroupStatus](#PlacementGroupStatus)***||
+| `spec` | ***[PlacementGroupSpec](#placementgroupspec)***||
+| `status` | ***[PlacementGroupStatus](#placementgroupstatus)***||
 ## PlacementGroupSpec
 
-Appears on:[PlacementGroup](#PlacementGroup), [PlacementGroupStatus](#PlacementGroupStatus)
+Appears on:[PlacementGroup](#placementgroup), [PlacementGroupStatus](#placementgroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[PlacementGroup](#PlacementGroup), [PlacementGroupStatus](#PlacementG
 | `strategy` | ***string***||
 ## PlacementGroupStatus
 
-Appears on:[PlacementGroup](#PlacementGroup)
+Appears on:[PlacementGroup](#placementgroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PlacementGroupSpec](#PlacementGroupSpec)***| ***(Optional)*** |
+| `output` | ***[PlacementGroupSpec](#placementgroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

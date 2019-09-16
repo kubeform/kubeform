@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DmsReplicationInstance` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DmsReplicationInstanceSpec](#DmsReplicationInstanceSpec)***||
-| `status` | ***[DmsReplicationInstanceStatus](#DmsReplicationInstanceStatus)***||
+| `spec` | ***[DmsReplicationInstanceSpec](#dmsreplicationinstancespec)***||
+| `status` | ***[DmsReplicationInstanceStatus](#dmsreplicationinstancestatus)***||
 ## DmsReplicationInstanceSpec
 
-Appears on:[DmsReplicationInstance](#DmsReplicationInstance), [DmsReplicationInstanceStatus](#DmsReplicationInstanceStatus)
+Appears on:[DmsReplicationInstance](#dmsreplicationinstance), [DmsReplicationInstanceStatus](#dmsreplicationinstancestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -45,11 +45,11 @@ Appears on:[DmsReplicationInstance](#DmsReplicationInstance), [DmsReplicationIns
 | `vpcSecurityGroupIDS` | ***[]string***| ***(Optional)*** |
 ## DmsReplicationInstanceStatus
 
-Appears on:[DmsReplicationInstance](#DmsReplicationInstance)
+Appears on:[DmsReplicationInstance](#dmsreplicationinstance)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DmsReplicationInstanceSpec](#DmsReplicationInstanceSpec)***| ***(Optional)*** |
+| `output` | ***[DmsReplicationInstanceSpec](#dmsreplicationinstancespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

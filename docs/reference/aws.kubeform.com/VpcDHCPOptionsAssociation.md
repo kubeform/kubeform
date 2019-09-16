@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `VpcDHCPOptionsAssociation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[VpcDHCPOptionsAssociationSpec](#VpcDHCPOptionsAssociationSpec)***||
-| `status` | ***[VpcDHCPOptionsAssociationStatus](#VpcDHCPOptionsAssociationStatus)***||
+| `spec` | ***[VpcDHCPOptionsAssociationSpec](#vpcdhcpoptionsassociationspec)***||
+| `status` | ***[VpcDHCPOptionsAssociationStatus](#vpcdhcpoptionsassociationstatus)***||
 ## VpcDHCPOptionsAssociationSpec
 
-Appears on:[VpcDHCPOptionsAssociation](#VpcDHCPOptionsAssociation), [VpcDHCPOptionsAssociationStatus](#VpcDHCPOptionsAssociationStatus)
+Appears on:[VpcDHCPOptionsAssociation](#vpcdhcpoptionsassociation), [VpcDHCPOptionsAssociationStatus](#vpcdhcpoptionsassociationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[VpcDHCPOptionsAssociation](#VpcDHCPOptionsAssociation), [VpcDHCPOpti
 | `vpcID` | ***string***||
 ## VpcDHCPOptionsAssociationStatus
 
-Appears on:[VpcDHCPOptionsAssociation](#VpcDHCPOptionsAssociation)
+Appears on:[VpcDHCPOptionsAssociation](#vpcdhcpoptionsassociation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[VpcDHCPOptionsAssociationSpec](#VpcDHCPOptionsAssociationSpec)***| ***(Optional)*** |
+| `output` | ***[VpcDHCPOptionsAssociationSpec](#vpcdhcpoptionsassociationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

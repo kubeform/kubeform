@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `AutomationCredential` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AutomationCredentialSpec](#AutomationCredentialSpec)***||
-| `status` | ***[AutomationCredentialStatus](#AutomationCredentialStatus)***||
+| `spec` | ***[AutomationCredentialSpec](#automationcredentialspec)***||
+| `status` | ***[AutomationCredentialStatus](#automationcredentialstatus)***||
 ## AutomationCredentialSpec
 
-Appears on:[AutomationCredential](#AutomationCredential), [AutomationCredentialStatus](#AutomationCredentialStatus)
+Appears on:[AutomationCredential](#automationcredential), [AutomationCredentialStatus](#automationcredentialstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,12 +34,12 @@ Appears on:[AutomationCredential](#AutomationCredential), [AutomationCredentialS
 | `username` | ***string***||
 ## AutomationCredentialStatus
 
-Appears on:[AutomationCredential](#AutomationCredential)
+Appears on:[AutomationCredential](#automationcredential)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AutomationCredentialSpec](#AutomationCredentialSpec)***| ***(Optional)*** |
+| `output` | ***[AutomationCredentialSpec](#automationcredentialspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

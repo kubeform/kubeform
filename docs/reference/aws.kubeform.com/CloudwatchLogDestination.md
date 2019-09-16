@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CloudwatchLogDestination` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CloudwatchLogDestinationSpec](#CloudwatchLogDestinationSpec)***||
-| `status` | ***[CloudwatchLogDestinationStatus](#CloudwatchLogDestinationStatus)***||
+| `spec` | ***[CloudwatchLogDestinationSpec](#cloudwatchlogdestinationspec)***||
+| `status` | ***[CloudwatchLogDestinationStatus](#cloudwatchlogdestinationstatus)***||
 ## CloudwatchLogDestinationSpec
 
-Appears on:[CloudwatchLogDestination](#CloudwatchLogDestination), [CloudwatchLogDestinationStatus](#CloudwatchLogDestinationStatus)
+Appears on:[CloudwatchLogDestination](#cloudwatchlogdestination), [CloudwatchLogDestinationStatus](#cloudwatchlogdestinationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[CloudwatchLogDestination](#CloudwatchLogDestination), [CloudwatchLog
 | `targetArn` | ***string***||
 ## CloudwatchLogDestinationStatus
 
-Appears on:[CloudwatchLogDestination](#CloudwatchLogDestination)
+Appears on:[CloudwatchLogDestination](#cloudwatchlogdestination)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CloudwatchLogDestinationSpec](#CloudwatchLogDestinationSpec)***| ***(Optional)*** |
+| `output` | ***[CloudwatchLogDestinationSpec](#cloudwatchlogdestinationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

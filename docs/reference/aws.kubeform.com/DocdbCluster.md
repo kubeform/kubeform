@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DocdbCluster` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DocdbClusterSpec](#DocdbClusterSpec)***||
-| `status` | ***[DocdbClusterStatus](#DocdbClusterStatus)***||
+| `spec` | ***[DocdbClusterSpec](#docdbclusterspec)***||
+| `status` | ***[DocdbClusterStatus](#docdbclusterstatus)***||
 ## DocdbClusterSpec
 
-Appears on:[DocdbCluster](#DocdbCluster), [DocdbClusterStatus](#DocdbClusterStatus)
+Appears on:[DocdbCluster](#docdbcluster), [DocdbClusterStatus](#docdbclusterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -56,12 +56,12 @@ Appears on:[DocdbCluster](#DocdbCluster), [DocdbClusterStatus](#DocdbClusterStat
 | `vpcSecurityGroupIDS` | ***[]string***| ***(Optional)*** |
 ## DocdbClusterStatus
 
-Appears on:[DocdbCluster](#DocdbCluster)
+Appears on:[DocdbCluster](#docdbcluster)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DocdbClusterSpec](#DocdbClusterSpec)***| ***(Optional)*** |
+| `output` | ***[DocdbClusterSpec](#docdbclusterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

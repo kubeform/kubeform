@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `NotificationHubAuthorizationRule` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NotificationHubAuthorizationRuleSpec](#NotificationHubAuthorizationRuleSpec)***||
-| `status` | ***[NotificationHubAuthorizationRuleStatus](#NotificationHubAuthorizationRuleStatus)***||
+| `spec` | ***[NotificationHubAuthorizationRuleSpec](#notificationhubauthorizationrulespec)***||
+| `status` | ***[NotificationHubAuthorizationRuleStatus](#notificationhubauthorizationrulestatus)***||
 ## NotificationHubAuthorizationRuleSpec
 
-Appears on:[NotificationHubAuthorizationRule](#NotificationHubAuthorizationRule), [NotificationHubAuthorizationRuleStatus](#NotificationHubAuthorizationRuleStatus)
+Appears on:[NotificationHubAuthorizationRule](#notificationhubauthorizationrule), [NotificationHubAuthorizationRuleStatus](#notificationhubauthorizationrulestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,11 +37,11 @@ Appears on:[NotificationHubAuthorizationRule](#NotificationHubAuthorizationRule)
 | `send` | ***bool***| ***(Optional)*** |
 ## NotificationHubAuthorizationRuleStatus
 
-Appears on:[NotificationHubAuthorizationRule](#NotificationHubAuthorizationRule)
+Appears on:[NotificationHubAuthorizationRule](#notificationhubauthorizationrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NotificationHubAuthorizationRuleSpec](#NotificationHubAuthorizationRuleSpec)***| ***(Optional)*** |
+| `output` | ***[NotificationHubAuthorizationRuleSpec](#notificationhubauthorizationrulespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `digitalocean.kubeform.com/v1alpha1` |
 |    `kind` | string | `Record` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[RecordSpec](#RecordSpec)***||
-| `status` | ***[RecordStatus](#RecordStatus)***||
+| `spec` | ***[RecordSpec](#recordspec)***||
+| `status` | ***[RecordStatus](#recordstatus)***||
 ## RecordSpec
 
-Appears on:[Record](#Record), [RecordStatus](#RecordStatus)
+Appears on:[Record](#record), [RecordStatus](#recordstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -39,11 +39,11 @@ Appears on:[Record](#Record), [RecordStatus](#RecordStatus)
 | `weight` | ***int***| ***(Optional)*** |
 ## RecordStatus
 
-Appears on:[Record](#Record)
+Appears on:[Record](#record)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[RecordSpec](#RecordSpec)***| ***(Optional)*** |
+| `output` | ***[RecordSpec](#recordspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

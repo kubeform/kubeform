@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiGatewayRestAPI` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiGatewayRestAPISpec](#ApiGatewayRestAPISpec)***||
-| `status` | ***[ApiGatewayRestAPIStatus](#ApiGatewayRestAPIStatus)***||
+| `spec` | ***[ApiGatewayRestAPISpec](#apigatewayrestapispec)***||
+| `status` | ***[ApiGatewayRestAPIStatus](#apigatewayrestapistatus)***||
 ## ApiGatewayRestAPISpec
 
-Appears on:[ApiGatewayRestAPI](#ApiGatewayRestAPI), [ApiGatewayRestAPIStatus](#ApiGatewayRestAPIStatus)
+Appears on:[ApiGatewayRestAPI](#apigatewayrestapi), [ApiGatewayRestAPIStatus](#apigatewayrestapistatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,7 +31,7 @@ Appears on:[ApiGatewayRestAPI](#ApiGatewayRestAPI), [ApiGatewayRestAPIStatus](#A
 | `body` | ***string***| ***(Optional)*** |
 | `createdDate` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `endpointConfiguration` | ***[[]ApiGatewayRestAPISpecEndpointConfiguration](#ApiGatewayRestAPISpecEndpointConfiguration)***| ***(Optional)*** |
+| `endpointConfiguration` | ***[[]ApiGatewayRestAPISpecEndpointConfiguration](#apigatewayrestapispecendpointconfiguration)***| ***(Optional)*** |
 | `executionArn` | ***string***| ***(Optional)*** |
 | `minimumCompressionSize` | ***int***| ***(Optional)*** |
 | `name` | ***string***||
@@ -39,18 +39,18 @@ Appears on:[ApiGatewayRestAPI](#ApiGatewayRestAPI), [ApiGatewayRestAPIStatus](#A
 | `rootResourceID` | ***string***| ***(Optional)*** |
 ## ApiGatewayRestAPISpecEndpointConfiguration
 
-Appears on:[ApiGatewayRestAPISpec](#ApiGatewayRestAPISpec)
+Appears on:[ApiGatewayRestAPISpec](#apigatewayrestapispec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `types` | ***[]string***||
 ## ApiGatewayRestAPIStatus
 
-Appears on:[ApiGatewayRestAPI](#ApiGatewayRestAPI)
+Appears on:[ApiGatewayRestAPI](#apigatewayrestapi)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiGatewayRestAPISpec](#ApiGatewayRestAPISpec)***| ***(Optional)*** |
+| `output` | ***[ApiGatewayRestAPISpec](#apigatewayrestapispec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

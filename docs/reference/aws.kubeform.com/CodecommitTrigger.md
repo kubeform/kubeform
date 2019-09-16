@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CodecommitTrigger` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CodecommitTriggerSpec](#CodecommitTriggerSpec)***||
-| `status` | ***[CodecommitTriggerStatus](#CodecommitTriggerStatus)***||
+| `spec` | ***[CodecommitTriggerSpec](#codecommittriggerspec)***||
+| `status` | ***[CodecommitTriggerStatus](#codecommittriggerstatus)***||
 ## CodecommitTriggerSpec
 
-Appears on:[CodecommitTrigger](#CodecommitTrigger), [CodecommitTriggerStatus](#CodecommitTriggerStatus)
+Appears on:[CodecommitTrigger](#codecommittrigger), [CodecommitTriggerStatus](#codecommittriggerstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,10 +28,10 @@ Appears on:[CodecommitTrigger](#CodecommitTrigger), [CodecommitTriggerStatus](#C
 | `id` | ***string***||
 | `configurationID` | ***string***| ***(Optional)*** |
 | `repositoryName` | ***string***||
-| `trigger` | ***[[]CodecommitTriggerSpecTrigger](#CodecommitTriggerSpecTrigger)***||
+| `trigger` | ***[[]CodecommitTriggerSpecTrigger](#codecommittriggerspectrigger)***||
 ## CodecommitTriggerSpecTrigger
 
-Appears on:[CodecommitTriggerSpec](#CodecommitTriggerSpec)
+Appears on:[CodecommitTriggerSpec](#codecommittriggerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -42,11 +42,11 @@ Appears on:[CodecommitTriggerSpec](#CodecommitTriggerSpec)
 | `name` | ***string***||
 ## CodecommitTriggerStatus
 
-Appears on:[CodecommitTrigger](#CodecommitTrigger)
+Appears on:[CodecommitTrigger](#codecommittrigger)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CodecommitTriggerSpec](#CodecommitTriggerSpec)***| ***(Optional)*** |
+| `output` | ***[CodecommitTriggerSpec](#codecommittriggerspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

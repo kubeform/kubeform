@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `LoggingBillingAccountExclusion` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LoggingBillingAccountExclusionSpec](#LoggingBillingAccountExclusionSpec)***||
-| `status` | ***[LoggingBillingAccountExclusionStatus](#LoggingBillingAccountExclusionStatus)***||
+| `spec` | ***[LoggingBillingAccountExclusionSpec](#loggingbillingaccountexclusionspec)***||
+| `status` | ***[LoggingBillingAccountExclusionStatus](#loggingbillingaccountexclusionstatus)***||
 ## LoggingBillingAccountExclusionSpec
 
-Appears on:[LoggingBillingAccountExclusion](#LoggingBillingAccountExclusion), [LoggingBillingAccountExclusionStatus](#LoggingBillingAccountExclusionStatus)
+Appears on:[LoggingBillingAccountExclusion](#loggingbillingaccountexclusion), [LoggingBillingAccountExclusionStatus](#loggingbillingaccountexclusionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[LoggingBillingAccountExclusion](#LoggingBillingAccountExclusion), [L
 | `name` | ***string***||
 ## LoggingBillingAccountExclusionStatus
 
-Appears on:[LoggingBillingAccountExclusion](#LoggingBillingAccountExclusion)
+Appears on:[LoggingBillingAccountExclusion](#loggingbillingaccountexclusion)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LoggingBillingAccountExclusionSpec](#LoggingBillingAccountExclusionSpec)***| ***(Optional)*** |
+| `output` | ***[LoggingBillingAccountExclusionSpec](#loggingbillingaccountexclusionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

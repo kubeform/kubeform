@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `MonitorMetricAlertrule` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[MonitorMetricAlertruleSpec](#MonitorMetricAlertruleSpec)***||
-| `status` | ***[MonitorMetricAlertruleStatus](#MonitorMetricAlertruleStatus)***||
+| `spec` | ***[MonitorMetricAlertruleSpec](#monitormetricalertrulespec)***||
+| `status` | ***[MonitorMetricAlertruleStatus](#monitormetricalertrulestatus)***||
 ## MonitorMetricAlertruleSpec
 
-Appears on:[MonitorMetricAlertrule](#MonitorMetricAlertrule), [MonitorMetricAlertruleStatus](#MonitorMetricAlertruleStatus)
+Appears on:[MonitorMetricAlertrule](#monitormetricalertrule), [MonitorMetricAlertruleStatus](#monitormetricalertrulestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,7 +28,7 @@ Appears on:[MonitorMetricAlertrule](#MonitorMetricAlertrule), [MonitorMetricAler
 | `id` | ***string***||
 | `aggregation` | ***string***||
 | `description` | ***string***| ***(Optional)*** |
-| `emailAction` | ***[[]MonitorMetricAlertruleSpecEmailAction](#MonitorMetricAlertruleSpecEmailAction)***| ***(Optional)*** |
+| `emailAction` | ***[[]MonitorMetricAlertruleSpecEmailAction](#monitormetricalertrulespecemailaction)***| ***(Optional)*** |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `location` | ***string***||
 | `metricName` | ***string***||
@@ -39,10 +39,10 @@ Appears on:[MonitorMetricAlertrule](#MonitorMetricAlertrule), [MonitorMetricAler
 | `resourceID` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `threshold` | ***encoding/json.Number***||
-| `webhookAction` | ***[[]MonitorMetricAlertruleSpecWebhookAction](#MonitorMetricAlertruleSpecWebhookAction)***| ***(Optional)*** |
+| `webhookAction` | ***[[]MonitorMetricAlertruleSpecWebhookAction](#monitormetricalertrulespecwebhookaction)***| ***(Optional)*** |
 ## MonitorMetricAlertruleSpecEmailAction
 
-Appears on:[MonitorMetricAlertruleSpec](#MonitorMetricAlertruleSpec)
+Appears on:[MonitorMetricAlertruleSpec](#monitormetricalertrulespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -50,7 +50,7 @@ Appears on:[MonitorMetricAlertruleSpec](#MonitorMetricAlertruleSpec)
 | `sendToServiceOwners` | ***bool***| ***(Optional)*** |
 ## MonitorMetricAlertruleSpecWebhookAction
 
-Appears on:[MonitorMetricAlertruleSpec](#MonitorMetricAlertruleSpec)
+Appears on:[MonitorMetricAlertruleSpec](#monitormetricalertrulespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -58,11 +58,11 @@ Appears on:[MonitorMetricAlertruleSpec](#MonitorMetricAlertruleSpec)
 | `serviceURI` | ***string***||
 ## MonitorMetricAlertruleStatus
 
-Appears on:[MonitorMetricAlertrule](#MonitorMetricAlertrule)
+Appears on:[MonitorMetricAlertrule](#monitormetricalertrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[MonitorMetricAlertruleSpec](#MonitorMetricAlertruleSpec)***| ***(Optional)*** |
+| `output` | ***[MonitorMetricAlertruleSpec](#monitormetricalertrulespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

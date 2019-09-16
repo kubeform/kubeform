@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `VpnConnection` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[VpnConnectionSpec](#VpnConnectionSpec)***||
-| `status` | ***[VpnConnectionStatus](#VpnConnectionStatus)***||
+| `spec` | ***[VpnConnectionSpec](#vpnconnectionspec)***||
+| `status` | ***[VpnConnectionStatus](#vpnconnectionstatus)***||
 ## VpnConnectionSpec
 
-Appears on:[VpnConnection](#VpnConnection), [VpnConnectionStatus](#VpnConnectionStatus)
+Appears on:[VpnConnection](#vpnconnection), [VpnConnectionStatus](#vpnconnectionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,7 +29,7 @@ Appears on:[VpnConnection](#VpnConnection), [VpnConnectionStatus](#VpnConnection
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `customerGatewayConfiguration` | ***string***| ***(Optional)*** |
 | `customerGatewayID` | ***string***||
-| `routes` | ***[[]VpnConnectionSpecRoutes](#VpnConnectionSpecRoutes)***| ***(Optional)*** |
+| `routes` | ***[[]VpnConnectionSpecRoutes](#vpnconnectionspecroutes)***| ***(Optional)*** |
 | `staticRoutesOnly` | ***bool***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `transitGatewayAttachmentID` | ***string***| ***(Optional)*** |
@@ -47,11 +47,11 @@ Appears on:[VpnConnection](#VpnConnection), [VpnConnectionStatus](#VpnConnection
 | `tunnel2InsideCIDR` | ***string***| ***(Optional)*** |
 | `tunnel2VgwInsideAddress` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
-| `vgwTelemetry` | ***[[]VpnConnectionSpecVgwTelemetry](#VpnConnectionSpecVgwTelemetry)***| ***(Optional)*** |
+| `vgwTelemetry` | ***[[]VpnConnectionSpecVgwTelemetry](#vpnconnectionspecvgwtelemetry)***| ***(Optional)*** |
 | `vpnGatewayID` | ***string***| ***(Optional)*** |
 ## VpnConnectionSpecRoutes
 
-Appears on:[VpnConnectionSpec](#VpnConnectionSpec)
+Appears on:[VpnConnectionSpec](#vpnconnectionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -60,7 +60,7 @@ Appears on:[VpnConnectionSpec](#VpnConnectionSpec)
 | `state` | ***string***| ***(Optional)*** |
 ## VpnConnectionSpecVgwTelemetry
 
-Appears on:[VpnConnectionSpec](#VpnConnectionSpec)
+Appears on:[VpnConnectionSpec](#vpnconnectionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -71,12 +71,12 @@ Appears on:[VpnConnectionSpec](#VpnConnectionSpec)
 | `statusMessage` | ***string***| ***(Optional)*** |
 ## VpnConnectionStatus
 
-Appears on:[VpnConnection](#VpnConnection)
+Appears on:[VpnConnection](#vpnconnection)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[VpnConnectionSpec](#VpnConnectionSpec)***| ***(Optional)*** |
+| `output` | ***[VpnConnectionSpec](#vpnconnectionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

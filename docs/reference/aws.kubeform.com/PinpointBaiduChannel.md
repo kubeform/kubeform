@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `PinpointBaiduChannel` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PinpointBaiduChannelSpec](#PinpointBaiduChannelSpec)***||
-| `status` | ***[PinpointBaiduChannelStatus](#PinpointBaiduChannelStatus)***||
+| `spec` | ***[PinpointBaiduChannelSpec](#pinpointbaiduchannelspec)***||
+| `status` | ***[PinpointBaiduChannelStatus](#pinpointbaiduchannelstatus)***||
 ## PinpointBaiduChannelSpec
 
-Appears on:[PinpointBaiduChannel](#PinpointBaiduChannel), [PinpointBaiduChannelStatus](#PinpointBaiduChannelStatus)
+Appears on:[PinpointBaiduChannel](#pinpointbaiduchannel), [PinpointBaiduChannelStatus](#pinpointbaiduchannelstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,12 +31,12 @@ Appears on:[PinpointBaiduChannel](#PinpointBaiduChannel), [PinpointBaiduChannelS
 | `enabled` | ***bool***| ***(Optional)*** |
 ## PinpointBaiduChannelStatus
 
-Appears on:[PinpointBaiduChannel](#PinpointBaiduChannel)
+Appears on:[PinpointBaiduChannel](#pinpointbaiduchannel)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PinpointBaiduChannelSpec](#PinpointBaiduChannelSpec)***| ***(Optional)*** |
+| `output` | ***[PinpointBaiduChannelSpec](#pinpointbaiduchannelspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

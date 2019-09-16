@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `KeyPair` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[KeyPairSpec](#KeyPairSpec)***||
-| `status` | ***[KeyPairStatus](#KeyPairStatus)***||
+| `spec` | ***[KeyPairSpec](#keypairspec)***||
+| `status` | ***[KeyPairStatus](#keypairstatus)***||
 ## KeyPairSpec
 
-Appears on:[KeyPair](#KeyPair), [KeyPairStatus](#KeyPairStatus)
+Appears on:[KeyPair](#keypair), [KeyPairStatus](#keypairstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[KeyPair](#KeyPair), [KeyPairStatus](#KeyPairStatus)
 | `publicKey` | ***string***||
 ## KeyPairStatus
 
-Appears on:[KeyPair](#KeyPair)
+Appears on:[KeyPair](#keypair)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[KeyPairSpec](#KeyPairSpec)***| ***(Optional)*** |
+| `output` | ***[KeyPairSpec](#keypairspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiManagementProduct` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiManagementProductSpec](#ApiManagementProductSpec)***||
-| `status` | ***[ApiManagementProductStatus](#ApiManagementProductStatus)***||
+| `spec` | ***[ApiManagementProductSpec](#apimanagementproductspec)***||
+| `status` | ***[ApiManagementProductStatus](#apimanagementproductstatus)***||
 ## ApiManagementProductSpec
 
-Appears on:[ApiManagementProduct](#ApiManagementProduct), [ApiManagementProductStatus](#ApiManagementProductStatus)
+Appears on:[ApiManagementProduct](#apimanagementproduct), [ApiManagementProductStatus](#apimanagementproductstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,11 +38,11 @@ Appears on:[ApiManagementProduct](#ApiManagementProduct), [ApiManagementProductS
 | `terms` | ***string***| ***(Optional)*** |
 ## ApiManagementProductStatus
 
-Appears on:[ApiManagementProduct](#ApiManagementProduct)
+Appears on:[ApiManagementProduct](#apimanagementproduct)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiManagementProductSpec](#ApiManagementProductSpec)***| ***(Optional)*** |
+| `output` | ***[ApiManagementProductSpec](#apimanagementproductspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

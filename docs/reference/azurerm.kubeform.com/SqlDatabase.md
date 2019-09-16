@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `SqlDatabase` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SqlDatabaseSpec](#SqlDatabaseSpec)***||
-| `status` | ***[SqlDatabaseStatus](#SqlDatabaseStatus)***||
+| `spec` | ***[SqlDatabaseSpec](#sqldatabasespec)***||
+| `status` | ***[SqlDatabaseStatus](#sqldatabasestatus)***||
 ## SqlDatabaseSpec
 
-Appears on:[SqlDatabase](#SqlDatabase), [SqlDatabaseStatus](#SqlDatabaseStatus)
+Appears on:[SqlDatabase](#sqldatabase), [SqlDatabaseStatus](#sqldatabasestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,7 +34,7 @@ Appears on:[SqlDatabase](#SqlDatabase), [SqlDatabaseStatus](#SqlDatabaseStatus)
 | `edition` | ***string***| ***(Optional)*** |
 | `elasticPoolName` | ***string***| ***(Optional)*** |
 | `encryption` | ***string***| ***(Optional)*** |
-| `import` | ***[[]SqlDatabaseSpecImport](#SqlDatabaseSpecImport)***| ***(Optional)*** |
+| `import` | ***[[]SqlDatabaseSpecImport](#sqldatabasespecimport)***| ***(Optional)*** |
 | `location` | ***string***||
 | `maxSizeBytes` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
@@ -47,10 +47,10 @@ Appears on:[SqlDatabase](#SqlDatabase), [SqlDatabaseStatus](#SqlDatabaseStatus)
 | `sourceDatabaseDeletionDate` | ***string***| ***(Optional)*** |
 | `sourceDatabaseID` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `threatDetectionPolicy` | ***[[]SqlDatabaseSpecThreatDetectionPolicy](#SqlDatabaseSpecThreatDetectionPolicy)***| ***(Optional)*** |
+| `threatDetectionPolicy` | ***[[]SqlDatabaseSpecThreatDetectionPolicy](#sqldatabasespecthreatdetectionpolicy)***| ***(Optional)*** |
 ## SqlDatabaseSpecImport
 
-Appears on:[SqlDatabaseSpec](#SqlDatabaseSpec)
+Appears on:[SqlDatabaseSpec](#sqldatabasespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -61,7 +61,7 @@ Appears on:[SqlDatabaseSpec](#SqlDatabaseSpec)
 | `storageURI` | ***string***||
 ## SqlDatabaseSpecThreatDetectionPolicy
 
-Appears on:[SqlDatabaseSpec](#SqlDatabaseSpec)
+Appears on:[SqlDatabaseSpec](#sqldatabasespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -74,12 +74,12 @@ Appears on:[SqlDatabaseSpec](#SqlDatabaseSpec)
 | `useServerDefault` | ***string***| ***(Optional)*** |
 ## SqlDatabaseStatus
 
-Appears on:[SqlDatabase](#SqlDatabase)
+Appears on:[SqlDatabase](#sqldatabase)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SqlDatabaseSpec](#SqlDatabaseSpec)***| ***(Optional)*** |
+| `output` | ***[SqlDatabaseSpec](#sqldatabasespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeHealthCheck` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)***||
-| `status` | ***[ComputeHealthCheckStatus](#ComputeHealthCheckStatus)***||
+| `spec` | ***[ComputeHealthCheckSpec](#computehealthcheckspec)***||
+| `status` | ***[ComputeHealthCheckStatus](#computehealthcheckstatus)***||
 ## ComputeHealthCheckSpec
 
-Appears on:[ComputeHealthCheck](#ComputeHealthCheck), [ComputeHealthCheckStatus](#ComputeHealthCheckStatus)
+Appears on:[ComputeHealthCheck](#computehealthcheck), [ComputeHealthCheckStatus](#computehealthcheckstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,19 +30,19 @@ Appears on:[ComputeHealthCheck](#ComputeHealthCheck), [ComputeHealthCheckStatus]
 | `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `healthyThreshold` | ***int***| ***(Optional)*** |
-| `httpHealthCheck` | ***[[]ComputeHealthCheckSpecHttpHealthCheck](#ComputeHealthCheckSpecHttpHealthCheck)***| ***(Optional)*** |
-| `httpsHealthCheck` | ***[[]ComputeHealthCheckSpecHttpsHealthCheck](#ComputeHealthCheckSpecHttpsHealthCheck)***| ***(Optional)*** |
+| `httpHealthCheck` | ***[[]ComputeHealthCheckSpecHttpHealthCheck](#computehealthcheckspechttphealthcheck)***| ***(Optional)*** |
+| `httpsHealthCheck` | ***[[]ComputeHealthCheckSpecHttpsHealthCheck](#computehealthcheckspechttpshealthcheck)***| ***(Optional)*** |
 | `name` | ***string***||
 | `project` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
-| `sslHealthCheck` | ***[[]ComputeHealthCheckSpecSslHealthCheck](#ComputeHealthCheckSpecSslHealthCheck)***| ***(Optional)*** |
-| `tcpHealthCheck` | ***[[]ComputeHealthCheckSpecTcpHealthCheck](#ComputeHealthCheckSpecTcpHealthCheck)***| ***(Optional)*** |
+| `sslHealthCheck` | ***[[]ComputeHealthCheckSpecSslHealthCheck](#computehealthcheckspecsslhealthcheck)***| ***(Optional)*** |
+| `tcpHealthCheck` | ***[[]ComputeHealthCheckSpecTcpHealthCheck](#computehealthcheckspectcphealthcheck)***| ***(Optional)*** |
 | `timeoutSec` | ***int***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 | `unhealthyThreshold` | ***int***| ***(Optional)*** |
 ## ComputeHealthCheckSpecHttpHealthCheck
 
-Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)
+Appears on:[ComputeHealthCheckSpec](#computehealthcheckspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -53,7 +53,7 @@ Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)
 | `response` | ***string***| ***(Optional)*** |
 ## ComputeHealthCheckSpecHttpsHealthCheck
 
-Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)
+Appears on:[ComputeHealthCheckSpec](#computehealthcheckspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -64,7 +64,7 @@ Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)
 | `response` | ***string***| ***(Optional)*** |
 ## ComputeHealthCheckSpecSslHealthCheck
 
-Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)
+Appears on:[ComputeHealthCheckSpec](#computehealthcheckspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -74,7 +74,7 @@ Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)
 | `response` | ***string***| ***(Optional)*** |
 ## ComputeHealthCheckSpecTcpHealthCheck
 
-Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)
+Appears on:[ComputeHealthCheckSpec](#computehealthcheckspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -84,11 +84,11 @@ Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)
 | `response` | ***string***| ***(Optional)*** |
 ## ComputeHealthCheckStatus
 
-Appears on:[ComputeHealthCheck](#ComputeHealthCheck)
+Appears on:[ComputeHealthCheck](#computehealthcheck)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeHealthCheckSpec](#computehealthcheckspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

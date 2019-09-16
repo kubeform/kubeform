@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CloudwatchLogGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CloudwatchLogGroupSpec](#CloudwatchLogGroupSpec)***||
-| `status` | ***[CloudwatchLogGroupStatus](#CloudwatchLogGroupStatus)***||
+| `spec` | ***[CloudwatchLogGroupSpec](#cloudwatchloggroupspec)***||
+| `status` | ***[CloudwatchLogGroupStatus](#cloudwatchloggroupstatus)***||
 ## CloudwatchLogGroupSpec
 
-Appears on:[CloudwatchLogGroup](#CloudwatchLogGroup), [CloudwatchLogGroupStatus](#CloudwatchLogGroupStatus)
+Appears on:[CloudwatchLogGroup](#cloudwatchloggroup), [CloudwatchLogGroupStatus](#cloudwatchloggroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[CloudwatchLogGroup](#CloudwatchLogGroup), [CloudwatchLogGroupStatus]
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## CloudwatchLogGroupStatus
 
-Appears on:[CloudwatchLogGroup](#CloudwatchLogGroup)
+Appears on:[CloudwatchLogGroup](#cloudwatchloggroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CloudwatchLogGroupSpec](#CloudwatchLogGroupSpec)***| ***(Optional)*** |
+| `output` | ***[CloudwatchLogGroupSpec](#cloudwatchloggroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

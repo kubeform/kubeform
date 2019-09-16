@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `KeyVaultAccessPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[KeyVaultAccessPolicySpec](#KeyVaultAccessPolicySpec)***||
-| `status` | ***[KeyVaultAccessPolicyStatus](#KeyVaultAccessPolicyStatus)***||
+| `spec` | ***[KeyVaultAccessPolicySpec](#keyvaultaccesspolicyspec)***||
+| `status` | ***[KeyVaultAccessPolicyStatus](#keyvaultaccesspolicystatus)***||
 ## KeyVaultAccessPolicySpec
 
-Appears on:[KeyVaultAccessPolicy](#KeyVaultAccessPolicy), [KeyVaultAccessPolicyStatus](#KeyVaultAccessPolicyStatus)
+Appears on:[KeyVaultAccessPolicy](#keyvaultaccesspolicy), [KeyVaultAccessPolicyStatus](#keyvaultaccesspolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,11 +38,11 @@ Appears on:[KeyVaultAccessPolicy](#KeyVaultAccessPolicy), [KeyVaultAccessPolicyS
 | `vaultName` | ***string***| ***(Optional)*** Deprecated|
 ## KeyVaultAccessPolicyStatus
 
-Appears on:[KeyVaultAccessPolicy](#KeyVaultAccessPolicy)
+Appears on:[KeyVaultAccessPolicy](#keyvaultaccesspolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[KeyVaultAccessPolicySpec](#KeyVaultAccessPolicySpec)***| ***(Optional)*** |
+| `output` | ***[KeyVaultAccessPolicySpec](#keyvaultaccesspolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

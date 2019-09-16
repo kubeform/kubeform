@@ -16,19 +16,19 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `TrafficManagerProfile` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[TrafficManagerProfileSpec](#TrafficManagerProfileSpec)***||
-| `status` | ***[TrafficManagerProfileStatus](#TrafficManagerProfileStatus)***||
+| `spec` | ***[TrafficManagerProfileSpec](#trafficmanagerprofilespec)***||
+| `status` | ***[TrafficManagerProfileStatus](#trafficmanagerprofilestatus)***||
 ## TrafficManagerProfileSpec
 
-Appears on:[TrafficManagerProfile](#TrafficManagerProfile), [TrafficManagerProfileStatus](#TrafficManagerProfileStatus)
+Appears on:[TrafficManagerProfile](#trafficmanagerprofile), [TrafficManagerProfileStatus](#trafficmanagerprofilestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `dnsConfig` | ***[[]TrafficManagerProfileSpecDnsConfig](#TrafficManagerProfileSpecDnsConfig)***||
+| `dnsConfig` | ***[[]TrafficManagerProfileSpecDnsConfig](#trafficmanagerprofilespecdnsconfig)***||
 | `fqdn` | ***string***| ***(Optional)*** |
-| `monitorConfig` | ***[[]TrafficManagerProfileSpecMonitorConfig](#TrafficManagerProfileSpecMonitorConfig)***||
+| `monitorConfig` | ***[[]TrafficManagerProfileSpecMonitorConfig](#trafficmanagerprofilespecmonitorconfig)***||
 | `name` | ***string***||
 | `profileStatus` | ***string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
@@ -36,7 +36,7 @@ Appears on:[TrafficManagerProfile](#TrafficManagerProfile), [TrafficManagerProfi
 | `trafficRoutingMethod` | ***string***||
 ## TrafficManagerProfileSpecDnsConfig
 
-Appears on:[TrafficManagerProfileSpec](#TrafficManagerProfileSpec)
+Appears on:[TrafficManagerProfileSpec](#trafficmanagerprofilespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -44,7 +44,7 @@ Appears on:[TrafficManagerProfileSpec](#TrafficManagerProfileSpec)
 | `ttl` | ***int***||
 ## TrafficManagerProfileSpecMonitorConfig
 
-Appears on:[TrafficManagerProfileSpec](#TrafficManagerProfileSpec)
+Appears on:[TrafficManagerProfileSpec](#trafficmanagerprofilespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -53,11 +53,11 @@ Appears on:[TrafficManagerProfileSpec](#TrafficManagerProfileSpec)
 | `protocol` | ***string***||
 ## TrafficManagerProfileStatus
 
-Appears on:[TrafficManagerProfile](#TrafficManagerProfile)
+Appears on:[TrafficManagerProfile](#trafficmanagerprofile)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[TrafficManagerProfileSpec](#TrafficManagerProfileSpec)***| ***(Optional)*** |
+| `output` | ***[TrafficManagerProfileSpec](#trafficmanagerprofilespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

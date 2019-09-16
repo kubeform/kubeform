@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `PinpointApnsVoipSandboxChannel` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PinpointApnsVoipSandboxChannelSpec](#PinpointApnsVoipSandboxChannelSpec)***||
-| `status` | ***[PinpointApnsVoipSandboxChannelStatus](#PinpointApnsVoipSandboxChannelStatus)***||
+| `spec` | ***[PinpointApnsVoipSandboxChannelSpec](#pinpointapnsvoipsandboxchannelspec)***||
+| `status` | ***[PinpointApnsVoipSandboxChannelStatus](#pinpointapnsvoipsandboxchannelstatus)***||
 ## PinpointApnsVoipSandboxChannelSpec
 
-Appears on:[PinpointApnsVoipSandboxChannel](#PinpointApnsVoipSandboxChannel), [PinpointApnsVoipSandboxChannelStatus](#PinpointApnsVoipSandboxChannelStatus)
+Appears on:[PinpointApnsVoipSandboxChannel](#pinpointapnsvoipsandboxchannel), [PinpointApnsVoipSandboxChannelStatus](#pinpointapnsvoipsandboxchannelstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,12 +32,12 @@ Appears on:[PinpointApnsVoipSandboxChannel](#PinpointApnsVoipSandboxChannel), [P
 | `enabled` | ***bool***| ***(Optional)*** |
 ## PinpointApnsVoipSandboxChannelStatus
 
-Appears on:[PinpointApnsVoipSandboxChannel](#PinpointApnsVoipSandboxChannel)
+Appears on:[PinpointApnsVoipSandboxChannel](#pinpointapnsvoipsandboxchannel)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PinpointApnsVoipSandboxChannelSpec](#PinpointApnsVoipSandboxChannelSpec)***| ***(Optional)*** |
+| `output` | ***[PinpointApnsVoipSandboxChannelSpec](#pinpointapnsvoipsandboxchannelspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

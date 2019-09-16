@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `digitalocean.kubeform.com/v1alpha1` |
 |    `kind` | string | `Tag` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[TagSpec](#TagSpec)***||
-| `status` | ***[TagStatus](#TagStatus)***||
+| `spec` | ***[TagSpec](#tagspec)***||
+| `status` | ***[TagStatus](#tagstatus)***||
 ## TagSpec
 
-Appears on:[Tag](#Tag), [TagStatus](#TagStatus)
+Appears on:[Tag](#tag), [TagStatus](#tagstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,11 +29,11 @@ Appears on:[Tag](#Tag), [TagStatus](#TagStatus)
 | `name` | ***string***||
 ## TagStatus
 
-Appears on:[Tag](#Tag)
+Appears on:[Tag](#tag)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[TagSpec](#TagSpec)***| ***(Optional)*** |
+| `output` | ***[TagSpec](#tagspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

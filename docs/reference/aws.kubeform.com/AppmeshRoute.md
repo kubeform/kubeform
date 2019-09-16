@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AppmeshRoute` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AppmeshRouteSpec](#AppmeshRouteSpec)***||
-| `status` | ***[AppmeshRouteStatus](#AppmeshRouteStatus)***||
+| `spec` | ***[AppmeshRouteSpec](#appmeshroutespec)***||
+| `status` | ***[AppmeshRouteStatus](#appmeshroutestatus)***||
 ## AppmeshRouteSpec
 
-Appears on:[AppmeshRoute](#AppmeshRoute), [AppmeshRouteStatus](#AppmeshRouteStatus)
+Appears on:[AppmeshRoute](#appmeshroute), [AppmeshRouteStatus](#appmeshroutestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,34 +31,34 @@ Appears on:[AppmeshRoute](#AppmeshRoute), [AppmeshRouteStatus](#AppmeshRouteStat
 | `lastUpdatedDate` | ***string***| ***(Optional)*** |
 | `meshName` | ***string***||
 | `name` | ***string***||
-| `spec` | ***[[]AppmeshRouteSpecSpec](#AppmeshRouteSpecSpec)***||
+| `spec` | ***[[]AppmeshRouteSpecSpec](#appmeshroutespecspec)***||
 | `virtualRouterName` | ***string***||
 ## AppmeshRouteSpecSpec
 
-Appears on:[AppmeshRouteSpec](#AppmeshRouteSpec)
+Appears on:[AppmeshRouteSpec](#appmeshroutespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `httpRoute` | ***[[]AppmeshRouteSpecSpecHttpRoute](#AppmeshRouteSpecSpecHttpRoute)***| ***(Optional)*** |
-| `tcpRoute` | ***[[]AppmeshRouteSpecSpecTcpRoute](#AppmeshRouteSpecSpecTcpRoute)***| ***(Optional)*** |
+| `httpRoute` | ***[[]AppmeshRouteSpecSpecHttpRoute](#appmeshroutespecspechttproute)***| ***(Optional)*** |
+| `tcpRoute` | ***[[]AppmeshRouteSpecSpecTcpRoute](#appmeshroutespecspectcproute)***| ***(Optional)*** |
 ## AppmeshRouteSpecSpecHttpRoute
 
-Appears on:[AppmeshRouteSpecSpec](#AppmeshRouteSpecSpec)
+Appears on:[AppmeshRouteSpecSpec](#appmeshroutespecspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `action` | ***[[]AppmeshRouteSpecSpecHttpRouteAction](#AppmeshRouteSpecSpecHttpRouteAction)***||
-| `match` | ***[[]AppmeshRouteSpecSpecHttpRouteMatch](#AppmeshRouteSpecSpecHttpRouteMatch)***||
+| `action` | ***[[]AppmeshRouteSpecSpecHttpRouteAction](#appmeshroutespecspechttprouteaction)***||
+| `match` | ***[[]AppmeshRouteSpecSpecHttpRouteMatch](#appmeshroutespecspechttproutematch)***||
 ## AppmeshRouteSpecSpecHttpRouteAction
 
-Appears on:[AppmeshRouteSpecSpecHttpRoute](#AppmeshRouteSpecSpecHttpRoute)
+Appears on:[AppmeshRouteSpecSpecHttpRoute](#appmeshroutespecspechttproute)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `weightedTarget` | ***[[]AppmeshRouteSpecSpecHttpRouteActionWeightedTarget](#AppmeshRouteSpecSpecHttpRouteActionWeightedTarget)***||
+| `weightedTarget` | ***[[]AppmeshRouteSpecSpecHttpRouteActionWeightedTarget](#appmeshroutespecspechttprouteactionweightedtarget)***||
 ## AppmeshRouteSpecSpecHttpRouteActionWeightedTarget
 
-Appears on:[AppmeshRouteSpecSpecHttpRouteAction](#AppmeshRouteSpecSpecHttpRouteAction)
+Appears on:[AppmeshRouteSpecSpecHttpRouteAction](#appmeshroutespecspechttprouteaction)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -66,28 +66,28 @@ Appears on:[AppmeshRouteSpecSpecHttpRouteAction](#AppmeshRouteSpecSpecHttpRouteA
 | `weight` | ***int***||
 ## AppmeshRouteSpecSpecHttpRouteMatch
 
-Appears on:[AppmeshRouteSpecSpecHttpRoute](#AppmeshRouteSpecSpecHttpRoute)
+Appears on:[AppmeshRouteSpecSpecHttpRoute](#appmeshroutespecspechttproute)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `prefix` | ***string***||
 ## AppmeshRouteSpecSpecTcpRoute
 
-Appears on:[AppmeshRouteSpecSpec](#AppmeshRouteSpecSpec)
+Appears on:[AppmeshRouteSpecSpec](#appmeshroutespecspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `action` | ***[[]AppmeshRouteSpecSpecTcpRouteAction](#AppmeshRouteSpecSpecTcpRouteAction)***||
+| `action` | ***[[]AppmeshRouteSpecSpecTcpRouteAction](#appmeshroutespecspectcprouteaction)***||
 ## AppmeshRouteSpecSpecTcpRouteAction
 
-Appears on:[AppmeshRouteSpecSpecTcpRoute](#AppmeshRouteSpecSpecTcpRoute)
+Appears on:[AppmeshRouteSpecSpecTcpRoute](#appmeshroutespecspectcproute)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `weightedTarget` | ***[[]AppmeshRouteSpecSpecTcpRouteActionWeightedTarget](#AppmeshRouteSpecSpecTcpRouteActionWeightedTarget)***||
+| `weightedTarget` | ***[[]AppmeshRouteSpecSpecTcpRouteActionWeightedTarget](#appmeshroutespecspectcprouteactionweightedtarget)***||
 ## AppmeshRouteSpecSpecTcpRouteActionWeightedTarget
 
-Appears on:[AppmeshRouteSpecSpecTcpRouteAction](#AppmeshRouteSpecSpecTcpRouteAction)
+Appears on:[AppmeshRouteSpecSpecTcpRouteAction](#appmeshroutespecspectcprouteaction)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -95,11 +95,11 @@ Appears on:[AppmeshRouteSpecSpecTcpRouteAction](#AppmeshRouteSpecSpecTcpRouteAct
 | `weight` | ***int***||
 ## AppmeshRouteStatus
 
-Appears on:[AppmeshRoute](#AppmeshRoute)
+Appears on:[AppmeshRoute](#appmeshroute)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AppmeshRouteSpec](#AppmeshRouteSpec)***| ***(Optional)*** |
+| `output` | ***[AppmeshRouteSpec](#appmeshroutespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `OpsworksHaproxyLayer` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[OpsworksHaproxyLayerSpec](#OpsworksHaproxyLayerSpec)***||
-| `status` | ***[OpsworksHaproxyLayerStatus](#OpsworksHaproxyLayerStatus)***||
+| `spec` | ***[OpsworksHaproxyLayerSpec](#opsworkshaproxylayerspec)***||
+| `status` | ***[OpsworksHaproxyLayerStatus](#opsworkshaproxylayerstatus)***||
 ## OpsworksHaproxyLayerSpec
 
-Appears on:[OpsworksHaproxyLayer](#OpsworksHaproxyLayer), [OpsworksHaproxyLayerStatus](#OpsworksHaproxyLayerStatus)
+Appears on:[OpsworksHaproxyLayer](#opsworkshaproxylayer), [OpsworksHaproxyLayerStatus](#opsworkshaproxylayerstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,7 +38,7 @@ Appears on:[OpsworksHaproxyLayer](#OpsworksHaproxyLayer), [OpsworksHaproxyLayerS
 | `customShutdownRecipes` | ***[]string***| ***(Optional)*** |
 | `customUndeployRecipes` | ***[]string***| ***(Optional)*** |
 | `drainElbOnShutdown` | ***bool***| ***(Optional)*** |
-| `ebsVolume` | ***[[]OpsworksHaproxyLayerSpecEbsVolume](#OpsworksHaproxyLayerSpecEbsVolume)***| ***(Optional)*** |
+| `ebsVolume` | ***[[]OpsworksHaproxyLayerSpecEbsVolume](#opsworkshaproxylayerspecebsvolume)***| ***(Optional)*** |
 | `elasticLoadBalancer` | ***string***| ***(Optional)*** |
 | `healthcheckMethod` | ***string***| ***(Optional)*** |
 | `healthcheckURL` | ***string***| ***(Optional)*** |
@@ -54,7 +54,7 @@ Appears on:[OpsworksHaproxyLayer](#OpsworksHaproxyLayer), [OpsworksHaproxyLayerS
 | `useEbsOptimizedInstances` | ***bool***| ***(Optional)*** |
 ## OpsworksHaproxyLayerSpecEbsVolume
 
-Appears on:[OpsworksHaproxyLayerSpec](#OpsworksHaproxyLayerSpec)
+Appears on:[OpsworksHaproxyLayerSpec](#opsworkshaproxylayerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -66,11 +66,11 @@ Appears on:[OpsworksHaproxyLayerSpec](#OpsworksHaproxyLayerSpec)
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksHaproxyLayerStatus
 
-Appears on:[OpsworksHaproxyLayer](#OpsworksHaproxyLayer)
+Appears on:[OpsworksHaproxyLayer](#opsworkshaproxylayer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[OpsworksHaproxyLayerSpec](#OpsworksHaproxyLayerSpec)***| ***(Optional)*** |
+| `output` | ***[OpsworksHaproxyLayerSpec](#opsworkshaproxylayerspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

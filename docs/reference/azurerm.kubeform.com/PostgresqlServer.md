@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `PostgresqlServer` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PostgresqlServerSpec](#PostgresqlServerSpec)***||
-| `status` | ***[PostgresqlServerStatus](#PostgresqlServerStatus)***||
+| `spec` | ***[PostgresqlServerSpec](#postgresqlserverspec)***||
+| `status` | ***[PostgresqlServerStatus](#postgresqlserverstatus)***||
 ## PostgresqlServerSpec
 
-Appears on:[PostgresqlServer](#PostgresqlServer), [PostgresqlServerStatus](#PostgresqlServerStatus)
+Appears on:[PostgresqlServer](#postgresqlserver), [PostgresqlServerStatus](#postgresqlserverstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,14 +32,14 @@ Appears on:[PostgresqlServer](#PostgresqlServer), [PostgresqlServerStatus](#Post
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
-| `sku` | ***[[]PostgresqlServerSpecSku](#PostgresqlServerSpecSku)***||
+| `sku` | ***[[]PostgresqlServerSpecSku](#postgresqlserverspecsku)***||
 | `sslEnforcement` | ***string***||
-| `storageProfile` | ***[[]PostgresqlServerSpecStorageProfile](#PostgresqlServerSpecStorageProfile)***||
+| `storageProfile` | ***[[]PostgresqlServerSpecStorageProfile](#postgresqlserverspecstorageprofile)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `version` | ***string***||
 ## PostgresqlServerSpecSku
 
-Appears on:[PostgresqlServerSpec](#PostgresqlServerSpec)
+Appears on:[PostgresqlServerSpec](#postgresqlserverspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -49,7 +49,7 @@ Appears on:[PostgresqlServerSpec](#PostgresqlServerSpec)
 | `tier` | ***string***||
 ## PostgresqlServerSpecStorageProfile
 
-Appears on:[PostgresqlServerSpec](#PostgresqlServerSpec)
+Appears on:[PostgresqlServerSpec](#postgresqlserverspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -58,12 +58,12 @@ Appears on:[PostgresqlServerSpec](#PostgresqlServerSpec)
 | `storageMb` | ***int***||
 ## PostgresqlServerStatus
 
-Appears on:[PostgresqlServer](#PostgresqlServer)
+Appears on:[PostgresqlServer](#postgresqlserver)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PostgresqlServerSpec](#PostgresqlServerSpec)***| ***(Optional)*** |
+| `output` | ***[PostgresqlServerSpec](#postgresqlserverspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

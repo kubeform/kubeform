@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `PublicIPPrefix` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PublicIPPrefixSpec](#PublicIPPrefixSpec)***||
-| `status` | ***[PublicIPPrefixStatus](#PublicIPPrefixStatus)***||
+| `spec` | ***[PublicIPPrefixSpec](#publicipprefixspec)***||
+| `status` | ***[PublicIPPrefixStatus](#publicipprefixstatus)***||
 ## PublicIPPrefixSpec
 
-Appears on:[PublicIPPrefix](#PublicIPPrefix), [PublicIPPrefixStatus](#PublicIPPrefixStatus)
+Appears on:[PublicIPPrefix](#publicipprefix), [PublicIPPrefixStatus](#publicipprefixstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -36,11 +36,11 @@ Appears on:[PublicIPPrefix](#PublicIPPrefix), [PublicIPPrefixStatus](#PublicIPPr
 | `zones` | ***[]string***| ***(Optional)*** |
 ## PublicIPPrefixStatus
 
-Appears on:[PublicIPPrefix](#PublicIPPrefix)
+Appears on:[PublicIPPrefix](#publicipprefix)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PublicIPPrefixSpec](#PublicIPPrefixSpec)***| ***(Optional)*** |
+| `output` | ***[PublicIPPrefixSpec](#publicipprefixspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

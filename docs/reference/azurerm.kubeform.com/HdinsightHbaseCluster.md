@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `HdinsightHbaseCluster` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[HdinsightHbaseClusterSpec](#HdinsightHbaseClusterSpec)***||
-| `status` | ***[HdinsightHbaseClusterStatus](#HdinsightHbaseClusterStatus)***||
+| `spec` | ***[HdinsightHbaseClusterSpec](#hdinsighthbaseclusterspec)***||
+| `status` | ***[HdinsightHbaseClusterStatus](#hdinsighthbaseclusterstatus)***||
 ## HdinsightHbaseClusterSpec
 
-Appears on:[HdinsightHbaseCluster](#HdinsightHbaseCluster), [HdinsightHbaseClusterStatus](#HdinsightHbaseClusterStatus)
+Appears on:[HdinsightHbaseCluster](#hdinsighthbasecluster), [HdinsightHbaseClusterStatus](#hdinsighthbaseclusterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,27 +28,27 @@ Appears on:[HdinsightHbaseCluster](#HdinsightHbaseCluster), [HdinsightHbaseClust
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `clusterVersion` | ***string***||
-| `componentVersion` | ***[[]HdinsightHbaseClusterSpecComponentVersion](#HdinsightHbaseClusterSpecComponentVersion)***||
-| `gateway` | ***[[]HdinsightHbaseClusterSpecGateway](#HdinsightHbaseClusterSpecGateway)***||
+| `componentVersion` | ***[[]HdinsightHbaseClusterSpecComponentVersion](#hdinsighthbaseclusterspeccomponentversion)***||
+| `gateway` | ***[[]HdinsightHbaseClusterSpecGateway](#hdinsighthbaseclusterspecgateway)***||
 | `httpsEndpoint` | ***string***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
-| `roles` | ***[[]HdinsightHbaseClusterSpecRoles](#HdinsightHbaseClusterSpecRoles)***||
+| `roles` | ***[[]HdinsightHbaseClusterSpecRoles](#hdinsighthbaseclusterspecroles)***||
 | `sshEndpoint` | ***string***| ***(Optional)*** |
-| `storageAccount` | ***[[]HdinsightHbaseClusterSpecStorageAccount](#HdinsightHbaseClusterSpecStorageAccount)***||
+| `storageAccount` | ***[[]HdinsightHbaseClusterSpecStorageAccount](#hdinsighthbaseclusterspecstorageaccount)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `tier` | ***string***||
 ## HdinsightHbaseClusterSpecComponentVersion
 
-Appears on:[HdinsightHbaseClusterSpec](#HdinsightHbaseClusterSpec)
+Appears on:[HdinsightHbaseClusterSpec](#hdinsighthbaseclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `hbase` | ***string***||
 ## HdinsightHbaseClusterSpecGateway
 
-Appears on:[HdinsightHbaseClusterSpec](#HdinsightHbaseClusterSpec)
+Appears on:[HdinsightHbaseClusterSpec](#hdinsighthbaseclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -56,16 +56,16 @@ Appears on:[HdinsightHbaseClusterSpec](#HdinsightHbaseClusterSpec)
 | `username` | ***string***||
 ## HdinsightHbaseClusterSpecRoles
 
-Appears on:[HdinsightHbaseClusterSpec](#HdinsightHbaseClusterSpec)
+Appears on:[HdinsightHbaseClusterSpec](#hdinsighthbaseclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `headNode` | ***[[]HdinsightHbaseClusterSpecRolesHeadNode](#HdinsightHbaseClusterSpecRolesHeadNode)***||
-| `workerNode` | ***[[]HdinsightHbaseClusterSpecRolesWorkerNode](#HdinsightHbaseClusterSpecRolesWorkerNode)***||
-| `zookeeperNode` | ***[[]HdinsightHbaseClusterSpecRolesZookeeperNode](#HdinsightHbaseClusterSpecRolesZookeeperNode)***||
+| `headNode` | ***[[]HdinsightHbaseClusterSpecRolesHeadNode](#hdinsighthbaseclusterspecrolesheadnode)***||
+| `workerNode` | ***[[]HdinsightHbaseClusterSpecRolesWorkerNode](#hdinsighthbaseclusterspecrolesworkernode)***||
+| `zookeeperNode` | ***[[]HdinsightHbaseClusterSpecRolesZookeeperNode](#hdinsighthbaseclusterspecroleszookeepernode)***||
 ## HdinsightHbaseClusterSpecRolesHeadNode
 
-Appears on:[HdinsightHbaseClusterSpecRoles](#HdinsightHbaseClusterSpecRoles)
+Appears on:[HdinsightHbaseClusterSpecRoles](#hdinsighthbaseclusterspecroles)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -76,7 +76,7 @@ Appears on:[HdinsightHbaseClusterSpecRoles](#HdinsightHbaseClusterSpecRoles)
 | `vmSize` | ***string***||
 ## HdinsightHbaseClusterSpecRolesWorkerNode
 
-Appears on:[HdinsightHbaseClusterSpecRoles](#HdinsightHbaseClusterSpecRoles)
+Appears on:[HdinsightHbaseClusterSpecRoles](#hdinsighthbaseclusterspecroles)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -89,7 +89,7 @@ Appears on:[HdinsightHbaseClusterSpecRoles](#HdinsightHbaseClusterSpecRoles)
 | `vmSize` | ***string***||
 ## HdinsightHbaseClusterSpecRolesZookeeperNode
 
-Appears on:[HdinsightHbaseClusterSpecRoles](#HdinsightHbaseClusterSpecRoles)
+Appears on:[HdinsightHbaseClusterSpecRoles](#hdinsighthbaseclusterspecroles)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -100,7 +100,7 @@ Appears on:[HdinsightHbaseClusterSpecRoles](#HdinsightHbaseClusterSpecRoles)
 | `vmSize` | ***string***||
 ## HdinsightHbaseClusterSpecStorageAccount
 
-Appears on:[HdinsightHbaseClusterSpec](#HdinsightHbaseClusterSpec)
+Appears on:[HdinsightHbaseClusterSpec](#hdinsighthbaseclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -108,12 +108,12 @@ Appears on:[HdinsightHbaseClusterSpec](#HdinsightHbaseClusterSpec)
 | `storageContainerID` | ***string***||
 ## HdinsightHbaseClusterStatus
 
-Appears on:[HdinsightHbaseCluster](#HdinsightHbaseCluster)
+Appears on:[HdinsightHbaseCluster](#hdinsighthbasecluster)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[HdinsightHbaseClusterSpec](#HdinsightHbaseClusterSpec)***| ***(Optional)*** |
+| `output` | ***[HdinsightHbaseClusterSpec](#hdinsighthbaseclusterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

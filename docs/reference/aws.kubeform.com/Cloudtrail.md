@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `Cloudtrail` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CloudtrailSpec](#CloudtrailSpec)***||
-| `status` | ***[CloudtrailStatus](#CloudtrailStatus)***||
+| `spec` | ***[CloudtrailSpec](#cloudtrailspec)***||
+| `status` | ***[CloudtrailStatus](#cloudtrailstatus)***||
 ## CloudtrailSpec
 
-Appears on:[Cloudtrail](#Cloudtrail), [CloudtrailStatus](#CloudtrailStatus)
+Appears on:[Cloudtrail](#cloudtrail), [CloudtrailStatus](#cloudtrailstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,7 +31,7 @@ Appears on:[Cloudtrail](#Cloudtrail), [CloudtrailStatus](#CloudtrailStatus)
 | `cloudWatchLogsRoleArn` | ***string***| ***(Optional)*** |
 | `enableLogFileValidation` | ***bool***| ***(Optional)*** |
 | `enableLogging` | ***bool***| ***(Optional)*** |
-| `eventSelector` | ***[[]CloudtrailSpecEventSelector](#CloudtrailSpecEventSelector)***| ***(Optional)*** |
+| `eventSelector` | ***[[]CloudtrailSpecEventSelector](#cloudtrailspeceventselector)***| ***(Optional)*** |
 | `homeRegion` | ***string***| ***(Optional)*** |
 | `includeGlobalServiceEvents` | ***bool***| ***(Optional)*** |
 | `isMultiRegionTrail` | ***bool***| ***(Optional)*** |
@@ -44,16 +44,16 @@ Appears on:[Cloudtrail](#Cloudtrail), [CloudtrailStatus](#CloudtrailStatus)
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## CloudtrailSpecEventSelector
 
-Appears on:[CloudtrailSpec](#CloudtrailSpec)
+Appears on:[CloudtrailSpec](#cloudtrailspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `dataResource` | ***[[]CloudtrailSpecEventSelectorDataResource](#CloudtrailSpecEventSelectorDataResource)***| ***(Optional)*** |
+| `dataResource` | ***[[]CloudtrailSpecEventSelectorDataResource](#cloudtrailspeceventselectordataresource)***| ***(Optional)*** |
 | `includeManagementEvents` | ***bool***| ***(Optional)*** |
 | `readWriteType` | ***string***| ***(Optional)*** |
 ## CloudtrailSpecEventSelectorDataResource
 
-Appears on:[CloudtrailSpecEventSelector](#CloudtrailSpecEventSelector)
+Appears on:[CloudtrailSpecEventSelector](#cloudtrailspeceventselector)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -61,11 +61,11 @@ Appears on:[CloudtrailSpecEventSelector](#CloudtrailSpecEventSelector)
 | `values` | ***[]string***||
 ## CloudtrailStatus
 
-Appears on:[Cloudtrail](#Cloudtrail)
+Appears on:[Cloudtrail](#cloudtrail)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CloudtrailSpec](#CloudtrailSpec)***| ***(Optional)*** |
+| `output` | ***[CloudtrailSpec](#cloudtrailspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,18 +16,18 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `EmrInstanceGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[EmrInstanceGroupSpec](#EmrInstanceGroupSpec)***||
-| `status` | ***[EmrInstanceGroupStatus](#EmrInstanceGroupStatus)***||
+| `spec` | ***[EmrInstanceGroupSpec](#emrinstancegroupspec)***||
+| `status` | ***[EmrInstanceGroupStatus](#emrinstancegroupstatus)***||
 ## EmrInstanceGroupSpec
 
-Appears on:[EmrInstanceGroup](#EmrInstanceGroup), [EmrInstanceGroupStatus](#EmrInstanceGroupStatus)
+Appears on:[EmrInstanceGroup](#emrinstancegroup), [EmrInstanceGroupStatus](#emrinstancegroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `clusterID` | ***string***||
-| `ebsConfig` | ***[[]EmrInstanceGroupSpecEbsConfig](#EmrInstanceGroupSpecEbsConfig)***| ***(Optional)*** |
+| `ebsConfig` | ***[[]EmrInstanceGroupSpecEbsConfig](#emrinstancegroupspecebsconfig)***| ***(Optional)*** |
 | `ebsOptimized` | ***bool***| ***(Optional)*** |
 | `instanceCount` | ***int***| ***(Optional)*** |
 | `instanceType` | ***string***||
@@ -36,7 +36,7 @@ Appears on:[EmrInstanceGroup](#EmrInstanceGroup), [EmrInstanceGroupStatus](#EmrI
 | `status` | ***string***| ***(Optional)*** |
 ## EmrInstanceGroupSpecEbsConfig
 
-Appears on:[EmrInstanceGroupSpec](#EmrInstanceGroupSpec)
+Appears on:[EmrInstanceGroupSpec](#emrinstancegroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -46,11 +46,11 @@ Appears on:[EmrInstanceGroupSpec](#EmrInstanceGroupSpec)
 | `volumesPerInstance` | ***int***| ***(Optional)*** |
 ## EmrInstanceGroupStatus
 
-Appears on:[EmrInstanceGroup](#EmrInstanceGroup)
+Appears on:[EmrInstanceGroup](#emrinstancegroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[EmrInstanceGroupSpec](#EmrInstanceGroupSpec)***| ***(Optional)*** |
+| `output` | ***[EmrInstanceGroupSpec](#emrinstancegroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

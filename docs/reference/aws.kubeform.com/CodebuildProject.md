@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CodebuildProject` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CodebuildProjectSpec](#CodebuildProjectSpec)***||
-| `status` | ***[CodebuildProjectStatus](#CodebuildProjectStatus)***||
+| `spec` | ***[CodebuildProjectSpec](#codebuildprojectspec)***||
+| `status` | ***[CodebuildProjectStatus](#codebuildprojectstatus)***||
 ## CodebuildProjectSpec
 
-Appears on:[CodebuildProject](#CodebuildProject), [CodebuildProjectStatus](#CodebuildProjectStatus)
+Appears on:[CodebuildProject](#codebuildproject), [CodebuildProjectStatus](#codebuildprojectstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,24 +28,24 @@ Appears on:[CodebuildProject](#CodebuildProject), [CodebuildProjectStatus](#Code
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `arn` | ***string***| ***(Optional)*** |
-| `artifacts` | ***[[]CodebuildProjectSpecArtifacts](#CodebuildProjectSpecArtifacts)***||
+| `artifacts` | ***[[]CodebuildProjectSpecArtifacts](#codebuildprojectspecartifacts)***||
 | `badgeEnabled` | ***bool***| ***(Optional)*** |
 | `badgeURL` | ***string***| ***(Optional)*** |
 | `buildTimeout` | ***int***| ***(Optional)*** |
-| `cache` | ***[[]CodebuildProjectSpecCache](#CodebuildProjectSpecCache)***| ***(Optional)*** |
+| `cache` | ***[[]CodebuildProjectSpecCache](#codebuildprojectspeccache)***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `encryptionKey` | ***string***| ***(Optional)*** |
-| `environment` | ***[[]CodebuildProjectSpecEnvironment](#CodebuildProjectSpecEnvironment)***||
+| `environment` | ***[[]CodebuildProjectSpecEnvironment](#codebuildprojectspecenvironment)***||
 | `name` | ***string***||
-| `secondaryArtifacts` | ***[[]CodebuildProjectSpecSecondaryArtifacts](#CodebuildProjectSpecSecondaryArtifacts)***| ***(Optional)*** |
-| `secondarySources` | ***[[]CodebuildProjectSpecSecondarySources](#CodebuildProjectSpecSecondarySources)***| ***(Optional)*** |
+| `secondaryArtifacts` | ***[[]CodebuildProjectSpecSecondaryArtifacts](#codebuildprojectspecsecondaryartifacts)***| ***(Optional)*** |
+| `secondarySources` | ***[[]CodebuildProjectSpecSecondarySources](#codebuildprojectspecsecondarysources)***| ***(Optional)*** |
 | `serviceRole` | ***string***||
-| `source` | ***[[]CodebuildProjectSpecSource](#CodebuildProjectSpecSource)***||
+| `source` | ***[[]CodebuildProjectSpecSource](#codebuildprojectspecsource)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `vpcConfig` | ***[[]CodebuildProjectSpecVpcConfig](#CodebuildProjectSpecVpcConfig)***| ***(Optional)*** |
+| `vpcConfig` | ***[[]CodebuildProjectSpecVpcConfig](#codebuildprojectspecvpcconfig)***| ***(Optional)*** |
 ## CodebuildProjectSpecArtifacts
 
-Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+Appears on:[CodebuildProjectSpec](#codebuildprojectspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -58,7 +58,7 @@ Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
 | `type` | ***string***||
 ## CodebuildProjectSpecCache
 
-Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+Appears on:[CodebuildProjectSpec](#codebuildprojectspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -66,20 +66,20 @@ Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
 | `type` | ***string***| ***(Optional)*** |
 ## CodebuildProjectSpecEnvironment
 
-Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+Appears on:[CodebuildProjectSpec](#codebuildprojectspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `certificate` | ***string***| ***(Optional)*** |
 | `computeType` | ***string***||
-| `environmentVariable` | ***[[]CodebuildProjectSpecEnvironmentEnvironmentVariable](#CodebuildProjectSpecEnvironmentEnvironmentVariable)***| ***(Optional)*** |
+| `environmentVariable` | ***[[]CodebuildProjectSpecEnvironmentEnvironmentVariable](#codebuildprojectspecenvironmentenvironmentvariable)***| ***(Optional)*** |
 | `image` | ***string***||
 | `imagePullCredentialsType` | ***string***| ***(Optional)*** |
 | `privilegedMode` | ***bool***| ***(Optional)*** |
 | `type` | ***string***||
 ## CodebuildProjectSpecEnvironmentEnvironmentVariable
 
-Appears on:[CodebuildProjectSpecEnvironment](#CodebuildProjectSpecEnvironment)
+Appears on:[CodebuildProjectSpecEnvironment](#codebuildprojectspecenvironment)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -88,7 +88,7 @@ Appears on:[CodebuildProjectSpecEnvironment](#CodebuildProjectSpecEnvironment)
 | `value` | ***string***||
 ## CodebuildProjectSpecSecondaryArtifacts
 
-Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+Appears on:[CodebuildProjectSpec](#codebuildprojectspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -102,11 +102,11 @@ Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
 | `type` | ***string***||
 ## CodebuildProjectSpecSecondarySources
 
-Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+Appears on:[CodebuildProjectSpec](#codebuildprojectspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `auth` | ***[[]CodebuildProjectSpecSecondarySourcesAuth](#CodebuildProjectSpecSecondarySourcesAuth)***| ***(Optional)*** |
+| `auth` | ***[[]CodebuildProjectSpecSecondarySourcesAuth](#codebuildprojectspecsecondarysourcesauth)***| ***(Optional)*** |
 | `buildspec` | ***string***| ***(Optional)*** |
 | `gitCloneDepth` | ***int***| ***(Optional)*** |
 | `insecureSSL` | ***bool***| ***(Optional)*** |
@@ -116,18 +116,18 @@ Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
 | `type` | ***string***||
 ## CodebuildProjectSpecSecondarySourcesAuth
 
-Appears on:[CodebuildProjectSpecSecondarySources](#CodebuildProjectSpecSecondarySources)
+Appears on:[CodebuildProjectSpecSecondarySources](#codebuildprojectspecsecondarysources)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 ## CodebuildProjectSpecSource
 
-Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+Appears on:[CodebuildProjectSpec](#codebuildprojectspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `auth` | ***[[]CodebuildProjectSpecSourceAuth](#CodebuildProjectSpecSourceAuth)***| ***(Optional)*** |
+| `auth` | ***[[]CodebuildProjectSpecSourceAuth](#codebuildprojectspecsourceauth)***| ***(Optional)*** |
 | `buildspec` | ***string***| ***(Optional)*** |
 | `gitCloneDepth` | ***int***| ***(Optional)*** |
 | `insecureSSL` | ***bool***| ***(Optional)*** |
@@ -136,14 +136,14 @@ Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
 | `type` | ***string***||
 ## CodebuildProjectSpecSourceAuth
 
-Appears on:[CodebuildProjectSpecSource](#CodebuildProjectSpecSource)
+Appears on:[CodebuildProjectSpecSource](#codebuildprojectspecsource)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 ## CodebuildProjectSpecVpcConfig
 
-Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+Appears on:[CodebuildProjectSpec](#codebuildprojectspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -152,12 +152,12 @@ Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
 | `vpcID` | ***string***||
 ## CodebuildProjectStatus
 
-Appears on:[CodebuildProject](#CodebuildProject)
+Appears on:[CodebuildProject](#codebuildproject)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CodebuildProjectSpec](#CodebuildProjectSpec)***| ***(Optional)*** |
+| `output` | ***[CodebuildProjectSpec](#codebuildprojectspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

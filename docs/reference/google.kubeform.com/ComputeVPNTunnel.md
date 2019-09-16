@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeVPNTunnel` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeVPNTunnelSpec](#ComputeVPNTunnelSpec)***||
-| `status` | ***[ComputeVPNTunnelStatus](#ComputeVPNTunnelStatus)***||
+| `spec` | ***[ComputeVPNTunnelSpec](#computevpntunnelspec)***||
+| `status` | ***[ComputeVPNTunnelStatus](#computevpntunnelstatus)***||
 ## ComputeVPNTunnelSpec
 
-Appears on:[ComputeVPNTunnel](#ComputeVPNTunnel), [ComputeVPNTunnelStatus](#ComputeVPNTunnelStatus)
+Appears on:[ComputeVPNTunnel](#computevpntunnel), [ComputeVPNTunnelStatus](#computevpntunnelstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -45,12 +45,12 @@ Appears on:[ComputeVPNTunnel](#ComputeVPNTunnel), [ComputeVPNTunnelStatus](#Comp
 | `targetVPNGateway` | ***string***||
 ## ComputeVPNTunnelStatus
 
-Appears on:[ComputeVPNTunnel](#ComputeVPNTunnel)
+Appears on:[ComputeVPNTunnel](#computevpntunnel)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeVPNTunnelSpec](#ComputeVPNTunnelSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeVPNTunnelSpec](#computevpntunnelspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

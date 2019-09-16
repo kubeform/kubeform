@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `MediaPackageChannel` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[MediaPackageChannelSpec](#MediaPackageChannelSpec)***||
-| `status` | ***[MediaPackageChannelStatus](#MediaPackageChannelStatus)***||
+| `spec` | ***[MediaPackageChannelSpec](#mediapackagechannelspec)***||
+| `status` | ***[MediaPackageChannelStatus](#mediapackagechannelstatus)***||
 ## MediaPackageChannelSpec
 
-Appears on:[MediaPackageChannel](#MediaPackageChannel), [MediaPackageChannelStatus](#MediaPackageChannelStatus)
+Appears on:[MediaPackageChannel](#mediapackagechannel), [MediaPackageChannelStatus](#mediapackagechannelstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,18 +30,18 @@ Appears on:[MediaPackageChannel](#MediaPackageChannel), [MediaPackageChannelStat
 | `arn` | ***string***| ***(Optional)*** |
 | `channelID` | ***string***||
 | `description` | ***string***| ***(Optional)*** |
-| `hlsIngest` | ***[[]MediaPackageChannelSpecHlsIngest](#MediaPackageChannelSpecHlsIngest)***| ***(Optional)*** |
+| `hlsIngest` | ***[[]MediaPackageChannelSpecHlsIngest](#mediapackagechannelspechlsingest)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## MediaPackageChannelSpecHlsIngest
 
-Appears on:[MediaPackageChannelSpec](#MediaPackageChannelSpec)
+Appears on:[MediaPackageChannelSpec](#mediapackagechannelspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `ingestEndpoints` | ***[[]MediaPackageChannelSpecHlsIngestIngestEndpoints](#MediaPackageChannelSpecHlsIngestIngestEndpoints)***| ***(Optional)*** |
+| `ingestEndpoints` | ***[[]MediaPackageChannelSpecHlsIngestIngestEndpoints](#mediapackagechannelspechlsingestingestendpoints)***| ***(Optional)*** |
 ## MediaPackageChannelSpecHlsIngestIngestEndpoints
 
-Appears on:[MediaPackageChannelSpecHlsIngest](#MediaPackageChannelSpecHlsIngest)
+Appears on:[MediaPackageChannelSpecHlsIngest](#mediapackagechannelspechlsingest)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -49,12 +49,12 @@ Appears on:[MediaPackageChannelSpecHlsIngest](#MediaPackageChannelSpecHlsIngest)
 | `username` | ***string***| ***(Optional)*** |
 ## MediaPackageChannelStatus
 
-Appears on:[MediaPackageChannel](#MediaPackageChannel)
+Appears on:[MediaPackageChannel](#mediapackagechannel)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[MediaPackageChannelSpec](#MediaPackageChannelSpec)***| ***(Optional)*** |
+| `output` | ***[MediaPackageChannelSpec](#mediapackagechannelspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

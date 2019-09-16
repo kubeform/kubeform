@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DbClusterSnapshot` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DbClusterSnapshotSpec](#DbClusterSnapshotSpec)***||
-| `status` | ***[DbClusterSnapshotStatus](#DbClusterSnapshotStatus)***||
+| `spec` | ***[DbClusterSnapshotSpec](#dbclustersnapshotspec)***||
+| `status` | ***[DbClusterSnapshotStatus](#dbclustersnapshotstatus)***||
 ## DbClusterSnapshotSpec
 
-Appears on:[DbClusterSnapshot](#DbClusterSnapshot), [DbClusterSnapshotStatus](#DbClusterSnapshotStatus)
+Appears on:[DbClusterSnapshot](#dbclustersnapshot), [DbClusterSnapshotStatus](#dbclustersnapshotstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -43,11 +43,11 @@ Appears on:[DbClusterSnapshot](#DbClusterSnapshot), [DbClusterSnapshotStatus](#D
 | `vpcID` | ***string***| ***(Optional)*** |
 ## DbClusterSnapshotStatus
 
-Appears on:[DbClusterSnapshot](#DbClusterSnapshot)
+Appears on:[DbClusterSnapshot](#dbclustersnapshot)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DbClusterSnapshotSpec](#DbClusterSnapshotSpec)***| ***(Optional)*** |
+| `output` | ***[DbClusterSnapshotSpec](#dbclustersnapshotspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeURLMap` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeURLMapSpec](#ComputeURLMapSpec)***||
-| `status` | ***[ComputeURLMapStatus](#ComputeURLMapStatus)***||
+| `spec` | ***[ComputeURLMapSpec](#computeurlmapspec)***||
+| `status` | ***[ComputeURLMapStatus](#computeurlmapstatus)***||
 ## ComputeURLMapSpec
 
-Appears on:[ComputeURLMap](#ComputeURLMap), [ComputeURLMapStatus](#ComputeURLMapStatus)
+Appears on:[ComputeURLMap](#computeurlmap), [ComputeURLMapStatus](#computeurlmapstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,16 +29,16 @@ Appears on:[ComputeURLMap](#ComputeURLMap), [ComputeURLMapStatus](#ComputeURLMap
 | `defaultService` | ***string***||
 | `description` | ***string***| ***(Optional)*** |
 | `fingerprint` | ***string***| ***(Optional)*** |
-| `hostRule` | ***[[]ComputeURLMapSpecHostRule](#ComputeURLMapSpecHostRule)***| ***(Optional)*** |
+| `hostRule` | ***[[]ComputeURLMapSpecHostRule](#computeurlmapspechostrule)***| ***(Optional)*** |
 | `mapID` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `pathMatcher` | ***[[]ComputeURLMapSpecPathMatcher](#ComputeURLMapSpecPathMatcher)***| ***(Optional)*** |
+| `pathMatcher` | ***[[]ComputeURLMapSpecPathMatcher](#computeurlmapspecpathmatcher)***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
-| `test` | ***[[]ComputeURLMapSpecTest](#ComputeURLMapSpecTest)***| ***(Optional)*** |
+| `test` | ***[[]ComputeURLMapSpecTest](#computeurlmapspectest)***| ***(Optional)*** |
 ## ComputeURLMapSpecHostRule
 
-Appears on:[ComputeURLMapSpec](#ComputeURLMapSpec)
+Appears on:[ComputeURLMapSpec](#computeurlmapspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -47,17 +47,17 @@ Appears on:[ComputeURLMapSpec](#ComputeURLMapSpec)
 | `pathMatcher` | ***string***||
 ## ComputeURLMapSpecPathMatcher
 
-Appears on:[ComputeURLMapSpec](#ComputeURLMapSpec)
+Appears on:[ComputeURLMapSpec](#computeurlmapspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultService` | ***string***||
 | `description` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `pathRule` | ***[[]ComputeURLMapSpecPathMatcherPathRule](#ComputeURLMapSpecPathMatcherPathRule)***| ***(Optional)*** |
+| `pathRule` | ***[[]ComputeURLMapSpecPathMatcherPathRule](#computeurlmapspecpathmatcherpathrule)***| ***(Optional)*** |
 ## ComputeURLMapSpecPathMatcherPathRule
 
-Appears on:[ComputeURLMapSpecPathMatcher](#ComputeURLMapSpecPathMatcher)
+Appears on:[ComputeURLMapSpecPathMatcher](#computeurlmapspecpathmatcher)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -65,7 +65,7 @@ Appears on:[ComputeURLMapSpecPathMatcher](#ComputeURLMapSpecPathMatcher)
 | `service` | ***string***||
 ## ComputeURLMapSpecTest
 
-Appears on:[ComputeURLMapSpec](#ComputeURLMapSpec)
+Appears on:[ComputeURLMapSpec](#computeurlmapspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -75,11 +75,11 @@ Appears on:[ComputeURLMapSpec](#ComputeURLMapSpec)
 | `service` | ***string***||
 ## ComputeURLMapStatus
 
-Appears on:[ComputeURLMap](#ComputeURLMap)
+Appears on:[ComputeURLMap](#computeurlmap)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeURLMapSpec](#ComputeURLMapSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeURLMapSpec](#computeurlmapspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,17 +16,17 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeRegionBackendService` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeRegionBackendServiceSpec](#ComputeRegionBackendServiceSpec)***||
-| `status` | ***[ComputeRegionBackendServiceStatus](#ComputeRegionBackendServiceStatus)***||
+| `spec` | ***[ComputeRegionBackendServiceSpec](#computeregionbackendservicespec)***||
+| `status` | ***[ComputeRegionBackendServiceStatus](#computeregionbackendservicestatus)***||
 ## ComputeRegionBackendServiceSpec
 
-Appears on:[ComputeRegionBackendService](#ComputeRegionBackendService), [ComputeRegionBackendServiceStatus](#ComputeRegionBackendServiceStatus)
+Appears on:[ComputeRegionBackendService](#computeregionbackendservice), [ComputeRegionBackendServiceStatus](#computeregionbackendservicestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `backend` | ***[[]ComputeRegionBackendServiceSpecBackend](#ComputeRegionBackendServiceSpecBackend)***| ***(Optional)*** |
+| `backend` | ***[[]ComputeRegionBackendServiceSpecBackend](#computeregionbackendservicespecbackend)***| ***(Optional)*** |
 | `connectionDrainingTimeoutSec` | ***int***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `fingerprint` | ***string***| ***(Optional)*** |
@@ -40,7 +40,7 @@ Appears on:[ComputeRegionBackendService](#ComputeRegionBackendService), [Compute
 | `timeoutSec` | ***int***| ***(Optional)*** |
 ## ComputeRegionBackendServiceSpecBackend
 
-Appears on:[ComputeRegionBackendServiceSpec](#ComputeRegionBackendServiceSpec)
+Appears on:[ComputeRegionBackendServiceSpec](#computeregionbackendservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -48,11 +48,11 @@ Appears on:[ComputeRegionBackendServiceSpec](#ComputeRegionBackendServiceSpec)
 | `group` | ***string***| ***(Optional)*** |
 ## ComputeRegionBackendServiceStatus
 
-Appears on:[ComputeRegionBackendService](#ComputeRegionBackendService)
+Appears on:[ComputeRegionBackendService](#computeregionbackendservice)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeRegionBackendServiceSpec](#ComputeRegionBackendServiceSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeRegionBackendServiceSpec](#computeregionbackendservicespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `AzureadServicePrincipal` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AzureadServicePrincipalSpec](#AzureadServicePrincipalSpec)***||
-| `status` | ***[AzureadServicePrincipalStatus](#AzureadServicePrincipalStatus)***||
+| `spec` | ***[AzureadServicePrincipalSpec](#azureadserviceprincipalspec)***||
+| `status` | ***[AzureadServicePrincipalStatus](#azureadserviceprincipalstatus)***||
 ## AzureadServicePrincipalSpec
 
-Appears on:[AzureadServicePrincipal](#AzureadServicePrincipal), [AzureadServicePrincipalStatus](#AzureadServicePrincipalStatus)
+Appears on:[AzureadServicePrincipal](#azureadserviceprincipal), [AzureadServicePrincipalStatus](#azureadserviceprincipalstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[AzureadServicePrincipal](#AzureadServicePrincipal), [AzureadServiceP
 | `displayName` | ***string***| ***(Optional)*** |
 ## AzureadServicePrincipalStatus
 
-Appears on:[AzureadServicePrincipal](#AzureadServicePrincipal)
+Appears on:[AzureadServicePrincipal](#azureadserviceprincipal)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AzureadServicePrincipalSpec](#AzureadServicePrincipalSpec)***| ***(Optional)*** |
+| `output` | ***[AzureadServicePrincipalSpec](#azureadserviceprincipalspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `PubsubSubscriptionIamBinding` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PubsubSubscriptionIamBindingSpec](#PubsubSubscriptionIamBindingSpec)***||
-| `status` | ***[PubsubSubscriptionIamBindingStatus](#PubsubSubscriptionIamBindingStatus)***||
+| `spec` | ***[PubsubSubscriptionIamBindingSpec](#pubsubsubscriptioniambindingspec)***||
+| `status` | ***[PubsubSubscriptionIamBindingStatus](#pubsubsubscriptioniambindingstatus)***||
 ## PubsubSubscriptionIamBindingSpec
 
-Appears on:[PubsubSubscriptionIamBinding](#PubsubSubscriptionIamBinding), [PubsubSubscriptionIamBindingStatus](#PubsubSubscriptionIamBindingStatus)
+Appears on:[PubsubSubscriptionIamBinding](#pubsubsubscriptioniambinding), [PubsubSubscriptionIamBindingStatus](#pubsubsubscriptioniambindingstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[PubsubSubscriptionIamBinding](#PubsubSubscriptionIamBinding), [Pubsu
 | `subscription` | ***string***||
 ## PubsubSubscriptionIamBindingStatus
 
-Appears on:[PubsubSubscriptionIamBinding](#PubsubSubscriptionIamBinding)
+Appears on:[PubsubSubscriptionIamBinding](#pubsubsubscriptioniambinding)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PubsubSubscriptionIamBindingSpec](#PubsubSubscriptionIamBindingSpec)***| ***(Optional)*** |
+| `output` | ***[PubsubSubscriptionIamBindingSpec](#pubsubsubscriptioniambindingspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

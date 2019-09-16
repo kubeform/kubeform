@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `linode.kubeform.com/v1alpha1` |
 |    `kind` | string | `NodebalancerNode` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NodebalancerNodeSpec](#NodebalancerNodeSpec)***||
-| `status` | ***[NodebalancerNodeStatus](#NodebalancerNodeStatus)***||
+| `spec` | ***[NodebalancerNodeSpec](#nodebalancernodespec)***||
+| `status` | ***[NodebalancerNodeStatus](#nodebalancernodestatus)***||
 ## NodebalancerNodeSpec
 
-Appears on:[NodebalancerNode](#NodebalancerNode), [NodebalancerNodeStatus](#NodebalancerNodeStatus)
+Appears on:[NodebalancerNode](#nodebalancernode), [NodebalancerNodeStatus](#nodebalancernodestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,11 +35,11 @@ Appears on:[NodebalancerNode](#NodebalancerNode), [NodebalancerNodeStatus](#Node
 | `weight` | ***int***| ***(Optional)*** Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255)|
 ## NodebalancerNodeStatus
 
-Appears on:[NodebalancerNode](#NodebalancerNode)
+Appears on:[NodebalancerNode](#nodebalancernode)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NodebalancerNodeSpec](#NodebalancerNodeSpec)***| ***(Optional)*** |
+| `output` | ***[NodebalancerNodeSpec](#nodebalancernodespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

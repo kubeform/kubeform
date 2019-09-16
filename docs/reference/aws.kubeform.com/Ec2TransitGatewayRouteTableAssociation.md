@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `Ec2TransitGatewayRouteTableAssociation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[Ec2TransitGatewayRouteTableAssociationSpec](#Ec2TransitGatewayRouteTableAssociationSpec)***||
-| `status` | ***[Ec2TransitGatewayRouteTableAssociationStatus](#Ec2TransitGatewayRouteTableAssociationStatus)***||
+| `spec` | ***[Ec2TransitGatewayRouteTableAssociationSpec](#ec2transitgatewayroutetableassociationspec)***||
+| `status` | ***[Ec2TransitGatewayRouteTableAssociationStatus](#ec2transitgatewayroutetableassociationstatus)***||
 ## Ec2TransitGatewayRouteTableAssociationSpec
 
-Appears on:[Ec2TransitGatewayRouteTableAssociation](#Ec2TransitGatewayRouteTableAssociation), [Ec2TransitGatewayRouteTableAssociationStatus](#Ec2TransitGatewayRouteTableAssociationStatus)
+Appears on:[Ec2TransitGatewayRouteTableAssociation](#ec2transitgatewayroutetableassociation), [Ec2TransitGatewayRouteTableAssociationStatus](#ec2transitgatewayroutetableassociationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[Ec2TransitGatewayRouteTableAssociation](#Ec2TransitGatewayRouteTable
 | `transitGatewayRouteTableID` | ***string***||
 ## Ec2TransitGatewayRouteTableAssociationStatus
 
-Appears on:[Ec2TransitGatewayRouteTableAssociation](#Ec2TransitGatewayRouteTableAssociation)
+Appears on:[Ec2TransitGatewayRouteTableAssociation](#ec2transitgatewayroutetableassociation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[Ec2TransitGatewayRouteTableAssociationSpec](#Ec2TransitGatewayRouteTableAssociationSpec)***| ***(Optional)*** |
+| `output` | ***[Ec2TransitGatewayRouteTableAssociationSpec](#ec2transitgatewayroutetableassociationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

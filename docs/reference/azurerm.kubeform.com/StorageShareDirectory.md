@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `StorageShareDirectory` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[StorageShareDirectorySpec](#StorageShareDirectorySpec)***||
-| `status` | ***[StorageShareDirectoryStatus](#StorageShareDirectoryStatus)***||
+| `spec` | ***[StorageShareDirectorySpec](#storagesharedirectoryspec)***||
+| `status` | ***[StorageShareDirectoryStatus](#storagesharedirectorystatus)***||
 ## StorageShareDirectorySpec
 
-Appears on:[StorageShareDirectory](#StorageShareDirectory), [StorageShareDirectoryStatus](#StorageShareDirectoryStatus)
+Appears on:[StorageShareDirectory](#storagesharedirectory), [StorageShareDirectoryStatus](#storagesharedirectorystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[StorageShareDirectory](#StorageShareDirectory), [StorageShareDirecto
 | `storageAccountName` | ***string***||
 ## StorageShareDirectoryStatus
 
-Appears on:[StorageShareDirectory](#StorageShareDirectory)
+Appears on:[StorageShareDirectory](#storagesharedirectory)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[StorageShareDirectorySpec](#StorageShareDirectorySpec)***| ***(Optional)*** |
+| `output` | ***[StorageShareDirectorySpec](#storagesharedirectoryspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

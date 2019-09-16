@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `LbNATRule` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LbNATRuleSpec](#LbNATRuleSpec)***||
-| `status` | ***[LbNATRuleStatus](#LbNATRuleStatus)***||
+| `spec` | ***[LbNATRuleSpec](#lbnatrulespec)***||
+| `status` | ***[LbNATRuleStatus](#lbnatrulestatus)***||
 ## LbNATRuleSpec
 
-Appears on:[LbNATRule](#LbNATRule), [LbNATRuleStatus](#LbNATRuleStatus)
+Appears on:[LbNATRule](#lbnatrule), [LbNATRuleStatus](#lbnatrulestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -39,11 +39,11 @@ Appears on:[LbNATRule](#LbNATRule), [LbNATRuleStatus](#LbNATRuleStatus)
 | `resourceGroupName` | ***string***||
 ## LbNATRuleStatus
 
-Appears on:[LbNATRule](#LbNATRule)
+Appears on:[LbNATRule](#lbnatrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LbNATRuleSpec](#LbNATRuleSpec)***| ***(Optional)*** |
+| `output` | ***[LbNATRuleSpec](#lbnatrulespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `StorageBlob` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[StorageBlobSpec](#StorageBlobSpec)***||
-| `status` | ***[StorageBlobStatus](#StorageBlobStatus)***||
+| `spec` | ***[StorageBlobSpec](#storageblobspec)***||
+| `status` | ***[StorageBlobStatus](#storageblobstatus)***||
 ## StorageBlobSpec
 
-Appears on:[StorageBlob](#StorageBlob), [StorageBlobStatus](#StorageBlobStatus)
+Appears on:[StorageBlob](#storageblob), [StorageBlobStatus](#storageblobstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -41,11 +41,11 @@ Appears on:[StorageBlob](#StorageBlob), [StorageBlobStatus](#StorageBlobStatus)
 | `url` | ***string***| ***(Optional)*** |
 ## StorageBlobStatus
 
-Appears on:[StorageBlob](#StorageBlob)
+Appears on:[StorageBlob](#storageblob)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[StorageBlobSpec](#StorageBlobSpec)***| ***(Optional)*** |
+| `output` | ***[StorageBlobSpec](#storageblobspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

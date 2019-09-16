@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeSharedVpcHostProject` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeSharedVpcHostProjectSpec](#ComputeSharedVpcHostProjectSpec)***||
-| `status` | ***[ComputeSharedVpcHostProjectStatus](#ComputeSharedVpcHostProjectStatus)***||
+| `spec` | ***[ComputeSharedVpcHostProjectSpec](#computesharedvpchostprojectspec)***||
+| `status` | ***[ComputeSharedVpcHostProjectStatus](#computesharedvpchostprojectstatus)***||
 ## ComputeSharedVpcHostProjectSpec
 
-Appears on:[ComputeSharedVpcHostProject](#ComputeSharedVpcHostProject), [ComputeSharedVpcHostProjectStatus](#ComputeSharedVpcHostProjectStatus)
+Appears on:[ComputeSharedVpcHostProject](#computesharedvpchostproject), [ComputeSharedVpcHostProjectStatus](#computesharedvpchostprojectstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,11 +29,11 @@ Appears on:[ComputeSharedVpcHostProject](#ComputeSharedVpcHostProject), [Compute
 | `project` | ***string***||
 ## ComputeSharedVpcHostProjectStatus
 
-Appears on:[ComputeSharedVpcHostProject](#ComputeSharedVpcHostProject)
+Appears on:[ComputeSharedVpcHostProject](#computesharedvpchostproject)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeSharedVpcHostProjectSpec](#ComputeSharedVpcHostProjectSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeSharedVpcHostProjectSpec](#computesharedvpchostprojectspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

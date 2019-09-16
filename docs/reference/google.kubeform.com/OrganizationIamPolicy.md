@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `OrganizationIamPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[OrganizationIamPolicySpec](#OrganizationIamPolicySpec)***||
-| `status` | ***[OrganizationIamPolicyStatus](#OrganizationIamPolicyStatus)***||
+| `spec` | ***[OrganizationIamPolicySpec](#organizationiampolicyspec)***||
+| `status` | ***[OrganizationIamPolicyStatus](#organizationiampolicystatus)***||
 ## OrganizationIamPolicySpec
 
-Appears on:[OrganizationIamPolicy](#OrganizationIamPolicy), [OrganizationIamPolicyStatus](#OrganizationIamPolicyStatus)
+Appears on:[OrganizationIamPolicy](#organizationiampolicy), [OrganizationIamPolicyStatus](#organizationiampolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[OrganizationIamPolicy](#OrganizationIamPolicy), [OrganizationIamPoli
 | `policyData` | ***string***||
 ## OrganizationIamPolicyStatus
 
-Appears on:[OrganizationIamPolicy](#OrganizationIamPolicy)
+Appears on:[OrganizationIamPolicy](#organizationiampolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[OrganizationIamPolicySpec](#OrganizationIamPolicySpec)***| ***(Optional)*** |
+| `output` | ***[OrganizationIamPolicySpec](#organizationiampolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

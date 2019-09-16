@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DbOptionGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DbOptionGroupSpec](#DbOptionGroupSpec)***||
-| `status` | ***[DbOptionGroupStatus](#DbOptionGroupStatus)***||
+| `spec` | ***[DbOptionGroupSpec](#dboptiongroupspec)***||
+| `status` | ***[DbOptionGroupStatus](#dboptiongroupstatus)***||
 ## DbOptionGroupSpec
 
-Appears on:[DbOptionGroup](#DbOptionGroup), [DbOptionGroupStatus](#DbOptionGroupStatus)
+Appears on:[DbOptionGroup](#dboptiongroup), [DbOptionGroupStatus](#dboptiongroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,24 +31,24 @@ Appears on:[DbOptionGroup](#DbOptionGroup), [DbOptionGroupStatus](#DbOptionGroup
 | `majorEngineVersion` | ***string***||
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
-| `option` | ***[[]DbOptionGroupSpecOption](#DbOptionGroupSpecOption)***| ***(Optional)*** |
+| `option` | ***[[]DbOptionGroupSpecOption](#dboptiongroupspecoption)***| ***(Optional)*** |
 | `optionGroupDescription` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DbOptionGroupSpecOption
 
-Appears on:[DbOptionGroupSpec](#DbOptionGroupSpec)
+Appears on:[DbOptionGroupSpec](#dboptiongroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dbSecurityGroupMemberships` | ***[]string***| ***(Optional)*** |
 | `optionName` | ***string***||
-| `optionSettings` | ***[[]DbOptionGroupSpecOptionOptionSettings](#DbOptionGroupSpecOptionOptionSettings)***| ***(Optional)*** |
+| `optionSettings` | ***[[]DbOptionGroupSpecOptionOptionSettings](#dboptiongroupspecoptionoptionsettings)***| ***(Optional)*** |
 | `port` | ***int***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
 | `vpcSecurityGroupMemberships` | ***[]string***| ***(Optional)*** |
 ## DbOptionGroupSpecOptionOptionSettings
 
-Appears on:[DbOptionGroupSpecOption](#DbOptionGroupSpecOption)
+Appears on:[DbOptionGroupSpecOption](#dboptiongroupspecoption)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -56,11 +56,11 @@ Appears on:[DbOptionGroupSpecOption](#DbOptionGroupSpecOption)
 | `value` | ***string***||
 ## DbOptionGroupStatus
 
-Appears on:[DbOptionGroup](#DbOptionGroup)
+Appears on:[DbOptionGroup](#dboptiongroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DbOptionGroupSpec](#DbOptionGroupSpec)***| ***(Optional)*** |
+| `output` | ***[DbOptionGroupSpec](#dboptiongroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

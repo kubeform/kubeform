@@ -16,37 +16,37 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `Iothub` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[IothubSpec](#IothubSpec)***||
-| `status` | ***[IothubStatus](#IothubStatus)***||
+| `spec` | ***[IothubSpec](#iothubspec)***||
+| `status` | ***[IothubStatus](#iothubstatus)***||
 ## IothubSpec
 
-Appears on:[Iothub](#Iothub), [IothubStatus](#IothubStatus)
+Appears on:[Iothub](#iothub), [IothubStatus](#iothubstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
-| `endpoint` | ***[[]IothubSpecEndpoint](#IothubSpecEndpoint)***| ***(Optional)*** |
+| `endpoint` | ***[[]IothubSpecEndpoint](#iothubspecendpoint)***| ***(Optional)*** |
 | `eventHubEventsEndpoint` | ***string***| ***(Optional)*** |
 | `eventHubEventsPath` | ***string***| ***(Optional)*** |
 | `eventHubOperationsEndpoint` | ***string***| ***(Optional)*** |
 | `eventHubOperationsPath` | ***string***| ***(Optional)*** |
-| `fallbackRoute` | ***[[]IothubSpecFallbackRoute](#IothubSpecFallbackRoute)***| ***(Optional)*** |
-| `fileUpload` | ***[[]IothubSpecFileUpload](#IothubSpecFileUpload)***| ***(Optional)*** |
+| `fallbackRoute` | ***[[]IothubSpecFallbackRoute](#iothubspecfallbackroute)***| ***(Optional)*** |
+| `fileUpload` | ***[[]IothubSpecFileUpload](#iothubspecfileupload)***| ***(Optional)*** |
 | `hostname` | ***string***| ***(Optional)*** |
-| `ipFilterRule` | ***[[]IothubSpecIpFilterRule](#IothubSpecIpFilterRule)***| ***(Optional)*** |
+| `ipFilterRule` | ***[[]IothubSpecIpFilterRule](#iothubspecipfilterrule)***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
-| `route` | ***[[]IothubSpecRoute](#IothubSpecRoute)***| ***(Optional)*** |
-| `sharedAccessPolicy` | ***[[]IothubSpecSharedAccessPolicy](#IothubSpecSharedAccessPolicy)***| ***(Optional)*** |
-| `sku` | ***[[]IothubSpecSku](#IothubSpecSku)***||
+| `route` | ***[[]IothubSpecRoute](#iothubspecroute)***| ***(Optional)*** |
+| `sharedAccessPolicy` | ***[[]IothubSpecSharedAccessPolicy](#iothubspecsharedaccesspolicy)***| ***(Optional)*** |
+| `sku` | ***[[]IothubSpecSku](#iothubspecsku)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## IothubSpecEndpoint
 
-Appears on:[IothubSpec](#IothubSpec)
+Appears on:[IothubSpec](#iothubspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -59,7 +59,7 @@ Appears on:[IothubSpec](#IothubSpec)
 | `type` | ***string***||
 ## IothubSpecFallbackRoute
 
-Appears on:[IothubSpec](#IothubSpec)
+Appears on:[IothubSpec](#iothubspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -69,7 +69,7 @@ Appears on:[IothubSpec](#IothubSpec)
 | `source` | ***string***| ***(Optional)*** |
 ## IothubSpecFileUpload
 
-Appears on:[IothubSpec](#IothubSpec)
+Appears on:[IothubSpec](#iothubspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -81,7 +81,7 @@ Appears on:[IothubSpec](#IothubSpec)
 | `sasTtl` | ***string***| ***(Optional)*** |
 ## IothubSpecIpFilterRule
 
-Appears on:[IothubSpec](#IothubSpec)
+Appears on:[IothubSpec](#iothubspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -90,7 +90,7 @@ Appears on:[IothubSpec](#IothubSpec)
 | `name` | ***string***||
 ## IothubSpecRoute
 
-Appears on:[IothubSpec](#IothubSpec)
+Appears on:[IothubSpec](#iothubspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -101,7 +101,7 @@ Appears on:[IothubSpec](#IothubSpec)
 | `source` | ***string***||
 ## IothubSpecSharedAccessPolicy
 
-Appears on:[IothubSpec](#IothubSpec)
+Appears on:[IothubSpec](#iothubspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -109,7 +109,7 @@ Appears on:[IothubSpec](#IothubSpec)
 | `permissions` | ***string***| ***(Optional)*** |
 ## IothubSpecSku
 
-Appears on:[IothubSpec](#IothubSpec)
+Appears on:[IothubSpec](#iothubspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -118,12 +118,12 @@ Appears on:[IothubSpec](#IothubSpec)
 | `tier` | ***string***||
 ## IothubStatus
 
-Appears on:[Iothub](#Iothub)
+Appears on:[Iothub](#iothub)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[IothubSpec](#IothubSpec)***| ***(Optional)*** |
+| `output` | ***[IothubSpec](#iothubspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

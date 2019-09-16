@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `BatchComputeEnvironment` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[BatchComputeEnvironmentSpec](#BatchComputeEnvironmentSpec)***||
-| `status` | ***[BatchComputeEnvironmentStatus](#BatchComputeEnvironmentStatus)***||
+| `spec` | ***[BatchComputeEnvironmentSpec](#batchcomputeenvironmentspec)***||
+| `status` | ***[BatchComputeEnvironmentStatus](#batchcomputeenvironmentstatus)***||
 ## BatchComputeEnvironmentSpec
 
-Appears on:[BatchComputeEnvironment](#BatchComputeEnvironment), [BatchComputeEnvironmentStatus](#BatchComputeEnvironmentStatus)
+Appears on:[BatchComputeEnvironment](#batchcomputeenvironment), [BatchComputeEnvironmentStatus](#batchcomputeenvironmentstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,7 +28,7 @@ Appears on:[BatchComputeEnvironment](#BatchComputeEnvironment), [BatchComputeEnv
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `computeEnvironmentName` | ***string***||
-| `computeResources` | ***[[]BatchComputeEnvironmentSpecComputeResources](#BatchComputeEnvironmentSpecComputeResources)***| ***(Optional)*** |
+| `computeResources` | ***[[]BatchComputeEnvironmentSpecComputeResources](#batchcomputeenvironmentspeccomputeresources)***| ***(Optional)*** |
 | `ecsClusterArn` | ***string***| ***(Optional)*** |
 | `serviceRole` | ***string***||
 | `state` | ***string***| ***(Optional)*** |
@@ -37,7 +37,7 @@ Appears on:[BatchComputeEnvironment](#BatchComputeEnvironment), [BatchComputeEnv
 | `type` | ***string***||
 ## BatchComputeEnvironmentSpecComputeResources
 
-Appears on:[BatchComputeEnvironmentSpec](#BatchComputeEnvironmentSpec)
+Appears on:[BatchComputeEnvironmentSpec](#batchcomputeenvironmentspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -47,7 +47,7 @@ Appears on:[BatchComputeEnvironmentSpec](#BatchComputeEnvironmentSpec)
 | `imageID` | ***string***| ***(Optional)*** |
 | `instanceRole` | ***string***||
 | `instanceType` | ***[]string***||
-| `launchTemplate` | ***[[]BatchComputeEnvironmentSpecComputeResourcesLaunchTemplate](#BatchComputeEnvironmentSpecComputeResourcesLaunchTemplate)***| ***(Optional)*** |
+| `launchTemplate` | ***[[]BatchComputeEnvironmentSpecComputeResourcesLaunchTemplate](#batchcomputeenvironmentspeccomputeresourceslaunchtemplate)***| ***(Optional)*** |
 | `maxVcpus` | ***int***||
 | `minVcpus` | ***int***||
 | `securityGroupIDS` | ***[]string***||
@@ -57,7 +57,7 @@ Appears on:[BatchComputeEnvironmentSpec](#BatchComputeEnvironmentSpec)
 | `type` | ***string***||
 ## BatchComputeEnvironmentSpecComputeResourcesLaunchTemplate
 
-Appears on:[BatchComputeEnvironmentSpecComputeResources](#BatchComputeEnvironmentSpecComputeResources)
+Appears on:[BatchComputeEnvironmentSpecComputeResources](#batchcomputeenvironmentspeccomputeresources)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -66,11 +66,11 @@ Appears on:[BatchComputeEnvironmentSpecComputeResources](#BatchComputeEnvironmen
 | `version` | ***string***| ***(Optional)*** |
 ## BatchComputeEnvironmentStatus
 
-Appears on:[BatchComputeEnvironment](#BatchComputeEnvironment)
+Appears on:[BatchComputeEnvironment](#batchcomputeenvironment)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[BatchComputeEnvironmentSpec](#BatchComputeEnvironmentSpec)***| ***(Optional)*** |
+| `output` | ***[BatchComputeEnvironmentSpec](#batchcomputeenvironmentspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

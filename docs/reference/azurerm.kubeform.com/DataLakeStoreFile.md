@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `DataLakeStoreFile` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DataLakeStoreFileSpec](#DataLakeStoreFileSpec)***||
-| `status` | ***[DataLakeStoreFileStatus](#DataLakeStoreFileStatus)***||
+| `spec` | ***[DataLakeStoreFileSpec](#datalakestorefilespec)***||
+| `status` | ***[DataLakeStoreFileStatus](#datalakestorefilestatus)***||
 ## DataLakeStoreFileSpec
 
-Appears on:[DataLakeStoreFile](#DataLakeStoreFile), [DataLakeStoreFileStatus](#DataLakeStoreFileStatus)
+Appears on:[DataLakeStoreFile](#datalakestorefile), [DataLakeStoreFileStatus](#datalakestorefilestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[DataLakeStoreFile](#DataLakeStoreFile), [DataLakeStoreFileStatus](#D
 | `remoteFilePath` | ***string***||
 ## DataLakeStoreFileStatus
 
-Appears on:[DataLakeStoreFile](#DataLakeStoreFile)
+Appears on:[DataLakeStoreFile](#datalakestorefile)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DataLakeStoreFileSpec](#DataLakeStoreFileSpec)***| ***(Optional)*** |
+| `output` | ***[DataLakeStoreFileSpec](#datalakestorefilespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

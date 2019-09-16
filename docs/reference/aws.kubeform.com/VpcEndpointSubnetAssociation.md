@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `VpcEndpointSubnetAssociation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[VpcEndpointSubnetAssociationSpec](#VpcEndpointSubnetAssociationSpec)***||
-| `status` | ***[VpcEndpointSubnetAssociationStatus](#VpcEndpointSubnetAssociationStatus)***||
+| `spec` | ***[VpcEndpointSubnetAssociationSpec](#vpcendpointsubnetassociationspec)***||
+| `status` | ***[VpcEndpointSubnetAssociationStatus](#vpcendpointsubnetassociationstatus)***||
 ## VpcEndpointSubnetAssociationSpec
 
-Appears on:[VpcEndpointSubnetAssociation](#VpcEndpointSubnetAssociation), [VpcEndpointSubnetAssociationStatus](#VpcEndpointSubnetAssociationStatus)
+Appears on:[VpcEndpointSubnetAssociation](#vpcendpointsubnetassociation), [VpcEndpointSubnetAssociationStatus](#vpcendpointsubnetassociationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[VpcEndpointSubnetAssociation](#VpcEndpointSubnetAssociation), [VpcEn
 | `vpcEndpointID` | ***string***||
 ## VpcEndpointSubnetAssociationStatus
 
-Appears on:[VpcEndpointSubnetAssociation](#VpcEndpointSubnetAssociation)
+Appears on:[VpcEndpointSubnetAssociation](#vpcendpointsubnetassociation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[VpcEndpointSubnetAssociationSpec](#VpcEndpointSubnetAssociationSpec)***| ***(Optional)*** |
+| `output` | ***[VpcEndpointSubnetAssociationSpec](#vpcendpointsubnetassociationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

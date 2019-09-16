@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeSecurityPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeSecurityPolicySpec](#ComputeSecurityPolicySpec)***||
-| `status` | ***[ComputeSecurityPolicyStatus](#ComputeSecurityPolicyStatus)***||
+| `spec` | ***[ComputeSecurityPolicySpec](#computesecuritypolicyspec)***||
+| `status` | ***[ComputeSecurityPolicyStatus](#computesecuritypolicystatus)***||
 ## ComputeSecurityPolicySpec
 
-Appears on:[ComputeSecurityPolicy](#ComputeSecurityPolicy), [ComputeSecurityPolicyStatus](#ComputeSecurityPolicyStatus)
+Appears on:[ComputeSecurityPolicy](#computesecuritypolicy), [ComputeSecurityPolicyStatus](#computesecuritypolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,41 +30,41 @@ Appears on:[ComputeSecurityPolicy](#ComputeSecurityPolicy), [ComputeSecurityPoli
 | `fingerprint` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `project` | ***string***| ***(Optional)*** |
-| `rule` | ***[[]ComputeSecurityPolicySpecRule](#ComputeSecurityPolicySpecRule)***| ***(Optional)*** |
+| `rule` | ***[[]ComputeSecurityPolicySpecRule](#computesecuritypolicyspecrule)***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 ## ComputeSecurityPolicySpecRule
 
-Appears on:[ComputeSecurityPolicySpec](#ComputeSecurityPolicySpec)
+Appears on:[ComputeSecurityPolicySpec](#computesecuritypolicyspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***string***||
 | `description` | ***string***| ***(Optional)*** |
-| `match` | ***[[]ComputeSecurityPolicySpecRuleMatch](#ComputeSecurityPolicySpecRuleMatch)***||
+| `match` | ***[[]ComputeSecurityPolicySpecRuleMatch](#computesecuritypolicyspecrulematch)***||
 | `preview` | ***bool***| ***(Optional)*** |
 | `priority` | ***int***||
 ## ComputeSecurityPolicySpecRuleMatch
 
-Appears on:[ComputeSecurityPolicySpecRule](#ComputeSecurityPolicySpecRule)
+Appears on:[ComputeSecurityPolicySpecRule](#computesecuritypolicyspecrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `config` | ***[[]ComputeSecurityPolicySpecRuleMatchConfig](#ComputeSecurityPolicySpecRuleMatchConfig)***||
+| `config` | ***[[]ComputeSecurityPolicySpecRuleMatchConfig](#computesecuritypolicyspecrulematchconfig)***||
 | `versionedExpr` | ***string***||
 ## ComputeSecurityPolicySpecRuleMatchConfig
 
-Appears on:[ComputeSecurityPolicySpecRuleMatch](#ComputeSecurityPolicySpecRuleMatch)
+Appears on:[ComputeSecurityPolicySpecRuleMatch](#computesecuritypolicyspecrulematch)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `srcIPRanges` | ***[]string***||
 ## ComputeSecurityPolicyStatus
 
-Appears on:[ComputeSecurityPolicy](#ComputeSecurityPolicy)
+Appears on:[ComputeSecurityPolicy](#computesecuritypolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeSecurityPolicySpec](#ComputeSecurityPolicySpec)***| ***(Optional)*** |
+| `output` | ***[ComputeSecurityPolicySpec](#computesecuritypolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

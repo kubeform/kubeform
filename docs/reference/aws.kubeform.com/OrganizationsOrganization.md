@@ -16,17 +16,17 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `OrganizationsOrganization` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[OrganizationsOrganizationSpec](#OrganizationsOrganizationSpec)***||
-| `status` | ***[OrganizationsOrganizationStatus](#OrganizationsOrganizationStatus)***||
+| `spec` | ***[OrganizationsOrganizationSpec](#organizationsorganizationspec)***||
+| `status` | ***[OrganizationsOrganizationStatus](#organizationsorganizationstatus)***||
 ## OrganizationsOrganizationSpec
 
-Appears on:[OrganizationsOrganization](#OrganizationsOrganization), [OrganizationsOrganizationStatus](#OrganizationsOrganizationStatus)
+Appears on:[OrganizationsOrganization](#organizationsorganization), [OrganizationsOrganizationStatus](#organizationsorganizationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `accounts` | ***[[]OrganizationsOrganizationSpecAccounts](#OrganizationsOrganizationSpecAccounts)***| ***(Optional)*** |
+| `accounts` | ***[[]OrganizationsOrganizationSpecAccounts](#organizationsorganizationspecaccounts)***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `awsServiceAccessPrincipals` | ***[]string***| ***(Optional)*** |
 | `enabledPolicyTypes` | ***[]string***| ***(Optional)*** |
@@ -34,10 +34,10 @@ Appears on:[OrganizationsOrganization](#OrganizationsOrganization), [Organizatio
 | `masterAccountArn` | ***string***| ***(Optional)*** |
 | `masterAccountEmail` | ***string***| ***(Optional)*** |
 | `masterAccountID` | ***string***| ***(Optional)*** |
-| `roots` | ***[[]OrganizationsOrganizationSpecRoots](#OrganizationsOrganizationSpecRoots)***| ***(Optional)*** |
+| `roots` | ***[[]OrganizationsOrganizationSpecRoots](#organizationsorganizationspecroots)***| ***(Optional)*** |
 ## OrganizationsOrganizationSpecAccounts
 
-Appears on:[OrganizationsOrganizationSpec](#OrganizationsOrganizationSpec)
+Appears on:[OrganizationsOrganizationSpec](#organizationsorganizationspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -47,17 +47,17 @@ Appears on:[OrganizationsOrganizationSpec](#OrganizationsOrganizationSpec)
 | `name` | ***string***| ***(Optional)*** |
 ## OrganizationsOrganizationSpecRoots
 
-Appears on:[OrganizationsOrganizationSpec](#OrganizationsOrganizationSpec)
+Appears on:[OrganizationsOrganizationSpec](#organizationsorganizationspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `arn` | ***string***| ***(Optional)*** |
 | `ID` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
-| `policyTypes` | ***[[]OrganizationsOrganizationSpecRootsPolicyTypes](#OrganizationsOrganizationSpecRootsPolicyTypes)***| ***(Optional)*** |
+| `policyTypes` | ***[[]OrganizationsOrganizationSpecRootsPolicyTypes](#organizationsorganizationspecrootspolicytypes)***| ***(Optional)*** |
 ## OrganizationsOrganizationSpecRootsPolicyTypes
 
-Appears on:[OrganizationsOrganizationSpecRoots](#OrganizationsOrganizationSpecRoots)
+Appears on:[OrganizationsOrganizationSpecRoots](#organizationsorganizationspecroots)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -65,11 +65,11 @@ Appears on:[OrganizationsOrganizationSpecRoots](#OrganizationsOrganizationSpecRo
 | `type` | ***string***| ***(Optional)*** |
 ## OrganizationsOrganizationStatus
 
-Appears on:[OrganizationsOrganization](#OrganizationsOrganization)
+Appears on:[OrganizationsOrganization](#organizationsorganization)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[OrganizationsOrganizationSpec](#OrganizationsOrganizationSpec)***| ***(Optional)*** |
+| `output` | ***[OrganizationsOrganizationSpec](#organizationsorganizationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `MediaServicesAccount` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[MediaServicesAccountSpec](#MediaServicesAccountSpec)***||
-| `status` | ***[MediaServicesAccountStatus](#MediaServicesAccountStatus)***||
+| `spec` | ***[MediaServicesAccountSpec](#mediaservicesaccountspec)***||
+| `status` | ***[MediaServicesAccountStatus](#mediaservicesaccountstatus)***||
 ## MediaServicesAccountSpec
 
-Appears on:[MediaServicesAccount](#MediaServicesAccount), [MediaServicesAccountStatus](#MediaServicesAccountStatus)
+Appears on:[MediaServicesAccount](#mediaservicesaccount), [MediaServicesAccountStatus](#mediaservicesaccountstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,10 +29,10 @@ Appears on:[MediaServicesAccount](#MediaServicesAccount), [MediaServicesAccountS
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
-| `storageAccount` | ***[[]MediaServicesAccountSpecStorageAccount](#MediaServicesAccountSpecStorageAccount)***||
+| `storageAccount` | ***[[]MediaServicesAccountSpecStorageAccount](#mediaservicesaccountspecstorageaccount)***||
 ## MediaServicesAccountSpecStorageAccount
 
-Appears on:[MediaServicesAccountSpec](#MediaServicesAccountSpec)
+Appears on:[MediaServicesAccountSpec](#mediaservicesaccountspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -40,11 +40,11 @@ Appears on:[MediaServicesAccountSpec](#MediaServicesAccountSpec)
 | `isPrimary` | ***bool***| ***(Optional)*** |
 ## MediaServicesAccountStatus
 
-Appears on:[MediaServicesAccount](#MediaServicesAccount)
+Appears on:[MediaServicesAccount](#mediaservicesaccount)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[MediaServicesAccountSpec](#MediaServicesAccountSpec)***| ***(Optional)*** |
+| `output` | ***[MediaServicesAccountSpec](#mediaservicesaccountspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

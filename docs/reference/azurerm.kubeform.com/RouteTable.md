@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `RouteTable` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[RouteTableSpec](#RouteTableSpec)***||
-| `status` | ***[RouteTableStatus](#RouteTableStatus)***||
+| `spec` | ***[RouteTableSpec](#routetablespec)***||
+| `status` | ***[RouteTableStatus](#routetablestatus)***||
 ## RouteTableSpec
 
-Appears on:[RouteTable](#RouteTable), [RouteTableStatus](#RouteTableStatus)
+Appears on:[RouteTable](#routetable), [RouteTableStatus](#routetablestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,12 +30,12 @@ Appears on:[RouteTable](#RouteTable), [RouteTableStatus](#RouteTableStatus)
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
-| `route` | ***[[]RouteTableSpecRoute](#RouteTableSpecRoute)***| ***(Optional)*** |
+| `route` | ***[[]RouteTableSpecRoute](#routetablespecroute)***| ***(Optional)*** |
 | `subnets` | ***[]string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## RouteTableSpecRoute
 
-Appears on:[RouteTableSpec](#RouteTableSpec)
+Appears on:[RouteTableSpec](#routetablespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -45,11 +45,11 @@ Appears on:[RouteTableSpec](#RouteTableSpec)
 | `nextHopType` | ***string***||
 ## RouteTableStatus
 
-Appears on:[RouteTable](#RouteTable)
+Appears on:[RouteTable](#routetable)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[RouteTableSpec](#RouteTableSpec)***| ***(Optional)*** |
+| `output` | ***[RouteTableSpec](#routetablespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

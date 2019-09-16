@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiManagementAPIOperationPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiManagementAPIOperationPolicySpec](#ApiManagementAPIOperationPolicySpec)***||
-| `status` | ***[ApiManagementAPIOperationPolicyStatus](#ApiManagementAPIOperationPolicyStatus)***||
+| `spec` | ***[ApiManagementAPIOperationPolicySpec](#apimanagementapioperationpolicyspec)***||
+| `status` | ***[ApiManagementAPIOperationPolicyStatus](#apimanagementapioperationpolicystatus)***||
 ## ApiManagementAPIOperationPolicySpec
 
-Appears on:[ApiManagementAPIOperationPolicy](#ApiManagementAPIOperationPolicy), [ApiManagementAPIOperationPolicyStatus](#ApiManagementAPIOperationPolicyStatus)
+Appears on:[ApiManagementAPIOperationPolicy](#apimanagementapioperationpolicy), [ApiManagementAPIOperationPolicyStatus](#apimanagementapioperationpolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[ApiManagementAPIOperationPolicy](#ApiManagementAPIOperationPolicy), 
 | `xmlLink` | ***string***| ***(Optional)*** |
 ## ApiManagementAPIOperationPolicyStatus
 
-Appears on:[ApiManagementAPIOperationPolicy](#ApiManagementAPIOperationPolicy)
+Appears on:[ApiManagementAPIOperationPolicy](#apimanagementapioperationpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiManagementAPIOperationPolicySpec](#ApiManagementAPIOperationPolicySpec)***| ***(Optional)*** |
+| `output` | ***[ApiManagementAPIOperationPolicySpec](#apimanagementapioperationpolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,38 +16,38 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ServiceFabricCluster` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)***||
-| `status` | ***[ServiceFabricClusterStatus](#ServiceFabricClusterStatus)***||
+| `spec` | ***[ServiceFabricClusterSpec](#servicefabricclusterspec)***||
+| `status` | ***[ServiceFabricClusterStatus](#servicefabricclusterstatus)***||
 ## ServiceFabricClusterSpec
 
-Appears on:[ServiceFabricCluster](#ServiceFabricCluster), [ServiceFabricClusterStatus](#ServiceFabricClusterStatus)
+Appears on:[ServiceFabricCluster](#servicefabriccluster), [ServiceFabricClusterStatus](#servicefabricclusterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `addOnFeatures` | ***[]string***| ***(Optional)*** |
-| `azureActiveDirectory` | ***[[]ServiceFabricClusterSpecAzureActiveDirectory](#ServiceFabricClusterSpecAzureActiveDirectory)***| ***(Optional)*** |
-| `certificate` | ***[[]ServiceFabricClusterSpecCertificate](#ServiceFabricClusterSpecCertificate)***| ***(Optional)*** |
-| `certificateCommonNames` | ***[[]ServiceFabricClusterSpecCertificateCommonNames](#ServiceFabricClusterSpecCertificateCommonNames)***| ***(Optional)*** |
-| `clientCertificateThumbprint` | ***[[]ServiceFabricClusterSpecClientCertificateThumbprint](#ServiceFabricClusterSpecClientCertificateThumbprint)***| ***(Optional)*** |
+| `azureActiveDirectory` | ***[[]ServiceFabricClusterSpecAzureActiveDirectory](#servicefabricclusterspecazureactivedirectory)***| ***(Optional)*** |
+| `certificate` | ***[[]ServiceFabricClusterSpecCertificate](#servicefabricclusterspeccertificate)***| ***(Optional)*** |
+| `certificateCommonNames` | ***[[]ServiceFabricClusterSpecCertificateCommonNames](#servicefabricclusterspeccertificatecommonnames)***| ***(Optional)*** |
+| `clientCertificateThumbprint` | ***[[]ServiceFabricClusterSpecClientCertificateThumbprint](#servicefabricclusterspecclientcertificatethumbprint)***| ***(Optional)*** |
 | `clusterCodeVersion` | ***string***| ***(Optional)*** |
 | `clusterEndpoint` | ***string***| ***(Optional)*** |
-| `diagnosticsConfig` | ***[[]ServiceFabricClusterSpecDiagnosticsConfig](#ServiceFabricClusterSpecDiagnosticsConfig)***| ***(Optional)*** |
-| `fabricSettings` | ***[[]ServiceFabricClusterSpecFabricSettings](#ServiceFabricClusterSpecFabricSettings)***| ***(Optional)*** |
+| `diagnosticsConfig` | ***[[]ServiceFabricClusterSpecDiagnosticsConfig](#servicefabricclusterspecdiagnosticsconfig)***| ***(Optional)*** |
+| `fabricSettings` | ***[[]ServiceFabricClusterSpecFabricSettings](#servicefabricclusterspecfabricsettings)***| ***(Optional)*** |
 | `location` | ***string***||
 | `managementEndpoint` | ***string***||
 | `name` | ***string***||
-| `nodeType` | ***[[]ServiceFabricClusterSpecNodeType](#ServiceFabricClusterSpecNodeType)***||
+| `nodeType` | ***[[]ServiceFabricClusterSpecNodeType](#servicefabricclusterspecnodetype)***||
 | `reliabilityLevel` | ***string***||
 | `resourceGroupName` | ***string***||
-| `reverseProxyCertificate` | ***[[]ServiceFabricClusterSpecReverseProxyCertificate](#ServiceFabricClusterSpecReverseProxyCertificate)***| ***(Optional)*** |
+| `reverseProxyCertificate` | ***[[]ServiceFabricClusterSpecReverseProxyCertificate](#servicefabricclusterspecreverseproxycertificate)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `upgradeMode` | ***string***||
 | `vmImage` | ***string***||
 ## ServiceFabricClusterSpecAzureActiveDirectory
 
-Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
+Appears on:[ServiceFabricClusterSpec](#servicefabricclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -56,7 +56,7 @@ Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
 | `tenantID` | ***string***||
 ## ServiceFabricClusterSpecCertificate
 
-Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
+Appears on:[ServiceFabricClusterSpec](#servicefabricclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -65,15 +65,15 @@ Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
 | `x509StoreName` | ***string***||
 ## ServiceFabricClusterSpecCertificateCommonNames
 
-Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
+Appears on:[ServiceFabricClusterSpec](#servicefabricclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `commonNames` | ***[[]ServiceFabricClusterSpecCertificateCommonNamesCommonNames](#ServiceFabricClusterSpecCertificateCommonNamesCommonNames)***||
+| `commonNames` | ***[[]ServiceFabricClusterSpecCertificateCommonNamesCommonNames](#servicefabricclusterspeccertificatecommonnamescommonnames)***||
 | `x509StoreName` | ***string***||
 ## ServiceFabricClusterSpecCertificateCommonNamesCommonNames
 
-Appears on:[ServiceFabricClusterSpecCertificateCommonNames](#ServiceFabricClusterSpecCertificateCommonNames)
+Appears on:[ServiceFabricClusterSpecCertificateCommonNames](#servicefabricclusterspeccertificatecommonnames)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -81,7 +81,7 @@ Appears on:[ServiceFabricClusterSpecCertificateCommonNames](#ServiceFabricCluste
 | `certificateIssuerThumbprint` | ***string***| ***(Optional)*** |
 ## ServiceFabricClusterSpecClientCertificateThumbprint
 
-Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
+Appears on:[ServiceFabricClusterSpec](#servicefabricclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -89,7 +89,7 @@ Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
 | `thumbprint` | ***string***||
 ## ServiceFabricClusterSpecDiagnosticsConfig
 
-Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
+Appears on:[ServiceFabricClusterSpec](#servicefabricclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -100,7 +100,7 @@ Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
 | `tableEndpoint` | ***string***||
 ## ServiceFabricClusterSpecFabricSettings
 
-Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
+Appears on:[ServiceFabricClusterSpec](#servicefabricclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -108,15 +108,15 @@ Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
 | `parameters` | ***map[string]string***| ***(Optional)*** |
 ## ServiceFabricClusterSpecNodeType
 
-Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
+Appears on:[ServiceFabricClusterSpec](#servicefabricclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `applicationPorts` | ***[[]ServiceFabricClusterSpecNodeTypeApplicationPorts](#ServiceFabricClusterSpecNodeTypeApplicationPorts)***| ***(Optional)*** |
+| `applicationPorts` | ***[[]ServiceFabricClusterSpecNodeTypeApplicationPorts](#servicefabricclusterspecnodetypeapplicationports)***| ***(Optional)*** |
 | `capacities` | ***map[string]string***| ***(Optional)*** |
 | `clientEndpointPort` | ***int***||
 | `durabilityLevel` | ***string***| ***(Optional)*** |
-| `ephemeralPorts` | ***[[]ServiceFabricClusterSpecNodeTypeEphemeralPorts](#ServiceFabricClusterSpecNodeTypeEphemeralPorts)***| ***(Optional)*** |
+| `ephemeralPorts` | ***[[]ServiceFabricClusterSpecNodeTypeEphemeralPorts](#servicefabricclusterspecnodetypeephemeralports)***| ***(Optional)*** |
 | `httpEndpointPort` | ***int***||
 | `instanceCount` | ***int***||
 | `isPrimary` | ***bool***||
@@ -125,7 +125,7 @@ Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
 | `reverseProxyEndpointPort` | ***int***| ***(Optional)*** |
 ## ServiceFabricClusterSpecNodeTypeApplicationPorts
 
-Appears on:[ServiceFabricClusterSpecNodeType](#ServiceFabricClusterSpecNodeType)
+Appears on:[ServiceFabricClusterSpecNodeType](#servicefabricclusterspecnodetype)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -133,7 +133,7 @@ Appears on:[ServiceFabricClusterSpecNodeType](#ServiceFabricClusterSpecNodeType)
 | `startPort` | ***int***||
 ## ServiceFabricClusterSpecNodeTypeEphemeralPorts
 
-Appears on:[ServiceFabricClusterSpecNodeType](#ServiceFabricClusterSpecNodeType)
+Appears on:[ServiceFabricClusterSpecNodeType](#servicefabricclusterspecnodetype)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -141,7 +141,7 @@ Appears on:[ServiceFabricClusterSpecNodeType](#ServiceFabricClusterSpecNodeType)
 | `startPort` | ***int***||
 ## ServiceFabricClusterSpecReverseProxyCertificate
 
-Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
+Appears on:[ServiceFabricClusterSpec](#servicefabricclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -150,11 +150,11 @@ Appears on:[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)
 | `x509StoreName` | ***string***||
 ## ServiceFabricClusterStatus
 
-Appears on:[ServiceFabricCluster](#ServiceFabricCluster)
+Appears on:[ServiceFabricCluster](#servicefabriccluster)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ServiceFabricClusterSpec](#ServiceFabricClusterSpec)***| ***(Optional)*** |
+| `output` | ***[ServiceFabricClusterSpec](#servicefabricclusterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

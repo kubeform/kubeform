@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `KmsKeyRingIamPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[KmsKeyRingIamPolicySpec](#KmsKeyRingIamPolicySpec)***||
-| `status` | ***[KmsKeyRingIamPolicyStatus](#KmsKeyRingIamPolicyStatus)***||
+| `spec` | ***[KmsKeyRingIamPolicySpec](#kmskeyringiampolicyspec)***||
+| `status` | ***[KmsKeyRingIamPolicyStatus](#kmskeyringiampolicystatus)***||
 ## KmsKeyRingIamPolicySpec
 
-Appears on:[KmsKeyRingIamPolicy](#KmsKeyRingIamPolicy), [KmsKeyRingIamPolicyStatus](#KmsKeyRingIamPolicyStatus)
+Appears on:[KmsKeyRingIamPolicy](#kmskeyringiampolicy), [KmsKeyRingIamPolicyStatus](#kmskeyringiampolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[KmsKeyRingIamPolicy](#KmsKeyRingIamPolicy), [KmsKeyRingIamPolicyStat
 | `policyData` | ***string***||
 ## KmsKeyRingIamPolicyStatus
 
-Appears on:[KmsKeyRingIamPolicy](#KmsKeyRingIamPolicy)
+Appears on:[KmsKeyRingIamPolicy](#kmskeyringiampolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[KmsKeyRingIamPolicySpec](#KmsKeyRingIamPolicySpec)***| ***(Optional)*** |
+| `output` | ***[KmsKeyRingIamPolicySpec](#kmskeyringiampolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `Route53QueryLog` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[Route53QueryLogSpec](#Route53QueryLogSpec)***||
-| `status` | ***[Route53QueryLogStatus](#Route53QueryLogStatus)***||
+| `spec` | ***[Route53QueryLogSpec](#route53querylogspec)***||
+| `status` | ***[Route53QueryLogStatus](#route53querylogstatus)***||
 ## Route53QueryLogSpec
 
-Appears on:[Route53QueryLog](#Route53QueryLog), [Route53QueryLogStatus](#Route53QueryLogStatus)
+Appears on:[Route53QueryLog](#route53querylog), [Route53QueryLogStatus](#route53querylogstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[Route53QueryLog](#Route53QueryLog), [Route53QueryLogStatus](#Route53
 | `zoneID` | ***string***||
 ## Route53QueryLogStatus
 
-Appears on:[Route53QueryLog](#Route53QueryLog)
+Appears on:[Route53QueryLog](#route53querylog)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[Route53QueryLogSpec](#Route53QueryLogSpec)***| ***(Optional)*** |
+| `output` | ***[Route53QueryLogSpec](#route53querylogspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

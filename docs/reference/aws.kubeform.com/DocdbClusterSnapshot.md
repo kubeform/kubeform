@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DocdbClusterSnapshot` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DocdbClusterSnapshotSpec](#DocdbClusterSnapshotSpec)***||
-| `status` | ***[DocdbClusterSnapshotStatus](#DocdbClusterSnapshotStatus)***||
+| `spec` | ***[DocdbClusterSnapshotSpec](#docdbclustersnapshotspec)***||
+| `status` | ***[DocdbClusterSnapshotStatus](#docdbclustersnapshotstatus)***||
 ## DocdbClusterSnapshotSpec
 
-Appears on:[DocdbClusterSnapshot](#DocdbClusterSnapshot), [DocdbClusterSnapshotStatus](#DocdbClusterSnapshotStatus)
+Appears on:[DocdbClusterSnapshot](#docdbclustersnapshot), [DocdbClusterSnapshotStatus](#docdbclustersnapshotstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -41,11 +41,11 @@ Appears on:[DocdbClusterSnapshot](#DocdbClusterSnapshot), [DocdbClusterSnapshotS
 | `vpcID` | ***string***| ***(Optional)*** |
 ## DocdbClusterSnapshotStatus
 
-Appears on:[DocdbClusterSnapshot](#DocdbClusterSnapshot)
+Appears on:[DocdbClusterSnapshot](#docdbclustersnapshot)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DocdbClusterSnapshotSpec](#DocdbClusterSnapshotSpec)***| ***(Optional)*** |
+| `output` | ***[DocdbClusterSnapshotSpec](#docdbclustersnapshotspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

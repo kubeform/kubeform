@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `LambdaPermission` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LambdaPermissionSpec](#LambdaPermissionSpec)***||
-| `status` | ***[LambdaPermissionStatus](#LambdaPermissionStatus)***||
+| `spec` | ***[LambdaPermissionSpec](#lambdapermissionspec)***||
+| `status` | ***[LambdaPermissionStatus](#lambdapermissionstatus)***||
 ## LambdaPermissionSpec
 
-Appears on:[LambdaPermission](#LambdaPermission), [LambdaPermissionStatus](#LambdaPermissionStatus)
+Appears on:[LambdaPermission](#lambdapermission), [LambdaPermissionStatus](#lambdapermissionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,11 +37,11 @@ Appears on:[LambdaPermission](#LambdaPermission), [LambdaPermissionStatus](#Lamb
 | `statementIDPrefix` | ***string***| ***(Optional)*** |
 ## LambdaPermissionStatus
 
-Appears on:[LambdaPermission](#LambdaPermission)
+Appears on:[LambdaPermission](#lambdapermission)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LambdaPermissionSpec](#LambdaPermissionSpec)***| ***(Optional)*** |
+| `output` | ***[LambdaPermissionSpec](#lambdapermissionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

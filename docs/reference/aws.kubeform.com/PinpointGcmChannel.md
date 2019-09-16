@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `PinpointGcmChannel` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PinpointGcmChannelSpec](#PinpointGcmChannelSpec)***||
-| `status` | ***[PinpointGcmChannelStatus](#PinpointGcmChannelStatus)***||
+| `spec` | ***[PinpointGcmChannelSpec](#pinpointgcmchannelspec)***||
+| `status` | ***[PinpointGcmChannelStatus](#pinpointgcmchannelstatus)***||
 ## PinpointGcmChannelSpec
 
-Appears on:[PinpointGcmChannel](#PinpointGcmChannel), [PinpointGcmChannelStatus](#PinpointGcmChannelStatus)
+Appears on:[PinpointGcmChannel](#pinpointgcmchannel), [PinpointGcmChannelStatus](#pinpointgcmchannelstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,12 +31,12 @@ Appears on:[PinpointGcmChannel](#PinpointGcmChannel), [PinpointGcmChannelStatus]
 | `enabled` | ***bool***| ***(Optional)*** |
 ## PinpointGcmChannelStatus
 
-Appears on:[PinpointGcmChannel](#PinpointGcmChannel)
+Appears on:[PinpointGcmChannel](#pinpointgcmchannel)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PinpointGcmChannelSpec](#PinpointGcmChannelSpec)***| ***(Optional)*** |
+| `output` | ***[PinpointGcmChannelSpec](#pinpointgcmchannelspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

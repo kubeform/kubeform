@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DaxSubnetGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DaxSubnetGroupSpec](#DaxSubnetGroupSpec)***||
-| `status` | ***[DaxSubnetGroupStatus](#DaxSubnetGroupStatus)***||
+| `spec` | ***[DaxSubnetGroupSpec](#daxsubnetgroupspec)***||
+| `status` | ***[DaxSubnetGroupStatus](#daxsubnetgroupstatus)***||
 ## DaxSubnetGroupSpec
 
-Appears on:[DaxSubnetGroup](#DaxSubnetGroup), [DaxSubnetGroupStatus](#DaxSubnetGroupStatus)
+Appears on:[DaxSubnetGroup](#daxsubnetgroup), [DaxSubnetGroupStatus](#daxsubnetgroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[DaxSubnetGroup](#DaxSubnetGroup), [DaxSubnetGroupStatus](#DaxSubnetG
 | `vpcID` | ***string***| ***(Optional)*** |
 ## DaxSubnetGroupStatus
 
-Appears on:[DaxSubnetGroup](#DaxSubnetGroup)
+Appears on:[DaxSubnetGroup](#daxsubnetgroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DaxSubnetGroupSpec](#DaxSubnetGroupSpec)***| ***(Optional)*** |
+| `output` | ***[DaxSubnetGroupSpec](#daxsubnetgroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

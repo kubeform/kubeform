@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `MqConfiguration` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[MqConfigurationSpec](#MqConfigurationSpec)***||
-| `status` | ***[MqConfigurationStatus](#MqConfigurationStatus)***||
+| `spec` | ***[MqConfigurationSpec](#mqconfigurationspec)***||
+| `status` | ***[MqConfigurationStatus](#mqconfigurationstatus)***||
 ## MqConfigurationSpec
 
-Appears on:[MqConfiguration](#MqConfiguration), [MqConfigurationStatus](#MqConfigurationStatus)
+Appears on:[MqConfiguration](#mqconfiguration), [MqConfigurationStatus](#mqconfigurationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -36,11 +36,11 @@ Appears on:[MqConfiguration](#MqConfiguration), [MqConfigurationStatus](#MqConfi
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## MqConfigurationStatus
 
-Appears on:[MqConfiguration](#MqConfiguration)
+Appears on:[MqConfiguration](#mqconfiguration)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[MqConfigurationSpec](#MqConfigurationSpec)***| ***(Optional)*** |
+| `output` | ***[MqConfigurationSpec](#mqconfigurationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

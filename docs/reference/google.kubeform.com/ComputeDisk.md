@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeDisk` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeDiskSpec](#ComputeDiskSpec)***||
-| `status` | ***[ComputeDiskStatus](#ComputeDiskStatus)***||
+| `spec` | ***[ComputeDiskSpec](#computediskspec)***||
+| `status` | ***[ComputeDiskStatus](#computediskstatus)***||
 ## ComputeDiskSpec
 
-Appears on:[ComputeDisk](#ComputeDisk), [ComputeDiskStatus](#ComputeDiskStatus)
+Appears on:[ComputeDisk](#computedisk), [ComputeDiskStatus](#computediskstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,7 +29,7 @@ Appears on:[ComputeDisk](#ComputeDisk), [ComputeDiskStatus](#ComputeDiskStatus)
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `diskEncryptionKey` | ***[[]ComputeDiskSpecDiskEncryptionKey](#ComputeDiskSpecDiskEncryptionKey)***| ***(Optional)*** |
+| `diskEncryptionKey` | ***[[]ComputeDiskSpecDiskEncryptionKey](#computediskspecdiskencryptionkey)***| ***(Optional)*** |
 | `diskEncryptionKeySha256` | ***string***| ***(Optional)*** Deprecated|
 | `image` | ***string***| ***(Optional)*** |
 | `labelFingerprint` | ***string***| ***(Optional)*** |
@@ -41,16 +41,16 @@ Appears on:[ComputeDisk](#ComputeDisk), [ComputeDiskStatus](#ComputeDiskStatus)
 | `selfLink` | ***string***| ***(Optional)*** |
 | `size` | ***int***| ***(Optional)*** |
 | `snapshot` | ***string***| ***(Optional)*** |
-| `sourceImageEncryptionKey` | ***[[]ComputeDiskSpecSourceImageEncryptionKey](#ComputeDiskSpecSourceImageEncryptionKey)***| ***(Optional)*** |
+| `sourceImageEncryptionKey` | ***[[]ComputeDiskSpecSourceImageEncryptionKey](#computediskspecsourceimageencryptionkey)***| ***(Optional)*** |
 | `sourceImageID` | ***string***| ***(Optional)*** |
-| `sourceSnapshotEncryptionKey` | ***[[]ComputeDiskSpecSourceSnapshotEncryptionKey](#ComputeDiskSpecSourceSnapshotEncryptionKey)***| ***(Optional)*** |
+| `sourceSnapshotEncryptionKey` | ***[[]ComputeDiskSpecSourceSnapshotEncryptionKey](#computediskspecsourcesnapshotencryptionkey)***| ***(Optional)*** |
 | `sourceSnapshotID` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 | `users` | ***[]string***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
 ## ComputeDiskSpecDiskEncryptionKey
 
-Appears on:[ComputeDiskSpec](#ComputeDiskSpec)
+Appears on:[ComputeDiskSpec](#computediskspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -58,7 +58,7 @@ Appears on:[ComputeDiskSpec](#ComputeDiskSpec)
 | `sha256` | ***string***| ***(Optional)*** |
 ## ComputeDiskSpecSourceImageEncryptionKey
 
-Appears on:[ComputeDiskSpec](#ComputeDiskSpec)
+Appears on:[ComputeDiskSpec](#computediskspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -66,7 +66,7 @@ Appears on:[ComputeDiskSpec](#ComputeDiskSpec)
 | `sha256` | ***string***| ***(Optional)*** |
 ## ComputeDiskSpecSourceSnapshotEncryptionKey
 
-Appears on:[ComputeDiskSpec](#ComputeDiskSpec)
+Appears on:[ComputeDiskSpec](#computediskspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -74,12 +74,12 @@ Appears on:[ComputeDiskSpec](#ComputeDiskSpec)
 | `sha256` | ***string***| ***(Optional)*** |
 ## ComputeDiskStatus
 
-Appears on:[ComputeDisk](#ComputeDisk)
+Appears on:[ComputeDisk](#computedisk)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeDiskSpec](#ComputeDiskSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeDiskSpec](#computediskspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

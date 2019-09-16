@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `NetworkSecurityGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NetworkSecurityGroupSpec](#NetworkSecurityGroupSpec)***||
-| `status` | ***[NetworkSecurityGroupStatus](#NetworkSecurityGroupStatus)***||
+| `spec` | ***[NetworkSecurityGroupSpec](#networksecuritygroupspec)***||
+| `status` | ***[NetworkSecurityGroupStatus](#networksecuritygroupstatus)***||
 ## NetworkSecurityGroupSpec
 
-Appears on:[NetworkSecurityGroup](#NetworkSecurityGroup), [NetworkSecurityGroupStatus](#NetworkSecurityGroupStatus)
+Appears on:[NetworkSecurityGroup](#networksecuritygroup), [NetworkSecurityGroupStatus](#networksecuritygroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,11 +29,11 @@ Appears on:[NetworkSecurityGroup](#NetworkSecurityGroup), [NetworkSecurityGroupS
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
-| `securityRule` | ***[[]NetworkSecurityGroupSpecSecurityRule](#NetworkSecurityGroupSpecSecurityRule)***| ***(Optional)*** |
+| `securityRule` | ***[[]NetworkSecurityGroupSpecSecurityRule](#networksecuritygroupspecsecurityrule)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## NetworkSecurityGroupSpecSecurityRule
 
-Appears on:[NetworkSecurityGroupSpec](#NetworkSecurityGroupSpec)
+Appears on:[NetworkSecurityGroupSpec](#networksecuritygroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -55,11 +55,11 @@ Appears on:[NetworkSecurityGroupSpec](#NetworkSecurityGroupSpec)
 | `sourcePortRanges` | ***[]string***| ***(Optional)*** |
 ## NetworkSecurityGroupStatus
 
-Appears on:[NetworkSecurityGroup](#NetworkSecurityGroup)
+Appears on:[NetworkSecurityGroup](#networksecuritygroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NetworkSecurityGroupSpec](#NetworkSecurityGroupSpec)***| ***(Optional)*** |
+| `output` | ***[NetworkSecurityGroupSpec](#networksecuritygroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

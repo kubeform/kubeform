@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiGatewayAuthorizer` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiGatewayAuthorizerSpec](#ApiGatewayAuthorizerSpec)***||
-| `status` | ***[ApiGatewayAuthorizerStatus](#ApiGatewayAuthorizerStatus)***||
+| `spec` | ***[ApiGatewayAuthorizerSpec](#apigatewayauthorizerspec)***||
+| `status` | ***[ApiGatewayAuthorizerStatus](#apigatewayauthorizerstatus)***||
 ## ApiGatewayAuthorizerSpec
 
-Appears on:[ApiGatewayAuthorizer](#ApiGatewayAuthorizer), [ApiGatewayAuthorizerStatus](#ApiGatewayAuthorizerStatus)
+Appears on:[ApiGatewayAuthorizer](#apigatewayauthorizer), [ApiGatewayAuthorizerStatus](#apigatewayauthorizerstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,11 +37,11 @@ Appears on:[ApiGatewayAuthorizer](#ApiGatewayAuthorizer), [ApiGatewayAuthorizerS
 | `type` | ***string***| ***(Optional)*** |
 ## ApiGatewayAuthorizerStatus
 
-Appears on:[ApiGatewayAuthorizer](#ApiGatewayAuthorizer)
+Appears on:[ApiGatewayAuthorizer](#apigatewayauthorizer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiGatewayAuthorizerSpec](#ApiGatewayAuthorizerSpec)***| ***(Optional)*** |
+| `output` | ***[ApiGatewayAuthorizerSpec](#apigatewayauthorizerspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

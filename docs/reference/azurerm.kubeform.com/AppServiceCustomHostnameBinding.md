@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `AppServiceCustomHostnameBinding` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AppServiceCustomHostnameBindingSpec](#AppServiceCustomHostnameBindingSpec)***||
-| `status` | ***[AppServiceCustomHostnameBindingStatus](#AppServiceCustomHostnameBindingStatus)***||
+| `spec` | ***[AppServiceCustomHostnameBindingSpec](#appservicecustomhostnamebindingspec)***||
+| `status` | ***[AppServiceCustomHostnameBindingStatus](#appservicecustomhostnamebindingstatus)***||
 ## AppServiceCustomHostnameBindingSpec
 
-Appears on:[AppServiceCustomHostnameBinding](#AppServiceCustomHostnameBinding), [AppServiceCustomHostnameBindingStatus](#AppServiceCustomHostnameBindingStatus)
+Appears on:[AppServiceCustomHostnameBinding](#appservicecustomhostnamebinding), [AppServiceCustomHostnameBindingStatus](#appservicecustomhostnamebindingstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[AppServiceCustomHostnameBinding](#AppServiceCustomHostnameBinding), 
 | `resourceGroupName` | ***string***||
 ## AppServiceCustomHostnameBindingStatus
 
-Appears on:[AppServiceCustomHostnameBinding](#AppServiceCustomHostnameBinding)
+Appears on:[AppServiceCustomHostnameBinding](#appservicecustomhostnamebinding)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AppServiceCustomHostnameBindingSpec](#AppServiceCustomHostnameBindingSpec)***| ***(Optional)*** |
+| `output` | ***[AppServiceCustomHostnameBindingSpec](#appservicecustomhostnamebindingspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

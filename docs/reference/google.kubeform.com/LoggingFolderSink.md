@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `LoggingFolderSink` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LoggingFolderSinkSpec](#LoggingFolderSinkSpec)***||
-| `status` | ***[LoggingFolderSinkStatus](#LoggingFolderSinkStatus)***||
+| `spec` | ***[LoggingFolderSinkSpec](#loggingfoldersinkspec)***||
+| `status` | ***[LoggingFolderSinkStatus](#loggingfoldersinkstatus)***||
 ## LoggingFolderSinkSpec
 
-Appears on:[LoggingFolderSink](#LoggingFolderSink), [LoggingFolderSinkStatus](#LoggingFolderSinkStatus)
+Appears on:[LoggingFolderSink](#loggingfoldersink), [LoggingFolderSinkStatus](#loggingfoldersinkstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[LoggingFolderSink](#LoggingFolderSink), [LoggingFolderSinkStatus](#L
 | `writerIdentity` | ***string***| ***(Optional)*** |
 ## LoggingFolderSinkStatus
 
-Appears on:[LoggingFolderSink](#LoggingFolderSink)
+Appears on:[LoggingFolderSink](#loggingfoldersink)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LoggingFolderSinkSpec](#LoggingFolderSinkSpec)***| ***(Optional)*** |
+| `output` | ***[LoggingFolderSinkSpec](#loggingfoldersinkspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

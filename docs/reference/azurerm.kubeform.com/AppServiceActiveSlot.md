@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `AppServiceActiveSlot` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AppServiceActiveSlotSpec](#AppServiceActiveSlotSpec)***||
-| `status` | ***[AppServiceActiveSlotStatus](#AppServiceActiveSlotStatus)***||
+| `spec` | ***[AppServiceActiveSlotSpec](#appserviceactiveslotspec)***||
+| `status` | ***[AppServiceActiveSlotStatus](#appserviceactiveslotstatus)***||
 ## AppServiceActiveSlotSpec
 
-Appears on:[AppServiceActiveSlot](#AppServiceActiveSlot), [AppServiceActiveSlotStatus](#AppServiceActiveSlotStatus)
+Appears on:[AppServiceActiveSlot](#appserviceactiveslot), [AppServiceActiveSlotStatus](#appserviceactiveslotstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[AppServiceActiveSlot](#AppServiceActiveSlot), [AppServiceActiveSlotS
 | `resourceGroupName` | ***string***||
 ## AppServiceActiveSlotStatus
 
-Appears on:[AppServiceActiveSlot](#AppServiceActiveSlot)
+Appears on:[AppServiceActiveSlot](#appserviceactiveslot)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AppServiceActiveSlotSpec](#AppServiceActiveSlotSpec)***| ***(Optional)*** |
+| `output` | ***[AppServiceActiveSlotSpec](#appserviceactiveslotspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

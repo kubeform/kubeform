@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ExpressRouteCircuitAuthorization` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ExpressRouteCircuitAuthorizationSpec](#ExpressRouteCircuitAuthorizationSpec)***||
-| `status` | ***[ExpressRouteCircuitAuthorizationStatus](#ExpressRouteCircuitAuthorizationStatus)***||
+| `spec` | ***[ExpressRouteCircuitAuthorizationSpec](#expressroutecircuitauthorizationspec)***||
+| `status` | ***[ExpressRouteCircuitAuthorizationStatus](#expressroutecircuitauthorizationstatus)***||
 ## ExpressRouteCircuitAuthorizationSpec
 
-Appears on:[ExpressRouteCircuitAuthorization](#ExpressRouteCircuitAuthorization), [ExpressRouteCircuitAuthorizationStatus](#ExpressRouteCircuitAuthorizationStatus)
+Appears on:[ExpressRouteCircuitAuthorization](#expressroutecircuitauthorization), [ExpressRouteCircuitAuthorizationStatus](#expressroutecircuitauthorizationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,12 +33,12 @@ Appears on:[ExpressRouteCircuitAuthorization](#ExpressRouteCircuitAuthorization)
 | `resourceGroupName` | ***string***||
 ## ExpressRouteCircuitAuthorizationStatus
 
-Appears on:[ExpressRouteCircuitAuthorization](#ExpressRouteCircuitAuthorization)
+Appears on:[ExpressRouteCircuitAuthorization](#expressroutecircuitauthorization)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ExpressRouteCircuitAuthorizationSpec](#ExpressRouteCircuitAuthorizationSpec)***| ***(Optional)*** |
+| `output` | ***[ExpressRouteCircuitAuthorizationSpec](#expressroutecircuitauthorizationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

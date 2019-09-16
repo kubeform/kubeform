@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `StorageObjectAccessControl` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[StorageObjectAccessControlSpec](#StorageObjectAccessControlSpec)***||
-| `status` | ***[StorageObjectAccessControlStatus](#StorageObjectAccessControlStatus)***||
+| `spec` | ***[StorageObjectAccessControlSpec](#storageobjectaccesscontrolspec)***||
+| `status` | ***[StorageObjectAccessControlStatus](#storageobjectaccesscontrolstatus)***||
 ## StorageObjectAccessControlSpec
 
-Appears on:[StorageObjectAccessControl](#StorageObjectAccessControl), [StorageObjectAccessControlStatus](#StorageObjectAccessControlStatus)
+Appears on:[StorageObjectAccessControl](#storageobjectaccesscontrol), [StorageObjectAccessControlStatus](#storageobjectaccesscontrolstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[StorageObjectAccessControl](#StorageObjectAccessControl), [StorageOb
 | `entityID` | ***string***| ***(Optional)*** |
 | `generation` | ***int***| ***(Optional)*** |
 | `object` | ***string***||
-| `projectTeam` | ***[[]StorageObjectAccessControlSpecProjectTeam](#StorageObjectAccessControlSpecProjectTeam)***| ***(Optional)*** |
+| `projectTeam` | ***[[]StorageObjectAccessControlSpecProjectTeam](#storageobjectaccesscontrolspecprojectteam)***| ***(Optional)*** |
 | `role` | ***string***||
 ## StorageObjectAccessControlSpecProjectTeam
 
-Appears on:[StorageObjectAccessControlSpec](#StorageObjectAccessControlSpec)
+Appears on:[StorageObjectAccessControlSpec](#storageobjectaccesscontrolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -45,11 +45,11 @@ Appears on:[StorageObjectAccessControlSpec](#StorageObjectAccessControlSpec)
 | `team` | ***string***| ***(Optional)*** |
 ## StorageObjectAccessControlStatus
 
-Appears on:[StorageObjectAccessControl](#StorageObjectAccessControl)
+Appears on:[StorageObjectAccessControl](#storageobjectaccesscontrol)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[StorageObjectAccessControlSpec](#StorageObjectAccessControlSpec)***| ***(Optional)*** |
+| `output` | ***[StorageObjectAccessControlSpec](#storageobjectaccesscontrolspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

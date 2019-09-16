@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `Ami` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AmiSpec](#AmiSpec)***||
-| `status` | ***[AmiStatus](#AmiStatus)***||
+| `spec` | ***[AmiSpec](#amispec)***||
+| `status` | ***[AmiStatus](#amistatus)***||
 ## AmiSpec
 
-Appears on:[Ami](#Ami), [AmiStatus](#AmiStatus)
+Appears on:[Ami](#ami), [AmiStatus](#amistatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,9 +28,9 @@ Appears on:[Ami](#Ami), [AmiStatus](#AmiStatus)
 | `id` | ***string***||
 | `architecture` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `ebsBlockDevice` | ***[[]AmiSpecEbsBlockDevice](#AmiSpecEbsBlockDevice)***| ***(Optional)*** |
+| `ebsBlockDevice` | ***[[]AmiSpecEbsBlockDevice](#amispecebsblockdevice)***| ***(Optional)*** |
 | `enaSupport` | ***bool***| ***(Optional)*** |
-| `ephemeralBlockDevice` | ***[[]AmiSpecEphemeralBlockDevice](#AmiSpecEphemeralBlockDevice)***| ***(Optional)*** |
+| `ephemeralBlockDevice` | ***[[]AmiSpecEphemeralBlockDevice](#amispecephemeralblockdevice)***| ***(Optional)*** |
 | `imageLocation` | ***string***| ***(Optional)*** |
 | `kernelID` | ***string***| ***(Optional)*** |
 | `manageEbsSnapshots` | ***bool***| ***(Optional)*** |
@@ -43,7 +43,7 @@ Appears on:[Ami](#Ami), [AmiStatus](#AmiStatus)
 | `virtualizationType` | ***string***| ***(Optional)*** |
 ## AmiSpecEbsBlockDevice
 
-Appears on:[AmiSpec](#AmiSpec)
+Appears on:[AmiSpec](#amispec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -56,7 +56,7 @@ Appears on:[AmiSpec](#AmiSpec)
 | `volumeType` | ***string***| ***(Optional)*** |
 ## AmiSpecEphemeralBlockDevice
 
-Appears on:[AmiSpec](#AmiSpec)
+Appears on:[AmiSpec](#amispec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -64,11 +64,11 @@ Appears on:[AmiSpec](#AmiSpec)
 | `virtualName` | ***string***||
 ## AmiStatus
 
-Appears on:[Ami](#Ami)
+Appears on:[Ami](#ami)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AmiSpec](#AmiSpec)***| ***(Optional)*** |
+| `output` | ***[AmiSpec](#amispec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

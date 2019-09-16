@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DlmLifecyclePolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DlmLifecyclePolicySpec](#DlmLifecyclePolicySpec)***||
-| `status` | ***[DlmLifecyclePolicyStatus](#DlmLifecyclePolicyStatus)***||
+| `spec` | ***[DlmLifecyclePolicySpec](#dlmlifecyclepolicyspec)***||
+| `status` | ***[DlmLifecyclePolicyStatus](#dlmlifecyclepolicystatus)***||
 ## DlmLifecyclePolicySpec
 
-Appears on:[DlmLifecyclePolicy](#DlmLifecyclePolicy), [DlmLifecyclePolicyStatus](#DlmLifecyclePolicyStatus)
+Appears on:[DlmLifecyclePolicy](#dlmlifecyclepolicy), [DlmLifecyclePolicyStatus](#dlmlifecyclepolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,31 +28,31 @@ Appears on:[DlmLifecyclePolicy](#DlmLifecyclePolicy), [DlmLifecyclePolicyStatus]
 | `id` | ***string***||
 | `description` | ***string***||
 | `executionRoleArn` | ***string***||
-| `policyDetails` | ***[[]DlmLifecyclePolicySpecPolicyDetails](#DlmLifecyclePolicySpecPolicyDetails)***||
+| `policyDetails` | ***[[]DlmLifecyclePolicySpecPolicyDetails](#dlmlifecyclepolicyspecpolicydetails)***||
 | `state` | ***string***| ***(Optional)*** |
 ## DlmLifecyclePolicySpecPolicyDetails
 
-Appears on:[DlmLifecyclePolicySpec](#DlmLifecyclePolicySpec)
+Appears on:[DlmLifecyclePolicySpec](#dlmlifecyclepolicyspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `resourceTypes` | ***[]string***||
-| `schedule` | ***[[]DlmLifecyclePolicySpecPolicyDetailsSchedule](#DlmLifecyclePolicySpecPolicyDetailsSchedule)***||
+| `schedule` | ***[[]DlmLifecyclePolicySpecPolicyDetailsSchedule](#dlmlifecyclepolicyspecpolicydetailsschedule)***||
 | `targetTags` | ***map[string]string***||
 ## DlmLifecyclePolicySpecPolicyDetailsSchedule
 
-Appears on:[DlmLifecyclePolicySpecPolicyDetails](#DlmLifecyclePolicySpecPolicyDetails)
+Appears on:[DlmLifecyclePolicySpecPolicyDetails](#dlmlifecyclepolicyspecpolicydetails)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `copyTags` | ***bool***| ***(Optional)*** |
-| `createRule` | ***[[]DlmLifecyclePolicySpecPolicyDetailsScheduleCreateRule](#DlmLifecyclePolicySpecPolicyDetailsScheduleCreateRule)***||
+| `createRule` | ***[[]DlmLifecyclePolicySpecPolicyDetailsScheduleCreateRule](#dlmlifecyclepolicyspecpolicydetailsschedulecreaterule)***||
 | `name` | ***string***||
-| `retainRule` | ***[[]DlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule](#DlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule)***||
+| `retainRule` | ***[[]DlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule](#dlmlifecyclepolicyspecpolicydetailsscheduleretainrule)***||
 | `tagsToAdd` | ***map[string]string***| ***(Optional)*** |
 ## DlmLifecyclePolicySpecPolicyDetailsScheduleCreateRule
 
-Appears on:[DlmLifecyclePolicySpecPolicyDetailsSchedule](#DlmLifecyclePolicySpecPolicyDetailsSchedule)
+Appears on:[DlmLifecyclePolicySpecPolicyDetailsSchedule](#dlmlifecyclepolicyspecpolicydetailsschedule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -61,18 +61,18 @@ Appears on:[DlmLifecyclePolicySpecPolicyDetailsSchedule](#DlmLifecyclePolicySpec
 | `times` | ***[]string***| ***(Optional)*** |
 ## DlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule
 
-Appears on:[DlmLifecyclePolicySpecPolicyDetailsSchedule](#DlmLifecyclePolicySpecPolicyDetailsSchedule)
+Appears on:[DlmLifecyclePolicySpecPolicyDetailsSchedule](#dlmlifecyclepolicyspecpolicydetailsschedule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `count` | ***int***||
 ## DlmLifecyclePolicyStatus
 
-Appears on:[DlmLifecyclePolicy](#DlmLifecyclePolicy)
+Appears on:[DlmLifecyclePolicy](#dlmlifecyclepolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DlmLifecyclePolicySpec](#DlmLifecyclePolicySpec)***| ***(Optional)*** |
+| `output` | ***[DlmLifecyclePolicySpec](#dlmlifecyclepolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

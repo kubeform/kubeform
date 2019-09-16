@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeRegionDisk` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeRegionDiskSpec](#ComputeRegionDiskSpec)***||
-| `status` | ***[ComputeRegionDiskStatus](#ComputeRegionDiskStatus)***||
+| `spec` | ***[ComputeRegionDiskSpec](#computeregiondiskspec)***||
+| `status` | ***[ComputeRegionDiskStatus](#computeregiondiskstatus)***||
 ## ComputeRegionDiskSpec
 
-Appears on:[ComputeRegionDisk](#ComputeRegionDisk), [ComputeRegionDiskStatus](#ComputeRegionDiskStatus)
+Appears on:[ComputeRegionDisk](#computeregiondisk), [ComputeRegionDiskStatus](#computeregiondiskstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,7 +28,7 @@ Appears on:[ComputeRegionDisk](#ComputeRegionDisk), [ComputeRegionDiskStatus](#C
 | `id` | ***string***||
 | `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `diskEncryptionKey` | ***[[]ComputeRegionDiskSpecDiskEncryptionKey](#ComputeRegionDiskSpecDiskEncryptionKey)***| ***(Optional)*** |
+| `diskEncryptionKey` | ***[[]ComputeRegionDiskSpecDiskEncryptionKey](#computeregiondiskspecdiskencryptionkey)***| ***(Optional)*** |
 | `labelFingerprint` | ***string***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
 | `lastAttachTimestamp` | ***string***| ***(Optional)*** |
@@ -40,13 +40,13 @@ Appears on:[ComputeRegionDisk](#ComputeRegionDisk), [ComputeRegionDiskStatus](#C
 | `selfLink` | ***string***| ***(Optional)*** |
 | `size` | ***int***| ***(Optional)*** |
 | `snapshot` | ***string***| ***(Optional)*** |
-| `sourceSnapshotEncryptionKey` | ***[[]ComputeRegionDiskSpecSourceSnapshotEncryptionKey](#ComputeRegionDiskSpecSourceSnapshotEncryptionKey)***| ***(Optional)*** |
+| `sourceSnapshotEncryptionKey` | ***[[]ComputeRegionDiskSpecSourceSnapshotEncryptionKey](#computeregiondiskspecsourcesnapshotencryptionkey)***| ***(Optional)*** |
 | `sourceSnapshotID` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 | `users` | ***[]string***| ***(Optional)*** |
 ## ComputeRegionDiskSpecDiskEncryptionKey
 
-Appears on:[ComputeRegionDiskSpec](#ComputeRegionDiskSpec)
+Appears on:[ComputeRegionDiskSpec](#computeregiondiskspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -54,7 +54,7 @@ Appears on:[ComputeRegionDiskSpec](#ComputeRegionDiskSpec)
 | `sha256` | ***string***| ***(Optional)*** |
 ## ComputeRegionDiskSpecSourceSnapshotEncryptionKey
 
-Appears on:[ComputeRegionDiskSpec](#ComputeRegionDiskSpec)
+Appears on:[ComputeRegionDiskSpec](#computeregiondiskspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -62,11 +62,11 @@ Appears on:[ComputeRegionDiskSpec](#ComputeRegionDiskSpec)
 | `sha256` | ***string***| ***(Optional)*** |
 ## ComputeRegionDiskStatus
 
-Appears on:[ComputeRegionDisk](#ComputeRegionDisk)
+Appears on:[ComputeRegionDisk](#computeregiondisk)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeRegionDiskSpec](#ComputeRegionDiskSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeRegionDiskSpec](#computeregiondiskspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

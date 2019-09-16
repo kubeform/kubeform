@@ -16,26 +16,26 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DefaultNetworkACL` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DefaultNetworkACLSpec](#DefaultNetworkACLSpec)***||
-| `status` | ***[DefaultNetworkACLStatus](#DefaultNetworkACLStatus)***||
+| `spec` | ***[DefaultNetworkACLSpec](#defaultnetworkaclspec)***||
+| `status` | ***[DefaultNetworkACLStatus](#defaultnetworkaclstatus)***||
 ## DefaultNetworkACLSpec
 
-Appears on:[DefaultNetworkACL](#DefaultNetworkACL), [DefaultNetworkACLStatus](#DefaultNetworkACLStatus)
+Appears on:[DefaultNetworkACL](#defaultnetworkacl), [DefaultNetworkACLStatus](#defaultnetworkaclstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `defaultNetworkACLID` | ***string***||
-| `egress` | ***[[]DefaultNetworkACLSpecEgress](#DefaultNetworkACLSpecEgress)***| ***(Optional)*** |
-| `ingress` | ***[[]DefaultNetworkACLSpecIngress](#DefaultNetworkACLSpecIngress)***| ***(Optional)*** |
+| `egress` | ***[[]DefaultNetworkACLSpecEgress](#defaultnetworkaclspecegress)***| ***(Optional)*** |
+| `ingress` | ***[[]DefaultNetworkACLSpecIngress](#defaultnetworkaclspecingress)***| ***(Optional)*** |
 | `ownerID` | ***string***| ***(Optional)*** |
 | `subnetIDS` | ***[]string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpcID` | ***string***| ***(Optional)*** |
 ## DefaultNetworkACLSpecEgress
 
-Appears on:[DefaultNetworkACLSpec](#DefaultNetworkACLSpec)
+Appears on:[DefaultNetworkACLSpec](#defaultnetworkaclspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -50,7 +50,7 @@ Appears on:[DefaultNetworkACLSpec](#DefaultNetworkACLSpec)
 | `toPort` | ***int***||
 ## DefaultNetworkACLSpecIngress
 
-Appears on:[DefaultNetworkACLSpec](#DefaultNetworkACLSpec)
+Appears on:[DefaultNetworkACLSpec](#defaultnetworkaclspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -65,11 +65,11 @@ Appears on:[DefaultNetworkACLSpec](#DefaultNetworkACLSpec)
 | `toPort` | ***int***||
 ## DefaultNetworkACLStatus
 
-Appears on:[DefaultNetworkACL](#DefaultNetworkACL)
+Appears on:[DefaultNetworkACL](#defaultnetworkacl)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DefaultNetworkACLSpec](#DefaultNetworkACLSpec)***| ***(Optional)*** |
+| `output` | ***[DefaultNetworkACLSpec](#defaultnetworkaclspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

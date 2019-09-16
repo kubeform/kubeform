@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `WafRateBasedRule` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[WafRateBasedRuleSpec](#WafRateBasedRuleSpec)***||
-| `status` | ***[WafRateBasedRuleStatus](#WafRateBasedRuleStatus)***||
+| `spec` | ***[WafRateBasedRuleSpec](#wafratebasedrulespec)***||
+| `status` | ***[WafRateBasedRuleStatus](#wafratebasedrulestatus)***||
 ## WafRateBasedRuleSpec
 
-Appears on:[WafRateBasedRule](#WafRateBasedRule), [WafRateBasedRuleStatus](#WafRateBasedRuleStatus)
+Appears on:[WafRateBasedRule](#wafratebasedrule), [WafRateBasedRuleStatus](#wafratebasedrulestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,12 +28,12 @@ Appears on:[WafRateBasedRule](#WafRateBasedRule), [WafRateBasedRuleStatus](#WafR
 | `id` | ***string***||
 | `metricName` | ***string***||
 | `name` | ***string***||
-| `predicates` | ***[[]WafRateBasedRuleSpecPredicates](#WafRateBasedRuleSpecPredicates)***| ***(Optional)*** |
+| `predicates` | ***[[]WafRateBasedRuleSpecPredicates](#wafratebasedrulespecpredicates)***| ***(Optional)*** |
 | `rateKey` | ***string***||
 | `rateLimit` | ***int***||
 ## WafRateBasedRuleSpecPredicates
 
-Appears on:[WafRateBasedRuleSpec](#WafRateBasedRuleSpec)
+Appears on:[WafRateBasedRuleSpec](#wafratebasedrulespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -42,11 +42,11 @@ Appears on:[WafRateBasedRuleSpec](#WafRateBasedRuleSpec)
 | `type` | ***string***||
 ## WafRateBasedRuleStatus
 
-Appears on:[WafRateBasedRule](#WafRateBasedRule)
+Appears on:[WafRateBasedRule](#wafratebasedrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[WafRateBasedRuleSpec](#WafRateBasedRuleSpec)***| ***(Optional)*** |
+| `output` | ***[WafRateBasedRuleSpec](#wafratebasedrulespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

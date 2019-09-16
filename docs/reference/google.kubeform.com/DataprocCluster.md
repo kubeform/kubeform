@@ -16,39 +16,39 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `DataprocCluster` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DataprocClusterSpec](#DataprocClusterSpec)***||
-| `status` | ***[DataprocClusterStatus](#DataprocClusterStatus)***||
+| `spec` | ***[DataprocClusterSpec](#dataprocclusterspec)***||
+| `status` | ***[DataprocClusterStatus](#dataprocclusterstatus)***||
 ## DataprocClusterSpec
 
-Appears on:[DataprocCluster](#DataprocCluster), [DataprocClusterStatus](#DataprocClusterStatus)
+Appears on:[DataprocCluster](#dataproccluster), [DataprocClusterStatus](#dataprocclusterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `clusterConfig` | ***[[]DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)***| ***(Optional)*** |
+| `clusterConfig` | ***[[]DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
 | `name` | ***string***||
 | `project` | ***string***| ***(Optional)*** |
 | `region` | ***string***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfig
 
-Appears on:[DataprocClusterSpec](#DataprocClusterSpec)
+Appears on:[DataprocClusterSpec](#dataprocclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucket` | ***string***| ***(Optional)*** |
 | `deleteAutogenBucket` | ***bool***| ***(Optional)*** Deprecated|
-| `gceClusterConfig` | ***[[]DataprocClusterSpecClusterConfigGceClusterConfig](#DataprocClusterSpecClusterConfigGceClusterConfig)***| ***(Optional)*** |
-| `initializationAction` | ***[[]DataprocClusterSpecClusterConfigInitializationAction](#DataprocClusterSpecClusterConfigInitializationAction)***| ***(Optional)*** |
-| `masterConfig` | ***[[]DataprocClusterSpecClusterConfigMasterConfig](#DataprocClusterSpecClusterConfigMasterConfig)***| ***(Optional)*** |
-| `preemptibleWorkerConfig` | ***[[]DataprocClusterSpecClusterConfigPreemptibleWorkerConfig](#DataprocClusterSpecClusterConfigPreemptibleWorkerConfig)***| ***(Optional)*** |
-| `softwareConfig` | ***[[]DataprocClusterSpecClusterConfigSoftwareConfig](#DataprocClusterSpecClusterConfigSoftwareConfig)***| ***(Optional)*** |
+| `gceClusterConfig` | ***[[]DataprocClusterSpecClusterConfigGceClusterConfig](#dataprocclusterspecclusterconfiggceclusterconfig)***| ***(Optional)*** |
+| `initializationAction` | ***[[]DataprocClusterSpecClusterConfigInitializationAction](#dataprocclusterspecclusterconfiginitializationaction)***| ***(Optional)*** |
+| `masterConfig` | ***[[]DataprocClusterSpecClusterConfigMasterConfig](#dataprocclusterspecclusterconfigmasterconfig)***| ***(Optional)*** |
+| `preemptibleWorkerConfig` | ***[[]DataprocClusterSpecClusterConfigPreemptibleWorkerConfig](#dataprocclusterspecclusterconfigpreemptibleworkerconfig)***| ***(Optional)*** |
+| `softwareConfig` | ***[[]DataprocClusterSpecClusterConfigSoftwareConfig](#dataprocclusterspecclusterconfigsoftwareconfig)***| ***(Optional)*** |
 | `stagingBucket` | ***string***| ***(Optional)*** |
-| `workerConfig` | ***[[]DataprocClusterSpecClusterConfigWorkerConfig](#DataprocClusterSpecClusterConfigWorkerConfig)***| ***(Optional)*** |
+| `workerConfig` | ***[[]DataprocClusterSpecClusterConfigWorkerConfig](#dataprocclusterspecclusterconfigworkerconfig)***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigGceClusterConfig
 
-Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
+Appears on:[DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -62,7 +62,7 @@ Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
 | `zone` | ***string***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigInitializationAction
 
-Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
+Appears on:[DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -70,17 +70,17 @@ Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
 | `timeoutSec` | ***int***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigMasterConfig
 
-Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
+Appears on:[DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskConfig` | ***[[]DataprocClusterSpecClusterConfigMasterConfigDiskConfig](#DataprocClusterSpecClusterConfigMasterConfigDiskConfig)***| ***(Optional)*** |
+| `diskConfig` | ***[[]DataprocClusterSpecClusterConfigMasterConfigDiskConfig](#dataprocclusterspecclusterconfigmasterconfigdiskconfig)***| ***(Optional)*** |
 | `instanceNames` | ***[]string***| ***(Optional)*** |
 | `machineType` | ***string***| ***(Optional)*** |
 | `numInstances` | ***int***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigMasterConfigDiskConfig
 
-Appears on:[DataprocClusterSpecClusterConfigMasterConfig](#DataprocClusterSpecClusterConfigMasterConfig)
+Appears on:[DataprocClusterSpecClusterConfigMasterConfig](#dataprocclusterspecclusterconfigmasterconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -89,23 +89,23 @@ Appears on:[DataprocClusterSpecClusterConfigMasterConfig](#DataprocClusterSpecCl
 | `numLocalSsds` | ***int***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigPreemptibleWorkerConfig
 
-Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
+Appears on:[DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskConfig` | ***[[]DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig](#DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig)***| ***(Optional)*** |
+| `diskConfig` | ***[[]DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig](#dataprocclusterspecclusterconfigpreemptibleworkerconfigdiskconfig)***| ***(Optional)*** |
 | `instanceNames` | ***[]string***| ***(Optional)*** |
 | `numInstances` | ***int***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig
 
-Appears on:[DataprocClusterSpecClusterConfigPreemptibleWorkerConfig](#DataprocClusterSpecClusterConfigPreemptibleWorkerConfig)
+Appears on:[DataprocClusterSpecClusterConfigPreemptibleWorkerConfig](#dataprocclusterspecclusterconfigpreemptibleworkerconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bootDiskSizeGb` | ***int***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigSoftwareConfig
 
-Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
+Appears on:[DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -114,17 +114,17 @@ Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
 | `properties` | ***map[string]string***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigWorkerConfig
 
-Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
+Appears on:[DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskConfig` | ***[[]DataprocClusterSpecClusterConfigWorkerConfigDiskConfig](#DataprocClusterSpecClusterConfigWorkerConfigDiskConfig)***| ***(Optional)*** |
+| `diskConfig` | ***[[]DataprocClusterSpecClusterConfigWorkerConfigDiskConfig](#dataprocclusterspecclusterconfigworkerconfigdiskconfig)***| ***(Optional)*** |
 | `instanceNames` | ***[]string***| ***(Optional)*** |
 | `machineType` | ***string***| ***(Optional)*** |
 | `numInstances` | ***int***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigWorkerConfigDiskConfig
 
-Appears on:[DataprocClusterSpecClusterConfigWorkerConfig](#DataprocClusterSpecClusterConfigWorkerConfig)
+Appears on:[DataprocClusterSpecClusterConfigWorkerConfig](#dataprocclusterspecclusterconfigworkerconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -133,11 +133,11 @@ Appears on:[DataprocClusterSpecClusterConfigWorkerConfig](#DataprocClusterSpecCl
 | `numLocalSsds` | ***int***| ***(Optional)*** |
 ## DataprocClusterStatus
 
-Appears on:[DataprocCluster](#DataprocCluster)
+Appears on:[DataprocCluster](#dataproccluster)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DataprocClusterSpec](#DataprocClusterSpec)***| ***(Optional)*** |
+| `output` | ***[DataprocClusterSpec](#dataprocclusterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

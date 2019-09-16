@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `LbBackendAddressPool` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LbBackendAddressPoolSpec](#LbBackendAddressPoolSpec)***||
-| `status` | ***[LbBackendAddressPoolStatus](#LbBackendAddressPoolStatus)***||
+| `spec` | ***[LbBackendAddressPoolSpec](#lbbackendaddresspoolspec)***||
+| `status` | ***[LbBackendAddressPoolStatus](#lbbackendaddresspoolstatus)***||
 ## LbBackendAddressPoolSpec
 
-Appears on:[LbBackendAddressPool](#LbBackendAddressPool), [LbBackendAddressPoolStatus](#LbBackendAddressPoolStatus)
+Appears on:[LbBackendAddressPool](#lbbackendaddresspool), [LbBackendAddressPoolStatus](#lbbackendaddresspoolstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[LbBackendAddressPool](#LbBackendAddressPool), [LbBackendAddressPoolS
 | `resourceGroupName` | ***string***||
 ## LbBackendAddressPoolStatus
 
-Appears on:[LbBackendAddressPool](#LbBackendAddressPool)
+Appears on:[LbBackendAddressPool](#lbbackendaddresspool)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LbBackendAddressPoolSpec](#LbBackendAddressPoolSpec)***| ***(Optional)*** |
+| `output` | ***[LbBackendAddressPoolSpec](#lbbackendaddresspoolspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

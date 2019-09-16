@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CloudwatchLogStream` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CloudwatchLogStreamSpec](#CloudwatchLogStreamSpec)***||
-| `status` | ***[CloudwatchLogStreamStatus](#CloudwatchLogStreamStatus)***||
+| `spec` | ***[CloudwatchLogStreamSpec](#cloudwatchlogstreamspec)***||
+| `status` | ***[CloudwatchLogStreamStatus](#cloudwatchlogstreamstatus)***||
 ## CloudwatchLogStreamSpec
 
-Appears on:[CloudwatchLogStream](#CloudwatchLogStream), [CloudwatchLogStreamStatus](#CloudwatchLogStreamStatus)
+Appears on:[CloudwatchLogStream](#cloudwatchlogstream), [CloudwatchLogStreamStatus](#cloudwatchlogstreamstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[CloudwatchLogStream](#CloudwatchLogStream), [CloudwatchLogStreamStat
 | `name` | ***string***||
 ## CloudwatchLogStreamStatus
 
-Appears on:[CloudwatchLogStream](#CloudwatchLogStream)
+Appears on:[CloudwatchLogStream](#cloudwatchlogstream)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CloudwatchLogStreamSpec](#CloudwatchLogStreamSpec)***| ***(Optional)*** |
+| `output` | ***[CloudwatchLogStreamSpec](#cloudwatchlogstreamspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

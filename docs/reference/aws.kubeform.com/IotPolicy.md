@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `IotPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[IotPolicySpec](#IotPolicySpec)***||
-| `status` | ***[IotPolicyStatus](#IotPolicyStatus)***||
+| `spec` | ***[IotPolicySpec](#iotpolicyspec)***||
+| `status` | ***[IotPolicyStatus](#iotpolicystatus)***||
 ## IotPolicySpec
 
-Appears on:[IotPolicy](#IotPolicy), [IotPolicyStatus](#IotPolicyStatus)
+Appears on:[IotPolicy](#iotpolicy), [IotPolicyStatus](#iotpolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[IotPolicy](#IotPolicy), [IotPolicyStatus](#IotPolicyStatus)
 | `policy` | ***string***||
 ## IotPolicyStatus
 
-Appears on:[IotPolicy](#IotPolicy)
+Appears on:[IotPolicy](#iotpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[IotPolicySpec](#IotPolicySpec)***| ***(Optional)*** |
+| `output` | ***[IotPolicySpec](#iotpolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

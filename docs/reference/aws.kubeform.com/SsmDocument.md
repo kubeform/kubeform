@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SsmDocument` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SsmDocumentSpec](#SsmDocumentSpec)***||
-| `status` | ***[SsmDocumentStatus](#SsmDocumentStatus)***||
+| `spec` | ***[SsmDocumentSpec](#ssmdocumentspec)***||
+| `status` | ***[SsmDocumentStatus](#ssmdocumentstatus)***||
 ## SsmDocumentSpec
 
-Appears on:[SsmDocument](#SsmDocument), [SsmDocumentStatus](#SsmDocumentStatus)
+Appears on:[SsmDocument](#ssmdocument), [SsmDocumentStatus](#ssmdocumentstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,7 +38,7 @@ Appears on:[SsmDocument](#SsmDocument), [SsmDocumentStatus](#SsmDocumentStatus)
 | `latestVersion` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `owner` | ***string***| ***(Optional)*** |
-| `parameter` | ***[[]SsmDocumentSpecParameter](#SsmDocumentSpecParameter)***| ***(Optional)*** |
+| `parameter` | ***[[]SsmDocumentSpecParameter](#ssmdocumentspecparameter)***| ***(Optional)*** |
 | `permissions` | ***map[string]kubeform.dev/kubeform/apis/aws/v1alpha1.SsmDocumentSpecPermissions***| ***(Optional)*** |
 | `platformTypes` | ***[]string***| ***(Optional)*** |
 | `schemaVersion` | ***string***| ***(Optional)*** |
@@ -46,7 +46,7 @@ Appears on:[SsmDocument](#SsmDocument), [SsmDocumentStatus](#SsmDocumentStatus)
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SsmDocumentSpecParameter
 
-Appears on:[SsmDocumentSpec](#SsmDocumentSpec)
+Appears on:[SsmDocumentSpec](#ssmdocumentspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -56,11 +56,11 @@ Appears on:[SsmDocumentSpec](#SsmDocumentSpec)
 | `type` | ***string***| ***(Optional)*** |
 ## SsmDocumentStatus
 
-Appears on:[SsmDocument](#SsmDocument)
+Appears on:[SsmDocument](#ssmdocument)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SsmDocumentSpec](#SsmDocumentSpec)***| ***(Optional)*** |
+| `output` | ***[SsmDocumentSpec](#ssmdocumentspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

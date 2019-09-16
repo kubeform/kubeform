@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `EfsMountTarget` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[EfsMountTargetSpec](#EfsMountTargetSpec)***||
-| `status` | ***[EfsMountTargetStatus](#EfsMountTargetStatus)***||
+| `spec` | ***[EfsMountTargetSpec](#efsmounttargetspec)***||
+| `status` | ***[EfsMountTargetStatus](#efsmounttargetstatus)***||
 ## EfsMountTargetSpec
 
-Appears on:[EfsMountTarget](#EfsMountTarget), [EfsMountTargetStatus](#EfsMountTargetStatus)
+Appears on:[EfsMountTarget](#efsmounttarget), [EfsMountTargetStatus](#efsmounttargetstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,11 +35,11 @@ Appears on:[EfsMountTarget](#EfsMountTarget), [EfsMountTargetStatus](#EfsMountTa
 | `subnetID` | ***string***||
 ## EfsMountTargetStatus
 
-Appears on:[EfsMountTarget](#EfsMountTarget)
+Appears on:[EfsMountTarget](#efsmounttarget)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[EfsMountTargetSpec](#EfsMountTargetSpec)***| ***(Optional)*** |
+| `output` | ***[EfsMountTargetSpec](#efsmounttargetspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `Ec2TransitGatewayRouteTable` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[Ec2TransitGatewayRouteTableSpec](#Ec2TransitGatewayRouteTableSpec)***||
-| `status` | ***[Ec2TransitGatewayRouteTableStatus](#Ec2TransitGatewayRouteTableStatus)***||
+| `spec` | ***[Ec2TransitGatewayRouteTableSpec](#ec2transitgatewayroutetablespec)***||
+| `status` | ***[Ec2TransitGatewayRouteTableStatus](#ec2transitgatewayroutetablestatus)***||
 ## Ec2TransitGatewayRouteTableSpec
 
-Appears on:[Ec2TransitGatewayRouteTable](#Ec2TransitGatewayRouteTable), [Ec2TransitGatewayRouteTableStatus](#Ec2TransitGatewayRouteTableStatus)
+Appears on:[Ec2TransitGatewayRouteTable](#ec2transitgatewayroutetable), [Ec2TransitGatewayRouteTableStatus](#ec2transitgatewayroutetablestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[Ec2TransitGatewayRouteTable](#Ec2TransitGatewayRouteTable), [Ec2Tran
 | `transitGatewayID` | ***string***||
 ## Ec2TransitGatewayRouteTableStatus
 
-Appears on:[Ec2TransitGatewayRouteTable](#Ec2TransitGatewayRouteTable)
+Appears on:[Ec2TransitGatewayRouteTable](#ec2transitgatewayroutetable)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[Ec2TransitGatewayRouteTableSpec](#Ec2TransitGatewayRouteTableSpec)***| ***(Optional)*** |
+| `output` | ***[Ec2TransitGatewayRouteTableSpec](#ec2transitgatewayroutetablespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

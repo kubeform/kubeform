@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `StorageDefaultObjectACL` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[StorageDefaultObjectACLSpec](#StorageDefaultObjectACLSpec)***||
-| `status` | ***[StorageDefaultObjectACLStatus](#StorageDefaultObjectACLStatus)***||
+| `spec` | ***[StorageDefaultObjectACLSpec](#storagedefaultobjectaclspec)***||
+| `status` | ***[StorageDefaultObjectACLStatus](#storagedefaultobjectaclstatus)***||
 ## StorageDefaultObjectACLSpec
 
-Appears on:[StorageDefaultObjectACL](#StorageDefaultObjectACL), [StorageDefaultObjectACLStatus](#StorageDefaultObjectACLStatus)
+Appears on:[StorageDefaultObjectACL](#storagedefaultobjectacl), [StorageDefaultObjectACLStatus](#storagedefaultobjectaclstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[StorageDefaultObjectACL](#StorageDefaultObjectACL), [StorageDefaultO
 | `roleEntity` | ***[]string***| ***(Optional)*** |
 ## StorageDefaultObjectACLStatus
 
-Appears on:[StorageDefaultObjectACL](#StorageDefaultObjectACL)
+Appears on:[StorageDefaultObjectACL](#storagedefaultobjectacl)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[StorageDefaultObjectACLSpec](#StorageDefaultObjectACLSpec)***| ***(Optional)*** |
+| `output` | ***[StorageDefaultObjectACLSpec](#storagedefaultobjectaclspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiManagementProductGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiManagementProductGroupSpec](#ApiManagementProductGroupSpec)***||
-| `status` | ***[ApiManagementProductGroupStatus](#ApiManagementProductGroupStatus)***||
+| `spec` | ***[ApiManagementProductGroupSpec](#apimanagementproductgroupspec)***||
+| `status` | ***[ApiManagementProductGroupStatus](#apimanagementproductgroupstatus)***||
 ## ApiManagementProductGroupSpec
 
-Appears on:[ApiManagementProductGroup](#ApiManagementProductGroup), [ApiManagementProductGroupStatus](#ApiManagementProductGroupStatus)
+Appears on:[ApiManagementProductGroup](#apimanagementproductgroup), [ApiManagementProductGroupStatus](#apimanagementproductgroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[ApiManagementProductGroup](#ApiManagementProductGroup), [ApiManageme
 | `resourceGroupName` | ***string***||
 ## ApiManagementProductGroupStatus
 
-Appears on:[ApiManagementProductGroup](#ApiManagementProductGroup)
+Appears on:[ApiManagementProductGroup](#apimanagementproductgroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiManagementProductGroupSpec](#ApiManagementProductGroupSpec)***| ***(Optional)*** |
+| `output` | ***[ApiManagementProductGroupSpec](#apimanagementproductgroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

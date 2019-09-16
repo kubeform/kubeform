@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `NetworkInterfaceBackendAddressPoolAssociation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NetworkInterfaceBackendAddressPoolAssociationSpec](#NetworkInterfaceBackendAddressPoolAssociationSpec)***||
-| `status` | ***[NetworkInterfaceBackendAddressPoolAssociationStatus](#NetworkInterfaceBackendAddressPoolAssociationStatus)***||
+| `spec` | ***[NetworkInterfaceBackendAddressPoolAssociationSpec](#networkinterfacebackendaddresspoolassociationspec)***||
+| `status` | ***[NetworkInterfaceBackendAddressPoolAssociationStatus](#networkinterfacebackendaddresspoolassociationstatus)***||
 ## NetworkInterfaceBackendAddressPoolAssociationSpec
 
-Appears on:[NetworkInterfaceBackendAddressPoolAssociation](#NetworkInterfaceBackendAddressPoolAssociation), [NetworkInterfaceBackendAddressPoolAssociationStatus](#NetworkInterfaceBackendAddressPoolAssociationStatus)
+Appears on:[NetworkInterfaceBackendAddressPoolAssociation](#networkinterfacebackendaddresspoolassociation), [NetworkInterfaceBackendAddressPoolAssociationStatus](#networkinterfacebackendaddresspoolassociationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[NetworkInterfaceBackendAddressPoolAssociation](#NetworkInterfaceBack
 | `networkInterfaceID` | ***string***||
 ## NetworkInterfaceBackendAddressPoolAssociationStatus
 
-Appears on:[NetworkInterfaceBackendAddressPoolAssociation](#NetworkInterfaceBackendAddressPoolAssociation)
+Appears on:[NetworkInterfaceBackendAddressPoolAssociation](#networkinterfacebackendaddresspoolassociation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NetworkInterfaceBackendAddressPoolAssociationSpec](#NetworkInterfaceBackendAddressPoolAssociationSpec)***| ***(Optional)*** |
+| `output` | ***[NetworkInterfaceBackendAddressPoolAssociationSpec](#networkinterfacebackendaddresspoolassociationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

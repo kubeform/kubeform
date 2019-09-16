@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `MediaStoreContainerPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[MediaStoreContainerPolicySpec](#MediaStoreContainerPolicySpec)***||
-| `status` | ***[MediaStoreContainerPolicyStatus](#MediaStoreContainerPolicyStatus)***||
+| `spec` | ***[MediaStoreContainerPolicySpec](#mediastorecontainerpolicyspec)***||
+| `status` | ***[MediaStoreContainerPolicyStatus](#mediastorecontainerpolicystatus)***||
 ## MediaStoreContainerPolicySpec
 
-Appears on:[MediaStoreContainerPolicy](#MediaStoreContainerPolicy), [MediaStoreContainerPolicyStatus](#MediaStoreContainerPolicyStatus)
+Appears on:[MediaStoreContainerPolicy](#mediastorecontainerpolicy), [MediaStoreContainerPolicyStatus](#mediastorecontainerpolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[MediaStoreContainerPolicy](#MediaStoreContainerPolicy), [MediaStoreC
 | `policy` | ***string***||
 ## MediaStoreContainerPolicyStatus
 
-Appears on:[MediaStoreContainerPolicy](#MediaStoreContainerPolicy)
+Appears on:[MediaStoreContainerPolicy](#mediastorecontainerpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[MediaStoreContainerPolicySpec](#MediaStoreContainerPolicySpec)***| ***(Optional)*** |
+| `output` | ***[MediaStoreContainerPolicySpec](#mediastorecontainerpolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

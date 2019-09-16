@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `AppServiceSlot` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AppServiceSlotSpec](#AppServiceSlotSpec)***||
-| `status` | ***[AppServiceSlotStatus](#AppServiceSlotStatus)***||
+| `spec` | ***[AppServiceSlotSpec](#appserviceslotspec)***||
+| `status` | ***[AppServiceSlotStatus](#appserviceslotstatus)***||
 ## AppServiceSlotSpec
 
-Appears on:[AppServiceSlot](#AppServiceSlot), [AppServiceSlotStatus](#AppServiceSlotStatus)
+Appears on:[AppServiceSlot](#appserviceslot), [AppServiceSlotStatus](#appserviceslotstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,42 +30,42 @@ Appears on:[AppServiceSlot](#AppServiceSlot), [AppServiceSlotStatus](#AppService
 | `appServiceName` | ***string***||
 | `appServicePlanID` | ***string***||
 | `appSettings` | ***map[string]string***| ***(Optional)*** |
-| `authSettings` | ***[[]AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)***| ***(Optional)*** |
+| `authSettings` | ***[[]AppServiceSlotSpecAuthSettings](#appserviceslotspecauthsettings)***| ***(Optional)*** |
 | `clientAffinityEnabled` | ***bool***| ***(Optional)*** |
-| `connectionString` | ***[[]AppServiceSlotSpecConnectionString](#AppServiceSlotSpecConnectionString)***| ***(Optional)*** |
+| `connectionString` | ***[[]AppServiceSlotSpecConnectionString](#appserviceslotspecconnectionstring)***| ***(Optional)*** |
 | `defaultSiteHostname` | ***string***| ***(Optional)*** |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `httpsOnly` | ***bool***| ***(Optional)*** |
-| `identity` | ***[[]AppServiceSlotSpecIdentity](#AppServiceSlotSpecIdentity)***| ***(Optional)*** |
+| `identity` | ***[[]AppServiceSlotSpecIdentity](#appserviceslotspecidentity)***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
-| `siteConfig` | ***[[]AppServiceSlotSpecSiteConfig](#AppServiceSlotSpecSiteConfig)***| ***(Optional)*** |
-| `siteCredential` | ***[[]AppServiceSlotSpecSiteCredential](#AppServiceSlotSpecSiteCredential)***| ***(Optional)*** |
+| `siteConfig` | ***[[]AppServiceSlotSpecSiteConfig](#appserviceslotspecsiteconfig)***| ***(Optional)*** |
+| `siteCredential` | ***[[]AppServiceSlotSpecSiteCredential](#appserviceslotspecsitecredential)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## AppServiceSlotSpecAuthSettings
 
-Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec)
+Appears on:[AppServiceSlotSpec](#appserviceslotspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `activeDirectory` | ***[[]AppServiceSlotSpecAuthSettingsActiveDirectory](#AppServiceSlotSpecAuthSettingsActiveDirectory)***| ***(Optional)*** |
+| `activeDirectory` | ***[[]AppServiceSlotSpecAuthSettingsActiveDirectory](#appserviceslotspecauthsettingsactivedirectory)***| ***(Optional)*** |
 | `additionalLoginParams` | ***map[string]string***| ***(Optional)*** |
 | `allowedExternalRedirectUrls` | ***[]string***| ***(Optional)*** |
 | `defaultProvider` | ***string***| ***(Optional)*** |
 | `enabled` | ***bool***||
-| `facebook` | ***[[]AppServiceSlotSpecAuthSettingsFacebook](#AppServiceSlotSpecAuthSettingsFacebook)***| ***(Optional)*** |
-| `google` | ***[[]AppServiceSlotSpecAuthSettingsGoogle](#AppServiceSlotSpecAuthSettingsGoogle)***| ***(Optional)*** |
+| `facebook` | ***[[]AppServiceSlotSpecAuthSettingsFacebook](#appserviceslotspecauthsettingsfacebook)***| ***(Optional)*** |
+| `google` | ***[[]AppServiceSlotSpecAuthSettingsGoogle](#appserviceslotspecauthsettingsgoogle)***| ***(Optional)*** |
 | `issuer` | ***string***| ***(Optional)*** |
-| `microsoft` | ***[[]AppServiceSlotSpecAuthSettingsMicrosoft](#AppServiceSlotSpecAuthSettingsMicrosoft)***| ***(Optional)*** |
+| `microsoft` | ***[[]AppServiceSlotSpecAuthSettingsMicrosoft](#appserviceslotspecauthsettingsmicrosoft)***| ***(Optional)*** |
 | `runtimeVersion` | ***string***| ***(Optional)*** |
 | `tokenRefreshExtensionHours` | ***encoding/json.Number***| ***(Optional)*** |
 | `tokenStoreEnabled` | ***bool***| ***(Optional)*** |
-| `twitter` | ***[[]AppServiceSlotSpecAuthSettingsTwitter](#AppServiceSlotSpecAuthSettingsTwitter)***| ***(Optional)*** |
+| `twitter` | ***[[]AppServiceSlotSpecAuthSettingsTwitter](#appserviceslotspecauthsettingstwitter)***| ***(Optional)*** |
 | `unauthenticatedClientAction` | ***string***| ***(Optional)*** |
 ## AppServiceSlotSpecAuthSettingsActiveDirectory
 
-Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
+Appears on:[AppServiceSlotSpecAuthSettings](#appserviceslotspecauthsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -73,7 +73,7 @@ Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
 | `clientID` | ***string***||
 ## AppServiceSlotSpecAuthSettingsFacebook
 
-Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
+Appears on:[AppServiceSlotSpecAuthSettings](#appserviceslotspecauthsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -81,7 +81,7 @@ Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
 | `oauthScopes` | ***[]string***| ***(Optional)*** |
 ## AppServiceSlotSpecAuthSettingsGoogle
 
-Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
+Appears on:[AppServiceSlotSpecAuthSettings](#appserviceslotspecauthsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -89,7 +89,7 @@ Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
 | `oauthScopes` | ***[]string***| ***(Optional)*** |
 ## AppServiceSlotSpecAuthSettingsMicrosoft
 
-Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
+Appears on:[AppServiceSlotSpecAuthSettings](#appserviceslotspecauthsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -97,14 +97,14 @@ Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
 | `oauthScopes` | ***[]string***| ***(Optional)*** |
 ## AppServiceSlotSpecAuthSettingsTwitter
 
-Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
+Appears on:[AppServiceSlotSpecAuthSettings](#appserviceslotspecauthsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `consumerKey` | ***string***||
 ## AppServiceSlotSpecConnectionString
 
-Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec)
+Appears on:[AppServiceSlotSpec](#appserviceslotspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -112,7 +112,7 @@ Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec)
 | `type` | ***string***||
 ## AppServiceSlotSpecIdentity
 
-Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec)
+Appears on:[AppServiceSlotSpec](#appserviceslotspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -122,18 +122,18 @@ Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec)
 | `type` | ***string***||
 ## AppServiceSlotSpecSiteConfig
 
-Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec)
+Appears on:[AppServiceSlotSpec](#appserviceslotspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `alwaysOn` | ***bool***| ***(Optional)*** |
 | `appCommandLine` | ***string***| ***(Optional)*** |
-| `cors` | ***[[]AppServiceSlotSpecSiteConfigCors](#AppServiceSlotSpecSiteConfigCors)***| ***(Optional)*** |
+| `cors` | ***[[]AppServiceSlotSpecSiteConfigCors](#appserviceslotspecsiteconfigcors)***| ***(Optional)*** |
 | `defaultDocuments` | ***[]string***| ***(Optional)*** |
 | `dotnetFrameworkVersion` | ***string***| ***(Optional)*** |
 | `ftpsState` | ***string***| ***(Optional)*** |
 | `http2Enabled` | ***bool***| ***(Optional)*** |
-| `ipRestriction` | ***[[]AppServiceSlotSpecSiteConfigIpRestriction](#AppServiceSlotSpecSiteConfigIpRestriction)***| ***(Optional)*** |
+| `ipRestriction` | ***[[]AppServiceSlotSpecSiteConfigIpRestriction](#appserviceslotspecsiteconfigiprestriction)***| ***(Optional)*** |
 | `javaContainer` | ***string***| ***(Optional)*** |
 | `javaContainerVersion` | ***string***| ***(Optional)*** |
 | `javaVersion` | ***string***| ***(Optional)*** |
@@ -152,7 +152,7 @@ Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec)
 | `windowsFxVersion` | ***string***| ***(Optional)*** |
 ## AppServiceSlotSpecSiteConfigCors
 
-Appears on:[AppServiceSlotSpecSiteConfig](#AppServiceSlotSpecSiteConfig)
+Appears on:[AppServiceSlotSpecSiteConfig](#appserviceslotspecsiteconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -160,7 +160,7 @@ Appears on:[AppServiceSlotSpecSiteConfig](#AppServiceSlotSpecSiteConfig)
 | `supportCredentials` | ***bool***| ***(Optional)*** |
 ## AppServiceSlotSpecSiteConfigIpRestriction
 
-Appears on:[AppServiceSlotSpecSiteConfig](#AppServiceSlotSpecSiteConfig)
+Appears on:[AppServiceSlotSpecSiteConfig](#appserviceslotspecsiteconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -168,19 +168,19 @@ Appears on:[AppServiceSlotSpecSiteConfig](#AppServiceSlotSpecSiteConfig)
 | `subnetMask` | ***string***| ***(Optional)*** |
 ## AppServiceSlotSpecSiteCredential
 
-Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec)
+Appears on:[AppServiceSlotSpec](#appserviceslotspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `username` | ***string***| ***(Optional)*** |
 ## AppServiceSlotStatus
 
-Appears on:[AppServiceSlot](#AppServiceSlot)
+Appears on:[AppServiceSlot](#appserviceslot)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AppServiceSlotSpec](#AppServiceSlotSpec)***| ***(Optional)*** |
+| `output` | ***[AppServiceSlotSpec](#appserviceslotspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

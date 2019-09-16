@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SsmMaintenanceWindowTarget` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SsmMaintenanceWindowTargetSpec](#SsmMaintenanceWindowTargetSpec)***||
-| `status` | ***[SsmMaintenanceWindowTargetStatus](#SsmMaintenanceWindowTargetStatus)***||
+| `spec` | ***[SsmMaintenanceWindowTargetSpec](#ssmmaintenancewindowtargetspec)***||
+| `status` | ***[SsmMaintenanceWindowTargetStatus](#ssmmaintenancewindowtargetstatus)***||
 ## SsmMaintenanceWindowTargetSpec
 
-Appears on:[SsmMaintenanceWindowTarget](#SsmMaintenanceWindowTarget), [SsmMaintenanceWindowTargetStatus](#SsmMaintenanceWindowTargetStatus)
+Appears on:[SsmMaintenanceWindowTarget](#ssmmaintenancewindowtarget), [SsmMaintenanceWindowTargetStatus](#ssmmaintenancewindowtargetstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,11 +28,11 @@ Appears on:[SsmMaintenanceWindowTarget](#SsmMaintenanceWindowTarget), [SsmMainte
 | `id` | ***string***||
 | `ownerInformation` | ***string***| ***(Optional)*** |
 | `resourceType` | ***string***||
-| `targets` | ***[[]SsmMaintenanceWindowTargetSpecTargets](#SsmMaintenanceWindowTargetSpecTargets)***||
+| `targets` | ***[[]SsmMaintenanceWindowTargetSpecTargets](#ssmmaintenancewindowtargetspectargets)***||
 | `windowID` | ***string***||
 ## SsmMaintenanceWindowTargetSpecTargets
 
-Appears on:[SsmMaintenanceWindowTargetSpec](#SsmMaintenanceWindowTargetSpec)
+Appears on:[SsmMaintenanceWindowTargetSpec](#ssmmaintenancewindowtargetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -40,11 +40,11 @@ Appears on:[SsmMaintenanceWindowTargetSpec](#SsmMaintenanceWindowTargetSpec)
 | `values` | ***[]string***||
 ## SsmMaintenanceWindowTargetStatus
 
-Appears on:[SsmMaintenanceWindowTarget](#SsmMaintenanceWindowTarget)
+Appears on:[SsmMaintenanceWindowTarget](#ssmmaintenancewindowtarget)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SsmMaintenanceWindowTargetSpec](#SsmMaintenanceWindowTargetSpec)***| ***(Optional)*** |
+| `output` | ***[SsmMaintenanceWindowTargetSpec](#ssmmaintenancewindowtargetspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

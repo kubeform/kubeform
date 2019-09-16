@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DmsReplicationSubnetGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DmsReplicationSubnetGroupSpec](#DmsReplicationSubnetGroupSpec)***||
-| `status` | ***[DmsReplicationSubnetGroupStatus](#DmsReplicationSubnetGroupStatus)***||
+| `spec` | ***[DmsReplicationSubnetGroupSpec](#dmsreplicationsubnetgroupspec)***||
+| `status` | ***[DmsReplicationSubnetGroupStatus](#dmsreplicationsubnetgroupstatus)***||
 ## DmsReplicationSubnetGroupSpec
 
-Appears on:[DmsReplicationSubnetGroup](#DmsReplicationSubnetGroup), [DmsReplicationSubnetGroupStatus](#DmsReplicationSubnetGroupStatus)
+Appears on:[DmsReplicationSubnetGroup](#dmsreplicationsubnetgroup), [DmsReplicationSubnetGroupStatus](#dmsreplicationsubnetgroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[DmsReplicationSubnetGroup](#DmsReplicationSubnetGroup), [DmsReplicat
 | `vpcID` | ***string***| ***(Optional)*** |
 ## DmsReplicationSubnetGroupStatus
 
-Appears on:[DmsReplicationSubnetGroup](#DmsReplicationSubnetGroup)
+Appears on:[DmsReplicationSubnetGroup](#dmsreplicationsubnetgroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DmsReplicationSubnetGroupSpec](#DmsReplicationSubnetGroupSpec)***| ***(Optional)*** |
+| `output` | ***[DmsReplicationSubnetGroupSpec](#dmsreplicationsubnetgroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

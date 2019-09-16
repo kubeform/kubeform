@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `DnsZone` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DnsZoneSpec](#DnsZoneSpec)***||
-| `status` | ***[DnsZoneStatus](#DnsZoneStatus)***||
+| `spec` | ***[DnsZoneSpec](#dnszonespec)***||
+| `status` | ***[DnsZoneStatus](#dnszonestatus)***||
 ## DnsZoneSpec
 
-Appears on:[DnsZone](#DnsZone), [DnsZoneStatus](#DnsZoneStatus)
+Appears on:[DnsZone](#dnszone), [DnsZoneStatus](#dnszonestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,11 +37,11 @@ Appears on:[DnsZone](#DnsZone), [DnsZoneStatus](#DnsZoneStatus)
 | `zoneType` | ***string***| ***(Optional)*** |
 ## DnsZoneStatus
 
-Appears on:[DnsZone](#DnsZone)
+Appears on:[DnsZone](#dnszone)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DnsZoneSpec](#DnsZoneSpec)***| ***(Optional)*** |
+| `output` | ***[DnsZoneSpec](#dnszonespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

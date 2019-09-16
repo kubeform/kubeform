@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DbParameterGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DbParameterGroupSpec](#DbParameterGroupSpec)***||
-| `status` | ***[DbParameterGroupStatus](#DbParameterGroupStatus)***||
+| `spec` | ***[DbParameterGroupSpec](#dbparametergroupspec)***||
+| `status` | ***[DbParameterGroupStatus](#dbparametergroupstatus)***||
 ## DbParameterGroupSpec
 
-Appears on:[DbParameterGroup](#DbParameterGroup), [DbParameterGroupStatus](#DbParameterGroupStatus)
+Appears on:[DbParameterGroup](#dbparametergroup), [DbParameterGroupStatus](#dbparametergroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[DbParameterGroup](#DbParameterGroup), [DbParameterGroupStatus](#DbPa
 | `family` | ***string***||
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
-| `parameter` | ***[[]DbParameterGroupSpecParameter](#DbParameterGroupSpecParameter)***| ***(Optional)*** |
+| `parameter` | ***[[]DbParameterGroupSpecParameter](#dbparametergroupspecparameter)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DbParameterGroupSpecParameter
 
-Appears on:[DbParameterGroupSpec](#DbParameterGroupSpec)
+Appears on:[DbParameterGroupSpec](#dbparametergroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -44,11 +44,11 @@ Appears on:[DbParameterGroupSpec](#DbParameterGroupSpec)
 | `value` | ***string***||
 ## DbParameterGroupStatus
 
-Appears on:[DbParameterGroup](#DbParameterGroup)
+Appears on:[DbParameterGroup](#dbparametergroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DbParameterGroupSpec](#DbParameterGroupSpec)***| ***(Optional)*** |
+| `output` | ***[DbParameterGroupSpec](#dbparametergroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

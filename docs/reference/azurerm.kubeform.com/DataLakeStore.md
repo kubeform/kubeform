@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `DataLakeStore` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DataLakeStoreSpec](#DataLakeStoreSpec)***||
-| `status` | ***[DataLakeStoreStatus](#DataLakeStoreStatus)***||
+| `spec` | ***[DataLakeStoreSpec](#datalakestorespec)***||
+| `status` | ***[DataLakeStoreStatus](#datalakestorestatus)***||
 ## DataLakeStoreSpec
 
-Appears on:[DataLakeStore](#DataLakeStore), [DataLakeStoreStatus](#DataLakeStoreStatus)
+Appears on:[DataLakeStore](#datalakestore), [DataLakeStoreStatus](#datalakestorestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,11 +38,11 @@ Appears on:[DataLakeStore](#DataLakeStore), [DataLakeStoreStatus](#DataLakeStore
 | `tier` | ***string***| ***(Optional)*** |
 ## DataLakeStoreStatus
 
-Appears on:[DataLakeStore](#DataLakeStore)
+Appears on:[DataLakeStore](#datalakestore)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DataLakeStoreSpec](#DataLakeStoreSpec)***| ***(Optional)*** |
+| `output` | ***[DataLakeStoreSpec](#datalakestorespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

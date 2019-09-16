@@ -16,17 +16,17 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CloudhsmV2Cluster` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CloudhsmV2ClusterSpec](#CloudhsmV2ClusterSpec)***||
-| `status` | ***[CloudhsmV2ClusterStatus](#CloudhsmV2ClusterStatus)***||
+| `spec` | ***[CloudhsmV2ClusterSpec](#cloudhsmv2clusterspec)***||
+| `status` | ***[CloudhsmV2ClusterStatus](#cloudhsmv2clusterstatus)***||
 ## CloudhsmV2ClusterSpec
 
-Appears on:[CloudhsmV2Cluster](#CloudhsmV2Cluster), [CloudhsmV2ClusterStatus](#CloudhsmV2ClusterStatus)
+Appears on:[CloudhsmV2Cluster](#cloudhsmv2cluster), [CloudhsmV2ClusterStatus](#cloudhsmv2clusterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `clusterCertificates` | ***[[]CloudhsmV2ClusterSpecClusterCertificates](#CloudhsmV2ClusterSpecClusterCertificates)***| ***(Optional)*** |
+| `clusterCertificates` | ***[[]CloudhsmV2ClusterSpecClusterCertificates](#cloudhsmv2clusterspecclustercertificates)***| ***(Optional)*** |
 | `clusterID` | ***string***| ***(Optional)*** |
 | `clusterState` | ***string***| ***(Optional)*** |
 | `hsmType` | ***string***||
@@ -37,7 +37,7 @@ Appears on:[CloudhsmV2Cluster](#CloudhsmV2Cluster), [CloudhsmV2ClusterStatus](#C
 | `vpcID` | ***string***| ***(Optional)*** |
 ## CloudhsmV2ClusterSpecClusterCertificates
 
-Appears on:[CloudhsmV2ClusterSpec](#CloudhsmV2ClusterSpec)
+Appears on:[CloudhsmV2ClusterSpec](#cloudhsmv2clusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -48,11 +48,11 @@ Appears on:[CloudhsmV2ClusterSpec](#CloudhsmV2ClusterSpec)
 | `manufacturerHardwareCertificate` | ***string***| ***(Optional)*** |
 ## CloudhsmV2ClusterStatus
 
-Appears on:[CloudhsmV2Cluster](#CloudhsmV2Cluster)
+Appears on:[CloudhsmV2Cluster](#cloudhsmv2cluster)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CloudhsmV2ClusterSpec](#CloudhsmV2ClusterSpec)***| ***(Optional)*** |
+| `output` | ***[CloudhsmV2ClusterSpec](#cloudhsmv2clusterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

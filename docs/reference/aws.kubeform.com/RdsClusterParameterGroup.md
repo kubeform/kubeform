@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `RdsClusterParameterGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[RdsClusterParameterGroupSpec](#RdsClusterParameterGroupSpec)***||
-| `status` | ***[RdsClusterParameterGroupStatus](#RdsClusterParameterGroupStatus)***||
+| `spec` | ***[RdsClusterParameterGroupSpec](#rdsclusterparametergroupspec)***||
+| `status` | ***[RdsClusterParameterGroupStatus](#rdsclusterparametergroupstatus)***||
 ## RdsClusterParameterGroupSpec
 
-Appears on:[RdsClusterParameterGroup](#RdsClusterParameterGroup), [RdsClusterParameterGroupStatus](#RdsClusterParameterGroupStatus)
+Appears on:[RdsClusterParameterGroup](#rdsclusterparametergroup), [RdsClusterParameterGroupStatus](#rdsclusterparametergroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[RdsClusterParameterGroup](#RdsClusterParameterGroup), [RdsClusterPar
 | `family` | ***string***||
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
-| `parameter` | ***[[]RdsClusterParameterGroupSpecParameter](#RdsClusterParameterGroupSpecParameter)***| ***(Optional)*** |
+| `parameter` | ***[[]RdsClusterParameterGroupSpecParameter](#rdsclusterparametergroupspecparameter)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## RdsClusterParameterGroupSpecParameter
 
-Appears on:[RdsClusterParameterGroupSpec](#RdsClusterParameterGroupSpec)
+Appears on:[RdsClusterParameterGroupSpec](#rdsclusterparametergroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -44,11 +44,11 @@ Appears on:[RdsClusterParameterGroupSpec](#RdsClusterParameterGroupSpec)
 | `value` | ***string***||
 ## RdsClusterParameterGroupStatus
 
-Appears on:[RdsClusterParameterGroup](#RdsClusterParameterGroup)
+Appears on:[RdsClusterParameterGroup](#rdsclusterparametergroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[RdsClusterParameterGroupSpec](#RdsClusterParameterGroupSpec)***| ***(Optional)*** |
+| `output` | ***[RdsClusterParameterGroupSpec](#rdsclusterparametergroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

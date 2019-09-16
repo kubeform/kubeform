@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `SharedImageVersion` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SharedImageVersionSpec](#SharedImageVersionSpec)***||
-| `status` | ***[SharedImageVersionStatus](#SharedImageVersionStatus)***||
+| `spec` | ***[SharedImageVersionSpec](#sharedimageversionspec)***||
+| `status` | ***[SharedImageVersionStatus](#sharedimageversionstatus)***||
 ## SharedImageVersionSpec
 
-Appears on:[SharedImageVersion](#SharedImageVersion), [SharedImageVersionStatus](#SharedImageVersionStatus)
+Appears on:[SharedImageVersion](#sharedimageversion), [SharedImageVersionStatus](#sharedimageversionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,10 +34,10 @@ Appears on:[SharedImageVersion](#SharedImageVersion), [SharedImageVersionStatus]
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `targetRegion` | ***[[]SharedImageVersionSpecTargetRegion](#SharedImageVersionSpecTargetRegion)***||
+| `targetRegion` | ***[[]SharedImageVersionSpecTargetRegion](#sharedimageversionspectargetregion)***||
 ## SharedImageVersionSpecTargetRegion
 
-Appears on:[SharedImageVersionSpec](#SharedImageVersionSpec)
+Appears on:[SharedImageVersionSpec](#sharedimageversionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -45,11 +45,11 @@ Appears on:[SharedImageVersionSpec](#SharedImageVersionSpec)
 | `regionalReplicaCount` | ***int***||
 ## SharedImageVersionStatus
 
-Appears on:[SharedImageVersion](#SharedImageVersion)
+Appears on:[SharedImageVersion](#sharedimageversion)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SharedImageVersionSpec](#SharedImageVersionSpec)***| ***(Optional)*** |
+| `output` | ***[SharedImageVersionSpec](#sharedimageversionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

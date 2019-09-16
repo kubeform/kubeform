@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SecurityhubAccount` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SecurityhubAccountSpec](#SecurityhubAccountSpec)***||
-| `status` | ***[SecurityhubAccountStatus](#SecurityhubAccountStatus)***||
+| `spec` | ***[SecurityhubAccountSpec](#securityhubaccountspec)***||
+| `status` | ***[SecurityhubAccountStatus](#securityhubaccountstatus)***||
 ## SecurityhubAccountSpec
 
-Appears on:[SecurityhubAccount](#SecurityhubAccount), [SecurityhubAccountStatus](#SecurityhubAccountStatus)
+Appears on:[SecurityhubAccount](#securityhubaccount), [SecurityhubAccountStatus](#securityhubaccountstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,11 +28,11 @@ Appears on:[SecurityhubAccount](#SecurityhubAccount), [SecurityhubAccountStatus]
 | `id` | ***string***||
 ## SecurityhubAccountStatus
 
-Appears on:[SecurityhubAccount](#SecurityhubAccount)
+Appears on:[SecurityhubAccount](#securityhubaccount)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SecurityhubAccountSpec](#SecurityhubAccountSpec)***| ***(Optional)*** |
+| `output` | ***[SecurityhubAccountSpec](#securityhubaccountspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

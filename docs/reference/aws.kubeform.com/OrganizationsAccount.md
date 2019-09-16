@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `OrganizationsAccount` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[OrganizationsAccountSpec](#OrganizationsAccountSpec)***||
-| `status` | ***[OrganizationsAccountStatus](#OrganizationsAccountStatus)***||
+| `spec` | ***[OrganizationsAccountSpec](#organizationsaccountspec)***||
+| `status` | ***[OrganizationsAccountStatus](#organizationsaccountstatus)***||
 ## OrganizationsAccountSpec
 
-Appears on:[OrganizationsAccount](#OrganizationsAccount), [OrganizationsAccountStatus](#OrganizationsAccountStatus)
+Appears on:[OrganizationsAccount](#organizationsaccount), [OrganizationsAccountStatus](#organizationsaccountstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -36,11 +36,11 @@ Appears on:[OrganizationsAccount](#OrganizationsAccount), [OrganizationsAccountS
 | `status` | ***string***| ***(Optional)*** |
 ## OrganizationsAccountStatus
 
-Appears on:[OrganizationsAccount](#OrganizationsAccount)
+Appears on:[OrganizationsAccount](#organizationsaccount)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[OrganizationsAccountSpec](#OrganizationsAccountSpec)***| ***(Optional)*** |
+| `output` | ***[OrganizationsAccountSpec](#organizationsaccountspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `FirewallNATRuleCollection` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[FirewallNATRuleCollectionSpec](#FirewallNATRuleCollectionSpec)***||
-| `status` | ***[FirewallNATRuleCollectionStatus](#FirewallNATRuleCollectionStatus)***||
+| `spec` | ***[FirewallNATRuleCollectionSpec](#firewallnatrulecollectionspec)***||
+| `status` | ***[FirewallNATRuleCollectionStatus](#firewallnatrulecollectionstatus)***||
 ## FirewallNATRuleCollectionSpec
 
-Appears on:[FirewallNATRuleCollection](#FirewallNATRuleCollection), [FirewallNATRuleCollectionStatus](#FirewallNATRuleCollectionStatus)
+Appears on:[FirewallNATRuleCollection](#firewallnatrulecollection), [FirewallNATRuleCollectionStatus](#firewallnatrulecollectionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,10 +31,10 @@ Appears on:[FirewallNATRuleCollection](#FirewallNATRuleCollection), [FirewallNAT
 | `name` | ***string***||
 | `priority` | ***int***||
 | `resourceGroupName` | ***string***||
-| `rule` | ***[[]FirewallNATRuleCollectionSpecRule](#FirewallNATRuleCollectionSpecRule)***||
+| `rule` | ***[[]FirewallNATRuleCollectionSpecRule](#firewallnatrulecollectionspecrule)***||
 ## FirewallNATRuleCollectionSpecRule
 
-Appears on:[FirewallNATRuleCollectionSpec](#FirewallNATRuleCollectionSpec)
+Appears on:[FirewallNATRuleCollectionSpec](#firewallnatrulecollectionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -48,11 +48,11 @@ Appears on:[FirewallNATRuleCollectionSpec](#FirewallNATRuleCollectionSpec)
 | `translatedPort` | ***string***||
 ## FirewallNATRuleCollectionStatus
 
-Appears on:[FirewallNATRuleCollection](#FirewallNATRuleCollection)
+Appears on:[FirewallNATRuleCollection](#firewallnatrulecollection)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[FirewallNATRuleCollectionSpec](#FirewallNATRuleCollectionSpec)***| ***(Optional)*** |
+| `output` | ***[FirewallNATRuleCollectionSpec](#firewallnatrulecollectionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,31 +16,31 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `BinaryAuthorizationPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec)***||
-| `status` | ***[BinaryAuthorizationPolicyStatus](#BinaryAuthorizationPolicyStatus)***||
+| `spec` | ***[BinaryAuthorizationPolicySpec](#binaryauthorizationpolicyspec)***||
+| `status` | ***[BinaryAuthorizationPolicyStatus](#binaryauthorizationpolicystatus)***||
 ## BinaryAuthorizationPolicySpec
 
-Appears on:[BinaryAuthorizationPolicy](#BinaryAuthorizationPolicy), [BinaryAuthorizationPolicyStatus](#BinaryAuthorizationPolicyStatus)
+Appears on:[BinaryAuthorizationPolicy](#binaryauthorizationpolicy), [BinaryAuthorizationPolicyStatus](#binaryauthorizationpolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `admissionWhitelistPatterns` | ***[[]BinaryAuthorizationPolicySpecAdmissionWhitelistPatterns](#BinaryAuthorizationPolicySpecAdmissionWhitelistPatterns)***| ***(Optional)*** |
-| `clusterAdmissionRules` | ***[[]BinaryAuthorizationPolicySpecClusterAdmissionRules](#BinaryAuthorizationPolicySpecClusterAdmissionRules)***| ***(Optional)*** |
-| `defaultAdmissionRule` | ***[[]BinaryAuthorizationPolicySpecDefaultAdmissionRule](#BinaryAuthorizationPolicySpecDefaultAdmissionRule)***||
+| `admissionWhitelistPatterns` | ***[[]BinaryAuthorizationPolicySpecAdmissionWhitelistPatterns](#binaryauthorizationpolicyspecadmissionwhitelistpatterns)***| ***(Optional)*** |
+| `clusterAdmissionRules` | ***[[]BinaryAuthorizationPolicySpecClusterAdmissionRules](#binaryauthorizationpolicyspecclusteradmissionrules)***| ***(Optional)*** |
+| `defaultAdmissionRule` | ***[[]BinaryAuthorizationPolicySpecDefaultAdmissionRule](#binaryauthorizationpolicyspecdefaultadmissionrule)***||
 | `description` | ***string***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 ## BinaryAuthorizationPolicySpecAdmissionWhitelistPatterns
 
-Appears on:[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec)
+Appears on:[BinaryAuthorizationPolicySpec](#binaryauthorizationpolicyspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `namePattern` | ***string***| ***(Optional)*** |
 ## BinaryAuthorizationPolicySpecClusterAdmissionRules
 
-Appears on:[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec)
+Appears on:[BinaryAuthorizationPolicySpec](#binaryauthorizationpolicyspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -50,7 +50,7 @@ Appears on:[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec)
 | `requireAttestationsBy` | ***[]string***| ***(Optional)*** |
 ## BinaryAuthorizationPolicySpecDefaultAdmissionRule
 
-Appears on:[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec)
+Appears on:[BinaryAuthorizationPolicySpec](#binaryauthorizationpolicyspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -59,11 +59,11 @@ Appears on:[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec)
 | `requireAttestationsBy` | ***[]string***| ***(Optional)*** |
 ## BinaryAuthorizationPolicyStatus
 
-Appears on:[BinaryAuthorizationPolicy](#BinaryAuthorizationPolicy)
+Appears on:[BinaryAuthorizationPolicy](#binaryauthorizationpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec)***| ***(Optional)*** |
+| `output` | ***[BinaryAuthorizationPolicySpec](#binaryauthorizationpolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

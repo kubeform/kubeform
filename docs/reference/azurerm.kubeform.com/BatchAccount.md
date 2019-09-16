@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `BatchAccount` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[BatchAccountSpec](#BatchAccountSpec)***||
-| `status` | ***[BatchAccountStatus](#BatchAccountStatus)***||
+| `spec` | ***[BatchAccountSpec](#batchaccountspec)***||
+| `status` | ***[BatchAccountStatus](#batchaccountstatus)***||
 ## BatchAccountSpec
 
-Appears on:[BatchAccount](#BatchAccount), [BatchAccountStatus](#BatchAccountStatus)
+Appears on:[BatchAccount](#batchaccount), [BatchAccountStatus](#batchaccountstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,7 +28,7 @@ Appears on:[BatchAccount](#BatchAccount), [BatchAccountStatus](#BatchAccountStat
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `accountEndpoint` | ***string***| ***(Optional)*** |
-| `keyVaultReference` | ***[[]BatchAccountSpecKeyVaultReference](#BatchAccountSpecKeyVaultReference)***| ***(Optional)*** |
+| `keyVaultReference` | ***[[]BatchAccountSpecKeyVaultReference](#batchaccountspeckeyvaultreference)***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
 | `poolAllocationMode` | ***string***| ***(Optional)*** |
@@ -37,7 +37,7 @@ Appears on:[BatchAccount](#BatchAccount), [BatchAccountStatus](#BatchAccountStat
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## BatchAccountSpecKeyVaultReference
 
-Appears on:[BatchAccountSpec](#BatchAccountSpec)
+Appears on:[BatchAccountSpec](#batchaccountspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -45,12 +45,12 @@ Appears on:[BatchAccountSpec](#BatchAccountSpec)
 | `url` | ***string***||
 ## BatchAccountStatus
 
-Appears on:[BatchAccount](#BatchAccount)
+Appears on:[BatchAccount](#batchaccount)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[BatchAccountSpec](#BatchAccountSpec)***| ***(Optional)*** |
+| `output` | ***[BatchAccountSpec](#batchaccountspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

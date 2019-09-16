@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeSubnetworkIamPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeSubnetworkIamPolicySpec](#ComputeSubnetworkIamPolicySpec)***||
-| `status` | ***[ComputeSubnetworkIamPolicyStatus](#ComputeSubnetworkIamPolicyStatus)***||
+| `spec` | ***[ComputeSubnetworkIamPolicySpec](#computesubnetworkiampolicyspec)***||
+| `status` | ***[ComputeSubnetworkIamPolicyStatus](#computesubnetworkiampolicystatus)***||
 ## ComputeSubnetworkIamPolicySpec
 
-Appears on:[ComputeSubnetworkIamPolicy](#ComputeSubnetworkIamPolicy), [ComputeSubnetworkIamPolicyStatus](#ComputeSubnetworkIamPolicyStatus)
+Appears on:[ComputeSubnetworkIamPolicy](#computesubnetworkiampolicy), [ComputeSubnetworkIamPolicyStatus](#computesubnetworkiampolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[ComputeSubnetworkIamPolicy](#ComputeSubnetworkIamPolicy), [ComputeSu
 | `subnetwork` | ***string***|Deprecated|
 ## ComputeSubnetworkIamPolicyStatus
 
-Appears on:[ComputeSubnetworkIamPolicy](#ComputeSubnetworkIamPolicy)
+Appears on:[ComputeSubnetworkIamPolicy](#computesubnetworkiampolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeSubnetworkIamPolicySpec](#ComputeSubnetworkIamPolicySpec)***| ***(Optional)*** |
+| `output` | ***[ComputeSubnetworkIamPolicySpec](#computesubnetworkiampolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

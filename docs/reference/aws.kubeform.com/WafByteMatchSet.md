@@ -16,31 +16,31 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `WafByteMatchSet` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[WafByteMatchSetSpec](#WafByteMatchSetSpec)***||
-| `status` | ***[WafByteMatchSetStatus](#WafByteMatchSetStatus)***||
+| `spec` | ***[WafByteMatchSetSpec](#wafbytematchsetspec)***||
+| `status` | ***[WafByteMatchSetStatus](#wafbytematchsetstatus)***||
 ## WafByteMatchSetSpec
 
-Appears on:[WafByteMatchSet](#WafByteMatchSet), [WafByteMatchSetStatus](#WafByteMatchSetStatus)
+Appears on:[WafByteMatchSet](#wafbytematchset), [WafByteMatchSetStatus](#wafbytematchsetstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `byteMatchTuples` | ***[[]WafByteMatchSetSpecByteMatchTuples](#WafByteMatchSetSpecByteMatchTuples)***| ***(Optional)*** |
+| `byteMatchTuples` | ***[[]WafByteMatchSetSpecByteMatchTuples](#wafbytematchsetspecbytematchtuples)***| ***(Optional)*** |
 | `name` | ***string***||
 ## WafByteMatchSetSpecByteMatchTuples
 
-Appears on:[WafByteMatchSetSpec](#WafByteMatchSetSpec)
+Appears on:[WafByteMatchSetSpec](#wafbytematchsetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `fieldToMatch` | ***[[]WafByteMatchSetSpecByteMatchTuplesFieldToMatch](#WafByteMatchSetSpecByteMatchTuplesFieldToMatch)***||
+| `fieldToMatch` | ***[[]WafByteMatchSetSpecByteMatchTuplesFieldToMatch](#wafbytematchsetspecbytematchtuplesfieldtomatch)***||
 | `positionalConstraint` | ***string***||
 | `targetString` | ***string***| ***(Optional)*** |
 | `textTransformation` | ***string***||
 ## WafByteMatchSetSpecByteMatchTuplesFieldToMatch
 
-Appears on:[WafByteMatchSetSpecByteMatchTuples](#WafByteMatchSetSpecByteMatchTuples)
+Appears on:[WafByteMatchSetSpecByteMatchTuples](#wafbytematchsetspecbytematchtuples)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -48,11 +48,11 @@ Appears on:[WafByteMatchSetSpecByteMatchTuples](#WafByteMatchSetSpecByteMatchTup
 | `type` | ***string***||
 ## WafByteMatchSetStatus
 
-Appears on:[WafByteMatchSet](#WafByteMatchSet)
+Appears on:[WafByteMatchSet](#wafbytematchset)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[WafByteMatchSetSpec](#WafByteMatchSetSpec)***| ***(Optional)*** |
+| `output` | ***[WafByteMatchSetSpec](#wafbytematchsetspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

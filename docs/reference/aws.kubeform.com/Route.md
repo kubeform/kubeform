@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `Route` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[RouteSpec](#RouteSpec)***||
-| `status` | ***[RouteStatus](#RouteStatus)***||
+| `spec` | ***[RouteSpec](#routespec)***||
+| `status` | ***[RouteStatus](#routestatus)***||
 ## RouteSpec
 
-Appears on:[Route](#Route), [RouteStatus](#RouteStatus)
+Appears on:[Route](#route), [RouteStatus](#routestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -42,11 +42,11 @@ Appears on:[Route](#Route), [RouteStatus](#RouteStatus)
 | `vpcPeeringConnectionID` | ***string***| ***(Optional)*** |
 ## RouteStatus
 
-Appears on:[Route](#Route)
+Appears on:[Route](#route)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[RouteSpec](#RouteSpec)***| ***(Optional)*** |
+| `output` | ***[RouteSpec](#routespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

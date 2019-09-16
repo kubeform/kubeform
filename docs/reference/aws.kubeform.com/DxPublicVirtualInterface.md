@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DxPublicVirtualInterface` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DxPublicVirtualInterfaceSpec](#DxPublicVirtualInterfaceSpec)***||
-| `status` | ***[DxPublicVirtualInterfaceStatus](#DxPublicVirtualInterfaceStatus)***||
+| `spec` | ***[DxPublicVirtualInterfaceSpec](#dxpublicvirtualinterfacespec)***||
+| `status` | ***[DxPublicVirtualInterfaceStatus](#dxpublicvirtualinterfacestatus)***||
 ## DxPublicVirtualInterfaceSpec
 
-Appears on:[DxPublicVirtualInterface](#DxPublicVirtualInterface), [DxPublicVirtualInterfaceStatus](#DxPublicVirtualInterfaceStatus)
+Appears on:[DxPublicVirtualInterface](#dxpublicvirtualinterface), [DxPublicVirtualInterfaceStatus](#dxpublicvirtualinterfacestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -40,11 +40,11 @@ Appears on:[DxPublicVirtualInterface](#DxPublicVirtualInterface), [DxPublicVirtu
 | `vlan` | ***int***||
 ## DxPublicVirtualInterfaceStatus
 
-Appears on:[DxPublicVirtualInterface](#DxPublicVirtualInterface)
+Appears on:[DxPublicVirtualInterface](#dxpublicvirtualinterface)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DxPublicVirtualInterfaceSpec](#DxPublicVirtualInterfaceSpec)***| ***(Optional)*** |
+| `output` | ***[DxPublicVirtualInterfaceSpec](#dxpublicvirtualinterfacespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

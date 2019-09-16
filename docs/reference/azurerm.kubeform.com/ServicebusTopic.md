@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ServicebusTopic` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ServicebusTopicSpec](#ServicebusTopicSpec)***||
-| `status` | ***[ServicebusTopicStatus](#ServicebusTopicStatus)***||
+| `spec` | ***[ServicebusTopicSpec](#servicebustopicspec)***||
+| `status` | ***[ServicebusTopicStatus](#servicebustopicstatus)***||
 ## ServicebusTopicSpec
 
-Appears on:[ServicebusTopic](#ServicebusTopic), [ServicebusTopicStatus](#ServicebusTopicStatus)
+Appears on:[ServicebusTopic](#servicebustopic), [ServicebusTopicStatus](#servicebustopicstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -43,11 +43,11 @@ Appears on:[ServicebusTopic](#ServicebusTopic), [ServicebusTopicStatus](#Service
 | `supportOrdering` | ***bool***| ***(Optional)*** |
 ## ServicebusTopicStatus
 
-Appears on:[ServicebusTopic](#ServicebusTopic)
+Appears on:[ServicebusTopic](#servicebustopic)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ServicebusTopicSpec](#ServicebusTopicSpec)***| ***(Optional)*** |
+| `output` | ***[ServicebusTopicSpec](#servicebustopicspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

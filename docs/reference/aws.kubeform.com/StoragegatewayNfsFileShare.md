@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `StoragegatewayNfsFileShare` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[StoragegatewayNfsFileShareSpec](#StoragegatewayNfsFileShareSpec)***||
-| `status` | ***[StoragegatewayNfsFileShareStatus](#StoragegatewayNfsFileShareStatus)***||
+| `spec` | ***[StoragegatewayNfsFileShareSpec](#storagegatewaynfsfilesharespec)***||
+| `status` | ***[StoragegatewayNfsFileShareStatus](#storagegatewaynfsfilesharestatus)***||
 ## StoragegatewayNfsFileShareSpec
 
-Appears on:[StoragegatewayNfsFileShare](#StoragegatewayNfsFileShare), [StoragegatewayNfsFileShareStatus](#StoragegatewayNfsFileShareStatus)
+Appears on:[StoragegatewayNfsFileShare](#storagegatewaynfsfileshare), [StoragegatewayNfsFileShareStatus](#storagegatewaynfsfilesharestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,7 +35,7 @@ Appears on:[StoragegatewayNfsFileShare](#StoragegatewayNfsFileShare), [Storagega
 | `kmsEncrypted` | ***bool***| ***(Optional)*** |
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
 | `locationArn` | ***string***||
-| `nfsFileShareDefaults` | ***[[]StoragegatewayNfsFileShareSpecNfsFileShareDefaults](#StoragegatewayNfsFileShareSpecNfsFileShareDefaults)***| ***(Optional)*** |
+| `nfsFileShareDefaults` | ***[[]StoragegatewayNfsFileShareSpecNfsFileShareDefaults](#storagegatewaynfsfilesharespecnfsfilesharedefaults)***| ***(Optional)*** |
 | `objectACL` | ***string***| ***(Optional)*** |
 | `readOnly` | ***bool***| ***(Optional)*** |
 | `requesterPays` | ***bool***| ***(Optional)*** |
@@ -43,7 +43,7 @@ Appears on:[StoragegatewayNfsFileShare](#StoragegatewayNfsFileShare), [Storagega
 | `squash` | ***string***| ***(Optional)*** |
 ## StoragegatewayNfsFileShareSpecNfsFileShareDefaults
 
-Appears on:[StoragegatewayNfsFileShareSpec](#StoragegatewayNfsFileShareSpec)
+Appears on:[StoragegatewayNfsFileShareSpec](#storagegatewaynfsfilesharespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -53,11 +53,11 @@ Appears on:[StoragegatewayNfsFileShareSpec](#StoragegatewayNfsFileShareSpec)
 | `ownerID` | ***int***| ***(Optional)*** |
 ## StoragegatewayNfsFileShareStatus
 
-Appears on:[StoragegatewayNfsFileShare](#StoragegatewayNfsFileShare)
+Appears on:[StoragegatewayNfsFileShare](#storagegatewaynfsfileshare)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[StoragegatewayNfsFileShareSpec](#StoragegatewayNfsFileShareSpec)***| ***(Optional)*** |
+| `output` | ***[StoragegatewayNfsFileShareSpec](#storagegatewaynfsfilesharespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,27 +16,27 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `Image` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ImageSpec](#ImageSpec)***||
-| `status` | ***[ImageStatus](#ImageStatus)***||
+| `spec` | ***[ImageSpec](#imagespec)***||
+| `status` | ***[ImageStatus](#imagestatus)***||
 ## ImageSpec
 
-Appears on:[Image](#Image), [ImageStatus](#ImageStatus)
+Appears on:[Image](#image), [ImageStatus](#imagestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `dataDisk` | ***[[]ImageSpecDataDisk](#ImageSpecDataDisk)***| ***(Optional)*** |
+| `dataDisk` | ***[[]ImageSpecDataDisk](#imagespecdatadisk)***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
-| `osDisk` | ***[[]ImageSpecOsDisk](#ImageSpecOsDisk)***| ***(Optional)*** |
+| `osDisk` | ***[[]ImageSpecOsDisk](#imagespecosdisk)***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 | `sourceVirtualMachineID` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `zoneResilient` | ***bool***| ***(Optional)*** |
 ## ImageSpecDataDisk
 
-Appears on:[ImageSpec](#ImageSpec)
+Appears on:[ImageSpec](#imagespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -47,7 +47,7 @@ Appears on:[ImageSpec](#ImageSpec)
 | `sizeGb` | ***int***| ***(Optional)*** |
 ## ImageSpecOsDisk
 
-Appears on:[ImageSpec](#ImageSpec)
+Appears on:[ImageSpec](#imagespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -59,11 +59,11 @@ Appears on:[ImageSpec](#ImageSpec)
 | `sizeGb` | ***int***| ***(Optional)*** |
 ## ImageStatus
 
-Appears on:[Image](#Image)
+Appears on:[Image](#image)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ImageSpec](#ImageSpec)***| ***(Optional)*** |
+| `output` | ***[ImageSpec](#imagespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

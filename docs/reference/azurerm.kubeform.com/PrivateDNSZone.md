@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `PrivateDNSZone` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[PrivateDNSZoneSpec](#PrivateDNSZoneSpec)***||
-| `status` | ***[PrivateDNSZoneStatus](#PrivateDNSZoneStatus)***||
+| `spec` | ***[PrivateDNSZoneSpec](#privatednszonespec)***||
+| `status` | ***[PrivateDNSZoneStatus](#privatednszonestatus)***||
 ## PrivateDNSZoneSpec
 
-Appears on:[PrivateDNSZone](#PrivateDNSZone), [PrivateDNSZoneStatus](#PrivateDNSZoneStatus)
+Appears on:[PrivateDNSZone](#privatednszone), [PrivateDNSZoneStatus](#privatednszonestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,11 +35,11 @@ Appears on:[PrivateDNSZone](#PrivateDNSZone), [PrivateDNSZoneStatus](#PrivateDNS
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## PrivateDNSZoneStatus
 
-Appears on:[PrivateDNSZone](#PrivateDNSZone)
+Appears on:[PrivateDNSZone](#privatednszone)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[PrivateDNSZoneSpec](#PrivateDNSZoneSpec)***| ***(Optional)*** |
+| `output` | ***[PrivateDNSZoneSpec](#privatednszonespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

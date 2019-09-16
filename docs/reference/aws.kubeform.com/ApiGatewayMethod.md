@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiGatewayMethod` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiGatewayMethodSpec](#ApiGatewayMethodSpec)***||
-| `status` | ***[ApiGatewayMethodStatus](#ApiGatewayMethodStatus)***||
+| `spec` | ***[ApiGatewayMethodSpec](#apigatewaymethodspec)***||
+| `status` | ***[ApiGatewayMethodStatus](#apigatewaymethodstatus)***||
 ## ApiGatewayMethodSpec
 
-Appears on:[ApiGatewayMethod](#ApiGatewayMethod), [ApiGatewayMethodStatus](#ApiGatewayMethodStatus)
+Appears on:[ApiGatewayMethod](#apigatewaymethod), [ApiGatewayMethodStatus](#apigatewaymethodstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,11 +38,11 @@ Appears on:[ApiGatewayMethod](#ApiGatewayMethod), [ApiGatewayMethodStatus](#ApiG
 | `restAPIID` | ***string***||
 ## ApiGatewayMethodStatus
 
-Appears on:[ApiGatewayMethod](#ApiGatewayMethod)
+Appears on:[ApiGatewayMethod](#apigatewaymethod)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiGatewayMethodSpec](#ApiGatewayMethodSpec)***| ***(Optional)*** |
+| `output` | ***[ApiGatewayMethodSpec](#apigatewaymethodspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

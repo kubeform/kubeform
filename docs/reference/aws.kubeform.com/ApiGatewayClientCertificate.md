@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiGatewayClientCertificate` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiGatewayClientCertificateSpec](#ApiGatewayClientCertificateSpec)***||
-| `status` | ***[ApiGatewayClientCertificateStatus](#ApiGatewayClientCertificateStatus)***||
+| `spec` | ***[ApiGatewayClientCertificateSpec](#apigatewayclientcertificatespec)***||
+| `status` | ***[ApiGatewayClientCertificateStatus](#apigatewayclientcertificatestatus)***||
 ## ApiGatewayClientCertificateSpec
 
-Appears on:[ApiGatewayClientCertificate](#ApiGatewayClientCertificate), [ApiGatewayClientCertificateStatus](#ApiGatewayClientCertificateStatus)
+Appears on:[ApiGatewayClientCertificate](#apigatewayclientcertificate), [ApiGatewayClientCertificateStatus](#apigatewayclientcertificatestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[ApiGatewayClientCertificate](#ApiGatewayClientCertificate), [ApiGate
 | `pemEncodedCertificate` | ***string***| ***(Optional)*** |
 ## ApiGatewayClientCertificateStatus
 
-Appears on:[ApiGatewayClientCertificate](#ApiGatewayClientCertificate)
+Appears on:[ApiGatewayClientCertificate](#apigatewayclientcertificate)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiGatewayClientCertificateSpec](#ApiGatewayClientCertificateSpec)***| ***(Optional)*** |
+| `output` | ***[ApiGatewayClientCertificateSpec](#apigatewayclientcertificatespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

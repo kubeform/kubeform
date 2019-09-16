@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `DevTestVirtualNetwork` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DevTestVirtualNetworkSpec](#DevTestVirtualNetworkSpec)***||
-| `status` | ***[DevTestVirtualNetworkStatus](#DevTestVirtualNetworkStatus)***||
+| `spec` | ***[DevTestVirtualNetworkSpec](#devtestvirtualnetworkspec)***||
+| `status` | ***[DevTestVirtualNetworkStatus](#devtestvirtualnetworkstatus)***||
 ## DevTestVirtualNetworkSpec
 
-Appears on:[DevTestVirtualNetwork](#DevTestVirtualNetwork), [DevTestVirtualNetworkStatus](#DevTestVirtualNetworkStatus)
+Appears on:[DevTestVirtualNetwork](#devtestvirtualnetwork), [DevTestVirtualNetworkStatus](#devtestvirtualnetworkstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,12 +30,12 @@ Appears on:[DevTestVirtualNetwork](#DevTestVirtualNetwork), [DevTestVirtualNetwo
 | `labName` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
-| `subnet` | ***[[]DevTestVirtualNetworkSpecSubnet](#DevTestVirtualNetworkSpecSubnet)***| ***(Optional)*** |
+| `subnet` | ***[[]DevTestVirtualNetworkSpecSubnet](#devtestvirtualnetworkspecsubnet)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `uniqueIdentifier` | ***string***| ***(Optional)*** |
 ## DevTestVirtualNetworkSpecSubnet
 
-Appears on:[DevTestVirtualNetworkSpec](#DevTestVirtualNetworkSpec)
+Appears on:[DevTestVirtualNetworkSpec](#devtestvirtualnetworkspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -44,11 +44,11 @@ Appears on:[DevTestVirtualNetworkSpec](#DevTestVirtualNetworkSpec)
 | `usePublicIPAddress` | ***string***| ***(Optional)*** |
 ## DevTestVirtualNetworkStatus
 
-Appears on:[DevTestVirtualNetwork](#DevTestVirtualNetwork)
+Appears on:[DevTestVirtualNetwork](#devtestvirtualnetwork)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DevTestVirtualNetworkSpec](#DevTestVirtualNetworkSpec)***| ***(Optional)*** |
+| `output` | ***[DevTestVirtualNetworkSpec](#devtestvirtualnetworkspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

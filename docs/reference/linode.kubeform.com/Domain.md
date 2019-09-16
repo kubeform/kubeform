@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `linode.kubeform.com/v1alpha1` |
 |    `kind` | string | `Domain` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DomainSpec](#DomainSpec)***||
-| `status` | ***[DomainStatus](#DomainStatus)***||
+| `spec` | ***[DomainSpec](#domainspec)***||
+| `status` | ***[DomainStatus](#domainstatus)***||
 ## DomainSpec
 
-Appears on:[Domain](#Domain), [DomainStatus](#DomainStatus)
+Appears on:[Domain](#domain), [DomainStatus](#domainstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -41,11 +41,11 @@ Appears on:[Domain](#Domain), [DomainStatus](#DomainStatus)
 | `type` | ***string***|If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).|
 ## DomainStatus
 
-Appears on:[Domain](#Domain)
+Appears on:[Domain](#domain)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DomainSpec](#DomainSpec)***| ***(Optional)*** |
+| `output` | ***[DomainSpec](#domainspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,23 +16,23 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `MacieS3BucketAssociation` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[MacieS3BucketAssociationSpec](#MacieS3BucketAssociationSpec)***||
-| `status` | ***[MacieS3BucketAssociationStatus](#MacieS3BucketAssociationStatus)***||
+| `spec` | ***[MacieS3BucketAssociationSpec](#macies3bucketassociationspec)***||
+| `status` | ***[MacieS3BucketAssociationStatus](#macies3bucketassociationstatus)***||
 ## MacieS3BucketAssociationSpec
 
-Appears on:[MacieS3BucketAssociation](#MacieS3BucketAssociation), [MacieS3BucketAssociationStatus](#MacieS3BucketAssociationStatus)
+Appears on:[MacieS3BucketAssociation](#macies3bucketassociation), [MacieS3BucketAssociationStatus](#macies3bucketassociationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `bucketName` | ***string***||
-| `classificationType` | ***[[]MacieS3BucketAssociationSpecClassificationType](#MacieS3BucketAssociationSpecClassificationType)***| ***(Optional)*** |
+| `classificationType` | ***[[]MacieS3BucketAssociationSpecClassificationType](#macies3bucketassociationspecclassificationtype)***| ***(Optional)*** |
 | `memberAccountID` | ***string***| ***(Optional)*** |
 | `prefix` | ***string***| ***(Optional)*** |
 ## MacieS3BucketAssociationSpecClassificationType
 
-Appears on:[MacieS3BucketAssociationSpec](#MacieS3BucketAssociationSpec)
+Appears on:[MacieS3BucketAssociationSpec](#macies3bucketassociationspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -40,11 +40,11 @@ Appears on:[MacieS3BucketAssociationSpec](#MacieS3BucketAssociationSpec)
 | `oneTime` | ***string***| ***(Optional)*** |
 ## MacieS3BucketAssociationStatus
 
-Appears on:[MacieS3BucketAssociation](#MacieS3BucketAssociation)
+Appears on:[MacieS3BucketAssociation](#macies3bucketassociation)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[MacieS3BucketAssociationSpec](#MacieS3BucketAssociationSpec)***| ***(Optional)*** |
+| `output` | ***[MacieS3BucketAssociationSpec](#macies3bucketassociationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

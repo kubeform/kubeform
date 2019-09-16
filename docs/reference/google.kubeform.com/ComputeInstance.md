@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeInstance` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeInstanceSpec](#ComputeInstanceSpec)***||
-| `status` | ***[ComputeInstanceStatus](#ComputeInstanceStatus)***||
+| `spec` | ***[ComputeInstanceSpec](#computeinstancespec)***||
+| `status` | ***[ComputeInstanceStatus](#computeinstancestatus)***||
 ## ComputeInstanceSpec
 
-Appears on:[ComputeInstance](#ComputeInstance), [ComputeInstanceStatus](#ComputeInstanceStatus)
+Appears on:[ComputeInstance](#computeinstance), [ComputeInstanceStatus](#computeinstancestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,14 +28,14 @@ Appears on:[ComputeInstance](#ComputeInstance), [ComputeInstanceStatus](#Compute
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `allowStoppingForUpdate` | ***bool***| ***(Optional)*** |
-| `attachedDisk` | ***[[]ComputeInstanceSpecAttachedDisk](#ComputeInstanceSpecAttachedDisk)***| ***(Optional)*** |
-| `bootDisk` | ***[[]ComputeInstanceSpecBootDisk](#ComputeInstanceSpecBootDisk)***||
+| `attachedDisk` | ***[[]ComputeInstanceSpecAttachedDisk](#computeinstancespecattacheddisk)***| ***(Optional)*** |
+| `bootDisk` | ***[[]ComputeInstanceSpecBootDisk](#computeinstancespecbootdisk)***||
 | `canIPForward` | ***bool***| ***(Optional)*** |
 | `cpuPlatform` | ***string***| ***(Optional)*** |
 | `createTimeout` | ***int***| ***(Optional)*** Deprecated|
 | `deletionProtection` | ***bool***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `guestAccelerator` | ***[[]ComputeInstanceSpecGuestAccelerator](#ComputeInstanceSpecGuestAccelerator)***| ***(Optional)*** |
+| `guestAccelerator` | ***[[]ComputeInstanceSpecGuestAccelerator](#computeinstancespecguestaccelerator)***| ***(Optional)*** |
 | `instanceID` | ***string***| ***(Optional)*** |
 | `labelFingerprint` | ***string***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
@@ -45,18 +45,18 @@ Appears on:[ComputeInstance](#ComputeInstance), [ComputeInstanceStatus](#Compute
 | `metadataStartupScript` | ***string***| ***(Optional)*** |
 | `minCPUPlatform` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `networkInterface` | ***[[]ComputeInstanceSpecNetworkInterface](#ComputeInstanceSpecNetworkInterface)***||
+| `networkInterface` | ***[[]ComputeInstanceSpecNetworkInterface](#computeinstancespecnetworkinterface)***||
 | `project` | ***string***| ***(Optional)*** |
-| `scheduling` | ***[[]ComputeInstanceSpecScheduling](#ComputeInstanceSpecScheduling)***| ***(Optional)*** |
-| `scratchDisk` | ***[[]ComputeInstanceSpecScratchDisk](#ComputeInstanceSpecScratchDisk)***| ***(Optional)*** |
+| `scheduling` | ***[[]ComputeInstanceSpecScheduling](#computeinstancespecscheduling)***| ***(Optional)*** |
+| `scratchDisk` | ***[[]ComputeInstanceSpecScratchDisk](#computeinstancespecscratchdisk)***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
-| `serviceAccount` | ***[[]ComputeInstanceSpecServiceAccount](#ComputeInstanceSpecServiceAccount)***| ***(Optional)*** |
+| `serviceAccount` | ***[[]ComputeInstanceSpecServiceAccount](#computeinstancespecserviceaccount)***| ***(Optional)*** |
 | `tags` | ***[]string***| ***(Optional)*** |
 | `tagsFingerprint` | ***string***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
 ## ComputeInstanceSpecAttachedDisk
 
-Appears on:[ComputeInstanceSpec](#ComputeInstanceSpec)
+Appears on:[ComputeInstanceSpec](#computeinstancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -66,18 +66,18 @@ Appears on:[ComputeInstanceSpec](#ComputeInstanceSpec)
 | `source` | ***string***||
 ## ComputeInstanceSpecBootDisk
 
-Appears on:[ComputeInstanceSpec](#ComputeInstanceSpec)
+Appears on:[ComputeInstanceSpec](#computeinstancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `autoDelete` | ***bool***| ***(Optional)*** |
 | `deviceName` | ***string***| ***(Optional)*** |
 | `diskEncryptionKeySha256` | ***string***| ***(Optional)*** |
-| `initializeParams` | ***[[]ComputeInstanceSpecBootDiskInitializeParams](#ComputeInstanceSpecBootDiskInitializeParams)***| ***(Optional)*** |
+| `initializeParams` | ***[[]ComputeInstanceSpecBootDiskInitializeParams](#computeinstancespecbootdiskinitializeparams)***| ***(Optional)*** |
 | `source` | ***string***| ***(Optional)*** |
 ## ComputeInstanceSpecBootDiskInitializeParams
 
-Appears on:[ComputeInstanceSpecBootDisk](#ComputeInstanceSpecBootDisk)
+Appears on:[ComputeInstanceSpecBootDisk](#computeinstancespecbootdisk)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -86,7 +86,7 @@ Appears on:[ComputeInstanceSpecBootDisk](#ComputeInstanceSpecBootDisk)
 | `type` | ***string***| ***(Optional)*** |
 ## ComputeInstanceSpecGuestAccelerator
 
-Appears on:[ComputeInstanceSpec](#ComputeInstanceSpec)
+Appears on:[ComputeInstanceSpec](#computeinstancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -94,13 +94,13 @@ Appears on:[ComputeInstanceSpec](#ComputeInstanceSpec)
 | `type` | ***string***||
 ## ComputeInstanceSpecNetworkInterface
 
-Appears on:[ComputeInstanceSpec](#ComputeInstanceSpec)
+Appears on:[ComputeInstanceSpec](#computeinstancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `accessConfig` | ***[[]ComputeInstanceSpecNetworkInterfaceAccessConfig](#ComputeInstanceSpecNetworkInterfaceAccessConfig)***| ***(Optional)*** |
+| `accessConfig` | ***[[]ComputeInstanceSpecNetworkInterfaceAccessConfig](#computeinstancespecnetworkinterfaceaccessconfig)***| ***(Optional)*** |
 | `address` | ***string***| ***(Optional)*** Deprecated|
-| `aliasIPRange` | ***[[]ComputeInstanceSpecNetworkInterfaceAliasIPRange](#ComputeInstanceSpecNetworkInterfaceAliasIPRange)***| ***(Optional)*** |
+| `aliasIPRange` | ***[[]ComputeInstanceSpecNetworkInterfaceAliasIPRange](#computeinstancespecnetworkinterfacealiasiprange)***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `network` | ***string***| ***(Optional)*** |
 | `networkIP` | ***string***| ***(Optional)*** |
@@ -108,7 +108,7 @@ Appears on:[ComputeInstanceSpec](#ComputeInstanceSpec)
 | `subnetworkProject` | ***string***| ***(Optional)*** |
 ## ComputeInstanceSpecNetworkInterfaceAccessConfig
 
-Appears on:[ComputeInstanceSpecNetworkInterface](#ComputeInstanceSpecNetworkInterface)
+Appears on:[ComputeInstanceSpecNetworkInterface](#computeinstancespecnetworkinterface)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -118,7 +118,7 @@ Appears on:[ComputeInstanceSpecNetworkInterface](#ComputeInstanceSpecNetworkInte
 | `publicPtrDomainName` | ***string***| ***(Optional)*** |
 ## ComputeInstanceSpecNetworkInterfaceAliasIPRange
 
-Appears on:[ComputeInstanceSpecNetworkInterface](#ComputeInstanceSpecNetworkInterface)
+Appears on:[ComputeInstanceSpecNetworkInterface](#computeinstancespecnetworkinterface)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -126,7 +126,7 @@ Appears on:[ComputeInstanceSpecNetworkInterface](#ComputeInstanceSpecNetworkInte
 | `subnetworkRangeName` | ***string***| ***(Optional)*** |
 ## ComputeInstanceSpecScheduling
 
-Appears on:[ComputeInstanceSpec](#ComputeInstanceSpec)
+Appears on:[ComputeInstanceSpec](#computeinstancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -135,14 +135,14 @@ Appears on:[ComputeInstanceSpec](#ComputeInstanceSpec)
 | `preemptible` | ***bool***| ***(Optional)*** |
 ## ComputeInstanceSpecScratchDisk
 
-Appears on:[ComputeInstanceSpec](#ComputeInstanceSpec)
+Appears on:[ComputeInstanceSpec](#computeinstancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `interface` | ***string***| ***(Optional)*** |
 ## ComputeInstanceSpecServiceAccount
 
-Appears on:[ComputeInstanceSpec](#ComputeInstanceSpec)
+Appears on:[ComputeInstanceSpec](#computeinstancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -150,12 +150,12 @@ Appears on:[ComputeInstanceSpec](#ComputeInstanceSpec)
 | `scopes` | ***[]string***||
 ## ComputeInstanceStatus
 
-Appears on:[ComputeInstance](#ComputeInstance)
+Appears on:[ComputeInstance](#computeinstance)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeInstanceSpec](#ComputeInstanceSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeInstanceSpec](#computeinstancespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

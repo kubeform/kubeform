@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `OpsworksStaticWebLayer` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[OpsworksStaticWebLayerSpec](#OpsworksStaticWebLayerSpec)***||
-| `status` | ***[OpsworksStaticWebLayerStatus](#OpsworksStaticWebLayerStatus)***||
+| `spec` | ***[OpsworksStaticWebLayerSpec](#opsworksstaticweblayerspec)***||
+| `status` | ***[OpsworksStaticWebLayerStatus](#opsworksstaticweblayerstatus)***||
 ## OpsworksStaticWebLayerSpec
 
-Appears on:[OpsworksStaticWebLayer](#OpsworksStaticWebLayer), [OpsworksStaticWebLayerStatus](#OpsworksStaticWebLayerStatus)
+Appears on:[OpsworksStaticWebLayer](#opsworksstaticweblayer), [OpsworksStaticWebLayerStatus](#opsworksstaticweblayerstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,7 +38,7 @@ Appears on:[OpsworksStaticWebLayer](#OpsworksStaticWebLayer), [OpsworksStaticWeb
 | `customShutdownRecipes` | ***[]string***| ***(Optional)*** |
 | `customUndeployRecipes` | ***[]string***| ***(Optional)*** |
 | `drainElbOnShutdown` | ***bool***| ***(Optional)*** |
-| `ebsVolume` | ***[[]OpsworksStaticWebLayerSpecEbsVolume](#OpsworksStaticWebLayerSpecEbsVolume)***| ***(Optional)*** |
+| `ebsVolume` | ***[[]OpsworksStaticWebLayerSpecEbsVolume](#opsworksstaticweblayerspecebsvolume)***| ***(Optional)*** |
 | `elasticLoadBalancer` | ***string***| ***(Optional)*** |
 | `installUpdatesOnBoot` | ***bool***| ***(Optional)*** |
 | `instanceShutdownTimeout` | ***int***| ***(Optional)*** |
@@ -48,7 +48,7 @@ Appears on:[OpsworksStaticWebLayer](#OpsworksStaticWebLayer), [OpsworksStaticWeb
 | `useEbsOptimizedInstances` | ***bool***| ***(Optional)*** |
 ## OpsworksStaticWebLayerSpecEbsVolume
 
-Appears on:[OpsworksStaticWebLayerSpec](#OpsworksStaticWebLayerSpec)
+Appears on:[OpsworksStaticWebLayerSpec](#opsworksstaticweblayerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -60,11 +60,11 @@ Appears on:[OpsworksStaticWebLayerSpec](#OpsworksStaticWebLayerSpec)
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksStaticWebLayerStatus
 
-Appears on:[OpsworksStaticWebLayer](#OpsworksStaticWebLayer)
+Appears on:[OpsworksStaticWebLayer](#opsworksstaticweblayer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[OpsworksStaticWebLayerSpec](#OpsworksStaticWebLayerSpec)***| ***(Optional)*** |
+| `output` | ***[OpsworksStaticWebLayerSpec](#opsworksstaticweblayerspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

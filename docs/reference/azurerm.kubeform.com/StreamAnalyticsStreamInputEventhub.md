@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `StreamAnalyticsStreamInputEventhub` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[StreamAnalyticsStreamInputEventhubSpec](#StreamAnalyticsStreamInputEventhubSpec)***||
-| `status` | ***[StreamAnalyticsStreamInputEventhubStatus](#StreamAnalyticsStreamInputEventhubStatus)***||
+| `spec` | ***[StreamAnalyticsStreamInputEventhubSpec](#streamanalyticsstreaminputeventhubspec)***||
+| `status` | ***[StreamAnalyticsStreamInputEventhubStatus](#streamanalyticsstreaminputeventhubstatus)***||
 ## StreamAnalyticsStreamInputEventhubSpec
 
-Appears on:[StreamAnalyticsStreamInputEventhub](#StreamAnalyticsStreamInputEventhub), [StreamAnalyticsStreamInputEventhubStatus](#StreamAnalyticsStreamInputEventhubStatus)
+Appears on:[StreamAnalyticsStreamInputEventhub](#streamanalyticsstreaminputeventhub), [StreamAnalyticsStreamInputEventhubStatus](#streamanalyticsstreaminputeventhubstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,13 +31,13 @@ Appears on:[StreamAnalyticsStreamInputEventhub](#StreamAnalyticsStreamInputEvent
 | `eventhubName` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
-| `serialization` | ***[[]StreamAnalyticsStreamInputEventhubSpecSerialization](#StreamAnalyticsStreamInputEventhubSpecSerialization)***||
+| `serialization` | ***[[]StreamAnalyticsStreamInputEventhubSpecSerialization](#streamanalyticsstreaminputeventhubspecserialization)***||
 | `servicebusNamespace` | ***string***||
 | `sharedAccessPolicyName` | ***string***||
 | `streamAnalyticsJobName` | ***string***||
 ## StreamAnalyticsStreamInputEventhubSpecSerialization
 
-Appears on:[StreamAnalyticsStreamInputEventhubSpec](#StreamAnalyticsStreamInputEventhubSpec)
+Appears on:[StreamAnalyticsStreamInputEventhubSpec](#streamanalyticsstreaminputeventhubspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -46,12 +46,12 @@ Appears on:[StreamAnalyticsStreamInputEventhubSpec](#StreamAnalyticsStreamInputE
 | `type` | ***string***||
 ## StreamAnalyticsStreamInputEventhubStatus
 
-Appears on:[StreamAnalyticsStreamInputEventhub](#StreamAnalyticsStreamInputEventhub)
+Appears on:[StreamAnalyticsStreamInputEventhub](#streamanalyticsstreaminputeventhub)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[StreamAnalyticsStreamInputEventhubSpec](#StreamAnalyticsStreamInputEventhubSpec)***| ***(Optional)*** |
+| `output` | ***[StreamAnalyticsStreamInputEventhubSpec](#streamanalyticsstreaminputeventhubspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `EcrRepositoryPolicy` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[EcrRepositoryPolicySpec](#EcrRepositoryPolicySpec)***||
-| `status` | ***[EcrRepositoryPolicyStatus](#EcrRepositoryPolicyStatus)***||
+| `spec` | ***[EcrRepositoryPolicySpec](#ecrrepositorypolicyspec)***||
+| `status` | ***[EcrRepositoryPolicyStatus](#ecrrepositorypolicystatus)***||
 ## EcrRepositoryPolicySpec
 
-Appears on:[EcrRepositoryPolicy](#EcrRepositoryPolicy), [EcrRepositoryPolicyStatus](#EcrRepositoryPolicyStatus)
+Appears on:[EcrRepositoryPolicy](#ecrrepositorypolicy), [EcrRepositoryPolicyStatus](#ecrrepositorypolicystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[EcrRepositoryPolicy](#EcrRepositoryPolicy), [EcrRepositoryPolicyStat
 | `repository` | ***string***||
 ## EcrRepositoryPolicyStatus
 
-Appears on:[EcrRepositoryPolicy](#EcrRepositoryPolicy)
+Appears on:[EcrRepositoryPolicy](#ecrrepositorypolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[EcrRepositoryPolicySpec](#EcrRepositoryPolicySpec)***| ***(Optional)*** |
+| `output` | ***[EcrRepositoryPolicySpec](#ecrrepositorypolicyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

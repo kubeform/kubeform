@@ -16,20 +16,20 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `EndpointsService` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[EndpointsServiceSpec](#EndpointsServiceSpec)***||
-| `status` | ***[EndpointsServiceStatus](#EndpointsServiceStatus)***||
+| `spec` | ***[EndpointsServiceSpec](#endpointsservicespec)***||
+| `status` | ***[EndpointsServiceStatus](#endpointsservicestatus)***||
 ## EndpointsServiceSpec
 
-Appears on:[EndpointsService](#EndpointsService), [EndpointsServiceStatus](#EndpointsServiceStatus)
+Appears on:[EndpointsService](#endpointsservice), [EndpointsServiceStatus](#endpointsservicestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `apis` | ***[[]EndpointsServiceSpecApis](#EndpointsServiceSpecApis)***| ***(Optional)*** |
+| `apis` | ***[[]EndpointsServiceSpecApis](#endpointsservicespecapis)***| ***(Optional)*** |
 | `configID` | ***string***| ***(Optional)*** |
 | `dnsAddress` | ***string***| ***(Optional)*** |
-| `endpoints` | ***[[]EndpointsServiceSpecEndpoints](#EndpointsServiceSpecEndpoints)***| ***(Optional)*** |
+| `endpoints` | ***[[]EndpointsServiceSpecEndpoints](#endpointsservicespecendpoints)***| ***(Optional)*** |
 | `grpcConfig` | ***string***| ***(Optional)*** |
 | `openapiConfig` | ***string***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
@@ -38,17 +38,17 @@ Appears on:[EndpointsService](#EndpointsService), [EndpointsServiceStatus](#Endp
 | `serviceName` | ***string***||
 ## EndpointsServiceSpecApis
 
-Appears on:[EndpointsServiceSpec](#EndpointsServiceSpec)
+Appears on:[EndpointsServiceSpec](#endpointsservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `methods` | ***[[]EndpointsServiceSpecApisMethods](#EndpointsServiceSpecApisMethods)***| ***(Optional)*** |
+| `methods` | ***[[]EndpointsServiceSpecApisMethods](#endpointsservicespecapismethods)***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `syntax` | ***string***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
 ## EndpointsServiceSpecApisMethods
 
-Appears on:[EndpointsServiceSpecApis](#EndpointsServiceSpecApis)
+Appears on:[EndpointsServiceSpecApis](#endpointsservicespecapis)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -58,7 +58,7 @@ Appears on:[EndpointsServiceSpecApis](#EndpointsServiceSpecApis)
 | `syntax` | ***string***| ***(Optional)*** |
 ## EndpointsServiceSpecEndpoints
 
-Appears on:[EndpointsServiceSpec](#EndpointsServiceSpec)
+Appears on:[EndpointsServiceSpec](#endpointsservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -66,11 +66,11 @@ Appears on:[EndpointsServiceSpec](#EndpointsServiceSpec)
 | `name` | ***string***| ***(Optional)*** |
 ## EndpointsServiceStatus
 
-Appears on:[EndpointsService](#EndpointsService)
+Appears on:[EndpointsService](#endpointsservice)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[EndpointsServiceSpec](#EndpointsServiceSpec)***| ***(Optional)*** |
+| `output` | ***[EndpointsServiceSpec](#endpointsservicespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

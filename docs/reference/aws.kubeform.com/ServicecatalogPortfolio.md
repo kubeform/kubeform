@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `ServicecatalogPortfolio` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ServicecatalogPortfolioSpec](#ServicecatalogPortfolioSpec)***||
-| `status` | ***[ServicecatalogPortfolioStatus](#ServicecatalogPortfolioStatus)***||
+| `spec` | ***[ServicecatalogPortfolioSpec](#servicecatalogportfoliospec)***||
+| `status` | ***[ServicecatalogPortfolioStatus](#servicecatalogportfoliostatus)***||
 ## ServicecatalogPortfolioSpec
 
-Appears on:[ServicecatalogPortfolio](#ServicecatalogPortfolio), [ServicecatalogPortfolioStatus](#ServicecatalogPortfolioStatus)
+Appears on:[ServicecatalogPortfolio](#servicecatalogportfolio), [ServicecatalogPortfolioStatus](#servicecatalogportfoliostatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[ServicecatalogPortfolio](#ServicecatalogPortfolio), [ServicecatalogP
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ServicecatalogPortfolioStatus
 
-Appears on:[ServicecatalogPortfolio](#ServicecatalogPortfolio)
+Appears on:[ServicecatalogPortfolio](#servicecatalogportfolio)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ServicecatalogPortfolioSpec](#ServicecatalogPortfolioSpec)***| ***(Optional)*** |
+| `output` | ***[ServicecatalogPortfolioSpec](#servicecatalogportfoliospec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

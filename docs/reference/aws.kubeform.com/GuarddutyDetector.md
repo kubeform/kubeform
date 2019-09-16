@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `GuarddutyDetector` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[GuarddutyDetectorSpec](#GuarddutyDetectorSpec)***||
-| `status` | ***[GuarddutyDetectorStatus](#GuarddutyDetectorStatus)***||
+| `spec` | ***[GuarddutyDetectorSpec](#guarddutydetectorspec)***||
+| `status` | ***[GuarddutyDetectorStatus](#guarddutydetectorstatus)***||
 ## GuarddutyDetectorSpec
 
-Appears on:[GuarddutyDetector](#GuarddutyDetector), [GuarddutyDetectorStatus](#GuarddutyDetectorStatus)
+Appears on:[GuarddutyDetector](#guarddutydetector), [GuarddutyDetectorStatus](#guarddutydetectorstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[GuarddutyDetector](#GuarddutyDetector), [GuarddutyDetectorStatus](#G
 | `findingPublishingFrequency` | ***string***| ***(Optional)*** |
 ## GuarddutyDetectorStatus
 
-Appears on:[GuarddutyDetector](#GuarddutyDetector)
+Appears on:[GuarddutyDetector](#guarddutydetector)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[GuarddutyDetectorSpec](#GuarddutyDetectorSpec)***| ***(Optional)*** |
+| `output` | ***[GuarddutyDetectorSpec](#guarddutydetectorspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

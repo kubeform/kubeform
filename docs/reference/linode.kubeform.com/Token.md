@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `linode.kubeform.com/v1alpha1` |
 |    `kind` | string | `Token` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[TokenSpec](#TokenSpec)***||
-| `status` | ***[TokenStatus](#TokenStatus)***||
+| `spec` | ***[TokenSpec](#tokenspec)***||
+| `status` | ***[TokenStatus](#tokenstatus)***||
 ## TokenSpec
 
-Appears on:[Token](#Token), [TokenStatus](#TokenStatus)
+Appears on:[Token](#token), [TokenStatus](#tokenstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[Token](#Token), [TokenStatus](#TokenStatus)
 | `token` | ***string***| ***(Optional)*** The token used to access the API.|
 ## TokenStatus
 
-Appears on:[Token](#Token)
+Appears on:[Token](#token)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[TokenSpec](#TokenSpec)***| ***(Optional)*** |
+| `output` | ***[TokenSpec](#tokenspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

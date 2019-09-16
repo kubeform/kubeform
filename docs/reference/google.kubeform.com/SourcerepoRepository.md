@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `SourcerepoRepository` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SourcerepoRepositorySpec](#SourcerepoRepositorySpec)***||
-| `status` | ***[SourcerepoRepositoryStatus](#SourcerepoRepositoryStatus)***||
+| `spec` | ***[SourcerepoRepositorySpec](#sourcereporepositoryspec)***||
+| `status` | ***[SourcerepoRepositoryStatus](#sourcereporepositorystatus)***||
 ## SourcerepoRepositorySpec
 
-Appears on:[SourcerepoRepository](#SourcerepoRepository), [SourcerepoRepositoryStatus](#SourcerepoRepositoryStatus)
+Appears on:[SourcerepoRepository](#sourcereporepository), [SourcerepoRepositoryStatus](#sourcereporepositorystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[SourcerepoRepository](#SourcerepoRepository), [SourcerepoRepositoryS
 | `url` | ***string***| ***(Optional)*** |
 ## SourcerepoRepositoryStatus
 
-Appears on:[SourcerepoRepository](#SourcerepoRepository)
+Appears on:[SourcerepoRepository](#sourcereporepository)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SourcerepoRepositorySpec](#SourcerepoRepositorySpec)***| ***(Optional)*** |
+| `output` | ***[SourcerepoRepositorySpec](#sourcereporepositoryspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

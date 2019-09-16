@@ -16,43 +16,43 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AthenaWorkgroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AthenaWorkgroupSpec](#AthenaWorkgroupSpec)***||
-| `status` | ***[AthenaWorkgroupStatus](#AthenaWorkgroupStatus)***||
+| `spec` | ***[AthenaWorkgroupSpec](#athenaworkgroupspec)***||
+| `status` | ***[AthenaWorkgroupStatus](#athenaworkgroupstatus)***||
 ## AthenaWorkgroupSpec
 
-Appears on:[AthenaWorkgroup](#AthenaWorkgroup), [AthenaWorkgroupStatus](#AthenaWorkgroupStatus)
+Appears on:[AthenaWorkgroup](#athenaworkgroup), [AthenaWorkgroupStatus](#athenaworkgroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
-| `configuration` | ***[[]AthenaWorkgroupSpecConfiguration](#AthenaWorkgroupSpecConfiguration)***| ***(Optional)*** |
+| `configuration` | ***[[]AthenaWorkgroupSpecConfiguration](#athenaworkgroupspecconfiguration)***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `state` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## AthenaWorkgroupSpecConfiguration
 
-Appears on:[AthenaWorkgroupSpec](#AthenaWorkgroupSpec)
+Appears on:[AthenaWorkgroupSpec](#athenaworkgroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bytesScannedCutoffPerQuery` | ***int***| ***(Optional)*** |
 | `enforceWorkgroupConfiguration` | ***bool***| ***(Optional)*** |
 | `publishCloudwatchMetricsEnabled` | ***bool***| ***(Optional)*** |
-| `resultConfiguration` | ***[[]AthenaWorkgroupSpecConfigurationResultConfiguration](#AthenaWorkgroupSpecConfigurationResultConfiguration)***| ***(Optional)*** |
+| `resultConfiguration` | ***[[]AthenaWorkgroupSpecConfigurationResultConfiguration](#athenaworkgroupspecconfigurationresultconfiguration)***| ***(Optional)*** |
 ## AthenaWorkgroupSpecConfigurationResultConfiguration
 
-Appears on:[AthenaWorkgroupSpecConfiguration](#AthenaWorkgroupSpecConfiguration)
+Appears on:[AthenaWorkgroupSpecConfiguration](#athenaworkgroupspecconfiguration)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `encryptionConfiguration` | ***[[]AthenaWorkgroupSpecConfigurationResultConfigurationEncryptionConfiguration](#AthenaWorkgroupSpecConfigurationResultConfigurationEncryptionConfiguration)***| ***(Optional)*** |
+| `encryptionConfiguration` | ***[[]AthenaWorkgroupSpecConfigurationResultConfigurationEncryptionConfiguration](#athenaworkgroupspecconfigurationresultconfigurationencryptionconfiguration)***| ***(Optional)*** |
 | `outputLocation` | ***string***| ***(Optional)*** |
 ## AthenaWorkgroupSpecConfigurationResultConfigurationEncryptionConfiguration
 
-Appears on:[AthenaWorkgroupSpecConfigurationResultConfiguration](#AthenaWorkgroupSpecConfigurationResultConfiguration)
+Appears on:[AthenaWorkgroupSpecConfigurationResultConfiguration](#athenaworkgroupspecconfigurationresultconfiguration)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -60,11 +60,11 @@ Appears on:[AthenaWorkgroupSpecConfigurationResultConfiguration](#AthenaWorkgrou
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
 ## AthenaWorkgroupStatus
 
-Appears on:[AthenaWorkgroup](#AthenaWorkgroup)
+Appears on:[AthenaWorkgroup](#athenaworkgroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AthenaWorkgroupSpec](#AthenaWorkgroupSpec)***| ***(Optional)*** |
+| `output` | ***[AthenaWorkgroupSpec](#athenaworkgroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

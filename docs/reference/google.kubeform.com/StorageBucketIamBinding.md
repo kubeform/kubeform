@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `StorageBucketIamBinding` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[StorageBucketIamBindingSpec](#StorageBucketIamBindingSpec)***||
-| `status` | ***[StorageBucketIamBindingStatus](#StorageBucketIamBindingStatus)***||
+| `spec` | ***[StorageBucketIamBindingSpec](#storagebucketiambindingspec)***||
+| `status` | ***[StorageBucketIamBindingStatus](#storagebucketiambindingstatus)***||
 ## StorageBucketIamBindingSpec
 
-Appears on:[StorageBucketIamBinding](#StorageBucketIamBinding), [StorageBucketIamBindingStatus](#StorageBucketIamBindingStatus)
+Appears on:[StorageBucketIamBinding](#storagebucketiambinding), [StorageBucketIamBindingStatus](#storagebucketiambindingstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[StorageBucketIamBinding](#StorageBucketIamBinding), [StorageBucketIa
 | `role` | ***string***||
 ## StorageBucketIamBindingStatus
 
-Appears on:[StorageBucketIamBinding](#StorageBucketIamBinding)
+Appears on:[StorageBucketIamBinding](#storagebucketiambinding)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[StorageBucketIamBindingSpec](#StorageBucketIamBindingSpec)***| ***(Optional)*** |
+| `output` | ***[StorageBucketIamBindingSpec](#storagebucketiambindingspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

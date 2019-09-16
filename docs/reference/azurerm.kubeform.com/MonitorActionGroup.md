@@ -16,27 +16,27 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `MonitorActionGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[MonitorActionGroupSpec](#MonitorActionGroupSpec)***||
-| `status` | ***[MonitorActionGroupStatus](#MonitorActionGroupStatus)***||
+| `spec` | ***[MonitorActionGroupSpec](#monitoractiongroupspec)***||
+| `status` | ***[MonitorActionGroupStatus](#monitoractiongroupstatus)***||
 ## MonitorActionGroupSpec
 
-Appears on:[MonitorActionGroup](#MonitorActionGroup), [MonitorActionGroupStatus](#MonitorActionGroupStatus)
+Appears on:[MonitorActionGroup](#monitoractiongroup), [MonitorActionGroupStatus](#monitoractiongroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `emailReceiver` | ***[[]MonitorActionGroupSpecEmailReceiver](#MonitorActionGroupSpecEmailReceiver)***| ***(Optional)*** |
+| `emailReceiver` | ***[[]MonitorActionGroupSpecEmailReceiver](#monitoractiongroupspecemailreceiver)***| ***(Optional)*** |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 | `shortName` | ***string***||
-| `smsReceiver` | ***[[]MonitorActionGroupSpecSmsReceiver](#MonitorActionGroupSpecSmsReceiver)***| ***(Optional)*** |
+| `smsReceiver` | ***[[]MonitorActionGroupSpecSmsReceiver](#monitoractiongroupspecsmsreceiver)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `webhookReceiver` | ***[[]MonitorActionGroupSpecWebhookReceiver](#MonitorActionGroupSpecWebhookReceiver)***| ***(Optional)*** |
+| `webhookReceiver` | ***[[]MonitorActionGroupSpecWebhookReceiver](#monitoractiongroupspecwebhookreceiver)***| ***(Optional)*** |
 ## MonitorActionGroupSpecEmailReceiver
 
-Appears on:[MonitorActionGroupSpec](#MonitorActionGroupSpec)
+Appears on:[MonitorActionGroupSpec](#monitoractiongroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -44,7 +44,7 @@ Appears on:[MonitorActionGroupSpec](#MonitorActionGroupSpec)
 | `name` | ***string***||
 ## MonitorActionGroupSpecSmsReceiver
 
-Appears on:[MonitorActionGroupSpec](#MonitorActionGroupSpec)
+Appears on:[MonitorActionGroupSpec](#monitoractiongroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -53,7 +53,7 @@ Appears on:[MonitorActionGroupSpec](#MonitorActionGroupSpec)
 | `phoneNumber` | ***string***||
 ## MonitorActionGroupSpecWebhookReceiver
 
-Appears on:[MonitorActionGroupSpec](#MonitorActionGroupSpec)
+Appears on:[MonitorActionGroupSpec](#monitoractiongroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -61,11 +61,11 @@ Appears on:[MonitorActionGroupSpec](#MonitorActionGroupSpec)
 | `serviceURI` | ***string***||
 ## MonitorActionGroupStatus
 
-Appears on:[MonitorActionGroup](#MonitorActionGroup)
+Appears on:[MonitorActionGroup](#monitoractiongroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[MonitorActionGroupSpec](#MonitorActionGroupSpec)***| ***(Optional)*** |
+| `output` | ***[MonitorActionGroupSpec](#monitoractiongroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

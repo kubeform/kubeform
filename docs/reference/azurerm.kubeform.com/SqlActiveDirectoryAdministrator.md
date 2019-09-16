@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `SqlActiveDirectoryAdministrator` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SqlActiveDirectoryAdministratorSpec](#SqlActiveDirectoryAdministratorSpec)***||
-| `status` | ***[SqlActiveDirectoryAdministratorStatus](#SqlActiveDirectoryAdministratorStatus)***||
+| `spec` | ***[SqlActiveDirectoryAdministratorSpec](#sqlactivedirectoryadministratorspec)***||
+| `status` | ***[SqlActiveDirectoryAdministratorStatus](#sqlactivedirectoryadministratorstatus)***||
 ## SqlActiveDirectoryAdministratorSpec
 
-Appears on:[SqlActiveDirectoryAdministrator](#SqlActiveDirectoryAdministrator), [SqlActiveDirectoryAdministratorStatus](#SqlActiveDirectoryAdministratorStatus)
+Appears on:[SqlActiveDirectoryAdministrator](#sqlactivedirectoryadministrator), [SqlActiveDirectoryAdministratorStatus](#sqlactivedirectoryadministratorstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[SqlActiveDirectoryAdministrator](#SqlActiveDirectoryAdministrator), 
 | `tenantID` | ***string***||
 ## SqlActiveDirectoryAdministratorStatus
 
-Appears on:[SqlActiveDirectoryAdministrator](#SqlActiveDirectoryAdministrator)
+Appears on:[SqlActiveDirectoryAdministrator](#sqlactivedirectoryadministrator)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SqlActiveDirectoryAdministratorSpec](#SqlActiveDirectoryAdministratorSpec)***| ***(Optional)*** |
+| `output` | ***[SqlActiveDirectoryAdministratorSpec](#sqlactivedirectoryadministratorspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

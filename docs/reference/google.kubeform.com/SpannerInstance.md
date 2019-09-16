@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `SpannerInstance` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SpannerInstanceSpec](#SpannerInstanceSpec)***||
-| `status` | ***[SpannerInstanceStatus](#SpannerInstanceStatus)***||
+| `spec` | ***[SpannerInstanceSpec](#spannerinstancespec)***||
+| `status` | ***[SpannerInstanceStatus](#spannerinstancestatus)***||
 ## SpannerInstanceSpec
 
-Appears on:[SpannerInstance](#SpannerInstance), [SpannerInstanceStatus](#SpannerInstanceStatus)
+Appears on:[SpannerInstance](#spannerinstance), [SpannerInstanceStatus](#spannerinstancestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,11 +35,11 @@ Appears on:[SpannerInstance](#SpannerInstance), [SpannerInstanceStatus](#Spanner
 | `state` | ***string***| ***(Optional)*** |
 ## SpannerInstanceStatus
 
-Appears on:[SpannerInstance](#SpannerInstance)
+Appears on:[SpannerInstance](#spannerinstance)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SpannerInstanceSpec](#SpannerInstanceSpec)***| ***(Optional)*** |
+| `output` | ***[SpannerInstanceSpec](#spannerinstancespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

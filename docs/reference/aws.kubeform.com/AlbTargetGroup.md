@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AlbTargetGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AlbTargetGroupSpec](#AlbTargetGroupSpec)***||
-| `status` | ***[AlbTargetGroupStatus](#AlbTargetGroupStatus)***||
+| `spec` | ***[AlbTargetGroupSpec](#albtargetgroupspec)***||
+| `status` | ***[AlbTargetGroupStatus](#albtargetgroupstatus)***||
 ## AlbTargetGroupSpec
 
-Appears on:[AlbTargetGroup](#AlbTargetGroup), [AlbTargetGroupStatus](#AlbTargetGroupStatus)
+Appears on:[AlbTargetGroup](#albtargetgroup), [AlbTargetGroupStatus](#albtargetgroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,7 +29,7 @@ Appears on:[AlbTargetGroup](#AlbTargetGroup), [AlbTargetGroupStatus](#AlbTargetG
 | `arn` | ***string***| ***(Optional)*** |
 | `arnSuffix` | ***string***| ***(Optional)*** |
 | `deregistrationDelay` | ***int***| ***(Optional)*** |
-| `healthCheck` | ***[[]AlbTargetGroupSpecHealthCheck](#AlbTargetGroupSpecHealthCheck)***| ***(Optional)*** |
+| `healthCheck` | ***[[]AlbTargetGroupSpecHealthCheck](#albtargetgroupspechealthcheck)***| ***(Optional)*** |
 | `lambdaMultiValueHeadersEnabled` | ***bool***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
@@ -37,13 +37,13 @@ Appears on:[AlbTargetGroup](#AlbTargetGroup), [AlbTargetGroupStatus](#AlbTargetG
 | `protocol` | ***string***| ***(Optional)*** |
 | `proxyProtocolV2` | ***bool***| ***(Optional)*** |
 | `slowStart` | ***int***| ***(Optional)*** |
-| `stickiness` | ***[[]AlbTargetGroupSpecStickiness](#AlbTargetGroupSpecStickiness)***| ***(Optional)*** |
+| `stickiness` | ***[[]AlbTargetGroupSpecStickiness](#albtargetgroupspecstickiness)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `targetType` | ***string***| ***(Optional)*** |
 | `vpcID` | ***string***| ***(Optional)*** |
 ## AlbTargetGroupSpecHealthCheck
 
-Appears on:[AlbTargetGroupSpec](#AlbTargetGroupSpec)
+Appears on:[AlbTargetGroupSpec](#albtargetgroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -58,7 +58,7 @@ Appears on:[AlbTargetGroupSpec](#AlbTargetGroupSpec)
 | `unhealthyThreshold` | ***int***| ***(Optional)*** |
 ## AlbTargetGroupSpecStickiness
 
-Appears on:[AlbTargetGroupSpec](#AlbTargetGroupSpec)
+Appears on:[AlbTargetGroupSpec](#albtargetgroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -67,11 +67,11 @@ Appears on:[AlbTargetGroupSpec](#AlbTargetGroupSpec)
 | `type` | ***string***||
 ## AlbTargetGroupStatus
 
-Appears on:[AlbTargetGroup](#AlbTargetGroup)
+Appears on:[AlbTargetGroup](#albtargetgroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AlbTargetGroupSpec](#AlbTargetGroupSpec)***| ***(Optional)*** |
+| `output` | ***[AlbTargetGroupSpec](#albtargetgroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

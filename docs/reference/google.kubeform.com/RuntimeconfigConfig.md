@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `RuntimeconfigConfig` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[RuntimeconfigConfigSpec](#RuntimeconfigConfigSpec)***||
-| `status` | ***[RuntimeconfigConfigStatus](#RuntimeconfigConfigStatus)***||
+| `spec` | ***[RuntimeconfigConfigSpec](#runtimeconfigconfigspec)***||
+| `status` | ***[RuntimeconfigConfigStatus](#runtimeconfigconfigstatus)***||
 ## RuntimeconfigConfigSpec
 
-Appears on:[RuntimeconfigConfig](#RuntimeconfigConfig), [RuntimeconfigConfigStatus](#RuntimeconfigConfigStatus)
+Appears on:[RuntimeconfigConfig](#runtimeconfigconfig), [RuntimeconfigConfigStatus](#runtimeconfigconfigstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[RuntimeconfigConfig](#RuntimeconfigConfig), [RuntimeconfigConfigStat
 | `project` | ***string***| ***(Optional)*** |
 ## RuntimeconfigConfigStatus
 
-Appears on:[RuntimeconfigConfig](#RuntimeconfigConfig)
+Appears on:[RuntimeconfigConfig](#runtimeconfigconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[RuntimeconfigConfigSpec](#RuntimeconfigConfigSpec)***| ***(Optional)*** |
+| `output` | ***[RuntimeconfigConfigSpec](#runtimeconfigconfigspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ProjectIamMember` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ProjectIamMemberSpec](#ProjectIamMemberSpec)***||
-| `status` | ***[ProjectIamMemberStatus](#ProjectIamMemberStatus)***||
+| `spec` | ***[ProjectIamMemberSpec](#projectiammemberspec)***||
+| `status` | ***[ProjectIamMemberStatus](#projectiammemberstatus)***||
 ## ProjectIamMemberSpec
 
-Appears on:[ProjectIamMember](#ProjectIamMember), [ProjectIamMemberStatus](#ProjectIamMemberStatus)
+Appears on:[ProjectIamMember](#projectiammember), [ProjectIamMemberStatus](#projectiammemberstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[ProjectIamMember](#ProjectIamMember), [ProjectIamMemberStatus](#Proj
 | `role` | ***string***||
 ## ProjectIamMemberStatus
 
-Appears on:[ProjectIamMember](#ProjectIamMember)
+Appears on:[ProjectIamMember](#projectiammember)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ProjectIamMemberSpec](#ProjectIamMemberSpec)***| ***(Optional)*** |
+| `output` | ***[ProjectIamMemberSpec](#projectiammemberspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

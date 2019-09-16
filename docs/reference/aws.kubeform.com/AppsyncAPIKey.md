@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AppsyncAPIKey` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AppsyncAPIKeySpec](#AppsyncAPIKeySpec)***||
-| `status` | ***[AppsyncAPIKeyStatus](#AppsyncAPIKeyStatus)***||
+| `spec` | ***[AppsyncAPIKeySpec](#appsyncapikeyspec)***||
+| `status` | ***[AppsyncAPIKeyStatus](#appsyncapikeystatus)***||
 ## AppsyncAPIKeySpec
 
-Appears on:[AppsyncAPIKey](#AppsyncAPIKey), [AppsyncAPIKeyStatus](#AppsyncAPIKeyStatus)
+Appears on:[AppsyncAPIKey](#appsyncapikey), [AppsyncAPIKeyStatus](#appsyncapikeystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,12 +32,12 @@ Appears on:[AppsyncAPIKey](#AppsyncAPIKey), [AppsyncAPIKeyStatus](#AppsyncAPIKey
 | `expires` | ***string***| ***(Optional)*** |
 ## AppsyncAPIKeyStatus
 
-Appears on:[AppsyncAPIKey](#AppsyncAPIKey)
+Appears on:[AppsyncAPIKey](#appsyncapikey)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AppsyncAPIKeySpec](#AppsyncAPIKeySpec)***| ***(Optional)*** |
+| `output` | ***[AppsyncAPIKeySpec](#appsyncapikeyspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

@@ -16,27 +16,27 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `VirtualNetwork` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[VirtualNetworkSpec](#VirtualNetworkSpec)***||
-| `status` | ***[VirtualNetworkStatus](#VirtualNetworkStatus)***||
+| `spec` | ***[VirtualNetworkSpec](#virtualnetworkspec)***||
+| `status` | ***[VirtualNetworkStatus](#virtualnetworkstatus)***||
 ## VirtualNetworkSpec
 
-Appears on:[VirtualNetwork](#VirtualNetwork), [VirtualNetworkStatus](#VirtualNetworkStatus)
+Appears on:[VirtualNetwork](#virtualnetwork), [VirtualNetworkStatus](#virtualnetworkstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `addressSpace` | ***[]string***||
-| `ddosProtectionPlan` | ***[[]VirtualNetworkSpecDdosProtectionPlan](#VirtualNetworkSpecDdosProtectionPlan)***| ***(Optional)*** |
+| `ddosProtectionPlan` | ***[[]VirtualNetworkSpecDdosProtectionPlan](#virtualnetworkspecddosprotectionplan)***| ***(Optional)*** |
 | `dnsServers` | ***[]string***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
-| `subnet` | ***[[]VirtualNetworkSpecSubnet](#VirtualNetworkSpecSubnet)***| ***(Optional)*** |
+| `subnet` | ***[[]VirtualNetworkSpecSubnet](#virtualnetworkspecsubnet)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## VirtualNetworkSpecDdosProtectionPlan
 
-Appears on:[VirtualNetworkSpec](#VirtualNetworkSpec)
+Appears on:[VirtualNetworkSpec](#virtualnetworkspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -44,7 +44,7 @@ Appears on:[VirtualNetworkSpec](#VirtualNetworkSpec)
 | `ID` | ***string***||
 ## VirtualNetworkSpecSubnet
 
-Appears on:[VirtualNetworkSpec](#VirtualNetworkSpec)
+Appears on:[VirtualNetworkSpec](#virtualnetworkspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -54,11 +54,11 @@ Appears on:[VirtualNetworkSpec](#VirtualNetworkSpec)
 | `securityGroup` | ***string***| ***(Optional)*** |
 ## VirtualNetworkStatus
 
-Appears on:[VirtualNetwork](#VirtualNetwork)
+Appears on:[VirtualNetwork](#virtualnetwork)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[VirtualNetworkSpec](#VirtualNetworkSpec)***| ***(Optional)*** |
+| `output` | ***[VirtualNetworkSpec](#virtualnetworkspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

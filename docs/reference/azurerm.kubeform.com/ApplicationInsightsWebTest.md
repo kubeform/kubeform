@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApplicationInsightsWebTest` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApplicationInsightsWebTestSpec](#ApplicationInsightsWebTestSpec)***||
-| `status` | ***[ApplicationInsightsWebTestStatus](#ApplicationInsightsWebTestStatus)***||
+| `spec` | ***[ApplicationInsightsWebTestSpec](#applicationinsightswebtestspec)***||
+| `status` | ***[ApplicationInsightsWebTestStatus](#applicationinsightswebteststatus)***||
 ## ApplicationInsightsWebTestSpec
 
-Appears on:[ApplicationInsightsWebTest](#ApplicationInsightsWebTest), [ApplicationInsightsWebTestStatus](#ApplicationInsightsWebTestStatus)
+Appears on:[ApplicationInsightsWebTest](#applicationinsightswebtest), [ApplicationInsightsWebTestStatus](#applicationinsightswebteststatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -42,11 +42,11 @@ Appears on:[ApplicationInsightsWebTest](#ApplicationInsightsWebTest), [Applicati
 | `timeout` | ***int***| ***(Optional)*** |
 ## ApplicationInsightsWebTestStatus
 
-Appears on:[ApplicationInsightsWebTest](#ApplicationInsightsWebTest)
+Appears on:[ApplicationInsightsWebTest](#applicationinsightswebtest)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApplicationInsightsWebTestSpec](#ApplicationInsightsWebTestSpec)***| ***(Optional)*** |
+| `output` | ***[ApplicationInsightsWebTestSpec](#applicationinsightswebtestspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

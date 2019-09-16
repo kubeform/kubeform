@@ -16,23 +16,23 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CloudwatchEventPermission` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CloudwatchEventPermissionSpec](#CloudwatchEventPermissionSpec)***||
-| `status` | ***[CloudwatchEventPermissionStatus](#CloudwatchEventPermissionStatus)***||
+| `spec` | ***[CloudwatchEventPermissionSpec](#cloudwatcheventpermissionspec)***||
+| `status` | ***[CloudwatchEventPermissionStatus](#cloudwatcheventpermissionstatus)***||
 ## CloudwatchEventPermissionSpec
 
-Appears on:[CloudwatchEventPermission](#CloudwatchEventPermission), [CloudwatchEventPermissionStatus](#CloudwatchEventPermissionStatus)
+Appears on:[CloudwatchEventPermission](#cloudwatcheventpermission), [CloudwatchEventPermissionStatus](#cloudwatcheventpermissionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `action` | ***string***| ***(Optional)*** |
-| `condition` | ***[[]CloudwatchEventPermissionSpecCondition](#CloudwatchEventPermissionSpecCondition)***| ***(Optional)*** |
+| `condition` | ***[[]CloudwatchEventPermissionSpecCondition](#cloudwatcheventpermissionspeccondition)***| ***(Optional)*** |
 | `principal` | ***string***||
 | `statementID` | ***string***||
 ## CloudwatchEventPermissionSpecCondition
 
-Appears on:[CloudwatchEventPermissionSpec](#CloudwatchEventPermissionSpec)
+Appears on:[CloudwatchEventPermissionSpec](#cloudwatcheventpermissionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -41,11 +41,11 @@ Appears on:[CloudwatchEventPermissionSpec](#CloudwatchEventPermissionSpec)
 | `value` | ***string***||
 ## CloudwatchEventPermissionStatus
 
-Appears on:[CloudwatchEventPermission](#CloudwatchEventPermission)
+Appears on:[CloudwatchEventPermission](#cloudwatcheventpermission)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CloudwatchEventPermissionSpec](#CloudwatchEventPermissionSpec)***| ***(Optional)*** |
+| `output` | ***[CloudwatchEventPermissionSpec](#cloudwatcheventpermissionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `DataFactoryDatasetMysql` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DataFactoryDatasetMysqlSpec](#DataFactoryDatasetMysqlSpec)***||
-| `status` | ***[DataFactoryDatasetMysqlStatus](#DataFactoryDatasetMysqlStatus)***||
+| `spec` | ***[DataFactoryDatasetMysqlSpec](#datafactorydatasetmysqlspec)***||
+| `status` | ***[DataFactoryDatasetMysqlStatus](#datafactorydatasetmysqlstatus)***||
 ## DataFactoryDatasetMysqlSpec
 
-Appears on:[DataFactoryDatasetMysql](#DataFactoryDatasetMysql), [DataFactoryDatasetMysqlStatus](#DataFactoryDatasetMysqlStatus)
+Appears on:[DataFactoryDatasetMysql](#datafactorydatasetmysql), [DataFactoryDatasetMysqlStatus](#datafactorydatasetmysqlstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,11 +35,11 @@ Appears on:[DataFactoryDatasetMysql](#DataFactoryDatasetMysql), [DataFactoryData
 | `name` | ***string***||
 | `parameters` | ***map[string]string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
-| `schemaColumn` | ***[[]DataFactoryDatasetMysqlSpecSchemaColumn](#DataFactoryDatasetMysqlSpecSchemaColumn)***| ***(Optional)*** |
+| `schemaColumn` | ***[[]DataFactoryDatasetMysqlSpecSchemaColumn](#datafactorydatasetmysqlspecschemacolumn)***| ***(Optional)*** |
 | `tableName` | ***string***| ***(Optional)*** |
 ## DataFactoryDatasetMysqlSpecSchemaColumn
 
-Appears on:[DataFactoryDatasetMysqlSpec](#DataFactoryDatasetMysqlSpec)
+Appears on:[DataFactoryDatasetMysqlSpec](#datafactorydatasetmysqlspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -48,11 +48,11 @@ Appears on:[DataFactoryDatasetMysqlSpec](#DataFactoryDatasetMysqlSpec)
 | `type` | ***string***| ***(Optional)*** |
 ## DataFactoryDatasetMysqlStatus
 
-Appears on:[DataFactoryDatasetMysql](#DataFactoryDatasetMysql)
+Appears on:[DataFactoryDatasetMysql](#datafactorydatasetmysql)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DataFactoryDatasetMysqlSpec](#DataFactoryDatasetMysqlSpec)***| ***(Optional)*** |
+| `output` | ***[DataFactoryDatasetMysqlSpec](#datafactorydatasetmysqlspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

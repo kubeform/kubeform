@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `RecoveryServicesProtectedVm` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[RecoveryServicesProtectedVmSpec](#RecoveryServicesProtectedVmSpec)***||
-| `status` | ***[RecoveryServicesProtectedVmStatus](#RecoveryServicesProtectedVmStatus)***||
+| `spec` | ***[RecoveryServicesProtectedVmSpec](#recoveryservicesprotectedvmspec)***||
+| `status` | ***[RecoveryServicesProtectedVmStatus](#recoveryservicesprotectedvmstatus)***||
 ## RecoveryServicesProtectedVmSpec
 
-Appears on:[RecoveryServicesProtectedVm](#RecoveryServicesProtectedVm), [RecoveryServicesProtectedVmStatus](#RecoveryServicesProtectedVmStatus)
+Appears on:[RecoveryServicesProtectedVm](#recoveryservicesprotectedvm), [RecoveryServicesProtectedVmStatus](#recoveryservicesprotectedvmstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[RecoveryServicesProtectedVm](#RecoveryServicesProtectedVm), [Recover
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## RecoveryServicesProtectedVmStatus
 
-Appears on:[RecoveryServicesProtectedVm](#RecoveryServicesProtectedVm)
+Appears on:[RecoveryServicesProtectedVm](#recoveryservicesprotectedvm)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[RecoveryServicesProtectedVmSpec](#RecoveryServicesProtectedVmSpec)***| ***(Optional)*** |
+| `output` | ***[RecoveryServicesProtectedVmSpec](#recoveryservicesprotectedvmspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

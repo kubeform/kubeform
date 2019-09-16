@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DatasyncAgent` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DatasyncAgentSpec](#DatasyncAgentSpec)***||
-| `status` | ***[DatasyncAgentStatus](#DatasyncAgentStatus)***||
+| `spec` | ***[DatasyncAgentSpec](#datasyncagentspec)***||
+| `status` | ***[DatasyncAgentStatus](#datasyncagentstatus)***||
 ## DatasyncAgentSpec
 
-Appears on:[DatasyncAgent](#DatasyncAgent), [DatasyncAgentStatus](#DatasyncAgentStatus)
+Appears on:[DatasyncAgent](#datasyncagent), [DatasyncAgentStatus](#datasyncagentstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[DatasyncAgent](#DatasyncAgent), [DatasyncAgentStatus](#DatasyncAgent
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DatasyncAgentStatus
 
-Appears on:[DatasyncAgent](#DatasyncAgent)
+Appears on:[DatasyncAgent](#datasyncagent)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DatasyncAgentSpec](#DatasyncAgentSpec)***| ***(Optional)*** |
+| `output` | ***[DatasyncAgentSpec](#datasyncagentspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

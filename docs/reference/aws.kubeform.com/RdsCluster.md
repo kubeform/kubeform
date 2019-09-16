@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `RdsCluster` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[RdsClusterSpec](#RdsClusterSpec)***||
-| `status` | ***[RdsClusterStatus](#RdsClusterStatus)***||
+| `spec` | ***[RdsClusterSpec](#rdsclusterspec)***||
+| `status` | ***[RdsClusterStatus](#rdsclusterstatus)***||
 ## RdsClusterSpec
 
-Appears on:[RdsCluster](#RdsCluster), [RdsClusterStatus](#RdsClusterStatus)
+Appears on:[RdsCluster](#rdscluster), [RdsClusterStatus](#rdsclusterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -58,8 +58,8 @@ Appears on:[RdsCluster](#RdsCluster), [RdsClusterStatus](#RdsClusterStatus)
 | `preferredMaintenanceWindow` | ***string***| ***(Optional)*** |
 | `readerEndpoint` | ***string***| ***(Optional)*** |
 | `replicationSourceIdentifier` | ***string***| ***(Optional)*** |
-| `s3Import` | ***[[]RdsClusterSpecS3Import](#RdsClusterSpecS3Import)***| ***(Optional)*** |
-| `scalingConfiguration` | ***[[]RdsClusterSpecScalingConfiguration](#RdsClusterSpecScalingConfiguration)***| ***(Optional)*** |
+| `s3Import` | ***[[]RdsClusterSpecS3Import](#rdsclusterspecs3import)***| ***(Optional)*** |
+| `scalingConfiguration` | ***[[]RdsClusterSpecScalingConfiguration](#rdsclusterspecscalingconfiguration)***| ***(Optional)*** |
 | `skipFinalSnapshot` | ***bool***| ***(Optional)*** |
 | `snapshotIdentifier` | ***string***| ***(Optional)*** |
 | `sourceRegion` | ***string***| ***(Optional)*** |
@@ -68,7 +68,7 @@ Appears on:[RdsCluster](#RdsCluster), [RdsClusterStatus](#RdsClusterStatus)
 | `vpcSecurityGroupIDS` | ***[]string***| ***(Optional)*** |
 ## RdsClusterSpecS3Import
 
-Appears on:[RdsClusterSpec](#RdsClusterSpec)
+Appears on:[RdsClusterSpec](#rdsclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -79,7 +79,7 @@ Appears on:[RdsClusterSpec](#RdsClusterSpec)
 | `sourceEngineVersion` | ***string***||
 ## RdsClusterSpecScalingConfiguration
 
-Appears on:[RdsClusterSpec](#RdsClusterSpec)
+Appears on:[RdsClusterSpec](#rdsclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -89,12 +89,12 @@ Appears on:[RdsClusterSpec](#RdsClusterSpec)
 | `secondsUntilAutoPause` | ***int***| ***(Optional)*** |
 ## RdsClusterStatus
 
-Appears on:[RdsCluster](#RdsCluster)
+Appears on:[RdsCluster](#rdscluster)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[RdsClusterSpec](#RdsClusterSpec)***| ***(Optional)*** |
+| `output` | ***[RdsClusterSpec](#rdsclusterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

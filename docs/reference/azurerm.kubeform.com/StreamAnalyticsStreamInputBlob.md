@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `StreamAnalyticsStreamInputBlob` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[StreamAnalyticsStreamInputBlobSpec](#StreamAnalyticsStreamInputBlobSpec)***||
-| `status` | ***[StreamAnalyticsStreamInputBlobStatus](#StreamAnalyticsStreamInputBlobStatus)***||
+| `spec` | ***[StreamAnalyticsStreamInputBlobSpec](#streamanalyticsstreaminputblobspec)***||
+| `status` | ***[StreamAnalyticsStreamInputBlobStatus](#streamanalyticsstreaminputblobstatus)***||
 ## StreamAnalyticsStreamInputBlobSpec
 
-Appears on:[StreamAnalyticsStreamInputBlob](#StreamAnalyticsStreamInputBlob), [StreamAnalyticsStreamInputBlobStatus](#StreamAnalyticsStreamInputBlobStatus)
+Appears on:[StreamAnalyticsStreamInputBlob](#streamanalyticsstreaminputblob), [StreamAnalyticsStreamInputBlobStatus](#streamanalyticsstreaminputblobstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,14 +31,14 @@ Appears on:[StreamAnalyticsStreamInputBlob](#StreamAnalyticsStreamInputBlob), [S
 | `name` | ***string***||
 | `pathPattern` | ***string***||
 | `resourceGroupName` | ***string***||
-| `serialization` | ***[[]StreamAnalyticsStreamInputBlobSpecSerialization](#StreamAnalyticsStreamInputBlobSpecSerialization)***||
+| `serialization` | ***[[]StreamAnalyticsStreamInputBlobSpecSerialization](#streamanalyticsstreaminputblobspecserialization)***||
 | `storageAccountName` | ***string***||
 | `storageContainerName` | ***string***||
 | `streamAnalyticsJobName` | ***string***||
 | `timeFormat` | ***string***||
 ## StreamAnalyticsStreamInputBlobSpecSerialization
 
-Appears on:[StreamAnalyticsStreamInputBlobSpec](#StreamAnalyticsStreamInputBlobSpec)
+Appears on:[StreamAnalyticsStreamInputBlobSpec](#streamanalyticsstreaminputblobspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -47,12 +47,12 @@ Appears on:[StreamAnalyticsStreamInputBlobSpec](#StreamAnalyticsStreamInputBlobS
 | `type` | ***string***||
 ## StreamAnalyticsStreamInputBlobStatus
 
-Appears on:[StreamAnalyticsStreamInputBlob](#StreamAnalyticsStreamInputBlob)
+Appears on:[StreamAnalyticsStreamInputBlob](#streamanalyticsstreaminputblob)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[StreamAnalyticsStreamInputBlobSpec](#StreamAnalyticsStreamInputBlobSpec)***| ***(Optional)*** |
+| `output` | ***[StreamAnalyticsStreamInputBlobSpec](#streamanalyticsstreaminputblobspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

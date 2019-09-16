@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `AcmCertificate` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[AcmCertificateSpec](#AcmCertificateSpec)***||
-| `status` | ***[AcmCertificateStatus](#AcmCertificateStatus)***||
+| `spec` | ***[AcmCertificateSpec](#acmcertificatespec)***||
+| `status` | ***[AcmCertificateStatus](#acmcertificatestatus)***||
 ## AcmCertificateSpec
 
-Appears on:[AcmCertificate](#AcmCertificate), [AcmCertificateStatus](#AcmCertificateStatus)
+Appears on:[AcmCertificate](#acmcertificate), [AcmCertificateStatus](#acmcertificatestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,14 +31,14 @@ Appears on:[AcmCertificate](#AcmCertificate), [AcmCertificateStatus](#AcmCertifi
 | `certificateBody` | ***string***| ***(Optional)*** |
 | `certificateChain` | ***string***| ***(Optional)*** |
 | `domainName` | ***string***| ***(Optional)*** |
-| `domainValidationOptions` | ***[[]AcmCertificateSpecDomainValidationOptions](#AcmCertificateSpecDomainValidationOptions)***| ***(Optional)*** |
+| `domainValidationOptions` | ***[[]AcmCertificateSpecDomainValidationOptions](#acmcertificatespecdomainvalidationoptions)***| ***(Optional)*** |
 | `subjectAlternativeNames` | ***[]string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `validationEmails` | ***[]string***| ***(Optional)*** |
 | `validationMethod` | ***string***| ***(Optional)*** |
 ## AcmCertificateSpecDomainValidationOptions
 
-Appears on:[AcmCertificateSpec](#AcmCertificateSpec)
+Appears on:[AcmCertificateSpec](#acmcertificatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -48,12 +48,12 @@ Appears on:[AcmCertificateSpec](#AcmCertificateSpec)
 | `resourceRecordValue` | ***string***| ***(Optional)*** |
 ## AcmCertificateStatus
 
-Appears on:[AcmCertificate](#AcmCertificate)
+Appears on:[AcmCertificate](#acmcertificate)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[AcmCertificateSpec](#AcmCertificateSpec)***| ***(Optional)*** |
+| `output` | ***[AcmCertificateSpec](#acmcertificatespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `linode.kubeform.com/v1alpha1` |
 |    `kind` | string | `DomainRecord` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DomainRecordSpec](#DomainRecordSpec)***||
-| `status` | ***[DomainRecordStatus](#DomainRecordStatus)***||
+| `spec` | ***[DomainRecordSpec](#domainrecordspec)***||
+| `status` | ***[DomainRecordStatus](#domainrecordstatus)***||
 ## DomainRecordSpec
 
-Appears on:[DomainRecord](#DomainRecord), [DomainRecordStatus](#DomainRecordStatus)
+Appears on:[DomainRecord](#domainrecord), [DomainRecordStatus](#domainrecordstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -39,11 +39,11 @@ Appears on:[DomainRecord](#DomainRecord), [DomainRecordStatus](#DomainRecordStat
 | `weight` | ***int***| ***(Optional)*** The relative weight of this Record. Higher values are preferred.|
 ## DomainRecordStatus
 
-Appears on:[DomainRecord](#DomainRecord)
+Appears on:[DomainRecord](#domainrecord)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DomainRecordSpec](#DomainRecordSpec)***| ***(Optional)*** |
+| `output` | ***[DomainRecordSpec](#domainrecordspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

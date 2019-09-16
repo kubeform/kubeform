@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeInstanceTemplate` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeInstanceTemplateSpec](#ComputeInstanceTemplateSpec)***||
-| `status` | ***[ComputeInstanceTemplateStatus](#ComputeInstanceTemplateStatus)***||
+| `spec` | ***[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)***||
+| `status` | ***[ComputeInstanceTemplateStatus](#computeinstancetemplatestatus)***||
 ## ComputeInstanceTemplateSpec
 
-Appears on:[ComputeInstanceTemplate](#ComputeInstanceTemplate), [ComputeInstanceTemplateStatus](#ComputeInstanceTemplateStatus)
+Appears on:[ComputeInstanceTemplate](#computeinstancetemplate), [ComputeInstanceTemplateStatus](#computeinstancetemplatestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,8 +28,8 @@ Appears on:[ComputeInstanceTemplate](#ComputeInstanceTemplate), [ComputeInstance
 | `id` | ***string***||
 | `canIPForward` | ***bool***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `disk` | ***[[]ComputeInstanceTemplateSpecDisk](#ComputeInstanceTemplateSpecDisk)***||
-| `guestAccelerator` | ***[[]ComputeInstanceTemplateSpecGuestAccelerator](#ComputeInstanceTemplateSpecGuestAccelerator)***| ***(Optional)*** |
+| `disk` | ***[[]ComputeInstanceTemplateSpecDisk](#computeinstancetemplatespecdisk)***||
+| `guestAccelerator` | ***[[]ComputeInstanceTemplateSpecGuestAccelerator](#computeinstancetemplatespecguestaccelerator)***| ***(Optional)*** |
 | `instanceDescription` | ***string***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
 | `machineType` | ***string***||
@@ -39,24 +39,24 @@ Appears on:[ComputeInstanceTemplate](#ComputeInstanceTemplate), [ComputeInstance
 | `minCPUPlatform` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
-| `networkInterface` | ***[[]ComputeInstanceTemplateSpecNetworkInterface](#ComputeInstanceTemplateSpecNetworkInterface)***| ***(Optional)*** |
+| `networkInterface` | ***[[]ComputeInstanceTemplateSpecNetworkInterface](#computeinstancetemplatespecnetworkinterface)***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `region` | ***string***| ***(Optional)*** |
-| `scheduling` | ***[[]ComputeInstanceTemplateSpecScheduling](#ComputeInstanceTemplateSpecScheduling)***| ***(Optional)*** |
+| `scheduling` | ***[[]ComputeInstanceTemplateSpecScheduling](#computeinstancetemplatespecscheduling)***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
-| `serviceAccount` | ***[[]ComputeInstanceTemplateSpecServiceAccount](#ComputeInstanceTemplateSpecServiceAccount)***| ***(Optional)*** |
+| `serviceAccount` | ***[[]ComputeInstanceTemplateSpecServiceAccount](#computeinstancetemplatespecserviceaccount)***| ***(Optional)*** |
 | `tags` | ***[]string***| ***(Optional)*** |
 | `tagsFingerprint` | ***string***| ***(Optional)*** |
 ## ComputeInstanceTemplateSpecDisk
 
-Appears on:[ComputeInstanceTemplateSpec](#ComputeInstanceTemplateSpec)
+Appears on:[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `autoDelete` | ***bool***| ***(Optional)*** |
 | `boot` | ***bool***| ***(Optional)*** |
 | `deviceName` | ***string***| ***(Optional)*** |
-| `diskEncryptionKey` | ***[[]ComputeInstanceTemplateSpecDiskDiskEncryptionKey](#ComputeInstanceTemplateSpecDiskDiskEncryptionKey)***| ***(Optional)*** |
+| `diskEncryptionKey` | ***[[]ComputeInstanceTemplateSpecDiskDiskEncryptionKey](#computeinstancetemplatespecdiskdiskencryptionkey)***| ***(Optional)*** |
 | `diskName` | ***string***| ***(Optional)*** |
 | `diskSizeGb` | ***int***| ***(Optional)*** |
 | `diskType` | ***string***| ***(Optional)*** |
@@ -67,14 +67,14 @@ Appears on:[ComputeInstanceTemplateSpec](#ComputeInstanceTemplateSpec)
 | `type` | ***string***| ***(Optional)*** |
 ## ComputeInstanceTemplateSpecDiskDiskEncryptionKey
 
-Appears on:[ComputeInstanceTemplateSpecDisk](#ComputeInstanceTemplateSpecDisk)
+Appears on:[ComputeInstanceTemplateSpecDisk](#computeinstancetemplatespecdisk)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `kmsKeySelfLink` | ***string***| ***(Optional)*** |
 ## ComputeInstanceTemplateSpecGuestAccelerator
 
-Appears on:[ComputeInstanceTemplateSpec](#ComputeInstanceTemplateSpec)
+Appears on:[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -82,20 +82,20 @@ Appears on:[ComputeInstanceTemplateSpec](#ComputeInstanceTemplateSpec)
 | `type` | ***string***||
 ## ComputeInstanceTemplateSpecNetworkInterface
 
-Appears on:[ComputeInstanceTemplateSpec](#ComputeInstanceTemplateSpec)
+Appears on:[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `accessConfig` | ***[[]ComputeInstanceTemplateSpecNetworkInterfaceAccessConfig](#ComputeInstanceTemplateSpecNetworkInterfaceAccessConfig)***| ***(Optional)*** |
+| `accessConfig` | ***[[]ComputeInstanceTemplateSpecNetworkInterfaceAccessConfig](#computeinstancetemplatespecnetworkinterfaceaccessconfig)***| ***(Optional)*** |
 | `address` | ***string***| ***(Optional)*** Deprecated|
-| `aliasIPRange` | ***[[]ComputeInstanceTemplateSpecNetworkInterfaceAliasIPRange](#ComputeInstanceTemplateSpecNetworkInterfaceAliasIPRange)***| ***(Optional)*** |
+| `aliasIPRange` | ***[[]ComputeInstanceTemplateSpecNetworkInterfaceAliasIPRange](#computeinstancetemplatespecnetworkinterfacealiasiprange)***| ***(Optional)*** |
 | `network` | ***string***| ***(Optional)*** |
 | `networkIP` | ***string***| ***(Optional)*** |
 | `subnetwork` | ***string***| ***(Optional)*** |
 | `subnetworkProject` | ***string***| ***(Optional)*** |
 ## ComputeInstanceTemplateSpecNetworkInterfaceAccessConfig
 
-Appears on:[ComputeInstanceTemplateSpecNetworkInterface](#ComputeInstanceTemplateSpecNetworkInterface)
+Appears on:[ComputeInstanceTemplateSpecNetworkInterface](#computeinstancetemplatespecnetworkinterface)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -104,7 +104,7 @@ Appears on:[ComputeInstanceTemplateSpecNetworkInterface](#ComputeInstanceTemplat
 | `networkTier` | ***string***| ***(Optional)*** |
 ## ComputeInstanceTemplateSpecNetworkInterfaceAliasIPRange
 
-Appears on:[ComputeInstanceTemplateSpecNetworkInterface](#ComputeInstanceTemplateSpecNetworkInterface)
+Appears on:[ComputeInstanceTemplateSpecNetworkInterface](#computeinstancetemplatespecnetworkinterface)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -112,7 +112,7 @@ Appears on:[ComputeInstanceTemplateSpecNetworkInterface](#ComputeInstanceTemplat
 | `subnetworkRangeName` | ***string***| ***(Optional)*** |
 ## ComputeInstanceTemplateSpecScheduling
 
-Appears on:[ComputeInstanceTemplateSpec](#ComputeInstanceTemplateSpec)
+Appears on:[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -121,7 +121,7 @@ Appears on:[ComputeInstanceTemplateSpec](#ComputeInstanceTemplateSpec)
 | `preemptible` | ***bool***| ***(Optional)*** |
 ## ComputeInstanceTemplateSpecServiceAccount
 
-Appears on:[ComputeInstanceTemplateSpec](#ComputeInstanceTemplateSpec)
+Appears on:[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -129,11 +129,11 @@ Appears on:[ComputeInstanceTemplateSpec](#ComputeInstanceTemplateSpec)
 | `scopes` | ***[]string***||
 ## ComputeInstanceTemplateStatus
 
-Appears on:[ComputeInstanceTemplate](#ComputeInstanceTemplate)
+Appears on:[ComputeInstanceTemplate](#computeinstancetemplate)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeInstanceTemplateSpec](#ComputeInstanceTemplateSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

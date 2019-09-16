@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DaxParameterGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DaxParameterGroupSpec](#DaxParameterGroupSpec)***||
-| `status` | ***[DaxParameterGroupStatus](#DaxParameterGroupStatus)***||
+| `spec` | ***[DaxParameterGroupSpec](#daxparametergroupspec)***||
+| `status` | ***[DaxParameterGroupStatus](#daxparametergroupstatus)***||
 ## DaxParameterGroupSpec
 
-Appears on:[DaxParameterGroup](#DaxParameterGroup), [DaxParameterGroupStatus](#DaxParameterGroupStatus)
+Appears on:[DaxParameterGroup](#daxparametergroup), [DaxParameterGroupStatus](#daxparametergroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,10 +28,10 @@ Appears on:[DaxParameterGroup](#DaxParameterGroup), [DaxParameterGroupStatus](#D
 | `id` | ***string***||
 | `description` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `parameters` | ***[[]DaxParameterGroupSpecParameters](#DaxParameterGroupSpecParameters)***| ***(Optional)*** |
+| `parameters` | ***[[]DaxParameterGroupSpecParameters](#daxparametergroupspecparameters)***| ***(Optional)*** |
 ## DaxParameterGroupSpecParameters
 
-Appears on:[DaxParameterGroupSpec](#DaxParameterGroupSpec)
+Appears on:[DaxParameterGroupSpec](#daxparametergroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -39,11 +39,11 @@ Appears on:[DaxParameterGroupSpec](#DaxParameterGroupSpec)
 | `value` | ***string***||
 ## DaxParameterGroupStatus
 
-Appears on:[DaxParameterGroup](#DaxParameterGroup)
+Appears on:[DaxParameterGroup](#daxparametergroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DaxParameterGroupSpec](#DaxParameterGroupSpec)***| ***(Optional)*** |
+| `output` | ***[DaxParameterGroupSpec](#daxparametergroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

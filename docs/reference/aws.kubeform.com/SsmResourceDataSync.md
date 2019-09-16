@@ -16,21 +16,21 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SsmResourceDataSync` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SsmResourceDataSyncSpec](#SsmResourceDataSyncSpec)***||
-| `status` | ***[SsmResourceDataSyncStatus](#SsmResourceDataSyncStatus)***||
+| `spec` | ***[SsmResourceDataSyncSpec](#ssmresourcedatasyncspec)***||
+| `status` | ***[SsmResourceDataSyncStatus](#ssmresourcedatasyncstatus)***||
 ## SsmResourceDataSyncSpec
 
-Appears on:[SsmResourceDataSync](#SsmResourceDataSync), [SsmResourceDataSyncStatus](#SsmResourceDataSyncStatus)
+Appears on:[SsmResourceDataSync](#ssmresourcedatasync), [SsmResourceDataSyncStatus](#ssmresourcedatasyncstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `name` | ***string***||
-| `s3Destination` | ***[[]SsmResourceDataSyncSpecS3Destination](#SsmResourceDataSyncSpecS3Destination)***||
+| `s3Destination` | ***[[]SsmResourceDataSyncSpecS3Destination](#ssmresourcedatasyncspecs3destination)***||
 ## SsmResourceDataSyncSpecS3Destination
 
-Appears on:[SsmResourceDataSyncSpec](#SsmResourceDataSyncSpec)
+Appears on:[SsmResourceDataSyncSpec](#ssmresourcedatasyncspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -41,11 +41,11 @@ Appears on:[SsmResourceDataSyncSpec](#SsmResourceDataSyncSpec)
 | `syncFormat` | ***string***| ***(Optional)*** |
 ## SsmResourceDataSyncStatus
 
-Appears on:[SsmResourceDataSync](#SsmResourceDataSync)
+Appears on:[SsmResourceDataSync](#ssmresourcedatasync)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SsmResourceDataSyncSpec](#SsmResourceDataSyncSpec)***| ***(Optional)*** |
+| `output` | ***[SsmResourceDataSyncSpec](#ssmresourcedatasyncspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,18 +16,18 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `EksCluster` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[EksClusterSpec](#EksClusterSpec)***||
-| `status` | ***[EksClusterStatus](#EksClusterStatus)***||
+| `spec` | ***[EksClusterSpec](#eksclusterspec)***||
+| `status` | ***[EksClusterStatus](#eksclusterstatus)***||
 ## EksClusterSpec
 
-Appears on:[EksCluster](#EksCluster), [EksClusterStatus](#EksClusterStatus)
+Appears on:[EksCluster](#ekscluster), [EksClusterStatus](#eksclusterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
-| `certificateAuthority` | ***[[]EksClusterSpecCertificateAuthority](#EksClusterSpecCertificateAuthority)***| ***(Optional)*** |
+| `certificateAuthority` | ***[[]EksClusterSpecCertificateAuthority](#eksclusterspeccertificateauthority)***| ***(Optional)*** |
 | `createdAt` | ***string***| ***(Optional)*** |
 | `enabledClusterLogTypes` | ***[]string***| ***(Optional)*** |
 | `endpoint` | ***string***| ***(Optional)*** |
@@ -35,17 +35,17 @@ Appears on:[EksCluster](#EksCluster), [EksClusterStatus](#EksClusterStatus)
 | `platformVersion` | ***string***| ***(Optional)*** |
 | `roleArn` | ***string***||
 | `version` | ***string***| ***(Optional)*** |
-| `vpcConfig` | ***[[]EksClusterSpecVpcConfig](#EksClusterSpecVpcConfig)***||
+| `vpcConfig` | ***[[]EksClusterSpecVpcConfig](#eksclusterspecvpcconfig)***||
 ## EksClusterSpecCertificateAuthority
 
-Appears on:[EksClusterSpec](#EksClusterSpec)
+Appears on:[EksClusterSpec](#eksclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `data` | ***string***| ***(Optional)*** |
 ## EksClusterSpecVpcConfig
 
-Appears on:[EksClusterSpec](#EksClusterSpec)
+Appears on:[EksClusterSpec](#eksclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -56,11 +56,11 @@ Appears on:[EksClusterSpec](#EksClusterSpec)
 | `vpcID` | ***string***| ***(Optional)*** |
 ## EksClusterStatus
 
-Appears on:[EksCluster](#EksCluster)
+Appears on:[EksCluster](#ekscluster)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[EksClusterSpec](#EksClusterSpec)***| ***(Optional)*** |
+| `output` | ***[EksClusterSpec](#eksclusterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

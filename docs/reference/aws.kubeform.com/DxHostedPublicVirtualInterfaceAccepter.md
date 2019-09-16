@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DxHostedPublicVirtualInterfaceAccepter` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DxHostedPublicVirtualInterfaceAccepterSpec](#DxHostedPublicVirtualInterfaceAccepterSpec)***||
-| `status` | ***[DxHostedPublicVirtualInterfaceAccepterStatus](#DxHostedPublicVirtualInterfaceAccepterStatus)***||
+| `spec` | ***[DxHostedPublicVirtualInterfaceAccepterSpec](#dxhostedpublicvirtualinterfaceaccepterspec)***||
+| `status` | ***[DxHostedPublicVirtualInterfaceAccepterStatus](#dxhostedpublicvirtualinterfaceaccepterstatus)***||
 ## DxHostedPublicVirtualInterfaceAccepterSpec
 
-Appears on:[DxHostedPublicVirtualInterfaceAccepter](#DxHostedPublicVirtualInterfaceAccepter), [DxHostedPublicVirtualInterfaceAccepterStatus](#DxHostedPublicVirtualInterfaceAccepterStatus)
+Appears on:[DxHostedPublicVirtualInterfaceAccepter](#dxhostedpublicvirtualinterfaceaccepter), [DxHostedPublicVirtualInterfaceAccepterStatus](#dxhostedpublicvirtualinterfaceaccepterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[DxHostedPublicVirtualInterfaceAccepter](#DxHostedPublicVirtualInterf
 | `virtualInterfaceID` | ***string***||
 ## DxHostedPublicVirtualInterfaceAccepterStatus
 
-Appears on:[DxHostedPublicVirtualInterfaceAccepter](#DxHostedPublicVirtualInterfaceAccepter)
+Appears on:[DxHostedPublicVirtualInterfaceAccepter](#dxhostedpublicvirtualinterfaceaccepter)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DxHostedPublicVirtualInterfaceAccepterSpec](#DxHostedPublicVirtualInterfaceAccepterSpec)***| ***(Optional)*** |
+| `output` | ***[DxHostedPublicVirtualInterfaceAccepterSpec](#dxhostedpublicvirtualinterfaceaccepterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `DevTestLinuxVirtualMachine` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DevTestLinuxVirtualMachineSpec](#DevTestLinuxVirtualMachineSpec)***||
-| `status` | ***[DevTestLinuxVirtualMachineStatus](#DevTestLinuxVirtualMachineStatus)***||
+| `spec` | ***[DevTestLinuxVirtualMachineSpec](#devtestlinuxvirtualmachinespec)***||
+| `status` | ***[DevTestLinuxVirtualMachineStatus](#devtestlinuxvirtualmachinestatus)***||
 ## DevTestLinuxVirtualMachineSpec
 
-Appears on:[DevTestLinuxVirtualMachine](#DevTestLinuxVirtualMachine), [DevTestLinuxVirtualMachineStatus](#DevTestLinuxVirtualMachineStatus)
+Appears on:[DevTestLinuxVirtualMachine](#devtestlinuxvirtualmachine), [DevTestLinuxVirtualMachineStatus](#devtestlinuxvirtualmachinestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,8 +30,8 @@ Appears on:[DevTestLinuxVirtualMachine](#DevTestLinuxVirtualMachine), [DevTestLi
 | `allowClaim` | ***bool***| ***(Optional)*** |
 | `disallowPublicIPAddress` | ***bool***| ***(Optional)*** |
 | `fqdn` | ***string***| ***(Optional)*** |
-| `galleryImageReference` | ***[[]DevTestLinuxVirtualMachineSpecGalleryImageReference](#DevTestLinuxVirtualMachineSpecGalleryImageReference)***||
-| `inboundNATRule` | ***[[]DevTestLinuxVirtualMachineSpecInboundNATRule](#DevTestLinuxVirtualMachineSpecInboundNATRule)***| ***(Optional)*** |
+| `galleryImageReference` | ***[[]DevTestLinuxVirtualMachineSpecGalleryImageReference](#devtestlinuxvirtualmachinespecgalleryimagereference)***||
+| `inboundNATRule` | ***[[]DevTestLinuxVirtualMachineSpecInboundNATRule](#devtestlinuxvirtualmachinespecinboundnatrule)***| ***(Optional)*** |
 | `labName` | ***string***||
 | `labSubnetName` | ***string***||
 | `labVirtualNetworkID` | ***string***||
@@ -47,7 +47,7 @@ Appears on:[DevTestLinuxVirtualMachine](#DevTestLinuxVirtualMachine), [DevTestLi
 | `username` | ***string***||
 ## DevTestLinuxVirtualMachineSpecGalleryImageReference
 
-Appears on:[DevTestLinuxVirtualMachineSpec](#DevTestLinuxVirtualMachineSpec)
+Appears on:[DevTestLinuxVirtualMachineSpec](#devtestlinuxvirtualmachinespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -57,7 +57,7 @@ Appears on:[DevTestLinuxVirtualMachineSpec](#DevTestLinuxVirtualMachineSpec)
 | `version` | ***string***||
 ## DevTestLinuxVirtualMachineSpecInboundNATRule
 
-Appears on:[DevTestLinuxVirtualMachineSpec](#DevTestLinuxVirtualMachineSpec)
+Appears on:[DevTestLinuxVirtualMachineSpec](#devtestlinuxvirtualmachinespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -66,12 +66,12 @@ Appears on:[DevTestLinuxVirtualMachineSpec](#DevTestLinuxVirtualMachineSpec)
 | `protocol` | ***string***||
 ## DevTestLinuxVirtualMachineStatus
 
-Appears on:[DevTestLinuxVirtualMachine](#DevTestLinuxVirtualMachine)
+Appears on:[DevTestLinuxVirtualMachine](#devtestlinuxvirtualmachine)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DevTestLinuxVirtualMachineSpec](#DevTestLinuxVirtualMachineSpec)***| ***(Optional)*** |
+| `output` | ***[DevTestLinuxVirtualMachineSpec](#devtestlinuxvirtualmachinespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

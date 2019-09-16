@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `FirewallApplicationRuleCollection` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[FirewallApplicationRuleCollectionSpec](#FirewallApplicationRuleCollectionSpec)***||
-| `status` | ***[FirewallApplicationRuleCollectionStatus](#FirewallApplicationRuleCollectionStatus)***||
+| `spec` | ***[FirewallApplicationRuleCollectionSpec](#firewallapplicationrulecollectionspec)***||
+| `status` | ***[FirewallApplicationRuleCollectionStatus](#firewallapplicationrulecollectionstatus)***||
 ## FirewallApplicationRuleCollectionSpec
 
-Appears on:[FirewallApplicationRuleCollection](#FirewallApplicationRuleCollection), [FirewallApplicationRuleCollectionStatus](#FirewallApplicationRuleCollectionStatus)
+Appears on:[FirewallApplicationRuleCollection](#firewallapplicationrulecollection), [FirewallApplicationRuleCollectionStatus](#firewallapplicationrulecollectionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,22 +31,22 @@ Appears on:[FirewallApplicationRuleCollection](#FirewallApplicationRuleCollectio
 | `name` | ***string***||
 | `priority` | ***int***||
 | `resourceGroupName` | ***string***||
-| `rule` | ***[[]FirewallApplicationRuleCollectionSpecRule](#FirewallApplicationRuleCollectionSpecRule)***||
+| `rule` | ***[[]FirewallApplicationRuleCollectionSpecRule](#firewallapplicationrulecollectionspecrule)***||
 ## FirewallApplicationRuleCollectionSpecRule
 
-Appears on:[FirewallApplicationRuleCollectionSpec](#FirewallApplicationRuleCollectionSpec)
+Appears on:[FirewallApplicationRuleCollectionSpec](#firewallapplicationrulecollectionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `description` | ***string***| ***(Optional)*** |
 | `fqdnTags` | ***[]string***| ***(Optional)*** |
 | `name` | ***string***||
-| `protocol` | ***[[]FirewallApplicationRuleCollectionSpecRuleProtocol](#FirewallApplicationRuleCollectionSpecRuleProtocol)***| ***(Optional)*** |
+| `protocol` | ***[[]FirewallApplicationRuleCollectionSpecRuleProtocol](#firewallapplicationrulecollectionspecruleprotocol)***| ***(Optional)*** |
 | `sourceAddresses` | ***[]string***||
 | `targetFqdns` | ***[]string***| ***(Optional)*** |
 ## FirewallApplicationRuleCollectionSpecRuleProtocol
 
-Appears on:[FirewallApplicationRuleCollectionSpecRule](#FirewallApplicationRuleCollectionSpecRule)
+Appears on:[FirewallApplicationRuleCollectionSpecRule](#firewallapplicationrulecollectionspecrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -54,11 +54,11 @@ Appears on:[FirewallApplicationRuleCollectionSpecRule](#FirewallApplicationRuleC
 | `type` | ***string***||
 ## FirewallApplicationRuleCollectionStatus
 
-Appears on:[FirewallApplicationRuleCollection](#FirewallApplicationRuleCollection)
+Appears on:[FirewallApplicationRuleCollection](#firewallapplicationrulecollection)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[FirewallApplicationRuleCollectionSpec](#FirewallApplicationRuleCollectionSpec)***| ***(Optional)*** |
+| `output` | ***[FirewallApplicationRuleCollectionSpec](#firewallapplicationrulecollectionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

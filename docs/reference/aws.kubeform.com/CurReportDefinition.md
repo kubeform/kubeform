@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CurReportDefinition` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CurReportDefinitionSpec](#CurReportDefinitionSpec)***||
-| `status` | ***[CurReportDefinitionStatus](#CurReportDefinitionStatus)***||
+| `spec` | ***[CurReportDefinitionSpec](#curreportdefinitionspec)***||
+| `status` | ***[CurReportDefinitionStatus](#curreportdefinitionstatus)***||
 ## CurReportDefinitionSpec
 
-Appears on:[CurReportDefinition](#CurReportDefinition), [CurReportDefinitionStatus](#CurReportDefinitionStatus)
+Appears on:[CurReportDefinition](#curreportdefinition), [CurReportDefinitionStatus](#curreportdefinitionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,11 +37,11 @@ Appears on:[CurReportDefinition](#CurReportDefinition), [CurReportDefinitionStat
 | `timeUnit` | ***string***||
 ## CurReportDefinitionStatus
 
-Appears on:[CurReportDefinition](#CurReportDefinition)
+Appears on:[CurReportDefinition](#curreportdefinition)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CurReportDefinitionSpec](#CurReportDefinitionSpec)***| ***(Optional)*** |
+| `output` | ***[CurReportDefinitionSpec](#curreportdefinitionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

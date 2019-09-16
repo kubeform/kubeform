@@ -16,28 +16,28 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ConnectionMonitor` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ConnectionMonitorSpec](#ConnectionMonitorSpec)***||
-| `status` | ***[ConnectionMonitorStatus](#ConnectionMonitorStatus)***||
+| `spec` | ***[ConnectionMonitorSpec](#connectionmonitorspec)***||
+| `status` | ***[ConnectionMonitorStatus](#connectionmonitorstatus)***||
 ## ConnectionMonitorSpec
 
-Appears on:[ConnectionMonitor](#ConnectionMonitor), [ConnectionMonitorStatus](#ConnectionMonitorStatus)
+Appears on:[ConnectionMonitor](#connectionmonitor), [ConnectionMonitorStatus](#connectionmonitorstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `autoStart` | ***bool***| ***(Optional)*** |
-| `destination` | ***[[]ConnectionMonitorSpecDestination](#ConnectionMonitorSpecDestination)***||
+| `destination` | ***[[]ConnectionMonitorSpecDestination](#connectionmonitorspecdestination)***||
 | `intervalInSeconds` | ***int***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
 | `networkWatcherName` | ***string***||
 | `resourceGroupName` | ***string***||
-| `source` | ***[[]ConnectionMonitorSpecSource](#ConnectionMonitorSpecSource)***||
+| `source` | ***[[]ConnectionMonitorSpecSource](#connectionmonitorspecsource)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ConnectionMonitorSpecDestination
 
-Appears on:[ConnectionMonitorSpec](#ConnectionMonitorSpec)
+Appears on:[ConnectionMonitorSpec](#connectionmonitorspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -46,7 +46,7 @@ Appears on:[ConnectionMonitorSpec](#ConnectionMonitorSpec)
 | `virtualMachineID` | ***string***| ***(Optional)*** |
 ## ConnectionMonitorSpecSource
 
-Appears on:[ConnectionMonitorSpec](#ConnectionMonitorSpec)
+Appears on:[ConnectionMonitorSpec](#connectionmonitorspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -54,11 +54,11 @@ Appears on:[ConnectionMonitorSpec](#ConnectionMonitorSpec)
 | `virtualMachineID` | ***string***||
 ## ConnectionMonitorStatus
 
-Appears on:[ConnectionMonitor](#ConnectionMonitor)
+Appears on:[ConnectionMonitor](#connectionmonitor)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ConnectionMonitorSpec](#ConnectionMonitorSpec)***| ***(Optional)*** |
+| `output` | ***[ConnectionMonitorSpec](#connectionmonitorspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

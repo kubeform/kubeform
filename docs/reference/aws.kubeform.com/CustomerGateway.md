@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `CustomerGateway` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[CustomerGatewaySpec](#CustomerGatewaySpec)***||
-| `status` | ***[CustomerGatewayStatus](#CustomerGatewayStatus)***||
+| `spec` | ***[CustomerGatewaySpec](#customergatewayspec)***||
+| `status` | ***[CustomerGatewayStatus](#customergatewaystatus)***||
 ## CustomerGatewaySpec
 
-Appears on:[CustomerGateway](#CustomerGateway), [CustomerGatewayStatus](#CustomerGatewayStatus)
+Appears on:[CustomerGateway](#customergateway), [CustomerGatewayStatus](#customergatewaystatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -32,11 +32,11 @@ Appears on:[CustomerGateway](#CustomerGateway), [CustomerGatewayStatus](#Custome
 | `type` | ***string***||
 ## CustomerGatewayStatus
 
-Appears on:[CustomerGateway](#CustomerGateway)
+Appears on:[CustomerGateway](#customergateway)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[CustomerGatewaySpec](#CustomerGatewaySpec)***| ***(Optional)*** |
+| `output` | ***[CustomerGatewaySpec](#customergatewayspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

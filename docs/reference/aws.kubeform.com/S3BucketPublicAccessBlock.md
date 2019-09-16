@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `S3BucketPublicAccessBlock` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[S3BucketPublicAccessBlockSpec](#S3BucketPublicAccessBlockSpec)***||
-| `status` | ***[S3BucketPublicAccessBlockStatus](#S3BucketPublicAccessBlockStatus)***||
+| `spec` | ***[S3BucketPublicAccessBlockSpec](#s3bucketpublicaccessblockspec)***||
+| `status` | ***[S3BucketPublicAccessBlockStatus](#s3bucketpublicaccessblockstatus)***||
 ## S3BucketPublicAccessBlockSpec
 
-Appears on:[S3BucketPublicAccessBlock](#S3BucketPublicAccessBlock), [S3BucketPublicAccessBlockStatus](#S3BucketPublicAccessBlockStatus)
+Appears on:[S3BucketPublicAccessBlock](#s3bucketpublicaccessblock), [S3BucketPublicAccessBlockStatus](#s3bucketpublicaccessblockstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -33,11 +33,11 @@ Appears on:[S3BucketPublicAccessBlock](#S3BucketPublicAccessBlock), [S3BucketPub
 | `restrictPublicBuckets` | ***bool***| ***(Optional)*** |
 ## S3BucketPublicAccessBlockStatus
 
-Appears on:[S3BucketPublicAccessBlock](#S3BucketPublicAccessBlock)
+Appears on:[S3BucketPublicAccessBlock](#s3bucketpublicaccessblock)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[S3BucketPublicAccessBlockSpec](#S3BucketPublicAccessBlockSpec)***| ***(Optional)*** |
+| `output` | ***[S3BucketPublicAccessBlockSpec](#s3bucketpublicaccessblockspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `DbSecurityGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[DbSecurityGroupSpec](#DbSecurityGroupSpec)***||
-| `status` | ***[DbSecurityGroupStatus](#DbSecurityGroupStatus)***||
+| `spec` | ***[DbSecurityGroupSpec](#dbsecuritygroupspec)***||
+| `status` | ***[DbSecurityGroupStatus](#dbsecuritygroupstatus)***||
 ## DbSecurityGroupSpec
 
-Appears on:[DbSecurityGroup](#DbSecurityGroup), [DbSecurityGroupStatus](#DbSecurityGroupStatus)
+Appears on:[DbSecurityGroup](#dbsecuritygroup), [DbSecurityGroupStatus](#dbsecuritygroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,12 +28,12 @@ Appears on:[DbSecurityGroup](#DbSecurityGroup), [DbSecurityGroupStatus](#DbSecur
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `ingress` | ***[[]DbSecurityGroupSpecIngress](#DbSecurityGroupSpecIngress)***||
+| `ingress` | ***[[]DbSecurityGroupSpecIngress](#dbsecuritygroupspecingress)***||
 | `name` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DbSecurityGroupSpecIngress
 
-Appears on:[DbSecurityGroupSpec](#DbSecurityGroupSpec)
+Appears on:[DbSecurityGroupSpec](#dbsecuritygroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -43,11 +43,11 @@ Appears on:[DbSecurityGroupSpec](#DbSecurityGroupSpec)
 | `securityGroupOwnerID` | ***string***| ***(Optional)*** |
 ## DbSecurityGroupStatus
 
-Appears on:[DbSecurityGroup](#DbSecurityGroup)
+Appears on:[DbSecurityGroup](#dbsecuritygroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[DbSecurityGroupSpec](#DbSecurityGroupSpec)***| ***(Optional)*** |
+| `output` | ***[DbSecurityGroupSpec](#dbsecuritygroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

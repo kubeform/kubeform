@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `VirtualNetworkGatewayConnection` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[VirtualNetworkGatewayConnectionSpec](#VirtualNetworkGatewayConnectionSpec)***||
-| `status` | ***[VirtualNetworkGatewayConnectionStatus](#VirtualNetworkGatewayConnectionStatus)***||
+| `spec` | ***[VirtualNetworkGatewayConnectionSpec](#virtualnetworkgatewayconnectionspec)***||
+| `status` | ***[VirtualNetworkGatewayConnectionStatus](#virtualnetworkgatewayconnectionstatus)***||
 ## VirtualNetworkGatewayConnectionSpec
 
-Appears on:[VirtualNetworkGatewayConnection](#VirtualNetworkGatewayConnection), [VirtualNetworkGatewayConnectionStatus](#VirtualNetworkGatewayConnectionStatus)
+Appears on:[VirtualNetworkGatewayConnection](#virtualnetworkgatewayconnection), [VirtualNetworkGatewayConnectionStatus](#virtualnetworkgatewayconnectionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,7 +30,7 @@ Appears on:[VirtualNetworkGatewayConnection](#VirtualNetworkGatewayConnection), 
 | `enableBGP` | ***bool***| ***(Optional)*** |
 | `expressRouteCircuitID` | ***string***| ***(Optional)*** |
 | `expressRouteGatewayBypass` | ***bool***| ***(Optional)*** |
-| `ipsecPolicy` | ***[[]VirtualNetworkGatewayConnectionSpecIpsecPolicy](#VirtualNetworkGatewayConnectionSpecIpsecPolicy)***| ***(Optional)*** |
+| `ipsecPolicy` | ***[[]VirtualNetworkGatewayConnectionSpecIpsecPolicy](#virtualnetworkgatewayconnectionspecipsecpolicy)***| ***(Optional)*** |
 | `localNetworkGatewayID` | ***string***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
@@ -43,7 +43,7 @@ Appears on:[VirtualNetworkGatewayConnection](#VirtualNetworkGatewayConnection), 
 | `virtualNetworkGatewayID` | ***string***||
 ## VirtualNetworkGatewayConnectionSpecIpsecPolicy
 
-Appears on:[VirtualNetworkGatewayConnectionSpec](#VirtualNetworkGatewayConnectionSpec)
+Appears on:[VirtualNetworkGatewayConnectionSpec](#virtualnetworkgatewayconnectionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -57,12 +57,12 @@ Appears on:[VirtualNetworkGatewayConnectionSpec](#VirtualNetworkGatewayConnectio
 | `saLifetime` | ***int***| ***(Optional)*** |
 ## VirtualNetworkGatewayConnectionStatus
 
-Appears on:[VirtualNetworkGatewayConnection](#VirtualNetworkGatewayConnection)
+Appears on:[VirtualNetworkGatewayConnection](#virtualnetworkgatewayconnection)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[VirtualNetworkGatewayConnectionSpec](#VirtualNetworkGatewayConnectionSpec)***| ***(Optional)*** |
+| `output` | ***[VirtualNetworkGatewayConnectionSpec](#virtualnetworkgatewayconnectionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

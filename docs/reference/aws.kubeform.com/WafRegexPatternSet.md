@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `WafRegexPatternSet` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[WafRegexPatternSetSpec](#WafRegexPatternSetSpec)***||
-| `status` | ***[WafRegexPatternSetStatus](#WafRegexPatternSetStatus)***||
+| `spec` | ***[WafRegexPatternSetSpec](#wafregexpatternsetspec)***||
+| `status` | ***[WafRegexPatternSetStatus](#wafregexpatternsetstatus)***||
 ## WafRegexPatternSetSpec
 
-Appears on:[WafRegexPatternSet](#WafRegexPatternSet), [WafRegexPatternSetStatus](#WafRegexPatternSetStatus)
+Appears on:[WafRegexPatternSet](#wafregexpatternset), [WafRegexPatternSetStatus](#wafregexpatternsetstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[WafRegexPatternSet](#WafRegexPatternSet), [WafRegexPatternSetStatus]
 | `regexPatternStrings` | ***[]string***| ***(Optional)*** |
 ## WafRegexPatternSetStatus
 
-Appears on:[WafRegexPatternSet](#WafRegexPatternSet)
+Appears on:[WafRegexPatternSet](#wafregexpatternset)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[WafRegexPatternSetSpec](#WafRegexPatternSetSpec)***| ***(Optional)*** |
+| `output` | ***[WafRegexPatternSetSpec](#wafregexpatternsetspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

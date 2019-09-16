@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `VirtualMachineScaleSet` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)***||
-| `status` | ***[VirtualMachineScaleSetStatus](#VirtualMachineScaleSetStatus)***||
+| `spec` | ***[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)***||
+| `status` | ***[VirtualMachineScaleSetStatus](#virtualmachinescalesetstatus)***||
 ## VirtualMachineScaleSetSpec
 
-Appears on:[VirtualMachineScaleSet](#VirtualMachineScaleSet), [VirtualMachineScaleSetStatus](#VirtualMachineScaleSetStatus)
+Appears on:[VirtualMachineScaleSet](#virtualmachinescaleset), [VirtualMachineScaleSetStatus](#virtualmachinescalesetstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -28,35 +28,35 @@ Appears on:[VirtualMachineScaleSet](#VirtualMachineScaleSet), [VirtualMachineSca
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `automaticOsUpgrade` | ***bool***| ***(Optional)*** |
-| `bootDiagnostics` | ***[[]VirtualMachineScaleSetSpecBootDiagnostics](#VirtualMachineScaleSetSpecBootDiagnostics)***| ***(Optional)*** |
+| `bootDiagnostics` | ***[[]VirtualMachineScaleSetSpecBootDiagnostics](#virtualmachinescalesetspecbootdiagnostics)***| ***(Optional)*** |
 | `evictionPolicy` | ***string***| ***(Optional)*** |
-| `extension` | ***[[]VirtualMachineScaleSetSpecExtension](#VirtualMachineScaleSetSpecExtension)***| ***(Optional)*** |
+| `extension` | ***[[]VirtualMachineScaleSetSpecExtension](#virtualmachinescalesetspecextension)***| ***(Optional)*** |
 | `healthProbeID` | ***string***| ***(Optional)*** |
-| `identity` | ***[[]VirtualMachineScaleSetSpecIdentity](#VirtualMachineScaleSetSpecIdentity)***| ***(Optional)*** |
+| `identity` | ***[[]VirtualMachineScaleSetSpecIdentity](#virtualmachinescalesetspecidentity)***| ***(Optional)*** |
 | `licenseType` | ***string***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
-| `networkProfile` | ***[[]VirtualMachineScaleSetSpecNetworkProfile](#VirtualMachineScaleSetSpecNetworkProfile)***||
-| `osProfile` | ***[[]VirtualMachineScaleSetSpecOsProfile](#VirtualMachineScaleSetSpecOsProfile)***||
-| `osProfileLinuxConfig` | ***[[]VirtualMachineScaleSetSpecOsProfileLinuxConfig](#VirtualMachineScaleSetSpecOsProfileLinuxConfig)***| ***(Optional)*** |
-| `osProfileSecrets` | ***[[]VirtualMachineScaleSetSpecOsProfileSecrets](#VirtualMachineScaleSetSpecOsProfileSecrets)***| ***(Optional)*** |
-| `osProfileWindowsConfig` | ***[[]VirtualMachineScaleSetSpecOsProfileWindowsConfig](#VirtualMachineScaleSetSpecOsProfileWindowsConfig)***| ***(Optional)*** |
+| `networkProfile` | ***[[]VirtualMachineScaleSetSpecNetworkProfile](#virtualmachinescalesetspecnetworkprofile)***||
+| `osProfile` | ***[[]VirtualMachineScaleSetSpecOsProfile](#virtualmachinescalesetspecosprofile)***||
+| `osProfileLinuxConfig` | ***[[]VirtualMachineScaleSetSpecOsProfileLinuxConfig](#virtualmachinescalesetspecosprofilelinuxconfig)***| ***(Optional)*** |
+| `osProfileSecrets` | ***[[]VirtualMachineScaleSetSpecOsProfileSecrets](#virtualmachinescalesetspecosprofilesecrets)***| ***(Optional)*** |
+| `osProfileWindowsConfig` | ***[[]VirtualMachineScaleSetSpecOsProfileWindowsConfig](#virtualmachinescalesetspecosprofilewindowsconfig)***| ***(Optional)*** |
 | `overprovision` | ***bool***| ***(Optional)*** |
-| `plan` | ***[[]VirtualMachineScaleSetSpecPlan](#VirtualMachineScaleSetSpecPlan)***| ***(Optional)*** |
+| `plan` | ***[[]VirtualMachineScaleSetSpecPlan](#virtualmachinescalesetspecplan)***| ***(Optional)*** |
 | `priority` | ***string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
-| `rollingUpgradePolicy` | ***[[]VirtualMachineScaleSetSpecRollingUpgradePolicy](#VirtualMachineScaleSetSpecRollingUpgradePolicy)***| ***(Optional)*** |
+| `rollingUpgradePolicy` | ***[[]VirtualMachineScaleSetSpecRollingUpgradePolicy](#virtualmachinescalesetspecrollingupgradepolicy)***| ***(Optional)*** |
 | `singlePlacementGroup` | ***bool***| ***(Optional)*** |
-| `sku` | ***[[]VirtualMachineScaleSetSpecSku](#VirtualMachineScaleSetSpecSku)***||
-| `storageProfileDataDisk` | ***[[]VirtualMachineScaleSetSpecStorageProfileDataDisk](#VirtualMachineScaleSetSpecStorageProfileDataDisk)***| ***(Optional)*** |
-| `storageProfileImageReference` | ***[[]VirtualMachineScaleSetSpecStorageProfileImageReference](#VirtualMachineScaleSetSpecStorageProfileImageReference)***| ***(Optional)*** |
-| `storageProfileOsDisk` | ***[[]VirtualMachineScaleSetSpecStorageProfileOsDisk](#VirtualMachineScaleSetSpecStorageProfileOsDisk)***||
+| `sku` | ***[[]VirtualMachineScaleSetSpecSku](#virtualmachinescalesetspecsku)***||
+| `storageProfileDataDisk` | ***[[]VirtualMachineScaleSetSpecStorageProfileDataDisk](#virtualmachinescalesetspecstorageprofiledatadisk)***| ***(Optional)*** |
+| `storageProfileImageReference` | ***[[]VirtualMachineScaleSetSpecStorageProfileImageReference](#virtualmachinescalesetspecstorageprofileimagereference)***| ***(Optional)*** |
+| `storageProfileOsDisk` | ***[[]VirtualMachineScaleSetSpecStorageProfileOsDisk](#virtualmachinescalesetspecstorageprofileosdisk)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `upgradePolicyMode` | ***string***||
 | `zones` | ***[]string***| ***(Optional)*** |
 ## VirtualMachineScaleSetSpecBootDiagnostics
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -64,7 +64,7 @@ Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
 | `storageURI` | ***string***||
 ## VirtualMachineScaleSetSpecExtension
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -77,7 +77,7 @@ Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
 | `typeHandlerVersion` | ***string***||
 ## VirtualMachineScaleSetSpecIdentity
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -86,27 +86,27 @@ Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
 | `type` | ***string***||
 ## VirtualMachineScaleSetSpecNetworkProfile
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `acceleratedNetworking` | ***bool***| ***(Optional)*** |
-| `dnsSettings` | ***[[]VirtualMachineScaleSetSpecNetworkProfileDnsSettings](#VirtualMachineScaleSetSpecNetworkProfileDnsSettings)***| ***(Optional)*** |
-| `ipConfiguration` | ***[[]VirtualMachineScaleSetSpecNetworkProfileIpConfiguration](#VirtualMachineScaleSetSpecNetworkProfileIpConfiguration)***||
+| `dnsSettings` | ***[[]VirtualMachineScaleSetSpecNetworkProfileDnsSettings](#virtualmachinescalesetspecnetworkprofilednssettings)***| ***(Optional)*** |
+| `ipConfiguration` | ***[[]VirtualMachineScaleSetSpecNetworkProfileIpConfiguration](#virtualmachinescalesetspecnetworkprofileipconfiguration)***||
 | `ipForwarding` | ***bool***| ***(Optional)*** |
 | `name` | ***string***||
 | `networkSecurityGroupID` | ***string***| ***(Optional)*** |
 | `primary` | ***bool***||
 ## VirtualMachineScaleSetSpecNetworkProfileDnsSettings
 
-Appears on:[VirtualMachineScaleSetSpecNetworkProfile](#VirtualMachineScaleSetSpecNetworkProfile)
+Appears on:[VirtualMachineScaleSetSpecNetworkProfile](#virtualmachinescalesetspecnetworkprofile)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dnsServers` | ***[]string***||
 ## VirtualMachineScaleSetSpecNetworkProfileIpConfiguration
 
-Appears on:[VirtualMachineScaleSetSpecNetworkProfile](#VirtualMachineScaleSetSpecNetworkProfile)
+Appears on:[VirtualMachineScaleSetSpecNetworkProfile](#virtualmachinescalesetspecnetworkprofile)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -116,11 +116,11 @@ Appears on:[VirtualMachineScaleSetSpecNetworkProfile](#VirtualMachineScaleSetSpe
 | `loadBalancerInboundNATRulesIDS` | ***[]string***| ***(Optional)*** |
 | `name` | ***string***||
 | `primary` | ***bool***||
-| `publicIPAddressConfiguration` | ***[[]VirtualMachineScaleSetSpecNetworkProfileIpConfigurationPublicIPAddressConfiguration](#VirtualMachineScaleSetSpecNetworkProfileIpConfigurationPublicIPAddressConfiguration)***| ***(Optional)*** |
+| `publicIPAddressConfiguration` | ***[[]VirtualMachineScaleSetSpecNetworkProfileIpConfigurationPublicIPAddressConfiguration](#virtualmachinescalesetspecnetworkprofileipconfigurationpublicipaddressconfiguration)***| ***(Optional)*** |
 | `subnetID` | ***string***||
 ## VirtualMachineScaleSetSpecNetworkProfileIpConfigurationPublicIPAddressConfiguration
 
-Appears on:[VirtualMachineScaleSetSpecNetworkProfileIpConfiguration](#VirtualMachineScaleSetSpecNetworkProfileIpConfiguration)
+Appears on:[VirtualMachineScaleSetSpecNetworkProfileIpConfiguration](#virtualmachinescalesetspecnetworkprofileipconfiguration)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -129,7 +129,7 @@ Appears on:[VirtualMachineScaleSetSpecNetworkProfileIpConfiguration](#VirtualMac
 | `name` | ***string***||
 ## VirtualMachineScaleSetSpecOsProfile
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -138,15 +138,15 @@ Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
 | `customData` | ***string***| ***(Optional)*** |
 ## VirtualMachineScaleSetSpecOsProfileLinuxConfig
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `disablePasswordAuthentication` | ***bool***| ***(Optional)*** |
-| `sshKeys` | ***[[]VirtualMachineScaleSetSpecOsProfileLinuxConfigSshKeys](#VirtualMachineScaleSetSpecOsProfileLinuxConfigSshKeys)***| ***(Optional)*** |
+| `sshKeys` | ***[[]VirtualMachineScaleSetSpecOsProfileLinuxConfigSshKeys](#virtualmachinescalesetspecosprofilelinuxconfigsshkeys)***| ***(Optional)*** |
 ## VirtualMachineScaleSetSpecOsProfileLinuxConfigSshKeys
 
-Appears on:[VirtualMachineScaleSetSpecOsProfileLinuxConfig](#VirtualMachineScaleSetSpecOsProfileLinuxConfig)
+Appears on:[VirtualMachineScaleSetSpecOsProfileLinuxConfig](#virtualmachinescalesetspecosprofilelinuxconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -154,15 +154,15 @@ Appears on:[VirtualMachineScaleSetSpecOsProfileLinuxConfig](#VirtualMachineScale
 | `path` | ***string***||
 ## VirtualMachineScaleSetSpecOsProfileSecrets
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `sourceVaultID` | ***string***||
-| `vaultCertificates` | ***[[]VirtualMachineScaleSetSpecOsProfileSecretsVaultCertificates](#VirtualMachineScaleSetSpecOsProfileSecretsVaultCertificates)***| ***(Optional)*** |
+| `vaultCertificates` | ***[[]VirtualMachineScaleSetSpecOsProfileSecretsVaultCertificates](#virtualmachinescalesetspecosprofilesecretsvaultcertificates)***| ***(Optional)*** |
 ## VirtualMachineScaleSetSpecOsProfileSecretsVaultCertificates
 
-Appears on:[VirtualMachineScaleSetSpecOsProfileSecrets](#VirtualMachineScaleSetSpecOsProfileSecrets)
+Appears on:[VirtualMachineScaleSetSpecOsProfileSecrets](#virtualmachinescalesetspecosprofilesecrets)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -170,17 +170,17 @@ Appears on:[VirtualMachineScaleSetSpecOsProfileSecrets](#VirtualMachineScaleSetS
 | `certificateURL` | ***string***||
 ## VirtualMachineScaleSetSpecOsProfileWindowsConfig
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `additionalUnattendConfig` | ***[[]VirtualMachineScaleSetSpecOsProfileWindowsConfigAdditionalUnattendConfig](#VirtualMachineScaleSetSpecOsProfileWindowsConfigAdditionalUnattendConfig)***| ***(Optional)*** |
+| `additionalUnattendConfig` | ***[[]VirtualMachineScaleSetSpecOsProfileWindowsConfigAdditionalUnattendConfig](#virtualmachinescalesetspecosprofilewindowsconfigadditionalunattendconfig)***| ***(Optional)*** |
 | `enableAutomaticUpgrades` | ***bool***| ***(Optional)*** |
 | `provisionVmAgent` | ***bool***| ***(Optional)*** |
-| `winrm` | ***[[]VirtualMachineScaleSetSpecOsProfileWindowsConfigWinrm](#VirtualMachineScaleSetSpecOsProfileWindowsConfigWinrm)***| ***(Optional)*** |
+| `winrm` | ***[[]VirtualMachineScaleSetSpecOsProfileWindowsConfigWinrm](#virtualmachinescalesetspecosprofilewindowsconfigwinrm)***| ***(Optional)*** |
 ## VirtualMachineScaleSetSpecOsProfileWindowsConfigAdditionalUnattendConfig
 
-Appears on:[VirtualMachineScaleSetSpecOsProfileWindowsConfig](#VirtualMachineScaleSetSpecOsProfileWindowsConfig)
+Appears on:[VirtualMachineScaleSetSpecOsProfileWindowsConfig](#virtualmachinescalesetspecosprofilewindowsconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -189,7 +189,7 @@ Appears on:[VirtualMachineScaleSetSpecOsProfileWindowsConfig](#VirtualMachineSca
 | `settingName` | ***string***||
 ## VirtualMachineScaleSetSpecOsProfileWindowsConfigWinrm
 
-Appears on:[VirtualMachineScaleSetSpecOsProfileWindowsConfig](#VirtualMachineScaleSetSpecOsProfileWindowsConfig)
+Appears on:[VirtualMachineScaleSetSpecOsProfileWindowsConfig](#virtualmachinescalesetspecosprofilewindowsconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -197,7 +197,7 @@ Appears on:[VirtualMachineScaleSetSpecOsProfileWindowsConfig](#VirtualMachineSca
 | `protocol` | ***string***||
 ## VirtualMachineScaleSetSpecPlan
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -206,7 +206,7 @@ Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
 | `publisher` | ***string***||
 ## VirtualMachineScaleSetSpecRollingUpgradePolicy
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -216,7 +216,7 @@ Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
 | `pauseTimeBetweenBatches` | ***string***| ***(Optional)*** |
 ## VirtualMachineScaleSetSpecSku
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -225,7 +225,7 @@ Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
 | `tier` | ***string***| ***(Optional)*** |
 ## VirtualMachineScaleSetSpecStorageProfileDataDisk
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -236,7 +236,7 @@ Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
 | `managedDiskType` | ***string***| ***(Optional)*** |
 ## VirtualMachineScaleSetSpecStorageProfileImageReference
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -247,7 +247,7 @@ Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
 | `version` | ***string***| ***(Optional)*** |
 ## VirtualMachineScaleSetSpecStorageProfileOsDisk
 
-Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
+Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -260,12 +260,12 @@ Appears on:[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)
 | `vhdContainers` | ***[]string***| ***(Optional)*** |
 ## VirtualMachineScaleSetStatus
 
-Appears on:[VirtualMachineScaleSet](#VirtualMachineScaleSet)
+Appears on:[VirtualMachineScaleSet](#virtualmachinescaleset)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[VirtualMachineScaleSetSpec](#VirtualMachineScaleSetSpec)***| ***(Optional)*** |
+| `output` | ***[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

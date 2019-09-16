@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `VirtualMachineExtension` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[VirtualMachineExtensionSpec](#VirtualMachineExtensionSpec)***||
-| `status` | ***[VirtualMachineExtensionStatus](#VirtualMachineExtensionStatus)***||
+| `spec` | ***[VirtualMachineExtensionSpec](#virtualmachineextensionspec)***||
+| `status` | ***[VirtualMachineExtensionStatus](#virtualmachineextensionstatus)***||
 ## VirtualMachineExtensionSpec
 
-Appears on:[VirtualMachineExtension](#VirtualMachineExtension), [VirtualMachineExtensionStatus](#VirtualMachineExtensionStatus)
+Appears on:[VirtualMachineExtension](#virtualmachineextension), [VirtualMachineExtensionStatus](#virtualmachineextensionstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -39,12 +39,12 @@ Appears on:[VirtualMachineExtension](#VirtualMachineExtension), [VirtualMachineE
 | `virtualMachineName` | ***string***||
 ## VirtualMachineExtensionStatus
 
-Appears on:[VirtualMachineExtension](#VirtualMachineExtension)
+Appears on:[VirtualMachineExtension](#virtualmachineextension)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[VirtualMachineExtensionSpec](#VirtualMachineExtensionSpec)***| ***(Optional)*** |
+| `output` | ***[VirtualMachineExtensionSpec](#virtualmachineextensionspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

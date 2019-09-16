@@ -16,21 +16,21 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `LaunchConfiguration` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[LaunchConfigurationSpec](#LaunchConfigurationSpec)***||
-| `status` | ***[LaunchConfigurationStatus](#LaunchConfigurationStatus)***||
+| `spec` | ***[LaunchConfigurationSpec](#launchconfigurationspec)***||
+| `status` | ***[LaunchConfigurationStatus](#launchconfigurationstatus)***||
 ## LaunchConfigurationSpec
 
-Appears on:[LaunchConfiguration](#LaunchConfiguration), [LaunchConfigurationStatus](#LaunchConfigurationStatus)
+Appears on:[LaunchConfiguration](#launchconfiguration), [LaunchConfigurationStatus](#launchconfigurationstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `associatePublicIPAddress` | ***bool***| ***(Optional)*** |
-| `ebsBlockDevice` | ***[[]LaunchConfigurationSpecEbsBlockDevice](#LaunchConfigurationSpecEbsBlockDevice)***| ***(Optional)*** |
+| `ebsBlockDevice` | ***[[]LaunchConfigurationSpecEbsBlockDevice](#launchconfigurationspecebsblockdevice)***| ***(Optional)*** |
 | `ebsOptimized` | ***bool***| ***(Optional)*** |
 | `enableMonitoring` | ***bool***| ***(Optional)*** |
-| `ephemeralBlockDevice` | ***[[]LaunchConfigurationSpecEphemeralBlockDevice](#LaunchConfigurationSpecEphemeralBlockDevice)***| ***(Optional)*** |
+| `ephemeralBlockDevice` | ***[[]LaunchConfigurationSpecEphemeralBlockDevice](#launchconfigurationspecephemeralblockdevice)***| ***(Optional)*** |
 | `iamInstanceProfile` | ***string***| ***(Optional)*** |
 | `imageID` | ***string***||
 | `instanceType` | ***string***||
@@ -38,7 +38,7 @@ Appears on:[LaunchConfiguration](#LaunchConfiguration), [LaunchConfigurationStat
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
 | `placementTenancy` | ***string***| ***(Optional)*** |
-| `rootBlockDevice` | ***[[]LaunchConfigurationSpecRootBlockDevice](#LaunchConfigurationSpecRootBlockDevice)***| ***(Optional)*** |
+| `rootBlockDevice` | ***[[]LaunchConfigurationSpecRootBlockDevice](#launchconfigurationspecrootblockdevice)***| ***(Optional)*** |
 | `securityGroups` | ***[]string***| ***(Optional)*** |
 | `spotPrice` | ***string***| ***(Optional)*** |
 | `userData` | ***string***| ***(Optional)*** |
@@ -47,7 +47,7 @@ Appears on:[LaunchConfiguration](#LaunchConfiguration), [LaunchConfigurationStat
 | `vpcClassicLinkSecurityGroups` | ***[]string***| ***(Optional)*** |
 ## LaunchConfigurationSpecEbsBlockDevice
 
-Appears on:[LaunchConfigurationSpec](#LaunchConfigurationSpec)
+Appears on:[LaunchConfigurationSpec](#launchconfigurationspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -61,7 +61,7 @@ Appears on:[LaunchConfigurationSpec](#LaunchConfigurationSpec)
 | `volumeType` | ***string***| ***(Optional)*** |
 ## LaunchConfigurationSpecEphemeralBlockDevice
 
-Appears on:[LaunchConfigurationSpec](#LaunchConfigurationSpec)
+Appears on:[LaunchConfigurationSpec](#launchconfigurationspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -69,7 +69,7 @@ Appears on:[LaunchConfigurationSpec](#LaunchConfigurationSpec)
 | `virtualName` | ***string***||
 ## LaunchConfigurationSpecRootBlockDevice
 
-Appears on:[LaunchConfigurationSpec](#LaunchConfigurationSpec)
+Appears on:[LaunchConfigurationSpec](#launchconfigurationspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -79,11 +79,11 @@ Appears on:[LaunchConfigurationSpec](#LaunchConfigurationSpec)
 | `volumeType` | ***string***| ***(Optional)*** |
 ## LaunchConfigurationStatus
 
-Appears on:[LaunchConfiguration](#LaunchConfiguration)
+Appears on:[LaunchConfiguration](#launchconfiguration)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[LaunchConfigurationSpec](#LaunchConfigurationSpec)***| ***(Optional)*** |
+| `output` | ***[LaunchConfigurationSpec](#launchconfigurationspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

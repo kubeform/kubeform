@@ -16,42 +16,42 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `ApiManagement` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ApiManagementSpec](#ApiManagementSpec)***||
-| `status` | ***[ApiManagementStatus](#ApiManagementStatus)***||
+| `spec` | ***[ApiManagementSpec](#apimanagementspec)***||
+| `status` | ***[ApiManagementStatus](#apimanagementstatus)***||
 ## ApiManagementSpec
 
-Appears on:[ApiManagement](#ApiManagement), [ApiManagementStatus](#ApiManagementStatus)
+Appears on:[ApiManagement](#apimanagement), [ApiManagementStatus](#apimanagementstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
-| `additionalLocation` | ***[[]ApiManagementSpecAdditionalLocation](#ApiManagementSpecAdditionalLocation)***| ***(Optional)*** |
-| `certificate` | ***[[]ApiManagementSpecCertificate](#ApiManagementSpecCertificate)***| ***(Optional)*** |
+| `additionalLocation` | ***[[]ApiManagementSpecAdditionalLocation](#apimanagementspecadditionallocation)***| ***(Optional)*** |
+| `certificate` | ***[[]ApiManagementSpecCertificate](#apimanagementspeccertificate)***| ***(Optional)*** |
 | `gatewayRegionalURL` | ***string***| ***(Optional)*** |
 | `gatewayURL` | ***string***| ***(Optional)*** |
-| `hostnameConfiguration` | ***[[]ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameConfiguration)***| ***(Optional)*** |
-| `identity` | ***[[]ApiManagementSpecIdentity](#ApiManagementSpecIdentity)***| ***(Optional)*** |
+| `hostnameConfiguration` | ***[[]ApiManagementSpecHostnameConfiguration](#apimanagementspechostnameconfiguration)***| ***(Optional)*** |
+| `identity` | ***[[]ApiManagementSpecIdentity](#apimanagementspecidentity)***| ***(Optional)*** |
 | `location` | ***string***||
 | `managementAPIURL` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `notificationSenderEmail` | ***string***| ***(Optional)*** |
-| `policy` | ***[[]ApiManagementSpecPolicy](#ApiManagementSpecPolicy)***| ***(Optional)*** |
+| `policy` | ***[[]ApiManagementSpecPolicy](#apimanagementspecpolicy)***| ***(Optional)*** |
 | `portalURL` | ***string***| ***(Optional)*** |
 | `publicIPAddresses` | ***[]string***| ***(Optional)*** |
 | `publisherEmail` | ***string***||
 | `publisherName` | ***string***||
 | `resourceGroupName` | ***string***||
 | `scmURL` | ***string***| ***(Optional)*** |
-| `security` | ***[[]ApiManagementSpecSecurity](#ApiManagementSpecSecurity)***| ***(Optional)*** |
-| `signIn` | ***[[]ApiManagementSpecSignIn](#ApiManagementSpecSignIn)***| ***(Optional)*** |
-| `signUp` | ***[[]ApiManagementSpecSignUp](#ApiManagementSpecSignUp)***| ***(Optional)*** |
-| `sku` | ***[[]ApiManagementSpecSku](#ApiManagementSpecSku)***||
+| `security` | ***[[]ApiManagementSpecSecurity](#apimanagementspecsecurity)***| ***(Optional)*** |
+| `signIn` | ***[[]ApiManagementSpecSignIn](#apimanagementspecsignin)***| ***(Optional)*** |
+| `signUp` | ***[[]ApiManagementSpecSignUp](#apimanagementspecsignup)***| ***(Optional)*** |
+| `sku` | ***[[]ApiManagementSpecSku](#apimanagementspecsku)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ApiManagementSpecAdditionalLocation
 
-Appears on:[ApiManagementSpec](#ApiManagementSpec)
+Appears on:[ApiManagementSpec](#apimanagementspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -60,24 +60,24 @@ Appears on:[ApiManagementSpec](#ApiManagementSpec)
 | `publicIPAddresses` | ***[]string***| ***(Optional)*** |
 ## ApiManagementSpecCertificate
 
-Appears on:[ApiManagementSpec](#ApiManagementSpec)
+Appears on:[ApiManagementSpec](#apimanagementspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `storeName` | ***string***||
 ## ApiManagementSpecHostnameConfiguration
 
-Appears on:[ApiManagementSpec](#ApiManagementSpec)
+Appears on:[ApiManagementSpec](#apimanagementspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `management` | ***[[]ApiManagementSpecHostnameConfigurationManagement](#ApiManagementSpecHostnameConfigurationManagement)***| ***(Optional)*** |
-| `portal` | ***[[]ApiManagementSpecHostnameConfigurationPortal](#ApiManagementSpecHostnameConfigurationPortal)***| ***(Optional)*** |
-| `proxy` | ***[[]ApiManagementSpecHostnameConfigurationProxy](#ApiManagementSpecHostnameConfigurationProxy)***| ***(Optional)*** |
-| `scm` | ***[[]ApiManagementSpecHostnameConfigurationScm](#ApiManagementSpecHostnameConfigurationScm)***| ***(Optional)*** |
+| `management` | ***[[]ApiManagementSpecHostnameConfigurationManagement](#apimanagementspechostnameconfigurationmanagement)***| ***(Optional)*** |
+| `portal` | ***[[]ApiManagementSpecHostnameConfigurationPortal](#apimanagementspechostnameconfigurationportal)***| ***(Optional)*** |
+| `proxy` | ***[[]ApiManagementSpecHostnameConfigurationProxy](#apimanagementspechostnameconfigurationproxy)***| ***(Optional)*** |
+| `scm` | ***[[]ApiManagementSpecHostnameConfigurationScm](#apimanagementspechostnameconfigurationscm)***| ***(Optional)*** |
 ## ApiManagementSpecHostnameConfigurationManagement
 
-Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameConfiguration)
+Appears on:[ApiManagementSpecHostnameConfiguration](#apimanagementspechostnameconfiguration)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -86,7 +86,7 @@ Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameCo
 | `negotiateClientCertificate` | ***bool***| ***(Optional)*** |
 ## ApiManagementSpecHostnameConfigurationPortal
 
-Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameConfiguration)
+Appears on:[ApiManagementSpecHostnameConfiguration](#apimanagementspechostnameconfiguration)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -95,7 +95,7 @@ Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameCo
 | `negotiateClientCertificate` | ***bool***| ***(Optional)*** |
 ## ApiManagementSpecHostnameConfigurationProxy
 
-Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameConfiguration)
+Appears on:[ApiManagementSpecHostnameConfiguration](#apimanagementspechostnameconfiguration)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -105,7 +105,7 @@ Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameCo
 | `negotiateClientCertificate` | ***bool***| ***(Optional)*** |
 ## ApiManagementSpecHostnameConfigurationScm
 
-Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameConfiguration)
+Appears on:[ApiManagementSpecHostnameConfiguration](#apimanagementspechostnameconfiguration)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -114,7 +114,7 @@ Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameCo
 | `negotiateClientCertificate` | ***bool***| ***(Optional)*** |
 ## ApiManagementSpecIdentity
 
-Appears on:[ApiManagementSpec](#ApiManagementSpec)
+Appears on:[ApiManagementSpec](#apimanagementspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -123,7 +123,7 @@ Appears on:[ApiManagementSpec](#ApiManagementSpec)
 | `type` | ***string***||
 ## ApiManagementSpecPolicy
 
-Appears on:[ApiManagementSpec](#ApiManagementSpec)
+Appears on:[ApiManagementSpec](#apimanagementspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -131,7 +131,7 @@ Appears on:[ApiManagementSpec](#ApiManagementSpec)
 | `xmlLink` | ***string***| ***(Optional)*** |
 ## ApiManagementSpecSecurity
 
-Appears on:[ApiManagementSpec](#ApiManagementSpec)
+Appears on:[ApiManagementSpec](#apimanagementspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -145,22 +145,22 @@ Appears on:[ApiManagementSpec](#ApiManagementSpec)
 | `disableTripleDESCiphers` | ***bool***| ***(Optional)*** |
 ## ApiManagementSpecSignIn
 
-Appears on:[ApiManagementSpec](#ApiManagementSpec)
+Appears on:[ApiManagementSpec](#apimanagementspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 ## ApiManagementSpecSignUp
 
-Appears on:[ApiManagementSpec](#ApiManagementSpec)
+Appears on:[ApiManagementSpec](#apimanagementspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
-| `termsOfService` | ***[[]ApiManagementSpecSignUpTermsOfService](#ApiManagementSpecSignUpTermsOfService)***||
+| `termsOfService` | ***[[]ApiManagementSpecSignUpTermsOfService](#apimanagementspecsignuptermsofservice)***||
 ## ApiManagementSpecSignUpTermsOfService
 
-Appears on:[ApiManagementSpecSignUp](#ApiManagementSpecSignUp)
+Appears on:[ApiManagementSpecSignUp](#apimanagementspecsignup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -169,7 +169,7 @@ Appears on:[ApiManagementSpecSignUp](#ApiManagementSpecSignUp)
 | `text` | ***string***| ***(Optional)*** |
 ## ApiManagementSpecSku
 
-Appears on:[ApiManagementSpec](#ApiManagementSpec)
+Appears on:[ApiManagementSpec](#apimanagementspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -177,12 +177,12 @@ Appears on:[ApiManagementSpec](#ApiManagementSpec)
 | `name` | ***string***||
 ## ApiManagementStatus
 
-Appears on:[ApiManagement](#ApiManagement)
+Appears on:[ApiManagement](#apimanagement)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ApiManagementSpec](#ApiManagementSpec)***| ***(Optional)*** |
+| `output` | ***[ApiManagementSpec](#apimanagementspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

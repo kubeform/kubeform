@@ -16,17 +16,17 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `BigqueryDataset` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[BigqueryDatasetSpec](#BigqueryDatasetSpec)***||
-| `status` | ***[BigqueryDatasetStatus](#BigqueryDatasetStatus)***||
+| `spec` | ***[BigqueryDatasetSpec](#bigquerydatasetspec)***||
+| `status` | ***[BigqueryDatasetStatus](#bigquerydatasetstatus)***||
 ## BigqueryDatasetSpec
 
-Appears on:[BigqueryDataset](#BigqueryDataset), [BigqueryDatasetStatus](#BigqueryDatasetStatus)
+Appears on:[BigqueryDataset](#bigquerydataset), [BigqueryDatasetStatus](#bigquerydatasetstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `access` | ***[[]BigqueryDatasetSpecAccess](#BigqueryDatasetSpecAccess)***| ***(Optional)*** |
+| `access` | ***[[]BigqueryDatasetSpecAccess](#bigquerydatasetspecaccess)***| ***(Optional)*** |
 | `creationTime` | ***int***| ***(Optional)*** |
 | `datasetID` | ***string***||
 | `defaultTableExpirationMs` | ***int***| ***(Optional)*** |
@@ -40,7 +40,7 @@ Appears on:[BigqueryDataset](#BigqueryDataset), [BigqueryDatasetStatus](#Bigquer
 | `selfLink` | ***string***| ***(Optional)*** |
 ## BigqueryDatasetSpecAccess
 
-Appears on:[BigqueryDatasetSpec](#BigqueryDatasetSpec)
+Appears on:[BigqueryDatasetSpec](#bigquerydatasetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -49,10 +49,10 @@ Appears on:[BigqueryDatasetSpec](#BigqueryDatasetSpec)
 | `role` | ***string***| ***(Optional)*** |
 | `specialGroup` | ***string***| ***(Optional)*** |
 | `userByEmail` | ***string***| ***(Optional)*** |
-| `view` | ***[[]BigqueryDatasetSpecAccessView](#BigqueryDatasetSpecAccessView)***| ***(Optional)*** |
+| `view` | ***[[]BigqueryDatasetSpecAccessView](#bigquerydatasetspecaccessview)***| ***(Optional)*** |
 ## BigqueryDatasetSpecAccessView
 
-Appears on:[BigqueryDatasetSpecAccess](#BigqueryDatasetSpecAccess)
+Appears on:[BigqueryDatasetSpecAccess](#bigquerydatasetspecaccess)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -61,11 +61,11 @@ Appears on:[BigqueryDatasetSpecAccess](#BigqueryDatasetSpecAccess)
 | `tableID` | ***string***||
 ## BigqueryDatasetStatus
 
-Appears on:[BigqueryDataset](#BigqueryDataset)
+Appears on:[BigqueryDataset](#bigquerydataset)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[BigqueryDatasetSpec](#BigqueryDatasetSpec)***| ***(Optional)*** |
+| `output` | ***[BigqueryDatasetSpec](#bigquerydatasetspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

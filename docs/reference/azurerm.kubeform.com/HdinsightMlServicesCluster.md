@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `HdinsightMlServicesCluster` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[HdinsightMlServicesClusterSpec](#HdinsightMlServicesClusterSpec)***||
-| `status` | ***[HdinsightMlServicesClusterStatus](#HdinsightMlServicesClusterStatus)***||
+| `spec` | ***[HdinsightMlServicesClusterSpec](#hdinsightmlservicesclusterspec)***||
+| `status` | ***[HdinsightMlServicesClusterStatus](#hdinsightmlservicesclusterstatus)***||
 ## HdinsightMlServicesClusterSpec
 
-Appears on:[HdinsightMlServicesCluster](#HdinsightMlServicesCluster), [HdinsightMlServicesClusterStatus](#HdinsightMlServicesClusterStatus)
+Appears on:[HdinsightMlServicesCluster](#hdinsightmlservicescluster), [HdinsightMlServicesClusterStatus](#hdinsightmlservicesclusterstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,20 +29,20 @@ Appears on:[HdinsightMlServicesCluster](#HdinsightMlServicesCluster), [Hdinsight
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `clusterVersion` | ***string***||
 | `edgeSSHEndpoint` | ***string***| ***(Optional)*** |
-| `gateway` | ***[[]HdinsightMlServicesClusterSpecGateway](#HdinsightMlServicesClusterSpecGateway)***||
+| `gateway` | ***[[]HdinsightMlServicesClusterSpecGateway](#hdinsightmlservicesclusterspecgateway)***||
 | `httpsEndpoint` | ***string***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
-| `roles` | ***[[]HdinsightMlServicesClusterSpecRoles](#HdinsightMlServicesClusterSpecRoles)***||
+| `roles` | ***[[]HdinsightMlServicesClusterSpecRoles](#hdinsightmlservicesclusterspecroles)***||
 | `rstudio` | ***bool***||
 | `sshEndpoint` | ***string***| ***(Optional)*** |
-| `storageAccount` | ***[[]HdinsightMlServicesClusterSpecStorageAccount](#HdinsightMlServicesClusterSpecStorageAccount)***||
+| `storageAccount` | ***[[]HdinsightMlServicesClusterSpecStorageAccount](#hdinsightmlservicesclusterspecstorageaccount)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `tier` | ***string***||
 ## HdinsightMlServicesClusterSpecGateway
 
-Appears on:[HdinsightMlServicesClusterSpec](#HdinsightMlServicesClusterSpec)
+Appears on:[HdinsightMlServicesClusterSpec](#hdinsightmlservicesclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -50,17 +50,17 @@ Appears on:[HdinsightMlServicesClusterSpec](#HdinsightMlServicesClusterSpec)
 | `username` | ***string***||
 ## HdinsightMlServicesClusterSpecRoles
 
-Appears on:[HdinsightMlServicesClusterSpec](#HdinsightMlServicesClusterSpec)
+Appears on:[HdinsightMlServicesClusterSpec](#hdinsightmlservicesclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `edgeNode` | ***[[]HdinsightMlServicesClusterSpecRolesEdgeNode](#HdinsightMlServicesClusterSpecRolesEdgeNode)***||
-| `headNode` | ***[[]HdinsightMlServicesClusterSpecRolesHeadNode](#HdinsightMlServicesClusterSpecRolesHeadNode)***||
-| `workerNode` | ***[[]HdinsightMlServicesClusterSpecRolesWorkerNode](#HdinsightMlServicesClusterSpecRolesWorkerNode)***||
-| `zookeeperNode` | ***[[]HdinsightMlServicesClusterSpecRolesZookeeperNode](#HdinsightMlServicesClusterSpecRolesZookeeperNode)***||
+| `edgeNode` | ***[[]HdinsightMlServicesClusterSpecRolesEdgeNode](#hdinsightmlservicesclusterspecrolesedgenode)***||
+| `headNode` | ***[[]HdinsightMlServicesClusterSpecRolesHeadNode](#hdinsightmlservicesclusterspecrolesheadnode)***||
+| `workerNode` | ***[[]HdinsightMlServicesClusterSpecRolesWorkerNode](#hdinsightmlservicesclusterspecrolesworkernode)***||
+| `zookeeperNode` | ***[[]HdinsightMlServicesClusterSpecRolesZookeeperNode](#hdinsightmlservicesclusterspecroleszookeepernode)***||
 ## HdinsightMlServicesClusterSpecRolesEdgeNode
 
-Appears on:[HdinsightMlServicesClusterSpecRoles](#HdinsightMlServicesClusterSpecRoles)
+Appears on:[HdinsightMlServicesClusterSpecRoles](#hdinsightmlservicesclusterspecroles)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -71,7 +71,7 @@ Appears on:[HdinsightMlServicesClusterSpecRoles](#HdinsightMlServicesClusterSpec
 | `vmSize` | ***string***||
 ## HdinsightMlServicesClusterSpecRolesHeadNode
 
-Appears on:[HdinsightMlServicesClusterSpecRoles](#HdinsightMlServicesClusterSpecRoles)
+Appears on:[HdinsightMlServicesClusterSpecRoles](#hdinsightmlservicesclusterspecroles)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -82,7 +82,7 @@ Appears on:[HdinsightMlServicesClusterSpecRoles](#HdinsightMlServicesClusterSpec
 | `vmSize` | ***string***||
 ## HdinsightMlServicesClusterSpecRolesWorkerNode
 
-Appears on:[HdinsightMlServicesClusterSpecRoles](#HdinsightMlServicesClusterSpecRoles)
+Appears on:[HdinsightMlServicesClusterSpecRoles](#hdinsightmlservicesclusterspecroles)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -95,7 +95,7 @@ Appears on:[HdinsightMlServicesClusterSpecRoles](#HdinsightMlServicesClusterSpec
 | `vmSize` | ***string***||
 ## HdinsightMlServicesClusterSpecRolesZookeeperNode
 
-Appears on:[HdinsightMlServicesClusterSpecRoles](#HdinsightMlServicesClusterSpecRoles)
+Appears on:[HdinsightMlServicesClusterSpecRoles](#hdinsightmlservicesclusterspecroles)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -106,7 +106,7 @@ Appears on:[HdinsightMlServicesClusterSpecRoles](#HdinsightMlServicesClusterSpec
 | `vmSize` | ***string***||
 ## HdinsightMlServicesClusterSpecStorageAccount
 
-Appears on:[HdinsightMlServicesClusterSpec](#HdinsightMlServicesClusterSpec)
+Appears on:[HdinsightMlServicesClusterSpec](#hdinsightmlservicesclusterspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -114,12 +114,12 @@ Appears on:[HdinsightMlServicesClusterSpec](#HdinsightMlServicesClusterSpec)
 | `storageContainerID` | ***string***||
 ## HdinsightMlServicesClusterStatus
 
-Appears on:[HdinsightMlServicesCluster](#HdinsightMlServicesCluster)
+Appears on:[HdinsightMlServicesCluster](#hdinsightmlservicescluster)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[HdinsightMlServicesClusterSpec](#HdinsightMlServicesClusterSpec)***| ***(Optional)*** |
+| `output` | ***[HdinsightMlServicesClusterSpec](#hdinsightmlservicesclusterspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
 ## Sensitive Values

@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ComputeProjectMetadata` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ComputeProjectMetadataSpec](#ComputeProjectMetadataSpec)***||
-| `status` | ***[ComputeProjectMetadataStatus](#ComputeProjectMetadataStatus)***||
+| `spec` | ***[ComputeProjectMetadataSpec](#computeprojectmetadataspec)***||
+| `status` | ***[ComputeProjectMetadataStatus](#computeprojectmetadatastatus)***||
 ## ComputeProjectMetadataSpec
 
-Appears on:[ComputeProjectMetadata](#ComputeProjectMetadata), [ComputeProjectMetadataStatus](#ComputeProjectMetadataStatus)
+Appears on:[ComputeProjectMetadata](#computeprojectmetadata), [ComputeProjectMetadataStatus](#computeprojectmetadatastatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,11 +30,11 @@ Appears on:[ComputeProjectMetadata](#ComputeProjectMetadata), [ComputeProjectMet
 | `project` | ***string***| ***(Optional)*** |
 ## ComputeProjectMetadataStatus
 
-Appears on:[ComputeProjectMetadata](#ComputeProjectMetadata)
+Appears on:[ComputeProjectMetadata](#computeprojectmetadata)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ComputeProjectMetadataSpec](#ComputeProjectMetadataSpec)***| ***(Optional)*** |
+| `output` | ***[ComputeProjectMetadataSpec](#computeprojectmetadataspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

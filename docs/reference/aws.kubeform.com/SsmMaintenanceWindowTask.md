@@ -16,31 +16,31 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `SsmMaintenanceWindowTask` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec)***||
-| `status` | ***[SsmMaintenanceWindowTaskStatus](#SsmMaintenanceWindowTaskStatus)***||
+| `spec` | ***[SsmMaintenanceWindowTaskSpec](#ssmmaintenancewindowtaskspec)***||
+| `status` | ***[SsmMaintenanceWindowTaskStatus](#ssmmaintenancewindowtaskstatus)***||
 ## SsmMaintenanceWindowTaskSpec
 
-Appears on:[SsmMaintenanceWindowTask](#SsmMaintenanceWindowTask), [SsmMaintenanceWindowTaskStatus](#SsmMaintenanceWindowTaskStatus)
+Appears on:[SsmMaintenanceWindowTask](#ssmmaintenancewindowtask), [SsmMaintenanceWindowTaskStatus](#ssmmaintenancewindowtaskstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `description` | ***string***| ***(Optional)*** |
-| `loggingInfo` | ***[[]SsmMaintenanceWindowTaskSpecLoggingInfo](#SsmMaintenanceWindowTaskSpecLoggingInfo)***| ***(Optional)*** |
+| `loggingInfo` | ***[[]SsmMaintenanceWindowTaskSpecLoggingInfo](#ssmmaintenancewindowtaskspeclogginginfo)***| ***(Optional)*** |
 | `maxConcurrency` | ***string***||
 | `maxErrors` | ***string***||
 | `name` | ***string***| ***(Optional)*** |
 | `priority` | ***int***| ***(Optional)*** |
 | `serviceRoleArn` | ***string***||
-| `targets` | ***[[]SsmMaintenanceWindowTaskSpecTargets](#SsmMaintenanceWindowTaskSpecTargets)***||
+| `targets` | ***[[]SsmMaintenanceWindowTaskSpecTargets](#ssmmaintenancewindowtaskspectargets)***||
 | `taskArn` | ***string***||
-| `taskParameters` | ***[[]SsmMaintenanceWindowTaskSpecTaskParameters](#SsmMaintenanceWindowTaskSpecTaskParameters)***| ***(Optional)*** |
+| `taskParameters` | ***[[]SsmMaintenanceWindowTaskSpecTaskParameters](#ssmmaintenancewindowtaskspectaskparameters)***| ***(Optional)*** |
 | `taskType` | ***string***||
 | `windowID` | ***string***||
 ## SsmMaintenanceWindowTaskSpecLoggingInfo
 
-Appears on:[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec)
+Appears on:[SsmMaintenanceWindowTaskSpec](#ssmmaintenancewindowtaskspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -49,7 +49,7 @@ Appears on:[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec)
 | `s3Region` | ***string***||
 ## SsmMaintenanceWindowTaskSpecTargets
 
-Appears on:[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec)
+Appears on:[SsmMaintenanceWindowTaskSpec](#ssmmaintenancewindowtaskspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -57,7 +57,7 @@ Appears on:[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec)
 | `values` | ***[]string***||
 ## SsmMaintenanceWindowTaskSpecTaskParameters
 
-Appears on:[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec)
+Appears on:[SsmMaintenanceWindowTaskSpec](#ssmmaintenancewindowtaskspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -65,11 +65,11 @@ Appears on:[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec)
 | `values` | ***[]string***||
 ## SsmMaintenanceWindowTaskStatus
 
-Appears on:[SsmMaintenanceWindowTask](#SsmMaintenanceWindowTask)
+Appears on:[SsmMaintenanceWindowTask](#ssmmaintenancewindowtask)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec)***| ***(Optional)*** |
+| `output` | ***[SsmMaintenanceWindowTaskSpec](#ssmmaintenancewindowtaskspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

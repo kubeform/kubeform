@@ -16,17 +16,17 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `Eventhub` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[EventhubSpec](#EventhubSpec)***||
-| `status` | ***[EventhubStatus](#EventhubStatus)***||
+| `spec` | ***[EventhubSpec](#eventhubspec)***||
+| `status` | ***[EventhubStatus](#eventhubstatus)***||
 ## EventhubSpec
 
-Appears on:[Eventhub](#Eventhub), [EventhubStatus](#EventhubStatus)
+Appears on:[Eventhub](#eventhub), [EventhubStatus](#eventhubstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `captureDescription` | ***[[]EventhubSpecCaptureDescription](#EventhubSpecCaptureDescription)***| ***(Optional)*** |
+| `captureDescription` | ***[[]EventhubSpecCaptureDescription](#eventhubspeccapturedescription)***| ***(Optional)*** |
 | `location` | ***string***| ***(Optional)*** Deprecated|
 | `messageRetention` | ***int***||
 | `name` | ***string***||
@@ -36,11 +36,11 @@ Appears on:[Eventhub](#Eventhub), [EventhubStatus](#EventhubStatus)
 | `resourceGroupName` | ***string***||
 ## EventhubSpecCaptureDescription
 
-Appears on:[EventhubSpec](#EventhubSpec)
+Appears on:[EventhubSpec](#eventhubspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `destination` | ***[[]EventhubSpecCaptureDescriptionDestination](#EventhubSpecCaptureDescriptionDestination)***||
+| `destination` | ***[[]EventhubSpecCaptureDescriptionDestination](#eventhubspeccapturedescriptiondestination)***||
 | `enabled` | ***bool***||
 | `encoding` | ***string***||
 | `intervalInSeconds` | ***int***| ***(Optional)*** |
@@ -48,7 +48,7 @@ Appears on:[EventhubSpec](#EventhubSpec)
 | `skipEmptyArchives` | ***bool***| ***(Optional)*** |
 ## EventhubSpecCaptureDescriptionDestination
 
-Appears on:[EventhubSpecCaptureDescription](#EventhubSpecCaptureDescription)
+Appears on:[EventhubSpecCaptureDescription](#eventhubspeccapturedescription)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -58,11 +58,11 @@ Appears on:[EventhubSpecCaptureDescription](#EventhubSpecCaptureDescription)
 | `storageAccountID` | ***string***||
 ## EventhubStatus
 
-Appears on:[Eventhub](#Eventhub)
+Appears on:[Eventhub](#eventhub)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[EventhubSpec](#EventhubSpec)***| ***(Optional)*** |
+| `output` | ***[EventhubSpec](#eventhubspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

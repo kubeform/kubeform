@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `ProjectUsageExportBucket` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[ProjectUsageExportBucketSpec](#ProjectUsageExportBucketSpec)***||
-| `status` | ***[ProjectUsageExportBucketStatus](#ProjectUsageExportBucketStatus)***||
+| `spec` | ***[ProjectUsageExportBucketSpec](#projectusageexportbucketspec)***||
+| `status` | ***[ProjectUsageExportBucketStatus](#projectusageexportbucketstatus)***||
 ## ProjectUsageExportBucketSpec
 
-Appears on:[ProjectUsageExportBucket](#ProjectUsageExportBucket), [ProjectUsageExportBucketStatus](#ProjectUsageExportBucketStatus)
+Appears on:[ProjectUsageExportBucket](#projectusageexportbucket), [ProjectUsageExportBucketStatus](#projectusageexportbucketstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,11 +31,11 @@ Appears on:[ProjectUsageExportBucket](#ProjectUsageExportBucket), [ProjectUsageE
 | `project` | ***string***| ***(Optional)*** |
 ## ProjectUsageExportBucketStatus
 
-Appears on:[ProjectUsageExportBucket](#ProjectUsageExportBucket)
+Appears on:[ProjectUsageExportBucket](#projectusageexportbucket)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[ProjectUsageExportBucketSpec](#ProjectUsageExportBucketSpec)***| ***(Optional)*** |
+| `output` | ***[ProjectUsageExportBucketSpec](#projectusageexportbucketspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

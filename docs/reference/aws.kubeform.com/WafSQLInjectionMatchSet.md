@@ -16,29 +16,29 @@ section_menu_id: reference
 | `apiVersion` | string | `aws.kubeform.com/v1alpha1` |
 |    `kind` | string | `WafSQLInjectionMatchSet` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[WafSQLInjectionMatchSetSpec](#WafSQLInjectionMatchSetSpec)***||
-| `status` | ***[WafSQLInjectionMatchSetStatus](#WafSQLInjectionMatchSetStatus)***||
+| `spec` | ***[WafSQLInjectionMatchSetSpec](#wafsqlinjectionmatchsetspec)***||
+| `status` | ***[WafSQLInjectionMatchSetStatus](#wafsqlinjectionmatchsetstatus)***||
 ## WafSQLInjectionMatchSetSpec
 
-Appears on:[WafSQLInjectionMatchSet](#WafSQLInjectionMatchSet), [WafSQLInjectionMatchSetStatus](#WafSQLInjectionMatchSetStatus)
+Appears on:[WafSQLInjectionMatchSet](#wafsqlinjectionmatchset), [WafSQLInjectionMatchSetStatus](#wafsqlinjectionmatchsetstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `name` | ***string***||
-| `sqlInjectionMatchTuples` | ***[[]WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples](#WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples)***| ***(Optional)*** |
+| `sqlInjectionMatchTuples` | ***[[]WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples](#wafsqlinjectionmatchsetspecsqlinjectionmatchtuples)***| ***(Optional)*** |
 ## WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples
 
-Appears on:[WafSQLInjectionMatchSetSpec](#WafSQLInjectionMatchSetSpec)
+Appears on:[WafSQLInjectionMatchSetSpec](#wafsqlinjectionmatchsetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `fieldToMatch` | ***[[]WafSQLInjectionMatchSetSpecSqlInjectionMatchTuplesFieldToMatch](#WafSQLInjectionMatchSetSpecSqlInjectionMatchTuplesFieldToMatch)***||
+| `fieldToMatch` | ***[[]WafSQLInjectionMatchSetSpecSqlInjectionMatchTuplesFieldToMatch](#wafsqlinjectionmatchsetspecsqlinjectionmatchtuplesfieldtomatch)***||
 | `textTransformation` | ***string***||
 ## WafSQLInjectionMatchSetSpecSqlInjectionMatchTuplesFieldToMatch
 
-Appears on:[WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples](#WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples)
+Appears on:[WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples](#wafsqlinjectionmatchsetspecsqlinjectionmatchtuples)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -46,11 +46,11 @@ Appears on:[WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples](#WafSQLInjection
 | `type` | ***string***||
 ## WafSQLInjectionMatchSetStatus
 
-Appears on:[WafSQLInjectionMatchSet](#WafSQLInjectionMatchSet)
+Appears on:[WafSQLInjectionMatchSet](#wafsqlinjectionmatchset)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[WafSQLInjectionMatchSetSpec](#WafSQLInjectionMatchSetSpec)***| ***(Optional)*** |
+| `output` | ***[WafSQLInjectionMatchSetSpec](#wafsqlinjectionmatchsetspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

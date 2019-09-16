@@ -16,28 +16,28 @@ section_menu_id: reference
 | `apiVersion` | string | `azurerm.kubeform.com/v1alpha1` |
 |    `kind` | string | `NetworkPacketCapture` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[NetworkPacketCaptureSpec](#NetworkPacketCaptureSpec)***||
-| `status` | ***[NetworkPacketCaptureStatus](#NetworkPacketCaptureStatus)***||
+| `spec` | ***[NetworkPacketCaptureSpec](#networkpacketcapturespec)***||
+| `status` | ***[NetworkPacketCaptureStatus](#networkpacketcapturestatus)***||
 ## NetworkPacketCaptureSpec
 
-Appears on:[NetworkPacketCapture](#NetworkPacketCapture), [NetworkPacketCaptureStatus](#NetworkPacketCaptureStatus)
+Appears on:[NetworkPacketCapture](#networkpacketcapture), [NetworkPacketCaptureStatus](#networkpacketcapturestatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `filter` | ***[[]NetworkPacketCaptureSpecFilter](#NetworkPacketCaptureSpecFilter)***| ***(Optional)*** |
+| `filter` | ***[[]NetworkPacketCaptureSpecFilter](#networkpacketcapturespecfilter)***| ***(Optional)*** |
 | `maximumBytesPerPacket` | ***int***| ***(Optional)*** |
 | `maximumBytesPerSession` | ***int***| ***(Optional)*** |
 | `maximumCaptureDuration` | ***int***| ***(Optional)*** |
 | `name` | ***string***||
 | `networkWatcherName` | ***string***||
 | `resourceGroupName` | ***string***||
-| `storageLocation` | ***[[]NetworkPacketCaptureSpecStorageLocation](#NetworkPacketCaptureSpecStorageLocation)***||
+| `storageLocation` | ***[[]NetworkPacketCaptureSpecStorageLocation](#networkpacketcapturespecstoragelocation)***||
 | `targetResourceID` | ***string***||
 ## NetworkPacketCaptureSpecFilter
 
-Appears on:[NetworkPacketCaptureSpec](#NetworkPacketCaptureSpec)
+Appears on:[NetworkPacketCaptureSpec](#networkpacketcapturespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -48,7 +48,7 @@ Appears on:[NetworkPacketCaptureSpec](#NetworkPacketCaptureSpec)
 | `remotePort` | ***string***| ***(Optional)*** |
 ## NetworkPacketCaptureSpecStorageLocation
 
-Appears on:[NetworkPacketCaptureSpec](#NetworkPacketCaptureSpec)
+Appears on:[NetworkPacketCaptureSpec](#networkpacketcapturespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -57,11 +57,11 @@ Appears on:[NetworkPacketCaptureSpec](#NetworkPacketCaptureSpec)
 | `storagePath` | ***string***| ***(Optional)*** |
 ## NetworkPacketCaptureStatus
 
-Appears on:[NetworkPacketCapture](#NetworkPacketCapture)
+Appears on:[NetworkPacketCapture](#networkpacketcapture)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[NetworkPacketCaptureSpec](#NetworkPacketCaptureSpec)***| ***(Optional)*** |
+| `output` | ***[NetworkPacketCaptureSpec](#networkpacketcapturespec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---

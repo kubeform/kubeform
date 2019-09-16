@@ -16,11 +16,11 @@ section_menu_id: reference
 | `apiVersion` | string | `google.kubeform.com/v1alpha1` |
 |    `kind` | string | `MonitoringGroup` |
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
-| `spec` | ***[MonitoringGroupSpec](#MonitoringGroupSpec)***||
-| `status` | ***[MonitoringGroupStatus](#MonitoringGroupStatus)***||
+| `spec` | ***[MonitoringGroupSpec](#monitoringgroupspec)***||
+| `status` | ***[MonitoringGroupStatus](#monitoringgroupstatus)***||
 ## MonitoringGroupSpec
 
-Appears on:[MonitoringGroup](#MonitoringGroup), [MonitoringGroupStatus](#MonitoringGroupStatus)
+Appears on:[MonitoringGroup](#monitoringgroup), [MonitoringGroupStatus](#monitoringgroupstatus)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,11 +34,11 @@ Appears on:[MonitoringGroup](#MonitoringGroup), [MonitoringGroupStatus](#Monitor
 | `project` | ***string***| ***(Optional)*** |
 ## MonitoringGroupStatus
 
-Appears on:[MonitoringGroup](#MonitoringGroup)
+Appears on:[MonitoringGroup](#monitoringgroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
-| `output` | ***[MonitoringGroupSpec](#MonitoringGroupSpec)***| ***(Optional)*** |
+| `output` | ***[MonitoringGroupSpec](#monitoringgroupspec)***| ***(Optional)*** |
 | `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
 ---
