@@ -3,7 +3,7 @@ title: DigitalOcean
 menu:
   docs_{{ .version }}:
     identifier: readme-digitalocean
-    name: DigitalOcean
+    name: Overview
     parent: digitalocean-guides
     weight: 10
 menu_name: docs_{{ .version }}

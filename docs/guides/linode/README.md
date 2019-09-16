@@ -3,7 +3,7 @@ title: Linode
 menu:
   docs_{{ .version }}:
     identifier: readme-linode
-    name: Linode
+    name: Overview
     parent: linode-guides
     weight: 1
 menu_name: docs_{{ .version }}
