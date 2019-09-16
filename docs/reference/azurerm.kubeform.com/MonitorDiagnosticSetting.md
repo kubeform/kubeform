@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MonitorDiagnosticSettingSpec](#MonitorDiagnosticSettingSpec)***||
 | `status` | ***[MonitorDiagnosticSettingStatus](#MonitorDiagnosticSettingStatus)***||
 ## MonitorDiagnosticSettingSpec
-##### (Appears on:[MonitorDiagnosticSetting](#MonitorDiagnosticSetting), [MonitorDiagnosticSettingStatus](#MonitorDiagnosticSettingStatus))
+
+Appears on:[MonitorDiagnosticSetting](#MonitorDiagnosticSetting), [MonitorDiagnosticSettingStatus](#MonitorDiagnosticSettingStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,33 +35,43 @@ section_menu_id: reference
 | `storageAccountID` | ***string***| ***(Optional)*** |
 | `targetResourceID` | ***string***||
 ## MonitorDiagnosticSettingSpecLog
-##### (Appears on:[MonitorDiagnosticSettingSpec](#MonitorDiagnosticSettingSpec))
+
+Appears on:[MonitorDiagnosticSettingSpec](#MonitorDiagnosticSettingSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `category` | ***string***||
 | `enabled` | ***bool***| ***(Optional)*** |
 | `retentionPolicy` | ***[[]MonitorDiagnosticSettingSpecLogRetentionPolicy](#MonitorDiagnosticSettingSpecLogRetentionPolicy)***||
 ## MonitorDiagnosticSettingSpecLogRetentionPolicy
-##### (Appears on:[MonitorDiagnosticSettingSpecLog](#MonitorDiagnosticSettingSpecLog))
+
+Appears on:[MonitorDiagnosticSettingSpecLog](#MonitorDiagnosticSettingSpecLog)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `days` | ***int***| ***(Optional)*** |
 | `enabled` | ***bool***||
 ## MonitorDiagnosticSettingSpecMetric
-##### (Appears on:[MonitorDiagnosticSettingSpec](#MonitorDiagnosticSettingSpec))
+
+Appears on:[MonitorDiagnosticSettingSpec](#MonitorDiagnosticSettingSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `category` | ***string***||
 | `enabled` | ***bool***| ***(Optional)*** |
 | `retentionPolicy` | ***[[]MonitorDiagnosticSettingSpecMetricRetentionPolicy](#MonitorDiagnosticSettingSpecMetricRetentionPolicy)***||
 ## MonitorDiagnosticSettingSpecMetricRetentionPolicy
-##### (Appears on:[MonitorDiagnosticSettingSpecMetric](#MonitorDiagnosticSettingSpecMetric))
+
+Appears on:[MonitorDiagnosticSettingSpecMetric](#MonitorDiagnosticSettingSpecMetric)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `days` | ***int***| ***(Optional)*** |
 | `enabled` | ***bool***||
 ## MonitorDiagnosticSettingStatus
-##### (Appears on:[MonitorDiagnosticSetting](#MonitorDiagnosticSetting))
+
+Appears on:[MonitorDiagnosticSetting](#MonitorDiagnosticSetting)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

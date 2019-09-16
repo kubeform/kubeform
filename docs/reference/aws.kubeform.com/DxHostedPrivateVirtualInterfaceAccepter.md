@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DxHostedPrivateVirtualInterfaceAccepterSpec](#DxHostedPrivateVirtualInterfaceAccepterSpec)***||
 | `status` | ***[DxHostedPrivateVirtualInterfaceAccepterStatus](#DxHostedPrivateVirtualInterfaceAccepterStatus)***||
 ## DxHostedPrivateVirtualInterfaceAccepterSpec
-##### (Appears on:[DxHostedPrivateVirtualInterfaceAccepter](#DxHostedPrivateVirtualInterfaceAccepter), [DxHostedPrivateVirtualInterfaceAccepterStatus](#DxHostedPrivateVirtualInterfaceAccepterStatus))
+
+Appears on:[DxHostedPrivateVirtualInterfaceAccepter](#DxHostedPrivateVirtualInterfaceAccepter), [DxHostedPrivateVirtualInterfaceAccepterStatus](#DxHostedPrivateVirtualInterfaceAccepterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `virtualInterfaceID` | ***string***||
 | `vpnGatewayID` | ***string***| ***(Optional)*** |
 ## DxHostedPrivateVirtualInterfaceAccepterStatus
-##### (Appears on:[DxHostedPrivateVirtualInterfaceAccepter](#DxHostedPrivateVirtualInterfaceAccepter))
+
+Appears on:[DxHostedPrivateVirtualInterfaceAccepter](#DxHostedPrivateVirtualInterfaceAccepter)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

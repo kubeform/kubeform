@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StorageBucketObjectSpec](#StorageBucketObjectSpec)***||
 | `status` | ***[StorageBucketObjectStatus](#StorageBucketObjectStatus)***||
 ## StorageBucketObjectSpec
-##### (Appears on:[StorageBucketObject](#StorageBucketObject), [StorageBucketObjectStatus](#StorageBucketObjectStatus))
+
+Appears on:[StorageBucketObject](#StorageBucketObject), [StorageBucketObjectStatus](#StorageBucketObjectStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,7 +40,9 @@ section_menu_id: reference
 | `source` | ***string***| ***(Optional)*** |
 | `storageClass` | ***string***| ***(Optional)*** |
 ## StorageBucketObjectStatus
-##### (Appears on:[StorageBucketObject](#StorageBucketObject))
+
+Appears on:[StorageBucketObject](#StorageBucketObject)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Ec2TransitGatewayVpcAttachmentAccepterSpec](#Ec2TransitGatewayVpcAttachmentAccepterSpec)***||
 | `status` | ***[Ec2TransitGatewayVpcAttachmentAccepterStatus](#Ec2TransitGatewayVpcAttachmentAccepterStatus)***||
 ## Ec2TransitGatewayVpcAttachmentAccepterSpec
-##### (Appears on:[Ec2TransitGatewayVpcAttachmentAccepter](#Ec2TransitGatewayVpcAttachmentAccepter), [Ec2TransitGatewayVpcAttachmentAccepterStatus](#Ec2TransitGatewayVpcAttachmentAccepterStatus))
+
+Appears on:[Ec2TransitGatewayVpcAttachmentAccepter](#Ec2TransitGatewayVpcAttachmentAccepter), [Ec2TransitGatewayVpcAttachmentAccepterStatus](#Ec2TransitGatewayVpcAttachmentAccepterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,7 +37,9 @@ section_menu_id: reference
 | `vpcID` | ***string***| ***(Optional)*** |
 | `vpcOwnerID` | ***string***| ***(Optional)*** |
 ## Ec2TransitGatewayVpcAttachmentAccepterStatus
-##### (Appears on:[Ec2TransitGatewayVpcAttachmentAccepter](#Ec2TransitGatewayVpcAttachmentAccepter))
+
+Appears on:[Ec2TransitGatewayVpcAttachmentAccepter](#Ec2TransitGatewayVpcAttachmentAccepter)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

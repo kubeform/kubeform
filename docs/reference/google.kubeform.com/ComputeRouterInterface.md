@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeRouterInterfaceSpec](#ComputeRouterInterfaceSpec)***||
 | `status` | ***[ComputeRouterInterfaceStatus](#ComputeRouterInterfaceStatus)***||
 ## ComputeRouterInterfaceSpec
-##### (Appears on:[ComputeRouterInterface](#ComputeRouterInterface), [ComputeRouterInterfaceStatus](#ComputeRouterInterfaceStatus))
+
+Appears on:[ComputeRouterInterface](#ComputeRouterInterface), [ComputeRouterInterfaceStatus](#ComputeRouterInterfaceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `router` | ***string***||
 | `vpnTunnel` | ***string***||
 ## ComputeRouterInterfaceStatus
-##### (Appears on:[ComputeRouterInterface](#ComputeRouterInterface))
+
+Appears on:[ComputeRouterInterface](#ComputeRouterInterface)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

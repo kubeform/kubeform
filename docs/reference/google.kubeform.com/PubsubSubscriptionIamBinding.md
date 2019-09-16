@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[PubsubSubscriptionIamBindingSpec](#PubsubSubscriptionIamBindingSpec)***||
 | `status` | ***[PubsubSubscriptionIamBindingStatus](#PubsubSubscriptionIamBindingStatus)***||
 ## PubsubSubscriptionIamBindingSpec
-##### (Appears on:[PubsubSubscriptionIamBinding](#PubsubSubscriptionIamBinding), [PubsubSubscriptionIamBindingStatus](#PubsubSubscriptionIamBindingStatus))
+
+Appears on:[PubsubSubscriptionIamBinding](#PubsubSubscriptionIamBinding), [PubsubSubscriptionIamBindingStatus](#PubsubSubscriptionIamBindingStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `role` | ***string***||
 | `subscription` | ***string***||
 ## PubsubSubscriptionIamBindingStatus
-##### (Appears on:[PubsubSubscriptionIamBinding](#PubsubSubscriptionIamBinding))
+
+Appears on:[PubsubSubscriptionIamBinding](#PubsubSubscriptionIamBinding)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

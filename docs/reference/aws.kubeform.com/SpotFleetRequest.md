@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SpotFleetRequestSpec](#SpotFleetRequestSpec)***||
 | `status` | ***[SpotFleetRequestStatus](#SpotFleetRequestStatus)***||
 ## SpotFleetRequestSpec
-##### (Appears on:[SpotFleetRequest](#SpotFleetRequest), [SpotFleetRequestStatus](#SpotFleetRequestStatus))
+
+Appears on:[SpotFleetRequest](#SpotFleetRequest), [SpotFleetRequestStatus](#SpotFleetRequestStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,7 +45,9 @@ section_menu_id: reference
 | `validUntil` | ***string***| ***(Optional)*** |
 | `waitForFulfillment` | ***bool***| ***(Optional)*** |
 ## SpotFleetRequestSpecLaunchSpecification
-##### (Appears on:[SpotFleetRequestSpec](#SpotFleetRequestSpec))
+
+Appears on:[SpotFleetRequestSpec](#SpotFleetRequestSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ami` | ***string***||
@@ -67,7 +71,9 @@ section_menu_id: reference
 | `vpcSecurityGroupIDS` | ***[]string***| ***(Optional)*** |
 | `weightedCapacity` | ***string***| ***(Optional)*** |
 ## SpotFleetRequestSpecLaunchSpecificationEbsBlockDevice
-##### (Appears on:[SpotFleetRequestSpecLaunchSpecification](#SpotFleetRequestSpecLaunchSpecification))
+
+Appears on:[SpotFleetRequestSpecLaunchSpecification](#SpotFleetRequestSpecLaunchSpecification)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
@@ -78,13 +84,17 @@ section_menu_id: reference
 | `volumeSize` | ***int***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## SpotFleetRequestSpecLaunchSpecificationEphemeralBlockDevice
-##### (Appears on:[SpotFleetRequestSpecLaunchSpecification](#SpotFleetRequestSpecLaunchSpecification))
+
+Appears on:[SpotFleetRequestSpecLaunchSpecification](#SpotFleetRequestSpecLaunchSpecification)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deviceName` | ***string***||
 | `virtualName` | ***string***||
 ## SpotFleetRequestSpecLaunchSpecificationRootBlockDevice
-##### (Appears on:[SpotFleetRequestSpecLaunchSpecification](#SpotFleetRequestSpecLaunchSpecification))
+
+Appears on:[SpotFleetRequestSpecLaunchSpecification](#SpotFleetRequestSpecLaunchSpecification)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
@@ -92,7 +102,9 @@ section_menu_id: reference
 | `volumeSize` | ***int***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## SpotFleetRequestStatus
-##### (Appears on:[SpotFleetRequest](#SpotFleetRequest))
+
+Appears on:[SpotFleetRequest](#SpotFleetRequest)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CloudwatchMetricAlarmSpec](#CloudwatchMetricAlarmSpec)***||
 | `status` | ***[CloudwatchMetricAlarmStatus](#CloudwatchMetricAlarmStatus)***||
 ## CloudwatchMetricAlarmSpec
-##### (Appears on:[CloudwatchMetricAlarm](#CloudwatchMetricAlarm), [CloudwatchMetricAlarmStatus](#CloudwatchMetricAlarmStatus))
+
+Appears on:[CloudwatchMetricAlarm](#CloudwatchMetricAlarm), [CloudwatchMetricAlarmStatus](#CloudwatchMetricAlarmStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -47,7 +49,9 @@ section_menu_id: reference
 | `treatMissingData` | ***string***| ***(Optional)*** |
 | `unit` | ***string***| ***(Optional)*** |
 ## CloudwatchMetricAlarmSpecMetricQuery
-##### (Appears on:[CloudwatchMetricAlarmSpec](#CloudwatchMetricAlarmSpec))
+
+Appears on:[CloudwatchMetricAlarmSpec](#CloudwatchMetricAlarmSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `expression` | ***string***| ***(Optional)*** |
@@ -56,7 +60,9 @@ section_menu_id: reference
 | `metric` | ***[[]CloudwatchMetricAlarmSpecMetricQueryMetric](#CloudwatchMetricAlarmSpecMetricQueryMetric)***| ***(Optional)*** |
 | `returnData` | ***bool***| ***(Optional)*** |
 ## CloudwatchMetricAlarmSpecMetricQueryMetric
-##### (Appears on:[CloudwatchMetricAlarmSpecMetricQuery](#CloudwatchMetricAlarmSpecMetricQuery))
+
+Appears on:[CloudwatchMetricAlarmSpecMetricQuery](#CloudwatchMetricAlarmSpecMetricQuery)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dimensions` | ***map[string]string***| ***(Optional)*** |
@@ -66,7 +72,9 @@ section_menu_id: reference
 | `stat` | ***string***||
 | `unit` | ***string***| ***(Optional)*** |
 ## CloudwatchMetricAlarmStatus
-##### (Appears on:[CloudwatchMetricAlarm](#CloudwatchMetricAlarm))
+
+Appears on:[CloudwatchMetricAlarm](#CloudwatchMetricAlarm)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

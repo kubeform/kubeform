@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AppServiceSlotSpec](#AppServiceSlotSpec)***||
 | `status` | ***[AppServiceSlotStatus](#AppServiceSlotStatus)***||
 ## AppServiceSlotSpec
-##### (Appears on:[AppServiceSlot](#AppServiceSlot), [AppServiceSlotStatus](#AppServiceSlotStatus))
+
+Appears on:[AppServiceSlot](#AppServiceSlot), [AppServiceSlotStatus](#AppServiceSlotStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -42,7 +44,9 @@ section_menu_id: reference
 | `siteCredential` | ***[[]AppServiceSlotSpecSiteCredential](#AppServiceSlotSpecSiteCredential)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## AppServiceSlotSpecAuthSettings
-##### (Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec))
+
+Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `activeDirectory` | ***[[]AppServiceSlotSpecAuthSettingsActiveDirectory](#AppServiceSlotSpecAuthSettingsActiveDirectory)***| ***(Optional)*** |
@@ -60,42 +64,56 @@ section_menu_id: reference
 | `twitter` | ***[[]AppServiceSlotSpecAuthSettingsTwitter](#AppServiceSlotSpecAuthSettingsTwitter)***| ***(Optional)*** |
 | `unauthenticatedClientAction` | ***string***| ***(Optional)*** |
 ## AppServiceSlotSpecAuthSettingsActiveDirectory
-##### (Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings))
+
+Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowedAudiences` | ***[]string***| ***(Optional)*** |
 | `clientID` | ***string***||
 ## AppServiceSlotSpecAuthSettingsFacebook
-##### (Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings))
+
+Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `appID` | ***string***||
 | `oauthScopes` | ***[]string***| ***(Optional)*** |
 ## AppServiceSlotSpecAuthSettingsGoogle
-##### (Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings))
+
+Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `clientID` | ***string***||
 | `oauthScopes` | ***[]string***| ***(Optional)*** |
 ## AppServiceSlotSpecAuthSettingsMicrosoft
-##### (Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings))
+
+Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `clientID` | ***string***||
 | `oauthScopes` | ***[]string***| ***(Optional)*** |
 ## AppServiceSlotSpecAuthSettingsTwitter
-##### (Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings))
+
+Appears on:[AppServiceSlotSpecAuthSettings](#AppServiceSlotSpecAuthSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `consumerKey` | ***string***||
 ## AppServiceSlotSpecConnectionString
-##### (Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec))
+
+Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `type` | ***string***||
 ## AppServiceSlotSpecIdentity
-##### (Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec))
+
+Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `identityIDS` | ***[]string***| ***(Optional)*** |
@@ -103,7 +121,9 @@ section_menu_id: reference
 | `tenantID` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## AppServiceSlotSpecSiteConfig
-##### (Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec))
+
+Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `alwaysOn` | ***bool***| ***(Optional)*** |
@@ -131,24 +151,32 @@ section_menu_id: reference
 | `websocketsEnabled` | ***bool***| ***(Optional)*** |
 | `windowsFxVersion` | ***string***| ***(Optional)*** |
 ## AppServiceSlotSpecSiteConfigCors
-##### (Appears on:[AppServiceSlotSpecSiteConfig](#AppServiceSlotSpecSiteConfig))
+
+Appears on:[AppServiceSlotSpecSiteConfig](#AppServiceSlotSpecSiteConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowedOrigins` | ***[]string***||
 | `supportCredentials` | ***bool***| ***(Optional)*** |
 ## AppServiceSlotSpecSiteConfigIpRestriction
-##### (Appears on:[AppServiceSlotSpecSiteConfig](#AppServiceSlotSpecSiteConfig))
+
+Appears on:[AppServiceSlotSpecSiteConfig](#AppServiceSlotSpecSiteConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ipAddress` | ***string***||
 | `subnetMask` | ***string***| ***(Optional)*** |
 ## AppServiceSlotSpecSiteCredential
-##### (Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec))
+
+Appears on:[AppServiceSlotSpec](#AppServiceSlotSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `username` | ***string***| ***(Optional)*** |
 ## AppServiceSlotStatus
-##### (Appears on:[AppServiceSlot](#AppServiceSlot))
+
+Appears on:[AppServiceSlot](#AppServiceSlot)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

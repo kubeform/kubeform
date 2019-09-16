@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[PinpointAppSpec](#PinpointAppSpec)***||
 | `status` | ***[PinpointAppStatus](#PinpointAppStatus)***||
 ## PinpointAppSpec
-##### (Appears on:[PinpointApp](#PinpointApp), [PinpointAppStatus](#PinpointAppStatus))
+
+Appears on:[PinpointApp](#PinpointApp), [PinpointAppStatus](#PinpointAppStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,14 +33,18 @@ section_menu_id: reference
 | `namePrefix` | ***string***| ***(Optional)*** |
 | `quietTime` | ***[[]PinpointAppSpecQuietTime](#PinpointAppSpecQuietTime)***| ***(Optional)*** |
 ## PinpointAppSpecCampaignHook
-##### (Appears on:[PinpointAppSpec](#PinpointAppSpec))
+
+Appears on:[PinpointAppSpec](#PinpointAppSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `lambdaFunctionName` | ***string***| ***(Optional)*** |
 | `mode` | ***string***| ***(Optional)*** |
 | `webURL` | ***string***| ***(Optional)*** |
 ## PinpointAppSpecLimits
-##### (Appears on:[PinpointAppSpec](#PinpointAppSpec))
+
+Appears on:[PinpointAppSpec](#PinpointAppSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `daily` | ***int***| ***(Optional)*** |
@@ -46,13 +52,17 @@ section_menu_id: reference
 | `messagesPerSecond` | ***int***| ***(Optional)*** |
 | `total` | ***int***| ***(Optional)*** |
 ## PinpointAppSpecQuietTime
-##### (Appears on:[PinpointAppSpec](#PinpointAppSpec))
+
+Appears on:[PinpointAppSpec](#PinpointAppSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `end` | ***string***| ***(Optional)*** |
 | `start` | ***string***| ***(Optional)*** |
 ## PinpointAppStatus
-##### (Appears on:[PinpointApp](#PinpointApp))
+
+Appears on:[PinpointApp](#PinpointApp)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

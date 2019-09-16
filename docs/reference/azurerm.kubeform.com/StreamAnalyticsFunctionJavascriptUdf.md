@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StreamAnalyticsFunctionJavascriptUdfSpec](#StreamAnalyticsFunctionJavascriptUdfSpec)***||
 | `status` | ***[StreamAnalyticsFunctionJavascriptUdfStatus](#StreamAnalyticsFunctionJavascriptUdfStatus)***||
 ## StreamAnalyticsFunctionJavascriptUdfSpec
-##### (Appears on:[StreamAnalyticsFunctionJavascriptUdf](#StreamAnalyticsFunctionJavascriptUdf), [StreamAnalyticsFunctionJavascriptUdfStatus](#StreamAnalyticsFunctionJavascriptUdfStatus))
+
+Appears on:[StreamAnalyticsFunctionJavascriptUdf](#StreamAnalyticsFunctionJavascriptUdf), [StreamAnalyticsFunctionJavascriptUdfStatus](#StreamAnalyticsFunctionJavascriptUdfStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,17 +33,23 @@ section_menu_id: reference
 | `script` | ***string***||
 | `streamAnalyticsJobName` | ***string***||
 ## StreamAnalyticsFunctionJavascriptUdfSpecInput
-##### (Appears on:[StreamAnalyticsFunctionJavascriptUdfSpec](#StreamAnalyticsFunctionJavascriptUdfSpec))
+
+Appears on:[StreamAnalyticsFunctionJavascriptUdfSpec](#StreamAnalyticsFunctionJavascriptUdfSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 ## StreamAnalyticsFunctionJavascriptUdfSpecOutput
-##### (Appears on:[StreamAnalyticsFunctionJavascriptUdfSpec](#StreamAnalyticsFunctionJavascriptUdfSpec))
+
+Appears on:[StreamAnalyticsFunctionJavascriptUdfSpec](#StreamAnalyticsFunctionJavascriptUdfSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 ## StreamAnalyticsFunctionJavascriptUdfStatus
-##### (Appears on:[StreamAnalyticsFunctionJavascriptUdf](#StreamAnalyticsFunctionJavascriptUdf))
+
+Appears on:[StreamAnalyticsFunctionJavascriptUdf](#StreamAnalyticsFunctionJavascriptUdf)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

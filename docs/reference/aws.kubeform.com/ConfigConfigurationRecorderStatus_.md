@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ConfigConfigurationRecorderStatus_Spec](#ConfigConfigurationRecorderStatus_Spec)***||
 | `status` | ***[ConfigConfigurationRecorderStatus_Status](#ConfigConfigurationRecorderStatus_Status)***||
 ## ConfigConfigurationRecorderStatus_Spec
-##### (Appears on:[ConfigConfigurationRecorderStatus_](#ConfigConfigurationRecorderStatus_), [ConfigConfigurationRecorderStatus_Status](#ConfigConfigurationRecorderStatus_Status))
+
+Appears on:[ConfigConfigurationRecorderStatus_](#ConfigConfigurationRecorderStatus_), [ConfigConfigurationRecorderStatus_Status](#ConfigConfigurationRecorderStatus_Status)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `isEnabled` | ***bool***||
 | `name` | ***string***||
 ## ConfigConfigurationRecorderStatus_Status
-##### (Appears on:[ConfigConfigurationRecorderStatus_](#ConfigConfigurationRecorderStatus_))
+
+Appears on:[ConfigConfigurationRecorderStatus_](#ConfigConfigurationRecorderStatus_)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

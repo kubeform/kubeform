@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[EventhubSpec](#EventhubSpec)***||
 | `status` | ***[EventhubStatus](#EventhubStatus)***||
 ## EventhubSpec
-##### (Appears on:[Eventhub](#Eventhub), [EventhubStatus](#EventhubStatus))
+
+Appears on:[Eventhub](#Eventhub), [EventhubStatus](#EventhubStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `partitionIDS` | ***[]string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 ## EventhubSpecCaptureDescription
-##### (Appears on:[EventhubSpec](#EventhubSpec))
+
+Appears on:[EventhubSpec](#EventhubSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `destination` | ***[[]EventhubSpecCaptureDescriptionDestination](#EventhubSpecCaptureDescriptionDestination)***||
@@ -43,7 +47,9 @@ section_menu_id: reference
 | `sizeLimitInBytes` | ***int***| ***(Optional)*** |
 | `skipEmptyArchives` | ***bool***| ***(Optional)*** |
 ## EventhubSpecCaptureDescriptionDestination
-##### (Appears on:[EventhubSpecCaptureDescription](#EventhubSpecCaptureDescription))
+
+Appears on:[EventhubSpecCaptureDescription](#EventhubSpecCaptureDescription)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `archiveNameFormat` | ***string***||
@@ -51,7 +57,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `storageAccountID` | ***string***||
 ## EventhubStatus
-##### (Appears on:[Eventhub](#Eventhub))
+
+Appears on:[Eventhub](#Eventhub)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

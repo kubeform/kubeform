@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VirtualNetworkGatewaySpec](#VirtualNetworkGatewaySpec)***||
 | `status` | ***[VirtualNetworkGatewayStatus](#VirtualNetworkGatewayStatus)***||
 ## VirtualNetworkGatewaySpec
-##### (Appears on:[VirtualNetworkGateway](#VirtualNetworkGateway), [VirtualNetworkGatewayStatus](#VirtualNetworkGatewayStatus))
+
+Appears on:[VirtualNetworkGateway](#VirtualNetworkGateway), [VirtualNetworkGatewayStatus](#VirtualNetworkGatewayStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,14 +40,18 @@ section_menu_id: reference
 | `vpnClientConfiguration` | ***[[]VirtualNetworkGatewaySpecVpnClientConfiguration](#VirtualNetworkGatewaySpecVpnClientConfiguration)***| ***(Optional)*** |
 | `vpnType` | ***string***| ***(Optional)*** |
 ## VirtualNetworkGatewaySpecBgpSettings
-##### (Appears on:[VirtualNetworkGatewaySpec](#VirtualNetworkGatewaySpec))
+
+Appears on:[VirtualNetworkGatewaySpec](#VirtualNetworkGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `asn` | ***int***| ***(Optional)*** |
 | `peerWeight` | ***int***| ***(Optional)*** |
 | `peeringAddress` | ***string***| ***(Optional)*** |
 ## VirtualNetworkGatewaySpecIpConfiguration
-##### (Appears on:[VirtualNetworkGatewaySpec](#VirtualNetworkGatewaySpec))
+
+Appears on:[VirtualNetworkGatewaySpec](#VirtualNetworkGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***| ***(Optional)*** |
@@ -53,7 +59,9 @@ section_menu_id: reference
 | `publicIPAddressID` | ***string***| ***(Optional)*** |
 | `subnetID` | ***string***||
 ## VirtualNetworkGatewaySpecVpnClientConfiguration
-##### (Appears on:[VirtualNetworkGatewaySpec](#VirtualNetworkGatewaySpec))
+
+Appears on:[VirtualNetworkGatewaySpec](#VirtualNetworkGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `addressSpace` | ***[]string***||
@@ -63,19 +71,25 @@ section_menu_id: reference
 | `rootCertificate` | ***[[]VirtualNetworkGatewaySpecVpnClientConfigurationRootCertificate](#VirtualNetworkGatewaySpecVpnClientConfigurationRootCertificate)***| ***(Optional)*** |
 | `vpnClientProtocols` | ***[]string***| ***(Optional)*** |
 ## VirtualNetworkGatewaySpecVpnClientConfigurationRevokedCertificate
-##### (Appears on:[VirtualNetworkGatewaySpecVpnClientConfiguration](#VirtualNetworkGatewaySpecVpnClientConfiguration))
+
+Appears on:[VirtualNetworkGatewaySpecVpnClientConfiguration](#VirtualNetworkGatewaySpecVpnClientConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `thumbprint` | ***string***||
 ## VirtualNetworkGatewaySpecVpnClientConfigurationRootCertificate
-##### (Appears on:[VirtualNetworkGatewaySpecVpnClientConfiguration](#VirtualNetworkGatewaySpecVpnClientConfiguration))
+
+Appears on:[VirtualNetworkGatewaySpecVpnClientConfiguration](#VirtualNetworkGatewaySpecVpnClientConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `publicCertData` | ***string***||
 ## VirtualNetworkGatewayStatus
-##### (Appears on:[VirtualNetworkGateway](#VirtualNetworkGateway))
+
+Appears on:[VirtualNetworkGateway](#VirtualNetworkGateway)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

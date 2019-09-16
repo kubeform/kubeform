@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SharedImageGallerySpec](#SharedImageGallerySpec)***||
 | `status` | ***[SharedImageGalleryStatus](#SharedImageGalleryStatus)***||
 ## SharedImageGallerySpec
-##### (Appears on:[SharedImageGallery](#SharedImageGallery), [SharedImageGalleryStatus](#SharedImageGalleryStatus))
+
+Appears on:[SharedImageGallery](#SharedImageGallery), [SharedImageGalleryStatus](#SharedImageGalleryStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `uniqueName` | ***string***| ***(Optional)*** |
 ## SharedImageGalleryStatus
-##### (Appears on:[SharedImageGallery](#SharedImageGallery))
+
+Appears on:[SharedImageGallery](#SharedImageGallery)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

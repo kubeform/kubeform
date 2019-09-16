@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DatabricksWorkspaceSpec](#DatabricksWorkspaceSpec)***||
 | `status` | ***[DatabricksWorkspaceStatus](#DatabricksWorkspaceStatus)***||
 ## DatabricksWorkspaceSpec
-##### (Appears on:[DatabricksWorkspace](#DatabricksWorkspace), [DatabricksWorkspaceStatus](#DatabricksWorkspaceStatus))
+
+Appears on:[DatabricksWorkspace](#DatabricksWorkspace), [DatabricksWorkspaceStatus](#DatabricksWorkspaceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `sku` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DatabricksWorkspaceStatus
-##### (Appears on:[DatabricksWorkspace](#DatabricksWorkspace))
+
+Appears on:[DatabricksWorkspace](#DatabricksWorkspace)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WafWebACLSpec](#WafWebACLSpec)***||
 | `status` | ***[WafWebACLStatus](#WafWebACLStatus)***||
 ## WafWebACLSpec
-##### (Appears on:[WafWebACL](#WafWebACL), [WafWebACLStatus](#WafWebACLStatus))
+
+Appears on:[WafWebACL](#WafWebACL), [WafWebACLStatus](#WafWebACLStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,29 +33,39 @@ section_menu_id: reference
 | `name` | ***string***||
 | `rules` | ***[[]WafWebACLSpecRules](#WafWebACLSpecRules)***| ***(Optional)*** |
 ## WafWebACLSpecDefaultAction
-##### (Appears on:[WafWebACLSpec](#WafWebACLSpec))
+
+Appears on:[WafWebACLSpec](#WafWebACLSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 ## WafWebACLSpecLoggingConfiguration
-##### (Appears on:[WafWebACLSpec](#WafWebACLSpec))
+
+Appears on:[WafWebACLSpec](#WafWebACLSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `logDestination` | ***string***||
 | `redactedFields` | ***[[]WafWebACLSpecLoggingConfigurationRedactedFields](#WafWebACLSpecLoggingConfigurationRedactedFields)***| ***(Optional)*** |
 ## WafWebACLSpecLoggingConfigurationRedactedFields
-##### (Appears on:[WafWebACLSpecLoggingConfiguration](#WafWebACLSpecLoggingConfiguration))
+
+Appears on:[WafWebACLSpecLoggingConfiguration](#WafWebACLSpecLoggingConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `fieldToMatch` | ***[[]WafWebACLSpecLoggingConfigurationRedactedFieldsFieldToMatch](#WafWebACLSpecLoggingConfigurationRedactedFieldsFieldToMatch)***||
 ## WafWebACLSpecLoggingConfigurationRedactedFieldsFieldToMatch
-##### (Appears on:[WafWebACLSpecLoggingConfigurationRedactedFields](#WafWebACLSpecLoggingConfigurationRedactedFields))
+
+Appears on:[WafWebACLSpecLoggingConfigurationRedactedFields](#WafWebACLSpecLoggingConfigurationRedactedFields)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `data` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## WafWebACLSpecRules
-##### (Appears on:[WafWebACLSpec](#WafWebACLSpec))
+
+Appears on:[WafWebACLSpec](#WafWebACLSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***[[]WafWebACLSpecRulesAction](#WafWebACLSpecRulesAction)***| ***(Optional)*** |
@@ -62,17 +74,23 @@ section_menu_id: reference
 | `ruleID` | ***string***||
 | `type` | ***string***| ***(Optional)*** |
 ## WafWebACLSpecRulesAction
-##### (Appears on:[WafWebACLSpecRules](#WafWebACLSpecRules))
+
+Appears on:[WafWebACLSpecRules](#WafWebACLSpecRules)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 ## WafWebACLSpecRulesOverrideAction
-##### (Appears on:[WafWebACLSpecRules](#WafWebACLSpecRules))
+
+Appears on:[WafWebACLSpecRules](#WafWebACLSpecRules)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 ## WafWebACLStatus
-##### (Appears on:[WafWebACL](#WafWebACL))
+
+Appears on:[WafWebACL](#WafWebACL)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

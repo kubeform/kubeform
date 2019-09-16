@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CosmosdbAccountSpec](#CosmosdbAccountSpec)***||
 | `status` | ***[CosmosdbAccountStatus](#CosmosdbAccountStatus)***||
 ## CosmosdbAccountSpec
-##### (Appears on:[CosmosdbAccount](#CosmosdbAccount), [CosmosdbAccountStatus](#CosmosdbAccountStatus))
+
+Appears on:[CosmosdbAccount](#CosmosdbAccount), [CosmosdbAccountStatus](#CosmosdbAccountStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -44,26 +46,34 @@ section_menu_id: reference
 | `virtualNetworkRule` | ***[[]CosmosdbAccountSpecVirtualNetworkRule](#CosmosdbAccountSpecVirtualNetworkRule)***| ***(Optional)*** |
 | `writeEndpoints` | ***[]string***| ***(Optional)*** |
 ## CosmosdbAccountSpecCapabilities
-##### (Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec))
+
+Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 ## CosmosdbAccountSpecConsistencyPolicy
-##### (Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec))
+
+Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `consistencyLevel` | ***string***||
 | `maxIntervalInSeconds` | ***int***| ***(Optional)*** |
 | `maxStalenessPrefix` | ***int***| ***(Optional)*** |
 ## CosmosdbAccountSpecFailoverPolicy
-##### (Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec))
+
+Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
 | `location` | ***string***||
 | `priority` | ***int***||
 ## CosmosdbAccountSpecGeoLocation
-##### (Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec))
+
+Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `failoverPriority` | ***int***||
@@ -71,12 +81,16 @@ section_menu_id: reference
 | `location` | ***string***||
 | `prefix` | ***string***| ***(Optional)*** |
 ## CosmosdbAccountSpecVirtualNetworkRule
-##### (Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec))
+
+Appears on:[CosmosdbAccountSpec](#CosmosdbAccountSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***||
 ## CosmosdbAccountStatus
-##### (Appears on:[CosmosdbAccount](#CosmosdbAccount))
+
+Appears on:[CosmosdbAccount](#CosmosdbAccount)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

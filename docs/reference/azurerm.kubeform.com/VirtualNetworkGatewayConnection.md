@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VirtualNetworkGatewayConnectionSpec](#VirtualNetworkGatewayConnectionSpec)***||
 | `status` | ***[VirtualNetworkGatewayConnectionStatus](#VirtualNetworkGatewayConnectionStatus)***||
 ## VirtualNetworkGatewayConnectionSpec
-##### (Appears on:[VirtualNetworkGatewayConnection](#VirtualNetworkGatewayConnection), [VirtualNetworkGatewayConnectionStatus](#VirtualNetworkGatewayConnectionStatus))
+
+Appears on:[VirtualNetworkGatewayConnection](#VirtualNetworkGatewayConnection), [VirtualNetworkGatewayConnectionStatus](#VirtualNetworkGatewayConnectionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -40,7 +42,9 @@ section_menu_id: reference
 | `usePolicyBasedTrafficSelectors` | ***bool***| ***(Optional)*** |
 | `virtualNetworkGatewayID` | ***string***||
 ## VirtualNetworkGatewayConnectionSpecIpsecPolicy
-##### (Appears on:[VirtualNetworkGatewayConnectionSpec](#VirtualNetworkGatewayConnectionSpec))
+
+Appears on:[VirtualNetworkGatewayConnectionSpec](#VirtualNetworkGatewayConnectionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dhGroup` | ***string***||
@@ -52,7 +56,9 @@ section_menu_id: reference
 | `saDatasize` | ***int***| ***(Optional)*** |
 | `saLifetime` | ***int***| ***(Optional)*** |
 ## VirtualNetworkGatewayConnectionStatus
-##### (Appears on:[VirtualNetworkGatewayConnection](#VirtualNetworkGatewayConnection))
+
+Appears on:[VirtualNetworkGatewayConnection](#VirtualNetworkGatewayConnection)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AppServiceSpec](#AppServiceSpec)***||
 | `status` | ***[AppServiceStatus](#AppServiceStatus)***||
 ## AppServiceSpec
-##### (Appears on:[AppService](#AppService), [AppServiceStatus](#AppServiceStatus))
+
+Appears on:[AppService](#AppService), [AppServiceStatus](#AppServiceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -48,7 +50,9 @@ section_menu_id: reference
 | `storageAccount` | ***[[]AppServiceSpecStorageAccount](#AppServiceSpecStorageAccount)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## AppServiceSpecAuthSettings
-##### (Appears on:[AppServiceSpec](#AppServiceSpec))
+
+Appears on:[AppServiceSpec](#AppServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `activeDirectory` | ***[[]AppServiceSpecAuthSettingsActiveDirectory](#AppServiceSpecAuthSettingsActiveDirectory)***| ***(Optional)*** |
@@ -66,43 +70,57 @@ section_menu_id: reference
 | `twitter` | ***[[]AppServiceSpecAuthSettingsTwitter](#AppServiceSpecAuthSettingsTwitter)***| ***(Optional)*** |
 | `unauthenticatedClientAction` | ***string***| ***(Optional)*** |
 ## AppServiceSpecAuthSettingsActiveDirectory
-##### (Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings))
+
+Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowedAudiences` | ***[]string***| ***(Optional)*** |
 | `clientID` | ***string***||
 ## AppServiceSpecAuthSettingsFacebook
-##### (Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings))
+
+Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `appID` | ***string***||
 | `oauthScopes` | ***[]string***| ***(Optional)*** |
 ## AppServiceSpecAuthSettingsGoogle
-##### (Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings))
+
+Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `clientID` | ***string***||
 | `oauthScopes` | ***[]string***| ***(Optional)*** |
 ## AppServiceSpecAuthSettingsMicrosoft
-##### (Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings))
+
+Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `clientID` | ***string***||
 | `oauthScopes` | ***[]string***| ***(Optional)*** |
 ## AppServiceSpecAuthSettingsTwitter
-##### (Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings))
+
+Appears on:[AppServiceSpecAuthSettings](#AppServiceSpecAuthSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `consumerKey` | ***string***||
 ## AppServiceSpecBackup
-##### (Appears on:[AppServiceSpec](#AppServiceSpec))
+
+Appears on:[AppServiceSpec](#AppServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `name` | ***string***||
 | `schedule` | ***[[]AppServiceSpecBackupSchedule](#AppServiceSpecBackupSchedule)***||
 ## AppServiceSpecBackupSchedule
-##### (Appears on:[AppServiceSpecBackup](#AppServiceSpecBackup))
+
+Appears on:[AppServiceSpecBackup](#AppServiceSpecBackup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `frequencyInterval` | ***int***||
@@ -111,13 +129,17 @@ section_menu_id: reference
 | `retentionPeriodInDays` | ***int***| ***(Optional)*** |
 | `startTime` | ***string***| ***(Optional)*** |
 ## AppServiceSpecConnectionString
-##### (Appears on:[AppServiceSpec](#AppServiceSpec))
+
+Appears on:[AppServiceSpec](#AppServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `type` | ***string***||
 ## AppServiceSpecIdentity
-##### (Appears on:[AppServiceSpec](#AppServiceSpec))
+
+Appears on:[AppServiceSpec](#AppServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `identityIDS` | ***[]string***| ***(Optional)*** |
@@ -125,23 +147,31 @@ section_menu_id: reference
 | `tenantID` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## AppServiceSpecLogs
-##### (Appears on:[AppServiceSpec](#AppServiceSpec))
+
+Appears on:[AppServiceSpec](#AppServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `applicationLogs` | ***[[]AppServiceSpecLogsApplicationLogs](#AppServiceSpecLogsApplicationLogs)***| ***(Optional)*** |
 ## AppServiceSpecLogsApplicationLogs
-##### (Appears on:[AppServiceSpecLogs](#AppServiceSpecLogs))
+
+Appears on:[AppServiceSpecLogs](#AppServiceSpecLogs)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `azureBlobStorage` | ***[[]AppServiceSpecLogsApplicationLogsAzureBlobStorage](#AppServiceSpecLogsApplicationLogsAzureBlobStorage)***| ***(Optional)*** |
 ## AppServiceSpecLogsApplicationLogsAzureBlobStorage
-##### (Appears on:[AppServiceSpecLogsApplicationLogs](#AppServiceSpecLogsApplicationLogs))
+
+Appears on:[AppServiceSpecLogsApplicationLogs](#AppServiceSpecLogsApplicationLogs)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `level` | ***string***||
 | `retentionInDays` | ***int***||
 ## AppServiceSpecSiteConfig
-##### (Appears on:[AppServiceSpec](#AppServiceSpec))
+
+Appears on:[AppServiceSpec](#AppServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `alwaysOn` | ***bool***| ***(Optional)*** |
@@ -169,30 +199,40 @@ section_menu_id: reference
 | `websocketsEnabled` | ***bool***| ***(Optional)*** |
 | `windowsFxVersion` | ***string***| ***(Optional)*** |
 ## AppServiceSpecSiteConfigCors
-##### (Appears on:[AppServiceSpecSiteConfig](#AppServiceSpecSiteConfig))
+
+Appears on:[AppServiceSpecSiteConfig](#AppServiceSpecSiteConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowedOrigins` | ***[]string***||
 | `supportCredentials` | ***bool***| ***(Optional)*** |
 ## AppServiceSpecSiteConfigIpRestriction
-##### (Appears on:[AppServiceSpecSiteConfig](#AppServiceSpecSiteConfig))
+
+Appears on:[AppServiceSpecSiteConfig](#AppServiceSpecSiteConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ipAddress` | ***string***||
 | `subnetMask` | ***string***| ***(Optional)*** |
 ## AppServiceSpecSiteCredential
-##### (Appears on:[AppServiceSpec](#AppServiceSpec))
+
+Appears on:[AppServiceSpec](#AppServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `username` | ***string***| ***(Optional)*** |
 ## AppServiceSpecSourceControl
-##### (Appears on:[AppServiceSpec](#AppServiceSpec))
+
+Appears on:[AppServiceSpec](#AppServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `branch` | ***string***| ***(Optional)*** |
 | `repoURL` | ***string***| ***(Optional)*** |
 ## AppServiceSpecStorageAccount
-##### (Appears on:[AppServiceSpec](#AppServiceSpec))
+
+Appears on:[AppServiceSpec](#AppServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `accountName` | ***string***||
@@ -201,7 +241,9 @@ section_menu_id: reference
 | `shareName` | ***string***||
 | `type` | ***string***||
 ## AppServiceStatus
-##### (Appears on:[AppService](#AppService))
+
+Appears on:[AppService](#AppService)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

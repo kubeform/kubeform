@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AutomationDscConfigurationSpec](#AutomationDscConfigurationSpec)***||
 | `status` | ***[AutomationDscConfigurationStatus](#AutomationDscConfigurationStatus)***||
 ## AutomationDscConfigurationSpec
-##### (Appears on:[AutomationDscConfiguration](#AutomationDscConfiguration), [AutomationDscConfigurationStatus](#AutomationDscConfigurationStatus))
+
+Appears on:[AutomationDscConfiguration](#AutomationDscConfiguration), [AutomationDscConfigurationStatus](#AutomationDscConfigurationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `state` | ***string***| ***(Optional)*** |
 ## AutomationDscConfigurationStatus
-##### (Appears on:[AutomationDscConfiguration](#AutomationDscConfiguration))
+
+Appears on:[AutomationDscConfiguration](#AutomationDscConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

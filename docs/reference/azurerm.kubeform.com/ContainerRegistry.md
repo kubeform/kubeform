@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ContainerRegistrySpec](#ContainerRegistrySpec)***||
 | `status` | ***[ContainerRegistryStatus](#ContainerRegistryStatus)***||
 ## ContainerRegistrySpec
-##### (Appears on:[ContainerRegistry](#ContainerRegistry), [ContainerRegistryStatus](#ContainerRegistryStatus))
+
+Appears on:[ContainerRegistry](#ContainerRegistry), [ContainerRegistryStatus](#ContainerRegistryStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,24 +40,32 @@ section_menu_id: reference
 | `storageAccountID` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ContainerRegistrySpecNetworkRuleSet
-##### (Appears on:[ContainerRegistrySpec](#ContainerRegistrySpec))
+
+Appears on:[ContainerRegistrySpec](#ContainerRegistrySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultAction` | ***string***| ***(Optional)*** |
 | `ipRule` | ***[[]ContainerRegistrySpecNetworkRuleSetIpRule](#ContainerRegistrySpecNetworkRuleSetIpRule)***| ***(Optional)*** |
 ## ContainerRegistrySpecNetworkRuleSetIpRule
-##### (Appears on:[ContainerRegistrySpecNetworkRuleSet](#ContainerRegistrySpecNetworkRuleSet))
+
+Appears on:[ContainerRegistrySpecNetworkRuleSet](#ContainerRegistrySpecNetworkRuleSet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***string***||
 | `ipRange` | ***string***||
 ## ContainerRegistrySpecStorageAccount
-##### (Appears on:[ContainerRegistrySpec](#ContainerRegistrySpec))
+
+Appears on:[ContainerRegistrySpec](#ContainerRegistrySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 ## ContainerRegistryStatus
-##### (Appears on:[ContainerRegistry](#ContainerRegistry))
+
+Appears on:[ContainerRegistry](#ContainerRegistry)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

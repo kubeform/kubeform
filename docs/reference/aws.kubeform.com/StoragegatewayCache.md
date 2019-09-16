@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StoragegatewayCacheSpec](#StoragegatewayCacheSpec)***||
 | `status` | ***[StoragegatewayCacheStatus](#StoragegatewayCacheStatus)***||
 ## StoragegatewayCacheSpec
-##### (Appears on:[StoragegatewayCache](#StoragegatewayCache), [StoragegatewayCacheStatus](#StoragegatewayCacheStatus))
+
+Appears on:[StoragegatewayCache](#StoragegatewayCache), [StoragegatewayCacheStatus](#StoragegatewayCacheStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `diskID` | ***string***||
 | `gatewayArn` | ***string***||
 ## StoragegatewayCacheStatus
-##### (Appears on:[StoragegatewayCache](#StoragegatewayCache))
+
+Appears on:[StoragegatewayCache](#StoragegatewayCache)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

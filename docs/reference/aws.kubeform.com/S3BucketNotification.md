@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[S3BucketNotificationSpec](#S3BucketNotificationSpec)***||
 | `status` | ***[S3BucketNotificationStatus](#S3BucketNotificationStatus)***||
 ## S3BucketNotificationSpec
-##### (Appears on:[S3BucketNotification](#S3BucketNotification), [S3BucketNotificationStatus](#S3BucketNotificationStatus))
+
+Appears on:[S3BucketNotification](#S3BucketNotification), [S3BucketNotificationStatus](#S3BucketNotificationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `queue` | ***[[]S3BucketNotificationSpecQueue](#S3BucketNotificationSpecQueue)***| ***(Optional)*** |
 | `topic` | ***[[]S3BucketNotificationSpecTopic](#S3BucketNotificationSpecTopic)***| ***(Optional)*** |
 ## S3BucketNotificationSpecLambdaFunction
-##### (Appears on:[S3BucketNotificationSpec](#S3BucketNotificationSpec))
+
+Appears on:[S3BucketNotificationSpec](#S3BucketNotificationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `events` | ***[]string***||
@@ -38,7 +42,9 @@ section_menu_id: reference
 | `ID` | ***string***| ***(Optional)*** |
 | `lambdaFunctionArn` | ***string***| ***(Optional)*** |
 ## S3BucketNotificationSpecQueue
-##### (Appears on:[S3BucketNotificationSpec](#S3BucketNotificationSpec))
+
+Appears on:[S3BucketNotificationSpec](#S3BucketNotificationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `events` | ***[]string***||
@@ -47,7 +53,9 @@ section_menu_id: reference
 | `ID` | ***string***| ***(Optional)*** |
 | `queueArn` | ***string***||
 ## S3BucketNotificationSpecTopic
-##### (Appears on:[S3BucketNotificationSpec](#S3BucketNotificationSpec))
+
+Appears on:[S3BucketNotificationSpec](#S3BucketNotificationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `events` | ***[]string***||
@@ -56,7 +64,9 @@ section_menu_id: reference
 | `ID` | ***string***| ***(Optional)*** |
 | `topicArn` | ***string***||
 ## S3BucketNotificationStatus
-##### (Appears on:[S3BucketNotification](#S3BucketNotification))
+
+Appears on:[S3BucketNotification](#S3BucketNotification)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

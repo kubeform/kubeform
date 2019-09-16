@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[KmsKeyRingIamBindingSpec](#KmsKeyRingIamBindingSpec)***||
 | `status` | ***[KmsKeyRingIamBindingStatus](#KmsKeyRingIamBindingStatus)***||
 ## KmsKeyRingIamBindingSpec
-##### (Appears on:[KmsKeyRingIamBinding](#KmsKeyRingIamBinding), [KmsKeyRingIamBindingStatus](#KmsKeyRingIamBindingStatus))
+
+Appears on:[KmsKeyRingIamBinding](#KmsKeyRingIamBinding), [KmsKeyRingIamBindingStatus](#KmsKeyRingIamBindingStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `members` | ***[]string***||
 | `role` | ***string***||
 ## KmsKeyRingIamBindingStatus
-##### (Appears on:[KmsKeyRingIamBinding](#KmsKeyRingIamBinding))
+
+Appears on:[KmsKeyRingIamBinding](#KmsKeyRingIamBinding)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

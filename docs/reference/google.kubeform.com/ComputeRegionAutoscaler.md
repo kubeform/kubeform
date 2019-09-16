@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeRegionAutoscalerSpec](#ComputeRegionAutoscalerSpec)***||
 | `status` | ***[ComputeRegionAutoscalerStatus](#ComputeRegionAutoscalerStatus)***||
 ## ComputeRegionAutoscalerSpec
-##### (Appears on:[ComputeRegionAutoscaler](#ComputeRegionAutoscaler), [ComputeRegionAutoscalerStatus](#ComputeRegionAutoscalerStatus))
+
+Appears on:[ComputeRegionAutoscaler](#ComputeRegionAutoscaler), [ComputeRegionAutoscalerStatus](#ComputeRegionAutoscalerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `selfLink` | ***string***| ***(Optional)*** |
 | `target` | ***string***||
 ## ComputeRegionAutoscalerSpecAutoscalingPolicy
-##### (Appears on:[ComputeRegionAutoscalerSpec](#ComputeRegionAutoscalerSpec))
+
+Appears on:[ComputeRegionAutoscalerSpec](#ComputeRegionAutoscalerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cooldownPeriod` | ***int***| ***(Optional)*** |
@@ -43,24 +47,32 @@ section_menu_id: reference
 | `metric` | ***[[]ComputeRegionAutoscalerSpecAutoscalingPolicyMetric](#ComputeRegionAutoscalerSpecAutoscalingPolicyMetric)***| ***(Optional)*** |
 | `minReplicas` | ***int***||
 ## ComputeRegionAutoscalerSpecAutoscalingPolicyCpuUtilization
-##### (Appears on:[ComputeRegionAutoscalerSpecAutoscalingPolicy](#ComputeRegionAutoscalerSpecAutoscalingPolicy))
+
+Appears on:[ComputeRegionAutoscalerSpecAutoscalingPolicy](#ComputeRegionAutoscalerSpecAutoscalingPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `target` | ***encoding/json.Number***||
 ## ComputeRegionAutoscalerSpecAutoscalingPolicyLoadBalancingUtilization
-##### (Appears on:[ComputeRegionAutoscalerSpecAutoscalingPolicy](#ComputeRegionAutoscalerSpecAutoscalingPolicy))
+
+Appears on:[ComputeRegionAutoscalerSpecAutoscalingPolicy](#ComputeRegionAutoscalerSpecAutoscalingPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `target` | ***encoding/json.Number***||
 ## ComputeRegionAutoscalerSpecAutoscalingPolicyMetric
-##### (Appears on:[ComputeRegionAutoscalerSpecAutoscalingPolicy](#ComputeRegionAutoscalerSpecAutoscalingPolicy))
+
+Appears on:[ComputeRegionAutoscalerSpecAutoscalingPolicy](#ComputeRegionAutoscalerSpecAutoscalingPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `target` | ***encoding/json.Number***||
 | `type` | ***string***||
 ## ComputeRegionAutoscalerStatus
-##### (Appears on:[ComputeRegionAutoscaler](#ComputeRegionAutoscaler))
+
+Appears on:[ComputeRegionAutoscaler](#ComputeRegionAutoscaler)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

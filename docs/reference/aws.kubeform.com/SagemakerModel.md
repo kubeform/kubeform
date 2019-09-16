@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SagemakerModelSpec](#SagemakerModelSpec)***||
 | `status` | ***[SagemakerModelStatus](#SagemakerModelStatus)***||
 ## SagemakerModelSpec
-##### (Appears on:[SagemakerModel](#SagemakerModel), [SagemakerModelStatus](#SagemakerModelStatus))
+
+Appears on:[SagemakerModel](#SagemakerModel), [SagemakerModelStatus](#SagemakerModelStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpcConfig` | ***[[]SagemakerModelSpecVpcConfig](#SagemakerModelSpecVpcConfig)***| ***(Optional)*** |
 ## SagemakerModelSpecContainer
-##### (Appears on:[SagemakerModelSpec](#SagemakerModelSpec))
+
+Appears on:[SagemakerModelSpec](#SagemakerModelSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `containerHostname` | ***string***| ***(Optional)*** |
@@ -41,7 +45,9 @@ section_menu_id: reference
 | `image` | ***string***||
 | `modelDataURL` | ***string***| ***(Optional)*** |
 ## SagemakerModelSpecPrimaryContainer
-##### (Appears on:[SagemakerModelSpec](#SagemakerModelSpec))
+
+Appears on:[SagemakerModelSpec](#SagemakerModelSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `containerHostname` | ***string***| ***(Optional)*** |
@@ -49,13 +55,17 @@ section_menu_id: reference
 | `image` | ***string***||
 | `modelDataURL` | ***string***| ***(Optional)*** |
 ## SagemakerModelSpecVpcConfig
-##### (Appears on:[SagemakerModelSpec](#SagemakerModelSpec))
+
+Appears on:[SagemakerModelSpec](#SagemakerModelSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `securityGroupIDS` | ***[]string***||
 | `subnets` | ***[]string***||
 ## SagemakerModelStatus
-##### (Appears on:[SagemakerModel](#SagemakerModel))
+
+Appears on:[SagemakerModel](#SagemakerModel)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

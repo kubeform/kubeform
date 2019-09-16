@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StoragegatewayGatewaySpec](#StoragegatewayGatewaySpec)***||
 | `status` | ***[StoragegatewayGatewayStatus](#StoragegatewayGatewayStatus)***||
 ## StoragegatewayGatewaySpec
-##### (Appears on:[StoragegatewayGateway](#StoragegatewayGateway), [StoragegatewayGatewayStatus](#StoragegatewayGatewayStatus))
+
+Appears on:[StoragegatewayGateway](#StoragegatewayGateway), [StoragegatewayGatewayStatus](#StoragegatewayGatewayStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,13 +38,17 @@ section_menu_id: reference
 | `smbActiveDirectorySettings` | ***[[]StoragegatewayGatewaySpecSmbActiveDirectorySettings](#StoragegatewayGatewaySpecSmbActiveDirectorySettings)***| ***(Optional)*** |
 | `tapeDriveType` | ***string***| ***(Optional)*** |
 ## StoragegatewayGatewaySpecSmbActiveDirectorySettings
-##### (Appears on:[StoragegatewayGatewaySpec](#StoragegatewayGatewaySpec))
+
+Appears on:[StoragegatewayGatewaySpec](#StoragegatewayGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `domainName` | ***string***||
 | `username` | ***string***||
 ## StoragegatewayGatewayStatus
-##### (Appears on:[StoragegatewayGateway](#StoragegatewayGateway))
+
+Appears on:[StoragegatewayGateway](#StoragegatewayGateway)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

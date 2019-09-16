@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ContainerNodePoolSpec](#ContainerNodePoolSpec)***||
 | `status` | ***[ContainerNodePoolStatus](#ContainerNodePoolStatus)***||
 ## ContainerNodePoolSpec
-##### (Appears on:[ContainerNodePool](#ContainerNodePool), [ContainerNodePoolStatus](#ContainerNodePoolStatus))
+
+Appears on:[ContainerNodePool](#ContainerNodePool), [ContainerNodePoolStatus](#ContainerNodePoolStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,19 +41,25 @@ section_menu_id: reference
 | `version` | ***string***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
 ## ContainerNodePoolSpecAutoscaling
-##### (Appears on:[ContainerNodePoolSpec](#ContainerNodePoolSpec))
+
+Appears on:[ContainerNodePoolSpec](#ContainerNodePoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `maxNodeCount` | ***int***||
 | `minNodeCount` | ***int***||
 ## ContainerNodePoolSpecManagement
-##### (Appears on:[ContainerNodePoolSpec](#ContainerNodePoolSpec))
+
+Appears on:[ContainerNodePoolSpec](#ContainerNodePoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `autoRepair` | ***bool***| ***(Optional)*** |
 | `autoUpgrade` | ***bool***| ***(Optional)*** |
 ## ContainerNodePoolSpecNodeConfig
-##### (Appears on:[ContainerNodePoolSpec](#ContainerNodePoolSpec))
+
+Appears on:[ContainerNodePoolSpec](#ContainerNodePoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskSizeGb` | ***int***| ***(Optional)*** |
@@ -70,25 +78,33 @@ section_menu_id: reference
 | `taint` | ***[[]ContainerNodePoolSpecNodeConfigTaint](#ContainerNodePoolSpecNodeConfigTaint)***| ***(Optional)*** Deprecated|
 | `workloadMetadataConfig` | ***[[]ContainerNodePoolSpecNodeConfigWorkloadMetadataConfig](#ContainerNodePoolSpecNodeConfigWorkloadMetadataConfig)***| ***(Optional)*** Deprecated|
 ## ContainerNodePoolSpecNodeConfigGuestAccelerator
-##### (Appears on:[ContainerNodePoolSpecNodeConfig](#ContainerNodePoolSpecNodeConfig))
+
+Appears on:[ContainerNodePoolSpecNodeConfig](#ContainerNodePoolSpecNodeConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `count` | ***int***||
 | `type` | ***string***||
 ## ContainerNodePoolSpecNodeConfigTaint
-##### (Appears on:[ContainerNodePoolSpecNodeConfig](#ContainerNodePoolSpecNodeConfig))
+
+Appears on:[ContainerNodePoolSpecNodeConfig](#ContainerNodePoolSpecNodeConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `effect` | ***string***||
 | `key` | ***string***||
 | `value` | ***string***||
 ## ContainerNodePoolSpecNodeConfigWorkloadMetadataConfig
-##### (Appears on:[ContainerNodePoolSpecNodeConfig](#ContainerNodePoolSpecNodeConfig))
+
+Appears on:[ContainerNodePoolSpecNodeConfig](#ContainerNodePoolSpecNodeConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `nodeMetadata` | ***string***||
 ## ContainerNodePoolStatus
-##### (Appears on:[ContainerNodePool](#ContainerNodePool))
+
+Appears on:[ContainerNodePool](#ContainerNodePool)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

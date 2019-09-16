@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WafXssMatchSetSpec](#WafXssMatchSetSpec)***||
 | `status` | ***[WafXssMatchSetStatus](#WafXssMatchSetStatus)***||
 ## WafXssMatchSetSpec
-##### (Appears on:[WafXssMatchSet](#WafXssMatchSet), [WafXssMatchSetStatus](#WafXssMatchSetStatus))
+
+Appears on:[WafXssMatchSet](#WafXssMatchSet), [WafXssMatchSetStatus](#WafXssMatchSetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,19 +29,25 @@ section_menu_id: reference
 | `name` | ***string***||
 | `xssMatchTuples` | ***[[]WafXssMatchSetSpecXssMatchTuples](#WafXssMatchSetSpecXssMatchTuples)***| ***(Optional)*** |
 ## WafXssMatchSetSpecXssMatchTuples
-##### (Appears on:[WafXssMatchSetSpec](#WafXssMatchSetSpec))
+
+Appears on:[WafXssMatchSetSpec](#WafXssMatchSetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `fieldToMatch` | ***[[]WafXssMatchSetSpecXssMatchTuplesFieldToMatch](#WafXssMatchSetSpecXssMatchTuplesFieldToMatch)***||
 | `textTransformation` | ***string***||
 ## WafXssMatchSetSpecXssMatchTuplesFieldToMatch
-##### (Appears on:[WafXssMatchSetSpecXssMatchTuples](#WafXssMatchSetSpecXssMatchTuples))
+
+Appears on:[WafXssMatchSetSpecXssMatchTuples](#WafXssMatchSetSpecXssMatchTuples)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `data` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## WafXssMatchSetStatus
-##### (Appears on:[WafXssMatchSet](#WafXssMatchSet))
+
+Appears on:[WafXssMatchSet](#WafXssMatchSet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

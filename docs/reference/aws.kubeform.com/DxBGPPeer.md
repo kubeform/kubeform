@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DxBGPPeerSpec](#DxBGPPeerSpec)***||
 | `status` | ***[DxBGPPeerStatus](#DxBGPPeerStatus)***||
 ## DxBGPPeerSpec
-##### (Appears on:[DxBGPPeer](#DxBGPPeer), [DxBGPPeerStatus](#DxBGPPeerStatus))
+
+Appears on:[DxBGPPeer](#DxBGPPeer), [DxBGPPeerStatus](#DxBGPPeerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `customerAddress` | ***string***| ***(Optional)*** |
 | `virtualInterfaceID` | ***string***||
 ## DxBGPPeerStatus
-##### (Appears on:[DxBGPPeer](#DxBGPPeer))
+
+Appears on:[DxBGPPeer](#DxBGPPeer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

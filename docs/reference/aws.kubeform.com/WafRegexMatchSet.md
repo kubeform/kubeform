@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WafRegexMatchSetSpec](#WafRegexMatchSetSpec)***||
 | `status` | ***[WafRegexMatchSetStatus](#WafRegexMatchSetStatus)***||
 ## WafRegexMatchSetSpec
-##### (Appears on:[WafRegexMatchSet](#WafRegexMatchSet), [WafRegexMatchSetStatus](#WafRegexMatchSetStatus))
+
+Appears on:[WafRegexMatchSet](#WafRegexMatchSet), [WafRegexMatchSetStatus](#WafRegexMatchSetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,20 +29,26 @@ section_menu_id: reference
 | `name` | ***string***||
 | `regexMatchTuple` | ***[[]WafRegexMatchSetSpecRegexMatchTuple](#WafRegexMatchSetSpecRegexMatchTuple)***| ***(Optional)*** |
 ## WafRegexMatchSetSpecRegexMatchTuple
-##### (Appears on:[WafRegexMatchSetSpec](#WafRegexMatchSetSpec))
+
+Appears on:[WafRegexMatchSetSpec](#WafRegexMatchSetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `fieldToMatch` | ***[[]WafRegexMatchSetSpecRegexMatchTupleFieldToMatch](#WafRegexMatchSetSpecRegexMatchTupleFieldToMatch)***||
 | `regexPatternSetID` | ***string***||
 | `textTransformation` | ***string***||
 ## WafRegexMatchSetSpecRegexMatchTupleFieldToMatch
-##### (Appears on:[WafRegexMatchSetSpecRegexMatchTuple](#WafRegexMatchSetSpecRegexMatchTuple))
+
+Appears on:[WafRegexMatchSetSpecRegexMatchTuple](#WafRegexMatchSetSpecRegexMatchTuple)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `data` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## WafRegexMatchSetStatus
-##### (Appears on:[WafRegexMatchSet](#WafRegexMatchSet))
+
+Appears on:[WafRegexMatchSet](#WafRegexMatchSet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

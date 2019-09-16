@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[PublicIPSpec](#PublicIPSpec)***||
 | `status` | ***[PublicIPStatus](#PublicIPStatus)***||
 ## PublicIPSpec
-##### (Appears on:[PublicIP](#PublicIP), [PublicIPStatus](#PublicIPStatus))
+
+Appears on:[PublicIP](#PublicIP), [PublicIPStatus](#PublicIPStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -40,7 +42,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `zones` | ***[]string***| ***(Optional)*** |
 ## PublicIPStatus
-##### (Appears on:[PublicIP](#PublicIP))
+
+Appears on:[PublicIP](#PublicIP)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

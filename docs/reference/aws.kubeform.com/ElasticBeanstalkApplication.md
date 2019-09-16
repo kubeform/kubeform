@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ElasticBeanstalkApplicationSpec](#ElasticBeanstalkApplicationSpec)***||
 | `status` | ***[ElasticBeanstalkApplicationStatus](#ElasticBeanstalkApplicationStatus)***||
 ## ElasticBeanstalkApplicationSpec
-##### (Appears on:[ElasticBeanstalkApplication](#ElasticBeanstalkApplication), [ElasticBeanstalkApplicationStatus](#ElasticBeanstalkApplicationStatus))
+
+Appears on:[ElasticBeanstalkApplication](#ElasticBeanstalkApplication), [ElasticBeanstalkApplicationStatus](#ElasticBeanstalkApplicationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `description` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 ## ElasticBeanstalkApplicationSpecAppversionLifecycle
-##### (Appears on:[ElasticBeanstalkApplicationSpec](#ElasticBeanstalkApplicationSpec))
+
+Appears on:[ElasticBeanstalkApplicationSpec](#ElasticBeanstalkApplicationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteSourceFromS3` | ***bool***| ***(Optional)*** |
@@ -36,7 +40,9 @@ section_menu_id: reference
 | `maxCount` | ***int***| ***(Optional)*** |
 | `serviceRole` | ***string***||
 ## ElasticBeanstalkApplicationStatus
-##### (Appears on:[ElasticBeanstalkApplication](#ElasticBeanstalkApplication))
+
+Appears on:[ElasticBeanstalkApplication](#ElasticBeanstalkApplication)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

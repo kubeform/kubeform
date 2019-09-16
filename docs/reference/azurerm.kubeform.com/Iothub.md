@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[IothubSpec](#IothubSpec)***||
 | `status` | ***[IothubStatus](#IothubStatus)***||
 ## IothubSpec
-##### (Appears on:[Iothub](#Iothub), [IothubStatus](#IothubStatus))
+
+Appears on:[Iothub](#Iothub), [IothubStatus](#IothubStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,7 +45,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## IothubSpecEndpoint
-##### (Appears on:[IothubSpec](#IothubSpec))
+
+Appears on:[IothubSpec](#IothubSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `batchFrequencyInSeconds` | ***int***| ***(Optional)*** |
@@ -54,7 +58,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `type` | ***string***||
 ## IothubSpecFallbackRoute
-##### (Appears on:[IothubSpec](#IothubSpec))
+
+Appears on:[IothubSpec](#IothubSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `condition` | ***string***| ***(Optional)*** |
@@ -62,7 +68,9 @@ section_menu_id: reference
 | `endpointNames` | ***[]string***| ***(Optional)*** |
 | `source` | ***string***| ***(Optional)*** |
 ## IothubSpecFileUpload
-##### (Appears on:[IothubSpec](#IothubSpec))
+
+Appears on:[IothubSpec](#IothubSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `containerName` | ***string***||
@@ -72,14 +80,18 @@ section_menu_id: reference
 | `notifications` | ***bool***| ***(Optional)*** |
 | `sasTtl` | ***string***| ***(Optional)*** |
 ## IothubSpecIpFilterRule
-##### (Appears on:[IothubSpec](#IothubSpec))
+
+Appears on:[IothubSpec](#IothubSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***string***||
 | `ipMask` | ***string***||
 | `name` | ***string***||
 ## IothubSpecRoute
-##### (Appears on:[IothubSpec](#IothubSpec))
+
+Appears on:[IothubSpec](#IothubSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `condition` | ***string***| ***(Optional)*** |
@@ -88,20 +100,26 @@ section_menu_id: reference
 | `name` | ***string***||
 | `source` | ***string***||
 ## IothubSpecSharedAccessPolicy
-##### (Appears on:[IothubSpec](#IothubSpec))
+
+Appears on:[IothubSpec](#IothubSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `keyName` | ***string***| ***(Optional)*** |
 | `permissions` | ***string***| ***(Optional)*** |
 ## IothubSpecSku
-##### (Appears on:[IothubSpec](#IothubSpec))
+
+Appears on:[IothubSpec](#IothubSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `capacity` | ***int***||
 | `name` | ***string***||
 | `tier` | ***string***||
 ## IothubStatus
-##### (Appears on:[Iothub](#Iothub))
+
+Appears on:[Iothub](#Iothub)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

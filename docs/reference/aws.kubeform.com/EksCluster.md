@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[EksClusterSpec](#EksClusterSpec)***||
 | `status` | ***[EksClusterStatus](#EksClusterStatus)***||
 ## EksClusterSpec
-##### (Appears on:[EksCluster](#EksCluster), [EksClusterStatus](#EksClusterStatus))
+
+Appears on:[EksCluster](#EksCluster), [EksClusterStatus](#EksClusterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,12 +37,16 @@ section_menu_id: reference
 | `version` | ***string***| ***(Optional)*** |
 | `vpcConfig` | ***[[]EksClusterSpecVpcConfig](#EksClusterSpecVpcConfig)***||
 ## EksClusterSpecCertificateAuthority
-##### (Appears on:[EksClusterSpec](#EksClusterSpec))
+
+Appears on:[EksClusterSpec](#EksClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `data` | ***string***| ***(Optional)*** |
 ## EksClusterSpecVpcConfig
-##### (Appears on:[EksClusterSpec](#EksClusterSpec))
+
+Appears on:[EksClusterSpec](#EksClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `endpointPrivateAccess` | ***bool***| ***(Optional)*** |
@@ -49,7 +55,9 @@ section_menu_id: reference
 | `subnetIDS` | ***[]string***||
 | `vpcID` | ***string***| ***(Optional)*** |
 ## EksClusterStatus
-##### (Appears on:[EksCluster](#EksCluster))
+
+Appears on:[EksCluster](#EksCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

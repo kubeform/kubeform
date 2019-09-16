@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SecretsmanagerSecretSpec](#SecretsmanagerSecretSpec)***||
 | `status` | ***[SecretsmanagerSecretStatus](#SecretsmanagerSecretStatus)***||
 ## SecretsmanagerSecretSpec
-##### (Appears on:[SecretsmanagerSecret](#SecretsmanagerSecret), [SecretsmanagerSecretStatus](#SecretsmanagerSecretStatus))
+
+Appears on:[SecretsmanagerSecret](#SecretsmanagerSecret), [SecretsmanagerSecretStatus](#SecretsmanagerSecretStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,12 +38,16 @@ section_menu_id: reference
 | `rotationRules` | ***[[]SecretsmanagerSecretSpecRotationRules](#SecretsmanagerSecretSpecRotationRules)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SecretsmanagerSecretSpecRotationRules
-##### (Appears on:[SecretsmanagerSecretSpec](#SecretsmanagerSecretSpec))
+
+Appears on:[SecretsmanagerSecretSpec](#SecretsmanagerSecretSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `automaticallyAfterDays` | ***int***||
 ## SecretsmanagerSecretStatus
-##### (Appears on:[SecretsmanagerSecret](#SecretsmanagerSecret))
+
+Appears on:[SecretsmanagerSecret](#SecretsmanagerSecret)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

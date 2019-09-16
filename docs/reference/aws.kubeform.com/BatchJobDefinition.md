@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[BatchJobDefinitionSpec](#BatchJobDefinitionSpec)***||
 | `status` | ***[BatchJobDefinitionStatus](#BatchJobDefinitionStatus)***||
 ## BatchJobDefinitionSpec
-##### (Appears on:[BatchJobDefinition](#BatchJobDefinition), [BatchJobDefinitionStatus](#BatchJobDefinitionStatus))
+
+Appears on:[BatchJobDefinition](#BatchJobDefinition), [BatchJobDefinitionStatus](#BatchJobDefinitionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,17 +35,23 @@ section_menu_id: reference
 | `timeout` | ***[[]BatchJobDefinitionSpecTimeout](#BatchJobDefinitionSpecTimeout)***| ***(Optional)*** |
 | `type` | ***string***||
 ## BatchJobDefinitionSpecRetryStrategy
-##### (Appears on:[BatchJobDefinitionSpec](#BatchJobDefinitionSpec))
+
+Appears on:[BatchJobDefinitionSpec](#BatchJobDefinitionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `attempts` | ***int***| ***(Optional)*** |
 ## BatchJobDefinitionSpecTimeout
-##### (Appears on:[BatchJobDefinitionSpec](#BatchJobDefinitionSpec))
+
+Appears on:[BatchJobDefinitionSpec](#BatchJobDefinitionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `attemptDurationSeconds` | ***int***| ***(Optional)*** |
 ## BatchJobDefinitionStatus
-##### (Appears on:[BatchJobDefinition](#BatchJobDefinition))
+
+Appears on:[BatchJobDefinition](#BatchJobDefinition)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CertificateSpec](#CertificateSpec)***||
 | `status` | ***[CertificateStatus](#CertificateStatus)***||
 ## CertificateSpec
-##### (Appears on:[Certificate](#Certificate), [CertificateStatus](#CertificateStatus))
+
+Appears on:[Certificate](#Certificate), [CertificateStatus](#CertificateStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `state` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## CertificateStatus
-##### (Appears on:[Certificate](#Certificate))
+
+Appears on:[Certificate](#Certificate)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

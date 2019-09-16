@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Route53HealthCheckSpec](#Route53HealthCheckSpec)***||
 | `status` | ***[Route53HealthCheckStatus](#Route53HealthCheckStatus)***||
 ## Route53HealthCheckSpec
-##### (Appears on:[Route53HealthCheck](#Route53HealthCheck), [Route53HealthCheckStatus](#Route53HealthCheckStatus))
+
+Appears on:[Route53HealthCheck](#Route53HealthCheck), [Route53HealthCheckStatus](#Route53HealthCheckStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -44,7 +46,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `type` | ***string***||
 ## Route53HealthCheckStatus
-##### (Appears on:[Route53HealthCheck](#Route53HealthCheck))
+
+Appears on:[Route53HealthCheck](#Route53HealthCheck)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

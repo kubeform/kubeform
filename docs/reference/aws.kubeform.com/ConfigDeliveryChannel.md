@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ConfigDeliveryChannelSpec](#ConfigDeliveryChannelSpec)***||
 | `status` | ***[ConfigDeliveryChannelStatus](#ConfigDeliveryChannelStatus)***||
 ## ConfigDeliveryChannelSpec
-##### (Appears on:[ConfigDeliveryChannel](#ConfigDeliveryChannel), [ConfigDeliveryChannelStatus](#ConfigDeliveryChannelStatus))
+
+Appears on:[ConfigDeliveryChannel](#ConfigDeliveryChannel), [ConfigDeliveryChannelStatus](#ConfigDeliveryChannelStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,12 +32,16 @@ section_menu_id: reference
 | `snapshotDeliveryProperties` | ***[[]ConfigDeliveryChannelSpecSnapshotDeliveryProperties](#ConfigDeliveryChannelSpecSnapshotDeliveryProperties)***| ***(Optional)*** |
 | `snsTopicArn` | ***string***| ***(Optional)*** |
 ## ConfigDeliveryChannelSpecSnapshotDeliveryProperties
-##### (Appears on:[ConfigDeliveryChannelSpec](#ConfigDeliveryChannelSpec))
+
+Appears on:[ConfigDeliveryChannelSpec](#ConfigDeliveryChannelSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deliveryFrequency` | ***string***| ***(Optional)*** |
 ## ConfigDeliveryChannelStatus
-##### (Appears on:[ConfigDeliveryChannel](#ConfigDeliveryChannel))
+
+Appears on:[ConfigDeliveryChannel](#ConfigDeliveryChannel)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

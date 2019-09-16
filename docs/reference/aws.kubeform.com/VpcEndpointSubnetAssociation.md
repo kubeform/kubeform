@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VpcEndpointSubnetAssociationSpec](#VpcEndpointSubnetAssociationSpec)***||
 | `status` | ***[VpcEndpointSubnetAssociationStatus](#VpcEndpointSubnetAssociationStatus)***||
 ## VpcEndpointSubnetAssociationSpec
-##### (Appears on:[VpcEndpointSubnetAssociation](#VpcEndpointSubnetAssociation), [VpcEndpointSubnetAssociationStatus](#VpcEndpointSubnetAssociationStatus))
+
+Appears on:[VpcEndpointSubnetAssociation](#VpcEndpointSubnetAssociation), [VpcEndpointSubnetAssociationStatus](#VpcEndpointSubnetAssociationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `subnetID` | ***string***||
 | `vpcEndpointID` | ***string***||
 ## VpcEndpointSubnetAssociationStatus
-##### (Appears on:[VpcEndpointSubnetAssociation](#VpcEndpointSubnetAssociation))
+
+Appears on:[VpcEndpointSubnetAssociation](#VpcEndpointSubnetAssociation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StackscriptSpec](#StackscriptSpec)***||
 | `status` | ***[StackscriptStatus](#StackscriptStatus)***||
 ## StackscriptSpec
-##### (Appears on:[Stackscript](#Stackscript), [StackscriptStatus](#StackscriptStatus))
+
+Appears on:[Stackscript](#Stackscript), [StackscriptStatus](#StackscriptStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,7 +40,9 @@ section_menu_id: reference
 | `userGravatarID` | ***string***| ***(Optional)*** The Gravatar ID for the User who created the StackScript.|
 | `username` | ***string***| ***(Optional)*** The User who created the StackScript.|
 ## StackscriptSpecUserDefinedFields
-##### (Appears on:[StackscriptSpec](#StackscriptSpec))
+
+Appears on:[StackscriptSpec](#StackscriptSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `default` | ***string***| ***(Optional)*** |
@@ -48,7 +52,9 @@ section_menu_id: reference
 | `name` | ***string***| ***(Optional)*** |
 | `oneOf` | ***string***| ***(Optional)*** |
 ## StackscriptStatus
-##### (Appears on:[Stackscript](#Stackscript))
+
+Appears on:[Stackscript](#Stackscript)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

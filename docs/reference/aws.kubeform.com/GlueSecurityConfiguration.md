@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GlueSecurityConfigurationSpec](#GlueSecurityConfigurationSpec)***||
 | `status` | ***[GlueSecurityConfigurationStatus](#GlueSecurityConfigurationStatus)***||
 ## GlueSecurityConfigurationSpec
-##### (Appears on:[GlueSecurityConfiguration](#GlueSecurityConfiguration), [GlueSecurityConfigurationStatus](#GlueSecurityConfigurationStatus))
+
+Appears on:[GlueSecurityConfiguration](#GlueSecurityConfiguration), [GlueSecurityConfigurationStatus](#GlueSecurityConfigurationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,32 +29,42 @@ section_menu_id: reference
 | `encryptionConfiguration` | ***[[]GlueSecurityConfigurationSpecEncryptionConfiguration](#GlueSecurityConfigurationSpecEncryptionConfiguration)***||
 | `name` | ***string***||
 ## GlueSecurityConfigurationSpecEncryptionConfiguration
-##### (Appears on:[GlueSecurityConfigurationSpec](#GlueSecurityConfigurationSpec))
+
+Appears on:[GlueSecurityConfigurationSpec](#GlueSecurityConfigurationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cloudwatchEncryption` | ***[[]GlueSecurityConfigurationSpecEncryptionConfigurationCloudwatchEncryption](#GlueSecurityConfigurationSpecEncryptionConfigurationCloudwatchEncryption)***||
 | `jobBookmarksEncryption` | ***[[]GlueSecurityConfigurationSpecEncryptionConfigurationJobBookmarksEncryption](#GlueSecurityConfigurationSpecEncryptionConfigurationJobBookmarksEncryption)***||
 | `s3Encryption` | ***[[]GlueSecurityConfigurationSpecEncryptionConfigurationS3Encryption](#GlueSecurityConfigurationSpecEncryptionConfigurationS3Encryption)***||
 ## GlueSecurityConfigurationSpecEncryptionConfigurationCloudwatchEncryption
-##### (Appears on:[GlueSecurityConfigurationSpecEncryptionConfiguration](#GlueSecurityConfigurationSpecEncryptionConfiguration))
+
+Appears on:[GlueSecurityConfigurationSpecEncryptionConfiguration](#GlueSecurityConfigurationSpecEncryptionConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cloudwatchEncryptionMode` | ***string***| ***(Optional)*** |
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
 ## GlueSecurityConfigurationSpecEncryptionConfigurationJobBookmarksEncryption
-##### (Appears on:[GlueSecurityConfigurationSpecEncryptionConfiguration](#GlueSecurityConfigurationSpecEncryptionConfiguration))
+
+Appears on:[GlueSecurityConfigurationSpecEncryptionConfiguration](#GlueSecurityConfigurationSpecEncryptionConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `jobBookmarksEncryptionMode` | ***string***| ***(Optional)*** |
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
 ## GlueSecurityConfigurationSpecEncryptionConfigurationS3Encryption
-##### (Appears on:[GlueSecurityConfigurationSpecEncryptionConfiguration](#GlueSecurityConfigurationSpecEncryptionConfiguration))
+
+Appears on:[GlueSecurityConfigurationSpecEncryptionConfiguration](#GlueSecurityConfigurationSpecEncryptionConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
 | `s3EncryptionMode` | ***string***| ***(Optional)*** |
 ## GlueSecurityConfigurationStatus
-##### (Appears on:[GlueSecurityConfiguration](#GlueSecurityConfiguration))
+
+Appears on:[GlueSecurityConfiguration](#GlueSecurityConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

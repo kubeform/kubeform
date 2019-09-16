@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VpnConnectionRouteSpec](#VpnConnectionRouteSpec)***||
 | `status` | ***[VpnConnectionRouteStatus](#VpnConnectionRouteStatus)***||
 ## VpnConnectionRouteSpec
-##### (Appears on:[VpnConnectionRoute](#VpnConnectionRoute), [VpnConnectionRouteStatus](#VpnConnectionRouteStatus))
+
+Appears on:[VpnConnectionRoute](#VpnConnectionRoute), [VpnConnectionRouteStatus](#VpnConnectionRouteStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `destinationCIDRBlock` | ***string***||
 | `vpnConnectionID` | ***string***||
 ## VpnConnectionRouteStatus
-##### (Appears on:[VpnConnectionRoute](#VpnConnectionRoute))
+
+Appears on:[VpnConnectionRoute](#VpnConnectionRoute)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

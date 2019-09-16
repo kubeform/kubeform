@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[PostgresqlServerSpec](#PostgresqlServerSpec)***||
 | `status` | ***[PostgresqlServerStatus](#PostgresqlServerStatus)***||
 ## PostgresqlServerSpec
-##### (Appears on:[PostgresqlServer](#PostgresqlServer), [PostgresqlServerStatus](#PostgresqlServerStatus))
+
+Appears on:[PostgresqlServer](#PostgresqlServer), [PostgresqlServerStatus](#PostgresqlServerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,7 +38,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `version` | ***string***||
 ## PostgresqlServerSpecSku
-##### (Appears on:[PostgresqlServerSpec](#PostgresqlServerSpec))
+
+Appears on:[PostgresqlServerSpec](#PostgresqlServerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `capacity` | ***int***||
@@ -44,14 +48,18 @@ section_menu_id: reference
 | `name` | ***string***||
 | `tier` | ***string***||
 ## PostgresqlServerSpecStorageProfile
-##### (Appears on:[PostgresqlServerSpec](#PostgresqlServerSpec))
+
+Appears on:[PostgresqlServerSpec](#PostgresqlServerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `backupRetentionDays` | ***int***| ***(Optional)*** |
 | `geoRedundantBackup` | ***string***| ***(Optional)*** |
 | `storageMb` | ***int***||
 ## PostgresqlServerStatus
-##### (Appears on:[PostgresqlServer](#PostgresqlServer))
+
+Appears on:[PostgresqlServer](#PostgresqlServer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

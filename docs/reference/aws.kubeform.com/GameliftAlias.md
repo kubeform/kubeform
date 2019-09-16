@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GameliftAliasSpec](#GameliftAliasSpec)***||
 | `status` | ***[GameliftAliasStatus](#GameliftAliasStatus)***||
 ## GameliftAliasSpec
-##### (Appears on:[GameliftAlias](#GameliftAlias), [GameliftAliasStatus](#GameliftAliasStatus))
+
+Appears on:[GameliftAlias](#GameliftAlias), [GameliftAliasStatus](#GameliftAliasStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,14 +31,18 @@ section_menu_id: reference
 | `name` | ***string***||
 | `routingStrategy` | ***[[]GameliftAliasSpecRoutingStrategy](#GameliftAliasSpecRoutingStrategy)***||
 ## GameliftAliasSpecRoutingStrategy
-##### (Appears on:[GameliftAliasSpec](#GameliftAliasSpec))
+
+Appears on:[GameliftAliasSpec](#GameliftAliasSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `fleetID` | ***string***| ***(Optional)*** |
 | `message` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## GameliftAliasStatus
-##### (Appears on:[GameliftAlias](#GameliftAlias))
+
+Appears on:[GameliftAlias](#GameliftAlias)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

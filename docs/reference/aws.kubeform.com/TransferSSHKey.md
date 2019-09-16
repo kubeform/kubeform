@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[TransferSSHKeySpec](#TransferSSHKeySpec)***||
 | `status` | ***[TransferSSHKeyStatus](#TransferSSHKeyStatus)***||
 ## TransferSSHKeySpec
-##### (Appears on:[TransferSSHKey](#TransferSSHKey), [TransferSSHKeyStatus](#TransferSSHKeyStatus))
+
+Appears on:[TransferSSHKey](#TransferSSHKey), [TransferSSHKeyStatus](#TransferSSHKeyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `serverID` | ***string***||
 | `userName` | ***string***||
 ## TransferSSHKeyStatus
-##### (Appears on:[TransferSSHKey](#TransferSSHKey))
+
+Appears on:[TransferSSHKey](#TransferSSHKey)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

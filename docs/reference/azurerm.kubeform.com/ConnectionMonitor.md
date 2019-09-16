@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ConnectionMonitorSpec](#ConnectionMonitorSpec)***||
 | `status` | ***[ConnectionMonitorStatus](#ConnectionMonitorStatus)***||
 ## ConnectionMonitorSpec
-##### (Appears on:[ConnectionMonitor](#ConnectionMonitor), [ConnectionMonitorStatus](#ConnectionMonitorStatus))
+
+Appears on:[ConnectionMonitor](#ConnectionMonitor), [ConnectionMonitorStatus](#ConnectionMonitorStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,20 +36,26 @@ section_menu_id: reference
 | `source` | ***[[]ConnectionMonitorSpecSource](#ConnectionMonitorSpecSource)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ConnectionMonitorSpecDestination
-##### (Appears on:[ConnectionMonitorSpec](#ConnectionMonitorSpec))
+
+Appears on:[ConnectionMonitorSpec](#ConnectionMonitorSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `address` | ***string***| ***(Optional)*** |
 | `port` | ***int***||
 | `virtualMachineID` | ***string***| ***(Optional)*** |
 ## ConnectionMonitorSpecSource
-##### (Appears on:[ConnectionMonitorSpec](#ConnectionMonitorSpec))
+
+Appears on:[ConnectionMonitorSpec](#ConnectionMonitorSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `port` | ***int***| ***(Optional)*** |
 | `virtualMachineID` | ***string***||
 ## ConnectionMonitorStatus
-##### (Appears on:[ConnectionMonitor](#ConnectionMonitor))
+
+Appears on:[ConnectionMonitor](#ConnectionMonitor)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

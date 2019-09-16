@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[IotDpsCertificateSpec](#IotDpsCertificateSpec)***||
 | `status` | ***[IotDpsCertificateStatus](#IotDpsCertificateStatus)***||
 ## IotDpsCertificateSpec
-##### (Appears on:[IotDpsCertificate](#IotDpsCertificate), [IotDpsCertificateStatus](#IotDpsCertificateStatus))
+
+Appears on:[IotDpsCertificate](#IotDpsCertificate), [IotDpsCertificateStatus](#IotDpsCertificateStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 ## IotDpsCertificateStatus
-##### (Appears on:[IotDpsCertificate](#IotDpsCertificate))
+
+Appears on:[IotDpsCertificate](#IotDpsCertificate)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

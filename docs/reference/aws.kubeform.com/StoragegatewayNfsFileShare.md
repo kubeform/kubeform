@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StoragegatewayNfsFileShareSpec](#StoragegatewayNfsFileShareSpec)***||
 | `status` | ***[StoragegatewayNfsFileShareStatus](#StoragegatewayNfsFileShareStatus)***||
 ## StoragegatewayNfsFileShareSpec
-##### (Appears on:[StoragegatewayNfsFileShare](#StoragegatewayNfsFileShare), [StoragegatewayNfsFileShareStatus](#StoragegatewayNfsFileShareStatus))
+
+Appears on:[StoragegatewayNfsFileShare](#StoragegatewayNfsFileShare), [StoragegatewayNfsFileShareStatus](#StoragegatewayNfsFileShareStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -40,7 +42,9 @@ section_menu_id: reference
 | `roleArn` | ***string***||
 | `squash` | ***string***| ***(Optional)*** |
 ## StoragegatewayNfsFileShareSpecNfsFileShareDefaults
-##### (Appears on:[StoragegatewayNfsFileShareSpec](#StoragegatewayNfsFileShareSpec))
+
+Appears on:[StoragegatewayNfsFileShareSpec](#StoragegatewayNfsFileShareSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `directoryMode` | ***string***| ***(Optional)*** |
@@ -48,7 +52,9 @@ section_menu_id: reference
 | `groupID` | ***int***| ***(Optional)*** |
 | `ownerID` | ***int***| ***(Optional)*** |
 ## StoragegatewayNfsFileShareStatus
-##### (Appears on:[StoragegatewayNfsFileShare](#StoragegatewayNfsFileShare))
+
+Appears on:[StoragegatewayNfsFileShare](#StoragegatewayNfsFileShare)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

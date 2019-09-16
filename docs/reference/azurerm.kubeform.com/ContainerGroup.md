@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ContainerGroupSpec](#ContainerGroupSpec)***||
 | `status` | ***[ContainerGroupStatus](#ContainerGroupStatus)***||
 ## ContainerGroupSpec
-##### (Appears on:[ContainerGroup](#ContainerGroup), [ContainerGroupStatus](#ContainerGroupStatus))
+
+Appears on:[ContainerGroup](#ContainerGroup), [ContainerGroupStatus](#ContainerGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -40,7 +42,9 @@ section_menu_id: reference
 | `restartPolicy` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ContainerGroupSpecContainer
-##### (Appears on:[ContainerGroupSpec](#ContainerGroupSpec))
+
+Appears on:[ContainerGroupSpec](#ContainerGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `command` | ***string***| ***(Optional)*** Deprecated|
@@ -58,13 +62,17 @@ section_menu_id: reference
 | `readinessProbe` | ***[[]ContainerGroupSpecContainerReadinessProbe](#ContainerGroupSpecContainerReadinessProbe)***| ***(Optional)*** |
 | `volume` | ***[[]ContainerGroupSpecContainerVolume](#ContainerGroupSpecContainerVolume)***| ***(Optional)*** |
 ## ContainerGroupSpecContainerGpu
-##### (Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer))
+
+Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `count` | ***int***| ***(Optional)*** |
 | `sku` | ***string***| ***(Optional)*** |
 ## ContainerGroupSpecContainerLivenessProbe
-##### (Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer))
+
+Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `exec` | ***[]string***| ***(Optional)*** |
@@ -75,20 +83,26 @@ section_menu_id: reference
 | `successThreshold` | ***int***| ***(Optional)*** |
 | `timeoutSeconds` | ***int***| ***(Optional)*** |
 ## ContainerGroupSpecContainerLivenessProbeHttpGet
-##### (Appears on:[ContainerGroupSpecContainerLivenessProbe](#ContainerGroupSpecContainerLivenessProbe))
+
+Appears on:[ContainerGroupSpecContainerLivenessProbe](#ContainerGroupSpecContainerLivenessProbe)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `path` | ***string***| ***(Optional)*** |
 | `port` | ***int***| ***(Optional)*** |
 | `scheme` | ***string***| ***(Optional)*** |
 ## ContainerGroupSpecContainerPorts
-##### (Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer))
+
+Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `port` | ***int***| ***(Optional)*** |
 | `protocol` | ***string***| ***(Optional)*** |
 ## ContainerGroupSpecContainerReadinessProbe
-##### (Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer))
+
+Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `exec` | ***[]string***| ***(Optional)*** |
@@ -99,14 +113,18 @@ section_menu_id: reference
 | `successThreshold` | ***int***| ***(Optional)*** |
 | `timeoutSeconds` | ***int***| ***(Optional)*** |
 ## ContainerGroupSpecContainerReadinessProbeHttpGet
-##### (Appears on:[ContainerGroupSpecContainerReadinessProbe](#ContainerGroupSpecContainerReadinessProbe))
+
+Appears on:[ContainerGroupSpecContainerReadinessProbe](#ContainerGroupSpecContainerReadinessProbe)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `path` | ***string***| ***(Optional)*** |
 | `port` | ***int***| ***(Optional)*** |
 | `scheme` | ***string***| ***(Optional)*** |
 ## ContainerGroupSpecContainerVolume
-##### (Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer))
+
+Appears on:[ContainerGroupSpecContainer](#ContainerGroupSpecContainer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `mountPath` | ***string***||
@@ -116,32 +134,42 @@ section_menu_id: reference
 | `storageAccountKey` | ***string***||
 | `storageAccountName` | ***string***||
 ## ContainerGroupSpecDiagnostics
-##### (Appears on:[ContainerGroupSpec](#ContainerGroupSpec))
+
+Appears on:[ContainerGroupSpec](#ContainerGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `logAnalytics` | ***[[]ContainerGroupSpecDiagnosticsLogAnalytics](#ContainerGroupSpecDiagnosticsLogAnalytics)***||
 ## ContainerGroupSpecDiagnosticsLogAnalytics
-##### (Appears on:[ContainerGroupSpecDiagnostics](#ContainerGroupSpecDiagnostics))
+
+Appears on:[ContainerGroupSpecDiagnostics](#ContainerGroupSpecDiagnostics)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `logType` | ***string***||
 | `metadata` | ***map[string]string***| ***(Optional)*** |
 | `workspaceID` | ***string***||
 ## ContainerGroupSpecIdentity
-##### (Appears on:[ContainerGroupSpec](#ContainerGroupSpec))
+
+Appears on:[ContainerGroupSpec](#ContainerGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `identityIDS` | ***[]string***| ***(Optional)*** |
 | `principalID` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## ContainerGroupSpecImageRegistryCredential
-##### (Appears on:[ContainerGroupSpec](#ContainerGroupSpec))
+
+Appears on:[ContainerGroupSpec](#ContainerGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `server` | ***string***||
 | `username` | ***string***||
 ## ContainerGroupStatus
-##### (Appears on:[ContainerGroup](#ContainerGroup))
+
+Appears on:[ContainerGroup](#ContainerGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

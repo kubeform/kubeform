@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MonitoringGroupSpec](#MonitoringGroupSpec)***||
 | `status` | ***[MonitoringGroupStatus](#MonitoringGroupStatus)***||
 ## MonitoringGroupSpec
-##### (Appears on:[MonitoringGroup](#MonitoringGroup), [MonitoringGroupStatus](#MonitoringGroupStatus))
+
+Appears on:[MonitoringGroup](#MonitoringGroup), [MonitoringGroupStatus](#MonitoringGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `parentName` | ***string***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 ## MonitoringGroupStatus
-##### (Appears on:[MonitoringGroup](#MonitoringGroup))
+
+Appears on:[MonitoringGroup](#MonitoringGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

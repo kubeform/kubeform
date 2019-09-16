@@ -19,14 +19,18 @@ section_menu_id: reference
 | `spec` | ***[TagSpec](#TagSpec)***||
 | `status` | ***[TagStatus](#TagStatus)***||
 ## TagSpec
-##### (Appears on:[Tag](#Tag), [TagStatus](#TagStatus))
+
+Appears on:[Tag](#Tag), [TagStatus](#TagStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `name` | ***string***||
 ## TagStatus
-##### (Appears on:[Tag](#Tag))
+
+Appears on:[Tag](#Tag)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApiManagementAPIVersionSetSpec](#ApiManagementAPIVersionSetSpec)***||
 | `status` | ***[ApiManagementAPIVersionSetStatus](#ApiManagementAPIVersionSetStatus)***||
 ## ApiManagementAPIVersionSetSpec
-##### (Appears on:[ApiManagementAPIVersionSet](#ApiManagementAPIVersionSet), [ApiManagementAPIVersionSetStatus](#ApiManagementAPIVersionSetStatus))
+
+Appears on:[ApiManagementAPIVersionSet](#ApiManagementAPIVersionSet), [ApiManagementAPIVersionSetStatus](#ApiManagementAPIVersionSetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `versionQueryName` | ***string***| ***(Optional)*** |
 | `versioningScheme` | ***string***||
 ## ApiManagementAPIVersionSetStatus
-##### (Appears on:[ApiManagementAPIVersionSet](#ApiManagementAPIVersionSet))
+
+Appears on:[ApiManagementAPIVersionSet](#ApiManagementAPIVersionSet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GuarddutyThreatintelsetSpec](#GuarddutyThreatintelsetSpec)***||
 | `status` | ***[GuarddutyThreatintelsetStatus](#GuarddutyThreatintelsetStatus)***||
 ## GuarddutyThreatintelsetSpec
-##### (Appears on:[GuarddutyThreatintelset](#GuarddutyThreatintelset), [GuarddutyThreatintelsetStatus](#GuarddutyThreatintelsetStatus))
+
+Appears on:[GuarddutyThreatintelset](#GuarddutyThreatintelset), [GuarddutyThreatintelsetStatus](#GuarddutyThreatintelsetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `location` | ***string***||
 | `name` | ***string***||
 ## GuarddutyThreatintelsetStatus
-##### (Appears on:[GuarddutyThreatintelset](#GuarddutyThreatintelset))
+
+Appears on:[GuarddutyThreatintelset](#GuarddutyThreatintelset)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

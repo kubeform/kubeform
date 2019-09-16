@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DataFactoryPipelineSpec](#DataFactoryPipelineSpec)***||
 | `status` | ***[DataFactoryPipelineStatus](#DataFactoryPipelineStatus)***||
 ## DataFactoryPipelineSpec
-##### (Appears on:[DataFactoryPipeline](#DataFactoryPipeline), [DataFactoryPipelineStatus](#DataFactoryPipelineStatus))
+
+Appears on:[DataFactoryPipeline](#DataFactoryPipeline), [DataFactoryPipelineStatus](#DataFactoryPipelineStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `variables` | ***map[string]string***| ***(Optional)*** |
 ## DataFactoryPipelineStatus
-##### (Appears on:[DataFactoryPipeline](#DataFactoryPipeline))
+
+Appears on:[DataFactoryPipeline](#DataFactoryPipeline)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

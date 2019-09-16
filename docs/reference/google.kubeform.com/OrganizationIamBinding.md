@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[OrganizationIamBindingSpec](#OrganizationIamBindingSpec)***||
 | `status` | ***[OrganizationIamBindingStatus](#OrganizationIamBindingStatus)***||
 ## OrganizationIamBindingSpec
-##### (Appears on:[OrganizationIamBinding](#OrganizationIamBinding), [OrganizationIamBindingStatus](#OrganizationIamBindingStatus))
+
+Appears on:[OrganizationIamBinding](#OrganizationIamBinding), [OrganizationIamBindingStatus](#OrganizationIamBindingStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `orgID` | ***string***||
 | `role` | ***string***||
 ## OrganizationIamBindingStatus
-##### (Appears on:[OrganizationIamBinding](#OrganizationIamBinding))
+
+Appears on:[OrganizationIamBinding](#OrganizationIamBinding)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

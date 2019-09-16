@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StorageObjectACLSpec](#StorageObjectACLSpec)***||
 | `status` | ***[StorageObjectACLStatus](#StorageObjectACLStatus)***||
 ## StorageObjectACLSpec
-##### (Appears on:[StorageObjectACL](#StorageObjectACL), [StorageObjectACLStatus](#StorageObjectACLStatus))
+
+Appears on:[StorageObjectACL](#StorageObjectACL), [StorageObjectACLStatus](#StorageObjectACLStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `predefinedACL` | ***string***| ***(Optional)*** |
 | `roleEntity` | ***[]string***| ***(Optional)*** |
 ## StorageObjectACLStatus
-##### (Appears on:[StorageObjectACL](#StorageObjectACL))
+
+Appears on:[StorageObjectACL](#StorageObjectACL)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

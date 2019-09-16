@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WafregionalByteMatchSetSpec](#WafregionalByteMatchSetSpec)***||
 | `status` | ***[WafregionalByteMatchSetStatus](#WafregionalByteMatchSetStatus)***||
 ## WafregionalByteMatchSetSpec
-##### (Appears on:[WafregionalByteMatchSet](#WafregionalByteMatchSet), [WafregionalByteMatchSetStatus](#WafregionalByteMatchSetStatus))
+
+Appears on:[WafregionalByteMatchSet](#WafregionalByteMatchSet), [WafregionalByteMatchSetStatus](#WafregionalByteMatchSetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `byteMatchTuples` | ***[[]WafregionalByteMatchSetSpecByteMatchTuples](#WafregionalByteMatchSetSpecByteMatchTuples)***| ***(Optional)*** |
 | `name` | ***string***||
 ## WafregionalByteMatchSetSpecByteMatchTuples
-##### (Appears on:[WafregionalByteMatchSetSpec](#WafregionalByteMatchSetSpec))
+
+Appears on:[WafregionalByteMatchSetSpec](#WafregionalByteMatchSetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `fieldToMatch` | ***[[]WafregionalByteMatchSetSpecByteMatchTuplesFieldToMatch](#WafregionalByteMatchSetSpecByteMatchTuplesFieldToMatch)***||
@@ -35,13 +39,17 @@ section_menu_id: reference
 | `targetString` | ***string***| ***(Optional)*** |
 | `textTransformation` | ***string***||
 ## WafregionalByteMatchSetSpecByteMatchTuplesFieldToMatch
-##### (Appears on:[WafregionalByteMatchSetSpecByteMatchTuples](#WafregionalByteMatchSetSpecByteMatchTuples))
+
+Appears on:[WafregionalByteMatchSetSpecByteMatchTuples](#WafregionalByteMatchSetSpecByteMatchTuples)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `data` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## WafregionalByteMatchSetStatus
-##### (Appears on:[WafregionalByteMatchSet](#WafregionalByteMatchSet))
+
+Appears on:[WafregionalByteMatchSet](#WafregionalByteMatchSet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

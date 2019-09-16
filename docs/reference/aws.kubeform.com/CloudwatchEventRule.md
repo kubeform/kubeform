@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CloudwatchEventRuleSpec](#CloudwatchEventRuleSpec)***||
 | `status` | ***[CloudwatchEventRuleStatus](#CloudwatchEventRuleStatus)***||
 ## CloudwatchEventRuleSpec
-##### (Appears on:[CloudwatchEventRule](#CloudwatchEventRule), [CloudwatchEventRuleStatus](#CloudwatchEventRuleStatus))
+
+Appears on:[CloudwatchEventRule](#CloudwatchEventRule), [CloudwatchEventRuleStatus](#CloudwatchEventRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `scheduleExpression` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## CloudwatchEventRuleStatus
-##### (Appears on:[CloudwatchEventRule](#CloudwatchEventRule))
+
+Appears on:[CloudwatchEventRule](#CloudwatchEventRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

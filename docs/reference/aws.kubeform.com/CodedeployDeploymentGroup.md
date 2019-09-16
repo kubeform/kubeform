@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec)***||
 | `status` | ***[CodedeployDeploymentGroupStatus](#CodedeployDeploymentGroupStatus)***||
 ## CodedeployDeploymentGroupSpec
-##### (Appears on:[CodedeployDeploymentGroup](#CodedeployDeploymentGroup), [CodedeployDeploymentGroupStatus](#CodedeployDeploymentGroupStatus))
+
+Appears on:[CodedeployDeploymentGroup](#CodedeployDeploymentGroup), [CodedeployDeploymentGroupStatus](#CodedeployDeploymentGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -40,128 +42,170 @@ section_menu_id: reference
 | `serviceRoleArn` | ***string***||
 | `triggerConfiguration` | ***[[]CodedeployDeploymentGroupSpecTriggerConfiguration](#CodedeployDeploymentGroupSpecTriggerConfiguration)***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecAlarmConfiguration
-##### (Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec))
+
+Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `alarms` | ***[]string***| ***(Optional)*** |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `ignorePollAlarmFailure` | ***bool***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecAutoRollbackConfiguration
-##### (Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec))
+
+Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `events` | ***[]string***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig
-##### (Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec))
+
+Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deploymentReadyOption` | ***[[]CodedeployDeploymentGroupSpecBlueGreenDeploymentConfigDeploymentReadyOption](#CodedeployDeploymentGroupSpecBlueGreenDeploymentConfigDeploymentReadyOption)***| ***(Optional)*** |
 | `greenFleetProvisioningOption` | ***[[]CodedeployDeploymentGroupSpecBlueGreenDeploymentConfigGreenFleetProvisioningOption](#CodedeployDeploymentGroupSpecBlueGreenDeploymentConfigGreenFleetProvisioningOption)***| ***(Optional)*** |
 | `terminateBlueInstancesOnDeploymentSuccess` | ***[[]CodedeployDeploymentGroupSpecBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess](#CodedeployDeploymentGroupSpecBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess)***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecBlueGreenDeploymentConfigDeploymentReadyOption
-##### (Appears on:[CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig](#CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig))
+
+Appears on:[CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig](#CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `actionOnTimeout` | ***string***| ***(Optional)*** |
 | `waitTimeInMinutes` | ***int***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecBlueGreenDeploymentConfigGreenFleetProvisioningOption
-##### (Appears on:[CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig](#CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig))
+
+Appears on:[CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig](#CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***string***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess
-##### (Appears on:[CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig](#CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig))
+
+Appears on:[CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig](#CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***string***| ***(Optional)*** |
 | `terminationWaitTimeInMinutes` | ***int***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecDeploymentStyle
-##### (Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec))
+
+Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deploymentOption` | ***string***| ***(Optional)*** |
 | `deploymentType` | ***string***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecEc2TagFilter
-##### (Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec))
+
+Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `key` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 | `value` | ***string***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecEc2TagSet
-##### (Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec))
+
+Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ec2TagFilter` | ***[[]CodedeployDeploymentGroupSpecEc2TagSetEc2TagFilter](#CodedeployDeploymentGroupSpecEc2TagSetEc2TagFilter)***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecEc2TagSetEc2TagFilter
-##### (Appears on:[CodedeployDeploymentGroupSpecEc2TagSet](#CodedeployDeploymentGroupSpecEc2TagSet))
+
+Appears on:[CodedeployDeploymentGroupSpecEc2TagSet](#CodedeployDeploymentGroupSpecEc2TagSet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `key` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 | `value` | ***string***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecEcsService
-##### (Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec))
+
+Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `clusterName` | ***string***||
 | `serviceName` | ***string***||
 ## CodedeployDeploymentGroupSpecLoadBalancerInfo
-##### (Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec))
+
+Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `elbInfo` | ***[[]CodedeployDeploymentGroupSpecLoadBalancerInfoElbInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfoElbInfo)***| ***(Optional)*** |
 | `targetGroupInfo` | ***[[]CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupInfo)***| ***(Optional)*** |
 | `targetGroupPairInfo` | ***[[]CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo)***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecLoadBalancerInfoElbInfo
-##### (Appears on:[CodedeployDeploymentGroupSpecLoadBalancerInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfo))
+
+Appears on:[CodedeployDeploymentGroupSpecLoadBalancerInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfo)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupInfo
-##### (Appears on:[CodedeployDeploymentGroupSpecLoadBalancerInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfo))
+
+Appears on:[CodedeployDeploymentGroupSpecLoadBalancerInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfo)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo
-##### (Appears on:[CodedeployDeploymentGroupSpecLoadBalancerInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfo))
+
+Appears on:[CodedeployDeploymentGroupSpecLoadBalancerInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfo)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `prodTrafficRoute` | ***[[]CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute](#CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute)***||
 | `targetGroup` | ***[[]CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfoTargetGroup](#CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfoTargetGroup)***||
 | `testTrafficRoute` | ***[[]CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute](#CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute)***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute
-##### (Appears on:[CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo))
+
+Appears on:[CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `listenerArns` | ***[]string***||
 ## CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfoTargetGroup
-##### (Appears on:[CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo))
+
+Appears on:[CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 ## CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute
-##### (Appears on:[CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo))
+
+Appears on:[CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo](#CodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `listenerArns` | ***[]string***||
 ## CodedeployDeploymentGroupSpecOnPremisesInstanceTagFilter
-##### (Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec))
+
+Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `key` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 | `value` | ***string***| ***(Optional)*** |
 ## CodedeployDeploymentGroupSpecTriggerConfiguration
-##### (Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec))
+
+Appears on:[CodedeployDeploymentGroupSpec](#CodedeployDeploymentGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `triggerEvents` | ***[]string***||
 | `triggerName` | ***string***||
 | `triggerTargetArn` | ***string***||
 ## CodedeployDeploymentGroupStatus
-##### (Appears on:[CodedeployDeploymentGroup](#CodedeployDeploymentGroup))
+
+Appears on:[CodedeployDeploymentGroup](#CodedeployDeploymentGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

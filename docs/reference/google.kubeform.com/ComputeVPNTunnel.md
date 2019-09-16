@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeVPNTunnelSpec](#ComputeVPNTunnelSpec)***||
 | `status` | ***[ComputeVPNTunnelStatus](#ComputeVPNTunnelStatus)***||
 ## ComputeVPNTunnelSpec
-##### (Appears on:[ComputeVPNTunnel](#ComputeVPNTunnel), [ComputeVPNTunnelStatus](#ComputeVPNTunnelStatus))
+
+Appears on:[ComputeVPNTunnel](#ComputeVPNTunnel), [ComputeVPNTunnelStatus](#ComputeVPNTunnelStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -42,7 +44,9 @@ section_menu_id: reference
 | `sharedSecretHash` | ***string***| ***(Optional)*** |
 | `targetVPNGateway` | ***string***||
 ## ComputeVPNTunnelStatus
-##### (Appears on:[ComputeVPNTunnel](#ComputeVPNTunnel))
+
+Appears on:[ComputeVPNTunnel](#ComputeVPNTunnel)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

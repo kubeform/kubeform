@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VpcEndpointSpec](#VpcEndpointSpec)***||
 | `status` | ***[VpcEndpointStatus](#VpcEndpointStatus)***||
 ## VpcEndpointSpec
-##### (Appears on:[VpcEndpoint](#VpcEndpoint), [VpcEndpointStatus](#VpcEndpointStatus))
+
+Appears on:[VpcEndpoint](#VpcEndpoint), [VpcEndpointStatus](#VpcEndpointStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,13 +41,17 @@ section_menu_id: reference
 | `vpcEndpointType` | ***string***| ***(Optional)*** |
 | `vpcID` | ***string***||
 ## VpcEndpointSpecDnsEntry
-##### (Appears on:[VpcEndpointSpec](#VpcEndpointSpec))
+
+Appears on:[VpcEndpointSpec](#VpcEndpointSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dnsName` | ***string***| ***(Optional)*** |
 | `hostedZoneID` | ***string***| ***(Optional)*** |
 ## VpcEndpointStatus
-##### (Appears on:[VpcEndpoint](#VpcEndpoint))
+
+Appears on:[VpcEndpoint](#VpcEndpoint)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

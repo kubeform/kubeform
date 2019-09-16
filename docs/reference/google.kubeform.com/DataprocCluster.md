@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DataprocClusterSpec](#DataprocClusterSpec)***||
 | `status` | ***[DataprocClusterStatus](#DataprocClusterStatus)***||
 ## DataprocClusterSpec
-##### (Appears on:[DataprocCluster](#DataprocCluster), [DataprocClusterStatus](#DataprocClusterStatus))
+
+Appears on:[DataprocCluster](#DataprocCluster), [DataprocClusterStatus](#DataprocClusterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `project` | ***string***| ***(Optional)*** |
 | `region` | ***string***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfig
-##### (Appears on:[DataprocClusterSpec](#DataprocClusterSpec))
+
+Appears on:[DataprocClusterSpec](#DataprocClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucket` | ***string***| ***(Optional)*** |
@@ -43,7 +47,9 @@ section_menu_id: reference
 | `stagingBucket` | ***string***| ***(Optional)*** |
 | `workerConfig` | ***[[]DataprocClusterSpecClusterConfigWorkerConfig](#DataprocClusterSpecClusterConfigWorkerConfig)***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigGceClusterConfig
-##### (Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig))
+
+Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `internalIPOnly` | ***bool***| ***(Optional)*** |
@@ -55,13 +61,17 @@ section_menu_id: reference
 | `tags` | ***[]string***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigInitializationAction
-##### (Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig))
+
+Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `script` | ***string***||
 | `timeoutSec` | ***int***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigMasterConfig
-##### (Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig))
+
+Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskConfig` | ***[[]DataprocClusterSpecClusterConfigMasterConfigDiskConfig](#DataprocClusterSpecClusterConfigMasterConfigDiskConfig)***| ***(Optional)*** |
@@ -69,33 +79,43 @@ section_menu_id: reference
 | `machineType` | ***string***| ***(Optional)*** |
 | `numInstances` | ***int***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigMasterConfigDiskConfig
-##### (Appears on:[DataprocClusterSpecClusterConfigMasterConfig](#DataprocClusterSpecClusterConfigMasterConfig))
+
+Appears on:[DataprocClusterSpecClusterConfigMasterConfig](#DataprocClusterSpecClusterConfigMasterConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bootDiskSizeGb` | ***int***| ***(Optional)*** |
 | `bootDiskType` | ***string***| ***(Optional)*** |
 | `numLocalSsds` | ***int***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigPreemptibleWorkerConfig
-##### (Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig))
+
+Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskConfig` | ***[[]DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig](#DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig)***| ***(Optional)*** |
 | `instanceNames` | ***[]string***| ***(Optional)*** |
 | `numInstances` | ***int***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig
-##### (Appears on:[DataprocClusterSpecClusterConfigPreemptibleWorkerConfig](#DataprocClusterSpecClusterConfigPreemptibleWorkerConfig))
+
+Appears on:[DataprocClusterSpecClusterConfigPreemptibleWorkerConfig](#DataprocClusterSpecClusterConfigPreemptibleWorkerConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bootDiskSizeGb` | ***int***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigSoftwareConfig
-##### (Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig))
+
+Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `imageVersion` | ***string***| ***(Optional)*** |
 | `overrideProperties` | ***map[string]string***| ***(Optional)*** |
 | `properties` | ***map[string]string***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigWorkerConfig
-##### (Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig))
+
+Appears on:[DataprocClusterSpecClusterConfig](#DataprocClusterSpecClusterConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskConfig` | ***[[]DataprocClusterSpecClusterConfigWorkerConfigDiskConfig](#DataprocClusterSpecClusterConfigWorkerConfigDiskConfig)***| ***(Optional)*** |
@@ -103,14 +123,18 @@ section_menu_id: reference
 | `machineType` | ***string***| ***(Optional)*** |
 | `numInstances` | ***int***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigWorkerConfigDiskConfig
-##### (Appears on:[DataprocClusterSpecClusterConfigWorkerConfig](#DataprocClusterSpecClusterConfigWorkerConfig))
+
+Appears on:[DataprocClusterSpecClusterConfigWorkerConfig](#DataprocClusterSpecClusterConfigWorkerConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bootDiskSizeGb` | ***int***| ***(Optional)*** |
 | `bootDiskType` | ***string***| ***(Optional)*** |
 | `numLocalSsds` | ***int***| ***(Optional)*** |
 ## DataprocClusterStatus
-##### (Appears on:[DataprocCluster](#DataprocCluster))
+
+Appears on:[DataprocCluster](#DataprocCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NodebalancerNodeSpec](#NodebalancerNodeSpec)***||
 | `status` | ***[NodebalancerNodeStatus](#NodebalancerNodeStatus)***||
 ## NodebalancerNodeSpec
-##### (Appears on:[NodebalancerNode](#NodebalancerNode), [NodebalancerNodeStatus](#NodebalancerNodeStatus))
+
+Appears on:[NodebalancerNode](#NodebalancerNode), [NodebalancerNodeStatus](#NodebalancerNodeStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `status` | ***string***| ***(Optional)*** The current status of this node, based on the configured checks of its NodeBalancer Config. (unknown, UP, DOWN)|
 | `weight` | ***int***| ***(Optional)*** Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255)|
 ## NodebalancerNodeStatus
-##### (Appears on:[NodebalancerNode](#NodebalancerNode))
+
+Appears on:[NodebalancerNode](#NodebalancerNode)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

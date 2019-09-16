@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DataLakeAnalyticsAccountSpec](#DataLakeAnalyticsAccountSpec)***||
 | `status` | ***[DataLakeAnalyticsAccountStatus](#DataLakeAnalyticsAccountStatus)***||
 ## DataLakeAnalyticsAccountSpec
-##### (Appears on:[DataLakeAnalyticsAccount](#DataLakeAnalyticsAccount), [DataLakeAnalyticsAccountStatus](#DataLakeAnalyticsAccountStatus))
+
+Appears on:[DataLakeAnalyticsAccount](#DataLakeAnalyticsAccount), [DataLakeAnalyticsAccountStatus](#DataLakeAnalyticsAccountStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `tier` | ***string***| ***(Optional)*** |
 ## DataLakeAnalyticsAccountStatus
-##### (Appears on:[DataLakeAnalyticsAccount](#DataLakeAnalyticsAccount))
+
+Appears on:[DataLakeAnalyticsAccount](#DataLakeAnalyticsAccount)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

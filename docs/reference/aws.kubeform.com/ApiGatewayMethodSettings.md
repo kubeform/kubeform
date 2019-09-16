@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApiGatewayMethodSettingsSpec](#ApiGatewayMethodSettingsSpec)***||
 | `status` | ***[ApiGatewayMethodSettingsStatus](#ApiGatewayMethodSettingsStatus)***||
 ## ApiGatewayMethodSettingsSpec
-##### (Appears on:[ApiGatewayMethodSettings](#ApiGatewayMethodSettings), [ApiGatewayMethodSettingsStatus](#ApiGatewayMethodSettingsStatus))
+
+Appears on:[ApiGatewayMethodSettings](#ApiGatewayMethodSettings), [ApiGatewayMethodSettingsStatus](#ApiGatewayMethodSettingsStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `settings` | ***[[]ApiGatewayMethodSettingsSpecSettings](#ApiGatewayMethodSettingsSpecSettings)***||
 | `stageName` | ***string***||
 ## ApiGatewayMethodSettingsSpecSettings
-##### (Appears on:[ApiGatewayMethodSettingsSpec](#ApiGatewayMethodSettingsSpec))
+
+Appears on:[ApiGatewayMethodSettingsSpec](#ApiGatewayMethodSettingsSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cacheDataEncrypted` | ***bool***| ***(Optional)*** |
@@ -43,7 +47,9 @@ section_menu_id: reference
 | `throttlingRateLimit` | ***encoding/json.Number***| ***(Optional)*** |
 | `unauthorizedCacheControlHeaderStrategy` | ***string***| ***(Optional)*** |
 ## ApiGatewayMethodSettingsStatus
-##### (Appears on:[ApiGatewayMethodSettings](#ApiGatewayMethodSettings))
+
+Appears on:[ApiGatewayMethodSettings](#ApiGatewayMethodSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

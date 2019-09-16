@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GlueTriggerSpec](#GlueTriggerSpec)***||
 | `status` | ***[GlueTriggerStatus](#GlueTriggerStatus)***||
 ## GlueTriggerSpec
-##### (Appears on:[GlueTrigger](#GlueTrigger), [GlueTriggerStatus](#GlueTriggerStatus))
+
+Appears on:[GlueTrigger](#GlueTrigger), [GlueTriggerStatus](#GlueTriggerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,27 +34,35 @@ section_menu_id: reference
 | `schedule` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## GlueTriggerSpecActions
-##### (Appears on:[GlueTriggerSpec](#GlueTriggerSpec))
+
+Appears on:[GlueTriggerSpec](#GlueTriggerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `arguments` | ***map[string]string***| ***(Optional)*** |
 | `jobName` | ***string***||
 | `timeout` | ***int***| ***(Optional)*** |
 ## GlueTriggerSpecPredicate
-##### (Appears on:[GlueTriggerSpec](#GlueTriggerSpec))
+
+Appears on:[GlueTriggerSpec](#GlueTriggerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `conditions` | ***[[]GlueTriggerSpecPredicateConditions](#GlueTriggerSpecPredicateConditions)***||
 | `logical` | ***string***| ***(Optional)*** |
 ## GlueTriggerSpecPredicateConditions
-##### (Appears on:[GlueTriggerSpecPredicate](#GlueTriggerSpecPredicate))
+
+Appears on:[GlueTriggerSpecPredicate](#GlueTriggerSpecPredicate)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `jobName` | ***string***||
 | `logicalOperator` | ***string***| ***(Optional)*** |
 | `state` | ***string***||
 ## GlueTriggerStatus
-##### (Appears on:[GlueTrigger](#GlueTrigger))
+
+Appears on:[GlueTrigger](#GlueTrigger)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

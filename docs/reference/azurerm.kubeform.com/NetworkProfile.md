@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NetworkProfileSpec](#NetworkProfileSpec)***||
 | `status` | ***[NetworkProfileStatus](#NetworkProfileStatus)***||
 ## NetworkProfileSpec
-##### (Appears on:[NetworkProfile](#NetworkProfile), [NetworkProfileStatus](#NetworkProfileStatus))
+
+Appears on:[NetworkProfile](#NetworkProfile), [NetworkProfileStatus](#NetworkProfileStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,19 +33,25 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## NetworkProfileSpecContainerNetworkInterface
-##### (Appears on:[NetworkProfileSpec](#NetworkProfileSpec))
+
+Appears on:[NetworkProfileSpec](#NetworkProfileSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ipConfiguration` | ***[[]NetworkProfileSpecContainerNetworkInterfaceIpConfiguration](#NetworkProfileSpecContainerNetworkInterfaceIpConfiguration)***||
 | `name` | ***string***||
 ## NetworkProfileSpecContainerNetworkInterfaceIpConfiguration
-##### (Appears on:[NetworkProfileSpecContainerNetworkInterface](#NetworkProfileSpecContainerNetworkInterface))
+
+Appears on:[NetworkProfileSpecContainerNetworkInterface](#NetworkProfileSpecContainerNetworkInterface)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `subnetID` | ***string***||
 ## NetworkProfileStatus
-##### (Appears on:[NetworkProfile](#NetworkProfile))
+
+Appears on:[NetworkProfile](#NetworkProfile)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

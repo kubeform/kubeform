@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApiManagementSubscriptionSpec](#ApiManagementSubscriptionSpec)***||
 | `status` | ***[ApiManagementSubscriptionStatus](#ApiManagementSubscriptionStatus)***||
 ## ApiManagementSubscriptionSpec
-##### (Appears on:[ApiManagementSubscription](#ApiManagementSubscription), [ApiManagementSubscriptionStatus](#ApiManagementSubscriptionStatus))
+
+Appears on:[ApiManagementSubscription](#ApiManagementSubscription), [ApiManagementSubscriptionStatus](#ApiManagementSubscriptionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `subscriptionID` | ***string***| ***(Optional)*** |
 | `userID` | ***string***||
 ## ApiManagementSubscriptionStatus
-##### (Appears on:[ApiManagementSubscription](#ApiManagementSubscription))
+
+Appears on:[ApiManagementSubscription](#ApiManagementSubscription)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

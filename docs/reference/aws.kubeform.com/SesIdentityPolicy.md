@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SesIdentityPolicySpec](#SesIdentityPolicySpec)***||
 | `status` | ***[SesIdentityPolicyStatus](#SesIdentityPolicyStatus)***||
 ## SesIdentityPolicySpec
-##### (Appears on:[SesIdentityPolicy](#SesIdentityPolicy), [SesIdentityPolicyStatus](#SesIdentityPolicyStatus))
+
+Appears on:[SesIdentityPolicy](#SesIdentityPolicy), [SesIdentityPolicyStatus](#SesIdentityPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `policy` | ***string***||
 ## SesIdentityPolicyStatus
-##### (Appears on:[SesIdentityPolicy](#SesIdentityPolicy))
+
+Appears on:[SesIdentityPolicy](#SesIdentityPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

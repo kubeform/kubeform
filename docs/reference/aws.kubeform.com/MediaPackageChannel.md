@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MediaPackageChannelSpec](#MediaPackageChannelSpec)***||
 | `status` | ***[MediaPackageChannelStatus](#MediaPackageChannelStatus)***||
 ## MediaPackageChannelSpec
-##### (Appears on:[MediaPackageChannel](#MediaPackageChannel), [MediaPackageChannelStatus](#MediaPackageChannelStatus))
+
+Appears on:[MediaPackageChannel](#MediaPackageChannel), [MediaPackageChannelStatus](#MediaPackageChannelStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,18 +33,24 @@ section_menu_id: reference
 | `hlsIngest` | ***[[]MediaPackageChannelSpecHlsIngest](#MediaPackageChannelSpecHlsIngest)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## MediaPackageChannelSpecHlsIngest
-##### (Appears on:[MediaPackageChannelSpec](#MediaPackageChannelSpec))
+
+Appears on:[MediaPackageChannelSpec](#MediaPackageChannelSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ingestEndpoints` | ***[[]MediaPackageChannelSpecHlsIngestIngestEndpoints](#MediaPackageChannelSpecHlsIngestIngestEndpoints)***| ***(Optional)*** |
 ## MediaPackageChannelSpecHlsIngestIngestEndpoints
-##### (Appears on:[MediaPackageChannelSpecHlsIngest](#MediaPackageChannelSpecHlsIngest))
+
+Appears on:[MediaPackageChannelSpecHlsIngest](#MediaPackageChannelSpecHlsIngest)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `url` | ***string***| ***(Optional)*** |
 | `username` | ***string***| ***(Optional)*** |
 ## MediaPackageChannelStatus
-##### (Appears on:[MediaPackageChannel](#MediaPackageChannel))
+
+Appears on:[MediaPackageChannel](#MediaPackageChannel)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

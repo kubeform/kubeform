@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SqlDatabaseInstanceSpec](#SqlDatabaseInstanceSpec)***||
 | `status` | ***[SqlDatabaseInstanceStatus](#SqlDatabaseInstanceStatus)***||
 ## SqlDatabaseInstanceSpec
-##### (Appears on:[SqlDatabaseInstance](#SqlDatabaseInstance), [SqlDatabaseInstanceStatus](#SqlDatabaseInstanceStatus))
+
+Appears on:[SqlDatabaseInstance](#SqlDatabaseInstance), [SqlDatabaseInstanceStatus](#SqlDatabaseInstanceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,13 +41,17 @@ section_menu_id: reference
 | `serviceAccountEmailAddress` | ***string***| ***(Optional)*** |
 | `settings` | ***[[]SqlDatabaseInstanceSpecSettings](#SqlDatabaseInstanceSpecSettings)***||
 ## SqlDatabaseInstanceSpecIpAddress
-##### (Appears on:[SqlDatabaseInstanceSpec](#SqlDatabaseInstanceSpec))
+
+Appears on:[SqlDatabaseInstanceSpec](#SqlDatabaseInstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ipAddress` | ***string***| ***(Optional)*** |
 | `timeToRetire` | ***string***| ***(Optional)*** |
 ## SqlDatabaseInstanceSpecReplicaConfiguration
-##### (Appears on:[SqlDatabaseInstanceSpec](#SqlDatabaseInstanceSpec))
+
+Appears on:[SqlDatabaseInstanceSpec](#SqlDatabaseInstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `caCertificate` | ***string***| ***(Optional)*** |
@@ -59,7 +65,9 @@ section_menu_id: reference
 | `username` | ***string***| ***(Optional)*** |
 | `verifyServerCertificate` | ***bool***| ***(Optional)*** |
 ## SqlDatabaseInstanceSpecServerCaCert
-##### (Appears on:[SqlDatabaseInstanceSpec](#SqlDatabaseInstanceSpec))
+
+Appears on:[SqlDatabaseInstanceSpec](#SqlDatabaseInstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cert` | ***string***| ***(Optional)*** |
@@ -68,7 +76,9 @@ section_menu_id: reference
 | `expirationTime` | ***string***| ***(Optional)*** |
 | `sha1Fingerprint` | ***string***| ***(Optional)*** |
 ## SqlDatabaseInstanceSpecSettings
-##### (Appears on:[SqlDatabaseInstanceSpec](#SqlDatabaseInstanceSpec))
+
+Appears on:[SqlDatabaseInstanceSpec](#SqlDatabaseInstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `activationPolicy` | ***string***| ***(Optional)*** |
@@ -89,20 +99,26 @@ section_menu_id: reference
 | `userLabels` | ***map[string]string***| ***(Optional)*** |
 | `version` | ***int***| ***(Optional)*** |
 ## SqlDatabaseInstanceSpecSettingsBackupConfiguration
-##### (Appears on:[SqlDatabaseInstanceSpecSettings](#SqlDatabaseInstanceSpecSettings))
+
+Appears on:[SqlDatabaseInstanceSpecSettings](#SqlDatabaseInstanceSpecSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `binaryLogEnabled` | ***bool***| ***(Optional)*** |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `startTime` | ***string***| ***(Optional)*** |
 ## SqlDatabaseInstanceSpecSettingsDatabaseFlags
-##### (Appears on:[SqlDatabaseInstanceSpecSettings](#SqlDatabaseInstanceSpecSettings))
+
+Appears on:[SqlDatabaseInstanceSpecSettings](#SqlDatabaseInstanceSpecSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***| ***(Optional)*** |
 | `value` | ***string***| ***(Optional)*** |
 ## SqlDatabaseInstanceSpecSettingsIpConfiguration
-##### (Appears on:[SqlDatabaseInstanceSpecSettings](#SqlDatabaseInstanceSpecSettings))
+
+Appears on:[SqlDatabaseInstanceSpecSettings](#SqlDatabaseInstanceSpecSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authorizedNetworks` | ***[[]SqlDatabaseInstanceSpecSettingsIpConfigurationAuthorizedNetworks](#SqlDatabaseInstanceSpecSettingsIpConfigurationAuthorizedNetworks)***| ***(Optional)*** |
@@ -110,27 +126,35 @@ section_menu_id: reference
 | `privateNetwork` | ***string***| ***(Optional)*** |
 | `requireSSL` | ***bool***| ***(Optional)*** |
 ## SqlDatabaseInstanceSpecSettingsIpConfigurationAuthorizedNetworks
-##### (Appears on:[SqlDatabaseInstanceSpecSettingsIpConfiguration](#SqlDatabaseInstanceSpecSettingsIpConfiguration))
+
+Appears on:[SqlDatabaseInstanceSpecSettingsIpConfiguration](#SqlDatabaseInstanceSpecSettingsIpConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `expirationTime` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `value` | ***string***| ***(Optional)*** |
 ## SqlDatabaseInstanceSpecSettingsLocationPreference
-##### (Appears on:[SqlDatabaseInstanceSpecSettings](#SqlDatabaseInstanceSpecSettings))
+
+Appears on:[SqlDatabaseInstanceSpecSettings](#SqlDatabaseInstanceSpecSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `followGaeApplication` | ***string***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
 ## SqlDatabaseInstanceSpecSettingsMaintenanceWindow
-##### (Appears on:[SqlDatabaseInstanceSpecSettings](#SqlDatabaseInstanceSpecSettings))
+
+Appears on:[SqlDatabaseInstanceSpecSettings](#SqlDatabaseInstanceSpecSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `day` | ***int***| ***(Optional)*** |
 | `hour` | ***int***| ***(Optional)*** |
 | `updateTrack` | ***string***| ***(Optional)*** |
 ## SqlDatabaseInstanceStatus
-##### (Appears on:[SqlDatabaseInstance](#SqlDatabaseInstance))
+
+Appears on:[SqlDatabaseInstance](#SqlDatabaseInstance)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

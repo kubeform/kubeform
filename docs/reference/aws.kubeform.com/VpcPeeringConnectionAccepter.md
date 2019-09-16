@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VpcPeeringConnectionAccepterSpec](#VpcPeeringConnectionAccepterSpec)***||
 | `status` | ***[VpcPeeringConnectionAccepterStatus](#VpcPeeringConnectionAccepterStatus)***||
 ## VpcPeeringConnectionAccepterSpec
-##### (Appears on:[VpcPeeringConnectionAccepter](#VpcPeeringConnectionAccepter), [VpcPeeringConnectionAccepterStatus](#VpcPeeringConnectionAccepterStatus))
+
+Appears on:[VpcPeeringConnectionAccepter](#VpcPeeringConnectionAccepter), [VpcPeeringConnectionAccepterStatus](#VpcPeeringConnectionAccepterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,21 +37,27 @@ section_menu_id: reference
 | `vpcID` | ***string***| ***(Optional)*** |
 | `vpcPeeringConnectionID` | ***string***||
 ## VpcPeeringConnectionAccepterSpecAccepter
-##### (Appears on:[VpcPeeringConnectionAccepterSpec](#VpcPeeringConnectionAccepterSpec))
+
+Appears on:[VpcPeeringConnectionAccepterSpec](#VpcPeeringConnectionAccepterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowClassicLinkToRemoteVpc` | ***bool***| ***(Optional)*** |
 | `allowRemoteVpcDNSResolution` | ***bool***| ***(Optional)*** |
 | `allowVpcToRemoteClassicLink` | ***bool***| ***(Optional)*** |
 ## VpcPeeringConnectionAccepterSpecRequester
-##### (Appears on:[VpcPeeringConnectionAccepterSpec](#VpcPeeringConnectionAccepterSpec))
+
+Appears on:[VpcPeeringConnectionAccepterSpec](#VpcPeeringConnectionAccepterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowClassicLinkToRemoteVpc` | ***bool***| ***(Optional)*** |
 | `allowRemoteVpcDNSResolution` | ***bool***| ***(Optional)*** |
 | `allowVpcToRemoteClassicLink` | ***bool***| ***(Optional)*** |
 ## VpcPeeringConnectionAccepterStatus
-##### (Appears on:[VpcPeeringConnectionAccepter](#VpcPeeringConnectionAccepter))
+
+Appears on:[VpcPeeringConnectionAccepter](#VpcPeeringConnectionAccepter)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

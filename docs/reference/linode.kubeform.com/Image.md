@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ImageSpec](#ImageSpec)***||
 | `status` | ***[ImageStatus](#ImageStatus)***||
 ## ImageSpec
-##### (Appears on:[Image](#Image), [ImageStatus](#ImageStatus))
+
+Appears on:[Image](#Image), [ImageStatus](#ImageStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,7 +39,9 @@ section_menu_id: reference
 | `type` | ***string***| ***(Optional)*** How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.|
 | `vendor` | ***string***| ***(Optional)*** The upstream distribution vendor. Nil for private Images.|
 ## ImageStatus
-##### (Appears on:[Image](#Image))
+
+Appears on:[Image](#Image)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

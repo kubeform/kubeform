@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeGlobalAddressSpec](#ComputeGlobalAddressSpec)***||
 | `status` | ***[ComputeGlobalAddressStatus](#ComputeGlobalAddressStatus)***||
 ## ComputeGlobalAddressSpec
-##### (Appears on:[ComputeGlobalAddress](#ComputeGlobalAddress), [ComputeGlobalAddressStatus](#ComputeGlobalAddressStatus))
+
+Appears on:[ComputeGlobalAddress](#ComputeGlobalAddress), [ComputeGlobalAddressStatus](#ComputeGlobalAddressStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,7 +40,9 @@ section_menu_id: reference
 | `purpose` | ***string***| ***(Optional)*** Deprecated|
 | `selfLink` | ***string***| ***(Optional)*** |
 ## ComputeGlobalAddressStatus
-##### (Appears on:[ComputeGlobalAddress](#ComputeGlobalAddress))
+
+Appears on:[ComputeGlobalAddress](#ComputeGlobalAddress)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

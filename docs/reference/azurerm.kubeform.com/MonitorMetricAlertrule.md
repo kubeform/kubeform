@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MonitorMetricAlertruleSpec](#MonitorMetricAlertruleSpec)***||
 | `status` | ***[MonitorMetricAlertruleStatus](#MonitorMetricAlertruleStatus)***||
 ## MonitorMetricAlertruleSpec
-##### (Appears on:[MonitorMetricAlertrule](#MonitorMetricAlertrule), [MonitorMetricAlertruleStatus](#MonitorMetricAlertruleStatus))
+
+Appears on:[MonitorMetricAlertrule](#MonitorMetricAlertrule), [MonitorMetricAlertruleStatus](#MonitorMetricAlertruleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,19 +41,25 @@ section_menu_id: reference
 | `threshold` | ***encoding/json.Number***||
 | `webhookAction` | ***[[]MonitorMetricAlertruleSpecWebhookAction](#MonitorMetricAlertruleSpecWebhookAction)***| ***(Optional)*** |
 ## MonitorMetricAlertruleSpecEmailAction
-##### (Appears on:[MonitorMetricAlertruleSpec](#MonitorMetricAlertruleSpec))
+
+Appears on:[MonitorMetricAlertruleSpec](#MonitorMetricAlertruleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `customEmails` | ***[]string***| ***(Optional)*** |
 | `sendToServiceOwners` | ***bool***| ***(Optional)*** |
 ## MonitorMetricAlertruleSpecWebhookAction
-##### (Appears on:[MonitorMetricAlertruleSpec](#MonitorMetricAlertruleSpec))
+
+Appears on:[MonitorMetricAlertruleSpec](#MonitorMetricAlertruleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `properties` | ***map[string]string***| ***(Optional)*** |
 | `serviceURI` | ***string***||
 ## MonitorMetricAlertruleStatus
-##### (Appears on:[MonitorMetricAlertrule](#MonitorMetricAlertrule))
+
+Appears on:[MonitorMetricAlertrule](#MonitorMetricAlertrule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

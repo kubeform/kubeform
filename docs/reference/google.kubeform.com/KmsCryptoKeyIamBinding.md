@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[KmsCryptoKeyIamBindingSpec](#KmsCryptoKeyIamBindingSpec)***||
 | `status` | ***[KmsCryptoKeyIamBindingStatus](#KmsCryptoKeyIamBindingStatus)***||
 ## KmsCryptoKeyIamBindingSpec
-##### (Appears on:[KmsCryptoKeyIamBinding](#KmsCryptoKeyIamBinding), [KmsCryptoKeyIamBindingStatus](#KmsCryptoKeyIamBindingStatus))
+
+Appears on:[KmsCryptoKeyIamBinding](#KmsCryptoKeyIamBinding), [KmsCryptoKeyIamBindingStatus](#KmsCryptoKeyIamBindingStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `members` | ***[]string***||
 | `role` | ***string***||
 ## KmsCryptoKeyIamBindingStatus
-##### (Appears on:[KmsCryptoKeyIamBinding](#KmsCryptoKeyIamBinding))
+
+Appears on:[KmsCryptoKeyIamBinding](#KmsCryptoKeyIamBinding)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

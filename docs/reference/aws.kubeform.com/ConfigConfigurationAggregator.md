@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ConfigConfigurationAggregatorSpec](#ConfigConfigurationAggregatorSpec)***||
 | `status` | ***[ConfigConfigurationAggregatorStatus](#ConfigConfigurationAggregatorStatus)***||
 ## ConfigConfigurationAggregatorSpec
-##### (Appears on:[ConfigConfigurationAggregator](#ConfigConfigurationAggregator), [ConfigConfigurationAggregatorStatus](#ConfigConfigurationAggregatorStatus))
+
+Appears on:[ConfigConfigurationAggregator](#ConfigConfigurationAggregator), [ConfigConfigurationAggregatorStatus](#ConfigConfigurationAggregatorStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,21 +31,27 @@ section_menu_id: reference
 | `name` | ***string***||
 | `organizationAggregationSource` | ***[[]ConfigConfigurationAggregatorSpecOrganizationAggregationSource](#ConfigConfigurationAggregatorSpecOrganizationAggregationSource)***| ***(Optional)*** |
 ## ConfigConfigurationAggregatorSpecAccountAggregationSource
-##### (Appears on:[ConfigConfigurationAggregatorSpec](#ConfigConfigurationAggregatorSpec))
+
+Appears on:[ConfigConfigurationAggregatorSpec](#ConfigConfigurationAggregatorSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `accountIDS` | ***[]string***||
 | `allRegions` | ***bool***| ***(Optional)*** |
 | `regions` | ***[]string***| ***(Optional)*** |
 ## ConfigConfigurationAggregatorSpecOrganizationAggregationSource
-##### (Appears on:[ConfigConfigurationAggregatorSpec](#ConfigConfigurationAggregatorSpec))
+
+Appears on:[ConfigConfigurationAggregatorSpec](#ConfigConfigurationAggregatorSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allRegions` | ***bool***| ***(Optional)*** |
 | `regions` | ***[]string***| ***(Optional)*** |
 | `roleArn` | ***string***||
 ## ConfigConfigurationAggregatorStatus
-##### (Appears on:[ConfigConfigurationAggregator](#ConfigConfigurationAggregator))
+
+Appears on:[ConfigConfigurationAggregator](#ConfigConfigurationAggregator)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

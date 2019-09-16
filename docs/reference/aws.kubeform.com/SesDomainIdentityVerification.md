@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SesDomainIdentityVerificationSpec](#SesDomainIdentityVerificationSpec)***||
 | `status` | ***[SesDomainIdentityVerificationStatus](#SesDomainIdentityVerificationStatus)***||
 ## SesDomainIdentityVerificationSpec
-##### (Appears on:[SesDomainIdentityVerification](#SesDomainIdentityVerification), [SesDomainIdentityVerificationStatus](#SesDomainIdentityVerificationStatus))
+
+Appears on:[SesDomainIdentityVerification](#SesDomainIdentityVerification), [SesDomainIdentityVerificationStatus](#SesDomainIdentityVerificationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `arn` | ***string***| ***(Optional)*** |
 | `domain` | ***string***||
 ## SesDomainIdentityVerificationStatus
-##### (Appears on:[SesDomainIdentityVerification](#SesDomainIdentityVerification))
+
+Appears on:[SesDomainIdentityVerification](#SesDomainIdentityVerification)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

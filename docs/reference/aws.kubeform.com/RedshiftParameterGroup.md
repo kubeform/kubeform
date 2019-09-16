@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[RedshiftParameterGroupSpec](#RedshiftParameterGroupSpec)***||
 | `status` | ***[RedshiftParameterGroupStatus](#RedshiftParameterGroupStatus)***||
 ## RedshiftParameterGroupSpec
-##### (Appears on:[RedshiftParameterGroup](#RedshiftParameterGroup), [RedshiftParameterGroupStatus](#RedshiftParameterGroupStatus))
+
+Appears on:[RedshiftParameterGroup](#RedshiftParameterGroup), [RedshiftParameterGroupStatus](#RedshiftParameterGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,13 +31,17 @@ section_menu_id: reference
 | `name` | ***string***||
 | `parameter` | ***[[]RedshiftParameterGroupSpecParameter](#RedshiftParameterGroupSpecParameter)***| ***(Optional)*** |
 ## RedshiftParameterGroupSpecParameter
-##### (Appears on:[RedshiftParameterGroupSpec](#RedshiftParameterGroupSpec))
+
+Appears on:[RedshiftParameterGroupSpec](#RedshiftParameterGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `value` | ***string***||
 ## RedshiftParameterGroupStatus
-##### (Appears on:[RedshiftParameterGroup](#RedshiftParameterGroup))
+
+Appears on:[RedshiftParameterGroup](#RedshiftParameterGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[BigqueryDatasetSpec](#BigqueryDatasetSpec)***||
 | `status` | ***[BigqueryDatasetStatus](#BigqueryDatasetStatus)***||
 ## BigqueryDatasetSpec
-##### (Appears on:[BigqueryDataset](#BigqueryDataset), [BigqueryDatasetStatus](#BigqueryDatasetStatus))
+
+Appears on:[BigqueryDataset](#BigqueryDataset), [BigqueryDatasetStatus](#BigqueryDatasetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,7 +39,9 @@ section_menu_id: reference
 | `project` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 ## BigqueryDatasetSpecAccess
-##### (Appears on:[BigqueryDatasetSpec](#BigqueryDatasetSpec))
+
+Appears on:[BigqueryDatasetSpec](#BigqueryDatasetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `domain` | ***string***| ***(Optional)*** |
@@ -47,14 +51,18 @@ section_menu_id: reference
 | `userByEmail` | ***string***| ***(Optional)*** |
 | `view` | ***[[]BigqueryDatasetSpecAccessView](#BigqueryDatasetSpecAccessView)***| ***(Optional)*** |
 ## BigqueryDatasetSpecAccessView
-##### (Appears on:[BigqueryDatasetSpecAccess](#BigqueryDatasetSpecAccess))
+
+Appears on:[BigqueryDatasetSpecAccess](#BigqueryDatasetSpecAccess)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `datasetID` | ***string***||
 | `projectID` | ***string***||
 | `tableID` | ***string***||
 ## BigqueryDatasetStatus
-##### (Appears on:[BigqueryDataset](#BigqueryDataset))
+
+Appears on:[BigqueryDataset](#BigqueryDataset)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

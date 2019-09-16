@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AcmpcaCertificateAuthoritySpec](#AcmpcaCertificateAuthoritySpec)***||
 | `status` | ***[AcmpcaCertificateAuthorityStatus](#AcmpcaCertificateAuthorityStatus)***||
 ## AcmpcaCertificateAuthoritySpec
-##### (Appears on:[AcmpcaCertificateAuthority](#AcmpcaCertificateAuthority), [AcmpcaCertificateAuthorityStatus](#AcmpcaCertificateAuthorityStatus))
+
+Appears on:[AcmpcaCertificateAuthority](#AcmpcaCertificateAuthority), [AcmpcaCertificateAuthorityStatus](#AcmpcaCertificateAuthorityStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,14 +41,18 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## AcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration
-##### (Appears on:[AcmpcaCertificateAuthoritySpec](#AcmpcaCertificateAuthoritySpec))
+
+Appears on:[AcmpcaCertificateAuthoritySpec](#AcmpcaCertificateAuthoritySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `keyAlgorithm` | ***string***||
 | `signingAlgorithm` | ***string***||
 | `subject` | ***[[]AcmpcaCertificateAuthoritySpecCertificateAuthorityConfigurationSubject](#AcmpcaCertificateAuthoritySpecCertificateAuthorityConfigurationSubject)***||
 ## AcmpcaCertificateAuthoritySpecCertificateAuthorityConfigurationSubject
-##### (Appears on:[AcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration](#AcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration))
+
+Appears on:[AcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration](#AcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `commonName` | ***string***| ***(Optional)*** |
@@ -63,12 +69,16 @@ section_menu_id: reference
 | `surname` | ***string***| ***(Optional)*** |
 | `title` | ***string***| ***(Optional)*** |
 ## AcmpcaCertificateAuthoritySpecRevocationConfiguration
-##### (Appears on:[AcmpcaCertificateAuthoritySpec](#AcmpcaCertificateAuthoritySpec))
+
+Appears on:[AcmpcaCertificateAuthoritySpec](#AcmpcaCertificateAuthoritySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `crlConfiguration` | ***[[]AcmpcaCertificateAuthoritySpecRevocationConfigurationCrlConfiguration](#AcmpcaCertificateAuthoritySpecRevocationConfigurationCrlConfiguration)***| ***(Optional)*** |
 ## AcmpcaCertificateAuthoritySpecRevocationConfigurationCrlConfiguration
-##### (Appears on:[AcmpcaCertificateAuthoritySpecRevocationConfiguration](#AcmpcaCertificateAuthoritySpecRevocationConfiguration))
+
+Appears on:[AcmpcaCertificateAuthoritySpecRevocationConfiguration](#AcmpcaCertificateAuthoritySpecRevocationConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `customCname` | ***string***| ***(Optional)*** |
@@ -76,7 +86,9 @@ section_menu_id: reference
 | `expirationInDays` | ***int***||
 | `s3BucketName` | ***string***| ***(Optional)*** |
 ## AcmpcaCertificateAuthorityStatus
-##### (Appears on:[AcmpcaCertificateAuthority](#AcmpcaCertificateAuthority))
+
+Appears on:[AcmpcaCertificateAuthority](#AcmpcaCertificateAuthority)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

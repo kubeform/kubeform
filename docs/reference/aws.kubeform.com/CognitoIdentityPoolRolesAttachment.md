@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CognitoIdentityPoolRolesAttachmentSpec](#CognitoIdentityPoolRolesAttachmentSpec)***||
 | `status` | ***[CognitoIdentityPoolRolesAttachmentStatus](#CognitoIdentityPoolRolesAttachmentStatus)***||
 ## CognitoIdentityPoolRolesAttachmentSpec
-##### (Appears on:[CognitoIdentityPoolRolesAttachment](#CognitoIdentityPoolRolesAttachment), [CognitoIdentityPoolRolesAttachmentStatus](#CognitoIdentityPoolRolesAttachmentStatus))
+
+Appears on:[CognitoIdentityPoolRolesAttachment](#CognitoIdentityPoolRolesAttachment), [CognitoIdentityPoolRolesAttachmentStatus](#CognitoIdentityPoolRolesAttachmentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `roleMapping` | ***[[]CognitoIdentityPoolRolesAttachmentSpecRoleMapping](#CognitoIdentityPoolRolesAttachmentSpecRoleMapping)***| ***(Optional)*** |
 | `roles` | ***map[string]kubeform.dev/kubeform/apis/aws/v1alpha1.CognitoIdentityPoolRolesAttachmentSpecRoles***||
 ## CognitoIdentityPoolRolesAttachmentSpecRoleMapping
-##### (Appears on:[CognitoIdentityPoolRolesAttachmentSpec](#CognitoIdentityPoolRolesAttachmentSpec))
+
+Appears on:[CognitoIdentityPoolRolesAttachmentSpec](#CognitoIdentityPoolRolesAttachmentSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ambiguousRoleResolution` | ***string***| ***(Optional)*** |
@@ -36,7 +40,9 @@ section_menu_id: reference
 | `mappingRule` | ***[[]CognitoIdentityPoolRolesAttachmentSpecRoleMappingMappingRule](#CognitoIdentityPoolRolesAttachmentSpecRoleMappingMappingRule)***| ***(Optional)*** |
 | `type` | ***string***||
 ## CognitoIdentityPoolRolesAttachmentSpecRoleMappingMappingRule
-##### (Appears on:[CognitoIdentityPoolRolesAttachmentSpecRoleMapping](#CognitoIdentityPoolRolesAttachmentSpecRoleMapping))
+
+Appears on:[CognitoIdentityPoolRolesAttachmentSpecRoleMapping](#CognitoIdentityPoolRolesAttachmentSpecRoleMapping)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `claim` | ***string***||
@@ -44,7 +50,9 @@ section_menu_id: reference
 | `roleArn` | ***string***||
 | `value` | ***string***||
 ## CognitoIdentityPoolRolesAttachmentStatus
-##### (Appears on:[CognitoIdentityPoolRolesAttachment](#CognitoIdentityPoolRolesAttachment))
+
+Appears on:[CognitoIdentityPoolRolesAttachment](#CognitoIdentityPoolRolesAttachment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[RdsClusterSpec](#RdsClusterSpec)***||
 | `status` | ***[RdsClusterStatus](#RdsClusterStatus)***||
 ## RdsClusterSpec
-##### (Appears on:[RdsCluster](#RdsCluster), [RdsClusterStatus](#RdsClusterStatus))
+
+Appears on:[RdsCluster](#RdsCluster), [RdsClusterStatus](#RdsClusterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -65,7 +67,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpcSecurityGroupIDS` | ***[]string***| ***(Optional)*** |
 ## RdsClusterSpecS3Import
-##### (Appears on:[RdsClusterSpec](#RdsClusterSpec))
+
+Appears on:[RdsClusterSpec](#RdsClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketName` | ***string***||
@@ -74,7 +78,9 @@ section_menu_id: reference
 | `sourceEngine` | ***string***||
 | `sourceEngineVersion` | ***string***||
 ## RdsClusterSpecScalingConfiguration
-##### (Appears on:[RdsClusterSpec](#RdsClusterSpec))
+
+Appears on:[RdsClusterSpec](#RdsClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `autoPause` | ***bool***| ***(Optional)*** |
@@ -82,7 +88,9 @@ section_menu_id: reference
 | `minCapacity` | ***int***| ***(Optional)*** |
 | `secondsUntilAutoPause` | ***int***| ***(Optional)*** |
 ## RdsClusterStatus
-##### (Appears on:[RdsCluster](#RdsCluster))
+
+Appears on:[RdsCluster](#RdsCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

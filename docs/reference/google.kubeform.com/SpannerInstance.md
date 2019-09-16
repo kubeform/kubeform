@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SpannerInstanceSpec](#SpannerInstanceSpec)***||
 | `status` | ***[SpannerInstanceStatus](#SpannerInstanceStatus)***||
 ## SpannerInstanceSpec
-##### (Appears on:[SpannerInstance](#SpannerInstance), [SpannerInstanceStatus](#SpannerInstanceStatus))
+
+Appears on:[SpannerInstance](#SpannerInstance), [SpannerInstanceStatus](#SpannerInstanceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `project` | ***string***| ***(Optional)*** |
 | `state` | ***string***| ***(Optional)*** |
 ## SpannerInstanceStatus
-##### (Appears on:[SpannerInstance](#SpannerInstance))
+
+Appears on:[SpannerInstance](#SpannerInstance)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

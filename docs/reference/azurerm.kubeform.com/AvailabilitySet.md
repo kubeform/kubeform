@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AvailabilitySetSpec](#AvailabilitySetSpec)***||
 | `status` | ***[AvailabilitySetStatus](#AvailabilitySetStatus)***||
 ## AvailabilitySetSpec
-##### (Appears on:[AvailabilitySet](#AvailabilitySet), [AvailabilitySetStatus](#AvailabilitySetStatus))
+
+Appears on:[AvailabilitySet](#AvailabilitySet), [AvailabilitySetStatus](#AvailabilitySetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## AvailabilitySetStatus
-##### (Appears on:[AvailabilitySet](#AvailabilitySet))
+
+Appears on:[AvailabilitySet](#AvailabilitySet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

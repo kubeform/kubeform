@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DataFactoryLinkedServiceDataLakeStorageGen2Spec](#DataFactoryLinkedServiceDataLakeStorageGen2Spec)***||
 | `status` | ***[DataFactoryLinkedServiceDataLakeStorageGen2Status](#DataFactoryLinkedServiceDataLakeStorageGen2Status)***||
 ## DataFactoryLinkedServiceDataLakeStorageGen2Spec
-##### (Appears on:[DataFactoryLinkedServiceDataLakeStorageGen2](#DataFactoryLinkedServiceDataLakeStorageGen2), [DataFactoryLinkedServiceDataLakeStorageGen2Status](#DataFactoryLinkedServiceDataLakeStorageGen2Status))
+
+Appears on:[DataFactoryLinkedServiceDataLakeStorageGen2](#DataFactoryLinkedServiceDataLakeStorageGen2), [DataFactoryLinkedServiceDataLakeStorageGen2Status](#DataFactoryLinkedServiceDataLakeStorageGen2Status)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,7 +39,9 @@ section_menu_id: reference
 | `tenant` | ***string***||
 | `url` | ***string***||
 ## DataFactoryLinkedServiceDataLakeStorageGen2Status
-##### (Appears on:[DataFactoryLinkedServiceDataLakeStorageGen2](#DataFactoryLinkedServiceDataLakeStorageGen2))
+
+Appears on:[DataFactoryLinkedServiceDataLakeStorageGen2](#DataFactoryLinkedServiceDataLakeStorageGen2)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

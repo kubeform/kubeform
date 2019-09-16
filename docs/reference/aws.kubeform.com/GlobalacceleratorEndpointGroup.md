@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GlobalacceleratorEndpointGroupSpec](#GlobalacceleratorEndpointGroupSpec)***||
 | `status` | ***[GlobalacceleratorEndpointGroupStatus](#GlobalacceleratorEndpointGroupStatus)***||
 ## GlobalacceleratorEndpointGroupSpec
-##### (Appears on:[GlobalacceleratorEndpointGroup](#GlobalacceleratorEndpointGroup), [GlobalacceleratorEndpointGroupStatus](#GlobalacceleratorEndpointGroupStatus))
+
+Appears on:[GlobalacceleratorEndpointGroup](#GlobalacceleratorEndpointGroup), [GlobalacceleratorEndpointGroupStatus](#GlobalacceleratorEndpointGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,13 +36,17 @@ section_menu_id: reference
 | `thresholdCount` | ***int***| ***(Optional)*** |
 | `trafficDialPercentage` | ***encoding/json.Number***| ***(Optional)*** |
 ## GlobalacceleratorEndpointGroupSpecEndpointConfiguration
-##### (Appears on:[GlobalacceleratorEndpointGroupSpec](#GlobalacceleratorEndpointGroupSpec))
+
+Appears on:[GlobalacceleratorEndpointGroupSpec](#GlobalacceleratorEndpointGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `endpointID` | ***string***| ***(Optional)*** |
 | `weight` | ***int***| ***(Optional)*** |
 ## GlobalacceleratorEndpointGroupStatus
-##### (Appears on:[GlobalacceleratorEndpointGroup](#GlobalacceleratorEndpointGroup))
+
+Appears on:[GlobalacceleratorEndpointGroup](#GlobalacceleratorEndpointGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

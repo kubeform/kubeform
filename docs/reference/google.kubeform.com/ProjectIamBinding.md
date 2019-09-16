@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ProjectIamBindingSpec](#ProjectIamBindingSpec)***||
 | `status` | ***[ProjectIamBindingStatus](#ProjectIamBindingStatus)***||
 ## ProjectIamBindingSpec
-##### (Appears on:[ProjectIamBinding](#ProjectIamBinding), [ProjectIamBindingStatus](#ProjectIamBindingStatus))
+
+Appears on:[ProjectIamBinding](#ProjectIamBinding), [ProjectIamBindingStatus](#ProjectIamBindingStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `project` | ***string***| ***(Optional)*** |
 | `role` | ***string***||
 ## ProjectIamBindingStatus
-##### (Appears on:[ProjectIamBinding](#ProjectIamBinding))
+
+Appears on:[ProjectIamBinding](#ProjectIamBinding)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

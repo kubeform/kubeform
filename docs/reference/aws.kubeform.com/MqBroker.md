@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MqBrokerSpec](#MqBrokerSpec)***||
 | `status` | ***[MqBrokerStatus](#MqBrokerStatus)***||
 ## MqBrokerSpec
-##### (Appears on:[MqBroker](#MqBroker), [MqBrokerStatus](#MqBrokerStatus))
+
+Appears on:[MqBroker](#MqBroker), [MqBrokerStatus](#MqBrokerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,40 +45,52 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `user` | ***[[]MqBrokerSpecUser](#MqBrokerSpecUser)***||
 ## MqBrokerSpecConfiguration
-##### (Appears on:[MqBrokerSpec](#MqBrokerSpec))
+
+Appears on:[MqBrokerSpec](#MqBrokerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
 | `revision` | ***int***| ***(Optional)*** |
 ## MqBrokerSpecInstances
-##### (Appears on:[MqBrokerSpec](#MqBrokerSpec))
+
+Appears on:[MqBrokerSpec](#MqBrokerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `consoleURL` | ***string***| ***(Optional)*** |
 | `endpoints` | ***[]string***| ***(Optional)*** |
 | `ipAddress` | ***string***| ***(Optional)*** |
 ## MqBrokerSpecLogs
-##### (Appears on:[MqBrokerSpec](#MqBrokerSpec))
+
+Appears on:[MqBrokerSpec](#MqBrokerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `audit` | ***bool***| ***(Optional)*** |
 | `general` | ***bool***| ***(Optional)*** |
 ## MqBrokerSpecMaintenanceWindowStartTime
-##### (Appears on:[MqBrokerSpec](#MqBrokerSpec))
+
+Appears on:[MqBrokerSpec](#MqBrokerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dayOfWeek` | ***string***||
 | `timeOfDay` | ***string***||
 | `timeZone` | ***string***||
 ## MqBrokerSpecUser
-##### (Appears on:[MqBrokerSpec](#MqBrokerSpec))
+
+Appears on:[MqBrokerSpec](#MqBrokerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `consoleAccess` | ***bool***| ***(Optional)*** |
 | `groups` | ***[]string***| ***(Optional)*** |
 | `username` | ***string***||
 ## MqBrokerStatus
-##### (Appears on:[MqBroker](#MqBroker))
+
+Appears on:[MqBroker](#MqBroker)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

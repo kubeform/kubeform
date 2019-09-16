@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MonitoringNotificationChannelSpec](#MonitoringNotificationChannelSpec)***||
 | `status` | ***[MonitoringNotificationChannelStatus](#MonitoringNotificationChannelStatus)***||
 ## MonitoringNotificationChannelSpec
-##### (Appears on:[MonitoringNotificationChannel](#MonitoringNotificationChannel), [MonitoringNotificationChannelStatus](#MonitoringNotificationChannelStatus))
+
+Appears on:[MonitoringNotificationChannel](#MonitoringNotificationChannel), [MonitoringNotificationChannelStatus](#MonitoringNotificationChannelStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `userLabels` | ***map[string]string***| ***(Optional)*** |
 | `verificationStatus` | ***string***| ***(Optional)*** |
 ## MonitoringNotificationChannelStatus
-##### (Appears on:[MonitoringNotificationChannel](#MonitoringNotificationChannel))
+
+Appears on:[MonitoringNotificationChannel](#MonitoringNotificationChannel)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[OpsworksStaticWebLayerSpec](#OpsworksStaticWebLayerSpec)***||
 | `status` | ***[OpsworksStaticWebLayerStatus](#OpsworksStaticWebLayerStatus)***||
 ## OpsworksStaticWebLayerSpec
-##### (Appears on:[OpsworksStaticWebLayer](#OpsworksStaticWebLayer), [OpsworksStaticWebLayerStatus](#OpsworksStaticWebLayerStatus))
+
+Appears on:[OpsworksStaticWebLayer](#OpsworksStaticWebLayer), [OpsworksStaticWebLayerStatus](#OpsworksStaticWebLayerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -45,7 +47,9 @@ section_menu_id: reference
 | `systemPackages` | ***[]string***| ***(Optional)*** |
 | `useEbsOptimizedInstances` | ***bool***| ***(Optional)*** |
 ## OpsworksStaticWebLayerSpecEbsVolume
-##### (Appears on:[OpsworksStaticWebLayerSpec](#OpsworksStaticWebLayerSpec))
+
+Appears on:[OpsworksStaticWebLayerSpec](#OpsworksStaticWebLayerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `iops` | ***int***| ***(Optional)*** |
@@ -55,7 +59,9 @@ section_menu_id: reference
 | `size` | ***int***||
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksStaticWebLayerStatus
-##### (Appears on:[OpsworksStaticWebLayer](#OpsworksStaticWebLayer))
+
+Appears on:[OpsworksStaticWebLayer](#OpsworksStaticWebLayer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NetworkSecurityGroupSpec](#NetworkSecurityGroupSpec)***||
 | `status` | ***[NetworkSecurityGroupStatus](#NetworkSecurityGroupStatus)***||
 ## NetworkSecurityGroupSpec
-##### (Appears on:[NetworkSecurityGroup](#NetworkSecurityGroup), [NetworkSecurityGroupStatus](#NetworkSecurityGroupStatus))
+
+Appears on:[NetworkSecurityGroup](#NetworkSecurityGroup), [NetworkSecurityGroupStatus](#NetworkSecurityGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `securityRule` | ***[[]NetworkSecurityGroupSpecSecurityRule](#NetworkSecurityGroupSpecSecurityRule)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## NetworkSecurityGroupSpecSecurityRule
-##### (Appears on:[NetworkSecurityGroupSpec](#NetworkSecurityGroupSpec))
+
+Appears on:[NetworkSecurityGroupSpec](#NetworkSecurityGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `access` | ***string***||
@@ -50,7 +54,9 @@ section_menu_id: reference
 | `sourcePortRange` | ***string***| ***(Optional)*** |
 | `sourcePortRanges` | ***[]string***| ***(Optional)*** |
 ## NetworkSecurityGroupStatus
-##### (Appears on:[NetworkSecurityGroup](#NetworkSecurityGroup))
+
+Appears on:[NetworkSecurityGroup](#NetworkSecurityGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

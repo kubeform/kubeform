@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[BackupSelectionSpec](#BackupSelectionSpec)***||
 | `status` | ***[BackupSelectionStatus](#BackupSelectionStatus)***||
 ## BackupSelectionSpec
-##### (Appears on:[BackupSelection](#BackupSelection), [BackupSelectionStatus](#BackupSelectionStatus))
+
+Appears on:[BackupSelection](#BackupSelection), [BackupSelectionStatus](#BackupSelectionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,14 +32,18 @@ section_menu_id: reference
 | `resources` | ***[]string***| ***(Optional)*** |
 | `selectionTag` | ***[[]BackupSelectionSpecSelectionTag](#BackupSelectionSpecSelectionTag)***| ***(Optional)*** |
 ## BackupSelectionSpecSelectionTag
-##### (Appears on:[BackupSelectionSpec](#BackupSelectionSpec))
+
+Appears on:[BackupSelectionSpec](#BackupSelectionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `key` | ***string***||
 | `type` | ***string***||
 | `value` | ***string***||
 ## BackupSelectionStatus
-##### (Appears on:[BackupSelection](#BackupSelection))
+
+Appears on:[BackupSelection](#BackupSelection)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

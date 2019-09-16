@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[PolicyAssignmentSpec](#PolicyAssignmentSpec)***||
 | `status` | ***[PolicyAssignmentStatus](#PolicyAssignmentStatus)***||
 ## PolicyAssignmentSpec
-##### (Appears on:[PolicyAssignment](#PolicyAssignment), [PolicyAssignmentStatus](#PolicyAssignmentStatus))
+
+Appears on:[PolicyAssignment](#PolicyAssignment), [PolicyAssignmentStatus](#PolicyAssignmentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,14 +36,18 @@ section_menu_id: reference
 | `policyDefinitionID` | ***string***||
 | `scope` | ***string***||
 ## PolicyAssignmentSpecIdentity
-##### (Appears on:[PolicyAssignmentSpec](#PolicyAssignmentSpec))
+
+Appears on:[PolicyAssignmentSpec](#PolicyAssignmentSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `principalID` | ***string***| ***(Optional)*** |
 | `tenantID` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## PolicyAssignmentStatus
-##### (Appears on:[PolicyAssignment](#PolicyAssignment))
+
+Appears on:[PolicyAssignment](#PolicyAssignment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

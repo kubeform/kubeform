@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ServiceAccountIamPolicySpec](#ServiceAccountIamPolicySpec)***||
 | `status` | ***[ServiceAccountIamPolicyStatus](#ServiceAccountIamPolicyStatus)***||
 ## ServiceAccountIamPolicySpec
-##### (Appears on:[ServiceAccountIamPolicy](#ServiceAccountIamPolicy), [ServiceAccountIamPolicyStatus](#ServiceAccountIamPolicyStatus))
+
+Appears on:[ServiceAccountIamPolicy](#ServiceAccountIamPolicy), [ServiceAccountIamPolicyStatus](#ServiceAccountIamPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `policyData` | ***string***||
 | `serviceAccountID` | ***string***||
 ## ServiceAccountIamPolicyStatus
-##### (Appears on:[ServiceAccountIamPolicy](#ServiceAccountIamPolicy))
+
+Appears on:[ServiceAccountIamPolicy](#ServiceAccountIamPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

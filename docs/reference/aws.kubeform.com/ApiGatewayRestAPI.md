@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApiGatewayRestAPISpec](#ApiGatewayRestAPISpec)***||
 | `status` | ***[ApiGatewayRestAPIStatus](#ApiGatewayRestAPIStatus)***||
 ## ApiGatewayRestAPISpec
-##### (Appears on:[ApiGatewayRestAPI](#ApiGatewayRestAPI), [ApiGatewayRestAPIStatus](#ApiGatewayRestAPIStatus))
+
+Appears on:[ApiGatewayRestAPI](#ApiGatewayRestAPI), [ApiGatewayRestAPIStatus](#ApiGatewayRestAPIStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,12 +38,16 @@ section_menu_id: reference
 | `policy` | ***string***| ***(Optional)*** |
 | `rootResourceID` | ***string***| ***(Optional)*** |
 ## ApiGatewayRestAPISpecEndpointConfiguration
-##### (Appears on:[ApiGatewayRestAPISpec](#ApiGatewayRestAPISpec))
+
+Appears on:[ApiGatewayRestAPISpec](#ApiGatewayRestAPISpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `types` | ***[]string***||
 ## ApiGatewayRestAPIStatus
-##### (Appears on:[ApiGatewayRestAPI](#ApiGatewayRestAPI))
+
+Appears on:[ApiGatewayRestAPI](#ApiGatewayRestAPI)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

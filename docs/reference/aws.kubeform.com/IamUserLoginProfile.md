@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[IamUserLoginProfileSpec](#IamUserLoginProfileSpec)***||
 | `status` | ***[IamUserLoginProfileStatus](#IamUserLoginProfileStatus)***||
 ## IamUserLoginProfileSpec
-##### (Appears on:[IamUserLoginProfile](#IamUserLoginProfile), [IamUserLoginProfileStatus](#IamUserLoginProfileStatus))
+
+Appears on:[IamUserLoginProfile](#IamUserLoginProfile), [IamUserLoginProfileStatus](#IamUserLoginProfileStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `pgpKey` | ***string***||
 | `user` | ***string***||
 ## IamUserLoginProfileStatus
-##### (Appears on:[IamUserLoginProfile](#IamUserLoginProfile))
+
+Appears on:[IamUserLoginProfile](#IamUserLoginProfile)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

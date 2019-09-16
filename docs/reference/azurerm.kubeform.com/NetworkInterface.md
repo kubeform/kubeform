@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NetworkInterfaceSpec](#NetworkInterfaceSpec)***||
 | `status` | ***[NetworkInterfaceStatus](#NetworkInterfaceStatus)***||
 ## NetworkInterfaceSpec
-##### (Appears on:[NetworkInterface](#NetworkInterface), [NetworkInterfaceStatus](#NetworkInterfaceStatus))
+
+Appears on:[NetworkInterface](#NetworkInterface), [NetworkInterfaceStatus](#NetworkInterfaceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -41,7 +43,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `virtualMachineID` | ***string***| ***(Optional)*** |
 ## NetworkInterfaceSpecIpConfiguration
-##### (Appears on:[NetworkInterfaceSpec](#NetworkInterfaceSpec))
+
+Appears on:[NetworkInterfaceSpec](#NetworkInterfaceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `applicationGatewayBackendAddressPoolsIDS` | ***[]string***| ***(Optional)*** Deprecated|
@@ -56,7 +60,9 @@ section_menu_id: reference
 | `publicIPAddressID` | ***string***| ***(Optional)*** |
 | `subnetID` | ***string***| ***(Optional)*** |
 ## NetworkInterfaceStatus
-##### (Appears on:[NetworkInterface](#NetworkInterface))
+
+Appears on:[NetworkInterface](#NetworkInterface)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CloudwatchEventTargetSpec](#CloudwatchEventTargetSpec)***||
 | `status` | ***[CloudwatchEventTargetStatus](#CloudwatchEventTargetStatus)***||
 ## CloudwatchEventTargetSpec
-##### (Appears on:[CloudwatchEventTarget](#CloudwatchEventTarget), [CloudwatchEventTargetStatus](#CloudwatchEventTargetStatus))
+
+Appears on:[CloudwatchEventTarget](#CloudwatchEventTarget), [CloudwatchEventTargetStatus](#CloudwatchEventTargetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,7 +39,9 @@ section_menu_id: reference
 | `sqsTarget` | ***[[]CloudwatchEventTargetSpecSqsTarget](#CloudwatchEventTargetSpecSqsTarget)***| ***(Optional)*** |
 | `targetID` | ***string***| ***(Optional)*** |
 ## CloudwatchEventTargetSpecBatchTarget
-##### (Appears on:[CloudwatchEventTargetSpec](#CloudwatchEventTargetSpec))
+
+Appears on:[CloudwatchEventTargetSpec](#CloudwatchEventTargetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `arraySize` | ***int***| ***(Optional)*** |
@@ -45,7 +49,9 @@ section_menu_id: reference
 | `jobDefinition` | ***string***||
 | `jobName` | ***string***||
 ## CloudwatchEventTargetSpecEcsTarget
-##### (Appears on:[CloudwatchEventTargetSpec](#CloudwatchEventTargetSpec))
+
+Appears on:[CloudwatchEventTargetSpec](#CloudwatchEventTargetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `group` | ***string***| ***(Optional)*** |
@@ -55,36 +61,48 @@ section_menu_id: reference
 | `taskCount` | ***int***| ***(Optional)*** |
 | `taskDefinitionArn` | ***string***||
 ## CloudwatchEventTargetSpecEcsTargetNetworkConfiguration
-##### (Appears on:[CloudwatchEventTargetSpecEcsTarget](#CloudwatchEventTargetSpecEcsTarget))
+
+Appears on:[CloudwatchEventTargetSpecEcsTarget](#CloudwatchEventTargetSpecEcsTarget)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `assignPublicIP` | ***bool***| ***(Optional)*** |
 | `securityGroups` | ***[]string***| ***(Optional)*** |
 | `subnets` | ***[]string***||
 ## CloudwatchEventTargetSpecInputTransformer
-##### (Appears on:[CloudwatchEventTargetSpec](#CloudwatchEventTargetSpec))
+
+Appears on:[CloudwatchEventTargetSpec](#CloudwatchEventTargetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `inputPaths` | ***map[string]string***| ***(Optional)*** |
 | `inputTemplate` | ***string***||
 ## CloudwatchEventTargetSpecKinesisTarget
-##### (Appears on:[CloudwatchEventTargetSpec](#CloudwatchEventTargetSpec))
+
+Appears on:[CloudwatchEventTargetSpec](#CloudwatchEventTargetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `partitionKeyPath` | ***string***| ***(Optional)*** |
 ## CloudwatchEventTargetSpecRunCommandTargets
-##### (Appears on:[CloudwatchEventTargetSpec](#CloudwatchEventTargetSpec))
+
+Appears on:[CloudwatchEventTargetSpec](#CloudwatchEventTargetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `key` | ***string***||
 | `values` | ***[]string***||
 ## CloudwatchEventTargetSpecSqsTarget
-##### (Appears on:[CloudwatchEventTargetSpec](#CloudwatchEventTargetSpec))
+
+Appears on:[CloudwatchEventTargetSpec](#CloudwatchEventTargetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `messageGroupID` | ***string***| ***(Optional)*** |
 ## CloudwatchEventTargetStatus
-##### (Appears on:[CloudwatchEventTarget](#CloudwatchEventTarget))
+
+Appears on:[CloudwatchEventTarget](#CloudwatchEventTarget)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

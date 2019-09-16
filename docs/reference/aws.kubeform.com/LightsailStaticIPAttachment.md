@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LightsailStaticIPAttachmentSpec](#LightsailStaticIPAttachmentSpec)***||
 | `status` | ***[LightsailStaticIPAttachmentStatus](#LightsailStaticIPAttachmentStatus)***||
 ## LightsailStaticIPAttachmentSpec
-##### (Appears on:[LightsailStaticIPAttachment](#LightsailStaticIPAttachment), [LightsailStaticIPAttachmentStatus](#LightsailStaticIPAttachmentStatus))
+
+Appears on:[LightsailStaticIPAttachment](#LightsailStaticIPAttachment), [LightsailStaticIPAttachmentStatus](#LightsailStaticIPAttachmentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `instanceName` | ***string***||
 | `staticIPName` | ***string***||
 ## LightsailStaticIPAttachmentStatus
-##### (Appears on:[LightsailStaticIPAttachment](#LightsailStaticIPAttachment))
+
+Appears on:[LightsailStaticIPAttachment](#LightsailStaticIPAttachment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

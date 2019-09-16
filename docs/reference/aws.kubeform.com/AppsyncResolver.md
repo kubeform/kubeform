@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AppsyncResolverSpec](#AppsyncResolverSpec)***||
 | `status` | ***[AppsyncResolverStatus](#AppsyncResolverStatus)***||
 ## AppsyncResolverSpec
-##### (Appears on:[AppsyncResolver](#AppsyncResolver), [AppsyncResolverStatus](#AppsyncResolverStatus))
+
+Appears on:[AppsyncResolver](#AppsyncResolver), [AppsyncResolverStatus](#AppsyncResolverStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `responseTemplate` | ***string***||
 | `type` | ***string***||
 ## AppsyncResolverStatus
-##### (Appears on:[AppsyncResolver](#AppsyncResolver))
+
+Appears on:[AppsyncResolver](#AppsyncResolver)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[IamOpenidConnectProviderSpec](#IamOpenidConnectProviderSpec)***||
 | `status` | ***[IamOpenidConnectProviderStatus](#IamOpenidConnectProviderStatus)***||
 ## IamOpenidConnectProviderSpec
-##### (Appears on:[IamOpenidConnectProvider](#IamOpenidConnectProvider), [IamOpenidConnectProviderStatus](#IamOpenidConnectProviderStatus))
+
+Appears on:[IamOpenidConnectProvider](#IamOpenidConnectProvider), [IamOpenidConnectProviderStatus](#IamOpenidConnectProviderStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `thumbprintList` | ***[]string***||
 | `url` | ***string***||
 ## IamOpenidConnectProviderStatus
-##### (Appears on:[IamOpenidConnectProvider](#IamOpenidConnectProvider))
+
+Appears on:[IamOpenidConnectProvider](#IamOpenidConnectProvider)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CodepipelineWebhookSpec](#CodepipelineWebhookSpec)***||
 | `status` | ***[CodepipelineWebhookStatus](#CodepipelineWebhookStatus)***||
 ## CodepipelineWebhookSpec
-##### (Appears on:[CodepipelineWebhook](#CodepipelineWebhook), [CodepipelineWebhookStatus](#CodepipelineWebhookStatus))
+
+Appears on:[CodepipelineWebhook](#CodepipelineWebhook), [CodepipelineWebhookStatus](#CodepipelineWebhookStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,18 +35,24 @@ section_menu_id: reference
 | `targetPipeline` | ***string***||
 | `url` | ***string***| ***(Optional)*** |
 ## CodepipelineWebhookSpecAuthenticationConfiguration
-##### (Appears on:[CodepipelineWebhookSpec](#CodepipelineWebhookSpec))
+
+Appears on:[CodepipelineWebhookSpec](#CodepipelineWebhookSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowedIPRange` | ***string***| ***(Optional)*** |
 ## CodepipelineWebhookSpecFilter
-##### (Appears on:[CodepipelineWebhookSpec](#CodepipelineWebhookSpec))
+
+Appears on:[CodepipelineWebhookSpec](#CodepipelineWebhookSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `jsonPath` | ***string***||
 | `matchEquals` | ***string***||
 ## CodepipelineWebhookStatus
-##### (Appears on:[CodepipelineWebhook](#CodepipelineWebhook))
+
+Appears on:[CodepipelineWebhook](#CodepipelineWebhook)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

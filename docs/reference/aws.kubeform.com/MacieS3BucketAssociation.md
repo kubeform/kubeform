@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MacieS3BucketAssociationSpec](#MacieS3BucketAssociationSpec)***||
 | `status` | ***[MacieS3BucketAssociationStatus](#MacieS3BucketAssociationStatus)***||
 ## MacieS3BucketAssociationSpec
-##### (Appears on:[MacieS3BucketAssociation](#MacieS3BucketAssociation), [MacieS3BucketAssociationStatus](#MacieS3BucketAssociationStatus))
+
+Appears on:[MacieS3BucketAssociation](#MacieS3BucketAssociation), [MacieS3BucketAssociationStatus](#MacieS3BucketAssociationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,13 +31,17 @@ section_menu_id: reference
 | `memberAccountID` | ***string***| ***(Optional)*** |
 | `prefix` | ***string***| ***(Optional)*** |
 ## MacieS3BucketAssociationSpecClassificationType
-##### (Appears on:[MacieS3BucketAssociationSpec](#MacieS3BucketAssociationSpec))
+
+Appears on:[MacieS3BucketAssociationSpec](#MacieS3BucketAssociationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `continuous` | ***string***| ***(Optional)*** |
 | `oneTime` | ***string***| ***(Optional)*** |
 ## MacieS3BucketAssociationStatus
-##### (Appears on:[MacieS3BucketAssociation](#MacieS3BucketAssociation))
+
+Appears on:[MacieS3BucketAssociation](#MacieS3BucketAssociation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

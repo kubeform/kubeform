@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MonitorLogProfileSpec](#MonitorLogProfileSpec)***||
 | `status` | ***[MonitorLogProfileStatus](#MonitorLogProfileStatus)***||
 ## MonitorLogProfileSpec
-##### (Appears on:[MonitorLogProfile](#MonitorLogProfile), [MonitorLogProfileStatus](#MonitorLogProfileStatus))
+
+Appears on:[MonitorLogProfile](#MonitorLogProfile), [MonitorLogProfileStatus](#MonitorLogProfileStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,13 +33,17 @@ section_menu_id: reference
 | `servicebusRuleID` | ***string***| ***(Optional)*** |
 | `storageAccountID` | ***string***| ***(Optional)*** |
 ## MonitorLogProfileSpecRetentionPolicy
-##### (Appears on:[MonitorLogProfileSpec](#MonitorLogProfileSpec))
+
+Appears on:[MonitorLogProfileSpec](#MonitorLogProfileSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `days` | ***int***| ***(Optional)*** |
 | `enabled` | ***bool***||
 ## MonitorLogProfileStatus
-##### (Appears on:[MonitorLogProfile](#MonitorLogProfile))
+
+Appears on:[MonitorLogProfile](#MonitorLogProfile)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

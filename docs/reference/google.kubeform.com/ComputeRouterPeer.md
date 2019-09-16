@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeRouterPeerSpec](#ComputeRouterPeerSpec)***||
 | `status` | ***[ComputeRouterPeerStatus](#ComputeRouterPeerStatus)***||
 ## ComputeRouterPeerSpec
-##### (Appears on:[ComputeRouterPeer](#ComputeRouterPeer), [ComputeRouterPeerStatus](#ComputeRouterPeerStatus))
+
+Appears on:[ComputeRouterPeer](#ComputeRouterPeer), [ComputeRouterPeerStatus](#ComputeRouterPeerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `region` | ***string***| ***(Optional)*** |
 | `router` | ***string***||
 ## ComputeRouterPeerStatus
-##### (Appears on:[ComputeRouterPeer](#ComputeRouterPeer))
+
+Appears on:[ComputeRouterPeer](#ComputeRouterPeer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

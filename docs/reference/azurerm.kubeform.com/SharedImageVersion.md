@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SharedImageVersionSpec](#SharedImageVersionSpec)***||
 | `status` | ***[SharedImageVersionStatus](#SharedImageVersionStatus)***||
 ## SharedImageVersionSpec
-##### (Appears on:[SharedImageVersion](#SharedImageVersion), [SharedImageVersionStatus](#SharedImageVersionStatus))
+
+Appears on:[SharedImageVersion](#SharedImageVersion), [SharedImageVersionStatus](#SharedImageVersionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,13 +36,17 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `targetRegion` | ***[[]SharedImageVersionSpecTargetRegion](#SharedImageVersionSpecTargetRegion)***||
 ## SharedImageVersionSpecTargetRegion
-##### (Appears on:[SharedImageVersionSpec](#SharedImageVersionSpec))
+
+Appears on:[SharedImageVersionSpec](#SharedImageVersionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `regionalReplicaCount` | ***int***||
 ## SharedImageVersionStatus
-##### (Appears on:[SharedImageVersion](#SharedImageVersion))
+
+Appears on:[SharedImageVersion](#SharedImageVersion)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

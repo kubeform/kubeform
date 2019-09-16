@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[TemplateDeploymentSpec](#TemplateDeploymentSpec)***||
 | `status` | ***[TemplateDeploymentStatus](#TemplateDeploymentStatus)***||
 ## TemplateDeploymentSpec
-##### (Appears on:[TemplateDeployment](#TemplateDeployment), [TemplateDeploymentStatus](#TemplateDeploymentStatus))
+
+Appears on:[TemplateDeployment](#TemplateDeployment), [TemplateDeploymentStatus](#TemplateDeploymentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `templateBody` | ***string***| ***(Optional)*** |
 ## TemplateDeploymentStatus
-##### (Appears on:[TemplateDeployment](#TemplateDeployment))
+
+Appears on:[TemplateDeployment](#TemplateDeployment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

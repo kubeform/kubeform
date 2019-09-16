@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AppEngineApplicationSpec](#AppEngineApplicationSpec)***||
 | `status` | ***[AppEngineApplicationStatus](#AppEngineApplicationStatus)***||
 ## AppEngineApplicationSpec
-##### (Appears on:[AppEngineApplication](#AppEngineApplication), [AppEngineApplicationStatus](#AppEngineApplicationStatus))
+
+Appears on:[AppEngineApplication](#AppEngineApplication), [AppEngineApplicationStatus](#AppEngineApplicationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,19 +38,25 @@ section_menu_id: reference
 | `servingStatus` | ***string***| ***(Optional)*** |
 | `urlDispatchRule` | ***[[]AppEngineApplicationSpecUrlDispatchRule](#AppEngineApplicationSpecUrlDispatchRule)***| ***(Optional)*** |
 ## AppEngineApplicationSpecFeatureSettings
-##### (Appears on:[AppEngineApplicationSpec](#AppEngineApplicationSpec))
+
+Appears on:[AppEngineApplicationSpec](#AppEngineApplicationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `splitHealthChecks` | ***bool***| ***(Optional)*** |
 ## AppEngineApplicationSpecUrlDispatchRule
-##### (Appears on:[AppEngineApplicationSpec](#AppEngineApplicationSpec))
+
+Appears on:[AppEngineApplicationSpec](#AppEngineApplicationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `domain` | ***string***| ***(Optional)*** |
 | `path` | ***string***| ***(Optional)*** |
 | `service` | ***string***| ***(Optional)*** |
 ## AppEngineApplicationStatus
-##### (Appears on:[AppEngineApplication](#AppEngineApplication))
+
+Appears on:[AppEngineApplication](#AppEngineApplication)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

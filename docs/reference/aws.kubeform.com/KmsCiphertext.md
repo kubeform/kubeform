@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[KmsCiphertextSpec](#KmsCiphertextSpec)***||
 | `status` | ***[KmsCiphertextStatus](#KmsCiphertextStatus)***||
 ## KmsCiphertextSpec
-##### (Appears on:[KmsCiphertext](#KmsCiphertext), [KmsCiphertextStatus](#KmsCiphertextStatus))
+
+Appears on:[KmsCiphertext](#KmsCiphertext), [KmsCiphertextStatus](#KmsCiphertextStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `context` | ***map[string]string***| ***(Optional)*** |
 | `keyID` | ***string***||
 ## KmsCiphertextStatus
-##### (Appears on:[KmsCiphertext](#KmsCiphertext))
+
+Appears on:[KmsCiphertext](#KmsCiphertext)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

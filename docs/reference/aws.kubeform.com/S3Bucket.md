@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[S3BucketSpec](#S3BucketSpec)***||
 | `status` | ***[S3BucketStatus](#S3BucketStatus)***||
 ## S3BucketSpec
-##### (Appears on:[S3Bucket](#S3Bucket), [S3BucketStatus](#S3BucketStatus))
+
+Appears on:[S3Bucket](#S3Bucket), [S3BucketStatus](#S3BucketStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -48,7 +50,9 @@ section_menu_id: reference
 | `websiteDomain` | ***string***| ***(Optional)*** |
 | `websiteEndpoint` | ***string***| ***(Optional)*** |
 ## S3BucketSpecCorsRule
-##### (Appears on:[S3BucketSpec](#S3BucketSpec))
+
+Appears on:[S3BucketSpec](#S3BucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowedHeaders` | ***[]string***| ***(Optional)*** |
@@ -57,7 +61,9 @@ section_menu_id: reference
 | `exposeHeaders` | ***[]string***| ***(Optional)*** |
 | `maxAgeSeconds` | ***int***| ***(Optional)*** |
 ## S3BucketSpecLifecycleRule
-##### (Appears on:[S3BucketSpec](#S3BucketSpec))
+
+Appears on:[S3BucketSpec](#S3BucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `abortIncompleteMultipartUploadDays` | ***int***| ***(Optional)*** |
@@ -70,62 +76,82 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `transition` | ***[[]S3BucketSpecLifecycleRuleTransition](#S3BucketSpecLifecycleRuleTransition)***| ***(Optional)*** |
 ## S3BucketSpecLifecycleRuleExpiration
-##### (Appears on:[S3BucketSpecLifecycleRule](#S3BucketSpecLifecycleRule))
+
+Appears on:[S3BucketSpecLifecycleRule](#S3BucketSpecLifecycleRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `date` | ***string***| ***(Optional)*** |
 | `days` | ***int***| ***(Optional)*** |
 | `expiredObjectDeleteMarker` | ***bool***| ***(Optional)*** |
 ## S3BucketSpecLifecycleRuleNoncurrentVersionExpiration
-##### (Appears on:[S3BucketSpecLifecycleRule](#S3BucketSpecLifecycleRule))
+
+Appears on:[S3BucketSpecLifecycleRule](#S3BucketSpecLifecycleRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `days` | ***int***| ***(Optional)*** |
 ## S3BucketSpecLifecycleRuleNoncurrentVersionTransition
-##### (Appears on:[S3BucketSpecLifecycleRule](#S3BucketSpecLifecycleRule))
+
+Appears on:[S3BucketSpecLifecycleRule](#S3BucketSpecLifecycleRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `days` | ***int***| ***(Optional)*** |
 | `storageClass` | ***string***||
 ## S3BucketSpecLifecycleRuleTransition
-##### (Appears on:[S3BucketSpecLifecycleRule](#S3BucketSpecLifecycleRule))
+
+Appears on:[S3BucketSpecLifecycleRule](#S3BucketSpecLifecycleRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `date` | ***string***| ***(Optional)*** |
 | `days` | ***int***| ***(Optional)*** |
 | `storageClass` | ***string***||
 ## S3BucketSpecLogging
-##### (Appears on:[S3BucketSpec](#S3BucketSpec))
+
+Appears on:[S3BucketSpec](#S3BucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `targetBucket` | ***string***||
 | `targetPrefix` | ***string***| ***(Optional)*** |
 ## S3BucketSpecObjectLockConfiguration
-##### (Appears on:[S3BucketSpec](#S3BucketSpec))
+
+Appears on:[S3BucketSpec](#S3BucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `objectLockEnabled` | ***string***||
 | `rule` | ***[[]S3BucketSpecObjectLockConfigurationRule](#S3BucketSpecObjectLockConfigurationRule)***| ***(Optional)*** |
 ## S3BucketSpecObjectLockConfigurationRule
-##### (Appears on:[S3BucketSpecObjectLockConfiguration](#S3BucketSpecObjectLockConfiguration))
+
+Appears on:[S3BucketSpecObjectLockConfiguration](#S3BucketSpecObjectLockConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultRetention` | ***[[]S3BucketSpecObjectLockConfigurationRuleDefaultRetention](#S3BucketSpecObjectLockConfigurationRuleDefaultRetention)***||
 ## S3BucketSpecObjectLockConfigurationRuleDefaultRetention
-##### (Appears on:[S3BucketSpecObjectLockConfigurationRule](#S3BucketSpecObjectLockConfigurationRule))
+
+Appears on:[S3BucketSpecObjectLockConfigurationRule](#S3BucketSpecObjectLockConfigurationRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `days` | ***int***| ***(Optional)*** |
 | `mode` | ***string***||
 | `years` | ***int***| ***(Optional)*** |
 ## S3BucketSpecReplicationConfiguration
-##### (Appears on:[S3BucketSpec](#S3BucketSpec))
+
+Appears on:[S3BucketSpec](#S3BucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `role` | ***string***||
 | `rules` | ***[[]S3BucketSpecReplicationConfigurationRules](#S3BucketSpecReplicationConfigurationRules)***||
 ## S3BucketSpecReplicationConfigurationRules
-##### (Appears on:[S3BucketSpecReplicationConfiguration](#S3BucketSpecReplicationConfiguration))
+
+Appears on:[S3BucketSpecReplicationConfiguration](#S3BucketSpecReplicationConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `destination` | ***[[]S3BucketSpecReplicationConfigurationRulesDestination](#S3BucketSpecReplicationConfigurationRulesDestination)***||
@@ -136,7 +162,9 @@ section_menu_id: reference
 | `sourceSelectionCriteria` | ***[[]S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteria](#S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteria)***| ***(Optional)*** |
 | `status` | ***string***||
 ## S3BucketSpecReplicationConfigurationRulesDestination
-##### (Appears on:[S3BucketSpecReplicationConfigurationRules](#S3BucketSpecReplicationConfigurationRules))
+
+Appears on:[S3BucketSpecReplicationConfigurationRules](#S3BucketSpecReplicationConfigurationRules)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `accessControlTranslation` | ***[[]S3BucketSpecReplicationConfigurationRulesDestinationAccessControlTranslation](#S3BucketSpecReplicationConfigurationRulesDestinationAccessControlTranslation)***| ***(Optional)*** |
@@ -145,50 +173,68 @@ section_menu_id: reference
 | `replicaKmsKeyID` | ***string***| ***(Optional)*** |
 | `storageClass` | ***string***| ***(Optional)*** |
 ## S3BucketSpecReplicationConfigurationRulesDestinationAccessControlTranslation
-##### (Appears on:[S3BucketSpecReplicationConfigurationRulesDestination](#S3BucketSpecReplicationConfigurationRulesDestination))
+
+Appears on:[S3BucketSpecReplicationConfigurationRulesDestination](#S3BucketSpecReplicationConfigurationRulesDestination)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `owner` | ***string***||
 ## S3BucketSpecReplicationConfigurationRulesFilter
-##### (Appears on:[S3BucketSpecReplicationConfigurationRules](#S3BucketSpecReplicationConfigurationRules))
+
+Appears on:[S3BucketSpecReplicationConfigurationRules](#S3BucketSpecReplicationConfigurationRules)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `prefix` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteria
-##### (Appears on:[S3BucketSpecReplicationConfigurationRules](#S3BucketSpecReplicationConfigurationRules))
+
+Appears on:[S3BucketSpecReplicationConfigurationRules](#S3BucketSpecReplicationConfigurationRules)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `sseKmsEncryptedObjects` | ***[[]S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteriaSseKmsEncryptedObjects](#S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteriaSseKmsEncryptedObjects)***| ***(Optional)*** |
 ## S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteriaSseKmsEncryptedObjects
-##### (Appears on:[S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteria](#S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteria))
+
+Appears on:[S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteria](#S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteria)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 ## S3BucketSpecServerSideEncryptionConfiguration
-##### (Appears on:[S3BucketSpec](#S3BucketSpec))
+
+Appears on:[S3BucketSpec](#S3BucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `rule` | ***[[]S3BucketSpecServerSideEncryptionConfigurationRule](#S3BucketSpecServerSideEncryptionConfigurationRule)***||
 ## S3BucketSpecServerSideEncryptionConfigurationRule
-##### (Appears on:[S3BucketSpecServerSideEncryptionConfiguration](#S3BucketSpecServerSideEncryptionConfiguration))
+
+Appears on:[S3BucketSpecServerSideEncryptionConfiguration](#S3BucketSpecServerSideEncryptionConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `applyServerSideEncryptionByDefault` | ***[[]S3BucketSpecServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault](#S3BucketSpecServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault)***||
 ## S3BucketSpecServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault
-##### (Appears on:[S3BucketSpecServerSideEncryptionConfigurationRule](#S3BucketSpecServerSideEncryptionConfigurationRule))
+
+Appears on:[S3BucketSpecServerSideEncryptionConfigurationRule](#S3BucketSpecServerSideEncryptionConfigurationRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `kmsMasterKeyID` | ***string***| ***(Optional)*** |
 | `sseAlgorithm` | ***string***||
 ## S3BucketSpecVersioning
-##### (Appears on:[S3BucketSpec](#S3BucketSpec))
+
+Appears on:[S3BucketSpec](#S3BucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `mfaDelete` | ***bool***| ***(Optional)*** |
 ## S3BucketSpecWebsite
-##### (Appears on:[S3BucketSpec](#S3BucketSpec))
+
+Appears on:[S3BucketSpec](#S3BucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `errorDocument` | ***string***| ***(Optional)*** |
@@ -196,7 +242,9 @@ section_menu_id: reference
 | `redirectAllRequestsTo` | ***string***| ***(Optional)*** |
 | `routingRules` | ***string***| ***(Optional)*** |
 ## S3BucketStatus
-##### (Appears on:[S3Bucket](#S3Bucket))
+
+Appears on:[S3Bucket](#S3Bucket)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

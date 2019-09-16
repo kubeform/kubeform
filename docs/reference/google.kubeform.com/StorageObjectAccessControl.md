@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StorageObjectAccessControlSpec](#StorageObjectAccessControlSpec)***||
 | `status` | ***[StorageObjectAccessControlStatus](#StorageObjectAccessControlStatus)***||
 ## StorageObjectAccessControlSpec
-##### (Appears on:[StorageObjectAccessControl](#StorageObjectAccessControl), [StorageObjectAccessControlStatus](#StorageObjectAccessControlStatus))
+
+Appears on:[StorageObjectAccessControl](#StorageObjectAccessControl), [StorageObjectAccessControlStatus](#StorageObjectAccessControlStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,13 +36,17 @@ section_menu_id: reference
 | `projectTeam` | ***[[]StorageObjectAccessControlSpecProjectTeam](#StorageObjectAccessControlSpecProjectTeam)***| ***(Optional)*** |
 | `role` | ***string***||
 ## StorageObjectAccessControlSpecProjectTeam
-##### (Appears on:[StorageObjectAccessControlSpec](#StorageObjectAccessControlSpec))
+
+Appears on:[StorageObjectAccessControlSpec](#StorageObjectAccessControlSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `projectNumber` | ***string***| ***(Optional)*** |
 | `team` | ***string***| ***(Optional)*** |
 ## StorageObjectAccessControlStatus
-##### (Appears on:[StorageObjectAccessControl](#StorageObjectAccessControl))
+
+Appears on:[StorageObjectAccessControl](#StorageObjectAccessControl)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

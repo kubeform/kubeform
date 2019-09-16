@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ElasticacheReplicationGroupSpec](#ElasticacheReplicationGroupSpec)***||
 | `status` | ***[ElasticacheReplicationGroupStatus](#ElasticacheReplicationGroupStatus)***||
 ## ElasticacheReplicationGroupSpec
-##### (Appears on:[ElasticacheReplicationGroup](#ElasticacheReplicationGroup), [ElasticacheReplicationGroupStatus](#ElasticacheReplicationGroupStatus))
+
+Appears on:[ElasticacheReplicationGroup](#ElasticacheReplicationGroup), [ElasticacheReplicationGroupStatus](#ElasticacheReplicationGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -54,13 +56,17 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `transitEncryptionEnabled` | ***bool***| ***(Optional)*** |
 ## ElasticacheReplicationGroupSpecClusterMode
-##### (Appears on:[ElasticacheReplicationGroupSpec](#ElasticacheReplicationGroupSpec))
+
+Appears on:[ElasticacheReplicationGroupSpec](#ElasticacheReplicationGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `numNodeGroups` | ***int***||
 | `replicasPerNodeGroup` | ***int***||
 ## ElasticacheReplicationGroupStatus
-##### (Appears on:[ElasticacheReplicationGroup](#ElasticacheReplicationGroup))
+
+Appears on:[ElasticacheReplicationGroup](#ElasticacheReplicationGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

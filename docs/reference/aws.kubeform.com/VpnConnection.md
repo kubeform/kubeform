@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VpnConnectionSpec](#VpnConnectionSpec)***||
 | `status` | ***[VpnConnectionStatus](#VpnConnectionStatus)***||
 ## VpnConnectionSpec
-##### (Appears on:[VpnConnection](#VpnConnection), [VpnConnectionStatus](#VpnConnectionStatus))
+
+Appears on:[VpnConnection](#VpnConnection), [VpnConnectionStatus](#VpnConnectionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -48,14 +50,18 @@ section_menu_id: reference
 | `vgwTelemetry` | ***[[]VpnConnectionSpecVgwTelemetry](#VpnConnectionSpecVgwTelemetry)***| ***(Optional)*** |
 | `vpnGatewayID` | ***string***| ***(Optional)*** |
 ## VpnConnectionSpecRoutes
-##### (Appears on:[VpnConnectionSpec](#VpnConnectionSpec))
+
+Appears on:[VpnConnectionSpec](#VpnConnectionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `destinationCIDRBlock` | ***string***| ***(Optional)*** |
 | `source` | ***string***| ***(Optional)*** |
 | `state` | ***string***| ***(Optional)*** |
 ## VpnConnectionSpecVgwTelemetry
-##### (Appears on:[VpnConnectionSpec](#VpnConnectionSpec))
+
+Appears on:[VpnConnectionSpec](#VpnConnectionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `acceptedRouteCount` | ***int***| ***(Optional)*** |
@@ -64,7 +70,9 @@ section_menu_id: reference
 | `status` | ***string***| ***(Optional)*** |
 | `statusMessage` | ***string***| ***(Optional)*** |
 ## VpnConnectionStatus
-##### (Appears on:[VpnConnection](#VpnConnection))
+
+Appears on:[VpnConnection](#VpnConnection)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

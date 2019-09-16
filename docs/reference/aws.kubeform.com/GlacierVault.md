@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GlacierVaultSpec](#GlacierVaultSpec)***||
 | `status` | ***[GlacierVaultStatus](#GlacierVaultStatus)***||
 ## GlacierVaultSpec
-##### (Appears on:[GlacierVault](#GlacierVault), [GlacierVaultStatus](#GlacierVaultStatus))
+
+Appears on:[GlacierVault](#GlacierVault), [GlacierVaultStatus](#GlacierVaultStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,13 +33,17 @@ section_menu_id: reference
 | `notification` | ***[[]GlacierVaultSpecNotification](#GlacierVaultSpecNotification)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## GlacierVaultSpecNotification
-##### (Appears on:[GlacierVaultSpec](#GlacierVaultSpec))
+
+Appears on:[GlacierVaultSpec](#GlacierVaultSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `events` | ***[]string***||
 | `snsTopic` | ***string***||
 ## GlacierVaultStatus
-##### (Appears on:[GlacierVault](#GlacierVault))
+
+Appears on:[GlacierVault](#GlacierVault)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

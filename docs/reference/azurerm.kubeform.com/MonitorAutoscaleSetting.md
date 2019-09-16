@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MonitorAutoscaleSettingSpec](#MonitorAutoscaleSettingSpec)***||
 | `status` | ***[MonitorAutoscaleSettingStatus](#MonitorAutoscaleSettingStatus)***||
 ## MonitorAutoscaleSettingSpec
-##### (Appears on:[MonitorAutoscaleSetting](#MonitorAutoscaleSetting), [MonitorAutoscaleSettingStatus](#MonitorAutoscaleSettingStatus))
+
+Appears on:[MonitorAutoscaleSetting](#MonitorAutoscaleSetting), [MonitorAutoscaleSettingStatus](#MonitorAutoscaleSettingStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,26 +35,34 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `targetResourceID` | ***string***||
 ## MonitorAutoscaleSettingSpecNotification
-##### (Appears on:[MonitorAutoscaleSettingSpec](#MonitorAutoscaleSettingSpec))
+
+Appears on:[MonitorAutoscaleSettingSpec](#MonitorAutoscaleSettingSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `email` | ***[[]MonitorAutoscaleSettingSpecNotificationEmail](#MonitorAutoscaleSettingSpecNotificationEmail)***| ***(Optional)*** |
 | `webhook` | ***[[]MonitorAutoscaleSettingSpecNotificationWebhook](#MonitorAutoscaleSettingSpecNotificationWebhook)***| ***(Optional)*** |
 ## MonitorAutoscaleSettingSpecNotificationEmail
-##### (Appears on:[MonitorAutoscaleSettingSpecNotification](#MonitorAutoscaleSettingSpecNotification))
+
+Appears on:[MonitorAutoscaleSettingSpecNotification](#MonitorAutoscaleSettingSpecNotification)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `customEmails` | ***[]string***| ***(Optional)*** |
 | `sendToSubscriptionAdministrator` | ***bool***| ***(Optional)*** |
 | `sendToSubscriptionCoAdministrator` | ***bool***| ***(Optional)*** |
 ## MonitorAutoscaleSettingSpecNotificationWebhook
-##### (Appears on:[MonitorAutoscaleSettingSpecNotification](#MonitorAutoscaleSettingSpecNotification))
+
+Appears on:[MonitorAutoscaleSettingSpecNotification](#MonitorAutoscaleSettingSpecNotification)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `properties` | ***map[string]string***| ***(Optional)*** |
 | `serviceURI` | ***string***||
 ## MonitorAutoscaleSettingSpecProfile
-##### (Appears on:[MonitorAutoscaleSettingSpec](#MonitorAutoscaleSettingSpec))
+
+Appears on:[MonitorAutoscaleSettingSpec](#MonitorAutoscaleSettingSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `capacity` | ***[[]MonitorAutoscaleSettingSpecProfileCapacity](#MonitorAutoscaleSettingSpecProfileCapacity)***||
@@ -61,21 +71,27 @@ section_menu_id: reference
 | `recurrence` | ***[[]MonitorAutoscaleSettingSpecProfileRecurrence](#MonitorAutoscaleSettingSpecProfileRecurrence)***| ***(Optional)*** |
 | `rule` | ***[[]MonitorAutoscaleSettingSpecProfileRule](#MonitorAutoscaleSettingSpecProfileRule)***| ***(Optional)*** |
 ## MonitorAutoscaleSettingSpecProfileCapacity
-##### (Appears on:[MonitorAutoscaleSettingSpecProfile](#MonitorAutoscaleSettingSpecProfile))
+
+Appears on:[MonitorAutoscaleSettingSpecProfile](#MonitorAutoscaleSettingSpecProfile)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `default` | ***int***||
 | `maximum` | ***int***||
 | `minimum` | ***int***||
 ## MonitorAutoscaleSettingSpecProfileFixedDate
-##### (Appears on:[MonitorAutoscaleSettingSpecProfile](#MonitorAutoscaleSettingSpecProfile))
+
+Appears on:[MonitorAutoscaleSettingSpecProfile](#MonitorAutoscaleSettingSpecProfile)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `end` | ***string***||
 | `start` | ***string***||
 | `timezone` | ***string***| ***(Optional)*** |
 ## MonitorAutoscaleSettingSpecProfileRecurrence
-##### (Appears on:[MonitorAutoscaleSettingSpecProfile](#MonitorAutoscaleSettingSpecProfile))
+
+Appears on:[MonitorAutoscaleSettingSpecProfile](#MonitorAutoscaleSettingSpecProfile)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `days` | ***[]string***||
@@ -83,13 +99,17 @@ section_menu_id: reference
 | `minutes` | ***[]int64***||
 | `timezone` | ***string***| ***(Optional)*** |
 ## MonitorAutoscaleSettingSpecProfileRule
-##### (Appears on:[MonitorAutoscaleSettingSpecProfile](#MonitorAutoscaleSettingSpecProfile))
+
+Appears on:[MonitorAutoscaleSettingSpecProfile](#MonitorAutoscaleSettingSpecProfile)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `metricTrigger` | ***[[]MonitorAutoscaleSettingSpecProfileRuleMetricTrigger](#MonitorAutoscaleSettingSpecProfileRuleMetricTrigger)***||
 | `scaleAction` | ***[[]MonitorAutoscaleSettingSpecProfileRuleScaleAction](#MonitorAutoscaleSettingSpecProfileRuleScaleAction)***||
 ## MonitorAutoscaleSettingSpecProfileRuleMetricTrigger
-##### (Appears on:[MonitorAutoscaleSettingSpecProfileRule](#MonitorAutoscaleSettingSpecProfileRule))
+
+Appears on:[MonitorAutoscaleSettingSpecProfileRule](#MonitorAutoscaleSettingSpecProfileRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `metricName` | ***string***||
@@ -101,7 +121,9 @@ section_menu_id: reference
 | `timeGrain` | ***string***||
 | `timeWindow` | ***string***||
 ## MonitorAutoscaleSettingSpecProfileRuleScaleAction
-##### (Appears on:[MonitorAutoscaleSettingSpecProfileRule](#MonitorAutoscaleSettingSpecProfileRule))
+
+Appears on:[MonitorAutoscaleSettingSpecProfileRule](#MonitorAutoscaleSettingSpecProfileRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cooldown` | ***string***||
@@ -109,7 +131,9 @@ section_menu_id: reference
 | `type` | ***string***||
 | `value` | ***int***||
 ## MonitorAutoscaleSettingStatus
-##### (Appears on:[MonitorAutoscaleSetting](#MonitorAutoscaleSetting))
+
+Appears on:[MonitorAutoscaleSetting](#MonitorAutoscaleSetting)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

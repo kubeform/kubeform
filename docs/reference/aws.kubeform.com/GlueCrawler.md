@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GlueCrawlerSpec](#GlueCrawlerSpec)***||
 | `status` | ***[GlueCrawlerStatus](#GlueCrawlerStatus)***||
 ## GlueCrawlerSpec
-##### (Appears on:[GlueCrawler](#GlueCrawler), [GlueCrawlerStatus](#GlueCrawlerStatus))
+
+Appears on:[GlueCrawler](#GlueCrawler), [GlueCrawlerStatus](#GlueCrawlerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,31 +41,41 @@ section_menu_id: reference
 | `securityConfiguration` | ***string***| ***(Optional)*** |
 | `tablePrefix` | ***string***| ***(Optional)*** |
 ## GlueCrawlerSpecDynamodbTarget
-##### (Appears on:[GlueCrawlerSpec](#GlueCrawlerSpec))
+
+Appears on:[GlueCrawlerSpec](#GlueCrawlerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `path` | ***string***||
 ## GlueCrawlerSpecJdbcTarget
-##### (Appears on:[GlueCrawlerSpec](#GlueCrawlerSpec))
+
+Appears on:[GlueCrawlerSpec](#GlueCrawlerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `connectionName` | ***string***||
 | `exclusions` | ***[]string***| ***(Optional)*** |
 | `path` | ***string***||
 ## GlueCrawlerSpecS3Target
-##### (Appears on:[GlueCrawlerSpec](#GlueCrawlerSpec))
+
+Appears on:[GlueCrawlerSpec](#GlueCrawlerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `exclusions` | ***[]string***| ***(Optional)*** |
 | `path` | ***string***||
 ## GlueCrawlerSpecSchemaChangePolicy
-##### (Appears on:[GlueCrawlerSpec](#GlueCrawlerSpec))
+
+Appears on:[GlueCrawlerSpec](#GlueCrawlerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteBehavior` | ***string***| ***(Optional)*** |
 | `updateBehavior` | ***string***| ***(Optional)*** |
 ## GlueCrawlerStatus
-##### (Appears on:[GlueCrawler](#GlueCrawler))
+
+Appears on:[GlueCrawler](#GlueCrawler)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

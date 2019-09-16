@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DaxClusterSpec](#DaxClusterSpec)***||
 | `status` | ***[DaxClusterStatus](#DaxClusterStatus)***||
 ## DaxClusterSpec
-##### (Appears on:[DaxCluster](#DaxCluster), [DaxClusterStatus](#DaxClusterStatus))
+
+Appears on:[DaxCluster](#DaxCluster), [DaxClusterStatus](#DaxClusterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,7 +45,9 @@ section_menu_id: reference
 | `subnetGroupName` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DaxClusterSpecNodes
-##### (Appears on:[DaxClusterSpec](#DaxClusterSpec))
+
+Appears on:[DaxClusterSpec](#DaxClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `address` | ***string***| ***(Optional)*** |
@@ -51,12 +55,16 @@ section_menu_id: reference
 | `ID` | ***string***| ***(Optional)*** |
 | `port` | ***int***| ***(Optional)*** |
 ## DaxClusterSpecServerSideEncryption
-##### (Appears on:[DaxClusterSpec](#DaxClusterSpec))
+
+Appears on:[DaxClusterSpec](#DaxClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 ## DaxClusterStatus
-##### (Appears on:[DaxCluster](#DaxCluster))
+
+Appears on:[DaxCluster](#DaxCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

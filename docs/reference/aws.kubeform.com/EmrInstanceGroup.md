@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[EmrInstanceGroupSpec](#EmrInstanceGroupSpec)***||
 | `status` | ***[EmrInstanceGroupStatus](#EmrInstanceGroupStatus)***||
 ## EmrInstanceGroupSpec
-##### (Appears on:[EmrInstanceGroup](#EmrInstanceGroup), [EmrInstanceGroupStatus](#EmrInstanceGroupStatus))
+
+Appears on:[EmrInstanceGroup](#EmrInstanceGroup), [EmrInstanceGroupStatus](#EmrInstanceGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `runningInstanceCount` | ***int***| ***(Optional)*** |
 | `status` | ***string***| ***(Optional)*** |
 ## EmrInstanceGroupSpecEbsConfig
-##### (Appears on:[EmrInstanceGroupSpec](#EmrInstanceGroupSpec))
+
+Appears on:[EmrInstanceGroupSpec](#EmrInstanceGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `iops` | ***int***| ***(Optional)*** |
@@ -41,7 +45,9 @@ section_menu_id: reference
 | `type` | ***string***||
 | `volumesPerInstance` | ***int***| ***(Optional)*** |
 ## EmrInstanceGroupStatus
-##### (Appears on:[EmrInstanceGroup](#EmrInstanceGroup))
+
+Appears on:[EmrInstanceGroup](#EmrInstanceGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

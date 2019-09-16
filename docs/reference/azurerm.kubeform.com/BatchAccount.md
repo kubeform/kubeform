@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[BatchAccountSpec](#BatchAccountSpec)***||
 | `status` | ***[BatchAccountStatus](#BatchAccountStatus)***||
 ## BatchAccountSpec
-##### (Appears on:[BatchAccount](#BatchAccount), [BatchAccountStatus](#BatchAccountStatus))
+
+Appears on:[BatchAccount](#BatchAccount), [BatchAccountStatus](#BatchAccountStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,13 +36,17 @@ section_menu_id: reference
 | `storageAccountID` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## BatchAccountSpecKeyVaultReference
-##### (Appears on:[BatchAccountSpec](#BatchAccountSpec))
+
+Appears on:[BatchAccountSpec](#BatchAccountSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***||
 | `url` | ***string***||
 ## BatchAccountStatus
-##### (Appears on:[BatchAccount](#BatchAccount))
+
+Appears on:[BatchAccount](#BatchAccount)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

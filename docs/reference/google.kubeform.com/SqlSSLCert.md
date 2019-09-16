@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SqlSSLCertSpec](#SqlSSLCertSpec)***||
 | `status` | ***[SqlSSLCertStatus](#SqlSSLCertStatus)***||
 ## SqlSSLCertSpec
-##### (Appears on:[SqlSSLCert](#SqlSSLCert), [SqlSSLCertStatus](#SqlSSLCertStatus))
+
+Appears on:[SqlSSLCert](#SqlSSLCert), [SqlSSLCertStatus](#SqlSSLCertStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `serverCaCert` | ***string***| ***(Optional)*** |
 | `sha1Fingerprint` | ***string***| ***(Optional)*** |
 ## SqlSSLCertStatus
-##### (Appears on:[SqlSSLCert](#SqlSSLCert))
+
+Appears on:[SqlSSLCert](#SqlSSLCert)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

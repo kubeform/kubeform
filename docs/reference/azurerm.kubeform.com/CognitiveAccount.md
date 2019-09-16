@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CognitiveAccountSpec](#CognitiveAccountSpec)***||
 | `status` | ***[CognitiveAccountStatus](#CognitiveAccountStatus)***||
 ## CognitiveAccountSpec
-##### (Appears on:[CognitiveAccount](#CognitiveAccount), [CognitiveAccountStatus](#CognitiveAccountStatus))
+
+Appears on:[CognitiveAccount](#CognitiveAccount), [CognitiveAccountStatus](#CognitiveAccountStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,13 +35,17 @@ section_menu_id: reference
 | `sku` | ***[[]CognitiveAccountSpecSku](#CognitiveAccountSpecSku)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## CognitiveAccountSpecSku
-##### (Appears on:[CognitiveAccountSpec](#CognitiveAccountSpec))
+
+Appears on:[CognitiveAccountSpec](#CognitiveAccountSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `tier` | ***string***||
 ## CognitiveAccountStatus
-##### (Appears on:[CognitiveAccount](#CognitiveAccount))
+
+Appears on:[CognitiveAccount](#CognitiveAccount)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

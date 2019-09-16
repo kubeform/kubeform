@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DnsZoneSpec](#DnsZoneSpec)***||
 | `status` | ***[DnsZoneStatus](#DnsZoneStatus)***||
 ## DnsZoneSpec
-##### (Appears on:[DnsZone](#DnsZone), [DnsZoneStatus](#DnsZoneStatus))
+
+Appears on:[DnsZone](#DnsZone), [DnsZoneStatus](#DnsZoneStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `zoneType` | ***string***| ***(Optional)*** |
 ## DnsZoneStatus
-##### (Appears on:[DnsZone](#DnsZone))
+
+Appears on:[DnsZone](#DnsZone)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

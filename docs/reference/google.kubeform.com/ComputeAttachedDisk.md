@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeAttachedDiskSpec](#ComputeAttachedDiskSpec)***||
 | `status` | ***[ComputeAttachedDiskStatus](#ComputeAttachedDiskStatus)***||
 ## ComputeAttachedDiskSpec
-##### (Appears on:[ComputeAttachedDisk](#ComputeAttachedDisk), [ComputeAttachedDiskStatus](#ComputeAttachedDiskStatus))
+
+Appears on:[ComputeAttachedDisk](#ComputeAttachedDisk), [ComputeAttachedDiskStatus](#ComputeAttachedDiskStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `project` | ***string***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
 ## ComputeAttachedDiskStatus
-##### (Appears on:[ComputeAttachedDisk](#ComputeAttachedDisk))
+
+Appears on:[ComputeAttachedDisk](#ComputeAttachedDisk)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

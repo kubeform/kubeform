@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeInterconnectAttachmentSpec](#ComputeInterconnectAttachmentSpec)***||
 | `status` | ***[ComputeInterconnectAttachmentStatus](#ComputeInterconnectAttachmentStatus)***||
 ## ComputeInterconnectAttachmentSpec
-##### (Appears on:[ComputeInterconnectAttachment](#ComputeInterconnectAttachment), [ComputeInterconnectAttachmentStatus](#ComputeInterconnectAttachmentStatus))
+
+Appears on:[ComputeInterconnectAttachment](#ComputeInterconnectAttachment), [ComputeInterconnectAttachmentStatus](#ComputeInterconnectAttachmentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,12 +39,16 @@ section_menu_id: reference
 | `router` | ***string***||
 | `selfLink` | ***string***| ***(Optional)*** |
 ## ComputeInterconnectAttachmentSpecPrivateInterconnectInfo
-##### (Appears on:[ComputeInterconnectAttachmentSpec](#ComputeInterconnectAttachmentSpec))
+
+Appears on:[ComputeInterconnectAttachmentSpec](#ComputeInterconnectAttachmentSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `tag8021q` | ***int***| ***(Optional)*** |
 ## ComputeInterconnectAttachmentStatus
-##### (Appears on:[ComputeInterconnectAttachment](#ComputeInterconnectAttachment))
+
+Appears on:[ComputeInterconnectAttachment](#ComputeInterconnectAttachment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

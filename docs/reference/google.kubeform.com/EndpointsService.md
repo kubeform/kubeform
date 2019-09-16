@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[EndpointsServiceSpec](#EndpointsServiceSpec)***||
 | `status` | ***[EndpointsServiceStatus](#EndpointsServiceStatus)***||
 ## EndpointsServiceSpec
-##### (Appears on:[EndpointsService](#EndpointsService), [EndpointsServiceStatus](#EndpointsServiceStatus))
+
+Appears on:[EndpointsService](#EndpointsService), [EndpointsServiceStatus](#EndpointsServiceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,7 +37,9 @@ section_menu_id: reference
 | `protocOutputBase64` | ***string***| ***(Optional)*** |
 | `serviceName` | ***string***||
 ## EndpointsServiceSpecApis
-##### (Appears on:[EndpointsServiceSpec](#EndpointsServiceSpec))
+
+Appears on:[EndpointsServiceSpec](#EndpointsServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `methods` | ***[[]EndpointsServiceSpecApisMethods](#EndpointsServiceSpecApisMethods)***| ***(Optional)*** |
@@ -43,7 +47,9 @@ section_menu_id: reference
 | `syntax` | ***string***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
 ## EndpointsServiceSpecApisMethods
-##### (Appears on:[EndpointsServiceSpecApis](#EndpointsServiceSpecApis))
+
+Appears on:[EndpointsServiceSpecApis](#EndpointsServiceSpecApis)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***| ***(Optional)*** |
@@ -51,13 +57,17 @@ section_menu_id: reference
 | `responseType` | ***string***| ***(Optional)*** |
 | `syntax` | ***string***| ***(Optional)*** |
 ## EndpointsServiceSpecEndpoints
-##### (Appears on:[EndpointsServiceSpec](#EndpointsServiceSpec))
+
+Appears on:[EndpointsServiceSpec](#EndpointsServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `address` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 ## EndpointsServiceStatus
-##### (Appears on:[EndpointsService](#EndpointsService))
+
+Appears on:[EndpointsService](#EndpointsService)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

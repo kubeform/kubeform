@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApiGatewayIntegrationSpec](#ApiGatewayIntegrationSpec)***||
 | `status` | ***[ApiGatewayIntegrationStatus](#ApiGatewayIntegrationStatus)***||
 ## ApiGatewayIntegrationSpec
-##### (Appears on:[ApiGatewayIntegration](#ApiGatewayIntegration), [ApiGatewayIntegrationStatus](#ApiGatewayIntegrationStatus))
+
+Appears on:[ApiGatewayIntegration](#ApiGatewayIntegration), [ApiGatewayIntegrationStatus](#ApiGatewayIntegrationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -41,7 +43,9 @@ section_menu_id: reference
 | `type` | ***string***||
 | `uri` | ***string***| ***(Optional)*** |
 ## ApiGatewayIntegrationStatus
-##### (Appears on:[ApiGatewayIntegration](#ApiGatewayIntegration))
+
+Appears on:[ApiGatewayIntegration](#ApiGatewayIntegration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

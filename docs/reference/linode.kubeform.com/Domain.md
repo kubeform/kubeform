@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DomainSpec](#DomainSpec)***||
 | `status` | ***[DomainStatus](#DomainStatus)***||
 ## DomainSpec
-##### (Appears on:[Domain](#Domain), [DomainStatus](#DomainStatus))
+
+Appears on:[Domain](#Domain), [DomainStatus](#DomainStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,7 +40,9 @@ section_menu_id: reference
 | `ttlSec` | ***int***| ***(Optional)*** 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.|
 | `type` | ***string***|If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).|
 ## DomainStatus
-##### (Appears on:[Domain](#Domain))
+
+Appears on:[Domain](#Domain)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

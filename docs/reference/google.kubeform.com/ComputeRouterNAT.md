@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeRouterNATSpec](#ComputeRouterNATSpec)***||
 | `status` | ***[ComputeRouterNATStatus](#ComputeRouterNATStatus)***||
 ## ComputeRouterNATSpec
-##### (Appears on:[ComputeRouterNAT](#ComputeRouterNAT), [ComputeRouterNATStatus](#ComputeRouterNATStatus))
+
+Appears on:[ComputeRouterNAT](#ComputeRouterNAT), [ComputeRouterNATStatus](#ComputeRouterNATStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,14 +40,18 @@ section_menu_id: reference
 | `tcpTransitoryIdleTimeoutSec` | ***int***| ***(Optional)*** |
 | `udpIdleTimeoutSec` | ***int***| ***(Optional)*** |
 ## ComputeRouterNATSpecSubnetwork
-##### (Appears on:[ComputeRouterNATSpec](#ComputeRouterNATSpec))
+
+Appears on:[ComputeRouterNATSpec](#ComputeRouterNATSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `secondaryIPRangeNames` | ***[]string***| ***(Optional)*** |
 | `sourceIPRangesToNAT` | ***[]string***| ***(Optional)*** |
 ## ComputeRouterNATStatus
-##### (Appears on:[ComputeRouterNAT](#ComputeRouterNAT))
+
+Appears on:[ComputeRouterNAT](#ComputeRouterNAT)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SignalrServiceSpec](#SignalrServiceSpec)***||
 | `status` | ***[SignalrServiceStatus](#SignalrServiceStatus)***||
 ## SignalrServiceSpec
-##### (Appears on:[SignalrService](#SignalrService), [SignalrServiceStatus](#SignalrServiceStatus))
+
+Appears on:[SignalrService](#SignalrService), [SignalrServiceStatus](#SignalrServiceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,13 +37,17 @@ section_menu_id: reference
 | `sku` | ***[[]SignalrServiceSpecSku](#SignalrServiceSpecSku)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SignalrServiceSpecSku
-##### (Appears on:[SignalrServiceSpec](#SignalrServiceSpec))
+
+Appears on:[SignalrServiceSpec](#SignalrServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `capacity` | ***int***||
 | `name` | ***string***||
 ## SignalrServiceStatus
-##### (Appears on:[SignalrService](#SignalrService))
+
+Appears on:[SignalrService](#SignalrService)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)***||
 | `status` | ***[SpotInstanceRequestStatus](#SpotInstanceRequestStatus)***||
 ## SpotInstanceRequestSpec
-##### (Appears on:[SpotInstanceRequest](#SpotInstanceRequest), [SpotInstanceRequestStatus](#SpotInstanceRequestStatus))
+
+Appears on:[SpotInstanceRequest](#SpotInstanceRequest), [SpotInstanceRequestStatus](#SpotInstanceRequestStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -75,12 +77,16 @@ section_menu_id: reference
 | `vpcSecurityGroupIDS` | ***[]string***| ***(Optional)*** |
 | `waitForFulfillment` | ***bool***| ***(Optional)*** |
 ## SpotInstanceRequestSpecCreditSpecification
-##### (Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec))
+
+Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cpuCredits` | ***string***| ***(Optional)*** |
 ## SpotInstanceRequestSpecEbsBlockDevice
-##### (Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec))
+
+Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
@@ -92,21 +98,27 @@ section_menu_id: reference
 | `volumeSize` | ***int***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## SpotInstanceRequestSpecEphemeralBlockDevice
-##### (Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec))
+
+Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deviceName` | ***string***||
 | `noDevice` | ***bool***| ***(Optional)*** |
 | `virtualName` | ***string***| ***(Optional)*** |
 ## SpotInstanceRequestSpecNetworkInterface
-##### (Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec))
+
+Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
 | `deviceIndex` | ***int***||
 | `networkInterfaceID` | ***string***||
 ## SpotInstanceRequestSpecRootBlockDevice
-##### (Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec))
+
+Appears on:[SpotInstanceRequestSpec](#SpotInstanceRequestSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
@@ -115,7 +127,9 @@ section_menu_id: reference
 | `volumeSize` | ***int***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## SpotInstanceRequestStatus
-##### (Appears on:[SpotInstanceRequest](#SpotInstanceRequest))
+
+Appears on:[SpotInstanceRequest](#SpotInstanceRequest)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

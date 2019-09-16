@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec)***||
 | `status` | ***[BinaryAuthorizationPolicyStatus](#BinaryAuthorizationPolicyStatus)***||
 ## BinaryAuthorizationPolicySpec
-##### (Appears on:[BinaryAuthorizationPolicy](#BinaryAuthorizationPolicy), [BinaryAuthorizationPolicyStatus](#BinaryAuthorizationPolicyStatus))
+
+Appears on:[BinaryAuthorizationPolicy](#BinaryAuthorizationPolicy), [BinaryAuthorizationPolicyStatus](#BinaryAuthorizationPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,12 +32,16 @@ section_menu_id: reference
 | `description` | ***string***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 ## BinaryAuthorizationPolicySpecAdmissionWhitelistPatterns
-##### (Appears on:[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec))
+
+Appears on:[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `namePattern` | ***string***| ***(Optional)*** |
 ## BinaryAuthorizationPolicySpecClusterAdmissionRules
-##### (Appears on:[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec))
+
+Appears on:[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cluster` | ***string***||
@@ -43,14 +49,18 @@ section_menu_id: reference
 | `evaluationMode` | ***string***| ***(Optional)*** |
 | `requireAttestationsBy` | ***[]string***| ***(Optional)*** |
 ## BinaryAuthorizationPolicySpecDefaultAdmissionRule
-##### (Appears on:[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec))
+
+Appears on:[BinaryAuthorizationPolicySpec](#BinaryAuthorizationPolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enforcementMode` | ***string***||
 | `evaluationMode` | ***string***||
 | `requireAttestationsBy` | ***[]string***| ***(Optional)*** |
 ## BinaryAuthorizationPolicyStatus
-##### (Appears on:[BinaryAuthorizationPolicy](#BinaryAuthorizationPolicy))
+
+Appears on:[BinaryAuthorizationPolicy](#BinaryAuthorizationPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

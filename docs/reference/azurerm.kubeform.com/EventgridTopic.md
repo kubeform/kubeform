@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[EventgridTopicSpec](#EventgridTopicSpec)***||
 | `status` | ***[EventgridTopicStatus](#EventgridTopicStatus)***||
 ## EventgridTopicSpec
-##### (Appears on:[EventgridTopic](#EventgridTopic), [EventgridTopicStatus](#EventgridTopicStatus))
+
+Appears on:[EventgridTopic](#EventgridTopic), [EventgridTopicStatus](#EventgridTopicStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## EventgridTopicStatus
-##### (Appears on:[EventgridTopic](#EventgridTopic))
+
+Appears on:[EventgridTopic](#EventgridTopic)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

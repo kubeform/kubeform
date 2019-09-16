@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DataFactoryDatasetMysqlSpec](#DataFactoryDatasetMysqlSpec)***||
 | `status` | ***[DataFactoryDatasetMysqlStatus](#DataFactoryDatasetMysqlStatus)***||
 ## DataFactoryDatasetMysqlSpec
-##### (Appears on:[DataFactoryDatasetMysql](#DataFactoryDatasetMysql), [DataFactoryDatasetMysqlStatus](#DataFactoryDatasetMysqlStatus))
+
+Appears on:[DataFactoryDatasetMysql](#DataFactoryDatasetMysql), [DataFactoryDatasetMysqlStatus](#DataFactoryDatasetMysqlStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,14 +38,18 @@ section_menu_id: reference
 | `schemaColumn` | ***[[]DataFactoryDatasetMysqlSpecSchemaColumn](#DataFactoryDatasetMysqlSpecSchemaColumn)***| ***(Optional)*** |
 | `tableName` | ***string***| ***(Optional)*** |
 ## DataFactoryDatasetMysqlSpecSchemaColumn
-##### (Appears on:[DataFactoryDatasetMysqlSpec](#DataFactoryDatasetMysqlSpec))
+
+Appears on:[DataFactoryDatasetMysqlSpec](#DataFactoryDatasetMysqlSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `description` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `type` | ***string***| ***(Optional)*** |
 ## DataFactoryDatasetMysqlStatus
-##### (Appears on:[DataFactoryDatasetMysql](#DataFactoryDatasetMysql))
+
+Appears on:[DataFactoryDatasetMysql](#DataFactoryDatasetMysql)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

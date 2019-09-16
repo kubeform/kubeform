@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SsmDocumentSpec](#SsmDocumentSpec)***||
 | `status` | ***[SsmDocumentStatus](#SsmDocumentStatus)***||
 ## SsmDocumentSpec
-##### (Appears on:[SsmDocument](#SsmDocument), [SsmDocumentStatus](#SsmDocumentStatus))
+
+Appears on:[SsmDocument](#SsmDocument), [SsmDocumentStatus](#SsmDocumentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,7 +45,9 @@ section_menu_id: reference
 | `status` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SsmDocumentSpecParameter
-##### (Appears on:[SsmDocumentSpec](#SsmDocumentSpec))
+
+Appears on:[SsmDocumentSpec](#SsmDocumentSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultValue` | ***string***| ***(Optional)*** |
@@ -51,7 +55,9 @@ section_menu_id: reference
 | `name` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## SsmDocumentStatus
-##### (Appears on:[SsmDocument](#SsmDocument))
+
+Appears on:[SsmDocument](#SsmDocument)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

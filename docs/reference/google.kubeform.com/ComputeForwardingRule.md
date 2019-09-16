@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeForwardingRuleSpec](#ComputeForwardingRuleSpec)***||
 | `status` | ***[ComputeForwardingRuleStatus](#ComputeForwardingRuleStatus)***||
 ## ComputeForwardingRuleSpec
-##### (Appears on:[ComputeForwardingRule](#ComputeForwardingRule), [ComputeForwardingRuleStatus](#ComputeForwardingRuleStatus))
+
+Appears on:[ComputeForwardingRule](#ComputeForwardingRule), [ComputeForwardingRuleStatus](#ComputeForwardingRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -46,7 +48,9 @@ section_menu_id: reference
 | `subnetwork` | ***string***| ***(Optional)*** |
 | `target` | ***string***| ***(Optional)*** |
 ## ComputeForwardingRuleStatus
-##### (Appears on:[ComputeForwardingRule](#ComputeForwardingRule))
+
+Appears on:[ComputeForwardingRule](#ComputeForwardingRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

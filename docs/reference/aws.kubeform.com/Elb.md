@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ElbSpec](#ElbSpec)***||
 | `status` | ***[ElbStatus](#ElbStatus)***||
 ## ElbSpec
-##### (Appears on:[Elb](#Elb), [ElbStatus](#ElbStatus))
+
+Appears on:[Elb](#Elb), [ElbStatus](#ElbStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -45,7 +47,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `zoneID` | ***string***| ***(Optional)*** |
 ## ElbSpecAccessLogs
-##### (Appears on:[ElbSpec](#ElbSpec))
+
+Appears on:[ElbSpec](#ElbSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucket` | ***string***||
@@ -53,7 +57,9 @@ section_menu_id: reference
 | `enabled` | ***bool***| ***(Optional)*** |
 | `interval` | ***int***| ***(Optional)*** |
 ## ElbSpecHealthCheck
-##### (Appears on:[ElbSpec](#ElbSpec))
+
+Appears on:[ElbSpec](#ElbSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `healthyThreshold` | ***int***||
@@ -62,7 +68,9 @@ section_menu_id: reference
 | `timeout` | ***int***||
 | `unhealthyThreshold` | ***int***||
 ## ElbSpecListener
-##### (Appears on:[ElbSpec](#ElbSpec))
+
+Appears on:[ElbSpec](#ElbSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `instancePort` | ***int***||
@@ -71,7 +79,9 @@ section_menu_id: reference
 | `lbProtocol` | ***string***||
 | `sslCertificateID` | ***string***| ***(Optional)*** |
 ## ElbStatus
-##### (Appears on:[Elb](#Elb))
+
+Appears on:[Elb](#Elb)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DynamodbTableItemSpec](#DynamodbTableItemSpec)***||
 | `status` | ***[DynamodbTableItemStatus](#DynamodbTableItemStatus)***||
 ## DynamodbTableItemSpec
-##### (Appears on:[DynamodbTableItem](#DynamodbTableItem), [DynamodbTableItemStatus](#DynamodbTableItemStatus))
+
+Appears on:[DynamodbTableItem](#DynamodbTableItem), [DynamodbTableItemStatus](#DynamodbTableItemStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `rangeKey` | ***string***| ***(Optional)*** |
 | `tableName` | ***string***||
 ## DynamodbTableItemStatus
-##### (Appears on:[DynamodbTableItem](#DynamodbTableItem))
+
+Appears on:[DynamodbTableItem](#DynamodbTableItem)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[OrganizationsPolicySpec](#OrganizationsPolicySpec)***||
 | `status` | ***[OrganizationsPolicyStatus](#OrganizationsPolicyStatus)***||
 ## OrganizationsPolicySpec
-##### (Appears on:[OrganizationsPolicy](#OrganizationsPolicy), [OrganizationsPolicyStatus](#OrganizationsPolicyStatus))
+
+Appears on:[OrganizationsPolicy](#OrganizationsPolicy), [OrganizationsPolicyStatus](#OrganizationsPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `type` | ***string***| ***(Optional)*** |
 ## OrganizationsPolicyStatus
-##### (Appears on:[OrganizationsPolicy](#OrganizationsPolicy))
+
+Appears on:[OrganizationsPolicy](#OrganizationsPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

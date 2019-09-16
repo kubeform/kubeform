@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[TransferServerSpec](#TransferServerSpec)***||
 | `status` | ***[TransferServerStatus](#TransferServerStatus)***||
 ## TransferServerSpec
-##### (Appears on:[TransferServer](#TransferServer), [TransferServerStatus](#TransferServerStatus))
+
+Appears on:[TransferServer](#TransferServer), [TransferServerStatus](#TransferServerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,12 +37,16 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `url` | ***string***| ***(Optional)*** |
 ## TransferServerSpecEndpointDetails
-##### (Appears on:[TransferServerSpec](#TransferServerSpec))
+
+Appears on:[TransferServerSpec](#TransferServerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `vpcEndpointID` | ***string***||
 ## TransferServerStatus
-##### (Appears on:[TransferServer](#TransferServer))
+
+Appears on:[TransferServer](#TransferServer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

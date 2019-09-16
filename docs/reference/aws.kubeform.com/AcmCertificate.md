@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AcmCertificateSpec](#AcmCertificateSpec)***||
 | `status` | ***[AcmCertificateStatus](#AcmCertificateStatus)***||
 ## AcmCertificateSpec
-##### (Appears on:[AcmCertificate](#AcmCertificate), [AcmCertificateStatus](#AcmCertificateStatus))
+
+Appears on:[AcmCertificate](#AcmCertificate), [AcmCertificateStatus](#AcmCertificateStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,7 +37,9 @@ section_menu_id: reference
 | `validationEmails` | ***[]string***| ***(Optional)*** |
 | `validationMethod` | ***string***| ***(Optional)*** |
 ## AcmCertificateSpecDomainValidationOptions
-##### (Appears on:[AcmCertificateSpec](#AcmCertificateSpec))
+
+Appears on:[AcmCertificateSpec](#AcmCertificateSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `domainName` | ***string***| ***(Optional)*** |
@@ -43,7 +47,9 @@ section_menu_id: reference
 | `resourceRecordType` | ***string***| ***(Optional)*** |
 | `resourceRecordValue` | ***string***| ***(Optional)*** |
 ## AcmCertificateStatus
-##### (Appears on:[AcmCertificate](#AcmCertificate))
+
+Appears on:[AcmCertificate](#AcmCertificate)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[KubernetesNodePoolSpec](#KubernetesNodePoolSpec)***||
 | `status` | ***[KubernetesNodePoolStatus](#KubernetesNodePoolStatus)***||
 ## KubernetesNodePoolSpec
-##### (Appears on:[KubernetesNodePool](#KubernetesNodePool), [KubernetesNodePoolStatus](#KubernetesNodePoolStatus))
+
+Appears on:[KubernetesNodePool](#KubernetesNodePool), [KubernetesNodePoolStatus](#KubernetesNodePoolStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `size` | ***string***||
 | `tags` | ***[]string***| ***(Optional)*** |
 ## KubernetesNodePoolSpecNodes
-##### (Appears on:[KubernetesNodePoolSpec](#KubernetesNodePoolSpec))
+
+Appears on:[KubernetesNodePoolSpec](#KubernetesNodePoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `createdAt` | ***string***| ***(Optional)*** |
@@ -40,7 +44,9 @@ section_menu_id: reference
 | `status` | ***string***| ***(Optional)*** |
 | `updatedAt` | ***string***| ***(Optional)*** |
 ## KubernetesNodePoolStatus
-##### (Appears on:[KubernetesNodePool](#KubernetesNodePool))
+
+Appears on:[KubernetesNodePool](#KubernetesNodePool)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

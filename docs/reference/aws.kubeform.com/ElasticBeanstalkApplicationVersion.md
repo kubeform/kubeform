@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ElasticBeanstalkApplicationVersionSpec](#ElasticBeanstalkApplicationVersionSpec)***||
 | `status` | ***[ElasticBeanstalkApplicationVersionStatus](#ElasticBeanstalkApplicationVersionStatus)***||
 ## ElasticBeanstalkApplicationVersionSpec
-##### (Appears on:[ElasticBeanstalkApplicationVersion](#ElasticBeanstalkApplicationVersion), [ElasticBeanstalkApplicationVersionStatus](#ElasticBeanstalkApplicationVersionStatus))
+
+Appears on:[ElasticBeanstalkApplicationVersion](#ElasticBeanstalkApplicationVersion), [ElasticBeanstalkApplicationVersionStatus](#ElasticBeanstalkApplicationVersionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `key` | ***string***||
 | `name` | ***string***||
 ## ElasticBeanstalkApplicationVersionStatus
-##### (Appears on:[ElasticBeanstalkApplicationVersion](#ElasticBeanstalkApplicationVersion))
+
+Appears on:[ElasticBeanstalkApplicationVersion](#ElasticBeanstalkApplicationVersion)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

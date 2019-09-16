@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DevTestWindowsVirtualMachineSpec](#DevTestWindowsVirtualMachineSpec)***||
 | `status` | ***[DevTestWindowsVirtualMachineStatus](#DevTestWindowsVirtualMachineStatus)***||
 ## DevTestWindowsVirtualMachineSpec
-##### (Appears on:[DevTestWindowsVirtualMachine](#DevTestWindowsVirtualMachine), [DevTestWindowsVirtualMachineStatus](#DevTestWindowsVirtualMachineStatus))
+
+Appears on:[DevTestWindowsVirtualMachine](#DevTestWindowsVirtualMachine), [DevTestWindowsVirtualMachineStatus](#DevTestWindowsVirtualMachineStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,7 +45,9 @@ section_menu_id: reference
 | `uniqueIdentifier` | ***string***| ***(Optional)*** |
 | `username` | ***string***||
 ## DevTestWindowsVirtualMachineSpecGalleryImageReference
-##### (Appears on:[DevTestWindowsVirtualMachineSpec](#DevTestWindowsVirtualMachineSpec))
+
+Appears on:[DevTestWindowsVirtualMachineSpec](#DevTestWindowsVirtualMachineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `offer` | ***string***||
@@ -51,14 +55,18 @@ section_menu_id: reference
 | `sku` | ***string***||
 | `version` | ***string***||
 ## DevTestWindowsVirtualMachineSpecInboundNATRule
-##### (Appears on:[DevTestWindowsVirtualMachineSpec](#DevTestWindowsVirtualMachineSpec))
+
+Appears on:[DevTestWindowsVirtualMachineSpec](#DevTestWindowsVirtualMachineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `backendPort` | ***int***||
 | `frontendPort` | ***int***| ***(Optional)*** |
 | `protocol` | ***string***||
 ## DevTestWindowsVirtualMachineStatus
-##### (Appears on:[DevTestWindowsVirtualMachine](#DevTestWindowsVirtualMachine))
+
+Appears on:[DevTestWindowsVirtualMachine](#DevTestWindowsVirtualMachine)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

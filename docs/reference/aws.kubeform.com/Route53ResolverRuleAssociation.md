@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Route53ResolverRuleAssociationSpec](#Route53ResolverRuleAssociationSpec)***||
 | `status` | ***[Route53ResolverRuleAssociationStatus](#Route53ResolverRuleAssociationStatus)***||
 ## Route53ResolverRuleAssociationSpec
-##### (Appears on:[Route53ResolverRuleAssociation](#Route53ResolverRuleAssociation), [Route53ResolverRuleAssociationStatus](#Route53ResolverRuleAssociationStatus))
+
+Appears on:[Route53ResolverRuleAssociation](#Route53ResolverRuleAssociation), [Route53ResolverRuleAssociationStatus](#Route53ResolverRuleAssociationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `resolverRuleID` | ***string***||
 | `vpcID` | ***string***||
 ## Route53ResolverRuleAssociationStatus
-##### (Appears on:[Route53ResolverRuleAssociation](#Route53ResolverRuleAssociation))
+
+Appears on:[Route53ResolverRuleAssociation](#Route53ResolverRuleAssociation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

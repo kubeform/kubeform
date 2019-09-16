@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DnsSrvRecordSpec](#DnsSrvRecordSpec)***||
 | `status` | ***[DnsSrvRecordStatus](#DnsSrvRecordStatus)***||
 ## DnsSrvRecordSpec
-##### (Appears on:[DnsSrvRecord](#DnsSrvRecord), [DnsSrvRecordStatus](#DnsSrvRecordStatus))
+
+Appears on:[DnsSrvRecord](#DnsSrvRecord), [DnsSrvRecordStatus](#DnsSrvRecordStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `ttl` | ***int***||
 | `zoneName` | ***string***||
 ## DnsSrvRecordSpecRecord
-##### (Appears on:[DnsSrvRecordSpec](#DnsSrvRecordSpec))
+
+Appears on:[DnsSrvRecordSpec](#DnsSrvRecordSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `port` | ***int***||
@@ -39,7 +43,9 @@ section_menu_id: reference
 | `target` | ***string***||
 | `weight` | ***int***||
 ## DnsSrvRecordStatus
-##### (Appears on:[DnsSrvRecord](#DnsSrvRecord))
+
+Appears on:[DnsSrvRecord](#DnsSrvRecord)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

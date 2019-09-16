@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[PrivateDNSARecordSpec](#PrivateDNSARecordSpec)***||
 | `status` | ***[PrivateDNSARecordStatus](#PrivateDNSARecordStatus)***||
 ## PrivateDNSARecordSpec
-##### (Appears on:[PrivateDNSARecord](#PrivateDNSARecord), [PrivateDNSARecordStatus](#PrivateDNSARecordStatus))
+
+Appears on:[PrivateDNSARecord](#PrivateDNSARecord), [PrivateDNSARecordStatus](#PrivateDNSARecordStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `ttl` | ***int***||
 | `zoneName` | ***string***||
 ## PrivateDNSARecordStatus
-##### (Appears on:[PrivateDNSARecord](#PrivateDNSARecord))
+
+Appears on:[PrivateDNSARecord](#PrivateDNSARecord)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

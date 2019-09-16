@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[OpsworksApplicationSpec](#OpsworksApplicationSpec)***||
 | `status` | ***[OpsworksApplicationStatus](#OpsworksApplicationStatus)***||
 ## OpsworksApplicationSpec
-##### (Appears on:[OpsworksApplication](#OpsworksApplication), [OpsworksApplicationStatus](#OpsworksApplicationStatus))
+
+Appears on:[OpsworksApplication](#OpsworksApplication), [OpsworksApplicationStatus](#OpsworksApplicationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,7 +45,9 @@ section_menu_id: reference
 | `stackID` | ***string***||
 | `type` | ***string***||
 ## OpsworksApplicationSpecAppSource
-##### (Appears on:[OpsworksApplicationSpec](#OpsworksApplicationSpec))
+
+Appears on:[OpsworksApplicationSpec](#OpsworksApplicationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `revision` | ***string***| ***(Optional)*** |
@@ -52,20 +56,26 @@ section_menu_id: reference
 | `url` | ***string***| ***(Optional)*** |
 | `username` | ***string***| ***(Optional)*** |
 ## OpsworksApplicationSpecEnvironment
-##### (Appears on:[OpsworksApplicationSpec](#OpsworksApplicationSpec))
+
+Appears on:[OpsworksApplicationSpec](#OpsworksApplicationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `key` | ***string***||
 | `secure` | ***bool***| ***(Optional)*** |
 | `value` | ***string***||
 ## OpsworksApplicationSpecSslConfiguration
-##### (Appears on:[OpsworksApplicationSpec](#OpsworksApplicationSpec))
+
+Appears on:[OpsworksApplicationSpec](#OpsworksApplicationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `certificate` | ***string***||
 | `chain` | ***string***| ***(Optional)*** |
 ## OpsworksApplicationStatus
-##### (Appears on:[OpsworksApplication](#OpsworksApplication))
+
+Appears on:[OpsworksApplication](#OpsworksApplication)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

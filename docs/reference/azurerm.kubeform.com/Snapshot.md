@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SnapshotSpec](#SnapshotSpec)***||
 | `status` | ***[SnapshotStatus](#SnapshotStatus)***||
 ## SnapshotSpec
-##### (Appears on:[Snapshot](#Snapshot), [SnapshotStatus](#SnapshotStatus))
+
+Appears on:[Snapshot](#Snapshot), [SnapshotStatus](#SnapshotStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,26 +37,34 @@ section_menu_id: reference
 | `storageAccountID` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SnapshotSpecEncryptionSettings
-##### (Appears on:[SnapshotSpec](#SnapshotSpec))
+
+Appears on:[SnapshotSpec](#SnapshotSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskEncryptionKey` | ***[[]SnapshotSpecEncryptionSettingsDiskEncryptionKey](#SnapshotSpecEncryptionSettingsDiskEncryptionKey)***| ***(Optional)*** |
 | `enabled` | ***bool***||
 | `keyEncryptionKey` | ***[[]SnapshotSpecEncryptionSettingsKeyEncryptionKey](#SnapshotSpecEncryptionSettingsKeyEncryptionKey)***| ***(Optional)*** |
 ## SnapshotSpecEncryptionSettingsDiskEncryptionKey
-##### (Appears on:[SnapshotSpecEncryptionSettings](#SnapshotSpecEncryptionSettings))
+
+Appears on:[SnapshotSpecEncryptionSettings](#SnapshotSpecEncryptionSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `secretURL` | ***string***||
 | `sourceVaultID` | ***string***||
 ## SnapshotSpecEncryptionSettingsKeyEncryptionKey
-##### (Appears on:[SnapshotSpecEncryptionSettings](#SnapshotSpecEncryptionSettings))
+
+Appears on:[SnapshotSpecEncryptionSettings](#SnapshotSpecEncryptionSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `keyURL` | ***string***||
 | `sourceVaultID` | ***string***||
 ## SnapshotStatus
-##### (Appears on:[Snapshot](#Snapshot))
+
+Appears on:[Snapshot](#Snapshot)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

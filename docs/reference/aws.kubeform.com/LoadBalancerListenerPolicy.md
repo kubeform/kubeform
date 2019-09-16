@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LoadBalancerListenerPolicySpec](#LoadBalancerListenerPolicySpec)***||
 | `status` | ***[LoadBalancerListenerPolicyStatus](#LoadBalancerListenerPolicyStatus)***||
 ## LoadBalancerListenerPolicySpec
-##### (Appears on:[LoadBalancerListenerPolicy](#LoadBalancerListenerPolicy), [LoadBalancerListenerPolicyStatus](#LoadBalancerListenerPolicyStatus))
+
+Appears on:[LoadBalancerListenerPolicy](#LoadBalancerListenerPolicy), [LoadBalancerListenerPolicyStatus](#LoadBalancerListenerPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `loadBalancerPort` | ***int***||
 | `policyNames` | ***[]string***| ***(Optional)*** |
 ## LoadBalancerListenerPolicyStatus
-##### (Appears on:[LoadBalancerListenerPolicy](#LoadBalancerListenerPolicy))
+
+Appears on:[LoadBalancerListenerPolicy](#LoadBalancerListenerPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

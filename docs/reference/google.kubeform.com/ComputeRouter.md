@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeRouterSpec](#ComputeRouterSpec)***||
 | `status` | ***[ComputeRouterStatus](#ComputeRouterStatus)***||
 ## ComputeRouterSpec
-##### (Appears on:[ComputeRouter](#ComputeRouter), [ComputeRouterStatus](#ComputeRouterStatus))
+
+Appears on:[ComputeRouter](#ComputeRouter), [ComputeRouterStatus](#ComputeRouterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `region` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 ## ComputeRouterSpecBgp
-##### (Appears on:[ComputeRouterSpec](#ComputeRouterSpec))
+
+Appears on:[ComputeRouterSpec](#ComputeRouterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `advertiseMode` | ***string***| ***(Optional)*** |
@@ -41,13 +45,17 @@ section_menu_id: reference
 | `advertisedIPRanges` | ***[[]ComputeRouterSpecBgpAdvertisedIPRanges](#ComputeRouterSpecBgpAdvertisedIPRanges)***| ***(Optional)*** |
 | `asn` | ***int***||
 ## ComputeRouterSpecBgpAdvertisedIPRanges
-##### (Appears on:[ComputeRouterSpecBgp](#ComputeRouterSpecBgp))
+
+Appears on:[ComputeRouterSpecBgp](#ComputeRouterSpecBgp)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `description` | ***string***| ***(Optional)*** |
 | `range` | ***string***| ***(Optional)*** |
 ## ComputeRouterStatus
-##### (Appears on:[ComputeRouter](#ComputeRouter))
+
+Appears on:[ComputeRouter](#ComputeRouter)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

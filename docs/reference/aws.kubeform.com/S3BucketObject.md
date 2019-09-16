@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[S3BucketObjectSpec](#S3BucketObjectSpec)***||
 | `status` | ***[S3BucketObjectStatus](#S3BucketObjectStatus)***||
 ## S3BucketObjectSpec
-##### (Appears on:[S3BucketObject](#S3BucketObject), [S3BucketObjectStatus](#S3BucketObjectStatus))
+
+Appears on:[S3BucketObject](#S3BucketObject), [S3BucketObjectStatus](#S3BucketObjectStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,7 +45,9 @@ section_menu_id: reference
 | `versionID` | ***string***| ***(Optional)*** |
 | `websiteRedirect` | ***string***| ***(Optional)*** |
 ## S3BucketObjectStatus
-##### (Appears on:[S3BucketObject](#S3BucketObject))
+
+Appears on:[S3BucketObject](#S3BucketObject)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

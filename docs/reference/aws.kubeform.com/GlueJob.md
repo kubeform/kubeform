@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GlueJobSpec](#GlueJobSpec)***||
 | `status` | ***[GlueJobStatus](#GlueJobStatus)***||
 ## GlueJobSpec
-##### (Appears on:[GlueJob](#GlueJob), [GlueJobStatus](#GlueJobStatus))
+
+Appears on:[GlueJob](#GlueJob), [GlueJobStatus](#GlueJobStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,18 +39,24 @@ section_menu_id: reference
 | `securityConfiguration` | ***string***| ***(Optional)*** |
 | `timeout` | ***int***| ***(Optional)*** |
 ## GlueJobSpecCommand
-##### (Appears on:[GlueJobSpec](#GlueJobSpec))
+
+Appears on:[GlueJobSpec](#GlueJobSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***| ***(Optional)*** |
 | `scriptLocation` | ***string***||
 ## GlueJobSpecExecutionProperty
-##### (Appears on:[GlueJobSpec](#GlueJobSpec))
+
+Appears on:[GlueJobSpec](#GlueJobSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `maxConcurrentRuns` | ***int***| ***(Optional)*** |
 ## GlueJobStatus
-##### (Appears on:[GlueJob](#GlueJob))
+
+Appears on:[GlueJob](#GlueJob)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

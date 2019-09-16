@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LbSpec](#LbSpec)***||
 | `status` | ***[LbStatus](#LbStatus)***||
 ## LbSpec
-##### (Appears on:[Lb](#Lb), [LbStatus](#LbStatus))
+
+Appears on:[Lb](#Lb), [LbStatus](#LbStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -44,20 +46,26 @@ section_menu_id: reference
 | `vpcID` | ***string***| ***(Optional)*** |
 | `zoneID` | ***string***| ***(Optional)*** |
 ## LbSpecAccessLogs
-##### (Appears on:[LbSpec](#LbSpec))
+
+Appears on:[LbSpec](#LbSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucket` | ***string***||
 | `enabled` | ***bool***| ***(Optional)*** |
 | `prefix` | ***string***| ***(Optional)*** |
 ## LbSpecSubnetMapping
-##### (Appears on:[LbSpec](#LbSpec))
+
+Appears on:[LbSpec](#LbSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allocationID` | ***string***| ***(Optional)*** |
 | `subnetID` | ***string***||
 ## LbStatus
-##### (Appears on:[Lb](#Lb))
+
+Appears on:[Lb](#Lb)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

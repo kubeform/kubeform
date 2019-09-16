@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[XraySamplingRuleSpec](#XraySamplingRuleSpec)***||
 | `status` | ***[XraySamplingRuleStatus](#XraySamplingRuleStatus)***||
 ## XraySamplingRuleSpec
-##### (Appears on:[XraySamplingRule](#XraySamplingRule), [XraySamplingRuleStatus](#XraySamplingRuleStatus))
+
+Appears on:[XraySamplingRule](#XraySamplingRule), [XraySamplingRuleStatus](#XraySamplingRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,7 +40,9 @@ section_menu_id: reference
 | `urlPath` | ***string***||
 | `version` | ***int***||
 ## XraySamplingRuleStatus
-##### (Appears on:[XraySamplingRule](#XraySamplingRule))
+
+Appears on:[XraySamplingRule](#XraySamplingRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DbInstanceSpec](#DbInstanceSpec)***||
 | `status` | ***[DbInstanceStatus](#DbInstanceStatus)***||
 ## DbInstanceSpec
-##### (Appears on:[DbInstance](#DbInstance), [DbInstanceStatus](#DbInstanceStatus))
+
+Appears on:[DbInstance](#DbInstance), [DbInstanceStatus](#DbInstanceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -78,7 +80,9 @@ section_menu_id: reference
 | `username` | ***string***| ***(Optional)*** |
 | `vpcSecurityGroupIDS` | ***[]string***| ***(Optional)*** |
 ## DbInstanceSpecS3Import
-##### (Appears on:[DbInstanceSpec](#DbInstanceSpec))
+
+Appears on:[DbInstanceSpec](#DbInstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketName` | ***string***||
@@ -87,7 +91,9 @@ section_menu_id: reference
 | `sourceEngine` | ***string***||
 | `sourceEngineVersion` | ***string***||
 ## DbInstanceStatus
-##### (Appears on:[DbInstance](#DbInstance))
+
+Appears on:[DbInstance](#DbInstance)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[PinpointEventStreamSpec](#PinpointEventStreamSpec)***||
 | `status` | ***[PinpointEventStreamStatus](#PinpointEventStreamStatus)***||
 ## PinpointEventStreamSpec
-##### (Appears on:[PinpointEventStream](#PinpointEventStream), [PinpointEventStreamStatus](#PinpointEventStreamStatus))
+
+Appears on:[PinpointEventStream](#PinpointEventStream), [PinpointEventStreamStatus](#PinpointEventStreamStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `destinationStreamArn` | ***string***||
 | `roleArn` | ***string***||
 ## PinpointEventStreamStatus
-##### (Appears on:[PinpointEventStream](#PinpointEventStream))
+
+Appears on:[PinpointEventStream](#PinpointEventStream)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

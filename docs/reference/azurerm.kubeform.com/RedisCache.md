@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[RedisCacheSpec](#RedisCacheSpec)***||
 | `status` | ***[RedisCacheStatus](#RedisCacheStatus)***||
 ## RedisCacheSpec
-##### (Appears on:[RedisCache](#RedisCache), [RedisCacheStatus](#RedisCacheStatus))
+
+Appears on:[RedisCache](#RedisCache), [RedisCacheStatus](#RedisCacheStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -44,13 +46,17 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `zones` | ***[]string***| ***(Optional)*** |
 ## RedisCacheSpecPatchSchedule
-##### (Appears on:[RedisCacheSpec](#RedisCacheSpec))
+
+Appears on:[RedisCacheSpec](#RedisCacheSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dayOfWeek` | ***string***||
 | `startHourUtc` | ***int***| ***(Optional)*** |
 ## RedisCacheSpecRedisConfiguration
-##### (Appears on:[RedisCacheSpec](#RedisCacheSpec))
+
+Appears on:[RedisCacheSpec](#RedisCacheSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `aofBackupEnabled` | ***bool***| ***(Optional)*** |
@@ -65,7 +71,9 @@ section_menu_id: reference
 | `rdbBackupFrequency` | ***int***| ***(Optional)*** |
 | `rdbBackupMaxSnapshotCount` | ***int***| ***(Optional)*** |
 ## RedisCacheStatus
-##### (Appears on:[RedisCache](#RedisCache))
+
+Appears on:[RedisCache](#RedisCache)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

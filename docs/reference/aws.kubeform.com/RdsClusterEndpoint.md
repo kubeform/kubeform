@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[RdsClusterEndpointSpec](#RdsClusterEndpointSpec)***||
 | `status` | ***[RdsClusterEndpointStatus](#RdsClusterEndpointStatus)***||
 ## RdsClusterEndpointSpec
-##### (Appears on:[RdsClusterEndpoint](#RdsClusterEndpoint), [RdsClusterEndpointStatus](#RdsClusterEndpointStatus))
+
+Appears on:[RdsClusterEndpoint](#RdsClusterEndpoint), [RdsClusterEndpointStatus](#RdsClusterEndpointStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `excludedMembers` | ***[]string***| ***(Optional)*** |
 | `staticMembers` | ***[]string***| ***(Optional)*** |
 ## RdsClusterEndpointStatus
-##### (Appears on:[RdsClusterEndpoint](#RdsClusterEndpoint))
+
+Appears on:[RdsClusterEndpoint](#RdsClusterEndpoint)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

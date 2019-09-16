@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LoadbalancerSpec](#LoadbalancerSpec)***||
 | `status` | ***[LoadbalancerStatus](#LoadbalancerStatus)***||
 ## LoadbalancerSpec
-##### (Appears on:[Loadbalancer](#Loadbalancer), [LoadbalancerStatus](#LoadbalancerStatus))
+
+Appears on:[Loadbalancer](#Loadbalancer), [LoadbalancerStatus](#LoadbalancerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,7 +40,9 @@ section_menu_id: reference
 | `stickySessions` | ***[[]LoadbalancerSpecStickySessions](#LoadbalancerSpecStickySessions)***| ***(Optional)*** |
 | `urn` | ***string***| ***(Optional)*** the uniform resource name for the load balancer|
 ## LoadbalancerSpecForwardingRule
-##### (Appears on:[LoadbalancerSpec](#LoadbalancerSpec))
+
+Appears on:[LoadbalancerSpec](#LoadbalancerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `certificateID` | ***string***| ***(Optional)*** |
@@ -48,7 +52,9 @@ section_menu_id: reference
 | `targetProtocol` | ***string***||
 | `tlsPassthrough` | ***bool***| ***(Optional)*** |
 ## LoadbalancerSpecHealthcheck
-##### (Appears on:[LoadbalancerSpec](#LoadbalancerSpec))
+
+Appears on:[LoadbalancerSpec](#LoadbalancerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `checkIntervalSeconds` | ***int***| ***(Optional)*** |
@@ -59,14 +65,18 @@ section_menu_id: reference
 | `responseTimeoutSeconds` | ***int***| ***(Optional)*** |
 | `unhealthyThreshold` | ***int***| ***(Optional)*** |
 ## LoadbalancerSpecStickySessions
-##### (Appears on:[LoadbalancerSpec](#LoadbalancerSpec))
+
+Appears on:[LoadbalancerSpec](#LoadbalancerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cookieName` | ***string***| ***(Optional)*** |
 | `cookieTtlSeconds` | ***int***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## LoadbalancerStatus
-##### (Appears on:[Loadbalancer](#Loadbalancer))
+
+Appears on:[Loadbalancer](#Loadbalancer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

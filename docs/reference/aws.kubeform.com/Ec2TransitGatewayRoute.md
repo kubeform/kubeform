@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Ec2TransitGatewayRouteSpec](#Ec2TransitGatewayRouteSpec)***||
 | `status` | ***[Ec2TransitGatewayRouteStatus](#Ec2TransitGatewayRouteStatus)***||
 ## Ec2TransitGatewayRouteSpec
-##### (Appears on:[Ec2TransitGatewayRoute](#Ec2TransitGatewayRoute), [Ec2TransitGatewayRouteStatus](#Ec2TransitGatewayRouteStatus))
+
+Appears on:[Ec2TransitGatewayRoute](#Ec2TransitGatewayRoute), [Ec2TransitGatewayRouteStatus](#Ec2TransitGatewayRouteStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `transitGatewayAttachmentID` | ***string***||
 | `transitGatewayRouteTableID` | ***string***||
 ## Ec2TransitGatewayRouteStatus
-##### (Appears on:[Ec2TransitGatewayRoute](#Ec2TransitGatewayRoute))
+
+Appears on:[Ec2TransitGatewayRoute](#Ec2TransitGatewayRoute)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

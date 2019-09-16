@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[BillingAccountIamBindingSpec](#BillingAccountIamBindingSpec)***||
 | `status` | ***[BillingAccountIamBindingStatus](#BillingAccountIamBindingStatus)***||
 ## BillingAccountIamBindingSpec
-##### (Appears on:[BillingAccountIamBinding](#BillingAccountIamBinding), [BillingAccountIamBindingStatus](#BillingAccountIamBindingStatus))
+
+Appears on:[BillingAccountIamBinding](#BillingAccountIamBinding), [BillingAccountIamBindingStatus](#BillingAccountIamBindingStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `members` | ***[]string***||
 | `role` | ***string***||
 ## BillingAccountIamBindingStatus
-##### (Appears on:[BillingAccountIamBinding](#BillingAccountIamBinding))
+
+Appears on:[BillingAccountIamBinding](#BillingAccountIamBinding)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

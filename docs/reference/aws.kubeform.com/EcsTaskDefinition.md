@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[EcsTaskDefinitionSpec](#EcsTaskDefinitionSpec)***||
 | `status` | ***[EcsTaskDefinitionStatus](#EcsTaskDefinitionStatus)***||
 ## EcsTaskDefinitionSpec
-##### (Appears on:[EcsTaskDefinition](#EcsTaskDefinition), [EcsTaskDefinitionStatus](#EcsTaskDefinitionStatus))
+
+Appears on:[EcsTaskDefinition](#EcsTaskDefinition), [EcsTaskDefinitionStatus](#EcsTaskDefinitionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -40,20 +42,26 @@ section_menu_id: reference
 | `taskRoleArn` | ***string***| ***(Optional)*** |
 | `volume` | ***[[]EcsTaskDefinitionSpecVolume](#EcsTaskDefinitionSpecVolume)***| ***(Optional)*** |
 ## EcsTaskDefinitionSpecPlacementConstraints
-##### (Appears on:[EcsTaskDefinitionSpec](#EcsTaskDefinitionSpec))
+
+Appears on:[EcsTaskDefinitionSpec](#EcsTaskDefinitionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `expression` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## EcsTaskDefinitionSpecVolume
-##### (Appears on:[EcsTaskDefinitionSpec](#EcsTaskDefinitionSpec))
+
+Appears on:[EcsTaskDefinitionSpec](#EcsTaskDefinitionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dockerVolumeConfiguration` | ***[[]EcsTaskDefinitionSpecVolumeDockerVolumeConfiguration](#EcsTaskDefinitionSpecVolumeDockerVolumeConfiguration)***| ***(Optional)*** |
 | `hostPath` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 ## EcsTaskDefinitionSpecVolumeDockerVolumeConfiguration
-##### (Appears on:[EcsTaskDefinitionSpecVolume](#EcsTaskDefinitionSpecVolume))
+
+Appears on:[EcsTaskDefinitionSpecVolume](#EcsTaskDefinitionSpecVolume)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `autoprovision` | ***bool***| ***(Optional)*** |
@@ -62,7 +70,9 @@ section_menu_id: reference
 | `labels` | ***map[string]string***| ***(Optional)*** |
 | `scope` | ***string***| ***(Optional)*** |
 ## EcsTaskDefinitionStatus
-##### (Appears on:[EcsTaskDefinition](#EcsTaskDefinition))
+
+Appears on:[EcsTaskDefinition](#EcsTaskDefinition)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeSSLCertificateSpec](#ComputeSSLCertificateSpec)***||
 | `status` | ***[ComputeSSLCertificateStatus](#ComputeSSLCertificateStatus)***||
 ## ComputeSSLCertificateSpec
-##### (Appears on:[ComputeSSLCertificate](#ComputeSSLCertificate), [ComputeSSLCertificateStatus](#ComputeSSLCertificateStatus))
+
+Appears on:[ComputeSSLCertificate](#ComputeSSLCertificate), [ComputeSSLCertificateStatus](#ComputeSSLCertificateStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `project` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 ## ComputeSSLCertificateStatus
-##### (Appears on:[ComputeSSLCertificate](#ComputeSSLCertificate))
+
+Appears on:[ComputeSSLCertificate](#ComputeSSLCertificate)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

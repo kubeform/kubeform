@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[InspectorAssessmentTargetSpec](#InspectorAssessmentTargetSpec)***||
 | `status` | ***[InspectorAssessmentTargetStatus](#InspectorAssessmentTargetStatus)***||
 ## InspectorAssessmentTargetSpec
-##### (Appears on:[InspectorAssessmentTarget](#InspectorAssessmentTarget), [InspectorAssessmentTargetStatus](#InspectorAssessmentTargetStatus))
+
+Appears on:[InspectorAssessmentTarget](#InspectorAssessmentTarget), [InspectorAssessmentTargetStatus](#InspectorAssessmentTargetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `resourceGroupArn` | ***string***| ***(Optional)*** |
 ## InspectorAssessmentTargetStatus
-##### (Appears on:[InspectorAssessmentTarget](#InspectorAssessmentTarget))
+
+Appears on:[InspectorAssessmentTarget](#InspectorAssessmentTarget)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

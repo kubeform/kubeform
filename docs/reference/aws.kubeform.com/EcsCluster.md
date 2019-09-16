@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[EcsClusterSpec](#EcsClusterSpec)***||
 | `status` | ***[EcsClusterStatus](#EcsClusterStatus)***||
 ## EcsClusterSpec
-##### (Appears on:[EcsCluster](#EcsCluster), [EcsClusterStatus](#EcsClusterStatus))
+
+Appears on:[EcsCluster](#EcsCluster), [EcsClusterStatus](#EcsClusterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## EcsClusterStatus
-##### (Appears on:[EcsCluster](#EcsCluster))
+
+Appears on:[EcsCluster](#EcsCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

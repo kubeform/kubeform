@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NetworkSecurityRuleSpec](#NetworkSecurityRuleSpec)***||
 | `status` | ***[NetworkSecurityRuleStatus](#NetworkSecurityRuleStatus)***||
 ## NetworkSecurityRuleSpec
-##### (Appears on:[NetworkSecurityRule](#NetworkSecurityRule), [NetworkSecurityRuleStatus](#NetworkSecurityRuleStatus))
+
+Appears on:[NetworkSecurityRule](#NetworkSecurityRule), [NetworkSecurityRuleStatus](#NetworkSecurityRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,7 +45,9 @@ section_menu_id: reference
 | `sourcePortRange` | ***string***| ***(Optional)*** |
 | `sourcePortRanges` | ***[]string***| ***(Optional)*** |
 ## NetworkSecurityRuleStatus
-##### (Appears on:[NetworkSecurityRule](#NetworkSecurityRule))
+
+Appears on:[NetworkSecurityRule](#NetworkSecurityRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SsmPatchBaselineSpec](#SsmPatchBaselineSpec)***||
 | `status` | ***[SsmPatchBaselineStatus](#SsmPatchBaselineStatus)***||
 ## SsmPatchBaselineSpec
-##### (Appears on:[SsmPatchBaseline](#SsmPatchBaseline), [SsmPatchBaselineStatus](#SsmPatchBaselineStatus))
+
+Appears on:[SsmPatchBaseline](#SsmPatchBaseline), [SsmPatchBaselineStatus](#SsmPatchBaselineStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `rejectedPatches` | ***[]string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SsmPatchBaselineSpecApprovalRule
-##### (Appears on:[SsmPatchBaselineSpec](#SsmPatchBaselineSpec))
+
+Appears on:[SsmPatchBaselineSpec](#SsmPatchBaselineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `approveAfterDays` | ***int***||
@@ -42,19 +46,25 @@ section_menu_id: reference
 | `enableNonSecurity` | ***bool***| ***(Optional)*** |
 | `patchFilter` | ***[[]SsmPatchBaselineSpecApprovalRulePatchFilter](#SsmPatchBaselineSpecApprovalRulePatchFilter)***||
 ## SsmPatchBaselineSpecApprovalRulePatchFilter
-##### (Appears on:[SsmPatchBaselineSpecApprovalRule](#SsmPatchBaselineSpecApprovalRule))
+
+Appears on:[SsmPatchBaselineSpecApprovalRule](#SsmPatchBaselineSpecApprovalRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `key` | ***string***||
 | `values` | ***[]string***||
 ## SsmPatchBaselineSpecGlobalFilter
-##### (Appears on:[SsmPatchBaselineSpec](#SsmPatchBaselineSpec))
+
+Appears on:[SsmPatchBaselineSpec](#SsmPatchBaselineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `key` | ***string***||
 | `values` | ***[]string***||
 ## SsmPatchBaselineStatus
-##### (Appears on:[SsmPatchBaseline](#SsmPatchBaseline))
+
+Appears on:[SsmPatchBaseline](#SsmPatchBaseline)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

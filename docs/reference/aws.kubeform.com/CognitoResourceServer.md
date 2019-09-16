@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CognitoResourceServerSpec](#CognitoResourceServerSpec)***||
 | `status` | ***[CognitoResourceServerStatus](#CognitoResourceServerStatus)***||
 ## CognitoResourceServerSpec
-##### (Appears on:[CognitoResourceServer](#CognitoResourceServer), [CognitoResourceServerStatus](#CognitoResourceServerStatus))
+
+Appears on:[CognitoResourceServer](#CognitoResourceServer), [CognitoResourceServerStatus](#CognitoResourceServerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,13 +32,17 @@ section_menu_id: reference
 | `scopeIdentifiers` | ***[]string***| ***(Optional)*** |
 | `userPoolID` | ***string***||
 ## CognitoResourceServerSpecScope
-##### (Appears on:[CognitoResourceServerSpec](#CognitoResourceServerSpec))
+
+Appears on:[CognitoResourceServerSpec](#CognitoResourceServerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `scopeDescription` | ***string***||
 | `scopeName` | ***string***||
 ## CognitoResourceServerStatus
-##### (Appears on:[CognitoResourceServer](#CognitoResourceServer))
+
+Appears on:[CognitoResourceServer](#CognitoResourceServer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

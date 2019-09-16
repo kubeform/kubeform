@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DbParameterGroupSpec](#DbParameterGroupSpec)***||
 | `status` | ***[DbParameterGroupStatus](#DbParameterGroupStatus)***||
 ## DbParameterGroupSpec
-##### (Appears on:[DbParameterGroup](#DbParameterGroup), [DbParameterGroupStatus](#DbParameterGroupStatus))
+
+Appears on:[DbParameterGroup](#DbParameterGroup), [DbParameterGroupStatus](#DbParameterGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,14 +34,18 @@ section_menu_id: reference
 | `parameter` | ***[[]DbParameterGroupSpecParameter](#DbParameterGroupSpecParameter)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DbParameterGroupSpecParameter
-##### (Appears on:[DbParameterGroupSpec](#DbParameterGroupSpec))
+
+Appears on:[DbParameterGroupSpec](#DbParameterGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `applyMethod` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `value` | ***string***||
 ## DbParameterGroupStatus
-##### (Appears on:[DbParameterGroup](#DbParameterGroup))
+
+Appears on:[DbParameterGroup](#DbParameterGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

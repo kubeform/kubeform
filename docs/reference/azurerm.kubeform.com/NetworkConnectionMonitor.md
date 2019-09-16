@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NetworkConnectionMonitorSpec](#NetworkConnectionMonitorSpec)***||
 | `status` | ***[NetworkConnectionMonitorStatus](#NetworkConnectionMonitorStatus)***||
 ## NetworkConnectionMonitorSpec
-##### (Appears on:[NetworkConnectionMonitor](#NetworkConnectionMonitor), [NetworkConnectionMonitorStatus](#NetworkConnectionMonitorStatus))
+
+Appears on:[NetworkConnectionMonitor](#NetworkConnectionMonitor), [NetworkConnectionMonitorStatus](#NetworkConnectionMonitorStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,20 +36,26 @@ section_menu_id: reference
 | `source` | ***[[]NetworkConnectionMonitorSpecSource](#NetworkConnectionMonitorSpecSource)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## NetworkConnectionMonitorSpecDestination
-##### (Appears on:[NetworkConnectionMonitorSpec](#NetworkConnectionMonitorSpec))
+
+Appears on:[NetworkConnectionMonitorSpec](#NetworkConnectionMonitorSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `address` | ***string***| ***(Optional)*** |
 | `port` | ***int***||
 | `virtualMachineID` | ***string***| ***(Optional)*** |
 ## NetworkConnectionMonitorSpecSource
-##### (Appears on:[NetworkConnectionMonitorSpec](#NetworkConnectionMonitorSpec))
+
+Appears on:[NetworkConnectionMonitorSpec](#NetworkConnectionMonitorSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `port` | ***int***| ***(Optional)*** |
 | `virtualMachineID` | ***string***||
 ## NetworkConnectionMonitorStatus
-##### (Appears on:[NetworkConnectionMonitor](#NetworkConnectionMonitor))
+
+Appears on:[NetworkConnectionMonitor](#NetworkConnectionMonitor)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

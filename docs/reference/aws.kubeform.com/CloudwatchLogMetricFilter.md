@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CloudwatchLogMetricFilterSpec](#CloudwatchLogMetricFilterSpec)***||
 | `status` | ***[CloudwatchLogMetricFilterStatus](#CloudwatchLogMetricFilterStatus)***||
 ## CloudwatchLogMetricFilterSpec
-##### (Appears on:[CloudwatchLogMetricFilter](#CloudwatchLogMetricFilter), [CloudwatchLogMetricFilterStatus](#CloudwatchLogMetricFilterStatus))
+
+Appears on:[CloudwatchLogMetricFilter](#CloudwatchLogMetricFilter), [CloudwatchLogMetricFilterStatus](#CloudwatchLogMetricFilterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `pattern` | ***string***||
 ## CloudwatchLogMetricFilterSpecMetricTransformation
-##### (Appears on:[CloudwatchLogMetricFilterSpec](#CloudwatchLogMetricFilterSpec))
+
+Appears on:[CloudwatchLogMetricFilterSpec](#CloudwatchLogMetricFilterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultValue` | ***string***| ***(Optional)*** |
@@ -37,7 +41,9 @@ section_menu_id: reference
 | `namespace` | ***string***||
 | `value` | ***string***||
 ## CloudwatchLogMetricFilterStatus
-##### (Appears on:[CloudwatchLogMetricFilter](#CloudwatchLogMetricFilter))
+
+Appears on:[CloudwatchLogMetricFilter](#CloudwatchLogMetricFilter)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

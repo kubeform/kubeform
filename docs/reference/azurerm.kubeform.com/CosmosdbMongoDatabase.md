@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CosmosdbMongoDatabaseSpec](#CosmosdbMongoDatabaseSpec)***||
 | `status` | ***[CosmosdbMongoDatabaseStatus](#CosmosdbMongoDatabaseStatus)***||
 ## CosmosdbMongoDatabaseSpec
-##### (Appears on:[CosmosdbMongoDatabase](#CosmosdbMongoDatabase), [CosmosdbMongoDatabaseStatus](#CosmosdbMongoDatabaseStatus))
+
+Appears on:[CosmosdbMongoDatabase](#CosmosdbMongoDatabase), [CosmosdbMongoDatabaseStatus](#CosmosdbMongoDatabaseStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 ## CosmosdbMongoDatabaseStatus
-##### (Appears on:[CosmosdbMongoDatabase](#CosmosdbMongoDatabase))
+
+Appears on:[CosmosdbMongoDatabase](#CosmosdbMongoDatabase)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

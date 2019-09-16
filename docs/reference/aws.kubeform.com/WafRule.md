@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WafRuleSpec](#WafRuleSpec)***||
 | `status` | ***[WafRuleStatus](#WafRuleStatus)***||
 ## WafRuleSpec
-##### (Appears on:[WafRule](#WafRule), [WafRuleStatus](#WafRuleStatus))
+
+Appears on:[WafRule](#WafRule), [WafRuleStatus](#WafRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,14 +30,18 @@ section_menu_id: reference
 | `name` | ***string***||
 | `predicates` | ***[[]WafRuleSpecPredicates](#WafRuleSpecPredicates)***| ***(Optional)*** |
 ## WafRuleSpecPredicates
-##### (Appears on:[WafRuleSpec](#WafRuleSpec))
+
+Appears on:[WafRuleSpec](#WafRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dataID` | ***string***||
 | `negated` | ***bool***||
 | `type` | ***string***||
 ## WafRuleStatus
-##### (Appears on:[WafRule](#WafRule))
+
+Appears on:[WafRule](#WafRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

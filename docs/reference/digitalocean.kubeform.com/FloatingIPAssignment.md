@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[FloatingIPAssignmentSpec](#FloatingIPAssignmentSpec)***||
 | `status` | ***[FloatingIPAssignmentStatus](#FloatingIPAssignmentStatus)***||
 ## FloatingIPAssignmentSpec
-##### (Appears on:[FloatingIPAssignment](#FloatingIPAssignment), [FloatingIPAssignmentStatus](#FloatingIPAssignmentStatus))
+
+Appears on:[FloatingIPAssignment](#FloatingIPAssignment), [FloatingIPAssignmentStatus](#FloatingIPAssignmentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `dropletID` | ***int***||
 | `ipAddress` | ***string***||
 ## FloatingIPAssignmentStatus
-##### (Appears on:[FloatingIPAssignment](#FloatingIPAssignment))
+
+Appears on:[FloatingIPAssignment](#FloatingIPAssignment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

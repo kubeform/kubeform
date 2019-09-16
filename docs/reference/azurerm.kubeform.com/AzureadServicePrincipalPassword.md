@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AzureadServicePrincipalPasswordSpec](#AzureadServicePrincipalPasswordSpec)***||
 | `status` | ***[AzureadServicePrincipalPasswordStatus](#AzureadServicePrincipalPasswordStatus)***||
 ## AzureadServicePrincipalPasswordSpec
-##### (Appears on:[AzureadServicePrincipalPassword](#AzureadServicePrincipalPassword), [AzureadServicePrincipalPasswordStatus](#AzureadServicePrincipalPasswordStatus))
+
+Appears on:[AzureadServicePrincipalPassword](#AzureadServicePrincipalPassword), [AzureadServicePrincipalPasswordStatus](#AzureadServicePrincipalPasswordStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `servicePrincipalID` | ***string***||
 | `startDate` | ***string***| ***(Optional)*** |
 ## AzureadServicePrincipalPasswordStatus
-##### (Appears on:[AzureadServicePrincipalPassword](#AzureadServicePrincipalPassword))
+
+Appears on:[AzureadServicePrincipalPassword](#AzureadServicePrincipalPassword)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

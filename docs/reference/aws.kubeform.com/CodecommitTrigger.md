@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CodecommitTriggerSpec](#CodecommitTriggerSpec)***||
 | `status` | ***[CodecommitTriggerStatus](#CodecommitTriggerStatus)***||
 ## CodecommitTriggerSpec
-##### (Appears on:[CodecommitTrigger](#CodecommitTrigger), [CodecommitTriggerStatus](#CodecommitTriggerStatus))
+
+Appears on:[CodecommitTrigger](#CodecommitTrigger), [CodecommitTriggerStatus](#CodecommitTriggerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `repositoryName` | ***string***||
 | `trigger` | ***[[]CodecommitTriggerSpecTrigger](#CodecommitTriggerSpecTrigger)***||
 ## CodecommitTriggerSpecTrigger
-##### (Appears on:[CodecommitTriggerSpec](#CodecommitTriggerSpec))
+
+Appears on:[CodecommitTriggerSpec](#CodecommitTriggerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `branches` | ***[]string***| ***(Optional)*** |
@@ -37,7 +41,9 @@ section_menu_id: reference
 | `events` | ***[]string***||
 | `name` | ***string***||
 ## CodecommitTriggerStatus
-##### (Appears on:[CodecommitTrigger](#CodecommitTrigger))
+
+Appears on:[CodecommitTrigger](#CodecommitTrigger)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Ec2ClientVPNEndpointSpec](#Ec2ClientVPNEndpointSpec)***||
 | `status` | ***[Ec2ClientVPNEndpointStatus](#Ec2ClientVPNEndpointStatus)***||
 ## Ec2ClientVPNEndpointSpec
-##### (Appears on:[Ec2ClientVPNEndpoint](#Ec2ClientVPNEndpoint), [Ec2ClientVPNEndpointStatus](#Ec2ClientVPNEndpointStatus))
+
+Appears on:[Ec2ClientVPNEndpoint](#Ec2ClientVPNEndpoint), [Ec2ClientVPNEndpointStatus](#Ec2ClientVPNEndpointStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,21 +37,27 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `transportProtocol` | ***string***| ***(Optional)*** |
 ## Ec2ClientVPNEndpointSpecAuthenticationOptions
-##### (Appears on:[Ec2ClientVPNEndpointSpec](#Ec2ClientVPNEndpointSpec))
+
+Appears on:[Ec2ClientVPNEndpointSpec](#Ec2ClientVPNEndpointSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `activeDirectoryID` | ***string***| ***(Optional)*** |
 | `rootCertificateChainArn` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## Ec2ClientVPNEndpointSpecConnectionLogOptions
-##### (Appears on:[Ec2ClientVPNEndpointSpec](#Ec2ClientVPNEndpointSpec))
+
+Appears on:[Ec2ClientVPNEndpointSpec](#Ec2ClientVPNEndpointSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cloudwatchLogGroup` | ***string***| ***(Optional)*** |
 | `cloudwatchLogStream` | ***string***| ***(Optional)*** |
 | `enabled` | ***bool***||
 ## Ec2ClientVPNEndpointStatus
-##### (Appears on:[Ec2ClientVPNEndpoint](#Ec2ClientVPNEndpoint))
+
+Appears on:[Ec2ClientVPNEndpoint](#Ec2ClientVPNEndpoint)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

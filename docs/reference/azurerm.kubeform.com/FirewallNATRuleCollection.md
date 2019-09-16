@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[FirewallNATRuleCollectionSpec](#FirewallNATRuleCollectionSpec)***||
 | `status` | ***[FirewallNATRuleCollectionStatus](#FirewallNATRuleCollectionStatus)***||
 ## FirewallNATRuleCollectionSpec
-##### (Appears on:[FirewallNATRuleCollection](#FirewallNATRuleCollection), [FirewallNATRuleCollectionStatus](#FirewallNATRuleCollectionStatus))
+
+Appears on:[FirewallNATRuleCollection](#FirewallNATRuleCollection), [FirewallNATRuleCollectionStatus](#FirewallNATRuleCollectionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `rule` | ***[[]FirewallNATRuleCollectionSpecRule](#FirewallNATRuleCollectionSpecRule)***||
 ## FirewallNATRuleCollectionSpecRule
-##### (Appears on:[FirewallNATRuleCollectionSpec](#FirewallNATRuleCollectionSpec))
+
+Appears on:[FirewallNATRuleCollectionSpec](#FirewallNATRuleCollectionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `description` | ***string***| ***(Optional)*** |
@@ -43,7 +47,9 @@ section_menu_id: reference
 | `translatedAddress` | ***string***||
 | `translatedPort` | ***string***||
 ## FirewallNATRuleCollectionStatus
-##### (Appears on:[FirewallNATRuleCollection](#FirewallNATRuleCollection))
+
+Appears on:[FirewallNATRuleCollection](#FirewallNATRuleCollection)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SchedulerJobSpec](#SchedulerJobSpec)***||
 | `status` | ***[SchedulerJobStatus](#SchedulerJobStatus)***||
 ## SchedulerJobSpec
-##### (Appears on:[SchedulerJob](#SchedulerJob), [SchedulerJobStatus](#SchedulerJobStatus))
+
+Appears on:[SchedulerJob](#SchedulerJob), [SchedulerJobStatus](#SchedulerJobStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,7 +39,9 @@ section_menu_id: reference
 | `startTime` | ***string***| ***(Optional)*** |
 | `state` | ***string***| ***(Optional)*** |
 ## SchedulerJobSpecActionStorageQueue
-##### (Appears on:[SchedulerJobSpec](#SchedulerJobSpec))
+
+Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `message` | ***string***||
@@ -45,7 +49,9 @@ section_menu_id: reference
 | `storageAccountName` | ***string***||
 | `storageQueueName` | ***string***||
 ## SchedulerJobSpecActionWeb
-##### (Appears on:[SchedulerJobSpec](#SchedulerJobSpec))
+
+Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticationActiveDirectory` | ***[[]SchedulerJobSpecActionWebAuthenticationActiveDirectory](#SchedulerJobSpecActionWebAuthenticationActiveDirectory)***| ***(Optional)*** |
@@ -56,26 +62,34 @@ section_menu_id: reference
 | `method` | ***string***||
 | `url` | ***string***||
 ## SchedulerJobSpecActionWebAuthenticationActiveDirectory
-##### (Appears on:[SchedulerJobSpecActionWeb](#SchedulerJobSpecActionWeb))
+
+Appears on:[SchedulerJobSpecActionWeb](#SchedulerJobSpecActionWeb)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `audience` | ***string***| ***(Optional)*** |
 | `clientID` | ***string***||
 | `tenantID` | ***string***||
 ## SchedulerJobSpecActionWebAuthenticationBasic
-##### (Appears on:[SchedulerJobSpecActionWeb](#SchedulerJobSpecActionWeb))
+
+Appears on:[SchedulerJobSpecActionWeb](#SchedulerJobSpecActionWeb)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `username` | ***string***||
 ## SchedulerJobSpecActionWebAuthenticationCertificate
-##### (Appears on:[SchedulerJobSpecActionWeb](#SchedulerJobSpecActionWeb))
+
+Appears on:[SchedulerJobSpecActionWeb](#SchedulerJobSpecActionWeb)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `expiration` | ***string***| ***(Optional)*** |
 | `subjectName` | ***string***| ***(Optional)*** |
 | `thumbprint` | ***string***| ***(Optional)*** |
 ## SchedulerJobSpecErrorActionStorageQueue
-##### (Appears on:[SchedulerJobSpec](#SchedulerJobSpec))
+
+Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `message` | ***string***||
@@ -83,7 +97,9 @@ section_menu_id: reference
 | `storageAccountName` | ***string***||
 | `storageQueueName` | ***string***||
 ## SchedulerJobSpecErrorActionWeb
-##### (Appears on:[SchedulerJobSpec](#SchedulerJobSpec))
+
+Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticationActiveDirectory` | ***[[]SchedulerJobSpecErrorActionWebAuthenticationActiveDirectory](#SchedulerJobSpecErrorActionWebAuthenticationActiveDirectory)***| ***(Optional)*** |
@@ -94,26 +110,34 @@ section_menu_id: reference
 | `method` | ***string***||
 | `url` | ***string***||
 ## SchedulerJobSpecErrorActionWebAuthenticationActiveDirectory
-##### (Appears on:[SchedulerJobSpecErrorActionWeb](#SchedulerJobSpecErrorActionWeb))
+
+Appears on:[SchedulerJobSpecErrorActionWeb](#SchedulerJobSpecErrorActionWeb)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `audience` | ***string***| ***(Optional)*** |
 | `clientID` | ***string***||
 | `tenantID` | ***string***||
 ## SchedulerJobSpecErrorActionWebAuthenticationBasic
-##### (Appears on:[SchedulerJobSpecErrorActionWeb](#SchedulerJobSpecErrorActionWeb))
+
+Appears on:[SchedulerJobSpecErrorActionWeb](#SchedulerJobSpecErrorActionWeb)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `username` | ***string***||
 ## SchedulerJobSpecErrorActionWebAuthenticationCertificate
-##### (Appears on:[SchedulerJobSpecErrorActionWeb](#SchedulerJobSpecErrorActionWeb))
+
+Appears on:[SchedulerJobSpecErrorActionWeb](#SchedulerJobSpecErrorActionWeb)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `expiration` | ***string***| ***(Optional)*** |
 | `subjectName` | ***string***| ***(Optional)*** |
 | `thumbprint` | ***string***| ***(Optional)*** |
 ## SchedulerJobSpecRecurrence
-##### (Appears on:[SchedulerJobSpec](#SchedulerJobSpec))
+
+Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `count` | ***int***| ***(Optional)*** |
@@ -126,19 +150,25 @@ section_menu_id: reference
 | `monthlyOccurrences` | ***[[]SchedulerJobSpecRecurrenceMonthlyOccurrences](#SchedulerJobSpecRecurrenceMonthlyOccurrences)***| ***(Optional)*** |
 | `weekDays` | ***[]string***| ***(Optional)*** |
 ## SchedulerJobSpecRecurrenceMonthlyOccurrences
-##### (Appears on:[SchedulerJobSpecRecurrence](#SchedulerJobSpecRecurrence))
+
+Appears on:[SchedulerJobSpecRecurrence](#SchedulerJobSpecRecurrence)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `day` | ***string***||
 | `occurrence` | ***int***||
 ## SchedulerJobSpecRetry
-##### (Appears on:[SchedulerJobSpec](#SchedulerJobSpec))
+
+Appears on:[SchedulerJobSpec](#SchedulerJobSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `count` | ***int***| ***(Optional)*** |
 | `interval` | ***string***| ***(Optional)*** |
 ## SchedulerJobStatus
-##### (Appears on:[SchedulerJob](#SchedulerJob))
+
+Appears on:[SchedulerJob](#SchedulerJob)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

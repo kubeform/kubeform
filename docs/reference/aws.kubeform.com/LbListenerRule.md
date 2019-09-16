@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LbListenerRuleSpec](#LbListenerRuleSpec)***||
 | `status` | ***[LbListenerRuleStatus](#LbListenerRuleStatus)***||
 ## LbListenerRuleSpec
-##### (Appears on:[LbListenerRule](#LbListenerRule), [LbListenerRuleStatus](#LbListenerRuleStatus))
+
+Appears on:[LbListenerRule](#LbListenerRule), [LbListenerRuleStatus](#LbListenerRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `listenerArn` | ***string***||
 | `priority` | ***int***| ***(Optional)*** |
 ## LbListenerRuleSpecAction
-##### (Appears on:[LbListenerRuleSpec](#LbListenerRuleSpec))
+
+Appears on:[LbListenerRuleSpec](#LbListenerRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticateCognito` | ***[[]LbListenerRuleSpecActionAuthenticateCognito](#LbListenerRuleSpecActionAuthenticateCognito)***| ***(Optional)*** |
@@ -42,7 +46,9 @@ section_menu_id: reference
 | `targetGroupArn` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## LbListenerRuleSpecActionAuthenticateCognito
-##### (Appears on:[LbListenerRuleSpecAction](#LbListenerRuleSpecAction))
+
+Appears on:[LbListenerRuleSpecAction](#LbListenerRuleSpecAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticationRequestExtraParams` | ***map[string]string***| ***(Optional)*** |
@@ -54,7 +60,9 @@ section_menu_id: reference
 | `userPoolClientID` | ***string***||
 | `userPoolDomain` | ***string***||
 ## LbListenerRuleSpecActionAuthenticateOidc
-##### (Appears on:[LbListenerRuleSpecAction](#LbListenerRuleSpecAction))
+
+Appears on:[LbListenerRuleSpecAction](#LbListenerRuleSpecAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticationRequestExtraParams` | ***map[string]string***| ***(Optional)*** |
@@ -68,14 +76,18 @@ section_menu_id: reference
 | `tokenEndpoint` | ***string***||
 | `userInfoEndpoint` | ***string***||
 ## LbListenerRuleSpecActionFixedResponse
-##### (Appears on:[LbListenerRuleSpecAction](#LbListenerRuleSpecAction))
+
+Appears on:[LbListenerRuleSpecAction](#LbListenerRuleSpecAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `contentType` | ***string***||
 | `messageBody` | ***string***| ***(Optional)*** |
 | `statusCode` | ***string***| ***(Optional)*** |
 ## LbListenerRuleSpecActionRedirect
-##### (Appears on:[LbListenerRuleSpecAction](#LbListenerRuleSpecAction))
+
+Appears on:[LbListenerRuleSpecAction](#LbListenerRuleSpecAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `host` | ***string***| ***(Optional)*** |
@@ -85,13 +97,17 @@ section_menu_id: reference
 | `query` | ***string***| ***(Optional)*** |
 | `statusCode` | ***string***||
 ## LbListenerRuleSpecCondition
-##### (Appears on:[LbListenerRuleSpec](#LbListenerRuleSpec))
+
+Appears on:[LbListenerRuleSpec](#LbListenerRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `field` | ***string***| ***(Optional)*** |
 | `values` | ***[]string***| ***(Optional)*** |
 ## LbListenerRuleStatus
-##### (Appears on:[LbListenerRule](#LbListenerRule))
+
+Appears on:[LbListenerRule](#LbListenerRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

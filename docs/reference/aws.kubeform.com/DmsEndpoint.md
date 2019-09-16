@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DmsEndpointSpec](#DmsEndpointSpec)***||
 | `status` | ***[DmsEndpointStatus](#DmsEndpointStatus)***||
 ## DmsEndpointSpec
-##### (Appears on:[DmsEndpoint](#DmsEndpoint), [DmsEndpointStatus](#DmsEndpointStatus))
+
+Appears on:[DmsEndpoint](#DmsEndpoint), [DmsEndpointStatus](#DmsEndpointStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -42,7 +44,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `username` | ***string***| ***(Optional)*** |
 ## DmsEndpointSpecMongodbSettings
-##### (Appears on:[DmsEndpointSpec](#DmsEndpointSpec))
+
+Appears on:[DmsEndpointSpec](#DmsEndpointSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authMechanism` | ***string***| ***(Optional)*** |
@@ -52,7 +56,9 @@ section_menu_id: reference
 | `extractDocID` | ***string***| ***(Optional)*** |
 | `nestingLevel` | ***string***| ***(Optional)*** |
 ## DmsEndpointSpecS3Settings
-##### (Appears on:[DmsEndpointSpec](#DmsEndpointSpec))
+
+Appears on:[DmsEndpointSpec](#DmsEndpointSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketFolder` | ***string***| ***(Optional)*** |
@@ -63,7 +69,9 @@ section_menu_id: reference
 | `externalTableDefinition` | ***string***| ***(Optional)*** |
 | `serviceAccessRoleArn` | ***string***| ***(Optional)*** |
 ## DmsEndpointStatus
-##### (Appears on:[DmsEndpoint](#DmsEndpoint))
+
+Appears on:[DmsEndpoint](#DmsEndpoint)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

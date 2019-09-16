@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DataFactoryDatasetPostgresqlSpec](#DataFactoryDatasetPostgresqlSpec)***||
 | `status` | ***[DataFactoryDatasetPostgresqlStatus](#DataFactoryDatasetPostgresqlStatus)***||
 ## DataFactoryDatasetPostgresqlSpec
-##### (Appears on:[DataFactoryDatasetPostgresql](#DataFactoryDatasetPostgresql), [DataFactoryDatasetPostgresqlStatus](#DataFactoryDatasetPostgresqlStatus))
+
+Appears on:[DataFactoryDatasetPostgresql](#DataFactoryDatasetPostgresql), [DataFactoryDatasetPostgresqlStatus](#DataFactoryDatasetPostgresqlStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,14 +38,18 @@ section_menu_id: reference
 | `schemaColumn` | ***[[]DataFactoryDatasetPostgresqlSpecSchemaColumn](#DataFactoryDatasetPostgresqlSpecSchemaColumn)***| ***(Optional)*** |
 | `tableName` | ***string***| ***(Optional)*** |
 ## DataFactoryDatasetPostgresqlSpecSchemaColumn
-##### (Appears on:[DataFactoryDatasetPostgresqlSpec](#DataFactoryDatasetPostgresqlSpec))
+
+Appears on:[DataFactoryDatasetPostgresqlSpec](#DataFactoryDatasetPostgresqlSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `description` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `type` | ***string***| ***(Optional)*** |
 ## DataFactoryDatasetPostgresqlStatus
-##### (Appears on:[DataFactoryDatasetPostgresql](#DataFactoryDatasetPostgresql))
+
+Appears on:[DataFactoryDatasetPostgresql](#DataFactoryDatasetPostgresql)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

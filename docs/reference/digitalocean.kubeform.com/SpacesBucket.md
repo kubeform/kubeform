@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SpacesBucketSpec](#SpacesBucketSpec)***||
 | `status` | ***[SpacesBucketStatus](#SpacesBucketStatus)***||
 ## SpacesBucketSpec
-##### (Appears on:[SpacesBucket](#SpacesBucket), [SpacesBucketStatus](#SpacesBucketStatus))
+
+Appears on:[SpacesBucket](#SpacesBucket), [SpacesBucketStatus](#SpacesBucketStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `region` | ***string***| ***(Optional)*** Bucket region|
 | `urn` | ***string***| ***(Optional)*** the uniform resource name for the bucket|
 ## SpacesBucketStatus
-##### (Appears on:[SpacesBucket](#SpacesBucket))
+
+Appears on:[SpacesBucket](#SpacesBucket)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

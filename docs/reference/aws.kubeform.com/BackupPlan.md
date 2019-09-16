@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[BackupPlanSpec](#BackupPlanSpec)***||
 | `status` | ***[BackupPlanStatus](#BackupPlanStatus)***||
 ## BackupPlanSpec
-##### (Appears on:[BackupPlan](#BackupPlan), [BackupPlanStatus](#BackupPlanStatus))
+
+Appears on:[BackupPlan](#BackupPlan), [BackupPlanStatus](#BackupPlanStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
 ## BackupPlanSpecRule
-##### (Appears on:[BackupPlanSpec](#BackupPlanSpec))
+
+Appears on:[BackupPlanSpec](#BackupPlanSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `completionWindow` | ***int***| ***(Optional)*** |
@@ -41,13 +45,17 @@ section_menu_id: reference
 | `startWindow` | ***int***| ***(Optional)*** |
 | `targetVaultName` | ***string***||
 ## BackupPlanSpecRuleLifecycle
-##### (Appears on:[BackupPlanSpecRule](#BackupPlanSpecRule))
+
+Appears on:[BackupPlanSpecRule](#BackupPlanSpecRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `coldStorageAfter` | ***int***| ***(Optional)*** |
 | `deleteAfter` | ***int***| ***(Optional)*** |
 ## BackupPlanStatus
-##### (Appears on:[BackupPlan](#BackupPlan))
+
+Appears on:[BackupPlan](#BackupPlan)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

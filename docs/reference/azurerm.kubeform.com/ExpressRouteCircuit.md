@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ExpressRouteCircuitSpec](#ExpressRouteCircuitSpec)***||
 | `status` | ***[ExpressRouteCircuitStatus](#ExpressRouteCircuitStatus)***||
 ## ExpressRouteCircuitSpec
-##### (Appears on:[ExpressRouteCircuit](#ExpressRouteCircuit), [ExpressRouteCircuitStatus](#ExpressRouteCircuitStatus))
+
+Appears on:[ExpressRouteCircuit](#ExpressRouteCircuit), [ExpressRouteCircuitStatus](#ExpressRouteCircuitStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,13 +38,17 @@ section_menu_id: reference
 | `sku` | ***[[]ExpressRouteCircuitSpecSku](#ExpressRouteCircuitSpecSku)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ExpressRouteCircuitSpecSku
-##### (Appears on:[ExpressRouteCircuitSpec](#ExpressRouteCircuitSpec))
+
+Appears on:[ExpressRouteCircuitSpec](#ExpressRouteCircuitSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `family` | ***string***||
 | `tier` | ***string***||
 ## ExpressRouteCircuitStatus
-##### (Appears on:[ExpressRouteCircuit](#ExpressRouteCircuit))
+
+Appears on:[ExpressRouteCircuit](#ExpressRouteCircuit)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

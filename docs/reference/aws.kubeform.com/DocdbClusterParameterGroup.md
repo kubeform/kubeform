@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DocdbClusterParameterGroupSpec](#DocdbClusterParameterGroupSpec)***||
 | `status` | ***[DocdbClusterParameterGroupStatus](#DocdbClusterParameterGroupStatus)***||
 ## DocdbClusterParameterGroupSpec
-##### (Appears on:[DocdbClusterParameterGroup](#DocdbClusterParameterGroup), [DocdbClusterParameterGroupStatus](#DocdbClusterParameterGroupStatus))
+
+Appears on:[DocdbClusterParameterGroup](#DocdbClusterParameterGroup), [DocdbClusterParameterGroupStatus](#DocdbClusterParameterGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,14 +34,18 @@ section_menu_id: reference
 | `parameter` | ***[[]DocdbClusterParameterGroupSpecParameter](#DocdbClusterParameterGroupSpecParameter)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DocdbClusterParameterGroupSpecParameter
-##### (Appears on:[DocdbClusterParameterGroupSpec](#DocdbClusterParameterGroupSpec))
+
+Appears on:[DocdbClusterParameterGroupSpec](#DocdbClusterParameterGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `applyMethod` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `value` | ***string***||
 ## DocdbClusterParameterGroupStatus
-##### (Appears on:[DocdbClusterParameterGroup](#DocdbClusterParameterGroup))
+
+Appears on:[DocdbClusterParameterGroup](#DocdbClusterParameterGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

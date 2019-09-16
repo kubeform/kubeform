@@ -19,14 +19,18 @@ section_menu_id: reference
 | `spec` | ***[EbsDefaultKmsKeySpec](#EbsDefaultKmsKeySpec)***||
 | `status` | ***[EbsDefaultKmsKeyStatus](#EbsDefaultKmsKeyStatus)***||
 ## EbsDefaultKmsKeySpec
-##### (Appears on:[EbsDefaultKmsKey](#EbsDefaultKmsKey), [EbsDefaultKmsKeyStatus](#EbsDefaultKmsKeyStatus))
+
+Appears on:[EbsDefaultKmsKey](#EbsDefaultKmsKey), [EbsDefaultKmsKeyStatus](#EbsDefaultKmsKeyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `keyArn` | ***string***||
 ## EbsDefaultKmsKeyStatus
-##### (Appears on:[EbsDefaultKmsKey](#EbsDefaultKmsKey))
+
+Appears on:[EbsDefaultKmsKey](#EbsDefaultKmsKey)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ElastictranscoderPipelineSpec](#ElastictranscoderPipelineSpec)***||
 | `status` | ***[ElastictranscoderPipelineStatus](#ElastictranscoderPipelineStatus)***||
 ## ElastictranscoderPipelineSpec
-##### (Appears on:[ElastictranscoderPipeline](#ElastictranscoderPipeline), [ElastictranscoderPipelineStatus](#ElastictranscoderPipelineStatus))
+
+Appears on:[ElastictranscoderPipeline](#ElastictranscoderPipeline), [ElastictranscoderPipelineStatus](#ElastictranscoderPipelineStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,20 +38,26 @@ section_menu_id: reference
 | `thumbnailConfig` | ***[[]ElastictranscoderPipelineSpecThumbnailConfig](#ElastictranscoderPipelineSpecThumbnailConfig)***| ***(Optional)*** |
 | `thumbnailConfigPermissions` | ***[[]ElastictranscoderPipelineSpecThumbnailConfigPermissions](#ElastictranscoderPipelineSpecThumbnailConfigPermissions)***| ***(Optional)*** |
 ## ElastictranscoderPipelineSpecContentConfig
-##### (Appears on:[ElastictranscoderPipelineSpec](#ElastictranscoderPipelineSpec))
+
+Appears on:[ElastictranscoderPipelineSpec](#ElastictranscoderPipelineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucket` | ***string***| ***(Optional)*** |
 | `storageClass` | ***string***| ***(Optional)*** |
 ## ElastictranscoderPipelineSpecContentConfigPermissions
-##### (Appears on:[ElastictranscoderPipelineSpec](#ElastictranscoderPipelineSpec))
+
+Appears on:[ElastictranscoderPipelineSpec](#ElastictranscoderPipelineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `access` | ***[]string***| ***(Optional)*** |
 | `grantee` | ***string***| ***(Optional)*** |
 | `granteeType` | ***string***| ***(Optional)*** |
 ## ElastictranscoderPipelineSpecNotifications
-##### (Appears on:[ElastictranscoderPipelineSpec](#ElastictranscoderPipelineSpec))
+
+Appears on:[ElastictranscoderPipelineSpec](#ElastictranscoderPipelineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `completed` | ***string***| ***(Optional)*** |
@@ -57,20 +65,26 @@ section_menu_id: reference
 | `progressing` | ***string***| ***(Optional)*** |
 | `warning` | ***string***| ***(Optional)*** |
 ## ElastictranscoderPipelineSpecThumbnailConfig
-##### (Appears on:[ElastictranscoderPipelineSpec](#ElastictranscoderPipelineSpec))
+
+Appears on:[ElastictranscoderPipelineSpec](#ElastictranscoderPipelineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucket` | ***string***| ***(Optional)*** |
 | `storageClass` | ***string***| ***(Optional)*** |
 ## ElastictranscoderPipelineSpecThumbnailConfigPermissions
-##### (Appears on:[ElastictranscoderPipelineSpec](#ElastictranscoderPipelineSpec))
+
+Appears on:[ElastictranscoderPipelineSpec](#ElastictranscoderPipelineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `access` | ***[]string***| ***(Optional)*** |
 | `grantee` | ***string***| ***(Optional)*** |
 | `granteeType` | ***string***| ***(Optional)*** |
 ## ElastictranscoderPipelineStatus
-##### (Appears on:[ElastictranscoderPipeline](#ElastictranscoderPipeline))
+
+Appears on:[ElastictranscoderPipeline](#ElastictranscoderPipeline)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

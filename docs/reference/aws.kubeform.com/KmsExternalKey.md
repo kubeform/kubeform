@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[KmsExternalKeySpec](#KmsExternalKeySpec)***||
 | `status` | ***[KmsExternalKeyStatus](#KmsExternalKeyStatus)***||
 ## KmsExternalKeySpec
-##### (Appears on:[KmsExternalKey](#KmsExternalKey), [KmsExternalKeyStatus](#KmsExternalKeyStatus))
+
+Appears on:[KmsExternalKey](#KmsExternalKey), [KmsExternalKeyStatus](#KmsExternalKeyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,7 +38,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `validTo` | ***string***| ***(Optional)*** |
 ## KmsExternalKeyStatus
-##### (Appears on:[KmsExternalKey](#KmsExternalKey))
+
+Appears on:[KmsExternalKey](#KmsExternalKey)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[RuntimeconfigVariableSpec](#RuntimeconfigVariableSpec)***||
 | `status` | ***[RuntimeconfigVariableStatus](#RuntimeconfigVariableStatus)***||
 ## RuntimeconfigVariableSpec
-##### (Appears on:[RuntimeconfigVariable](#RuntimeconfigVariable), [RuntimeconfigVariableStatus](#RuntimeconfigVariableStatus))
+
+Appears on:[RuntimeconfigVariable](#RuntimeconfigVariable), [RuntimeconfigVariableStatus](#RuntimeconfigVariableStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `updateTime` | ***string***| ***(Optional)*** |
 | `value` | ***string***| ***(Optional)*** |
 ## RuntimeconfigVariableStatus
-##### (Appears on:[RuntimeconfigVariable](#RuntimeconfigVariable))
+
+Appears on:[RuntimeconfigVariable](#RuntimeconfigVariable)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

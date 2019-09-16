@@ -19,14 +19,18 @@ section_menu_id: reference
 | `spec` | ***[SimpledbDomainSpec](#SimpledbDomainSpec)***||
 | `status` | ***[SimpledbDomainStatus](#SimpledbDomainStatus)***||
 ## SimpledbDomainSpec
-##### (Appears on:[SimpledbDomain](#SimpledbDomain), [SimpledbDomainStatus](#SimpledbDomainStatus))
+
+Appears on:[SimpledbDomain](#SimpledbDomain), [SimpledbDomainStatus](#SimpledbDomainStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `name` | ***string***||
 ## SimpledbDomainStatus
-##### (Appears on:[SimpledbDomain](#SimpledbDomain))
+
+Appears on:[SimpledbDomain](#SimpledbDomain)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

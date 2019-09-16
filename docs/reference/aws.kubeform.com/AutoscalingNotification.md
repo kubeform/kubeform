@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AutoscalingNotificationSpec](#AutoscalingNotificationSpec)***||
 | `status` | ***[AutoscalingNotificationStatus](#AutoscalingNotificationStatus)***||
 ## AutoscalingNotificationSpec
-##### (Appears on:[AutoscalingNotification](#AutoscalingNotification), [AutoscalingNotificationStatus](#AutoscalingNotificationStatus))
+
+Appears on:[AutoscalingNotification](#AutoscalingNotification), [AutoscalingNotificationStatus](#AutoscalingNotificationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `notifications` | ***[]string***||
 | `topicArn` | ***string***||
 ## AutoscalingNotificationStatus
-##### (Appears on:[AutoscalingNotification](#AutoscalingNotification))
+
+Appears on:[AutoscalingNotification](#AutoscalingNotification)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

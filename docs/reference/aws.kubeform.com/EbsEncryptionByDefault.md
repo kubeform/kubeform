@@ -19,14 +19,18 @@ section_menu_id: reference
 | `spec` | ***[EbsEncryptionByDefaultSpec](#EbsEncryptionByDefaultSpec)***||
 | `status` | ***[EbsEncryptionByDefaultStatus](#EbsEncryptionByDefaultStatus)***||
 ## EbsEncryptionByDefaultSpec
-##### (Appears on:[EbsEncryptionByDefault](#EbsEncryptionByDefault), [EbsEncryptionByDefaultStatus](#EbsEncryptionByDefaultStatus))
+
+Appears on:[EbsEncryptionByDefault](#EbsEncryptionByDefault), [EbsEncryptionByDefaultStatus](#EbsEncryptionByDefaultStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `enabled` | ***bool***| ***(Optional)*** |
 ## EbsEncryptionByDefaultStatus
-##### (Appears on:[EbsEncryptionByDefault](#EbsEncryptionByDefault))
+
+Appears on:[EbsEncryptionByDefault](#EbsEncryptionByDefault)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

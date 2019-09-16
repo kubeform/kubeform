@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[EmrClusterSpec](#EmrClusterSpec)***||
 | `status` | ***[EmrClusterStatus](#EmrClusterStatus)***||
 ## EmrClusterSpec
-##### (Appears on:[EmrCluster](#EmrCluster), [EmrClusterStatus](#EmrClusterStatus))
+
+Appears on:[EmrCluster](#EmrCluster), [EmrClusterStatus](#EmrClusterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -53,14 +55,18 @@ section_menu_id: reference
 | `terminationProtection` | ***bool***| ***(Optional)*** |
 | `visibleToAllUsers` | ***bool***| ***(Optional)*** |
 ## EmrClusterSpecBootstrapAction
-##### (Appears on:[EmrClusterSpec](#EmrClusterSpec))
+
+Appears on:[EmrClusterSpec](#EmrClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `args` | ***[]string***| ***(Optional)*** |
 | `name` | ***string***||
 | `path` | ***string***||
 ## EmrClusterSpecEc2Attributes
-##### (Appears on:[EmrClusterSpec](#EmrClusterSpec))
+
+Appears on:[EmrClusterSpec](#EmrClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `additionalMasterSecurityGroups` | ***string***| ***(Optional)*** |
@@ -72,7 +78,9 @@ section_menu_id: reference
 | `serviceAccessSecurityGroup` | ***string***| ***(Optional)*** |
 | `subnetID` | ***string***| ***(Optional)*** |
 ## EmrClusterSpecInstanceGroup
-##### (Appears on:[EmrClusterSpec](#EmrClusterSpec))
+
+Appears on:[EmrClusterSpec](#EmrClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `autoscalingPolicy` | ***string***| ***(Optional)*** |
@@ -84,7 +92,9 @@ section_menu_id: reference
 | `instanceType` | ***string***||
 | `name` | ***string***| ***(Optional)*** |
 ## EmrClusterSpecInstanceGroupEbsConfig
-##### (Appears on:[EmrClusterSpecInstanceGroup](#EmrClusterSpecInstanceGroup))
+
+Appears on:[EmrClusterSpecInstanceGroup](#EmrClusterSpecInstanceGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `iops` | ***int***| ***(Optional)*** |
@@ -92,20 +102,26 @@ section_menu_id: reference
 | `type` | ***string***||
 | `volumesPerInstance` | ***int***| ***(Optional)*** |
 ## EmrClusterSpecKerberosAttributes
-##### (Appears on:[EmrClusterSpec](#EmrClusterSpec))
+
+Appears on:[EmrClusterSpec](#EmrClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `adDomainJoinUser` | ***string***| ***(Optional)*** |
 | `realm` | ***string***||
 ## EmrClusterSpecStep
-##### (Appears on:[EmrClusterSpec](#EmrClusterSpec))
+
+Appears on:[EmrClusterSpec](#EmrClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `actionOnFailure` | ***string***||
 | `hadoopJarStep` | ***[[]EmrClusterSpecStepHadoopJarStep](#EmrClusterSpecStepHadoopJarStep)***||
 | `name` | ***string***||
 ## EmrClusterSpecStepHadoopJarStep
-##### (Appears on:[EmrClusterSpecStep](#EmrClusterSpecStep))
+
+Appears on:[EmrClusterSpecStep](#EmrClusterSpecStep)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `args` | ***[]string***| ***(Optional)*** |
@@ -113,7 +129,9 @@ section_menu_id: reference
 | `mainClass` | ***string***| ***(Optional)*** |
 | `properties` | ***map[string]string***| ***(Optional)*** |
 ## EmrClusterStatus
-##### (Appears on:[EmrCluster](#EmrCluster))
+
+Appears on:[EmrCluster](#EmrCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

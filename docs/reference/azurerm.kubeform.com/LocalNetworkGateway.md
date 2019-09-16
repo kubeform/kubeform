@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LocalNetworkGatewaySpec](#LocalNetworkGatewaySpec)***||
 | `status` | ***[LocalNetworkGatewayStatus](#LocalNetworkGatewayStatus)***||
 ## LocalNetworkGatewaySpec
-##### (Appears on:[LocalNetworkGateway](#LocalNetworkGateway), [LocalNetworkGatewayStatus](#LocalNetworkGatewayStatus))
+
+Appears on:[LocalNetworkGateway](#LocalNetworkGateway), [LocalNetworkGatewayStatus](#LocalNetworkGatewayStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,14 +34,18 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## LocalNetworkGatewaySpecBgpSettings
-##### (Appears on:[LocalNetworkGatewaySpec](#LocalNetworkGatewaySpec))
+
+Appears on:[LocalNetworkGatewaySpec](#LocalNetworkGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `asn` | ***int***||
 | `bgpPeeringAddress` | ***string***||
 | `peerWeight` | ***int***| ***(Optional)*** |
 ## LocalNetworkGatewayStatus
-##### (Appears on:[LocalNetworkGateway](#LocalNetworkGateway))
+
+Appears on:[LocalNetworkGateway](#LocalNetworkGateway)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

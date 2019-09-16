@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApiManagementSpec](#ApiManagementSpec)***||
 | `status` | ***[ApiManagementStatus](#ApiManagementStatus)***||
 ## ApiManagementSpec
-##### (Appears on:[ApiManagement](#ApiManagement), [ApiManagementStatus](#ApiManagementStatus))
+
+Appears on:[ApiManagement](#ApiManagement), [ApiManagementStatus](#ApiManagementStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -48,19 +50,25 @@ section_menu_id: reference
 | `sku` | ***[[]ApiManagementSpecSku](#ApiManagementSpecSku)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ApiManagementSpecAdditionalLocation
-##### (Appears on:[ApiManagementSpec](#ApiManagementSpec))
+
+Appears on:[ApiManagementSpec](#ApiManagementSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `gatewayRegionalURL` | ***string***| ***(Optional)*** |
 | `location` | ***string***||
 | `publicIPAddresses` | ***[]string***| ***(Optional)*** |
 ## ApiManagementSpecCertificate
-##### (Appears on:[ApiManagementSpec](#ApiManagementSpec))
+
+Appears on:[ApiManagementSpec](#ApiManagementSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `storeName` | ***string***||
 ## ApiManagementSpecHostnameConfiguration
-##### (Appears on:[ApiManagementSpec](#ApiManagementSpec))
+
+Appears on:[ApiManagementSpec](#ApiManagementSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `management` | ***[[]ApiManagementSpecHostnameConfigurationManagement](#ApiManagementSpecHostnameConfigurationManagement)***| ***(Optional)*** |
@@ -68,21 +76,27 @@ section_menu_id: reference
 | `proxy` | ***[[]ApiManagementSpecHostnameConfigurationProxy](#ApiManagementSpecHostnameConfigurationProxy)***| ***(Optional)*** |
 | `scm` | ***[[]ApiManagementSpecHostnameConfigurationScm](#ApiManagementSpecHostnameConfigurationScm)***| ***(Optional)*** |
 ## ApiManagementSpecHostnameConfigurationManagement
-##### (Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameConfiguration))
+
+Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `hostName` | ***string***||
 | `keyVaultID` | ***string***| ***(Optional)*** |
 | `negotiateClientCertificate` | ***bool***| ***(Optional)*** |
 ## ApiManagementSpecHostnameConfigurationPortal
-##### (Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameConfiguration))
+
+Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `hostName` | ***string***||
 | `keyVaultID` | ***string***| ***(Optional)*** |
 | `negotiateClientCertificate` | ***bool***| ***(Optional)*** |
 ## ApiManagementSpecHostnameConfigurationProxy
-##### (Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameConfiguration))
+
+Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultSSLBinding` | ***bool***| ***(Optional)*** |
@@ -90,27 +104,35 @@ section_menu_id: reference
 | `keyVaultID` | ***string***| ***(Optional)*** |
 | `negotiateClientCertificate` | ***bool***| ***(Optional)*** |
 ## ApiManagementSpecHostnameConfigurationScm
-##### (Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameConfiguration))
+
+Appears on:[ApiManagementSpecHostnameConfiguration](#ApiManagementSpecHostnameConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `hostName` | ***string***||
 | `keyVaultID` | ***string***| ***(Optional)*** |
 | `negotiateClientCertificate` | ***bool***| ***(Optional)*** |
 ## ApiManagementSpecIdentity
-##### (Appears on:[ApiManagementSpec](#ApiManagementSpec))
+
+Appears on:[ApiManagementSpec](#ApiManagementSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `principalID` | ***string***| ***(Optional)*** |
 | `tenantID` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## ApiManagementSpecPolicy
-##### (Appears on:[ApiManagementSpec](#ApiManagementSpec))
+
+Appears on:[ApiManagementSpec](#ApiManagementSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `xmlContent` | ***string***| ***(Optional)*** |
 | `xmlLink` | ***string***| ***(Optional)*** |
 ## ApiManagementSpecSecurity
-##### (Appears on:[ApiManagementSpec](#ApiManagementSpec))
+
+Appears on:[ApiManagementSpec](#ApiManagementSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `disableBackendSSL30` | ***bool***| ***(Optional)*** |
@@ -122,31 +144,41 @@ section_menu_id: reference
 | `disableTripleDESChipers` | ***bool***| ***(Optional)*** Deprecated|
 | `disableTripleDESCiphers` | ***bool***| ***(Optional)*** |
 ## ApiManagementSpecSignIn
-##### (Appears on:[ApiManagementSpec](#ApiManagementSpec))
+
+Appears on:[ApiManagementSpec](#ApiManagementSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 ## ApiManagementSpecSignUp
-##### (Appears on:[ApiManagementSpec](#ApiManagementSpec))
+
+Appears on:[ApiManagementSpec](#ApiManagementSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 | `termsOfService` | ***[[]ApiManagementSpecSignUpTermsOfService](#ApiManagementSpecSignUpTermsOfService)***||
 ## ApiManagementSpecSignUpTermsOfService
-##### (Appears on:[ApiManagementSpecSignUp](#ApiManagementSpecSignUp))
+
+Appears on:[ApiManagementSpecSignUp](#ApiManagementSpecSignUp)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `consentRequired` | ***bool***||
 | `enabled` | ***bool***||
 | `text` | ***string***| ***(Optional)*** |
 ## ApiManagementSpecSku
-##### (Appears on:[ApiManagementSpec](#ApiManagementSpec))
+
+Appears on:[ApiManagementSpec](#ApiManagementSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `capacity` | ***int***||
 | `name` | ***string***||
 ## ApiManagementStatus
-##### (Appears on:[ApiManagement](#ApiManagement))
+
+Appears on:[ApiManagement](#ApiManagement)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

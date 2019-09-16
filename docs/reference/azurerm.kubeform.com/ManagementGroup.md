@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ManagementGroupSpec](#ManagementGroupSpec)***||
 | `status` | ***[ManagementGroupStatus](#ManagementGroupStatus)***||
 ## ManagementGroupSpec
-##### (Appears on:[ManagementGroup](#ManagementGroup), [ManagementGroupStatus](#ManagementGroupStatus))
+
+Appears on:[ManagementGroup](#ManagementGroup), [ManagementGroupStatus](#ManagementGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `parentManagementGroupID` | ***string***| ***(Optional)*** |
 | `subscriptionIDS` | ***[]string***| ***(Optional)*** |
 ## ManagementGroupStatus
-##### (Appears on:[ManagementGroup](#ManagementGroup))
+
+Appears on:[ManagementGroup](#ManagementGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

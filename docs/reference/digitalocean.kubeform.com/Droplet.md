@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DropletSpec](#DropletSpec)***||
 | `status` | ***[DropletStatus](#DropletStatus)***||
 ## DropletSpec
-##### (Appears on:[Droplet](#Droplet), [DropletStatus](#DropletStatus))
+
+Appears on:[Droplet](#Droplet), [DropletStatus](#DropletStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -49,7 +51,9 @@ section_menu_id: reference
 | `vcpus` | ***int***| ***(Optional)*** |
 | `volumeIDS` | ***[]string***| ***(Optional)*** |
 ## DropletStatus
-##### (Appears on:[Droplet](#Droplet))
+
+Appears on:[Droplet](#Droplet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DatasyncLocationEfsSpec](#DatasyncLocationEfsSpec)***||
 | `status` | ***[DatasyncLocationEfsStatus](#DatasyncLocationEfsStatus)***||
 ## DatasyncLocationEfsSpec
-##### (Appears on:[DatasyncLocationEfs](#DatasyncLocationEfs), [DatasyncLocationEfsStatus](#DatasyncLocationEfsStatus))
+
+Appears on:[DatasyncLocationEfs](#DatasyncLocationEfs), [DatasyncLocationEfsStatus](#DatasyncLocationEfsStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,13 +33,17 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `uri` | ***string***| ***(Optional)*** |
 ## DatasyncLocationEfsSpecEc2Config
-##### (Appears on:[DatasyncLocationEfsSpec](#DatasyncLocationEfsSpec))
+
+Appears on:[DatasyncLocationEfsSpec](#DatasyncLocationEfsSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `securityGroupArns` | ***[]string***||
 | `subnetArn` | ***string***||
 ## DatasyncLocationEfsStatus
-##### (Appears on:[DatasyncLocationEfs](#DatasyncLocationEfs))
+
+Appears on:[DatasyncLocationEfs](#DatasyncLocationEfs)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

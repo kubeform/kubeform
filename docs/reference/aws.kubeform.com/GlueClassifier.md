@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GlueClassifierSpec](#GlueClassifierSpec)***||
 | `status` | ***[GlueClassifierStatus](#GlueClassifierStatus)***||
 ## GlueClassifierSpec
-##### (Appears on:[GlueClassifier](#GlueClassifier), [GlueClassifierStatus](#GlueClassifierStatus))
+
+Appears on:[GlueClassifier](#GlueClassifier), [GlueClassifierStatus](#GlueClassifierStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,25 +31,33 @@ section_menu_id: reference
 | `name` | ***string***||
 | `xmlClassifier` | ***[[]GlueClassifierSpecXmlClassifier](#GlueClassifierSpecXmlClassifier)***| ***(Optional)*** |
 ## GlueClassifierSpecGrokClassifier
-##### (Appears on:[GlueClassifierSpec](#GlueClassifierSpec))
+
+Appears on:[GlueClassifierSpec](#GlueClassifierSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `classification` | ***string***||
 | `customPatterns` | ***string***| ***(Optional)*** |
 | `grokPattern` | ***string***||
 ## GlueClassifierSpecJsonClassifier
-##### (Appears on:[GlueClassifierSpec](#GlueClassifierSpec))
+
+Appears on:[GlueClassifierSpec](#GlueClassifierSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `jsonPath` | ***string***||
 ## GlueClassifierSpecXmlClassifier
-##### (Appears on:[GlueClassifierSpec](#GlueClassifierSpec))
+
+Appears on:[GlueClassifierSpec](#GlueClassifierSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `classification` | ***string***||
 | `rowTag` | ***string***||
 ## GlueClassifierStatus
-##### (Appears on:[GlueClassifier](#GlueClassifier))
+
+Appears on:[GlueClassifier](#GlueClassifier)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

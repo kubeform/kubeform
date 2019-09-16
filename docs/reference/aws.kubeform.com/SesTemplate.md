@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SesTemplateSpec](#SesTemplateSpec)***||
 | `status` | ***[SesTemplateStatus](#SesTemplateStatus)***||
 ## SesTemplateSpec
-##### (Appears on:[SesTemplate](#SesTemplate), [SesTemplateStatus](#SesTemplateStatus))
+
+Appears on:[SesTemplate](#SesTemplate), [SesTemplateStatus](#SesTemplateStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `subject` | ***string***| ***(Optional)*** |
 | `text` | ***string***| ***(Optional)*** |
 ## SesTemplateStatus
-##### (Appears on:[SesTemplate](#SesTemplate))
+
+Appears on:[SesTemplate](#SesTemplate)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

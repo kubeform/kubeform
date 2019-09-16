@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[OrganizationsOrganizationalUnitSpec](#OrganizationsOrganizationalUnitSpec)***||
 | `status` | ***[OrganizationsOrganizationalUnitStatus](#OrganizationsOrganizationalUnitStatus)***||
 ## OrganizationsOrganizationalUnitSpec
-##### (Appears on:[OrganizationsOrganizationalUnit](#OrganizationsOrganizationalUnit), [OrganizationsOrganizationalUnitStatus](#OrganizationsOrganizationalUnitStatus))
+
+Appears on:[OrganizationsOrganizationalUnit](#OrganizationsOrganizationalUnit), [OrganizationsOrganizationalUnitStatus](#OrganizationsOrganizationalUnitStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `parentID` | ***string***||
 ## OrganizationsOrganizationalUnitSpecAccounts
-##### (Appears on:[OrganizationsOrganizationalUnitSpec](#OrganizationsOrganizationalUnitSpec))
+
+Appears on:[OrganizationsOrganizationalUnitSpec](#OrganizationsOrganizationalUnitSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `arn` | ***string***| ***(Optional)*** |
@@ -37,7 +41,9 @@ section_menu_id: reference
 | `ID` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 ## OrganizationsOrganizationalUnitStatus
-##### (Appears on:[OrganizationsOrganizationalUnit](#OrganizationsOrganizationalUnit))
+
+Appears on:[OrganizationsOrganizationalUnit](#OrganizationsOrganizationalUnit)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

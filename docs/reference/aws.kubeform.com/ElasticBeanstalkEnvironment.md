@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ElasticBeanstalkEnvironmentSpec](#ElasticBeanstalkEnvironmentSpec)***||
 | `status` | ***[ElasticBeanstalkEnvironmentStatus](#ElasticBeanstalkEnvironmentStatus)***||
 ## ElasticBeanstalkEnvironmentSpec
-##### (Appears on:[ElasticBeanstalkEnvironment](#ElasticBeanstalkEnvironment), [ElasticBeanstalkEnvironmentStatus](#ElasticBeanstalkEnvironmentStatus))
+
+Appears on:[ElasticBeanstalkEnvironment](#ElasticBeanstalkEnvironment), [ElasticBeanstalkEnvironmentStatus](#ElasticBeanstalkEnvironmentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -47,7 +49,9 @@ section_menu_id: reference
 | `versionLabel` | ***string***| ***(Optional)*** |
 | `waitForReadyTimeout` | ***string***| ***(Optional)*** |
 ## ElasticBeanstalkEnvironmentSpecAllSettings
-##### (Appears on:[ElasticBeanstalkEnvironmentSpec](#ElasticBeanstalkEnvironmentSpec))
+
+Appears on:[ElasticBeanstalkEnvironmentSpec](#ElasticBeanstalkEnvironmentSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
@@ -55,7 +59,9 @@ section_menu_id: reference
 | `resource` | ***string***| ***(Optional)*** |
 | `value` | ***string***||
 ## ElasticBeanstalkEnvironmentSpecSetting
-##### (Appears on:[ElasticBeanstalkEnvironmentSpec](#ElasticBeanstalkEnvironmentSpec))
+
+Appears on:[ElasticBeanstalkEnvironmentSpec](#ElasticBeanstalkEnvironmentSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
@@ -63,7 +69,9 @@ section_menu_id: reference
 | `resource` | ***string***| ***(Optional)*** |
 | `value` | ***string***||
 ## ElasticBeanstalkEnvironmentStatus
-##### (Appears on:[ElasticBeanstalkEnvironment](#ElasticBeanstalkEnvironment))
+
+Appears on:[ElasticBeanstalkEnvironment](#ElasticBeanstalkEnvironment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

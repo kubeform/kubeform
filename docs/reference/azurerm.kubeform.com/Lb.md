@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LbSpec](#LbSpec)***||
 | `status` | ***[LbStatus](#LbStatus)***||
 ## LbSpec
-##### (Appears on:[Lb](#Lb), [LbStatus](#LbStatus))
+
+Appears on:[Lb](#Lb), [LbStatus](#LbStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `sku` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## LbSpecFrontendIPConfiguration
-##### (Appears on:[LbSpec](#LbSpec))
+
+Appears on:[LbSpec](#LbSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `inboundNATRules` | ***[]string***| ***(Optional)*** |
@@ -47,7 +51,9 @@ section_menu_id: reference
 | `subnetID` | ***string***| ***(Optional)*** |
 | `zones` | ***[]string***| ***(Optional)*** |
 ## LbStatus
-##### (Appears on:[Lb](#Lb))
+
+Appears on:[Lb](#Lb)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

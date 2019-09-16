@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VolumeSpec](#VolumeSpec)***||
 | `status` | ***[VolumeStatus](#VolumeStatus)***||
 ## VolumeSpec
-##### (Appears on:[Volume](#Volume), [VolumeStatus](#VolumeStatus))
+
+Appears on:[Volume](#Volume), [VolumeStatus](#VolumeStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,7 +38,9 @@ section_menu_id: reference
 | `snapshotID` | ***string***| ***(Optional)*** |
 | `urn` | ***string***| ***(Optional)*** the uniform resource name for the volume.|
 ## VolumeStatus
-##### (Appears on:[Volume](#Volume))
+
+Appears on:[Volume](#Volume)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

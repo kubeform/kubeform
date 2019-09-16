@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[BatchPoolSpec](#BatchPoolSpec)***||
 | `status` | ***[BatchPoolStatus](#BatchPoolStatus)***||
 ## BatchPoolSpec
-##### (Appears on:[BatchPool](#BatchPool), [BatchPoolStatus](#BatchPoolStatus))
+
+Appears on:[BatchPool](#BatchPool), [BatchPoolStatus](#BatchPoolStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,13 +41,17 @@ section_menu_id: reference
 | `storageImageReference` | ***[[]BatchPoolSpecStorageImageReference](#BatchPoolSpecStorageImageReference)***||
 | `vmSize` | ***string***||
 ## BatchPoolSpecAutoScale
-##### (Appears on:[BatchPoolSpec](#BatchPoolSpec))
+
+Appears on:[BatchPoolSpec](#BatchPoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `evaluationInterval` | ***string***| ***(Optional)*** |
 | `formula` | ***string***||
 ## BatchPoolSpecCertificate
-##### (Appears on:[BatchPoolSpec](#BatchPoolSpec))
+
+Appears on:[BatchPoolSpec](#BatchPoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***||
@@ -53,19 +59,25 @@ section_menu_id: reference
 | `storeName` | ***string***| ***(Optional)*** |
 | `visibility` | ***[]string***| ***(Optional)*** |
 ## BatchPoolSpecContainerConfiguration
-##### (Appears on:[BatchPoolSpec](#BatchPoolSpec))
+
+Appears on:[BatchPoolSpec](#BatchPoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***| ***(Optional)*** |
 ## BatchPoolSpecFixedScale
-##### (Appears on:[BatchPoolSpec](#BatchPoolSpec))
+
+Appears on:[BatchPoolSpec](#BatchPoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `resizeTimeout` | ***string***| ***(Optional)*** |
 | `targetDedicatedNodes` | ***int***| ***(Optional)*** |
 | `targetLowPriorityNodes` | ***int***| ***(Optional)*** |
 ## BatchPoolSpecStartTask
-##### (Appears on:[BatchPoolSpec](#BatchPoolSpec))
+
+Appears on:[BatchPoolSpec](#BatchPoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `commandLine` | ***string***||
@@ -75,7 +87,9 @@ section_menu_id: reference
 | `userIdentity` | ***[[]BatchPoolSpecStartTaskUserIdentity](#BatchPoolSpecStartTaskUserIdentity)***||
 | `waitForSuccess` | ***bool***| ***(Optional)*** |
 ## BatchPoolSpecStartTaskResourceFile
-##### (Appears on:[BatchPoolSpecStartTask](#BatchPoolSpecStartTask))
+
+Appears on:[BatchPoolSpecStartTask](#BatchPoolSpecStartTask)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `autoStorageContainerName` | ***string***| ***(Optional)*** |
@@ -85,19 +99,25 @@ section_menu_id: reference
 | `httpURL` | ***string***| ***(Optional)*** |
 | `storageContainerURL` | ***string***| ***(Optional)*** |
 ## BatchPoolSpecStartTaskUserIdentity
-##### (Appears on:[BatchPoolSpecStartTask](#BatchPoolSpecStartTask))
+
+Appears on:[BatchPoolSpecStartTask](#BatchPoolSpecStartTask)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `autoUser` | ***[[]BatchPoolSpecStartTaskUserIdentityAutoUser](#BatchPoolSpecStartTaskUserIdentityAutoUser)***| ***(Optional)*** |
 | `userName` | ***string***| ***(Optional)*** |
 ## BatchPoolSpecStartTaskUserIdentityAutoUser
-##### (Appears on:[BatchPoolSpecStartTaskUserIdentity](#BatchPoolSpecStartTaskUserIdentity))
+
+Appears on:[BatchPoolSpecStartTaskUserIdentity](#BatchPoolSpecStartTaskUserIdentity)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `elevationLevel` | ***string***| ***(Optional)*** |
 | `scope` | ***string***| ***(Optional)*** |
 ## BatchPoolSpecStorageImageReference
-##### (Appears on:[BatchPoolSpec](#BatchPoolSpec))
+
+Appears on:[BatchPoolSpec](#BatchPoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
@@ -106,7 +126,9 @@ section_menu_id: reference
 | `sku` | ***string***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
 ## BatchPoolStatus
-##### (Appears on:[BatchPool](#BatchPool))
+
+Appears on:[BatchPool](#BatchPool)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[BackupVaultSpec](#BackupVaultSpec)***||
 | `status` | ***[BackupVaultStatus](#BackupVaultStatus)***||
 ## BackupVaultSpec
-##### (Appears on:[BackupVault](#BackupVault), [BackupVaultStatus](#BackupVaultStatus))
+
+Appears on:[BackupVault](#BackupVault), [BackupVaultStatus](#BackupVaultStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `recoveryPoints` | ***int***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## BackupVaultStatus
-##### (Appears on:[BackupVault](#BackupVault))
+
+Appears on:[BackupVault](#BackupVault)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

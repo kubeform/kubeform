@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VirtualMachineDataDiskAttachmentSpec](#VirtualMachineDataDiskAttachmentSpec)***||
 | `status` | ***[VirtualMachineDataDiskAttachmentStatus](#VirtualMachineDataDiskAttachmentStatus)***||
 ## VirtualMachineDataDiskAttachmentSpec
-##### (Appears on:[VirtualMachineDataDiskAttachment](#VirtualMachineDataDiskAttachment), [VirtualMachineDataDiskAttachmentStatus](#VirtualMachineDataDiskAttachmentStatus))
+
+Appears on:[VirtualMachineDataDiskAttachment](#VirtualMachineDataDiskAttachment), [VirtualMachineDataDiskAttachmentStatus](#VirtualMachineDataDiskAttachmentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `virtualMachineID` | ***string***||
 | `writeAcceleratorEnabled` | ***bool***| ***(Optional)*** |
 ## VirtualMachineDataDiskAttachmentStatus
-##### (Appears on:[VirtualMachineDataDiskAttachment](#VirtualMachineDataDiskAttachment))
+
+Appears on:[VirtualMachineDataDiskAttachment](#VirtualMachineDataDiskAttachment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

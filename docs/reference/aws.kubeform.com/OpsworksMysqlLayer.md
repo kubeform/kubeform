@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[OpsworksMysqlLayerSpec](#OpsworksMysqlLayerSpec)***||
 | `status` | ***[OpsworksMysqlLayerStatus](#OpsworksMysqlLayerStatus)***||
 ## OpsworksMysqlLayerSpec
-##### (Appears on:[OpsworksMysqlLayer](#OpsworksMysqlLayer), [OpsworksMysqlLayerStatus](#OpsworksMysqlLayerStatus))
+
+Appears on:[OpsworksMysqlLayer](#OpsworksMysqlLayer), [OpsworksMysqlLayerStatus](#OpsworksMysqlLayerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -47,7 +49,9 @@ section_menu_id: reference
 | `systemPackages` | ***[]string***| ***(Optional)*** |
 | `useEbsOptimizedInstances` | ***bool***| ***(Optional)*** |
 ## OpsworksMysqlLayerSpecEbsVolume
-##### (Appears on:[OpsworksMysqlLayerSpec](#OpsworksMysqlLayerSpec))
+
+Appears on:[OpsworksMysqlLayerSpec](#OpsworksMysqlLayerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `iops` | ***int***| ***(Optional)*** |
@@ -57,7 +61,9 @@ section_menu_id: reference
 | `size` | ***int***||
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksMysqlLayerStatus
-##### (Appears on:[OpsworksMysqlLayer](#OpsworksMysqlLayer))
+
+Appears on:[OpsworksMysqlLayer](#OpsworksMysqlLayer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

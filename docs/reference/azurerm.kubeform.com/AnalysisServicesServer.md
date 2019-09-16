@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AnalysisServicesServerSpec](#AnalysisServicesServerSpec)***||
 | `status` | ***[AnalysisServicesServerStatus](#AnalysisServicesServerStatus)***||
 ## AnalysisServicesServerSpec
-##### (Appears on:[AnalysisServicesServer](#AnalysisServicesServer), [AnalysisServicesServerStatus](#AnalysisServicesServerStatus))
+
+Appears on:[AnalysisServicesServer](#AnalysisServicesServer), [AnalysisServicesServerStatus](#AnalysisServicesServerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,14 +36,18 @@ section_menu_id: reference
 | `sku` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## AnalysisServicesServerSpecIpv4FirewallRule
-##### (Appears on:[AnalysisServicesServerSpec](#AnalysisServicesServerSpec))
+
+Appears on:[AnalysisServicesServerSpec](#AnalysisServicesServerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `rangeEnd` | ***string***||
 | `rangeStart` | ***string***||
 ## AnalysisServicesServerStatus
-##### (Appears on:[AnalysisServicesServer](#AnalysisServicesServer))
+
+Appears on:[AnalysisServicesServer](#AnalysisServicesServer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

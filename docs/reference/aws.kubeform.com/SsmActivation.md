@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SsmActivationSpec](#SsmActivationSpec)***||
 | `status` | ***[SsmActivationStatus](#SsmActivationStatus)***||
 ## SsmActivationSpec
-##### (Appears on:[SsmActivation](#SsmActivation), [SsmActivationStatus](#SsmActivationStatus))
+
+Appears on:[SsmActivation](#SsmActivation), [SsmActivationStatus](#SsmActivationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `registrationLimit` | ***int***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SsmActivationStatus
-##### (Appears on:[SsmActivation](#SsmActivation))
+
+Appears on:[SsmActivation](#SsmActivation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

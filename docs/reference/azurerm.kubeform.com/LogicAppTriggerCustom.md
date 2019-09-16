@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LogicAppTriggerCustomSpec](#LogicAppTriggerCustomSpec)***||
 | `status` | ***[LogicAppTriggerCustomStatus](#LogicAppTriggerCustomStatus)***||
 ## LogicAppTriggerCustomSpec
-##### (Appears on:[LogicAppTriggerCustom](#LogicAppTriggerCustom), [LogicAppTriggerCustomStatus](#LogicAppTriggerCustomStatus))
+
+Appears on:[LogicAppTriggerCustom](#LogicAppTriggerCustom), [LogicAppTriggerCustomStatus](#LogicAppTriggerCustomStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `logicAppID` | ***string***||
 | `name` | ***string***||
 ## LogicAppTriggerCustomStatus
-##### (Appears on:[LogicAppTriggerCustom](#LogicAppTriggerCustom))
+
+Appears on:[LogicAppTriggerCustom](#LogicAppTriggerCustom)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

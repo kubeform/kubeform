@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DataFactorySpec](#DataFactorySpec)***||
 | `status` | ***[DataFactoryStatus](#DataFactoryStatus)***||
 ## DataFactorySpec
-##### (Appears on:[DataFactory](#DataFactory), [DataFactoryStatus](#DataFactoryStatus))
+
+Appears on:[DataFactory](#DataFactory), [DataFactoryStatus](#DataFactoryStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vstsConfiguration` | ***[[]DataFactorySpecVstsConfiguration](#DataFactorySpecVstsConfiguration)***| ***(Optional)*** |
 ## DataFactorySpecGithubConfiguration
-##### (Appears on:[DataFactorySpec](#DataFactorySpec))
+
+Appears on:[DataFactorySpec](#DataFactorySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `accountName` | ***string***||
@@ -41,14 +45,18 @@ section_menu_id: reference
 | `repositoryName` | ***string***||
 | `rootFolder` | ***string***||
 ## DataFactorySpecIdentity
-##### (Appears on:[DataFactorySpec](#DataFactorySpec))
+
+Appears on:[DataFactorySpec](#DataFactorySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `principalID` | ***string***| ***(Optional)*** |
 | `tenantID` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## DataFactorySpecVstsConfiguration
-##### (Appears on:[DataFactorySpec](#DataFactorySpec))
+
+Appears on:[DataFactorySpec](#DataFactorySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `accountName` | ***string***||
@@ -58,7 +66,9 @@ section_menu_id: reference
 | `rootFolder` | ***string***||
 | `tenantID` | ***string***||
 ## DataFactoryStatus
-##### (Appears on:[DataFactory](#DataFactory))
+
+Appears on:[DataFactory](#DataFactory)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

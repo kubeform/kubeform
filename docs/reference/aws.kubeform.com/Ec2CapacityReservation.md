@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Ec2CapacityReservationSpec](#Ec2CapacityReservationSpec)***||
 | `status` | ***[Ec2CapacityReservationStatus](#Ec2CapacityReservationStatus)***||
 ## Ec2CapacityReservationSpec
-##### (Appears on:[Ec2CapacityReservation](#Ec2CapacityReservation), [Ec2CapacityReservationStatus](#Ec2CapacityReservationStatus))
+
+Appears on:[Ec2CapacityReservation](#Ec2CapacityReservation), [Ec2CapacityReservationStatus](#Ec2CapacityReservationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,7 +38,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `tenancy` | ***string***| ***(Optional)*** |
 ## Ec2CapacityReservationStatus
-##### (Appears on:[Ec2CapacityReservation](#Ec2CapacityReservation))
+
+Appears on:[Ec2CapacityReservation](#Ec2CapacityReservation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

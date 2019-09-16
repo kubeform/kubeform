@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LbNATRuleSpec](#LbNATRuleSpec)***||
 | `status` | ***[LbNATRuleStatus](#LbNATRuleStatus)***||
 ## LbNATRuleSpec
-##### (Appears on:[LbNATRule](#LbNATRule), [LbNATRuleStatus](#LbNATRuleStatus))
+
+Appears on:[LbNATRule](#LbNATRule), [LbNATRuleStatus](#LbNATRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,7 +38,9 @@ section_menu_id: reference
 | `protocol` | ***string***||
 | `resourceGroupName` | ***string***||
 ## LbNATRuleStatus
-##### (Appears on:[LbNATRule](#LbNATRule))
+
+Appears on:[LbNATRule](#LbNATRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

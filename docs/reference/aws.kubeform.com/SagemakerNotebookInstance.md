@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SagemakerNotebookInstanceSpec](#SagemakerNotebookInstanceSpec)***||
 | `status` | ***[SagemakerNotebookInstanceStatus](#SagemakerNotebookInstanceStatus)***||
 ## SagemakerNotebookInstanceSpec
-##### (Appears on:[SagemakerNotebookInstance](#SagemakerNotebookInstance), [SagemakerNotebookInstanceStatus](#SagemakerNotebookInstanceStatus))
+
+Appears on:[SagemakerNotebookInstance](#SagemakerNotebookInstance), [SagemakerNotebookInstanceStatus](#SagemakerNotebookInstanceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `subnetID` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SagemakerNotebookInstanceStatus
-##### (Appears on:[SagemakerNotebookInstance](#SagemakerNotebookInstance))
+
+Appears on:[SagemakerNotebookInstance](#SagemakerNotebookInstance)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

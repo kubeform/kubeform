@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[KeyVaultCertificateSpec](#KeyVaultCertificateSpec)***||
 | `status` | ***[KeyVaultCertificateStatus](#KeyVaultCertificateStatus)***||
 ## KeyVaultCertificateSpec
-##### (Appears on:[KeyVaultCertificate](#KeyVaultCertificate), [KeyVaultCertificateStatus](#KeyVaultCertificateStatus))
+
+Appears on:[KeyVaultCertificate](#KeyVaultCertificate), [KeyVaultCertificateStatus](#KeyVaultCertificateStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,11 +38,15 @@ section_menu_id: reference
 | `vaultURI` | ***string***| ***(Optional)*** Deprecated|
 | `version` | ***string***| ***(Optional)*** |
 ## KeyVaultCertificateSpecCertificate
-##### (Appears on:[KeyVaultCertificateSpec](#KeyVaultCertificateSpec))
+
+Appears on:[KeyVaultCertificateSpec](#KeyVaultCertificateSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 ## KeyVaultCertificateSpecCertificatePolicy
-##### (Appears on:[KeyVaultCertificateSpec](#KeyVaultCertificateSpec))
+
+Appears on:[KeyVaultCertificateSpec](#KeyVaultCertificateSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `issuerParameters` | ***[[]KeyVaultCertificateSpecCertificatePolicyIssuerParameters](#KeyVaultCertificateSpecCertificatePolicyIssuerParameters)***||
@@ -49,12 +55,16 @@ section_menu_id: reference
 | `secretProperties` | ***[[]KeyVaultCertificateSpecCertificatePolicySecretProperties](#KeyVaultCertificateSpecCertificatePolicySecretProperties)***||
 | `x509CertificateProperties` | ***[[]KeyVaultCertificateSpecCertificatePolicyX509CertificateProperties](#KeyVaultCertificateSpecCertificatePolicyX509CertificateProperties)***| ***(Optional)*** |
 ## KeyVaultCertificateSpecCertificatePolicyIssuerParameters
-##### (Appears on:[KeyVaultCertificateSpecCertificatePolicy](#KeyVaultCertificateSpecCertificatePolicy))
+
+Appears on:[KeyVaultCertificateSpecCertificatePolicy](#KeyVaultCertificateSpecCertificatePolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 ## KeyVaultCertificateSpecCertificatePolicyKeyProperties
-##### (Appears on:[KeyVaultCertificateSpecCertificatePolicy](#KeyVaultCertificateSpecCertificatePolicy))
+
+Appears on:[KeyVaultCertificateSpecCertificatePolicy](#KeyVaultCertificateSpecCertificatePolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `exportable` | ***bool***||
@@ -62,29 +72,39 @@ section_menu_id: reference
 | `keyType` | ***string***||
 | `reuseKey` | ***bool***||
 ## KeyVaultCertificateSpecCertificatePolicyLifetimeAction
-##### (Appears on:[KeyVaultCertificateSpecCertificatePolicy](#KeyVaultCertificateSpecCertificatePolicy))
+
+Appears on:[KeyVaultCertificateSpecCertificatePolicy](#KeyVaultCertificateSpecCertificatePolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***[[]KeyVaultCertificateSpecCertificatePolicyLifetimeActionAction](#KeyVaultCertificateSpecCertificatePolicyLifetimeActionAction)***||
 | `trigger` | ***[[]KeyVaultCertificateSpecCertificatePolicyLifetimeActionTrigger](#KeyVaultCertificateSpecCertificatePolicyLifetimeActionTrigger)***||
 ## KeyVaultCertificateSpecCertificatePolicyLifetimeActionAction
-##### (Appears on:[KeyVaultCertificateSpecCertificatePolicyLifetimeAction](#KeyVaultCertificateSpecCertificatePolicyLifetimeAction))
+
+Appears on:[KeyVaultCertificateSpecCertificatePolicyLifetimeAction](#KeyVaultCertificateSpecCertificatePolicyLifetimeAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `actionType` | ***string***||
 ## KeyVaultCertificateSpecCertificatePolicyLifetimeActionTrigger
-##### (Appears on:[KeyVaultCertificateSpecCertificatePolicyLifetimeAction](#KeyVaultCertificateSpecCertificatePolicyLifetimeAction))
+
+Appears on:[KeyVaultCertificateSpecCertificatePolicyLifetimeAction](#KeyVaultCertificateSpecCertificatePolicyLifetimeAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `daysBeforeExpiry` | ***int***| ***(Optional)*** |
 | `lifetimePercentage` | ***int***| ***(Optional)*** |
 ## KeyVaultCertificateSpecCertificatePolicySecretProperties
-##### (Appears on:[KeyVaultCertificateSpecCertificatePolicy](#KeyVaultCertificateSpecCertificatePolicy))
+
+Appears on:[KeyVaultCertificateSpecCertificatePolicy](#KeyVaultCertificateSpecCertificatePolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `contentType` | ***string***||
 ## KeyVaultCertificateSpecCertificatePolicyX509CertificateProperties
-##### (Appears on:[KeyVaultCertificateSpecCertificatePolicy](#KeyVaultCertificateSpecCertificatePolicy))
+
+Appears on:[KeyVaultCertificateSpecCertificatePolicy](#KeyVaultCertificateSpecCertificatePolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `extendedKeyUsage` | ***[]string***| ***(Optional)*** |
@@ -93,14 +113,18 @@ section_menu_id: reference
 | `subjectAlternativeNames` | ***[[]KeyVaultCertificateSpecCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames](#KeyVaultCertificateSpecCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames)***| ***(Optional)*** |
 | `validityInMonths` | ***int***||
 ## KeyVaultCertificateSpecCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames
-##### (Appears on:[KeyVaultCertificateSpecCertificatePolicyX509CertificateProperties](#KeyVaultCertificateSpecCertificatePolicyX509CertificateProperties))
+
+Appears on:[KeyVaultCertificateSpecCertificatePolicyX509CertificateProperties](#KeyVaultCertificateSpecCertificatePolicyX509CertificateProperties)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dnsNames` | ***[]string***| ***(Optional)*** |
 | `emails` | ***[]string***| ***(Optional)*** |
 | `upns` | ***[]string***| ***(Optional)*** |
 ## KeyVaultCertificateStatus
-##### (Appears on:[KeyVaultCertificate](#KeyVaultCertificate))
+
+Appears on:[KeyVaultCertificate](#KeyVaultCertificate)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

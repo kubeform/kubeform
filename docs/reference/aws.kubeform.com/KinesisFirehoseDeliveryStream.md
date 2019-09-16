@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[KinesisFirehoseDeliveryStreamSpec](#KinesisFirehoseDeliveryStreamSpec)***||
 | `status` | ***[KinesisFirehoseDeliveryStreamStatus](#KinesisFirehoseDeliveryStreamStatus)***||
 ## KinesisFirehoseDeliveryStreamSpec
-##### (Appears on:[KinesisFirehoseDeliveryStream](#KinesisFirehoseDeliveryStream), [KinesisFirehoseDeliveryStreamStatus](#KinesisFirehoseDeliveryStreamStatus))
+
+Appears on:[KinesisFirehoseDeliveryStream](#KinesisFirehoseDeliveryStream), [KinesisFirehoseDeliveryStreamStatus](#KinesisFirehoseDeliveryStreamStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,7 +40,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `versionID` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpec](#KinesisFirehoseDeliveryStreamSpec))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpec](#KinesisFirehoseDeliveryStreamSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bufferingInterval` | ***int***| ***(Optional)*** |
@@ -53,32 +57,42 @@ section_menu_id: reference
 | `s3BackupMode` | ***string***| ***(Optional)*** |
 | `typeName` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationCloudwatchLoggingOptions
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration](#KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration](#KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `logGroupName` | ***string***| ***(Optional)*** |
 | `logStreamName` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration](#KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration](#KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `processors` | ***[[]KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfigurationProcessors](#KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfigurationProcessors)***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfigurationProcessors
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfiguration](#KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfiguration](#KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `parameters` | ***[[]KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfigurationProcessorsParameters](#KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfigurationProcessorsParameters)***| ***(Optional)*** |
 | `type` | ***string***||
 ## KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfigurationProcessorsParameters
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfigurationProcessors](#KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfigurationProcessors))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfigurationProcessors](#KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfigurationProcessors)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `parameterName` | ***string***||
 | `parameterValue` | ***string***||
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpec](#KinesisFirehoseDeliveryStreamSpec))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpec](#KinesisFirehoseDeliveryStreamSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketArn` | ***string***||
@@ -95,14 +109,18 @@ section_menu_id: reference
 | `s3BackupConfiguration` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfiguration)***| ***(Optional)*** |
 | `s3BackupMode` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationCloudwatchLoggingOptions
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration](#KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration](#KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `logGroupName` | ***string***| ***(Optional)*** |
 | `logStreamName` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration](#KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration](#KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
@@ -110,41 +128,55 @@ section_menu_id: reference
 | `outputFormatConfiguration` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration)***||
 | `schemaConfiguration` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration)***||
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deserializer` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer)***||
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `hiveJSONSerDe` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJSONSerDe](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJSONSerDe)***| ***(Optional)*** |
 | `openXJSONSerDe` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJSONSerDe](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJSONSerDe)***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJSONSerDe
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `timestampFormats` | ***[]string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJSONSerDe
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `caseInsensitive` | ***bool***| ***(Optional)*** |
 | `columnToJSONKeyMappings` | ***map[string]string***| ***(Optional)*** |
 | `convertDotsInJSONKeysToUnderscores` | ***bool***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `serializer` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer)***||
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `orcSerDe` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe)***| ***(Optional)*** |
 | `parquetSerDe` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe)***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `blockSizeBytes` | ***int***| ***(Optional)*** |
@@ -158,7 +190,9 @@ section_menu_id: reference
 | `rowIndexStride` | ***int***| ***(Optional)*** |
 | `stripeSizeBytes` | ***int***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `blockSizeBytes` | ***int***| ***(Optional)*** |
@@ -168,7 +202,9 @@ section_menu_id: reference
 | `pageSizeBytes` | ***int***| ***(Optional)*** |
 | `writerVersion` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `catalogID` | ***string***| ***(Optional)*** |
@@ -178,25 +214,33 @@ section_menu_id: reference
 | `tableName` | ***string***||
 | `versionID` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration](#KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration](#KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `processors` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationProcessors](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationProcessors)***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationProcessors
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `parameters` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationProcessorsParameters](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationProcessorsParameters)***| ***(Optional)*** |
 | `type` | ***string***||
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationProcessorsParameters
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationProcessors](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationProcessors))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationProcessors](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationProcessors)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `parameterName` | ***string***||
 | `parameterValue` | ***string***||
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration](#KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration](#KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketArn` | ***string***||
@@ -208,20 +252,26 @@ section_menu_id: reference
 | `prefix` | ***string***| ***(Optional)*** |
 | `roleArn` | ***string***||
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfiguration](#KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `logGroupName` | ***string***| ***(Optional)*** |
 | `logStreamName` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecKinesisSourceConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpec](#KinesisFirehoseDeliveryStreamSpec))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpec](#KinesisFirehoseDeliveryStreamSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `kinesisStreamArn` | ***string***||
 | `roleArn` | ***string***||
 ## KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpec](#KinesisFirehoseDeliveryStreamSpec))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpec](#KinesisFirehoseDeliveryStreamSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cloudwatchLoggingOptions` | ***[[]KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationCloudwatchLoggingOptions](#KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationCloudwatchLoggingOptions)***| ***(Optional)*** |
@@ -236,32 +286,42 @@ section_menu_id: reference
 | `s3BackupMode` | ***string***| ***(Optional)*** |
 | `username` | ***string***||
 ## KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationCloudwatchLoggingOptions
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration](#KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration](#KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `logGroupName` | ***string***| ***(Optional)*** |
 | `logStreamName` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration](#KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration](#KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `processors` | ***[[]KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfigurationProcessors](#KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfigurationProcessors)***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfigurationProcessors
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfiguration](#KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfiguration](#KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `parameters` | ***[[]KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfigurationProcessorsParameters](#KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfigurationProcessorsParameters)***| ***(Optional)*** |
 | `type` | ***string***||
 ## KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfigurationProcessorsParameters
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfigurationProcessors](#KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfigurationProcessors))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfigurationProcessors](#KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfigurationProcessors)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `parameterName` | ***string***||
 | `parameterValue` | ***string***||
 ## KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration](#KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration](#KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketArn` | ***string***||
@@ -273,14 +333,18 @@ section_menu_id: reference
 | `prefix` | ***string***| ***(Optional)*** |
 | `roleArn` | ***string***||
 ## KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfiguration](#KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfiguration](#KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `logGroupName` | ***string***| ***(Optional)*** |
 | `logStreamName` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecS3Configuration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpec](#KinesisFirehoseDeliveryStreamSpec))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpec](#KinesisFirehoseDeliveryStreamSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketArn` | ***string***||
@@ -292,14 +356,18 @@ section_menu_id: reference
 | `prefix` | ***string***| ***(Optional)*** |
 | `roleArn` | ***string***||
 ## KinesisFirehoseDeliveryStreamSpecS3ConfigurationCloudwatchLoggingOptions
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecS3Configuration](#KinesisFirehoseDeliveryStreamSpecS3Configuration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecS3Configuration](#KinesisFirehoseDeliveryStreamSpecS3Configuration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `logGroupName` | ***string***| ***(Optional)*** |
 | `logStreamName` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecSplunkConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpec](#KinesisFirehoseDeliveryStreamSpec))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpec](#KinesisFirehoseDeliveryStreamSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cloudwatchLoggingOptions` | ***[[]KinesisFirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptions](#KinesisFirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptions)***| ***(Optional)*** |
@@ -311,32 +379,42 @@ section_menu_id: reference
 | `retryDuration` | ***int***| ***(Optional)*** |
 | `s3BackupMode` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptions
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecSplunkConfiguration](#KinesisFirehoseDeliveryStreamSpecSplunkConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecSplunkConfiguration](#KinesisFirehoseDeliveryStreamSpecSplunkConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `logGroupName` | ***string***| ***(Optional)*** |
 | `logStreamName` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfiguration
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecSplunkConfiguration](#KinesisFirehoseDeliveryStreamSpecSplunkConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecSplunkConfiguration](#KinesisFirehoseDeliveryStreamSpecSplunkConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `processors` | ***[[]KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationProcessors](#KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationProcessors)***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationProcessors
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfiguration](#KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfiguration))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfiguration](#KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `parameters` | ***[[]KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationProcessorsParameters](#KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationProcessorsParameters)***| ***(Optional)*** |
 | `type` | ***string***||
 ## KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationProcessorsParameters
-##### (Appears on:[KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationProcessors](#KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationProcessors))
+
+Appears on:[KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationProcessors](#KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationProcessors)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `parameterName` | ***string***||
 | `parameterValue` | ***string***||
 ## KinesisFirehoseDeliveryStreamStatus
-##### (Appears on:[KinesisFirehoseDeliveryStream](#KinesisFirehoseDeliveryStream))
+
+Appears on:[KinesisFirehoseDeliveryStream](#KinesisFirehoseDeliveryStream)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

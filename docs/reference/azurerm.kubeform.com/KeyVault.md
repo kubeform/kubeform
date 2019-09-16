@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[KeyVaultSpec](#KeyVaultSpec)***||
 | `status` | ***[KeyVaultStatus](#KeyVaultStatus)***||
 ## KeyVaultSpec
-##### (Appears on:[KeyVault](#KeyVault), [KeyVaultStatus](#KeyVaultStatus))
+
+Appears on:[KeyVault](#KeyVault), [KeyVaultStatus](#KeyVaultStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,7 +40,9 @@ section_menu_id: reference
 | `tenantID` | ***string***||
 | `vaultURI` | ***string***| ***(Optional)*** |
 ## KeyVaultSpecAccessPolicy
-##### (Appears on:[KeyVaultSpec](#KeyVaultSpec))
+
+Appears on:[KeyVaultSpec](#KeyVaultSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `applicationID` | ***string***| ***(Optional)*** |
@@ -49,7 +53,9 @@ section_menu_id: reference
 | `storagePermissions` | ***[]string***| ***(Optional)*** |
 | `tenantID` | ***string***||
 ## KeyVaultSpecNetworkAcls
-##### (Appears on:[KeyVaultSpec](#KeyVaultSpec))
+
+Appears on:[KeyVaultSpec](#KeyVaultSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bypass` | ***string***||
@@ -57,12 +63,16 @@ section_menu_id: reference
 | `ipRules` | ***[]string***| ***(Optional)*** |
 | `virtualNetworkSubnetIDS` | ***[]string***| ***(Optional)*** |
 ## KeyVaultSpecSku
-##### (Appears on:[KeyVaultSpec](#KeyVaultSpec))
+
+Appears on:[KeyVaultSpec](#KeyVaultSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***| ***(Optional)*** |
 ## KeyVaultStatus
-##### (Appears on:[KeyVault](#KeyVault))
+
+Appears on:[KeyVault](#KeyVault)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ElasticBeanstalkConfigurationTemplateSpec](#ElasticBeanstalkConfigurationTemplateSpec)***||
 | `status` | ***[ElasticBeanstalkConfigurationTemplateStatus](#ElasticBeanstalkConfigurationTemplateStatus)***||
 ## ElasticBeanstalkConfigurationTemplateSpec
-##### (Appears on:[ElasticBeanstalkConfigurationTemplate](#ElasticBeanstalkConfigurationTemplate), [ElasticBeanstalkConfigurationTemplateStatus](#ElasticBeanstalkConfigurationTemplateStatus))
+
+Appears on:[ElasticBeanstalkConfigurationTemplate](#ElasticBeanstalkConfigurationTemplate), [ElasticBeanstalkConfigurationTemplateStatus](#ElasticBeanstalkConfigurationTemplateStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `setting` | ***[[]ElasticBeanstalkConfigurationTemplateSpecSetting](#ElasticBeanstalkConfigurationTemplateSpecSetting)***| ***(Optional)*** |
 | `solutionStackName` | ***string***| ***(Optional)*** |
 ## ElasticBeanstalkConfigurationTemplateSpecSetting
-##### (Appears on:[ElasticBeanstalkConfigurationTemplateSpec](#ElasticBeanstalkConfigurationTemplateSpec))
+
+Appears on:[ElasticBeanstalkConfigurationTemplateSpec](#ElasticBeanstalkConfigurationTemplateSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
@@ -39,7 +43,9 @@ section_menu_id: reference
 | `resource` | ***string***| ***(Optional)*** |
 | `value` | ***string***||
 ## ElasticBeanstalkConfigurationTemplateStatus
-##### (Appears on:[ElasticBeanstalkConfigurationTemplate](#ElasticBeanstalkConfigurationTemplate))
+
+Appears on:[ElasticBeanstalkConfigurationTemplate](#ElasticBeanstalkConfigurationTemplate)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

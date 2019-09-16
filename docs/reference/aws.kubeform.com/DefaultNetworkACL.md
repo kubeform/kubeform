@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DefaultNetworkACLSpec](#DefaultNetworkACLSpec)***||
 | `status` | ***[DefaultNetworkACLStatus](#DefaultNetworkACLStatus)***||
 ## DefaultNetworkACLSpec
-##### (Appears on:[DefaultNetworkACL](#DefaultNetworkACL), [DefaultNetworkACLStatus](#DefaultNetworkACLStatus))
+
+Appears on:[DefaultNetworkACL](#DefaultNetworkACL), [DefaultNetworkACLStatus](#DefaultNetworkACLStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpcID` | ***string***| ***(Optional)*** |
 ## DefaultNetworkACLSpecEgress
-##### (Appears on:[DefaultNetworkACLSpec](#DefaultNetworkACLSpec))
+
+Appears on:[DefaultNetworkACLSpec](#DefaultNetworkACLSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***string***||
@@ -45,7 +49,9 @@ section_menu_id: reference
 | `ruleNo` | ***int***||
 | `toPort` | ***int***||
 ## DefaultNetworkACLSpecIngress
-##### (Appears on:[DefaultNetworkACLSpec](#DefaultNetworkACLSpec))
+
+Appears on:[DefaultNetworkACLSpec](#DefaultNetworkACLSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***string***||
@@ -58,7 +64,9 @@ section_menu_id: reference
 | `ruleNo` | ***int***||
 | `toPort` | ***int***||
 ## DefaultNetworkACLStatus
-##### (Appears on:[DefaultNetworkACL](#DefaultNetworkACL))
+
+Appears on:[DefaultNetworkACL](#DefaultNetworkACL)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

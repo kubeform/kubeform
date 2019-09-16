@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VirtualNetworkSpec](#VirtualNetworkSpec)***||
 | `status` | ***[VirtualNetworkStatus](#VirtualNetworkStatus)***||
 ## VirtualNetworkSpec
-##### (Appears on:[VirtualNetwork](#VirtualNetwork), [VirtualNetworkStatus](#VirtualNetworkStatus))
+
+Appears on:[VirtualNetwork](#VirtualNetwork), [VirtualNetworkStatus](#VirtualNetworkStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,13 +35,17 @@ section_menu_id: reference
 | `subnet` | ***[[]VirtualNetworkSpecSubnet](#VirtualNetworkSpecSubnet)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## VirtualNetworkSpecDdosProtectionPlan
-##### (Appears on:[VirtualNetworkSpec](#VirtualNetworkSpec))
+
+Appears on:[VirtualNetworkSpec](#VirtualNetworkSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enable` | ***bool***||
 | `ID` | ***string***||
 ## VirtualNetworkSpecSubnet
-##### (Appears on:[VirtualNetworkSpec](#VirtualNetworkSpec))
+
+Appears on:[VirtualNetworkSpec](#VirtualNetworkSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `addressPrefix` | ***string***||
@@ -47,7 +53,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `securityGroup` | ***string***| ***(Optional)*** |
 ## VirtualNetworkStatus
-##### (Appears on:[VirtualNetwork](#VirtualNetwork))
+
+Appears on:[VirtualNetwork](#VirtualNetwork)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

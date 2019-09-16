@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DbOptionGroupSpec](#DbOptionGroupSpec)***||
 | `status` | ***[DbOptionGroupStatus](#DbOptionGroupStatus)***||
 ## DbOptionGroupSpec
-##### (Appears on:[DbOptionGroup](#DbOptionGroup), [DbOptionGroupStatus](#DbOptionGroupStatus))
+
+Appears on:[DbOptionGroup](#DbOptionGroup), [DbOptionGroupStatus](#DbOptionGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `optionGroupDescription` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DbOptionGroupSpecOption
-##### (Appears on:[DbOptionGroupSpec](#DbOptionGroupSpec))
+
+Appears on:[DbOptionGroupSpec](#DbOptionGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dbSecurityGroupMemberships` | ***[]string***| ***(Optional)*** |
@@ -43,13 +47,17 @@ section_menu_id: reference
 | `version` | ***string***| ***(Optional)*** |
 | `vpcSecurityGroupMemberships` | ***[]string***| ***(Optional)*** |
 ## DbOptionGroupSpecOptionOptionSettings
-##### (Appears on:[DbOptionGroupSpecOption](#DbOptionGroupSpecOption))
+
+Appears on:[DbOptionGroupSpecOption](#DbOptionGroupSpecOption)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `value` | ***string***||
 ## DbOptionGroupStatus
-##### (Appears on:[DbOptionGroup](#DbOptionGroup))
+
+Appears on:[DbOptionGroup](#DbOptionGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

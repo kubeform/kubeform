@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WorklinkFleetSpec](#WorklinkFleetSpec)***||
 | `status` | ***[WorklinkFleetStatus](#WorklinkFleetStatus)***||
 ## WorklinkFleetSpec
-##### (Appears on:[WorklinkFleet](#WorklinkFleet), [WorklinkFleetStatus](#WorklinkFleetStatus))
+
+Appears on:[WorklinkFleet](#WorklinkFleet), [WorklinkFleetStatus](#WorklinkFleetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,20 +38,26 @@ section_menu_id: reference
 | `network` | ***[[]WorklinkFleetSpecNetwork](#WorklinkFleetSpecNetwork)***| ***(Optional)*** |
 | `optimizeForEndUserLocation` | ***bool***| ***(Optional)*** |
 ## WorklinkFleetSpecIdentityProvider
-##### (Appears on:[WorklinkFleetSpec](#WorklinkFleetSpec))
+
+Appears on:[WorklinkFleetSpec](#WorklinkFleetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `samlMetadata` | ***string***||
 | `type` | ***string***||
 ## WorklinkFleetSpecNetwork
-##### (Appears on:[WorklinkFleetSpec](#WorklinkFleetSpec))
+
+Appears on:[WorklinkFleetSpec](#WorklinkFleetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `securityGroupIDS` | ***[]string***||
 | `subnetIDS` | ***[]string***||
 | `vpcID` | ***string***||
 ## WorklinkFleetStatus
-##### (Appears on:[WorklinkFleet](#WorklinkFleet))
+
+Appears on:[WorklinkFleet](#WorklinkFleet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[KeyVaultSecretSpec](#KeyVaultSecretSpec)***||
 | `status` | ***[KeyVaultSecretStatus](#KeyVaultSecretStatus)***||
 ## KeyVaultSecretSpec
-##### (Appears on:[KeyVaultSecret](#KeyVaultSecret), [KeyVaultSecretStatus](#KeyVaultSecretStatus))
+
+Appears on:[KeyVaultSecret](#KeyVaultSecret), [KeyVaultSecretStatus](#KeyVaultSecretStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `vaultURI` | ***string***| ***(Optional)*** Deprecated|
 | `version` | ***string***| ***(Optional)*** |
 ## KeyVaultSecretStatus
-##### (Appears on:[KeyVaultSecret](#KeyVaultSecret))
+
+Appears on:[KeyVaultSecret](#KeyVaultSecret)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

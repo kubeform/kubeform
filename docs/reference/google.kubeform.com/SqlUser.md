@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SqlUserSpec](#SqlUserSpec)***||
 | `status` | ***[SqlUserStatus](#SqlUserStatus)***||
 ## SqlUserSpec
-##### (Appears on:[SqlUser](#SqlUser), [SqlUserStatus](#SqlUserStatus))
+
+Appears on:[SqlUser](#SqlUser), [SqlUserStatus](#SqlUserStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `project` | ***string***| ***(Optional)*** |
 ## SqlUserStatus
-##### (Appears on:[SqlUser](#SqlUser))
+
+Appears on:[SqlUser](#SqlUser)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

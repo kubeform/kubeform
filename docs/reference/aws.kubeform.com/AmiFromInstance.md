@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AmiFromInstanceSpec](#AmiFromInstanceSpec)***||
 | `status` | ***[AmiFromInstanceStatus](#AmiFromInstanceStatus)***||
 ## AmiFromInstanceSpec
-##### (Appears on:[AmiFromInstance](#AmiFromInstance), [AmiFromInstanceStatus](#AmiFromInstanceStatus))
+
+Appears on:[AmiFromInstance](#AmiFromInstance), [AmiFromInstanceStatus](#AmiFromInstanceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -42,7 +44,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `virtualizationType` | ***string***| ***(Optional)*** |
 ## AmiFromInstanceSpecEbsBlockDevice
-##### (Appears on:[AmiFromInstanceSpec](#AmiFromInstanceSpec))
+
+Appears on:[AmiFromInstanceSpec](#AmiFromInstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
@@ -53,13 +57,17 @@ section_menu_id: reference
 | `volumeSize` | ***int***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## AmiFromInstanceSpecEphemeralBlockDevice
-##### (Appears on:[AmiFromInstanceSpec](#AmiFromInstanceSpec))
+
+Appears on:[AmiFromInstanceSpec](#AmiFromInstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deviceName` | ***string***| ***(Optional)*** |
 | `virtualName` | ***string***| ***(Optional)*** |
 ## AmiFromInstanceStatus
-##### (Appears on:[AmiFromInstance](#AmiFromInstance))
+
+Appears on:[AmiFromInstance](#AmiFromInstance)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

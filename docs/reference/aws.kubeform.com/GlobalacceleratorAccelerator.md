@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GlobalacceleratorAcceleratorSpec](#GlobalacceleratorAcceleratorSpec)***||
 | `status` | ***[GlobalacceleratorAcceleratorStatus](#GlobalacceleratorAcceleratorStatus)***||
 ## GlobalacceleratorAcceleratorSpec
-##### (Appears on:[GlobalacceleratorAccelerator](#GlobalacceleratorAccelerator), [GlobalacceleratorAcceleratorStatus](#GlobalacceleratorAcceleratorStatus))
+
+Appears on:[GlobalacceleratorAccelerator](#GlobalacceleratorAccelerator), [GlobalacceleratorAcceleratorStatus](#GlobalacceleratorAcceleratorStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,20 +32,26 @@ section_menu_id: reference
 | `ipSets` | ***[[]GlobalacceleratorAcceleratorSpecIpSets](#GlobalacceleratorAcceleratorSpecIpSets)***| ***(Optional)*** |
 | `name` | ***string***||
 ## GlobalacceleratorAcceleratorSpecAttributes
-##### (Appears on:[GlobalacceleratorAcceleratorSpec](#GlobalacceleratorAcceleratorSpec))
+
+Appears on:[GlobalacceleratorAcceleratorSpec](#GlobalacceleratorAcceleratorSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `flowLogsEnabled` | ***bool***| ***(Optional)*** |
 | `flowLogsS3Bucket` | ***string***| ***(Optional)*** |
 | `flowLogsS3Prefix` | ***string***| ***(Optional)*** |
 ## GlobalacceleratorAcceleratorSpecIpSets
-##### (Appears on:[GlobalacceleratorAcceleratorSpec](#GlobalacceleratorAcceleratorSpec))
+
+Appears on:[GlobalacceleratorAcceleratorSpec](#GlobalacceleratorAcceleratorSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ipAddresses` | ***[]string***| ***(Optional)*** |
 | `ipFamily` | ***string***| ***(Optional)*** |
 ## GlobalacceleratorAcceleratorStatus
-##### (Appears on:[GlobalacceleratorAccelerator](#GlobalacceleratorAccelerator))
+
+Appears on:[GlobalacceleratorAccelerator](#GlobalacceleratorAccelerator)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

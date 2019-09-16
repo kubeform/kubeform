@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApiGatewayDomainNameSpec](#ApiGatewayDomainNameSpec)***||
 | `status` | ***[ApiGatewayDomainNameStatus](#ApiGatewayDomainNameStatus)***||
 ## ApiGatewayDomainNameSpec
-##### (Appears on:[ApiGatewayDomainName](#ApiGatewayDomainName), [ApiGatewayDomainNameStatus](#ApiGatewayDomainNameStatus))
+
+Appears on:[ApiGatewayDomainName](#ApiGatewayDomainName), [ApiGatewayDomainNameStatus](#ApiGatewayDomainNameStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,12 +41,16 @@ section_menu_id: reference
 | `regionalDomainName` | ***string***| ***(Optional)*** |
 | `regionalZoneID` | ***string***| ***(Optional)*** |
 ## ApiGatewayDomainNameSpecEndpointConfiguration
-##### (Appears on:[ApiGatewayDomainNameSpec](#ApiGatewayDomainNameSpec))
+
+Appears on:[ApiGatewayDomainNameSpec](#ApiGatewayDomainNameSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `types` | ***[]string***||
 ## ApiGatewayDomainNameStatus
-##### (Appears on:[ApiGatewayDomainName](#ApiGatewayDomainName))
+
+Appears on:[ApiGatewayDomainName](#ApiGatewayDomainName)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

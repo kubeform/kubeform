@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[HdinsightHadoopClusterSpec](#HdinsightHadoopClusterSpec)***||
 | `status` | ***[HdinsightHadoopClusterStatus](#HdinsightHadoopClusterStatus)***||
 ## HdinsightHadoopClusterSpec
-##### (Appears on:[HdinsightHadoopCluster](#HdinsightHadoopCluster), [HdinsightHadoopClusterStatus](#HdinsightHadoopClusterStatus))
+
+Appears on:[HdinsightHadoopCluster](#HdinsightHadoopCluster), [HdinsightHadoopClusterStatus](#HdinsightHadoopClusterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,25 +40,33 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `tier` | ***string***||
 ## HdinsightHadoopClusterSpecComponentVersion
-##### (Appears on:[HdinsightHadoopClusterSpec](#HdinsightHadoopClusterSpec))
+
+Appears on:[HdinsightHadoopClusterSpec](#HdinsightHadoopClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `hadoop` | ***string***||
 ## HdinsightHadoopClusterSpecGateway
-##### (Appears on:[HdinsightHadoopClusterSpec](#HdinsightHadoopClusterSpec))
+
+Appears on:[HdinsightHadoopClusterSpec](#HdinsightHadoopClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 | `username` | ***string***||
 ## HdinsightHadoopClusterSpecRoles
-##### (Appears on:[HdinsightHadoopClusterSpec](#HdinsightHadoopClusterSpec))
+
+Appears on:[HdinsightHadoopClusterSpec](#HdinsightHadoopClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `headNode` | ***[[]HdinsightHadoopClusterSpecRolesHeadNode](#HdinsightHadoopClusterSpecRolesHeadNode)***||
 | `workerNode` | ***[[]HdinsightHadoopClusterSpecRolesWorkerNode](#HdinsightHadoopClusterSpecRolesWorkerNode)***||
 | `zookeeperNode` | ***[[]HdinsightHadoopClusterSpecRolesZookeeperNode](#HdinsightHadoopClusterSpecRolesZookeeperNode)***||
 ## HdinsightHadoopClusterSpecRolesHeadNode
-##### (Appears on:[HdinsightHadoopClusterSpecRoles](#HdinsightHadoopClusterSpecRoles))
+
+Appears on:[HdinsightHadoopClusterSpecRoles](#HdinsightHadoopClusterSpecRoles)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `sshKeys` | ***[]string***| ***(Optional)*** |
@@ -65,7 +75,9 @@ section_menu_id: reference
 | `virtualNetworkID` | ***string***| ***(Optional)*** |
 | `vmSize` | ***string***||
 ## HdinsightHadoopClusterSpecRolesWorkerNode
-##### (Appears on:[HdinsightHadoopClusterSpecRoles](#HdinsightHadoopClusterSpecRoles))
+
+Appears on:[HdinsightHadoopClusterSpecRoles](#HdinsightHadoopClusterSpecRoles)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `minInstanceCount` | ***int***| ***(Optional)*** |
@@ -76,7 +88,9 @@ section_menu_id: reference
 | `virtualNetworkID` | ***string***| ***(Optional)*** |
 | `vmSize` | ***string***||
 ## HdinsightHadoopClusterSpecRolesZookeeperNode
-##### (Appears on:[HdinsightHadoopClusterSpecRoles](#HdinsightHadoopClusterSpecRoles))
+
+Appears on:[HdinsightHadoopClusterSpecRoles](#HdinsightHadoopClusterSpecRoles)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `sshKeys` | ***[]string***| ***(Optional)*** |
@@ -85,13 +99,17 @@ section_menu_id: reference
 | `virtualNetworkID` | ***string***| ***(Optional)*** |
 | `vmSize` | ***string***||
 ## HdinsightHadoopClusterSpecStorageAccount
-##### (Appears on:[HdinsightHadoopClusterSpec](#HdinsightHadoopClusterSpec))
+
+Appears on:[HdinsightHadoopClusterSpec](#HdinsightHadoopClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `isDefault` | ***bool***||
 | `storageContainerID` | ***string***||
 ## HdinsightHadoopClusterStatus
-##### (Appears on:[HdinsightHadoopCluster](#HdinsightHadoopCluster))
+
+Appears on:[HdinsightHadoopCluster](#HdinsightHadoopCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

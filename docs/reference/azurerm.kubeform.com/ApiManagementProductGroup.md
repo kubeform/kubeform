@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApiManagementProductGroupSpec](#ApiManagementProductGroupSpec)***||
 | `status` | ***[ApiManagementProductGroupStatus](#ApiManagementProductGroupStatus)***||
 ## ApiManagementProductGroupSpec
-##### (Appears on:[ApiManagementProductGroup](#ApiManagementProductGroup), [ApiManagementProductGroupStatus](#ApiManagementProductGroupStatus))
+
+Appears on:[ApiManagementProductGroup](#ApiManagementProductGroup), [ApiManagementProductGroupStatus](#ApiManagementProductGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `productID` | ***string***||
 | `resourceGroupName` | ***string***||
 ## ApiManagementProductGroupStatus
-##### (Appears on:[ApiManagementProductGroup](#ApiManagementProductGroup))
+
+Appears on:[ApiManagementProductGroup](#ApiManagementProductGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

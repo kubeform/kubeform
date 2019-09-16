@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SsmMaintenanceWindowTargetSpec](#SsmMaintenanceWindowTargetSpec)***||
 | `status` | ***[SsmMaintenanceWindowTargetStatus](#SsmMaintenanceWindowTargetStatus)***||
 ## SsmMaintenanceWindowTargetSpec
-##### (Appears on:[SsmMaintenanceWindowTarget](#SsmMaintenanceWindowTarget), [SsmMaintenanceWindowTargetStatus](#SsmMaintenanceWindowTargetStatus))
+
+Appears on:[SsmMaintenanceWindowTarget](#SsmMaintenanceWindowTarget), [SsmMaintenanceWindowTargetStatus](#SsmMaintenanceWindowTargetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,13 +31,17 @@ section_menu_id: reference
 | `targets` | ***[[]SsmMaintenanceWindowTargetSpecTargets](#SsmMaintenanceWindowTargetSpecTargets)***||
 | `windowID` | ***string***||
 ## SsmMaintenanceWindowTargetSpecTargets
-##### (Appears on:[SsmMaintenanceWindowTargetSpec](#SsmMaintenanceWindowTargetSpec))
+
+Appears on:[SsmMaintenanceWindowTargetSpec](#SsmMaintenanceWindowTargetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `key` | ***string***||
 | `values` | ***[]string***||
 ## SsmMaintenanceWindowTargetStatus
-##### (Appears on:[SsmMaintenanceWindowTarget](#SsmMaintenanceWindowTarget))
+
+Appears on:[SsmMaintenanceWindowTarget](#SsmMaintenanceWindowTarget)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

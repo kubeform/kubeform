@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StorageShareSpec](#StorageShareSpec)***||
 | `status` | ***[StorageShareStatus](#StorageShareStatus)***||
 ## StorageShareSpec
-##### (Appears on:[StorageShare](#StorageShare), [StorageShareStatus](#StorageShareStatus))
+
+Appears on:[StorageShare](#StorageShare), [StorageShareStatus](#StorageShareStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,20 +34,26 @@ section_menu_id: reference
 | `storageAccountName` | ***string***||
 | `url` | ***string***| ***(Optional)*** |
 ## StorageShareSpecAcl
-##### (Appears on:[StorageShareSpec](#StorageShareSpec))
+
+Appears on:[StorageShareSpec](#StorageShareSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `accessPolicy` | ***[[]StorageShareSpecAclAccessPolicy](#StorageShareSpecAclAccessPolicy)***| ***(Optional)*** |
 | `ID` | ***string***||
 ## StorageShareSpecAclAccessPolicy
-##### (Appears on:[StorageShareSpecAcl](#StorageShareSpecAcl))
+
+Appears on:[StorageShareSpecAcl](#StorageShareSpecAcl)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `expiry` | ***string***||
 | `permissions` | ***string***||
 | `start` | ***string***||
 ## StorageShareStatus
-##### (Appears on:[StorageShare](#StorageShare))
+
+Appears on:[StorageShare](#StorageShare)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

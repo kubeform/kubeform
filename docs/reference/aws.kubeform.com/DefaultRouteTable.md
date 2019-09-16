@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DefaultRouteTableSpec](#DefaultRouteTableSpec)***||
 | `status` | ***[DefaultRouteTableStatus](#DefaultRouteTableStatus)***||
 ## DefaultRouteTableSpec
-##### (Appears on:[DefaultRouteTable](#DefaultRouteTable), [DefaultRouteTableStatus](#DefaultRouteTableStatus))
+
+Appears on:[DefaultRouteTable](#DefaultRouteTable), [DefaultRouteTableStatus](#DefaultRouteTableStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpcID` | ***string***| ***(Optional)*** |
 ## DefaultRouteTableSpecRoute
-##### (Appears on:[DefaultRouteTableSpec](#DefaultRouteTableSpec))
+
+Appears on:[DefaultRouteTableSpec](#DefaultRouteTableSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cidrBlock` | ***string***| ***(Optional)*** |
@@ -44,7 +48,9 @@ section_menu_id: reference
 | `transitGatewayID` | ***string***| ***(Optional)*** |
 | `vpcPeeringConnectionID` | ***string***| ***(Optional)*** |
 ## DefaultRouteTableStatus
-##### (Appears on:[DefaultRouteTable](#DefaultRouteTable))
+
+Appears on:[DefaultRouteTable](#DefaultRouteTable)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

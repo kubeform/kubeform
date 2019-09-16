@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StreamAnalyticsStreamInputIothubSpec](#StreamAnalyticsStreamInputIothubSpec)***||
 | `status` | ***[StreamAnalyticsStreamInputIothubStatus](#StreamAnalyticsStreamInputIothubStatus)***||
 ## StreamAnalyticsStreamInputIothubSpec
-##### (Appears on:[StreamAnalyticsStreamInputIothub](#StreamAnalyticsStreamInputIothub), [StreamAnalyticsStreamInputIothubStatus](#StreamAnalyticsStreamInputIothubStatus))
+
+Appears on:[StreamAnalyticsStreamInputIothub](#StreamAnalyticsStreamInputIothub), [StreamAnalyticsStreamInputIothubStatus](#StreamAnalyticsStreamInputIothubStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,14 +36,18 @@ section_menu_id: reference
 | `sharedAccessPolicyName` | ***string***||
 | `streamAnalyticsJobName` | ***string***||
 ## StreamAnalyticsStreamInputIothubSpecSerialization
-##### (Appears on:[StreamAnalyticsStreamInputIothubSpec](#StreamAnalyticsStreamInputIothubSpec))
+
+Appears on:[StreamAnalyticsStreamInputIothubSpec](#StreamAnalyticsStreamInputIothubSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `encoding` | ***string***| ***(Optional)*** |
 | `fieldDelimiter` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## StreamAnalyticsStreamInputIothubStatus
-##### (Appears on:[StreamAnalyticsStreamInputIothub](#StreamAnalyticsStreamInputIothub))
+
+Appears on:[StreamAnalyticsStreamInputIothub](#StreamAnalyticsStreamInputIothub)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

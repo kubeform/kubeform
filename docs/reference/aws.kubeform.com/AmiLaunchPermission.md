@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AmiLaunchPermissionSpec](#AmiLaunchPermissionSpec)***||
 | `status` | ***[AmiLaunchPermissionStatus](#AmiLaunchPermissionStatus)***||
 ## AmiLaunchPermissionSpec
-##### (Appears on:[AmiLaunchPermission](#AmiLaunchPermission), [AmiLaunchPermissionStatus](#AmiLaunchPermissionStatus))
+
+Appears on:[AmiLaunchPermission](#AmiLaunchPermission), [AmiLaunchPermissionStatus](#AmiLaunchPermissionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `accountID` | ***string***||
 | `imageID` | ***string***||
 ## AmiLaunchPermissionStatus
-##### (Appears on:[AmiLaunchPermission](#AmiLaunchPermission))
+
+Appears on:[AmiLaunchPermission](#AmiLaunchPermission)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

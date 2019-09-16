@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LogicAppWorkflowSpec](#LogicAppWorkflowSpec)***||
 | `status` | ***[LogicAppWorkflowStatus](#LogicAppWorkflowStatus)***||
 ## LogicAppWorkflowSpec
-##### (Appears on:[LogicAppWorkflow](#LogicAppWorkflow), [LogicAppWorkflowStatus](#LogicAppWorkflowStatus))
+
+Appears on:[LogicAppWorkflow](#LogicAppWorkflow), [LogicAppWorkflowStatus](#LogicAppWorkflowStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `workflowSchema` | ***string***| ***(Optional)*** |
 | `workflowVersion` | ***string***| ***(Optional)*** |
 ## LogicAppWorkflowStatus
-##### (Appears on:[LogicAppWorkflow](#LogicAppWorkflow))
+
+Appears on:[LogicAppWorkflow](#LogicAppWorkflow)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

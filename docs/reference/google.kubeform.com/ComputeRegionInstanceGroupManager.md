@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeRegionInstanceGroupManagerSpec](#ComputeRegionInstanceGroupManagerSpec)***||
 | `status` | ***[ComputeRegionInstanceGroupManagerStatus](#ComputeRegionInstanceGroupManagerStatus)***||
 ## ComputeRegionInstanceGroupManagerSpec
-##### (Appears on:[ComputeRegionInstanceGroupManager](#ComputeRegionInstanceGroupManager), [ComputeRegionInstanceGroupManagerStatus](#ComputeRegionInstanceGroupManagerStatus))
+
+Appears on:[ComputeRegionInstanceGroupManager](#ComputeRegionInstanceGroupManager), [ComputeRegionInstanceGroupManagerStatus](#ComputeRegionInstanceGroupManagerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,19 +45,25 @@ section_menu_id: reference
 | `version` | ***[[]ComputeRegionInstanceGroupManagerSpecVersion](#ComputeRegionInstanceGroupManagerSpecVersion)***| ***(Optional)*** Deprecated|
 | `waitForInstances` | ***bool***| ***(Optional)*** |
 ## ComputeRegionInstanceGroupManagerSpecAutoHealingPolicies
-##### (Appears on:[ComputeRegionInstanceGroupManagerSpec](#ComputeRegionInstanceGroupManagerSpec))
+
+Appears on:[ComputeRegionInstanceGroupManagerSpec](#ComputeRegionInstanceGroupManagerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `healthCheck` | ***string***||
 | `initialDelaySec` | ***int***||
 ## ComputeRegionInstanceGroupManagerSpecNamedPort
-##### (Appears on:[ComputeRegionInstanceGroupManagerSpec](#ComputeRegionInstanceGroupManagerSpec))
+
+Appears on:[ComputeRegionInstanceGroupManagerSpec](#ComputeRegionInstanceGroupManagerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `port` | ***int***||
 ## ComputeRegionInstanceGroupManagerSpecRollingUpdatePolicy
-##### (Appears on:[ComputeRegionInstanceGroupManagerSpec](#ComputeRegionInstanceGroupManagerSpec))
+
+Appears on:[ComputeRegionInstanceGroupManagerSpec](#ComputeRegionInstanceGroupManagerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `maxSurgeFixed` | ***int***| ***(Optional)*** |
@@ -66,20 +74,26 @@ section_menu_id: reference
 | `minimalAction` | ***string***||
 | `type` | ***string***||
 ## ComputeRegionInstanceGroupManagerSpecVersion
-##### (Appears on:[ComputeRegionInstanceGroupManagerSpec](#ComputeRegionInstanceGroupManagerSpec))
+
+Appears on:[ComputeRegionInstanceGroupManagerSpec](#ComputeRegionInstanceGroupManagerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `instanceTemplate` | ***string***||
 | `name` | ***string***||
 | `targetSize` | ***[[]ComputeRegionInstanceGroupManagerSpecVersionTargetSize](#ComputeRegionInstanceGroupManagerSpecVersionTargetSize)***| ***(Optional)*** |
 ## ComputeRegionInstanceGroupManagerSpecVersionTargetSize
-##### (Appears on:[ComputeRegionInstanceGroupManagerSpecVersion](#ComputeRegionInstanceGroupManagerSpecVersion))
+
+Appears on:[ComputeRegionInstanceGroupManagerSpecVersion](#ComputeRegionInstanceGroupManagerSpecVersion)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `fixed` | ***int***| ***(Optional)*** |
 | `percent` | ***int***| ***(Optional)*** |
 ## ComputeRegionInstanceGroupManagerStatus
-##### (Appears on:[ComputeRegionInstanceGroupManager](#ComputeRegionInstanceGroupManager))
+
+Appears on:[ComputeRegionInstanceGroupManager](#ComputeRegionInstanceGroupManager)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DomainSpec](#DomainSpec)***||
 | `status` | ***[DomainStatus](#DomainStatus)***||
 ## DomainSpec
-##### (Appears on:[Domain](#Domain), [DomainStatus](#DomainStatus))
+
+Appears on:[Domain](#Domain), [DomainStatus](#DomainStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `urn` | ***string***| ***(Optional)*** |
 ## DomainStatus
-##### (Appears on:[Domain](#Domain))
+
+Appears on:[Domain](#Domain)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

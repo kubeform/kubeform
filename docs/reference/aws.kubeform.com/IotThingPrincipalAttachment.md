@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[IotThingPrincipalAttachmentSpec](#IotThingPrincipalAttachmentSpec)***||
 | `status` | ***[IotThingPrincipalAttachmentStatus](#IotThingPrincipalAttachmentStatus)***||
 ## IotThingPrincipalAttachmentSpec
-##### (Appears on:[IotThingPrincipalAttachment](#IotThingPrincipalAttachment), [IotThingPrincipalAttachmentStatus](#IotThingPrincipalAttachmentStatus))
+
+Appears on:[IotThingPrincipalAttachment](#IotThingPrincipalAttachment), [IotThingPrincipalAttachmentStatus](#IotThingPrincipalAttachmentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `principal` | ***string***||
 | `thing` | ***string***||
 ## IotThingPrincipalAttachmentStatus
-##### (Appears on:[IotThingPrincipalAttachment](#IotThingPrincipalAttachment))
+
+Appears on:[IotThingPrincipalAttachment](#IotThingPrincipalAttachment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AutomationScheduleSpec](#AutomationScheduleSpec)***||
 | `status` | ***[AutomationScheduleStatus](#AutomationScheduleStatus)***||
 ## AutomationScheduleSpec
-##### (Appears on:[AutomationSchedule](#AutomationSchedule), [AutomationScheduleStatus](#AutomationScheduleStatus))
+
+Appears on:[AutomationSchedule](#AutomationSchedule), [AutomationScheduleStatus](#AutomationScheduleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,13 +40,17 @@ section_menu_id: reference
 | `timezone` | ***string***| ***(Optional)*** |
 | `weekDays` | ***[]string***| ***(Optional)*** |
 ## AutomationScheduleSpecMonthlyOccurrence
-##### (Appears on:[AutomationScheduleSpec](#AutomationScheduleSpec))
+
+Appears on:[AutomationScheduleSpec](#AutomationScheduleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `day` | ***string***||
 | `occurrence` | ***int***||
 ## AutomationScheduleStatus
-##### (Appears on:[AutomationSchedule](#AutomationSchedule))
+
+Appears on:[AutomationSchedule](#AutomationSchedule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AutomationAccountSpec](#AutomationAccountSpec)***||
 | `status` | ***[AutomationAccountStatus](#AutomationAccountStatus)***||
 ## AutomationAccountSpec
-##### (Appears on:[AutomationAccount](#AutomationAccount), [AutomationAccountStatus](#AutomationAccountStatus))
+
+Appears on:[AutomationAccount](#AutomationAccount), [AutomationAccountStatus](#AutomationAccountStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,12 +36,16 @@ section_menu_id: reference
 | `skuName` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## AutomationAccountSpecSku
-##### (Appears on:[AutomationAccountSpec](#AutomationAccountSpec))
+
+Appears on:[AutomationAccountSpec](#AutomationAccountSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***| ***(Optional)*** |
 ## AutomationAccountStatus
-##### (Appears on:[AutomationAccount](#AutomationAccount))
+
+Appears on:[AutomationAccount](#AutomationAccount)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

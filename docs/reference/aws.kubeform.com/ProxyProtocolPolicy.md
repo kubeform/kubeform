@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ProxyProtocolPolicySpec](#ProxyProtocolPolicySpec)***||
 | `status` | ***[ProxyProtocolPolicyStatus](#ProxyProtocolPolicyStatus)***||
 ## ProxyProtocolPolicySpec
-##### (Appears on:[ProxyProtocolPolicy](#ProxyProtocolPolicy), [ProxyProtocolPolicyStatus](#ProxyProtocolPolicyStatus))
+
+Appears on:[ProxyProtocolPolicy](#ProxyProtocolPolicy), [ProxyProtocolPolicyStatus](#ProxyProtocolPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `instancePorts` | ***[]string***||
 | `loadBalancer` | ***string***||
 ## ProxyProtocolPolicyStatus
-##### (Appears on:[ProxyProtocolPolicy](#ProxyProtocolPolicy))
+
+Appears on:[ProxyProtocolPolicy](#ProxyProtocolPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

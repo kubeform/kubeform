@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DatasyncLocationNfsSpec](#DatasyncLocationNfsSpec)***||
 | `status` | ***[DatasyncLocationNfsStatus](#DatasyncLocationNfsStatus)***||
 ## DatasyncLocationNfsSpec
-##### (Appears on:[DatasyncLocationNfs](#DatasyncLocationNfs), [DatasyncLocationNfsStatus](#DatasyncLocationNfsStatus))
+
+Appears on:[DatasyncLocationNfs](#DatasyncLocationNfs), [DatasyncLocationNfsStatus](#DatasyncLocationNfsStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,12 +33,16 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `uri` | ***string***| ***(Optional)*** |
 ## DatasyncLocationNfsSpecOnPremConfig
-##### (Appears on:[DatasyncLocationNfsSpec](#DatasyncLocationNfsSpec))
+
+Appears on:[DatasyncLocationNfsSpec](#DatasyncLocationNfsSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `agentArns` | ***[]string***||
 ## DatasyncLocationNfsStatus
-##### (Appears on:[DatasyncLocationNfs](#DatasyncLocationNfs))
+
+Appears on:[DatasyncLocationNfs](#DatasyncLocationNfs)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

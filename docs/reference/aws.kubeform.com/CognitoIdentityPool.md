@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CognitoIdentityPoolSpec](#CognitoIdentityPoolSpec)***||
 | `status` | ***[CognitoIdentityPoolStatus](#CognitoIdentityPoolStatus)***||
 ## CognitoIdentityPoolSpec
-##### (Appears on:[CognitoIdentityPool](#CognitoIdentityPool), [CognitoIdentityPoolStatus](#CognitoIdentityPoolStatus))
+
+Appears on:[CognitoIdentityPool](#CognitoIdentityPool), [CognitoIdentityPoolStatus](#CognitoIdentityPoolStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,14 +35,18 @@ section_menu_id: reference
 | `samlProviderArns` | ***[]string***| ***(Optional)*** |
 | `supportedLoginProviders` | ***map[string]string***| ***(Optional)*** |
 ## CognitoIdentityPoolSpecCognitoIdentityProviders
-##### (Appears on:[CognitoIdentityPoolSpec](#CognitoIdentityPoolSpec))
+
+Appears on:[CognitoIdentityPoolSpec](#CognitoIdentityPoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `clientID` | ***string***| ***(Optional)*** |
 | `providerName` | ***string***| ***(Optional)*** |
 | `serverSideTokenCheck` | ***bool***| ***(Optional)*** |
 ## CognitoIdentityPoolStatus
-##### (Appears on:[CognitoIdentityPool](#CognitoIdentityPool))
+
+Appears on:[CognitoIdentityPool](#CognitoIdentityPool)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

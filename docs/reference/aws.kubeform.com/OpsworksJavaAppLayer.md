@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[OpsworksJavaAppLayerSpec](#OpsworksJavaAppLayerSpec)***||
 | `status` | ***[OpsworksJavaAppLayerStatus](#OpsworksJavaAppLayerStatus)***||
 ## OpsworksJavaAppLayerSpec
-##### (Appears on:[OpsworksJavaAppLayer](#OpsworksJavaAppLayer), [OpsworksJavaAppLayerStatus](#OpsworksJavaAppLayerStatus))
+
+Appears on:[OpsworksJavaAppLayer](#OpsworksJavaAppLayer), [OpsworksJavaAppLayerStatus](#OpsworksJavaAppLayerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -50,7 +52,9 @@ section_menu_id: reference
 | `systemPackages` | ***[]string***| ***(Optional)*** |
 | `useEbsOptimizedInstances` | ***bool***| ***(Optional)*** |
 ## OpsworksJavaAppLayerSpecEbsVolume
-##### (Appears on:[OpsworksJavaAppLayerSpec](#OpsworksJavaAppLayerSpec))
+
+Appears on:[OpsworksJavaAppLayerSpec](#OpsworksJavaAppLayerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `iops` | ***int***| ***(Optional)*** |
@@ -60,7 +64,9 @@ section_menu_id: reference
 | `size` | ***int***||
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksJavaAppLayerStatus
-##### (Appears on:[OpsworksJavaAppLayer](#OpsworksJavaAppLayer))
+
+Appears on:[OpsworksJavaAppLayer](#OpsworksJavaAppLayer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

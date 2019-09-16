@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CodebuildProjectSpec](#CodebuildProjectSpec)***||
 | `status` | ***[CodebuildProjectStatus](#CodebuildProjectStatus)***||
 ## CodebuildProjectSpec
-##### (Appears on:[CodebuildProject](#CodebuildProject), [CodebuildProjectStatus](#CodebuildProjectStatus))
+
+Appears on:[CodebuildProject](#CodebuildProject), [CodebuildProjectStatus](#CodebuildProjectStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -42,7 +44,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpcConfig` | ***[[]CodebuildProjectSpecVpcConfig](#CodebuildProjectSpecVpcConfig)***| ***(Optional)*** |
 ## CodebuildProjectSpecArtifacts
-##### (Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec))
+
+Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `encryptionDisabled` | ***bool***| ***(Optional)*** |
@@ -53,13 +57,17 @@ section_menu_id: reference
 | `path` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## CodebuildProjectSpecCache
-##### (Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec))
+
+Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `location` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## CodebuildProjectSpecEnvironment
-##### (Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec))
+
+Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `certificate` | ***string***| ***(Optional)*** |
@@ -70,14 +78,18 @@ section_menu_id: reference
 | `privilegedMode` | ***bool***| ***(Optional)*** |
 | `type` | ***string***||
 ## CodebuildProjectSpecEnvironmentEnvironmentVariable
-##### (Appears on:[CodebuildProjectSpecEnvironment](#CodebuildProjectSpecEnvironment))
+
+Appears on:[CodebuildProjectSpecEnvironment](#CodebuildProjectSpecEnvironment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `type` | ***string***| ***(Optional)*** |
 | `value` | ***string***||
 ## CodebuildProjectSpecSecondaryArtifacts
-##### (Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec))
+
+Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `artifactIdentifier` | ***string***||
@@ -89,7 +101,9 @@ section_menu_id: reference
 | `path` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## CodebuildProjectSpecSecondarySources
-##### (Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec))
+
+Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `auth` | ***[[]CodebuildProjectSpecSecondarySourcesAuth](#CodebuildProjectSpecSecondarySourcesAuth)***| ***(Optional)*** |
@@ -101,12 +115,16 @@ section_menu_id: reference
 | `sourceIdentifier` | ***string***||
 | `type` | ***string***||
 ## CodebuildProjectSpecSecondarySourcesAuth
-##### (Appears on:[CodebuildProjectSpecSecondarySources](#CodebuildProjectSpecSecondarySources))
+
+Appears on:[CodebuildProjectSpecSecondarySources](#CodebuildProjectSpecSecondarySources)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 ## CodebuildProjectSpecSource
-##### (Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec))
+
+Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `auth` | ***[[]CodebuildProjectSpecSourceAuth](#CodebuildProjectSpecSourceAuth)***| ***(Optional)*** |
@@ -117,19 +135,25 @@ section_menu_id: reference
 | `reportBuildStatus` | ***bool***| ***(Optional)*** |
 | `type` | ***string***||
 ## CodebuildProjectSpecSourceAuth
-##### (Appears on:[CodebuildProjectSpecSource](#CodebuildProjectSpecSource))
+
+Appears on:[CodebuildProjectSpecSource](#CodebuildProjectSpecSource)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 ## CodebuildProjectSpecVpcConfig
-##### (Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec))
+
+Appears on:[CodebuildProjectSpec](#CodebuildProjectSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `securityGroupIDS` | ***[]string***||
 | `subnets` | ***[]string***||
 | `vpcID` | ***string***||
 ## CodebuildProjectStatus
-##### (Appears on:[CodebuildProject](#CodebuildProject))
+
+Appears on:[CodebuildProject](#CodebuildProject)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

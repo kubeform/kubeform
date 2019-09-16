@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WafregionalRateBasedRuleSpec](#WafregionalRateBasedRuleSpec)***||
 | `status` | ***[WafregionalRateBasedRuleStatus](#WafregionalRateBasedRuleStatus)***||
 ## WafregionalRateBasedRuleSpec
-##### (Appears on:[WafregionalRateBasedRule](#WafregionalRateBasedRule), [WafregionalRateBasedRuleStatus](#WafregionalRateBasedRuleStatus))
+
+Appears on:[WafregionalRateBasedRule](#WafregionalRateBasedRule), [WafregionalRateBasedRuleStatus](#WafregionalRateBasedRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,14 +32,18 @@ section_menu_id: reference
 | `rateKey` | ***string***||
 | `rateLimit` | ***int***||
 ## WafregionalRateBasedRuleSpecPredicate
-##### (Appears on:[WafregionalRateBasedRuleSpec](#WafregionalRateBasedRuleSpec))
+
+Appears on:[WafregionalRateBasedRuleSpec](#WafregionalRateBasedRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dataID` | ***string***||
 | `negated` | ***bool***||
 | `type` | ***string***||
 ## WafregionalRateBasedRuleStatus
-##### (Appears on:[WafregionalRateBasedRule](#WafregionalRateBasedRule))
+
+Appears on:[WafregionalRateBasedRule](#WafregionalRateBasedRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

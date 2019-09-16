@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApiManagementLoggerSpec](#ApiManagementLoggerSpec)***||
 | `status` | ***[ApiManagementLoggerStatus](#ApiManagementLoggerStatus)***||
 ## ApiManagementLoggerSpec
-##### (Appears on:[ApiManagementLogger](#ApiManagementLogger), [ApiManagementLoggerStatus](#ApiManagementLoggerStatus))
+
+Appears on:[ApiManagementLogger](#ApiManagementLogger), [ApiManagementLoggerStatus](#ApiManagementLoggerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,16 +35,22 @@ section_menu_id: reference
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 ## ApiManagementLoggerSpecApplicationInsights
-##### (Appears on:[ApiManagementLoggerSpec](#ApiManagementLoggerSpec))
+
+Appears on:[ApiManagementLoggerSpec](#ApiManagementLoggerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 ## ApiManagementLoggerSpecEventhub
-##### (Appears on:[ApiManagementLoggerSpec](#ApiManagementLoggerSpec))
+
+Appears on:[ApiManagementLoggerSpec](#ApiManagementLoggerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 ## ApiManagementLoggerStatus
-##### (Appears on:[ApiManagementLogger](#ApiManagementLogger))
+
+Appears on:[ApiManagementLogger](#ApiManagementLogger)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

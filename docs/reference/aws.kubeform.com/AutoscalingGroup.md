@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AutoscalingGroupSpec](#AutoscalingGroupSpec)***||
 | `status` | ***[AutoscalingGroupStatus](#AutoscalingGroupStatus)***||
 ## AutoscalingGroupSpec
-##### (Appears on:[AutoscalingGroup](#AutoscalingGroup), [AutoscalingGroupStatus](#AutoscalingGroupStatus))
+
+Appears on:[AutoscalingGroup](#AutoscalingGroup), [AutoscalingGroupStatus](#AutoscalingGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -54,7 +56,9 @@ section_menu_id: reference
 | `waitForCapacityTimeout` | ***string***| ***(Optional)*** |
 | `waitForElbCapacity` | ***int***| ***(Optional)*** |
 ## AutoscalingGroupSpecInitialLifecycleHook
-##### (Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec))
+
+Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultResult` | ***string***| ***(Optional)*** |
@@ -65,20 +69,26 @@ section_menu_id: reference
 | `notificationTargetArn` | ***string***| ***(Optional)*** |
 | `roleArn` | ***string***| ***(Optional)*** |
 ## AutoscalingGroupSpecLaunchTemplate
-##### (Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec))
+
+Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
 ## AutoscalingGroupSpecMixedInstancesPolicy
-##### (Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec))
+
+Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `instancesDistribution` | ***[[]AutoscalingGroupSpecMixedInstancesPolicyInstancesDistribution](#AutoscalingGroupSpecMixedInstancesPolicyInstancesDistribution)***| ***(Optional)*** |
 | `launchTemplate` | ***[[]AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate](#AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate)***||
 ## AutoscalingGroupSpecMixedInstancesPolicyInstancesDistribution
-##### (Appears on:[AutoscalingGroupSpecMixedInstancesPolicy](#AutoscalingGroupSpecMixedInstancesPolicy))
+
+Appears on:[AutoscalingGroupSpecMixedInstancesPolicy](#AutoscalingGroupSpecMixedInstancesPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `onDemandAllocationStrategy` | ***string***| ***(Optional)*** |
@@ -88,32 +98,42 @@ section_menu_id: reference
 | `spotInstancePools` | ***int***| ***(Optional)*** |
 | `spotMaxPrice` | ***string***| ***(Optional)*** |
 ## AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate
-##### (Appears on:[AutoscalingGroupSpecMixedInstancesPolicy](#AutoscalingGroupSpecMixedInstancesPolicy))
+
+Appears on:[AutoscalingGroupSpecMixedInstancesPolicy](#AutoscalingGroupSpecMixedInstancesPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `launchTemplateSpecification` | ***[[]AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification](#AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification)***||
 | `override` | ***[[]AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateOverride](#AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateOverride)***| ***(Optional)*** |
 ## AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification
-##### (Appears on:[AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate](#AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate))
+
+Appears on:[AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate](#AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `launchTemplateID` | ***string***| ***(Optional)*** |
 | `launchTemplateName` | ***string***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
 ## AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateOverride
-##### (Appears on:[AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate](#AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate))
+
+Appears on:[AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate](#AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `instanceType` | ***string***| ***(Optional)*** |
 ## AutoscalingGroupSpecTag
-##### (Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec))
+
+Appears on:[AutoscalingGroupSpec](#AutoscalingGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `key` | ***string***||
 | `propagateAtLaunch` | ***bool***||
 | `value` | ***string***||
 ## AutoscalingGroupStatus
-##### (Appears on:[AutoscalingGroup](#AutoscalingGroup))
+
+Appears on:[AutoscalingGroup](#AutoscalingGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

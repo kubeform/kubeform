@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StorageContainerSpec](#StorageContainerSpec)***||
 | `status` | ***[StorageContainerStatus](#StorageContainerStatus)***||
 ## StorageContainerSpec
-##### (Appears on:[StorageContainer](#StorageContainer), [StorageContainerStatus](#StorageContainerStatus))
+
+Appears on:[StorageContainer](#StorageContainer), [StorageContainerStatus](#StorageContainerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***| ***(Optional)*** Deprecated|
 | `storageAccountName` | ***string***||
 ## StorageContainerStatus
-##### (Appears on:[StorageContainer](#StorageContainer))
+
+Appears on:[StorageContainer](#StorageContainer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

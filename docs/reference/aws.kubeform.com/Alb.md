@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AlbSpec](#AlbSpec)***||
 | `status` | ***[AlbStatus](#AlbStatus)***||
 ## AlbSpec
-##### (Appears on:[Alb](#Alb), [AlbStatus](#AlbStatus))
+
+Appears on:[Alb](#Alb), [AlbStatus](#AlbStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -44,20 +46,26 @@ section_menu_id: reference
 | `vpcID` | ***string***| ***(Optional)*** |
 | `zoneID` | ***string***| ***(Optional)*** |
 ## AlbSpecAccessLogs
-##### (Appears on:[AlbSpec](#AlbSpec))
+
+Appears on:[AlbSpec](#AlbSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucket` | ***string***||
 | `enabled` | ***bool***| ***(Optional)*** |
 | `prefix` | ***string***| ***(Optional)*** |
 ## AlbSpecSubnetMapping
-##### (Appears on:[AlbSpec](#AlbSpec))
+
+Appears on:[AlbSpec](#AlbSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allocationID` | ***string***| ***(Optional)*** |
 | `subnetID` | ***string***||
 ## AlbStatus
-##### (Appears on:[Alb](#Alb))
+
+Appears on:[Alb](#Alb)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

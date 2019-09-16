@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AppServiceActiveSlotSpec](#AppServiceActiveSlotSpec)***||
 | `status` | ***[AppServiceActiveSlotStatus](#AppServiceActiveSlotStatus)***||
 ## AppServiceActiveSlotSpec
-##### (Appears on:[AppServiceActiveSlot](#AppServiceActiveSlot), [AppServiceActiveSlotStatus](#AppServiceActiveSlotStatus))
+
+Appears on:[AppServiceActiveSlot](#AppServiceActiveSlot), [AppServiceActiveSlotStatus](#AppServiceActiveSlotStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `appServiceSlotName` | ***string***||
 | `resourceGroupName` | ***string***||
 ## AppServiceActiveSlotStatus
-##### (Appears on:[AppServiceActiveSlot](#AppServiceActiveSlot))
+
+Appears on:[AppServiceActiveSlot](#AppServiceActiveSlot)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NeptuneSubnetGroupSpec](#NeptuneSubnetGroupSpec)***||
 | `status` | ***[NeptuneSubnetGroupStatus](#NeptuneSubnetGroupStatus)***||
 ## NeptuneSubnetGroupSpec
-##### (Appears on:[NeptuneSubnetGroup](#NeptuneSubnetGroup), [NeptuneSubnetGroupStatus](#NeptuneSubnetGroupStatus))
+
+Appears on:[NeptuneSubnetGroup](#NeptuneSubnetGroup), [NeptuneSubnetGroupStatus](#NeptuneSubnetGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `subnetIDS` | ***[]string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## NeptuneSubnetGroupStatus
-##### (Appears on:[NeptuneSubnetGroup](#NeptuneSubnetGroup))
+
+Appears on:[NeptuneSubnetGroup](#NeptuneSubnetGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

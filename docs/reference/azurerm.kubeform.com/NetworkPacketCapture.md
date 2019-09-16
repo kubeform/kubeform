@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NetworkPacketCaptureSpec](#NetworkPacketCaptureSpec)***||
 | `status` | ***[NetworkPacketCaptureStatus](#NetworkPacketCaptureStatus)***||
 ## NetworkPacketCaptureSpec
-##### (Appears on:[NetworkPacketCapture](#NetworkPacketCapture), [NetworkPacketCaptureStatus](#NetworkPacketCaptureStatus))
+
+Appears on:[NetworkPacketCapture](#NetworkPacketCapture), [NetworkPacketCaptureStatus](#NetworkPacketCaptureStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `storageLocation` | ***[[]NetworkPacketCaptureSpecStorageLocation](#NetworkPacketCaptureSpecStorageLocation)***||
 | `targetResourceID` | ***string***||
 ## NetworkPacketCaptureSpecFilter
-##### (Appears on:[NetworkPacketCaptureSpec](#NetworkPacketCaptureSpec))
+
+Appears on:[NetworkPacketCaptureSpec](#NetworkPacketCaptureSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `localIPAddress` | ***string***| ***(Optional)*** |
@@ -43,14 +47,18 @@ section_menu_id: reference
 | `remoteIPAddress` | ***string***| ***(Optional)*** |
 | `remotePort` | ***string***| ***(Optional)*** |
 ## NetworkPacketCaptureSpecStorageLocation
-##### (Appears on:[NetworkPacketCaptureSpec](#NetworkPacketCaptureSpec))
+
+Appears on:[NetworkPacketCaptureSpec](#NetworkPacketCaptureSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `filePath` | ***string***| ***(Optional)*** |
 | `storageAccountID` | ***string***| ***(Optional)*** |
 | `storagePath` | ***string***| ***(Optional)*** |
 ## NetworkPacketCaptureStatus
-##### (Appears on:[NetworkPacketCapture](#NetworkPacketCapture))
+
+Appears on:[NetworkPacketCapture](#NetworkPacketCapture)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

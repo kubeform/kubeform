@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StorageTableSpec](#StorageTableSpec)***||
 | `status` | ***[StorageTableStatus](#StorageTableStatus)***||
 ## StorageTableSpec
-##### (Appears on:[StorageTable](#StorageTable), [StorageTableStatus](#StorageTableStatus))
+
+Appears on:[StorageTable](#StorageTable), [StorageTableStatus](#StorageTableStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,20 +31,26 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***| ***(Optional)*** Deprecated|
 | `storageAccountName` | ***string***||
 ## StorageTableSpecAcl
-##### (Appears on:[StorageTableSpec](#StorageTableSpec))
+
+Appears on:[StorageTableSpec](#StorageTableSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `accessPolicy` | ***[[]StorageTableSpecAclAccessPolicy](#StorageTableSpecAclAccessPolicy)***| ***(Optional)*** |
 | `ID` | ***string***||
 ## StorageTableSpecAclAccessPolicy
-##### (Appears on:[StorageTableSpecAcl](#StorageTableSpecAcl))
+
+Appears on:[StorageTableSpecAcl](#StorageTableSpecAcl)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `expiry` | ***string***||
 | `permissions` | ***string***||
 | `start` | ***string***||
 ## StorageTableStatus
-##### (Appears on:[StorageTable](#StorageTable))
+
+Appears on:[StorageTable](#StorageTable)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

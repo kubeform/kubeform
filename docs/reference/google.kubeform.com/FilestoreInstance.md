@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[FilestoreInstanceSpec](#FilestoreInstanceSpec)***||
 | `status` | ***[FilestoreInstanceStatus](#FilestoreInstanceStatus)***||
 ## FilestoreInstanceSpec
-##### (Appears on:[FilestoreInstance](#FilestoreInstance), [FilestoreInstanceStatus](#FilestoreInstanceStatus))
+
+Appears on:[FilestoreInstance](#FilestoreInstance), [FilestoreInstanceStatus](#FilestoreInstanceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,13 +37,17 @@ section_menu_id: reference
 | `tier` | ***string***||
 | `zone` | ***string***||
 ## FilestoreInstanceSpecFileShares
-##### (Appears on:[FilestoreInstanceSpec](#FilestoreInstanceSpec))
+
+Appears on:[FilestoreInstanceSpec](#FilestoreInstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `capacityGb` | ***int***||
 | `name` | ***string***||
 ## FilestoreInstanceSpecNetworks
-##### (Appears on:[FilestoreInstanceSpec](#FilestoreInstanceSpec))
+
+Appears on:[FilestoreInstanceSpec](#FilestoreInstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ipAddresses` | ***[]string***| ***(Optional)*** |
@@ -49,7 +55,9 @@ section_menu_id: reference
 | `network` | ***string***||
 | `reservedIPRange` | ***string***| ***(Optional)*** |
 ## FilestoreInstanceStatus
-##### (Appears on:[FilestoreInstance](#FilestoreInstance))
+
+Appears on:[FilestoreInstance](#FilestoreInstance)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

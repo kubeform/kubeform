@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[KmsGrantSpec](#KmsGrantSpec)***||
 | `status` | ***[KmsGrantStatus](#KmsGrantStatus)***||
 ## KmsGrantSpec
-##### (Appears on:[KmsGrant](#KmsGrant), [KmsGrantStatus](#KmsGrantStatus))
+
+Appears on:[KmsGrant](#KmsGrant), [KmsGrantStatus](#KmsGrantStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,13 +37,17 @@ section_menu_id: reference
 | `retireOnDelete` | ***bool***| ***(Optional)*** |
 | `retiringPrincipal` | ***string***| ***(Optional)*** |
 ## KmsGrantSpecConstraints
-##### (Appears on:[KmsGrantSpec](#KmsGrantSpec))
+
+Appears on:[KmsGrantSpec](#KmsGrantSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `encryptionContextEquals` | ***map[string]string***| ***(Optional)*** |
 | `encryptionContextSubset` | ***map[string]string***| ***(Optional)*** |
 ## KmsGrantStatus
-##### (Appears on:[KmsGrant](#KmsGrant))
+
+Appears on:[KmsGrant](#KmsGrant)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

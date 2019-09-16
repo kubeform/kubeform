@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LambdaAliasSpec](#LambdaAliasSpec)***||
 | `status` | ***[LambdaAliasStatus](#LambdaAliasStatus)***||
 ## LambdaAliasSpec
-##### (Appears on:[LambdaAlias](#LambdaAlias), [LambdaAliasStatus](#LambdaAliasStatus))
+
+Appears on:[LambdaAlias](#LambdaAlias), [LambdaAliasStatus](#LambdaAliasStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,12 +34,16 @@ section_menu_id: reference
 | `name` | ***string***||
 | `routingConfig` | ***[[]LambdaAliasSpecRoutingConfig](#LambdaAliasSpecRoutingConfig)***| ***(Optional)*** |
 ## LambdaAliasSpecRoutingConfig
-##### (Appears on:[LambdaAliasSpec](#LambdaAliasSpec))
+
+Appears on:[LambdaAliasSpec](#LambdaAliasSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `additionalVersionWeights` | ***map[string]encoding/json.Number***| ***(Optional)*** |
 ## LambdaAliasStatus
-##### (Appears on:[LambdaAlias](#LambdaAlias))
+
+Appears on:[LambdaAlias](#LambdaAlias)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

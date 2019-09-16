@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[PinpointBaiduChannelSpec](#PinpointBaiduChannelSpec)***||
 | `status` | ***[PinpointBaiduChannelStatus](#PinpointBaiduChannelStatus)***||
 ## PinpointBaiduChannelSpec
-##### (Appears on:[PinpointBaiduChannel](#PinpointBaiduChannel), [PinpointBaiduChannelStatus](#PinpointBaiduChannelStatus))
+
+Appears on:[PinpointBaiduChannel](#PinpointBaiduChannel), [PinpointBaiduChannelStatus](#PinpointBaiduChannelStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `applicationID` | ***string***||
 | `enabled` | ***bool***| ***(Optional)*** |
 ## PinpointBaiduChannelStatus
-##### (Appears on:[PinpointBaiduChannel](#PinpointBaiduChannel))
+
+Appears on:[PinpointBaiduChannel](#PinpointBaiduChannel)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

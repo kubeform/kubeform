@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Route53ZoneAssociationSpec](#Route53ZoneAssociationSpec)***||
 | `status` | ***[Route53ZoneAssociationStatus](#Route53ZoneAssociationStatus)***||
 ## Route53ZoneAssociationSpec
-##### (Appears on:[Route53ZoneAssociation](#Route53ZoneAssociation), [Route53ZoneAssociationStatus](#Route53ZoneAssociationStatus))
+
+Appears on:[Route53ZoneAssociation](#Route53ZoneAssociation), [Route53ZoneAssociationStatus](#Route53ZoneAssociationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `vpcRegion` | ***string***| ***(Optional)*** |
 | `zoneID` | ***string***||
 ## Route53ZoneAssociationStatus
-##### (Appears on:[Route53ZoneAssociation](#Route53ZoneAssociation))
+
+Appears on:[Route53ZoneAssociation](#Route53ZoneAssociation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DlmLifecyclePolicySpec](#DlmLifecyclePolicySpec)***||
 | `status` | ***[DlmLifecyclePolicyStatus](#DlmLifecyclePolicyStatus)***||
 ## DlmLifecyclePolicySpec
-##### (Appears on:[DlmLifecyclePolicy](#DlmLifecyclePolicy), [DlmLifecyclePolicyStatus](#DlmLifecyclePolicyStatus))
+
+Appears on:[DlmLifecyclePolicy](#DlmLifecyclePolicy), [DlmLifecyclePolicyStatus](#DlmLifecyclePolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,14 +31,18 @@ section_menu_id: reference
 | `policyDetails` | ***[[]DlmLifecyclePolicySpecPolicyDetails](#DlmLifecyclePolicySpecPolicyDetails)***||
 | `state` | ***string***| ***(Optional)*** |
 ## DlmLifecyclePolicySpecPolicyDetails
-##### (Appears on:[DlmLifecyclePolicySpec](#DlmLifecyclePolicySpec))
+
+Appears on:[DlmLifecyclePolicySpec](#DlmLifecyclePolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `resourceTypes` | ***[]string***||
 | `schedule` | ***[[]DlmLifecyclePolicySpecPolicyDetailsSchedule](#DlmLifecyclePolicySpecPolicyDetailsSchedule)***||
 | `targetTags` | ***map[string]string***||
 ## DlmLifecyclePolicySpecPolicyDetailsSchedule
-##### (Appears on:[DlmLifecyclePolicySpecPolicyDetails](#DlmLifecyclePolicySpecPolicyDetails))
+
+Appears on:[DlmLifecyclePolicySpecPolicyDetails](#DlmLifecyclePolicySpecPolicyDetails)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `copyTags` | ***bool***| ***(Optional)*** |
@@ -45,19 +51,25 @@ section_menu_id: reference
 | `retainRule` | ***[[]DlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule](#DlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule)***||
 | `tagsToAdd` | ***map[string]string***| ***(Optional)*** |
 ## DlmLifecyclePolicySpecPolicyDetailsScheduleCreateRule
-##### (Appears on:[DlmLifecyclePolicySpecPolicyDetailsSchedule](#DlmLifecyclePolicySpecPolicyDetailsSchedule))
+
+Appears on:[DlmLifecyclePolicySpecPolicyDetailsSchedule](#DlmLifecyclePolicySpecPolicyDetailsSchedule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `interval` | ***int***||
 | `intervalUnit` | ***string***| ***(Optional)*** |
 | `times` | ***[]string***| ***(Optional)*** |
 ## DlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule
-##### (Appears on:[DlmLifecyclePolicySpecPolicyDetailsSchedule](#DlmLifecyclePolicySpecPolicyDetailsSchedule))
+
+Appears on:[DlmLifecyclePolicySpecPolicyDetailsSchedule](#DlmLifecyclePolicySpecPolicyDetailsSchedule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `count` | ***int***||
 ## DlmLifecyclePolicyStatus
-##### (Appears on:[DlmLifecyclePolicy](#DlmLifecyclePolicy))
+
+Appears on:[DlmLifecyclePolicy](#DlmLifecyclePolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GuarddutyMemberSpec](#GuarddutyMemberSpec)***||
 | `status` | ***[GuarddutyMemberStatus](#GuarddutyMemberStatus)***||
 ## GuarddutyMemberSpec
-##### (Appears on:[GuarddutyMember](#GuarddutyMember), [GuarddutyMemberStatus](#GuarddutyMemberStatus))
+
+Appears on:[GuarddutyMember](#GuarddutyMember), [GuarddutyMemberStatus](#GuarddutyMemberStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `invite` | ***bool***| ***(Optional)*** |
 | `relationshipStatus` | ***string***| ***(Optional)*** |
 ## GuarddutyMemberStatus
-##### (Appears on:[GuarddutyMember](#GuarddutyMember))
+
+Appears on:[GuarddutyMember](#GuarddutyMember)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

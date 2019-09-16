@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CloudiotRegistrySpec](#CloudiotRegistrySpec)***||
 | `status` | ***[CloudiotRegistryStatus](#CloudiotRegistryStatus)***||
 ## CloudiotRegistrySpec
-##### (Appears on:[CloudiotRegistry](#CloudiotRegistry), [CloudiotRegistryStatus](#CloudiotRegistryStatus))
+
+Appears on:[CloudiotRegistry](#CloudiotRegistry), [CloudiotRegistryStatus](#CloudiotRegistryStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,12 +35,16 @@ section_menu_id: reference
 | `region` | ***string***| ***(Optional)*** |
 | `stateNotificationConfig` | ***map[string]kubeform.dev/kubeform/apis/google/v1alpha1.CloudiotRegistrySpecStateNotificationConfig***| ***(Optional)*** |
 ## CloudiotRegistrySpecCredentials
-##### (Appears on:[CloudiotRegistrySpec](#CloudiotRegistrySpec))
+
+Appears on:[CloudiotRegistrySpec](#CloudiotRegistrySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `publicKeyCertificate` | ***map[string]kubeform.dev/kubeform/apis/google/v1alpha1.CloudiotRegistrySpecCredentialsPublicKeyCertificate***| ***(Optional)*** |
 ## CloudiotRegistryStatus
-##### (Appears on:[CloudiotRegistry](#CloudiotRegistry))
+
+Appears on:[CloudiotRegistry](#CloudiotRegistry)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StoragegatewayCachedIscsiVolumeSpec](#StoragegatewayCachedIscsiVolumeSpec)***||
 | `status` | ***[StoragegatewayCachedIscsiVolumeStatus](#StoragegatewayCachedIscsiVolumeStatus)***||
 ## StoragegatewayCachedIscsiVolumeSpec
-##### (Appears on:[StoragegatewayCachedIscsiVolume](#StoragegatewayCachedIscsiVolume), [StoragegatewayCachedIscsiVolumeStatus](#StoragegatewayCachedIscsiVolumeStatus))
+
+Appears on:[StoragegatewayCachedIscsiVolume](#StoragegatewayCachedIscsiVolume), [StoragegatewayCachedIscsiVolumeStatus](#StoragegatewayCachedIscsiVolumeStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,7 +40,9 @@ section_menu_id: reference
 | `volumeID` | ***string***| ***(Optional)*** |
 | `volumeSizeInBytes` | ***int***||
 ## StoragegatewayCachedIscsiVolumeStatus
-##### (Appears on:[StoragegatewayCachedIscsiVolume](#StoragegatewayCachedIscsiVolume))
+
+Appears on:[StoragegatewayCachedIscsiVolume](#StoragegatewayCachedIscsiVolume)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

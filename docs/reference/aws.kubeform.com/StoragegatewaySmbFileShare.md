@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StoragegatewaySmbFileShareSpec](#StoragegatewaySmbFileShareSpec)***||
 | `status` | ***[StoragegatewaySmbFileShareStatus](#StoragegatewaySmbFileShareStatus)***||
 ## StoragegatewaySmbFileShareSpec
-##### (Appears on:[StoragegatewaySmbFileShare](#StoragegatewaySmbFileShare), [StoragegatewaySmbFileShareStatus](#StoragegatewaySmbFileShareStatus))
+
+Appears on:[StoragegatewaySmbFileShare](#StoragegatewaySmbFileShare), [StoragegatewaySmbFileShareStatus](#StoragegatewaySmbFileShareStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -40,7 +42,9 @@ section_menu_id: reference
 | `roleArn` | ***string***||
 | `validUserList` | ***[]string***| ***(Optional)*** |
 ## StoragegatewaySmbFileShareStatus
-##### (Appears on:[StoragegatewaySmbFileShare](#StoragegatewaySmbFileShare))
+
+Appears on:[StoragegatewaySmbFileShare](#StoragegatewaySmbFileShare)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

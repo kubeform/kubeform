@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[InstanceSpec](#InstanceSpec)***||
 | `status` | ***[InstanceStatus](#InstanceStatus)***||
 ## InstanceSpec
-##### (Appears on:[Instance](#Instance), [InstanceStatus](#InstanceStatus))
+
+Appears on:[Instance](#Instance), [InstanceStatus](#InstanceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -64,12 +66,16 @@ section_menu_id: reference
 | `volumeTags` | ***map[string]string***| ***(Optional)*** |
 | `vpcSecurityGroupIDS` | ***[]string***| ***(Optional)*** |
 ## InstanceSpecCreditSpecification
-##### (Appears on:[InstanceSpec](#InstanceSpec))
+
+Appears on:[InstanceSpec](#InstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cpuCredits` | ***string***| ***(Optional)*** |
 ## InstanceSpecEbsBlockDevice
-##### (Appears on:[InstanceSpec](#InstanceSpec))
+
+Appears on:[InstanceSpec](#InstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
@@ -81,21 +87,27 @@ section_menu_id: reference
 | `volumeSize` | ***int***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## InstanceSpecEphemeralBlockDevice
-##### (Appears on:[InstanceSpec](#InstanceSpec))
+
+Appears on:[InstanceSpec](#InstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deviceName` | ***string***||
 | `noDevice` | ***bool***| ***(Optional)*** |
 | `virtualName` | ***string***| ***(Optional)*** |
 ## InstanceSpecNetworkInterface
-##### (Appears on:[InstanceSpec](#InstanceSpec))
+
+Appears on:[InstanceSpec](#InstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
 | `deviceIndex` | ***int***||
 | `networkInterfaceID` | ***string***||
 ## InstanceSpecRootBlockDevice
-##### (Appears on:[InstanceSpec](#InstanceSpec))
+
+Appears on:[InstanceSpec](#InstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
@@ -104,7 +116,9 @@ section_menu_id: reference
 | `volumeSize` | ***int***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## InstanceStatus
-##### (Appears on:[Instance](#Instance))
+
+Appears on:[Instance](#Instance)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[RedshiftSecurityGroupSpec](#RedshiftSecurityGroupSpec)***||
 | `status` | ***[RedshiftSecurityGroupStatus](#RedshiftSecurityGroupStatus)***||
 ## RedshiftSecurityGroupSpec
-##### (Appears on:[RedshiftSecurityGroup](#RedshiftSecurityGroup), [RedshiftSecurityGroupStatus](#RedshiftSecurityGroupStatus))
+
+Appears on:[RedshiftSecurityGroup](#RedshiftSecurityGroup), [RedshiftSecurityGroupStatus](#RedshiftSecurityGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,14 +30,18 @@ section_menu_id: reference
 | `ingress` | ***[[]RedshiftSecurityGroupSpecIngress](#RedshiftSecurityGroupSpecIngress)***||
 | `name` | ***string***||
 ## RedshiftSecurityGroupSpecIngress
-##### (Appears on:[RedshiftSecurityGroupSpec](#RedshiftSecurityGroupSpec))
+
+Appears on:[RedshiftSecurityGroupSpec](#RedshiftSecurityGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cidr` | ***string***| ***(Optional)*** |
 | `securityGroupName` | ***string***| ***(Optional)*** |
 | `securityGroupOwnerID` | ***string***| ***(Optional)*** |
 ## RedshiftSecurityGroupStatus
-##### (Appears on:[RedshiftSecurityGroup](#RedshiftSecurityGroup))
+
+Appears on:[RedshiftSecurityGroup](#RedshiftSecurityGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

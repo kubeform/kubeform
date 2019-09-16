@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LogAnalyticsLinkedServiceSpec](#LogAnalyticsLinkedServiceSpec)***||
 | `status` | ***[LogAnalyticsLinkedServiceStatus](#LogAnalyticsLinkedServiceStatus)***||
 ## LogAnalyticsLinkedServiceSpec
-##### (Appears on:[LogAnalyticsLinkedService](#LogAnalyticsLinkedService), [LogAnalyticsLinkedServiceStatus](#LogAnalyticsLinkedServiceStatus))
+
+Appears on:[LogAnalyticsLinkedService](#LogAnalyticsLinkedService), [LogAnalyticsLinkedServiceStatus](#LogAnalyticsLinkedServiceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,12 +34,16 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `workspaceName` | ***string***||
 ## LogAnalyticsLinkedServiceSpecLinkedServiceProperties
-##### (Appears on:[LogAnalyticsLinkedServiceSpec](#LogAnalyticsLinkedServiceSpec))
+
+Appears on:[LogAnalyticsLinkedServiceSpec](#LogAnalyticsLinkedServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `resourceID` | ***string***||
 ## LogAnalyticsLinkedServiceStatus
-##### (Appears on:[LogAnalyticsLinkedService](#LogAnalyticsLinkedService))
+
+Appears on:[LogAnalyticsLinkedService](#LogAnalyticsLinkedService)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StorageAccountSpec](#StorageAccountSpec)***||
 | `status` | ***[StorageAccountStatus](#StorageAccountStatus)***||
 ## StorageAccountSpec
-##### (Appears on:[StorageAccount](#StorageAccount), [StorageAccountStatus](#StorageAccountStatus))
+
+Appears on:[StorageAccount](#StorageAccount), [StorageAccountStatus](#StorageAccountStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -71,20 +73,26 @@ section_menu_id: reference
 | `secondaryWebHost` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## StorageAccountSpecCustomDomain
-##### (Appears on:[StorageAccountSpec](#StorageAccountSpec))
+
+Appears on:[StorageAccountSpec](#StorageAccountSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `useSubdomain` | ***bool***| ***(Optional)*** |
 ## StorageAccountSpecIdentity
-##### (Appears on:[StorageAccountSpec](#StorageAccountSpec))
+
+Appears on:[StorageAccountSpec](#StorageAccountSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `principalID` | ***string***| ***(Optional)*** |
 | `tenantID` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## StorageAccountSpecNetworkRules
-##### (Appears on:[StorageAccountSpec](#StorageAccountSpec))
+
+Appears on:[StorageAccountSpec](#StorageAccountSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bypass` | ***[]string***| ***(Optional)*** |
@@ -92,7 +100,9 @@ section_menu_id: reference
 | `ipRules` | ***[]string***| ***(Optional)*** |
 | `virtualNetworkSubnetIDS` | ***[]string***| ***(Optional)*** |
 ## StorageAccountSpecQueueProperties
-##### (Appears on:[StorageAccountSpec](#StorageAccountSpec))
+
+Appears on:[StorageAccountSpec](#StorageAccountSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `corsRule` | ***[[]StorageAccountSpecQueuePropertiesCorsRule](#StorageAccountSpecQueuePropertiesCorsRule)***| ***(Optional)*** |
@@ -100,7 +110,9 @@ section_menu_id: reference
 | `logging` | ***[[]StorageAccountSpecQueuePropertiesLogging](#StorageAccountSpecQueuePropertiesLogging)***| ***(Optional)*** |
 | `minuteMetrics` | ***[[]StorageAccountSpecQueuePropertiesMinuteMetrics](#StorageAccountSpecQueuePropertiesMinuteMetrics)***| ***(Optional)*** |
 ## StorageAccountSpecQueuePropertiesCorsRule
-##### (Appears on:[StorageAccountSpecQueueProperties](#StorageAccountSpecQueueProperties))
+
+Appears on:[StorageAccountSpecQueueProperties](#StorageAccountSpecQueueProperties)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowedHeaders` | ***[]string***||
@@ -109,7 +121,9 @@ section_menu_id: reference
 | `exposedHeaders` | ***[]string***||
 | `maxAgeInSeconds` | ***int***||
 ## StorageAccountSpecQueuePropertiesHourMetrics
-##### (Appears on:[StorageAccountSpecQueueProperties](#StorageAccountSpecQueueProperties))
+
+Appears on:[StorageAccountSpecQueueProperties](#StorageAccountSpecQueueProperties)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
@@ -117,7 +131,9 @@ section_menu_id: reference
 | `retentionPolicyDays` | ***int***| ***(Optional)*** |
 | `version` | ***string***||
 ## StorageAccountSpecQueuePropertiesLogging
-##### (Appears on:[StorageAccountSpecQueueProperties](#StorageAccountSpecQueueProperties))
+
+Appears on:[StorageAccountSpecQueueProperties](#StorageAccountSpecQueueProperties)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `delete` | ***bool***||
@@ -126,7 +142,9 @@ section_menu_id: reference
 | `version` | ***string***||
 | `write` | ***bool***||
 ## StorageAccountSpecQueuePropertiesMinuteMetrics
-##### (Appears on:[StorageAccountSpecQueueProperties](#StorageAccountSpecQueueProperties))
+
+Appears on:[StorageAccountSpecQueueProperties](#StorageAccountSpecQueueProperties)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
@@ -134,7 +152,9 @@ section_menu_id: reference
 | `retentionPolicyDays` | ***int***| ***(Optional)*** |
 | `version` | ***string***||
 ## StorageAccountStatus
-##### (Appears on:[StorageAccount](#StorageAccount))
+
+Appears on:[StorageAccount](#StorageAccount)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

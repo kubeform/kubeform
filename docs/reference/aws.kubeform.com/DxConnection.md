@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DxConnectionSpec](#DxConnectionSpec)***||
 | `status` | ***[DxConnectionStatus](#DxConnectionStatus)***||
 ## DxConnectionSpec
-##### (Appears on:[DxConnection](#DxConnection), [DxConnectionStatus](#DxConnectionStatus))
+
+Appears on:[DxConnection](#DxConnection), [DxConnectionStatus](#DxConnectionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DxConnectionStatus
-##### (Appears on:[DxConnection](#DxConnection))
+
+Appears on:[DxConnection](#DxConnection)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

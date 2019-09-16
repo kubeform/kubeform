@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ElasticacheSubnetGroupSpec](#ElasticacheSubnetGroupSpec)***||
 | `status` | ***[ElasticacheSubnetGroupStatus](#ElasticacheSubnetGroupStatus)***||
 ## ElasticacheSubnetGroupSpec
-##### (Appears on:[ElasticacheSubnetGroup](#ElasticacheSubnetGroup), [ElasticacheSubnetGroupStatus](#ElasticacheSubnetGroupStatus))
+
+Appears on:[ElasticacheSubnetGroup](#ElasticacheSubnetGroup), [ElasticacheSubnetGroupStatus](#ElasticacheSubnetGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `subnetIDS` | ***[]string***||
 ## ElasticacheSubnetGroupStatus
-##### (Appears on:[ElasticacheSubnetGroup](#ElasticacheSubnetGroup))
+
+Appears on:[ElasticacheSubnetGroup](#ElasticacheSubnetGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

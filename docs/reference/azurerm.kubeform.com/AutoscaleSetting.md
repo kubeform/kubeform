@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AutoscaleSettingSpec](#AutoscaleSettingSpec)***||
 | `status` | ***[AutoscaleSettingStatus](#AutoscaleSettingStatus)***||
 ## AutoscaleSettingSpec
-##### (Appears on:[AutoscaleSetting](#AutoscaleSetting), [AutoscaleSettingStatus](#AutoscaleSettingStatus))
+
+Appears on:[AutoscaleSetting](#AutoscaleSetting), [AutoscaleSettingStatus](#AutoscaleSettingStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,26 +35,34 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `targetResourceID` | ***string***||
 ## AutoscaleSettingSpecNotification
-##### (Appears on:[AutoscaleSettingSpec](#AutoscaleSettingSpec))
+
+Appears on:[AutoscaleSettingSpec](#AutoscaleSettingSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `email` | ***[[]AutoscaleSettingSpecNotificationEmail](#AutoscaleSettingSpecNotificationEmail)***| ***(Optional)*** |
 | `webhook` | ***[[]AutoscaleSettingSpecNotificationWebhook](#AutoscaleSettingSpecNotificationWebhook)***| ***(Optional)*** |
 ## AutoscaleSettingSpecNotificationEmail
-##### (Appears on:[AutoscaleSettingSpecNotification](#AutoscaleSettingSpecNotification))
+
+Appears on:[AutoscaleSettingSpecNotification](#AutoscaleSettingSpecNotification)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `customEmails` | ***[]string***| ***(Optional)*** |
 | `sendToSubscriptionAdministrator` | ***bool***| ***(Optional)*** |
 | `sendToSubscriptionCoAdministrator` | ***bool***| ***(Optional)*** |
 ## AutoscaleSettingSpecNotificationWebhook
-##### (Appears on:[AutoscaleSettingSpecNotification](#AutoscaleSettingSpecNotification))
+
+Appears on:[AutoscaleSettingSpecNotification](#AutoscaleSettingSpecNotification)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `properties` | ***map[string]string***| ***(Optional)*** |
 | `serviceURI` | ***string***||
 ## AutoscaleSettingSpecProfile
-##### (Appears on:[AutoscaleSettingSpec](#AutoscaleSettingSpec))
+
+Appears on:[AutoscaleSettingSpec](#AutoscaleSettingSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `capacity` | ***[[]AutoscaleSettingSpecProfileCapacity](#AutoscaleSettingSpecProfileCapacity)***||
@@ -61,21 +71,27 @@ section_menu_id: reference
 | `recurrence` | ***[[]AutoscaleSettingSpecProfileRecurrence](#AutoscaleSettingSpecProfileRecurrence)***| ***(Optional)*** |
 | `rule` | ***[[]AutoscaleSettingSpecProfileRule](#AutoscaleSettingSpecProfileRule)***| ***(Optional)*** |
 ## AutoscaleSettingSpecProfileCapacity
-##### (Appears on:[AutoscaleSettingSpecProfile](#AutoscaleSettingSpecProfile))
+
+Appears on:[AutoscaleSettingSpecProfile](#AutoscaleSettingSpecProfile)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `default` | ***int***||
 | `maximum` | ***int***||
 | `minimum` | ***int***||
 ## AutoscaleSettingSpecProfileFixedDate
-##### (Appears on:[AutoscaleSettingSpecProfile](#AutoscaleSettingSpecProfile))
+
+Appears on:[AutoscaleSettingSpecProfile](#AutoscaleSettingSpecProfile)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `end` | ***string***||
 | `start` | ***string***||
 | `timezone` | ***string***| ***(Optional)*** |
 ## AutoscaleSettingSpecProfileRecurrence
-##### (Appears on:[AutoscaleSettingSpecProfile](#AutoscaleSettingSpecProfile))
+
+Appears on:[AutoscaleSettingSpecProfile](#AutoscaleSettingSpecProfile)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `days` | ***[]string***||
@@ -83,13 +99,17 @@ section_menu_id: reference
 | `minutes` | ***[]int64***||
 | `timezone` | ***string***| ***(Optional)*** |
 ## AutoscaleSettingSpecProfileRule
-##### (Appears on:[AutoscaleSettingSpecProfile](#AutoscaleSettingSpecProfile))
+
+Appears on:[AutoscaleSettingSpecProfile](#AutoscaleSettingSpecProfile)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `metricTrigger` | ***[[]AutoscaleSettingSpecProfileRuleMetricTrigger](#AutoscaleSettingSpecProfileRuleMetricTrigger)***||
 | `scaleAction` | ***[[]AutoscaleSettingSpecProfileRuleScaleAction](#AutoscaleSettingSpecProfileRuleScaleAction)***||
 ## AutoscaleSettingSpecProfileRuleMetricTrigger
-##### (Appears on:[AutoscaleSettingSpecProfileRule](#AutoscaleSettingSpecProfileRule))
+
+Appears on:[AutoscaleSettingSpecProfileRule](#AutoscaleSettingSpecProfileRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `metricName` | ***string***||
@@ -101,7 +121,9 @@ section_menu_id: reference
 | `timeGrain` | ***string***||
 | `timeWindow` | ***string***||
 ## AutoscaleSettingSpecProfileRuleScaleAction
-##### (Appears on:[AutoscaleSettingSpecProfileRule](#AutoscaleSettingSpecProfileRule))
+
+Appears on:[AutoscaleSettingSpecProfileRule](#AutoscaleSettingSpecProfileRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cooldown` | ***string***||
@@ -109,7 +131,9 @@ section_menu_id: reference
 | `type` | ***string***||
 | `value` | ***int***||
 ## AutoscaleSettingStatus
-##### (Appears on:[AutoscaleSetting](#AutoscaleSetting))
+
+Appears on:[AutoscaleSetting](#AutoscaleSetting)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

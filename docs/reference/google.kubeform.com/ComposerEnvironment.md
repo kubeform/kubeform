@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComposerEnvironmentSpec](#ComposerEnvironmentSpec)***||
 | `status` | ***[ComposerEnvironmentStatus](#ComposerEnvironmentStatus)***||
 ## ComposerEnvironmentSpec
-##### (Appears on:[ComposerEnvironment](#ComposerEnvironment), [ComposerEnvironmentStatus](#ComposerEnvironmentStatus))
+
+Appears on:[ComposerEnvironment](#ComposerEnvironment), [ComposerEnvironmentStatus](#ComposerEnvironmentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `project` | ***string***| ***(Optional)*** |
 | `region` | ***string***| ***(Optional)*** |
 ## ComposerEnvironmentSpecConfig
-##### (Appears on:[ComposerEnvironmentSpec](#ComposerEnvironmentSpec))
+
+Appears on:[ComposerEnvironmentSpec](#ComposerEnvironmentSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `airflowURI` | ***string***| ***(Optional)*** |
@@ -40,7 +44,9 @@ section_menu_id: reference
 | `nodeCount` | ***int***| ***(Optional)*** |
 | `softwareConfig` | ***[[]ComposerEnvironmentSpecConfigSoftwareConfig](#ComposerEnvironmentSpecConfigSoftwareConfig)***| ***(Optional)*** |
 ## ComposerEnvironmentSpecConfigNodeConfig
-##### (Appears on:[ComposerEnvironmentSpecConfig](#ComposerEnvironmentSpecConfig))
+
+Appears on:[ComposerEnvironmentSpecConfig](#ComposerEnvironmentSpecConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskSizeGb` | ***int***| ***(Optional)*** |
@@ -52,7 +58,9 @@ section_menu_id: reference
 | `tags` | ***[]string***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
 ## ComposerEnvironmentSpecConfigSoftwareConfig
-##### (Appears on:[ComposerEnvironmentSpecConfig](#ComposerEnvironmentSpecConfig))
+
+Appears on:[ComposerEnvironmentSpecConfig](#ComposerEnvironmentSpecConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `airflowConfigOverrides` | ***map[string]string***| ***(Optional)*** |
@@ -60,7 +68,9 @@ section_menu_id: reference
 | `imageVersion` | ***string***| ***(Optional)*** |
 | `pypiPackages` | ***map[string]string***| ***(Optional)*** |
 ## ComposerEnvironmentStatus
-##### (Appears on:[ComposerEnvironment](#ComposerEnvironment))
+
+Appears on:[ComposerEnvironment](#ComposerEnvironment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

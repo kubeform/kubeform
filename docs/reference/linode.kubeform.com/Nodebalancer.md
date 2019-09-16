@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NodebalancerSpec](#NodebalancerSpec)***||
 | `status` | ***[NodebalancerStatus](#NodebalancerStatus)***||
 ## NodebalancerSpec
-##### (Appears on:[Nodebalancer](#Nodebalancer), [NodebalancerStatus](#NodebalancerStatus))
+
+Appears on:[Nodebalancer](#Nodebalancer), [NodebalancerStatus](#NodebalancerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,7 +37,9 @@ section_menu_id: reference
 | `transfer` | ***map[string]kubeform.dev/kubeform/apis/linode/v1alpha1.NodebalancerSpecTransfer***| ***(Optional)*** |
 | `updated` | ***string***| ***(Optional)*** |
 ## NodebalancerStatus
-##### (Appears on:[Nodebalancer](#Nodebalancer))
+
+Appears on:[Nodebalancer](#Nodebalancer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

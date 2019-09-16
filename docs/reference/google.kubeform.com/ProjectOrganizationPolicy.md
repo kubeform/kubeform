@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ProjectOrganizationPolicySpec](#ProjectOrganizationPolicySpec)***||
 | `status` | ***[ProjectOrganizationPolicyStatus](#ProjectOrganizationPolicyStatus)***||
 ## ProjectOrganizationPolicySpec
-##### (Appears on:[ProjectOrganizationPolicy](#ProjectOrganizationPolicy), [ProjectOrganizationPolicyStatus](#ProjectOrganizationPolicyStatus))
+
+Appears on:[ProjectOrganizationPolicy](#ProjectOrganizationPolicy), [ProjectOrganizationPolicyStatus](#ProjectOrganizationPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,36 +35,48 @@ section_menu_id: reference
 | `updateTime` | ***string***| ***(Optional)*** |
 | `version` | ***int***| ***(Optional)*** |
 ## ProjectOrganizationPolicySpecBooleanPolicy
-##### (Appears on:[ProjectOrganizationPolicySpec](#ProjectOrganizationPolicySpec))
+
+Appears on:[ProjectOrganizationPolicySpec](#ProjectOrganizationPolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enforced` | ***bool***||
 ## ProjectOrganizationPolicySpecListPolicy
-##### (Appears on:[ProjectOrganizationPolicySpec](#ProjectOrganizationPolicySpec))
+
+Appears on:[ProjectOrganizationPolicySpec](#ProjectOrganizationPolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allow` | ***[[]ProjectOrganizationPolicySpecListPolicyAllow](#ProjectOrganizationPolicySpecListPolicyAllow)***| ***(Optional)*** |
 | `deny` | ***[[]ProjectOrganizationPolicySpecListPolicyDeny](#ProjectOrganizationPolicySpecListPolicyDeny)***| ***(Optional)*** |
 | `suggestedValue` | ***string***| ***(Optional)*** |
 ## ProjectOrganizationPolicySpecListPolicyAllow
-##### (Appears on:[ProjectOrganizationPolicySpecListPolicy](#ProjectOrganizationPolicySpecListPolicy))
+
+Appears on:[ProjectOrganizationPolicySpecListPolicy](#ProjectOrganizationPolicySpecListPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `all` | ***bool***| ***(Optional)*** |
 | `values` | ***[]string***| ***(Optional)*** |
 ## ProjectOrganizationPolicySpecListPolicyDeny
-##### (Appears on:[ProjectOrganizationPolicySpecListPolicy](#ProjectOrganizationPolicySpecListPolicy))
+
+Appears on:[ProjectOrganizationPolicySpecListPolicy](#ProjectOrganizationPolicySpecListPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `all` | ***bool***| ***(Optional)*** |
 | `values` | ***[]string***| ***(Optional)*** |
 ## ProjectOrganizationPolicySpecRestorePolicy
-##### (Appears on:[ProjectOrganizationPolicySpec](#ProjectOrganizationPolicySpec))
+
+Appears on:[ProjectOrganizationPolicySpec](#ProjectOrganizationPolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `default` | ***bool***||
 ## ProjectOrganizationPolicyStatus
-##### (Appears on:[ProjectOrganizationPolicy](#ProjectOrganizationPolicy))
+
+Appears on:[ProjectOrganizationPolicy](#ProjectOrganizationPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

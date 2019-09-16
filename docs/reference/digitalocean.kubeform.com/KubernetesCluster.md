@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[KubernetesClusterSpec](#KubernetesClusterSpec)***||
 | `status` | ***[KubernetesClusterStatus](#KubernetesClusterStatus)***||
 ## KubernetesClusterSpec
-##### (Appears on:[KubernetesCluster](#KubernetesCluster), [KubernetesClusterStatus](#KubernetesClusterStatus))
+
+Appears on:[KubernetesCluster](#KubernetesCluster), [KubernetesClusterStatus](#KubernetesClusterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,7 +40,9 @@ section_menu_id: reference
 | `updatedAt` | ***string***| ***(Optional)*** |
 | `version` | ***string***||
 ## KubernetesClusterSpecKubeConfig
-##### (Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec))
+
+Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `clientCertificate` | ***string***| ***(Optional)*** |
@@ -47,7 +51,9 @@ section_menu_id: reference
 | `host` | ***string***| ***(Optional)*** |
 | `rawConfig` | ***string***| ***(Optional)*** |
 ## KubernetesClusterSpecNodePool
-##### (Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec))
+
+Appears on:[KubernetesClusterSpec](#KubernetesClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
@@ -57,7 +63,9 @@ section_menu_id: reference
 | `size` | ***string***||
 | `tags` | ***[]string***| ***(Optional)*** |
 ## KubernetesClusterSpecNodePoolNodes
-##### (Appears on:[KubernetesClusterSpecNodePool](#KubernetesClusterSpecNodePool))
+
+Appears on:[KubernetesClusterSpecNodePool](#KubernetesClusterSpecNodePool)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `createdAt` | ***string***| ***(Optional)*** |
@@ -66,7 +74,9 @@ section_menu_id: reference
 | `status` | ***string***| ***(Optional)*** |
 | `updatedAt` | ***string***| ***(Optional)*** |
 ## KubernetesClusterStatus
-##### (Appears on:[KubernetesCluster](#KubernetesCluster))
+
+Appears on:[KubernetesCluster](#KubernetesCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

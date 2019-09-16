@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SnsTopicSpec](#SnsTopicSpec)***||
 | `status` | ***[SnsTopicStatus](#SnsTopicStatus)***||
 ## SnsTopicSpec
-##### (Appears on:[SnsTopic](#SnsTopic), [SnsTopicStatus](#SnsTopicStatus))
+
+Appears on:[SnsTopic](#SnsTopic), [SnsTopicStatus](#SnsTopicStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -44,7 +46,9 @@ section_menu_id: reference
 | `sqsSuccessFeedbackRoleArn` | ***string***| ***(Optional)*** |
 | `sqsSuccessFeedbackSampleRate` | ***int***| ***(Optional)*** |
 ## SnsTopicStatus
-##### (Appears on:[SnsTopic](#SnsTopic))
+
+Appears on:[SnsTopic](#SnsTopic)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

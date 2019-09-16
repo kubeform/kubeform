@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[RoleDefinitionSpec](#RoleDefinitionSpec)***||
 | `status` | ***[RoleDefinitionStatus](#RoleDefinitionStatus)***||
 ## RoleDefinitionSpec
-##### (Appears on:[RoleDefinition](#RoleDefinition), [RoleDefinitionStatus](#RoleDefinitionStatus))
+
+Appears on:[RoleDefinition](#RoleDefinition), [RoleDefinitionStatus](#RoleDefinitionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `roleDefinitionID` | ***string***| ***(Optional)*** |
 | `scope` | ***string***||
 ## RoleDefinitionSpecPermissions
-##### (Appears on:[RoleDefinitionSpec](#RoleDefinitionSpec))
+
+Appears on:[RoleDefinitionSpec](#RoleDefinitionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `actions` | ***[]string***| ***(Optional)*** |
@@ -39,7 +43,9 @@ section_menu_id: reference
 | `notActions` | ***[]string***| ***(Optional)*** |
 | `notDataActions` | ***[]string***| ***(Optional)*** |
 ## RoleDefinitionStatus
-##### (Appears on:[RoleDefinition](#RoleDefinition))
+
+Appears on:[RoleDefinition](#RoleDefinition)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LogicAppTriggerHTTPRequestSpec](#LogicAppTriggerHTTPRequestSpec)***||
 | `status` | ***[LogicAppTriggerHTTPRequestStatus](#LogicAppTriggerHTTPRequestStatus)***||
 ## LogicAppTriggerHTTPRequestSpec
-##### (Appears on:[LogicAppTriggerHTTPRequest](#LogicAppTriggerHTTPRequest), [LogicAppTriggerHTTPRequestStatus](#LogicAppTriggerHTTPRequestStatus))
+
+Appears on:[LogicAppTriggerHTTPRequest](#LogicAppTriggerHTTPRequest), [LogicAppTriggerHTTPRequestStatus](#LogicAppTriggerHTTPRequestStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `relativePath` | ***string***| ***(Optional)*** |
 | `schema` | ***string***||
 ## LogicAppTriggerHTTPRequestStatus
-##### (Appears on:[LogicAppTriggerHTTPRequest](#LogicAppTriggerHTTPRequest))
+
+Appears on:[LogicAppTriggerHTTPRequest](#LogicAppTriggerHTTPRequest)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

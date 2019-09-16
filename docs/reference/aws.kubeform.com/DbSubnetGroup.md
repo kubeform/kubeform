@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DbSubnetGroupSpec](#DbSubnetGroupSpec)***||
 | `status` | ***[DbSubnetGroupStatus](#DbSubnetGroupStatus)***||
 ## DbSubnetGroupSpec
-##### (Appears on:[DbSubnetGroup](#DbSubnetGroup), [DbSubnetGroupStatus](#DbSubnetGroupStatus))
+
+Appears on:[DbSubnetGroup](#DbSubnetGroup), [DbSubnetGroupStatus](#DbSubnetGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `subnetIDS` | ***[]string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DbSubnetGroupStatus
-##### (Appears on:[DbSubnetGroup](#DbSubnetGroup))
+
+Appears on:[DbSubnetGroup](#DbSubnetGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

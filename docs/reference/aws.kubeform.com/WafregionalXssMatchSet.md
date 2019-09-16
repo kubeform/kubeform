@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WafregionalXssMatchSetSpec](#WafregionalXssMatchSetSpec)***||
 | `status` | ***[WafregionalXssMatchSetStatus](#WafregionalXssMatchSetStatus)***||
 ## WafregionalXssMatchSetSpec
-##### (Appears on:[WafregionalXssMatchSet](#WafregionalXssMatchSet), [WafregionalXssMatchSetStatus](#WafregionalXssMatchSetStatus))
+
+Appears on:[WafregionalXssMatchSet](#WafregionalXssMatchSet), [WafregionalXssMatchSetStatus](#WafregionalXssMatchSetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,19 +29,25 @@ section_menu_id: reference
 | `name` | ***string***||
 | `xssMatchTuple` | ***[[]WafregionalXssMatchSetSpecXssMatchTuple](#WafregionalXssMatchSetSpecXssMatchTuple)***| ***(Optional)*** |
 ## WafregionalXssMatchSetSpecXssMatchTuple
-##### (Appears on:[WafregionalXssMatchSetSpec](#WafregionalXssMatchSetSpec))
+
+Appears on:[WafregionalXssMatchSetSpec](#WafregionalXssMatchSetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `fieldToMatch` | ***[[]WafregionalXssMatchSetSpecXssMatchTupleFieldToMatch](#WafregionalXssMatchSetSpecXssMatchTupleFieldToMatch)***||
 | `textTransformation` | ***string***||
 ## WafregionalXssMatchSetSpecXssMatchTupleFieldToMatch
-##### (Appears on:[WafregionalXssMatchSetSpecXssMatchTuple](#WafregionalXssMatchSetSpecXssMatchTuple))
+
+Appears on:[WafregionalXssMatchSetSpecXssMatchTuple](#WafregionalXssMatchSetSpecXssMatchTuple)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `data` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## WafregionalXssMatchSetStatus
-##### (Appears on:[WafregionalXssMatchSet](#WafregionalXssMatchSet))
+
+Appears on:[WafregionalXssMatchSet](#WafregionalXssMatchSet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CloudfrontDistributionSpec](#CloudfrontDistributionSpec)***||
 | `status` | ***[CloudfrontDistributionStatus](#CloudfrontDistributionStatus)***||
 ## CloudfrontDistributionSpec
-##### (Appears on:[CloudfrontDistribution](#CloudfrontDistribution), [CloudfrontDistributionStatus](#CloudfrontDistributionStatus))
+
+Appears on:[CloudfrontDistribution](#CloudfrontDistribution), [CloudfrontDistributionStatus](#CloudfrontDistributionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -53,7 +55,9 @@ section_menu_id: reference
 | `waitForDeployment` | ***bool***| ***(Optional)*** |
 | `webACLID` | ***string***| ***(Optional)*** |
 ## CloudfrontDistributionSpecCustomErrorResponse
-##### (Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec))
+
+Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `errorCachingMinTtl` | ***int***| ***(Optional)*** |
@@ -61,7 +65,9 @@ section_menu_id: reference
 | `responseCode` | ***int***| ***(Optional)*** |
 | `responsePagePath` | ***string***| ***(Optional)*** |
 ## CloudfrontDistributionSpecDefaultCacheBehavior
-##### (Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec))
+
+Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowedMethods` | ***[]string***||
@@ -78,7 +84,9 @@ section_menu_id: reference
 | `trustedSigners` | ***[]string***| ***(Optional)*** |
 | `viewerProtocolPolicy` | ***string***||
 ## CloudfrontDistributionSpecDefaultCacheBehaviorForwardedValues
-##### (Appears on:[CloudfrontDistributionSpecDefaultCacheBehavior](#CloudfrontDistributionSpecDefaultCacheBehavior))
+
+Appears on:[CloudfrontDistributionSpecDefaultCacheBehavior](#CloudfrontDistributionSpecDefaultCacheBehavior)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cookies` | ***[[]CloudfrontDistributionSpecDefaultCacheBehaviorForwardedValuesCookies](#CloudfrontDistributionSpecDefaultCacheBehaviorForwardedValuesCookies)***||
@@ -86,27 +94,35 @@ section_menu_id: reference
 | `queryString` | ***bool***||
 | `queryStringCacheKeys` | ***[]string***| ***(Optional)*** |
 ## CloudfrontDistributionSpecDefaultCacheBehaviorForwardedValuesCookies
-##### (Appears on:[CloudfrontDistributionSpecDefaultCacheBehaviorForwardedValues](#CloudfrontDistributionSpecDefaultCacheBehaviorForwardedValues))
+
+Appears on:[CloudfrontDistributionSpecDefaultCacheBehaviorForwardedValues](#CloudfrontDistributionSpecDefaultCacheBehaviorForwardedValues)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `forward` | ***string***||
 | `whitelistedNames` | ***[]string***| ***(Optional)*** |
 ## CloudfrontDistributionSpecDefaultCacheBehaviorLambdaFunctionAssociation
-##### (Appears on:[CloudfrontDistributionSpecDefaultCacheBehavior](#CloudfrontDistributionSpecDefaultCacheBehavior))
+
+Appears on:[CloudfrontDistributionSpecDefaultCacheBehavior](#CloudfrontDistributionSpecDefaultCacheBehavior)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `eventType` | ***string***||
 | `includeBody` | ***bool***| ***(Optional)*** |
 | `lambdaArn` | ***string***||
 ## CloudfrontDistributionSpecLoggingConfig
-##### (Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec))
+
+Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucket` | ***string***||
 | `includeCookies` | ***bool***| ***(Optional)*** |
 | `prefix` | ***string***| ***(Optional)*** |
 ## CloudfrontDistributionSpecOrderedCacheBehavior
-##### (Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec))
+
+Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowedMethods` | ***[]string***||
@@ -124,7 +140,9 @@ section_menu_id: reference
 | `trustedSigners` | ***[]string***| ***(Optional)*** |
 | `viewerProtocolPolicy` | ***string***||
 ## CloudfrontDistributionSpecOrderedCacheBehaviorForwardedValues
-##### (Appears on:[CloudfrontDistributionSpecOrderedCacheBehavior](#CloudfrontDistributionSpecOrderedCacheBehavior))
+
+Appears on:[CloudfrontDistributionSpecOrderedCacheBehavior](#CloudfrontDistributionSpecOrderedCacheBehavior)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cookies` | ***[[]CloudfrontDistributionSpecOrderedCacheBehaviorForwardedValuesCookies](#CloudfrontDistributionSpecOrderedCacheBehaviorForwardedValuesCookies)***||
@@ -132,20 +150,26 @@ section_menu_id: reference
 | `queryString` | ***bool***||
 | `queryStringCacheKeys` | ***[]string***| ***(Optional)*** |
 ## CloudfrontDistributionSpecOrderedCacheBehaviorForwardedValuesCookies
-##### (Appears on:[CloudfrontDistributionSpecOrderedCacheBehaviorForwardedValues](#CloudfrontDistributionSpecOrderedCacheBehaviorForwardedValues))
+
+Appears on:[CloudfrontDistributionSpecOrderedCacheBehaviorForwardedValues](#CloudfrontDistributionSpecOrderedCacheBehaviorForwardedValues)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `forward` | ***string***||
 | `whitelistedNames` | ***[]string***| ***(Optional)*** |
 ## CloudfrontDistributionSpecOrderedCacheBehaviorLambdaFunctionAssociation
-##### (Appears on:[CloudfrontDistributionSpecOrderedCacheBehavior](#CloudfrontDistributionSpecOrderedCacheBehavior))
+
+Appears on:[CloudfrontDistributionSpecOrderedCacheBehavior](#CloudfrontDistributionSpecOrderedCacheBehavior)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `eventType` | ***string***||
 | `includeBody` | ***bool***| ***(Optional)*** |
 | `lambdaArn` | ***string***||
 ## CloudfrontDistributionSpecOrigin
-##### (Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec))
+
+Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `customHeader` | ***[[]CloudfrontDistributionSpecOriginCustomHeader](#CloudfrontDistributionSpecOriginCustomHeader)***| ***(Optional)*** |
@@ -155,13 +179,17 @@ section_menu_id: reference
 | `originPath` | ***string***| ***(Optional)*** |
 | `s3OriginConfig` | ***[[]CloudfrontDistributionSpecOriginS3OriginConfig](#CloudfrontDistributionSpecOriginS3OriginConfig)***| ***(Optional)*** |
 ## CloudfrontDistributionSpecOriginCustomHeader
-##### (Appears on:[CloudfrontDistributionSpecOrigin](#CloudfrontDistributionSpecOrigin))
+
+Appears on:[CloudfrontDistributionSpecOrigin](#CloudfrontDistributionSpecOrigin)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `value` | ***string***||
 ## CloudfrontDistributionSpecOriginCustomOriginConfig
-##### (Appears on:[CloudfrontDistributionSpecOrigin](#CloudfrontDistributionSpecOrigin))
+
+Appears on:[CloudfrontDistributionSpecOrigin](#CloudfrontDistributionSpecOrigin)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `httpPort` | ***int***||
@@ -171,40 +199,54 @@ section_menu_id: reference
 | `originReadTimeout` | ***int***| ***(Optional)*** |
 | `originSSLProtocols` | ***[]string***||
 ## CloudfrontDistributionSpecOriginGroup
-##### (Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec))
+
+Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `failoverCriteria` | ***[[]CloudfrontDistributionSpecOriginGroupFailoverCriteria](#CloudfrontDistributionSpecOriginGroupFailoverCriteria)***||
 | `member` | ***[[]CloudfrontDistributionSpecOriginGroupMember](#CloudfrontDistributionSpecOriginGroupMember)***||
 | `originID` | ***string***||
 ## CloudfrontDistributionSpecOriginGroupFailoverCriteria
-##### (Appears on:[CloudfrontDistributionSpecOriginGroup](#CloudfrontDistributionSpecOriginGroup))
+
+Appears on:[CloudfrontDistributionSpecOriginGroup](#CloudfrontDistributionSpecOriginGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `statusCodes` | ***[]int64***||
 ## CloudfrontDistributionSpecOriginGroupMember
-##### (Appears on:[CloudfrontDistributionSpecOriginGroup](#CloudfrontDistributionSpecOriginGroup))
+
+Appears on:[CloudfrontDistributionSpecOriginGroup](#CloudfrontDistributionSpecOriginGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `originID` | ***string***||
 ## CloudfrontDistributionSpecOriginS3OriginConfig
-##### (Appears on:[CloudfrontDistributionSpecOrigin](#CloudfrontDistributionSpecOrigin))
+
+Appears on:[CloudfrontDistributionSpecOrigin](#CloudfrontDistributionSpecOrigin)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `originAccessIdentity` | ***string***||
 ## CloudfrontDistributionSpecRestrictions
-##### (Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec))
+
+Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `geoRestriction` | ***[[]CloudfrontDistributionSpecRestrictionsGeoRestriction](#CloudfrontDistributionSpecRestrictionsGeoRestriction)***||
 ## CloudfrontDistributionSpecRestrictionsGeoRestriction
-##### (Appears on:[CloudfrontDistributionSpecRestrictions](#CloudfrontDistributionSpecRestrictions))
+
+Appears on:[CloudfrontDistributionSpecRestrictions](#CloudfrontDistributionSpecRestrictions)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `locations` | ***[]string***| ***(Optional)*** |
 | `restrictionType` | ***string***||
 ## CloudfrontDistributionSpecViewerCertificate
-##### (Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec))
+
+Appears on:[CloudfrontDistributionSpec](#CloudfrontDistributionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `acmCertificateArn` | ***string***| ***(Optional)*** |
@@ -213,7 +255,9 @@ section_menu_id: reference
 | `minimumProtocolVersion` | ***string***| ***(Optional)*** |
 | `sslSupportMethod` | ***string***| ***(Optional)*** |
 ## CloudfrontDistributionStatus
-##### (Appears on:[CloudfrontDistribution](#CloudfrontDistribution))
+
+Appears on:[CloudfrontDistribution](#CloudfrontDistribution)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

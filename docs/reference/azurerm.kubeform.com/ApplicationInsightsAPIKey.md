@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApplicationInsightsAPIKeySpec](#ApplicationInsightsAPIKeySpec)***||
 | `status` | ***[ApplicationInsightsAPIKeyStatus](#ApplicationInsightsAPIKeyStatus)***||
 ## ApplicationInsightsAPIKeySpec
-##### (Appears on:[ApplicationInsightsAPIKey](#ApplicationInsightsAPIKey), [ApplicationInsightsAPIKeyStatus](#ApplicationInsightsAPIKeyStatus))
+
+Appears on:[ApplicationInsightsAPIKey](#ApplicationInsightsAPIKey), [ApplicationInsightsAPIKeyStatus](#ApplicationInsightsAPIKeyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `readPermissions` | ***[]string***| ***(Optional)*** |
 | `writePermissions` | ***[]string***| ***(Optional)*** |
 ## ApplicationInsightsAPIKeyStatus
-##### (Appears on:[ApplicationInsightsAPIKey](#ApplicationInsightsAPIKey))
+
+Appears on:[ApplicationInsightsAPIKey](#ApplicationInsightsAPIKey)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

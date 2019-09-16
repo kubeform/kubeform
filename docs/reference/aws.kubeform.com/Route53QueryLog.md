@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Route53QueryLogSpec](#Route53QueryLogSpec)***||
 | `status` | ***[Route53QueryLogStatus](#Route53QueryLogStatus)***||
 ## Route53QueryLogSpec
-##### (Appears on:[Route53QueryLog](#Route53QueryLog), [Route53QueryLogStatus](#Route53QueryLogStatus))
+
+Appears on:[Route53QueryLog](#Route53QueryLog), [Route53QueryLogStatus](#Route53QueryLogStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `cloudwatchLogGroupArn` | ***string***||
 | `zoneID` | ***string***||
 ## Route53QueryLogStatus
-##### (Appears on:[Route53QueryLog](#Route53QueryLog))
+
+Appears on:[Route53QueryLog](#Route53QueryLog)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NotificationHubAuthorizationRuleSpec](#NotificationHubAuthorizationRuleSpec)***||
 | `status` | ***[NotificationHubAuthorizationRuleStatus](#NotificationHubAuthorizationRuleStatus)***||
 ## NotificationHubAuthorizationRuleSpec
-##### (Appears on:[NotificationHubAuthorizationRule](#NotificationHubAuthorizationRule), [NotificationHubAuthorizationRuleStatus](#NotificationHubAuthorizationRuleStatus))
+
+Appears on:[NotificationHubAuthorizationRule](#NotificationHubAuthorizationRule), [NotificationHubAuthorizationRuleStatus](#NotificationHubAuthorizationRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `secondaryAccessKey` | ***string***| ***(Optional)*** |
 | `send` | ***bool***| ***(Optional)*** |
 ## NotificationHubAuthorizationRuleStatus
-##### (Appears on:[NotificationHubAuthorizationRule](#NotificationHubAuthorizationRule))
+
+Appears on:[NotificationHubAuthorizationRule](#NotificationHubAuthorizationRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

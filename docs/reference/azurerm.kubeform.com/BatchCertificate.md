@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[BatchCertificateSpec](#BatchCertificateSpec)***||
 | `status` | ***[BatchCertificateStatus](#BatchCertificateStatus)***||
 ## BatchCertificateSpec
-##### (Appears on:[BatchCertificate](#BatchCertificate), [BatchCertificateStatus](#BatchCertificateStatus))
+
+Appears on:[BatchCertificate](#BatchCertificate), [BatchCertificateStatus](#BatchCertificateStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `thumbprint` | ***string***||
 | `thumbprintAlgorithm` | ***string***||
 ## BatchCertificateStatus
-##### (Appears on:[BatchCertificate](#BatchCertificate))
+
+Appears on:[BatchCertificate](#BatchCertificate)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NeptuneClusterSpec](#NeptuneClusterSpec)***||
 | `status` | ***[NeptuneClusterStatus](#NeptuneClusterStatus)***||
 ## NeptuneClusterSpec
-##### (Appears on:[NeptuneCluster](#NeptuneCluster), [NeptuneClusterStatus](#NeptuneClusterStatus))
+
+Appears on:[NeptuneCluster](#NeptuneCluster), [NeptuneClusterStatus](#NeptuneClusterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -53,7 +55,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpcSecurityGroupIDS` | ***[]string***| ***(Optional)*** |
 ## NeptuneClusterStatus
-##### (Appears on:[NeptuneCluster](#NeptuneCluster))
+
+Appears on:[NeptuneCluster](#NeptuneCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

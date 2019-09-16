@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[FlowLogSpec](#FlowLogSpec)***||
 | `status` | ***[FlowLogStatus](#FlowLogStatus)***||
 ## FlowLogSpec
-##### (Appears on:[FlowLog](#FlowLog), [FlowLogStatus](#FlowLogStatus))
+
+Appears on:[FlowLog](#FlowLog), [FlowLogStatus](#FlowLogStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `trafficType` | ***string***||
 | `vpcID` | ***string***| ***(Optional)*** |
 ## FlowLogStatus
-##### (Appears on:[FlowLog](#FlowLog))
+
+Appears on:[FlowLog](#FlowLog)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

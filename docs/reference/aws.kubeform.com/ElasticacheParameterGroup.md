@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ElasticacheParameterGroupSpec](#ElasticacheParameterGroupSpec)***||
 | `status` | ***[ElasticacheParameterGroupStatus](#ElasticacheParameterGroupStatus)***||
 ## ElasticacheParameterGroupSpec
-##### (Appears on:[ElasticacheParameterGroup](#ElasticacheParameterGroup), [ElasticacheParameterGroupStatus](#ElasticacheParameterGroupStatus))
+
+Appears on:[ElasticacheParameterGroup](#ElasticacheParameterGroup), [ElasticacheParameterGroupStatus](#ElasticacheParameterGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,13 +31,17 @@ section_menu_id: reference
 | `name` | ***string***||
 | `parameter` | ***[[]ElasticacheParameterGroupSpecParameter](#ElasticacheParameterGroupSpecParameter)***| ***(Optional)*** |
 ## ElasticacheParameterGroupSpecParameter
-##### (Appears on:[ElasticacheParameterGroupSpec](#ElasticacheParameterGroupSpec))
+
+Appears on:[ElasticacheParameterGroupSpec](#ElasticacheParameterGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `value` | ***string***||
 ## ElasticacheParameterGroupStatus
-##### (Appears on:[ElasticacheParameterGroup](#ElasticacheParameterGroup))
+
+Appears on:[ElasticacheParameterGroup](#ElasticacheParameterGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

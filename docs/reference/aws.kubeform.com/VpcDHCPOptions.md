@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VpcDHCPOptionsSpec](#VpcDHCPOptionsSpec)***||
 | `status` | ***[VpcDHCPOptionsStatus](#VpcDHCPOptionsStatus)***||
 ## VpcDHCPOptionsSpec
-##### (Appears on:[VpcDHCPOptions](#VpcDHCPOptions), [VpcDHCPOptionsStatus](#VpcDHCPOptionsStatus))
+
+Appears on:[VpcDHCPOptions](#VpcDHCPOptions), [VpcDHCPOptionsStatus](#VpcDHCPOptionsStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `ownerID` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## VpcDHCPOptionsStatus
-##### (Appears on:[VpcDHCPOptions](#VpcDHCPOptions))
+
+Appears on:[VpcDHCPOptions](#VpcDHCPOptions)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

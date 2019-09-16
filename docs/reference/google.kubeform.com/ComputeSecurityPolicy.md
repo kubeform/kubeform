@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeSecurityPolicySpec](#ComputeSecurityPolicySpec)***||
 | `status` | ***[ComputeSecurityPolicyStatus](#ComputeSecurityPolicyStatus)***||
 ## ComputeSecurityPolicySpec
-##### (Appears on:[ComputeSecurityPolicy](#ComputeSecurityPolicy), [ComputeSecurityPolicyStatus](#ComputeSecurityPolicyStatus))
+
+Appears on:[ComputeSecurityPolicy](#ComputeSecurityPolicy), [ComputeSecurityPolicyStatus](#ComputeSecurityPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `rule` | ***[[]ComputeSecurityPolicySpecRule](#ComputeSecurityPolicySpecRule)***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 ## ComputeSecurityPolicySpecRule
-##### (Appears on:[ComputeSecurityPolicySpec](#ComputeSecurityPolicySpec))
+
+Appears on:[ComputeSecurityPolicySpec](#ComputeSecurityPolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***string***||
@@ -40,18 +44,24 @@ section_menu_id: reference
 | `preview` | ***bool***| ***(Optional)*** |
 | `priority` | ***int***||
 ## ComputeSecurityPolicySpecRuleMatch
-##### (Appears on:[ComputeSecurityPolicySpecRule](#ComputeSecurityPolicySpecRule))
+
+Appears on:[ComputeSecurityPolicySpecRule](#ComputeSecurityPolicySpecRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `config` | ***[[]ComputeSecurityPolicySpecRuleMatchConfig](#ComputeSecurityPolicySpecRuleMatchConfig)***||
 | `versionedExpr` | ***string***||
 ## ComputeSecurityPolicySpecRuleMatchConfig
-##### (Appears on:[ComputeSecurityPolicySpecRuleMatch](#ComputeSecurityPolicySpecRuleMatch))
+
+Appears on:[ComputeSecurityPolicySpecRuleMatch](#ComputeSecurityPolicySpecRuleMatch)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `srcIPRanges` | ***[]string***||
 ## ComputeSecurityPolicyStatus
-##### (Appears on:[ComputeSecurityPolicy](#ComputeSecurityPolicy))
+
+Appears on:[ComputeSecurityPolicy](#ComputeSecurityPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

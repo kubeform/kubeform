@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MediaStoreContainerSpec](#MediaStoreContainerSpec)***||
 | `status` | ***[MediaStoreContainerStatus](#MediaStoreContainerStatus)***||
 ## MediaStoreContainerSpec
-##### (Appears on:[MediaStoreContainer](#MediaStoreContainer), [MediaStoreContainerStatus](#MediaStoreContainerStatus))
+
+Appears on:[MediaStoreContainer](#MediaStoreContainer), [MediaStoreContainerStatus](#MediaStoreContainerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `endpoint` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 ## MediaStoreContainerStatus
-##### (Appears on:[MediaStoreContainer](#MediaStoreContainer))
+
+Appears on:[MediaStoreContainer](#MediaStoreContainer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

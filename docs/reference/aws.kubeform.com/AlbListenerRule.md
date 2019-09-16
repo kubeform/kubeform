@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AlbListenerRuleSpec](#AlbListenerRuleSpec)***||
 | `status` | ***[AlbListenerRuleStatus](#AlbListenerRuleStatus)***||
 ## AlbListenerRuleSpec
-##### (Appears on:[AlbListenerRule](#AlbListenerRule), [AlbListenerRuleStatus](#AlbListenerRuleStatus))
+
+Appears on:[AlbListenerRule](#AlbListenerRule), [AlbListenerRuleStatus](#AlbListenerRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `listenerArn` | ***string***||
 | `priority` | ***int***| ***(Optional)*** |
 ## AlbListenerRuleSpecAction
-##### (Appears on:[AlbListenerRuleSpec](#AlbListenerRuleSpec))
+
+Appears on:[AlbListenerRuleSpec](#AlbListenerRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticateCognito` | ***[[]AlbListenerRuleSpecActionAuthenticateCognito](#AlbListenerRuleSpecActionAuthenticateCognito)***| ***(Optional)*** |
@@ -42,7 +46,9 @@ section_menu_id: reference
 | `targetGroupArn` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## AlbListenerRuleSpecActionAuthenticateCognito
-##### (Appears on:[AlbListenerRuleSpecAction](#AlbListenerRuleSpecAction))
+
+Appears on:[AlbListenerRuleSpecAction](#AlbListenerRuleSpecAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticationRequestExtraParams` | ***map[string]string***| ***(Optional)*** |
@@ -54,7 +60,9 @@ section_menu_id: reference
 | `userPoolClientID` | ***string***||
 | `userPoolDomain` | ***string***||
 ## AlbListenerRuleSpecActionAuthenticateOidc
-##### (Appears on:[AlbListenerRuleSpecAction](#AlbListenerRuleSpecAction))
+
+Appears on:[AlbListenerRuleSpecAction](#AlbListenerRuleSpecAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticationRequestExtraParams` | ***map[string]string***| ***(Optional)*** |
@@ -68,14 +76,18 @@ section_menu_id: reference
 | `tokenEndpoint` | ***string***||
 | `userInfoEndpoint` | ***string***||
 ## AlbListenerRuleSpecActionFixedResponse
-##### (Appears on:[AlbListenerRuleSpecAction](#AlbListenerRuleSpecAction))
+
+Appears on:[AlbListenerRuleSpecAction](#AlbListenerRuleSpecAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `contentType` | ***string***||
 | `messageBody` | ***string***| ***(Optional)*** |
 | `statusCode` | ***string***| ***(Optional)*** |
 ## AlbListenerRuleSpecActionRedirect
-##### (Appears on:[AlbListenerRuleSpecAction](#AlbListenerRuleSpecAction))
+
+Appears on:[AlbListenerRuleSpecAction](#AlbListenerRuleSpecAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `host` | ***string***| ***(Optional)*** |
@@ -85,13 +97,17 @@ section_menu_id: reference
 | `query` | ***string***| ***(Optional)*** |
 | `statusCode` | ***string***||
 ## AlbListenerRuleSpecCondition
-##### (Appears on:[AlbListenerRuleSpec](#AlbListenerRuleSpec))
+
+Appears on:[AlbListenerRuleSpec](#AlbListenerRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `field` | ***string***| ***(Optional)*** |
 | `values` | ***[]string***| ***(Optional)*** |
 ## AlbListenerRuleStatus
-##### (Appears on:[AlbListenerRule](#AlbListenerRule))
+
+Appears on:[AlbListenerRule](#AlbListenerRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

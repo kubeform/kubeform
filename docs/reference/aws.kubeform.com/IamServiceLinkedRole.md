@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[IamServiceLinkedRoleSpec](#IamServiceLinkedRoleSpec)***||
 | `status` | ***[IamServiceLinkedRoleStatus](#IamServiceLinkedRoleStatus)***||
 ## IamServiceLinkedRoleSpec
-##### (Appears on:[IamServiceLinkedRole](#IamServiceLinkedRole), [IamServiceLinkedRoleStatus](#IamServiceLinkedRoleStatus))
+
+Appears on:[IamServiceLinkedRole](#IamServiceLinkedRole), [IamServiceLinkedRoleStatus](#IamServiceLinkedRoleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `path` | ***string***| ***(Optional)*** |
 | `uniqueID` | ***string***| ***(Optional)*** |
 ## IamServiceLinkedRoleStatus
-##### (Appears on:[IamServiceLinkedRole](#IamServiceLinkedRole))
+
+Appears on:[IamServiceLinkedRole](#IamServiceLinkedRole)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

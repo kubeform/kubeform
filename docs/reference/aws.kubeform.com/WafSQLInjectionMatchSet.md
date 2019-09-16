@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WafSQLInjectionMatchSetSpec](#WafSQLInjectionMatchSetSpec)***||
 | `status` | ***[WafSQLInjectionMatchSetStatus](#WafSQLInjectionMatchSetStatus)***||
 ## WafSQLInjectionMatchSetSpec
-##### (Appears on:[WafSQLInjectionMatchSet](#WafSQLInjectionMatchSet), [WafSQLInjectionMatchSetStatus](#WafSQLInjectionMatchSetStatus))
+
+Appears on:[WafSQLInjectionMatchSet](#WafSQLInjectionMatchSet), [WafSQLInjectionMatchSetStatus](#WafSQLInjectionMatchSetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,19 +29,25 @@ section_menu_id: reference
 | `name` | ***string***||
 | `sqlInjectionMatchTuples` | ***[[]WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples](#WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples)***| ***(Optional)*** |
 ## WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples
-##### (Appears on:[WafSQLInjectionMatchSetSpec](#WafSQLInjectionMatchSetSpec))
+
+Appears on:[WafSQLInjectionMatchSetSpec](#WafSQLInjectionMatchSetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `fieldToMatch` | ***[[]WafSQLInjectionMatchSetSpecSqlInjectionMatchTuplesFieldToMatch](#WafSQLInjectionMatchSetSpecSqlInjectionMatchTuplesFieldToMatch)***||
 | `textTransformation` | ***string***||
 ## WafSQLInjectionMatchSetSpecSqlInjectionMatchTuplesFieldToMatch
-##### (Appears on:[WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples](#WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples))
+
+Appears on:[WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples](#WafSQLInjectionMatchSetSpecSqlInjectionMatchTuples)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `data` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## WafSQLInjectionMatchSetStatus
-##### (Appears on:[WafSQLInjectionMatchSet](#WafSQLInjectionMatchSet))
+
+Appears on:[WafSQLInjectionMatchSet](#WafSQLInjectionMatchSet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

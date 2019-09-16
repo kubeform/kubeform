@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MariadbServerSpec](#MariadbServerSpec)***||
 | `status` | ***[MariadbServerStatus](#MariadbServerStatus)***||
 ## MariadbServerSpec
-##### (Appears on:[MariadbServer](#MariadbServer), [MariadbServerStatus](#MariadbServerStatus))
+
+Appears on:[MariadbServer](#MariadbServer), [MariadbServerStatus](#MariadbServerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,7 +38,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `version` | ***string***||
 ## MariadbServerSpecSku
-##### (Appears on:[MariadbServerSpec](#MariadbServerSpec))
+
+Appears on:[MariadbServerSpec](#MariadbServerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `capacity` | ***int***||
@@ -44,14 +48,18 @@ section_menu_id: reference
 | `name` | ***string***||
 | `tier` | ***string***||
 ## MariadbServerSpecStorageProfile
-##### (Appears on:[MariadbServerSpec](#MariadbServerSpec))
+
+Appears on:[MariadbServerSpec](#MariadbServerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `backupRetentionDays` | ***int***| ***(Optional)*** |
 | `geoRedundantBackup` | ***string***| ***(Optional)*** |
 | `storageMb` | ***int***||
 ## MariadbServerStatus
-##### (Appears on:[MariadbServer](#MariadbServer))
+
+Appears on:[MariadbServer](#MariadbServer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeBackendServiceSpec](#ComputeBackendServiceSpec)***||
 | `status` | ***[ComputeBackendServiceStatus](#ComputeBackendServiceStatus)***||
 ## ComputeBackendServiceSpec
-##### (Appears on:[ComputeBackendService](#ComputeBackendService), [ComputeBackendServiceStatus](#ComputeBackendServiceStatus))
+
+Appears on:[ComputeBackendService](#ComputeBackendService), [ComputeBackendServiceStatus](#ComputeBackendServiceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,7 +45,9 @@ section_menu_id: reference
 | `sessionAffinity` | ***string***| ***(Optional)*** |
 | `timeoutSec` | ***int***| ***(Optional)*** |
 ## ComputeBackendServiceSpecBackend
-##### (Appears on:[ComputeBackendServiceSpec](#ComputeBackendServiceSpec))
+
+Appears on:[ComputeBackendServiceSpec](#ComputeBackendServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `balancingMode` | ***string***| ***(Optional)*** |
@@ -56,12 +60,16 @@ section_menu_id: reference
 | `maxRatePerInstance` | ***encoding/json.Number***| ***(Optional)*** |
 | `maxUtilization` | ***encoding/json.Number***| ***(Optional)*** |
 ## ComputeBackendServiceSpecCdnPolicy
-##### (Appears on:[ComputeBackendServiceSpec](#ComputeBackendServiceSpec))
+
+Appears on:[ComputeBackendServiceSpec](#ComputeBackendServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cacheKeyPolicy` | ***[[]ComputeBackendServiceSpecCdnPolicyCacheKeyPolicy](#ComputeBackendServiceSpecCdnPolicyCacheKeyPolicy)***| ***(Optional)*** |
 ## ComputeBackendServiceSpecCdnPolicyCacheKeyPolicy
-##### (Appears on:[ComputeBackendServiceSpecCdnPolicy](#ComputeBackendServiceSpecCdnPolicy))
+
+Appears on:[ComputeBackendServiceSpecCdnPolicy](#ComputeBackendServiceSpecCdnPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `includeHost` | ***bool***| ***(Optional)*** |
@@ -70,12 +78,16 @@ section_menu_id: reference
 | `queryStringBlacklist` | ***[]string***| ***(Optional)*** |
 | `queryStringWhitelist` | ***[]string***| ***(Optional)*** |
 ## ComputeBackendServiceSpecIap
-##### (Appears on:[ComputeBackendServiceSpec](#ComputeBackendServiceSpec))
+
+Appears on:[ComputeBackendServiceSpec](#ComputeBackendServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `oauth2ClientID` | ***string***||
 ## ComputeBackendServiceStatus
-##### (Appears on:[ComputeBackendService](#ComputeBackendService))
+
+Appears on:[ComputeBackendService](#ComputeBackendService)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

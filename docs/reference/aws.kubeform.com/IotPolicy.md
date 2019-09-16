@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[IotPolicySpec](#IotPolicySpec)***||
 | `status` | ***[IotPolicyStatus](#IotPolicyStatus)***||
 ## IotPolicySpec
-##### (Appears on:[IotPolicy](#IotPolicy), [IotPolicyStatus](#IotPolicyStatus))
+
+Appears on:[IotPolicy](#IotPolicy), [IotPolicyStatus](#IotPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `policy` | ***string***||
 ## IotPolicyStatus
-##### (Appears on:[IotPolicy](#IotPolicy))
+
+Appears on:[IotPolicy](#IotPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

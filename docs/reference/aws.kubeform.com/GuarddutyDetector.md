@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GuarddutyDetectorSpec](#GuarddutyDetectorSpec)***||
 | `status` | ***[GuarddutyDetectorStatus](#GuarddutyDetectorStatus)***||
 ## GuarddutyDetectorSpec
-##### (Appears on:[GuarddutyDetector](#GuarddutyDetector), [GuarddutyDetectorStatus](#GuarddutyDetectorStatus))
+
+Appears on:[GuarddutyDetector](#GuarddutyDetector), [GuarddutyDetectorStatus](#GuarddutyDetectorStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `enable` | ***bool***| ***(Optional)*** |
 | `findingPublishingFrequency` | ***string***| ***(Optional)*** |
 ## GuarddutyDetectorStatus
-##### (Appears on:[GuarddutyDetector](#GuarddutyDetector))
+
+Appears on:[GuarddutyDetector](#GuarddutyDetector)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

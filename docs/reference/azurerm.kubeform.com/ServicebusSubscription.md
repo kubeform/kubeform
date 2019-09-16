@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ServicebusSubscriptionSpec](#ServicebusSubscriptionSpec)***||
 | `status` | ***[ServicebusSubscriptionStatus](#ServicebusSubscriptionStatus)***||
 ## ServicebusSubscriptionSpec
-##### (Appears on:[ServicebusSubscription](#ServicebusSubscription), [ServicebusSubscriptionStatus](#ServicebusSubscriptionStatus))
+
+Appears on:[ServicebusSubscription](#ServicebusSubscription), [ServicebusSubscriptionStatus](#ServicebusSubscriptionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,7 +41,9 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `topicName` | ***string***||
 ## ServicebusSubscriptionStatus
-##### (Appears on:[ServicebusSubscription](#ServicebusSubscription))
+
+Appears on:[ServicebusSubscription](#ServicebusSubscription)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[EcrRepositoryPolicySpec](#EcrRepositoryPolicySpec)***||
 | `status` | ***[EcrRepositoryPolicyStatus](#EcrRepositoryPolicyStatus)***||
 ## EcrRepositoryPolicySpec
-##### (Appears on:[EcrRepositoryPolicy](#EcrRepositoryPolicy), [EcrRepositoryPolicyStatus](#EcrRepositoryPolicyStatus))
+
+Appears on:[EcrRepositoryPolicy](#EcrRepositoryPolicy), [EcrRepositoryPolicyStatus](#EcrRepositoryPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `registryID` | ***string***| ***(Optional)*** |
 | `repository` | ***string***||
 ## EcrRepositoryPolicyStatus
-##### (Appears on:[EcrRepositoryPolicy](#EcrRepositoryPolicy))
+
+Appears on:[EcrRepositoryPolicy](#EcrRepositoryPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

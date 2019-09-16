@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SshkeySpec](#SshkeySpec)***||
 | `status` | ***[SshkeyStatus](#SshkeyStatus)***||
 ## SshkeySpec
-##### (Appears on:[Sshkey](#Sshkey), [SshkeyStatus](#SshkeyStatus))
+
+Appears on:[Sshkey](#Sshkey), [SshkeyStatus](#SshkeyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `label` | ***string***|The label of the Linode SSH Key.|
 | `sshKey` | ***string***|The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.|
 ## SshkeyStatus
-##### (Appears on:[Sshkey](#Sshkey))
+
+Appears on:[Sshkey](#Sshkey)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec)***||
 | `status` | ***[EventgridEventSubscriptionStatus](#EventgridEventSubscriptionStatus)***||
 ## EventgridEventSubscriptionSpec
-##### (Appears on:[EventgridEventSubscription](#EventgridEventSubscription), [EventgridEventSubscriptionStatus](#EventgridEventSubscriptionStatus))
+
+Appears on:[EventgridEventSubscription](#EventgridEventSubscription), [EventgridEventSubscriptionStatus](#EventgridEventSubscriptionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,47 +40,63 @@ section_menu_id: reference
 | `topicName` | ***string***| ***(Optional)*** |
 | `webhookEndpoint` | ***[[]EventgridEventSubscriptionSpecWebhookEndpoint](#EventgridEventSubscriptionSpecWebhookEndpoint)***| ***(Optional)*** |
 ## EventgridEventSubscriptionSpecEventhubEndpoint
-##### (Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec))
+
+Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `eventhubID` | ***string***||
 ## EventgridEventSubscriptionSpecHybridConnectionEndpoint
-##### (Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec))
+
+Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `hybridConnectionID` | ***string***||
 ## EventgridEventSubscriptionSpecRetryPolicy
-##### (Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec))
+
+Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `eventTimeToLive` | ***int***||
 | `maxDeliveryAttempts` | ***int***||
 ## EventgridEventSubscriptionSpecStorageBlobDeadLetterDestination
-##### (Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec))
+
+Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `storageAccountID` | ***string***||
 | `storageBlobContainerName` | ***string***||
 ## EventgridEventSubscriptionSpecStorageQueueEndpoint
-##### (Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec))
+
+Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `queueName` | ***string***||
 | `storageAccountID` | ***string***||
 ## EventgridEventSubscriptionSpecSubjectFilter
-##### (Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec))
+
+Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `caseSensitive` | ***bool***| ***(Optional)*** |
 | `subjectBeginsWith` | ***string***| ***(Optional)*** |
 | `subjectEndsWith` | ***string***| ***(Optional)*** |
 ## EventgridEventSubscriptionSpecWebhookEndpoint
-##### (Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec))
+
+Appears on:[EventgridEventSubscriptionSpec](#EventgridEventSubscriptionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `url` | ***string***||
 ## EventgridEventSubscriptionStatus
-##### (Appears on:[EventgridEventSubscription](#EventgridEventSubscription))
+
+Appears on:[EventgridEventSubscription](#EventgridEventSubscription)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

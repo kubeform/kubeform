@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LbOutboundRuleSpec](#LbOutboundRuleSpec)***||
 | `status` | ***[LbOutboundRuleStatus](#LbOutboundRuleStatus)***||
 ## LbOutboundRuleSpec
-##### (Appears on:[LbOutboundRule](#LbOutboundRule), [LbOutboundRuleStatus](#LbOutboundRuleStatus))
+
+Appears on:[LbOutboundRule](#LbOutboundRule), [LbOutboundRuleStatus](#LbOutboundRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,13 +36,17 @@ section_menu_id: reference
 | `protocol` | ***string***||
 | `resourceGroupName` | ***string***||
 ## LbOutboundRuleSpecFrontendIPConfiguration
-##### (Appears on:[LbOutboundRuleSpec](#LbOutboundRuleSpec))
+
+Appears on:[LbOutboundRuleSpec](#LbOutboundRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 ## LbOutboundRuleStatus
-##### (Appears on:[LbOutboundRule](#LbOutboundRule))
+
+Appears on:[LbOutboundRule](#LbOutboundRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

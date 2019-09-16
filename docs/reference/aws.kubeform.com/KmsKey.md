@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[KmsKeySpec](#KmsKeySpec)***||
 | `status` | ***[KmsKeyStatus](#KmsKeyStatus)***||
 ## KmsKeySpec
-##### (Appears on:[KmsKey](#KmsKey), [KmsKeyStatus](#KmsKeyStatus))
+
+Appears on:[KmsKey](#KmsKey), [KmsKeyStatus](#KmsKeyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `policy` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## KmsKeyStatus
-##### (Appears on:[KmsKey](#KmsKey))
+
+Appears on:[KmsKey](#KmsKey)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

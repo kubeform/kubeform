@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MonitoringUptimeCheckConfigSpec](#MonitoringUptimeCheckConfigSpec)***||
 | `status` | ***[MonitoringUptimeCheckConfigStatus](#MonitoringUptimeCheckConfigStatus)***||
 ## MonitoringUptimeCheckConfigSpec
-##### (Appears on:[MonitoringUptimeCheckConfig](#MonitoringUptimeCheckConfig), [MonitoringUptimeCheckConfigStatus](#MonitoringUptimeCheckConfigStatus))
+
+Appears on:[MonitoringUptimeCheckConfig](#MonitoringUptimeCheckConfig), [MonitoringUptimeCheckConfigStatus](#MonitoringUptimeCheckConfigStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,12 +41,16 @@ section_menu_id: reference
 | `tcpCheck` | ***[[]MonitoringUptimeCheckConfigSpecTcpCheck](#MonitoringUptimeCheckConfigSpecTcpCheck)***| ***(Optional)*** |
 | `timeout` | ***string***||
 ## MonitoringUptimeCheckConfigSpecContentMatchers
-##### (Appears on:[MonitoringUptimeCheckConfigSpec](#MonitoringUptimeCheckConfigSpec))
+
+Appears on:[MonitoringUptimeCheckConfigSpec](#MonitoringUptimeCheckConfigSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `content` | ***string***| ***(Optional)*** |
 ## MonitoringUptimeCheckConfigSpecHttpCheck
-##### (Appears on:[MonitoringUptimeCheckConfigSpec](#MonitoringUptimeCheckConfigSpec))
+
+Appears on:[MonitoringUptimeCheckConfigSpec](#MonitoringUptimeCheckConfigSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authInfo` | ***[[]MonitoringUptimeCheckConfigSpecHttpCheckAuthInfo](#MonitoringUptimeCheckConfigSpecHttpCheckAuthInfo)***| ***(Optional)*** |
@@ -54,12 +60,16 @@ section_menu_id: reference
 | `port` | ***int***| ***(Optional)*** |
 | `useSSL` | ***bool***| ***(Optional)*** |
 ## MonitoringUptimeCheckConfigSpecHttpCheckAuthInfo
-##### (Appears on:[MonitoringUptimeCheckConfigSpecHttpCheck](#MonitoringUptimeCheckConfigSpecHttpCheck))
+
+Appears on:[MonitoringUptimeCheckConfigSpecHttpCheck](#MonitoringUptimeCheckConfigSpecHttpCheck)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `username` | ***string***| ***(Optional)*** |
 ## MonitoringUptimeCheckConfigSpecInternalCheckers
-##### (Appears on:[MonitoringUptimeCheckConfigSpec](#MonitoringUptimeCheckConfigSpec))
+
+Appears on:[MonitoringUptimeCheckConfigSpec](#MonitoringUptimeCheckConfigSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `displayName` | ***string***| ***(Optional)*** |
@@ -68,24 +78,32 @@ section_menu_id: reference
 | `network` | ***string***| ***(Optional)*** |
 | `peerProjectID` | ***string***| ***(Optional)*** |
 ## MonitoringUptimeCheckConfigSpecMonitoredResource
-##### (Appears on:[MonitoringUptimeCheckConfigSpec](#MonitoringUptimeCheckConfigSpec))
+
+Appears on:[MonitoringUptimeCheckConfigSpec](#MonitoringUptimeCheckConfigSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `labels` | ***map[string]string***||
 | `type` | ***string***||
 ## MonitoringUptimeCheckConfigSpecResourceGroup
-##### (Appears on:[MonitoringUptimeCheckConfigSpec](#MonitoringUptimeCheckConfigSpec))
+
+Appears on:[MonitoringUptimeCheckConfigSpec](#MonitoringUptimeCheckConfigSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `groupID` | ***string***| ***(Optional)*** |
 | `resourceType` | ***string***| ***(Optional)*** |
 ## MonitoringUptimeCheckConfigSpecTcpCheck
-##### (Appears on:[MonitoringUptimeCheckConfigSpec](#MonitoringUptimeCheckConfigSpec))
+
+Appears on:[MonitoringUptimeCheckConfigSpec](#MonitoringUptimeCheckConfigSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `port` | ***int***||
 ## MonitoringUptimeCheckConfigStatus
-##### (Appears on:[MonitoringUptimeCheckConfig](#MonitoringUptimeCheckConfig))
+
+Appears on:[MonitoringUptimeCheckConfig](#MonitoringUptimeCheckConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

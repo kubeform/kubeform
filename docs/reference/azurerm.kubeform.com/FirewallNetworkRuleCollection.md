@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[FirewallNetworkRuleCollectionSpec](#FirewallNetworkRuleCollectionSpec)***||
 | `status` | ***[FirewallNetworkRuleCollectionStatus](#FirewallNetworkRuleCollectionStatus)***||
 ## FirewallNetworkRuleCollectionSpec
-##### (Appears on:[FirewallNetworkRuleCollection](#FirewallNetworkRuleCollection), [FirewallNetworkRuleCollectionStatus](#FirewallNetworkRuleCollectionStatus))
+
+Appears on:[FirewallNetworkRuleCollection](#FirewallNetworkRuleCollection), [FirewallNetworkRuleCollectionStatus](#FirewallNetworkRuleCollectionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `rule` | ***[[]FirewallNetworkRuleCollectionSpecRule](#FirewallNetworkRuleCollectionSpecRule)***||
 ## FirewallNetworkRuleCollectionSpecRule
-##### (Appears on:[FirewallNetworkRuleCollectionSpec](#FirewallNetworkRuleCollectionSpec))
+
+Appears on:[FirewallNetworkRuleCollectionSpec](#FirewallNetworkRuleCollectionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `description` | ***string***| ***(Optional)*** |
@@ -41,7 +45,9 @@ section_menu_id: reference
 | `protocols` | ***[]string***||
 | `sourceAddresses` | ***[]string***||
 ## FirewallNetworkRuleCollectionStatus
-##### (Appears on:[FirewallNetworkRuleCollection](#FirewallNetworkRuleCollection))
+
+Appears on:[FirewallNetworkRuleCollection](#FirewallNetworkRuleCollection)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

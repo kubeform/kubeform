@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ProjectSpec](#ProjectSpec)***||
 | `status` | ***[ProjectStatus](#ProjectStatus)***||
 ## ProjectSpec
-##### (Appears on:[Project](#Project), [ProjectStatus](#ProjectStatus))
+
+Appears on:[Project](#Project), [ProjectStatus](#ProjectStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `resources` | ***[]string***| ***(Optional)*** the resources associated with the project|
 | `updatedAt` | ***string***| ***(Optional)*** the date and time when the project was last updated, (ISO8601)|
 ## ProjectStatus
-##### (Appears on:[Project](#Project))
+
+Appears on:[Project](#Project)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

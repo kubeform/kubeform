@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[BigtableTableSpec](#BigtableTableSpec)***||
 | `status` | ***[BigtableTableStatus](#BigtableTableStatus)***||
 ## BigtableTableSpec
-##### (Appears on:[BigtableTable](#BigtableTable), [BigtableTableStatus](#BigtableTableStatus))
+
+Appears on:[BigtableTable](#BigtableTable), [BigtableTableStatus](#BigtableTableStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `project` | ***string***| ***(Optional)*** |
 | `splitKeys` | ***[]string***| ***(Optional)*** |
 ## BigtableTableStatus
-##### (Appears on:[BigtableTable](#BigtableTable))
+
+Appears on:[BigtableTable](#BigtableTable)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

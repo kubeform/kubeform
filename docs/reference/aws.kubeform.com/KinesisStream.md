@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[KinesisStreamSpec](#KinesisStreamSpec)***||
 | `status` | ***[KinesisStreamStatus](#KinesisStreamStatus)***||
 ## KinesisStreamSpec
-##### (Appears on:[KinesisStream](#KinesisStream), [KinesisStreamStatus](#KinesisStreamStatus))
+
+Appears on:[KinesisStream](#KinesisStream), [KinesisStreamStatus](#KinesisStreamStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `shardLevelMetrics` | ***[]string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## KinesisStreamStatus
-##### (Appears on:[KinesisStream](#KinesisStream))
+
+Appears on:[KinesisStream](#KinesisStream)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[InstanceSpec](#InstanceSpec)***||
 | `status` | ***[InstanceStatus](#InstanceStatus)***||
 ## InstanceSpec
-##### (Appears on:[Instance](#Instance), [InstanceStatus](#InstanceStatus))
+
+Appears on:[Instance](#Instance), [InstanceStatus](#InstanceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -51,7 +53,9 @@ section_menu_id: reference
 | `type` | ***string***| ***(Optional)*** The type of instance to be deployed, determining the price and size.|
 | `watchdogEnabled` | ***bool***| ***(Optional)*** The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.|
 ## InstanceSpecAlerts
-##### (Appears on:[InstanceSpec](#InstanceSpec))
+
+Appears on:[InstanceSpec](#InstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cpu` | ***int***| ***(Optional)*** The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.|
@@ -60,19 +64,25 @@ section_menu_id: reference
 | `networkOut` | ***int***| ***(Optional)*** The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.|
 | `transferQuota` | ***int***| ***(Optional)*** The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.|
 ## InstanceSpecBackups
-##### (Appears on:[InstanceSpec](#InstanceSpec))
+
+Appears on:[InstanceSpec](#InstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** If this Linode has the Backup service enabled.|
 | `schedule` | ***[[]InstanceSpecBackupsSchedule](#InstanceSpecBackupsSchedule)***| ***(Optional)*** |
 ## InstanceSpecBackupsSchedule
-##### (Appears on:[InstanceSpecBackups](#InstanceSpecBackups))
+
+Appears on:[InstanceSpecBackups](#InstanceSpecBackups)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `day` | ***string***| ***(Optional)*** The day ('Sunday'-'Saturday') of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as 'Scheduling' until the day is automatically selected.|
 | `window` | ***string***| ***(Optional)*** The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.|
 ## InstanceSpecConfig
-##### (Appears on:[InstanceSpec](#InstanceSpec))
+
+Appears on:[InstanceSpec](#InstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `comments` | ***string***| ***(Optional)*** Optional field for arbitrary User comments on this Config.|
@@ -85,7 +95,9 @@ section_menu_id: reference
 | `runLevel` | ***string***| ***(Optional)*** Defines the state of your Linode after booting. Defaults to default.|
 | `virtMode` | ***string***| ***(Optional)*** Controls the virtualization mode. Defaults to paravirt.|
 ## InstanceSpecConfigDevices
-##### (Appears on:[InstanceSpecConfig](#InstanceSpecConfig))
+
+Appears on:[InstanceSpecConfig](#InstanceSpecConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `sda` | ***[[]InstanceSpecConfigDevicesSda](#InstanceSpecConfigDevicesSda)***| ***(Optional)*** |
@@ -97,63 +109,81 @@ section_menu_id: reference
 | `sdg` | ***[[]InstanceSpecConfigDevicesSdg](#InstanceSpecConfigDevicesSdg)***| ***(Optional)*** |
 | `sdh` | ***[[]InstanceSpecConfigDevicesSdh](#InstanceSpecConfigDevicesSdh)***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSda
-##### (Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices))
+
+Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskID` | ***int***| ***(Optional)*** The Disk ID to map to this disk slot|
 | `diskLabel` | ***string***| ***(Optional)*** The `label` of the `disk` to map to this `device` slot.|
 | `volumeID` | ***int***| ***(Optional)*** The Block Storage volume ID to map to this disk slot|
 ## InstanceSpecConfigDevicesSdb
-##### (Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices))
+
+Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskID` | ***int***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdc
-##### (Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices))
+
+Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskID` | ***int***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdd
-##### (Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices))
+
+Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskID` | ***int***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSde
-##### (Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices))
+
+Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskID` | ***int***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdf
-##### (Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices))
+
+Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskID` | ***int***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdg
-##### (Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices))
+
+Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskID` | ***int***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdh
-##### (Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices))
+
+Appears on:[InstanceSpecConfigDevices](#InstanceSpecConfigDevices)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `diskID` | ***int***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
 | `volumeID` | ***int***| ***(Optional)*** |
 ## InstanceSpecConfigHelpers
-##### (Appears on:[InstanceSpecConfig](#InstanceSpecConfig))
+
+Appears on:[InstanceSpecConfig](#InstanceSpecConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `devtmpfsAutomount` | ***bool***| ***(Optional)*** Populates the /dev directory early during boot without udev. Defaults to false.|
@@ -162,7 +192,9 @@ section_menu_id: reference
 | `network` | ***bool***| ***(Optional)*** Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.|
 | `updatedbDisabled` | ***bool***| ***(Optional)*** Disables updatedb cron job to avoid disk thrashing.|
 ## InstanceSpecDisk
-##### (Appears on:[InstanceSpec](#InstanceSpec))
+
+Appears on:[InstanceSpec](#InstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authorizedKeys` | ***[]string***| ***(Optional)*** A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.|
@@ -175,7 +207,9 @@ section_menu_id: reference
 | `size` | ***int***|The size of the Disk in MB.|
 | `stackscriptID` | ***int***| ***(Optional)*** The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.|
 ## InstanceSpecSpecs
-##### (Appears on:[InstanceSpec](#InstanceSpec))
+
+Appears on:[InstanceSpec](#InstanceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `disk` | ***int***| ***(Optional)*** The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.|
@@ -183,7 +217,9 @@ section_menu_id: reference
 | `transfer` | ***int***| ***(Optional)*** The amount of network transfer this Linode is allotted each month.|
 | `vcpus` | ***int***| ***(Optional)*** The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.|
 ## InstanceStatus
-##### (Appears on:[Instance](#Instance))
+
+Appears on:[Instance](#Instance)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

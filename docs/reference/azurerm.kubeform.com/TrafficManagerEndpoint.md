@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[TrafficManagerEndpointSpec](#TrafficManagerEndpointSpec)***||
 | `status` | ***[TrafficManagerEndpointStatus](#TrafficManagerEndpointStatus)***||
 ## TrafficManagerEndpointSpec
-##### (Appears on:[TrafficManagerEndpoint](#TrafficManagerEndpoint), [TrafficManagerEndpointStatus](#TrafficManagerEndpointStatus))
+
+Appears on:[TrafficManagerEndpoint](#TrafficManagerEndpoint), [TrafficManagerEndpointStatus](#TrafficManagerEndpointStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -40,20 +42,26 @@ section_menu_id: reference
 | `type` | ***string***||
 | `weight` | ***int***| ***(Optional)*** |
 ## TrafficManagerEndpointSpecCustomHeader
-##### (Appears on:[TrafficManagerEndpointSpec](#TrafficManagerEndpointSpec))
+
+Appears on:[TrafficManagerEndpointSpec](#TrafficManagerEndpointSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `value` | ***string***||
 ## TrafficManagerEndpointSpecSubnet
-##### (Appears on:[TrafficManagerEndpointSpec](#TrafficManagerEndpointSpec))
+
+Appears on:[TrafficManagerEndpointSpec](#TrafficManagerEndpointSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `first` | ***string***||
 | `last` | ***string***| ***(Optional)*** |
 | `scope` | ***int***| ***(Optional)*** |
 ## TrafficManagerEndpointStatus
-##### (Appears on:[TrafficManagerEndpoint](#TrafficManagerEndpoint))
+
+Appears on:[TrafficManagerEndpoint](#TrafficManagerEndpoint)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

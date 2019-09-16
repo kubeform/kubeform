@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[IotThingTypeSpec](#IotThingTypeSpec)***||
 | `status` | ***[IotThingTypeStatus](#IotThingTypeStatus)***||
 ## IotThingTypeSpec
-##### (Appears on:[IotThingType](#IotThingType), [IotThingTypeStatus](#IotThingTypeStatus))
+
+Appears on:[IotThingType](#IotThingType), [IotThingTypeStatus](#IotThingTypeStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,13 +31,17 @@ section_menu_id: reference
 | `name` | ***string***||
 | `properties` | ***[[]IotThingTypeSpecProperties](#IotThingTypeSpecProperties)***| ***(Optional)*** |
 ## IotThingTypeSpecProperties
-##### (Appears on:[IotThingTypeSpec](#IotThingTypeSpec))
+
+Appears on:[IotThingTypeSpec](#IotThingTypeSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `description` | ***string***| ***(Optional)*** |
 | `searchableAttributes` | ***[]string***| ***(Optional)*** |
 ## IotThingTypeStatus
-##### (Appears on:[IotThingType](#IotThingType))
+
+Appears on:[IotThingType](#IotThingType)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

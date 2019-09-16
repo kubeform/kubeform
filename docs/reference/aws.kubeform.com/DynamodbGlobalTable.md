@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DynamodbGlobalTableSpec](#DynamodbGlobalTableSpec)***||
 | `status` | ***[DynamodbGlobalTableStatus](#DynamodbGlobalTableStatus)***||
 ## DynamodbGlobalTableSpec
-##### (Appears on:[DynamodbGlobalTable](#DynamodbGlobalTable), [DynamodbGlobalTableStatus](#DynamodbGlobalTableStatus))
+
+Appears on:[DynamodbGlobalTable](#DynamodbGlobalTable), [DynamodbGlobalTableStatus](#DynamodbGlobalTableStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,12 +30,16 @@ section_menu_id: reference
 | `name` | ***string***||
 | `replica` | ***[[]DynamodbGlobalTableSpecReplica](#DynamodbGlobalTableSpecReplica)***||
 ## DynamodbGlobalTableSpecReplica
-##### (Appears on:[DynamodbGlobalTableSpec](#DynamodbGlobalTableSpec))
+
+Appears on:[DynamodbGlobalTableSpec](#DynamodbGlobalTableSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `regionName` | ***string***||
 ## DynamodbGlobalTableStatus
-##### (Appears on:[DynamodbGlobalTable](#DynamodbGlobalTable))
+
+Appears on:[DynamodbGlobalTable](#DynamodbGlobalTable)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

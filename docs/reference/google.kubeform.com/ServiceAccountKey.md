@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ServiceAccountKeySpec](#ServiceAccountKeySpec)***||
 | `status` | ***[ServiceAccountKeyStatus](#ServiceAccountKeyStatus)***||
 ## ServiceAccountKeySpec
-##### (Appears on:[ServiceAccountKey](#ServiceAccountKey), [ServiceAccountKeyStatus](#ServiceAccountKeyStatus))
+
+Appears on:[ServiceAccountKey](#ServiceAccountKey), [ServiceAccountKeyStatus](#ServiceAccountKeyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,7 +39,9 @@ section_menu_id: reference
 | `validAfter` | ***string***| ***(Optional)*** |
 | `validBefore` | ***string***| ***(Optional)*** |
 ## ServiceAccountKeyStatus
-##### (Appears on:[ServiceAccountKey](#ServiceAccountKey))
+
+Appears on:[ServiceAccountKey](#ServiceAccountKey)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

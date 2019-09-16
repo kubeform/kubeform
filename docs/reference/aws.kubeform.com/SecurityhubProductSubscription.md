@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SecurityhubProductSubscriptionSpec](#SecurityhubProductSubscriptionSpec)***||
 | `status` | ***[SecurityhubProductSubscriptionStatus](#SecurityhubProductSubscriptionStatus)***||
 ## SecurityhubProductSubscriptionSpec
-##### (Appears on:[SecurityhubProductSubscription](#SecurityhubProductSubscription), [SecurityhubProductSubscriptionStatus](#SecurityhubProductSubscriptionStatus))
+
+Appears on:[SecurityhubProductSubscription](#SecurityhubProductSubscription), [SecurityhubProductSubscriptionStatus](#SecurityhubProductSubscriptionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `arn` | ***string***| ***(Optional)*** |
 | `productArn` | ***string***||
 ## SecurityhubProductSubscriptionStatus
-##### (Appears on:[SecurityhubProductSubscription](#SecurityhubProductSubscription))
+
+Appears on:[SecurityhubProductSubscription](#SecurityhubProductSubscription)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

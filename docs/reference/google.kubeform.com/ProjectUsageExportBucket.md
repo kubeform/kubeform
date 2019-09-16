@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ProjectUsageExportBucketSpec](#ProjectUsageExportBucketSpec)***||
 | `status` | ***[ProjectUsageExportBucketStatus](#ProjectUsageExportBucketStatus)***||
 ## ProjectUsageExportBucketSpec
-##### (Appears on:[ProjectUsageExportBucket](#ProjectUsageExportBucket), [ProjectUsageExportBucketStatus](#ProjectUsageExportBucketStatus))
+
+Appears on:[ProjectUsageExportBucket](#ProjectUsageExportBucket), [ProjectUsageExportBucketStatus](#ProjectUsageExportBucketStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `prefix` | ***string***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 ## ProjectUsageExportBucketStatus
-##### (Appears on:[ProjectUsageExportBucket](#ProjectUsageExportBucket))
+
+Appears on:[ProjectUsageExportBucket](#ProjectUsageExportBucket)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GameliftFleetSpec](#GameliftFleetSpec)***||
 | `status` | ***[GameliftFleetStatus](#GameliftFleetStatus)***||
 ## GameliftFleetSpec
-##### (Appears on:[GameliftFleet](#GameliftFleet), [GameliftFleetStatus](#GameliftFleetStatus))
+
+Appears on:[GameliftFleet](#GameliftFleet), [GameliftFleetStatus](#GameliftFleetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,7 +39,9 @@ section_menu_id: reference
 | `resourceCreationLimitPolicy` | ***[[]GameliftFleetSpecResourceCreationLimitPolicy](#GameliftFleetSpecResourceCreationLimitPolicy)***| ***(Optional)*** |
 | `runtimeConfiguration` | ***[[]GameliftFleetSpecRuntimeConfiguration](#GameliftFleetSpecRuntimeConfiguration)***| ***(Optional)*** |
 ## GameliftFleetSpecEc2InboundPermission
-##### (Appears on:[GameliftFleetSpec](#GameliftFleetSpec))
+
+Appears on:[GameliftFleetSpec](#GameliftFleetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `fromPort` | ***int***||
@@ -45,27 +49,35 @@ section_menu_id: reference
 | `protocol` | ***string***||
 | `toPort` | ***int***||
 ## GameliftFleetSpecResourceCreationLimitPolicy
-##### (Appears on:[GameliftFleetSpec](#GameliftFleetSpec))
+
+Appears on:[GameliftFleetSpec](#GameliftFleetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `newGameSessionsPerCreator` | ***int***| ***(Optional)*** |
 | `policyPeriodInMinutes` | ***int***| ***(Optional)*** |
 ## GameliftFleetSpecRuntimeConfiguration
-##### (Appears on:[GameliftFleetSpec](#GameliftFleetSpec))
+
+Appears on:[GameliftFleetSpec](#GameliftFleetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `gameSessionActivationTimeoutSeconds` | ***int***| ***(Optional)*** |
 | `maxConcurrentGameSessionActivations` | ***int***| ***(Optional)*** |
 | `serverProcess` | ***[[]GameliftFleetSpecRuntimeConfigurationServerProcess](#GameliftFleetSpecRuntimeConfigurationServerProcess)***| ***(Optional)*** |
 ## GameliftFleetSpecRuntimeConfigurationServerProcess
-##### (Appears on:[GameliftFleetSpecRuntimeConfiguration](#GameliftFleetSpecRuntimeConfiguration))
+
+Appears on:[GameliftFleetSpecRuntimeConfiguration](#GameliftFleetSpecRuntimeConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `concurrentExecutions` | ***int***||
 | `launchPath` | ***string***||
 | `parameters` | ***string***| ***(Optional)*** |
 ## GameliftFleetStatus
-##### (Appears on:[GameliftFleet](#GameliftFleet))
+
+Appears on:[GameliftFleet](#GameliftFleet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

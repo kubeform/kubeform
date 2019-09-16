@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AlbListenerSpec](#AlbListenerSpec)***||
 | `status` | ***[AlbListenerStatus](#AlbListenerStatus)***||
 ## AlbListenerSpec
-##### (Appears on:[AlbListener](#AlbListener), [AlbListenerStatus](#AlbListenerStatus))
+
+Appears on:[AlbListener](#AlbListener), [AlbListenerStatus](#AlbListenerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `protocol` | ***string***| ***(Optional)*** |
 | `sslPolicy` | ***string***| ***(Optional)*** |
 ## AlbListenerSpecDefaultAction
-##### (Appears on:[AlbListenerSpec](#AlbListenerSpec))
+
+Appears on:[AlbListenerSpec](#AlbListenerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticateCognito` | ***[[]AlbListenerSpecDefaultActionAuthenticateCognito](#AlbListenerSpecDefaultActionAuthenticateCognito)***| ***(Optional)*** |
@@ -44,7 +48,9 @@ section_menu_id: reference
 | `targetGroupArn` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## AlbListenerSpecDefaultActionAuthenticateCognito
-##### (Appears on:[AlbListenerSpecDefaultAction](#AlbListenerSpecDefaultAction))
+
+Appears on:[AlbListenerSpecDefaultAction](#AlbListenerSpecDefaultAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticationRequestExtraParams` | ***map[string]string***| ***(Optional)*** |
@@ -56,7 +62,9 @@ section_menu_id: reference
 | `userPoolClientID` | ***string***||
 | `userPoolDomain` | ***string***||
 ## AlbListenerSpecDefaultActionAuthenticateOidc
-##### (Appears on:[AlbListenerSpecDefaultAction](#AlbListenerSpecDefaultAction))
+
+Appears on:[AlbListenerSpecDefaultAction](#AlbListenerSpecDefaultAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticationRequestExtraParams` | ***map[string]string***| ***(Optional)*** |
@@ -70,14 +78,18 @@ section_menu_id: reference
 | `tokenEndpoint` | ***string***||
 | `userInfoEndpoint` | ***string***||
 ## AlbListenerSpecDefaultActionFixedResponse
-##### (Appears on:[AlbListenerSpecDefaultAction](#AlbListenerSpecDefaultAction))
+
+Appears on:[AlbListenerSpecDefaultAction](#AlbListenerSpecDefaultAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `contentType` | ***string***||
 | `messageBody` | ***string***| ***(Optional)*** |
 | `statusCode` | ***string***| ***(Optional)*** |
 ## AlbListenerSpecDefaultActionRedirect
-##### (Appears on:[AlbListenerSpecDefaultAction](#AlbListenerSpecDefaultAction))
+
+Appears on:[AlbListenerSpecDefaultAction](#AlbListenerSpecDefaultAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `host` | ***string***| ***(Optional)*** |
@@ -87,7 +99,9 @@ section_menu_id: reference
 | `query` | ***string***| ***(Optional)*** |
 | `statusCode` | ***string***||
 ## AlbListenerStatus
-##### (Appears on:[AlbListener](#AlbListener))
+
+Appears on:[AlbListener](#AlbListener)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

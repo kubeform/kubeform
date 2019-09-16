@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[RedshiftClusterSpec](#RedshiftClusterSpec)***||
 | `status` | ***[RedshiftClusterStatus](#RedshiftClusterStatus)***||
 ## RedshiftClusterSpec
-##### (Appears on:[RedshiftCluster](#RedshiftCluster), [RedshiftClusterStatus](#RedshiftClusterStatus))
+
+Appears on:[RedshiftCluster](#RedshiftCluster), [RedshiftClusterStatus](#RedshiftClusterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -60,21 +62,27 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpcSecurityGroupIDS` | ***[]string***| ***(Optional)*** |
 ## RedshiftClusterSpecLogging
-##### (Appears on:[RedshiftClusterSpec](#RedshiftClusterSpec))
+
+Appears on:[RedshiftClusterSpec](#RedshiftClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketName` | ***string***| ***(Optional)*** |
 | `enable` | ***bool***||
 | `s3KeyPrefix` | ***string***| ***(Optional)*** |
 ## RedshiftClusterSpecSnapshotCopy
-##### (Appears on:[RedshiftClusterSpec](#RedshiftClusterSpec))
+
+Appears on:[RedshiftClusterSpec](#RedshiftClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `destinationRegion` | ***string***||
 | `grantName` | ***string***| ***(Optional)*** |
 | `retentionPeriod` | ***int***| ***(Optional)*** |
 ## RedshiftClusterStatus
-##### (Appears on:[RedshiftCluster](#RedshiftCluster))
+
+Appears on:[RedshiftCluster](#RedshiftCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

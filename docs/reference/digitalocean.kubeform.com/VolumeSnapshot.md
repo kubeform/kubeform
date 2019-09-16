@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VolumeSnapshotSpec](#VolumeSnapshotSpec)***||
 | `status` | ***[VolumeSnapshotStatus](#VolumeSnapshotStatus)***||
 ## VolumeSnapshotSpec
-##### (Appears on:[VolumeSnapshot](#VolumeSnapshot), [VolumeSnapshotStatus](#VolumeSnapshotStatus))
+
+Appears on:[VolumeSnapshot](#VolumeSnapshot), [VolumeSnapshotStatus](#VolumeSnapshotStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `size` | ***encoding/json.Number***| ***(Optional)*** |
 | `volumeID` | ***string***||
 ## VolumeSnapshotStatus
-##### (Appears on:[VolumeSnapshot](#VolumeSnapshot))
+
+Appears on:[VolumeSnapshot](#VolumeSnapshot)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[PlacementGroupSpec](#PlacementGroupSpec)***||
 | `status` | ***[PlacementGroupStatus](#PlacementGroupStatus)***||
 ## PlacementGroupSpec
-##### (Appears on:[PlacementGroup](#PlacementGroup), [PlacementGroupStatus](#PlacementGroupStatus))
+
+Appears on:[PlacementGroup](#PlacementGroup), [PlacementGroupStatus](#PlacementGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `strategy` | ***string***||
 ## PlacementGroupStatus
-##### (Appears on:[PlacementGroup](#PlacementGroup))
+
+Appears on:[PlacementGroup](#PlacementGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

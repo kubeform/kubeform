@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApplicationInsightsWebTestSpec](#ApplicationInsightsWebTestSpec)***||
 | `status` | ***[ApplicationInsightsWebTestStatus](#ApplicationInsightsWebTestStatus)***||
 ## ApplicationInsightsWebTestSpec
-##### (Appears on:[ApplicationInsightsWebTest](#ApplicationInsightsWebTest), [ApplicationInsightsWebTestStatus](#ApplicationInsightsWebTestStatus))
+
+Appears on:[ApplicationInsightsWebTest](#ApplicationInsightsWebTest), [ApplicationInsightsWebTestStatus](#ApplicationInsightsWebTestStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,7 +41,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `timeout` | ***int***| ***(Optional)*** |
 ## ApplicationInsightsWebTestStatus
-##### (Appears on:[ApplicationInsightsWebTest](#ApplicationInsightsWebTest))
+
+Appears on:[ApplicationInsightsWebTest](#ApplicationInsightsWebTest)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

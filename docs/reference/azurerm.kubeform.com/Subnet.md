@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SubnetSpec](#SubnetSpec)***||
 | `status` | ***[SubnetStatus](#SubnetStatus)***||
 ## SubnetSpec
-##### (Appears on:[Subnet](#Subnet), [SubnetStatus](#SubnetStatus))
+
+Appears on:[Subnet](#Subnet), [SubnetStatus](#SubnetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,19 +36,25 @@ section_menu_id: reference
 | `serviceEndpoints` | ***[]string***| ***(Optional)*** |
 | `virtualNetworkName` | ***string***||
 ## SubnetSpecDelegation
-##### (Appears on:[SubnetSpec](#SubnetSpec))
+
+Appears on:[SubnetSpec](#SubnetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `serviceDelegation` | ***[[]SubnetSpecDelegationServiceDelegation](#SubnetSpecDelegationServiceDelegation)***||
 ## SubnetSpecDelegationServiceDelegation
-##### (Appears on:[SubnetSpecDelegation](#SubnetSpecDelegation))
+
+Appears on:[SubnetSpecDelegation](#SubnetSpecDelegation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `actions` | ***[]string***| ***(Optional)*** |
 | `name` | ***string***||
 ## SubnetStatus
-##### (Appears on:[Subnet](#Subnet))
+
+Appears on:[Subnet](#Subnet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StreamAnalyticsOutputServicebusQueueSpec](#StreamAnalyticsOutputServicebusQueueSpec)***||
 | `status` | ***[StreamAnalyticsOutputServicebusQueueStatus](#StreamAnalyticsOutputServicebusQueueStatus)***||
 ## StreamAnalyticsOutputServicebusQueueSpec
-##### (Appears on:[StreamAnalyticsOutputServicebusQueue](#StreamAnalyticsOutputServicebusQueue), [StreamAnalyticsOutputServicebusQueueStatus](#StreamAnalyticsOutputServicebusQueueStatus))
+
+Appears on:[StreamAnalyticsOutputServicebusQueue](#StreamAnalyticsOutputServicebusQueue), [StreamAnalyticsOutputServicebusQueueStatus](#StreamAnalyticsOutputServicebusQueueStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `sharedAccessPolicyName` | ***string***||
 | `streamAnalyticsJobName` | ***string***||
 ## StreamAnalyticsOutputServicebusQueueSpecSerialization
-##### (Appears on:[StreamAnalyticsOutputServicebusQueueSpec](#StreamAnalyticsOutputServicebusQueueSpec))
+
+Appears on:[StreamAnalyticsOutputServicebusQueueSpec](#StreamAnalyticsOutputServicebusQueueSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `encoding` | ***string***| ***(Optional)*** |
@@ -41,7 +45,9 @@ section_menu_id: reference
 | `format` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## StreamAnalyticsOutputServicebusQueueStatus
-##### (Appears on:[StreamAnalyticsOutputServicebusQueue](#StreamAnalyticsOutputServicebusQueue))
+
+Appears on:[StreamAnalyticsOutputServicebusQueue](#StreamAnalyticsOutputServicebusQueue)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

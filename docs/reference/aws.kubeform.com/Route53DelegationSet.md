@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Route53DelegationSetSpec](#Route53DelegationSetSpec)***||
 | `status` | ***[Route53DelegationSetStatus](#Route53DelegationSetStatus)***||
 ## Route53DelegationSetSpec
-##### (Appears on:[Route53DelegationSet](#Route53DelegationSet), [Route53DelegationSetStatus](#Route53DelegationSetStatus))
+
+Appears on:[Route53DelegationSet](#Route53DelegationSet), [Route53DelegationSetStatus](#Route53DelegationSetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `nameServers` | ***[]string***| ***(Optional)*** |
 | `referenceName` | ***string***| ***(Optional)*** |
 ## Route53DelegationSetStatus
-##### (Appears on:[Route53DelegationSet](#Route53DelegationSet))
+
+Appears on:[Route53DelegationSet](#Route53DelegationSet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

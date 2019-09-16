@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[OpsworksStackSpec](#OpsworksStackSpec)***||
 | `status` | ***[OpsworksStackStatus](#OpsworksStackStatus)***||
 ## OpsworksStackSpec
-##### (Appears on:[OpsworksStack](#OpsworksStack), [OpsworksStackStatus](#OpsworksStackStatus))
+
+Appears on:[OpsworksStack](#OpsworksStack), [OpsworksStackStatus](#OpsworksStackStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -50,7 +52,9 @@ section_menu_id: reference
 | `useOpsworksSecurityGroups` | ***bool***| ***(Optional)*** |
 | `vpcID` | ***string***| ***(Optional)*** |
 ## OpsworksStackSpecCustomCookbooksSource
-##### (Appears on:[OpsworksStackSpec](#OpsworksStackSpec))
+
+Appears on:[OpsworksStackSpec](#OpsworksStackSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `revision` | ***string***| ***(Optional)*** |
@@ -59,7 +63,9 @@ section_menu_id: reference
 | `url` | ***string***||
 | `username` | ***string***| ***(Optional)*** |
 ## OpsworksStackStatus
-##### (Appears on:[OpsworksStack](#OpsworksStack))
+
+Appears on:[OpsworksStack](#OpsworksStack)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

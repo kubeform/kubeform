@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GlacierVaultLockSpec](#GlacierVaultLockSpec)***||
 | `status` | ***[GlacierVaultLockStatus](#GlacierVaultLockStatus)***||
 ## GlacierVaultLockSpec
-##### (Appears on:[GlacierVaultLock](#GlacierVaultLock), [GlacierVaultLockStatus](#GlacierVaultLockStatus))
+
+Appears on:[GlacierVaultLock](#GlacierVaultLock), [GlacierVaultLockStatus](#GlacierVaultLockStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `policy` | ***string***||
 | `vaultName` | ***string***||
 ## GlacierVaultLockStatus
-##### (Appears on:[GlacierVaultLock](#GlacierVaultLock))
+
+Appears on:[GlacierVaultLock](#GlacierVaultLock)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DaxParameterGroupSpec](#DaxParameterGroupSpec)***||
 | `status` | ***[DaxParameterGroupStatus](#DaxParameterGroupStatus)***||
 ## DaxParameterGroupSpec
-##### (Appears on:[DaxParameterGroup](#DaxParameterGroup), [DaxParameterGroupStatus](#DaxParameterGroupStatus))
+
+Appears on:[DaxParameterGroup](#DaxParameterGroup), [DaxParameterGroupStatus](#DaxParameterGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,13 +30,17 @@ section_menu_id: reference
 | `name` | ***string***||
 | `parameters` | ***[[]DaxParameterGroupSpecParameters](#DaxParameterGroupSpecParameters)***| ***(Optional)*** |
 ## DaxParameterGroupSpecParameters
-##### (Appears on:[DaxParameterGroupSpec](#DaxParameterGroupSpec))
+
+Appears on:[DaxParameterGroupSpec](#DaxParameterGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `value` | ***string***||
 ## DaxParameterGroupStatus
-##### (Appears on:[DaxParameterGroup](#DaxParameterGroup))
+
+Appears on:[DaxParameterGroup](#DaxParameterGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Cloud9EnvironmentEc2Spec](#Cloud9EnvironmentEc2Spec)***||
 | `status` | ***[Cloud9EnvironmentEc2Status](#Cloud9EnvironmentEc2Status)***||
 ## Cloud9EnvironmentEc2Spec
-##### (Appears on:[Cloud9EnvironmentEc2](#Cloud9EnvironmentEc2), [Cloud9EnvironmentEc2Status](#Cloud9EnvironmentEc2Status))
+
+Appears on:[Cloud9EnvironmentEc2](#Cloud9EnvironmentEc2), [Cloud9EnvironmentEc2Status](#Cloud9EnvironmentEc2Status)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `subnetID` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## Cloud9EnvironmentEc2Status
-##### (Appears on:[Cloud9EnvironmentEc2](#Cloud9EnvironmentEc2))
+
+Appears on:[Cloud9EnvironmentEc2](#Cloud9EnvironmentEc2)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

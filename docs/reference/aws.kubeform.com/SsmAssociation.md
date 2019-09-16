@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SsmAssociationSpec](#SsmAssociationSpec)***||
 | `status` | ***[SsmAssociationStatus](#SsmAssociationStatus)***||
 ## SsmAssociationSpec
-##### (Appears on:[SsmAssociation](#SsmAssociation), [SsmAssociationStatus](#SsmAssociationStatus))
+
+Appears on:[SsmAssociation](#SsmAssociation), [SsmAssociationStatus](#SsmAssociationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,19 +39,25 @@ section_menu_id: reference
 | `scheduleExpression` | ***string***| ***(Optional)*** |
 | `targets` | ***[[]SsmAssociationSpecTargets](#SsmAssociationSpecTargets)***| ***(Optional)*** |
 ## SsmAssociationSpecOutputLocation
-##### (Appears on:[SsmAssociationSpec](#SsmAssociationSpec))
+
+Appears on:[SsmAssociationSpec](#SsmAssociationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `s3BucketName` | ***string***||
 | `s3KeyPrefix` | ***string***| ***(Optional)*** |
 ## SsmAssociationSpecTargets
-##### (Appears on:[SsmAssociationSpec](#SsmAssociationSpec))
+
+Appears on:[SsmAssociationSpec](#SsmAssociationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `key` | ***string***||
 | `values` | ***[]string***||
 ## SsmAssociationStatus
-##### (Appears on:[SsmAssociation](#SsmAssociation))
+
+Appears on:[SsmAssociation](#SsmAssociation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

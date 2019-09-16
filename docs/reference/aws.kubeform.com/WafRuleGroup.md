@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WafRuleGroupSpec](#WafRuleGroupSpec)***||
 | `status` | ***[WafRuleGroupStatus](#WafRuleGroupStatus)***||
 ## WafRuleGroupSpec
-##### (Appears on:[WafRuleGroup](#WafRuleGroup), [WafRuleGroupStatus](#WafRuleGroupStatus))
+
+Appears on:[WafRuleGroup](#WafRuleGroup), [WafRuleGroupStatus](#WafRuleGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `metricName` | ***string***||
 | `name` | ***string***||
 ## WafRuleGroupSpecActivatedRule
-##### (Appears on:[WafRuleGroupSpec](#WafRuleGroupSpec))
+
+Appears on:[WafRuleGroupSpec](#WafRuleGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***[[]WafRuleGroupSpecActivatedRuleAction](#WafRuleGroupSpecActivatedRuleAction)***||
@@ -36,12 +40,16 @@ section_menu_id: reference
 | `ruleID` | ***string***||
 | `type` | ***string***| ***(Optional)*** |
 ## WafRuleGroupSpecActivatedRuleAction
-##### (Appears on:[WafRuleGroupSpecActivatedRule](#WafRuleGroupSpecActivatedRule))
+
+Appears on:[WafRuleGroupSpecActivatedRule](#WafRuleGroupSpecActivatedRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 ## WafRuleGroupStatus
-##### (Appears on:[WafRuleGroup](#WafRuleGroup))
+
+Appears on:[WafRuleGroup](#WafRuleGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

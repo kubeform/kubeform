@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VpcEndpointServiceSpec](#VpcEndpointServiceSpec)***||
 | `status` | ***[VpcEndpointServiceStatus](#VpcEndpointServiceStatus)***||
 ## VpcEndpointServiceSpec
-##### (Appears on:[VpcEndpointService](#VpcEndpointService), [VpcEndpointServiceStatus](#VpcEndpointServiceStatus))
+
+Appears on:[VpcEndpointService](#VpcEndpointService), [VpcEndpointServiceStatus](#VpcEndpointServiceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `serviceType` | ***string***| ***(Optional)*** |
 | `state` | ***string***| ***(Optional)*** |
 ## VpcEndpointServiceStatus
-##### (Appears on:[VpcEndpointService](#VpcEndpointService))
+
+Appears on:[VpcEndpointService](#VpcEndpointService)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

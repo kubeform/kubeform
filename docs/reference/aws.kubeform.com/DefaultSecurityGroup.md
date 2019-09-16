@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DefaultSecurityGroupSpec](#DefaultSecurityGroupSpec)***||
 | `status` | ***[DefaultSecurityGroupStatus](#DefaultSecurityGroupStatus)***||
 ## DefaultSecurityGroupSpec
-##### (Appears on:[DefaultSecurityGroup](#DefaultSecurityGroup), [DefaultSecurityGroupStatus](#DefaultSecurityGroupStatus))
+
+Appears on:[DefaultSecurityGroup](#DefaultSecurityGroup), [DefaultSecurityGroupStatus](#DefaultSecurityGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpcID` | ***string***| ***(Optional)*** |
 ## DefaultSecurityGroupSpecEgress
-##### (Appears on:[DefaultSecurityGroupSpec](#DefaultSecurityGroupSpec))
+
+Appears on:[DefaultSecurityGroupSpec](#DefaultSecurityGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cidrBlocks` | ***[]string***| ***(Optional)*** |
@@ -46,7 +50,9 @@ section_menu_id: reference
 | `self` | ***bool***| ***(Optional)*** |
 | `toPort` | ***int***||
 ## DefaultSecurityGroupSpecIngress
-##### (Appears on:[DefaultSecurityGroupSpec](#DefaultSecurityGroupSpec))
+
+Appears on:[DefaultSecurityGroupSpec](#DefaultSecurityGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cidrBlocks` | ***[]string***| ***(Optional)*** |
@@ -59,7 +65,9 @@ section_menu_id: reference
 | `self` | ***bool***| ***(Optional)*** |
 | `toPort` | ***int***||
 ## DefaultSecurityGroupStatus
-##### (Appears on:[DefaultSecurityGroup](#DefaultSecurityGroup))
+
+Appears on:[DefaultSecurityGroup](#DefaultSecurityGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

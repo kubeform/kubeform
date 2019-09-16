@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[OpsworksRailsAppLayerSpec](#OpsworksRailsAppLayerSpec)***||
 | `status` | ***[OpsworksRailsAppLayerStatus](#OpsworksRailsAppLayerStatus)***||
 ## OpsworksRailsAppLayerSpec
-##### (Appears on:[OpsworksRailsAppLayer](#OpsworksRailsAppLayer), [OpsworksRailsAppLayerStatus](#OpsworksRailsAppLayerStatus))
+
+Appears on:[OpsworksRailsAppLayer](#OpsworksRailsAppLayer), [OpsworksRailsAppLayerStatus](#OpsworksRailsAppLayerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -51,7 +53,9 @@ section_menu_id: reference
 | `systemPackages` | ***[]string***| ***(Optional)*** |
 | `useEbsOptimizedInstances` | ***bool***| ***(Optional)*** |
 ## OpsworksRailsAppLayerSpecEbsVolume
-##### (Appears on:[OpsworksRailsAppLayerSpec](#OpsworksRailsAppLayerSpec))
+
+Appears on:[OpsworksRailsAppLayerSpec](#OpsworksRailsAppLayerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `iops` | ***int***| ***(Optional)*** |
@@ -61,7 +65,9 @@ section_menu_id: reference
 | `size` | ***int***||
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksRailsAppLayerStatus
-##### (Appears on:[OpsworksRailsAppLayer](#OpsworksRailsAppLayer))
+
+Appears on:[OpsworksRailsAppLayer](#OpsworksRailsAppLayer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

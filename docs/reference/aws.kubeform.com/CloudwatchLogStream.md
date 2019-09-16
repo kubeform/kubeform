@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CloudwatchLogStreamSpec](#CloudwatchLogStreamSpec)***||
 | `status` | ***[CloudwatchLogStreamStatus](#CloudwatchLogStreamStatus)***||
 ## CloudwatchLogStreamSpec
-##### (Appears on:[CloudwatchLogStream](#CloudwatchLogStream), [CloudwatchLogStreamStatus](#CloudwatchLogStreamStatus))
+
+Appears on:[CloudwatchLogStream](#CloudwatchLogStream), [CloudwatchLogStreamStatus](#CloudwatchLogStreamStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `logGroupName` | ***string***||
 | `name` | ***string***||
 ## CloudwatchLogStreamStatus
-##### (Appears on:[CloudwatchLogStream](#CloudwatchLogStream))
+
+Appears on:[CloudwatchLogStream](#CloudwatchLogStream)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

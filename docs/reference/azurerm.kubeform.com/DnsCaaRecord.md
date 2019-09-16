@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DnsCaaRecordSpec](#DnsCaaRecordSpec)***||
 | `status` | ***[DnsCaaRecordStatus](#DnsCaaRecordStatus)***||
 ## DnsCaaRecordSpec
-##### (Appears on:[DnsCaaRecord](#DnsCaaRecord), [DnsCaaRecordStatus](#DnsCaaRecordStatus))
+
+Appears on:[DnsCaaRecord](#DnsCaaRecord), [DnsCaaRecordStatus](#DnsCaaRecordStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,14 +33,18 @@ section_menu_id: reference
 | `ttl` | ***int***||
 | `zoneName` | ***string***||
 ## DnsCaaRecordSpecRecord
-##### (Appears on:[DnsCaaRecordSpec](#DnsCaaRecordSpec))
+
+Appears on:[DnsCaaRecordSpec](#DnsCaaRecordSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `flags` | ***int***||
 | `tag` | ***string***||
 | `value` | ***string***||
 ## DnsCaaRecordStatus
-##### (Appears on:[DnsCaaRecord](#DnsCaaRecord))
+
+Appears on:[DnsCaaRecord](#DnsCaaRecord)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

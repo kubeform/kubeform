@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CloudtrailSpec](#CloudtrailSpec)***||
 | `status` | ***[CloudtrailStatus](#CloudtrailStatus)***||
 ## CloudtrailSpec
-##### (Appears on:[Cloudtrail](#Cloudtrail), [CloudtrailStatus](#CloudtrailStatus))
+
+Appears on:[Cloudtrail](#Cloudtrail), [CloudtrailStatus](#CloudtrailStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -41,20 +43,26 @@ section_menu_id: reference
 | `snsTopicName` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## CloudtrailSpecEventSelector
-##### (Appears on:[CloudtrailSpec](#CloudtrailSpec))
+
+Appears on:[CloudtrailSpec](#CloudtrailSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dataResource` | ***[[]CloudtrailSpecEventSelectorDataResource](#CloudtrailSpecEventSelectorDataResource)***| ***(Optional)*** |
 | `includeManagementEvents` | ***bool***| ***(Optional)*** |
 | `readWriteType` | ***string***| ***(Optional)*** |
 ## CloudtrailSpecEventSelectorDataResource
-##### (Appears on:[CloudtrailSpecEventSelector](#CloudtrailSpecEventSelector))
+
+Appears on:[CloudtrailSpecEventSelector](#CloudtrailSpecEventSelector)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 | `values` | ***[]string***||
 ## CloudtrailStatus
-##### (Appears on:[Cloudtrail](#Cloudtrail))
+
+Appears on:[Cloudtrail](#Cloudtrail)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[HdinsightStormClusterSpec](#HdinsightStormClusterSpec)***||
 | `status` | ***[HdinsightStormClusterStatus](#HdinsightStormClusterStatus)***||
 ## HdinsightStormClusterSpec
-##### (Appears on:[HdinsightStormCluster](#HdinsightStormCluster), [HdinsightStormClusterStatus](#HdinsightStormClusterStatus))
+
+Appears on:[HdinsightStormCluster](#HdinsightStormCluster), [HdinsightStormClusterStatus](#HdinsightStormClusterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,25 +40,33 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `tier` | ***string***||
 ## HdinsightStormClusterSpecComponentVersion
-##### (Appears on:[HdinsightStormClusterSpec](#HdinsightStormClusterSpec))
+
+Appears on:[HdinsightStormClusterSpec](#HdinsightStormClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `storm` | ***string***||
 ## HdinsightStormClusterSpecGateway
-##### (Appears on:[HdinsightStormClusterSpec](#HdinsightStormClusterSpec))
+
+Appears on:[HdinsightStormClusterSpec](#HdinsightStormClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 | `username` | ***string***||
 ## HdinsightStormClusterSpecRoles
-##### (Appears on:[HdinsightStormClusterSpec](#HdinsightStormClusterSpec))
+
+Appears on:[HdinsightStormClusterSpec](#HdinsightStormClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `headNode` | ***[[]HdinsightStormClusterSpecRolesHeadNode](#HdinsightStormClusterSpecRolesHeadNode)***||
 | `workerNode` | ***[[]HdinsightStormClusterSpecRolesWorkerNode](#HdinsightStormClusterSpecRolesWorkerNode)***||
 | `zookeeperNode` | ***[[]HdinsightStormClusterSpecRolesZookeeperNode](#HdinsightStormClusterSpecRolesZookeeperNode)***||
 ## HdinsightStormClusterSpecRolesHeadNode
-##### (Appears on:[HdinsightStormClusterSpecRoles](#HdinsightStormClusterSpecRoles))
+
+Appears on:[HdinsightStormClusterSpecRoles](#HdinsightStormClusterSpecRoles)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `sshKeys` | ***[]string***| ***(Optional)*** |
@@ -65,7 +75,9 @@ section_menu_id: reference
 | `virtualNetworkID` | ***string***| ***(Optional)*** |
 | `vmSize` | ***string***||
 ## HdinsightStormClusterSpecRolesWorkerNode
-##### (Appears on:[HdinsightStormClusterSpecRoles](#HdinsightStormClusterSpecRoles))
+
+Appears on:[HdinsightStormClusterSpecRoles](#HdinsightStormClusterSpecRoles)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `minInstanceCount` | ***int***| ***(Optional)*** |
@@ -76,7 +88,9 @@ section_menu_id: reference
 | `virtualNetworkID` | ***string***| ***(Optional)*** |
 | `vmSize` | ***string***||
 ## HdinsightStormClusterSpecRolesZookeeperNode
-##### (Appears on:[HdinsightStormClusterSpecRoles](#HdinsightStormClusterSpecRoles))
+
+Appears on:[HdinsightStormClusterSpecRoles](#HdinsightStormClusterSpecRoles)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `sshKeys` | ***[]string***| ***(Optional)*** |
@@ -85,13 +99,17 @@ section_menu_id: reference
 | `virtualNetworkID` | ***string***| ***(Optional)*** |
 | `vmSize` | ***string***||
 ## HdinsightStormClusterSpecStorageAccount
-##### (Appears on:[HdinsightStormClusterSpec](#HdinsightStormClusterSpec))
+
+Appears on:[HdinsightStormClusterSpec](#HdinsightStormClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `isDefault` | ***bool***||
 | `storageContainerID` | ***string***||
 ## HdinsightStormClusterStatus
-##### (Appears on:[HdinsightStormCluster](#HdinsightStormCluster))
+
+Appears on:[HdinsightStormCluster](#HdinsightStormCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

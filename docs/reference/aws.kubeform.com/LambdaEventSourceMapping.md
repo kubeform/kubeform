@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LambdaEventSourceMappingSpec](#LambdaEventSourceMappingSpec)***||
 | `status` | ***[LambdaEventSourceMappingStatus](#LambdaEventSourceMappingStatus)***||
 ## LambdaEventSourceMappingSpec
-##### (Appears on:[LambdaEventSourceMapping](#LambdaEventSourceMapping), [LambdaEventSourceMappingStatus](#LambdaEventSourceMappingStatus))
+
+Appears on:[LambdaEventSourceMapping](#LambdaEventSourceMapping), [LambdaEventSourceMappingStatus](#LambdaEventSourceMappingStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,7 +39,9 @@ section_menu_id: reference
 | `stateTransitionReason` | ***string***| ***(Optional)*** |
 | `uuid` | ***string***| ***(Optional)*** |
 ## LambdaEventSourceMappingStatus
-##### (Appears on:[LambdaEventSourceMapping](#LambdaEventSourceMapping))
+
+Appears on:[LambdaEventSourceMapping](#LambdaEventSourceMapping)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

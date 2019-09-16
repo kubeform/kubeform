@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NetworkInterfaceAttachmentSpec](#NetworkInterfaceAttachmentSpec)***||
 | `status` | ***[NetworkInterfaceAttachmentStatus](#NetworkInterfaceAttachmentStatus)***||
 ## NetworkInterfaceAttachmentSpec
-##### (Appears on:[NetworkInterfaceAttachment](#NetworkInterfaceAttachment), [NetworkInterfaceAttachmentStatus](#NetworkInterfaceAttachmentStatus))
+
+Appears on:[NetworkInterfaceAttachment](#NetworkInterfaceAttachment), [NetworkInterfaceAttachmentStatus](#NetworkInterfaceAttachmentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `networkInterfaceID` | ***string***||
 | `status` | ***string***| ***(Optional)*** |
 ## NetworkInterfaceAttachmentStatus
-##### (Appears on:[NetworkInterfaceAttachment](#NetworkInterfaceAttachment))
+
+Appears on:[NetworkInterfaceAttachment](#NetworkInterfaceAttachment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

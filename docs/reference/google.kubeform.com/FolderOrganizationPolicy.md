@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[FolderOrganizationPolicySpec](#FolderOrganizationPolicySpec)***||
 | `status` | ***[FolderOrganizationPolicyStatus](#FolderOrganizationPolicyStatus)***||
 ## FolderOrganizationPolicySpec
-##### (Appears on:[FolderOrganizationPolicy](#FolderOrganizationPolicy), [FolderOrganizationPolicyStatus](#FolderOrganizationPolicyStatus))
+
+Appears on:[FolderOrganizationPolicy](#FolderOrganizationPolicy), [FolderOrganizationPolicyStatus](#FolderOrganizationPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,36 +35,48 @@ section_menu_id: reference
 | `updateTime` | ***string***| ***(Optional)*** |
 | `version` | ***int***| ***(Optional)*** |
 ## FolderOrganizationPolicySpecBooleanPolicy
-##### (Appears on:[FolderOrganizationPolicySpec](#FolderOrganizationPolicySpec))
+
+Appears on:[FolderOrganizationPolicySpec](#FolderOrganizationPolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enforced` | ***bool***||
 ## FolderOrganizationPolicySpecListPolicy
-##### (Appears on:[FolderOrganizationPolicySpec](#FolderOrganizationPolicySpec))
+
+Appears on:[FolderOrganizationPolicySpec](#FolderOrganizationPolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allow` | ***[[]FolderOrganizationPolicySpecListPolicyAllow](#FolderOrganizationPolicySpecListPolicyAllow)***| ***(Optional)*** |
 | `deny` | ***[[]FolderOrganizationPolicySpecListPolicyDeny](#FolderOrganizationPolicySpecListPolicyDeny)***| ***(Optional)*** |
 | `suggestedValue` | ***string***| ***(Optional)*** |
 ## FolderOrganizationPolicySpecListPolicyAllow
-##### (Appears on:[FolderOrganizationPolicySpecListPolicy](#FolderOrganizationPolicySpecListPolicy))
+
+Appears on:[FolderOrganizationPolicySpecListPolicy](#FolderOrganizationPolicySpecListPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `all` | ***bool***| ***(Optional)*** |
 | `values` | ***[]string***| ***(Optional)*** |
 ## FolderOrganizationPolicySpecListPolicyDeny
-##### (Appears on:[FolderOrganizationPolicySpecListPolicy](#FolderOrganizationPolicySpecListPolicy))
+
+Appears on:[FolderOrganizationPolicySpecListPolicy](#FolderOrganizationPolicySpecListPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `all` | ***bool***| ***(Optional)*** |
 | `values` | ***[]string***| ***(Optional)*** |
 ## FolderOrganizationPolicySpecRestorePolicy
-##### (Appears on:[FolderOrganizationPolicySpec](#FolderOrganizationPolicySpec))
+
+Appears on:[FolderOrganizationPolicySpec](#FolderOrganizationPolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `default` | ***bool***||
 ## FolderOrganizationPolicyStatus
-##### (Appears on:[FolderOrganizationPolicy](#FolderOrganizationPolicy))
+
+Appears on:[FolderOrganizationPolicy](#FolderOrganizationPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

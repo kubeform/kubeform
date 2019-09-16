@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DataFactoryDatasetSQLServerTableSpec](#DataFactoryDatasetSQLServerTableSpec)***||
 | `status` | ***[DataFactoryDatasetSQLServerTableStatus](#DataFactoryDatasetSQLServerTableStatus)***||
 ## DataFactoryDatasetSQLServerTableSpec
-##### (Appears on:[DataFactoryDatasetSQLServerTable](#DataFactoryDatasetSQLServerTable), [DataFactoryDatasetSQLServerTableStatus](#DataFactoryDatasetSQLServerTableStatus))
+
+Appears on:[DataFactoryDatasetSQLServerTable](#DataFactoryDatasetSQLServerTable), [DataFactoryDatasetSQLServerTableStatus](#DataFactoryDatasetSQLServerTableStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,14 +38,18 @@ section_menu_id: reference
 | `schemaColumn` | ***[[]DataFactoryDatasetSQLServerTableSpecSchemaColumn](#DataFactoryDatasetSQLServerTableSpecSchemaColumn)***| ***(Optional)*** |
 | `tableName` | ***string***| ***(Optional)*** |
 ## DataFactoryDatasetSQLServerTableSpecSchemaColumn
-##### (Appears on:[DataFactoryDatasetSQLServerTableSpec](#DataFactoryDatasetSQLServerTableSpec))
+
+Appears on:[DataFactoryDatasetSQLServerTableSpec](#DataFactoryDatasetSQLServerTableSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `description` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `type` | ***string***| ***(Optional)*** |
 ## DataFactoryDatasetSQLServerTableStatus
-##### (Appears on:[DataFactoryDatasetSQLServerTable](#DataFactoryDatasetSQLServerTable))
+
+Appears on:[DataFactoryDatasetSQLServerTable](#DataFactoryDatasetSQLServerTable)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

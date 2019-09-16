@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[FirewallSpec](#FirewallSpec)***||
 | `status` | ***[FirewallStatus](#FirewallStatus)***||
 ## FirewallSpec
-##### (Appears on:[Firewall](#Firewall), [FirewallStatus](#FirewallStatus))
+
+Appears on:[Firewall](#Firewall), [FirewallStatus](#FirewallStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## FirewallSpecIpConfiguration
-##### (Appears on:[FirewallSpec](#FirewallSpec))
+
+Appears on:[FirewallSpec](#FirewallSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `internalPublicIPAddressID` | ***string***| ***(Optional)*** Deprecated|
@@ -39,7 +43,9 @@ section_menu_id: reference
 | `publicIPAddressID` | ***string***| ***(Optional)*** |
 | `subnetID` | ***string***||
 ## FirewallStatus
-##### (Appears on:[Firewall](#Firewall))
+
+Appears on:[Firewall](#Firewall)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

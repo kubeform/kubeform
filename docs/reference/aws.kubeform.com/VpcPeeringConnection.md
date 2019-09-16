@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VpcPeeringConnectionSpec](#VpcPeeringConnectionSpec)***||
 | `status` | ***[VpcPeeringConnectionStatus](#VpcPeeringConnectionStatus)***||
 ## VpcPeeringConnectionSpec
-##### (Appears on:[VpcPeeringConnection](#VpcPeeringConnection), [VpcPeeringConnectionStatus](#VpcPeeringConnectionStatus))
+
+Appears on:[VpcPeeringConnection](#VpcPeeringConnection), [VpcPeeringConnectionStatus](#VpcPeeringConnectionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,21 +36,27 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpcID` | ***string***||
 ## VpcPeeringConnectionSpecAccepter
-##### (Appears on:[VpcPeeringConnectionSpec](#VpcPeeringConnectionSpec))
+
+Appears on:[VpcPeeringConnectionSpec](#VpcPeeringConnectionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowClassicLinkToRemoteVpc` | ***bool***| ***(Optional)*** |
 | `allowRemoteVpcDNSResolution` | ***bool***| ***(Optional)*** |
 | `allowVpcToRemoteClassicLink` | ***bool***| ***(Optional)*** |
 ## VpcPeeringConnectionSpecRequester
-##### (Appears on:[VpcPeeringConnectionSpec](#VpcPeeringConnectionSpec))
+
+Appears on:[VpcPeeringConnectionSpec](#VpcPeeringConnectionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allowClassicLinkToRemoteVpc` | ***bool***| ***(Optional)*** |
 | `allowRemoteVpcDNSResolution` | ***bool***| ***(Optional)*** |
 | `allowVpcToRemoteClassicLink` | ***bool***| ***(Optional)*** |
 ## VpcPeeringConnectionStatus
-##### (Appears on:[VpcPeeringConnection](#VpcPeeringConnection))
+
+Appears on:[VpcPeeringConnection](#VpcPeeringConnection)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DirectoryServiceDirectorySpec](#DirectoryServiceDirectorySpec)***||
 | `status` | ***[DirectoryServiceDirectoryStatus](#DirectoryServiceDirectoryStatus)***||
 ## DirectoryServiceDirectorySpec
-##### (Appears on:[DirectoryServiceDirectory](#DirectoryServiceDirectory), [DirectoryServiceDirectoryStatus](#DirectoryServiceDirectoryStatus))
+
+Appears on:[DirectoryServiceDirectory](#DirectoryServiceDirectory), [DirectoryServiceDirectoryStatus](#DirectoryServiceDirectoryStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -40,7 +42,9 @@ section_menu_id: reference
 | `type` | ***string***| ***(Optional)*** |
 | `vpcSettings` | ***[[]DirectoryServiceDirectorySpecVpcSettings](#DirectoryServiceDirectorySpecVpcSettings)***| ***(Optional)*** |
 ## DirectoryServiceDirectorySpecConnectSettings
-##### (Appears on:[DirectoryServiceDirectorySpec](#DirectoryServiceDirectorySpec))
+
+Appears on:[DirectoryServiceDirectorySpec](#DirectoryServiceDirectorySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `customerDNSIPS` | ***[]string***||
@@ -48,13 +52,17 @@ section_menu_id: reference
 | `subnetIDS` | ***[]string***||
 | `vpcID` | ***string***||
 ## DirectoryServiceDirectorySpecVpcSettings
-##### (Appears on:[DirectoryServiceDirectorySpec](#DirectoryServiceDirectorySpec))
+
+Appears on:[DirectoryServiceDirectorySpec](#DirectoryServiceDirectorySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `subnetIDS` | ***[]string***||
 | `vpcID` | ***string***||
 ## DirectoryServiceDirectoryStatus
-##### (Appears on:[DirectoryServiceDirectory](#DirectoryServiceDirectory))
+
+Appears on:[DirectoryServiceDirectory](#DirectoryServiceDirectory)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

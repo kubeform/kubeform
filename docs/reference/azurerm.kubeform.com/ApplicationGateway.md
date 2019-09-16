@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApplicationGatewaySpec](#ApplicationGatewaySpec)***||
 | `status` | ***[ApplicationGatewayStatus](#ApplicationGatewayStatus)***||
 ## ApplicationGatewaySpec
-##### (Appears on:[ApplicationGateway](#ApplicationGateway), [ApplicationGatewayStatus](#ApplicationGatewayStatus))
+
+Appears on:[ApplicationGateway](#ApplicationGateway), [ApplicationGatewayStatus](#ApplicationGatewayStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -52,19 +54,25 @@ section_menu_id: reference
 | `wafConfiguration` | ***[[]ApplicationGatewaySpecWafConfiguration](#ApplicationGatewaySpecWafConfiguration)***| ***(Optional)*** |
 | `zones` | ***[]string***| ***(Optional)*** |
 ## ApplicationGatewaySpecAuthenticationCertificate
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 ## ApplicationGatewaySpecAutoscaleConfiguration
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `maxCapacity` | ***int***| ***(Optional)*** |
 | `minCapacity` | ***int***||
 ## ApplicationGatewaySpecBackendAddressPool
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `fqdnList` | ***[]string***| ***(Optional)*** Deprecated|
@@ -74,7 +82,9 @@ section_menu_id: reference
 | `ipAddresses` | ***[]string***| ***(Optional)*** |
 | `name` | ***string***||
 ## ApplicationGatewaySpecBackendHTTPSettings
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `affinityCookieName` | ***string***| ***(Optional)*** |
@@ -92,26 +102,34 @@ section_menu_id: reference
 | `protocol` | ***string***||
 | `requestTimeout` | ***int***| ***(Optional)*** |
 ## ApplicationGatewaySpecBackendHTTPSettingsAuthenticationCertificate
-##### (Appears on:[ApplicationGatewaySpecBackendHTTPSettings](#ApplicationGatewaySpecBackendHTTPSettings))
+
+Appears on:[ApplicationGatewaySpecBackendHTTPSettings](#ApplicationGatewaySpecBackendHTTPSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 ## ApplicationGatewaySpecBackendHTTPSettingsConnectionDraining
-##### (Appears on:[ApplicationGatewaySpecBackendHTTPSettings](#ApplicationGatewaySpecBackendHTTPSettings))
+
+Appears on:[ApplicationGatewaySpecBackendHTTPSettings](#ApplicationGatewaySpecBackendHTTPSettings)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `drainTimeoutSec` | ***int***||
 | `enabled` | ***bool***||
 ## ApplicationGatewaySpecCustomErrorConfiguration
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `customErrorPageURL` | ***string***||
 | `ID` | ***string***| ***(Optional)*** |
 | `statusCode` | ***string***||
 ## ApplicationGatewaySpecFrontendIPConfiguration
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
@@ -121,21 +139,27 @@ section_menu_id: reference
 | `publicIPAddressID` | ***string***| ***(Optional)*** |
 | `subnetID` | ***string***| ***(Optional)*** |
 ## ApplicationGatewaySpecFrontendPort
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `port` | ***int***||
 ## ApplicationGatewaySpecGatewayIPConfiguration
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `subnetID` | ***string***||
 ## ApplicationGatewaySpecHttpListener
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `customErrorConfiguration` | ***[[]ApplicationGatewaySpecHttpListenerCustomErrorConfiguration](#ApplicationGatewaySpecHttpListenerCustomErrorConfiguration)***| ***(Optional)*** |
@@ -151,20 +175,26 @@ section_menu_id: reference
 | `sslCertificateID` | ***string***| ***(Optional)*** |
 | `sslCertificateName` | ***string***| ***(Optional)*** |
 ## ApplicationGatewaySpecHttpListenerCustomErrorConfiguration
-##### (Appears on:[ApplicationGatewaySpecHttpListener](#ApplicationGatewaySpecHttpListener))
+
+Appears on:[ApplicationGatewaySpecHttpListener](#ApplicationGatewaySpecHttpListener)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `customErrorPageURL` | ***string***||
 | `ID` | ***string***| ***(Optional)*** |
 | `statusCode` | ***string***||
 ## ApplicationGatewaySpecIdentity
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `identityIDS` | ***[]string***||
 | `type` | ***string***| ***(Optional)*** |
 ## ApplicationGatewaySpecProbe
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `host` | ***string***| ***(Optional)*** |
@@ -179,13 +209,17 @@ section_menu_id: reference
 | `timeout` | ***int***||
 | `unhealthyThreshold` | ***int***||
 ## ApplicationGatewaySpecProbeMatch
-##### (Appears on:[ApplicationGatewaySpecProbe](#ApplicationGatewaySpecProbe))
+
+Appears on:[ApplicationGatewaySpecProbe](#ApplicationGatewaySpecProbe)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `body` | ***string***| ***(Optional)*** |
 | `statusCode` | ***[]string***| ***(Optional)*** |
 ## ApplicationGatewaySpecRedirectConfiguration
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
@@ -197,7 +231,9 @@ section_menu_id: reference
 | `targetListenerName` | ***string***| ***(Optional)*** |
 | `targetURL` | ***string***| ***(Optional)*** |
 ## ApplicationGatewaySpecRequestRoutingRule
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `backendAddressPoolID` | ***string***| ***(Optional)*** |
@@ -216,14 +252,18 @@ section_menu_id: reference
 | `urlPathMapID` | ***string***| ***(Optional)*** |
 | `urlPathMapName` | ***string***| ***(Optional)*** |
 ## ApplicationGatewaySpecRewriteRuleSet
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `rewriteRule` | ***[[]ApplicationGatewaySpecRewriteRuleSetRewriteRule](#ApplicationGatewaySpecRewriteRuleSetRewriteRule)***| ***(Optional)*** |
 ## ApplicationGatewaySpecRewriteRuleSetRewriteRule
-##### (Appears on:[ApplicationGatewaySpecRewriteRuleSet](#ApplicationGatewaySpecRewriteRuleSet))
+
+Appears on:[ApplicationGatewaySpecRewriteRuleSet](#ApplicationGatewaySpecRewriteRuleSet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `condition` | ***[[]ApplicationGatewaySpecRewriteRuleSetRewriteRuleCondition](#ApplicationGatewaySpecRewriteRuleSetRewriteRuleCondition)***| ***(Optional)*** |
@@ -232,7 +272,9 @@ section_menu_id: reference
 | `responseHeaderConfiguration` | ***[[]ApplicationGatewaySpecRewriteRuleSetRewriteRuleResponseHeaderConfiguration](#ApplicationGatewaySpecRewriteRuleSetRewriteRuleResponseHeaderConfiguration)***| ***(Optional)*** |
 | `ruleSequence` | ***int***||
 ## ApplicationGatewaySpecRewriteRuleSetRewriteRuleCondition
-##### (Appears on:[ApplicationGatewaySpecRewriteRuleSetRewriteRule](#ApplicationGatewaySpecRewriteRuleSetRewriteRule))
+
+Appears on:[ApplicationGatewaySpecRewriteRuleSetRewriteRule](#ApplicationGatewaySpecRewriteRuleSetRewriteRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ignoreCase` | ***bool***| ***(Optional)*** |
@@ -240,33 +282,43 @@ section_menu_id: reference
 | `pattern` | ***string***||
 | `variable` | ***string***||
 ## ApplicationGatewaySpecRewriteRuleSetRewriteRuleRequestHeaderConfiguration
-##### (Appears on:[ApplicationGatewaySpecRewriteRuleSetRewriteRule](#ApplicationGatewaySpecRewriteRuleSetRewriteRule))
+
+Appears on:[ApplicationGatewaySpecRewriteRuleSetRewriteRule](#ApplicationGatewaySpecRewriteRuleSetRewriteRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `headerName` | ***string***||
 | `headerValue` | ***string***||
 ## ApplicationGatewaySpecRewriteRuleSetRewriteRuleResponseHeaderConfiguration
-##### (Appears on:[ApplicationGatewaySpecRewriteRuleSetRewriteRule](#ApplicationGatewaySpecRewriteRuleSetRewriteRule))
+
+Appears on:[ApplicationGatewaySpecRewriteRuleSetRewriteRule](#ApplicationGatewaySpecRewriteRuleSetRewriteRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `headerName` | ***string***||
 | `headerValue` | ***string***||
 ## ApplicationGatewaySpecSku
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `capacity` | ***int***| ***(Optional)*** |
 | `name` | ***string***||
 | `tier` | ***string***||
 ## ApplicationGatewaySpecSslCertificate
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `publicCertData` | ***string***| ***(Optional)*** |
 ## ApplicationGatewaySpecSslPolicy
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cipherSuites` | ***[]string***| ***(Optional)*** |
@@ -275,7 +327,9 @@ section_menu_id: reference
 | `policyName` | ***string***| ***(Optional)*** |
 | `policyType` | ***string***| ***(Optional)*** |
 ## ApplicationGatewaySpecUrlPathMap
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultBackendAddressPoolID` | ***string***| ***(Optional)*** |
@@ -290,7 +344,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `pathRule` | ***[[]ApplicationGatewaySpecUrlPathMapPathRule](#ApplicationGatewaySpecUrlPathMapPathRule)***||
 ## ApplicationGatewaySpecUrlPathMapPathRule
-##### (Appears on:[ApplicationGatewaySpecUrlPathMap](#ApplicationGatewaySpecUrlPathMap))
+
+Appears on:[ApplicationGatewaySpecUrlPathMap](#ApplicationGatewaySpecUrlPathMap)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `backendAddressPoolID` | ***string***| ***(Optional)*** |
@@ -305,7 +361,9 @@ section_menu_id: reference
 | `rewriteRuleSetID` | ***string***| ***(Optional)*** |
 | `rewriteRuleSetName` | ***string***| ***(Optional)*** |
 ## ApplicationGatewaySpecWafConfiguration
-##### (Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec))
+
+Appears on:[ApplicationGatewaySpec](#ApplicationGatewaySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `disabledRuleGroup` | ***[[]ApplicationGatewaySpecWafConfigurationDisabledRuleGroup](#ApplicationGatewaySpecWafConfigurationDisabledRuleGroup)***| ***(Optional)*** |
@@ -318,20 +376,26 @@ section_menu_id: reference
 | `ruleSetType` | ***string***| ***(Optional)*** |
 | `ruleSetVersion` | ***string***||
 ## ApplicationGatewaySpecWafConfigurationDisabledRuleGroup
-##### (Appears on:[ApplicationGatewaySpecWafConfiguration](#ApplicationGatewaySpecWafConfiguration))
+
+Appears on:[ApplicationGatewaySpecWafConfiguration](#ApplicationGatewaySpecWafConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ruleGroupName` | ***string***||
 | `rules` | ***[]int64***| ***(Optional)*** |
 ## ApplicationGatewaySpecWafConfigurationExclusion
-##### (Appears on:[ApplicationGatewaySpecWafConfiguration](#ApplicationGatewaySpecWafConfiguration))
+
+Appears on:[ApplicationGatewaySpecWafConfiguration](#ApplicationGatewaySpecWafConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `matchVariable` | ***string***||
 | `selector` | ***string***| ***(Optional)*** |
 | `selectorMatchOperator` | ***string***| ***(Optional)*** |
 ## ApplicationGatewayStatus
-##### (Appears on:[ApplicationGateway](#ApplicationGateway))
+
+Appears on:[ApplicationGateway](#ApplicationGateway)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

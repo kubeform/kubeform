@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AlbTargetGroupAttachmentSpec](#AlbTargetGroupAttachmentSpec)***||
 | `status` | ***[AlbTargetGroupAttachmentStatus](#AlbTargetGroupAttachmentStatus)***||
 ## AlbTargetGroupAttachmentSpec
-##### (Appears on:[AlbTargetGroupAttachment](#AlbTargetGroupAttachment), [AlbTargetGroupAttachmentStatus](#AlbTargetGroupAttachmentStatus))
+
+Appears on:[AlbTargetGroupAttachment](#AlbTargetGroupAttachment), [AlbTargetGroupAttachmentStatus](#AlbTargetGroupAttachmentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `targetGroupArn` | ***string***||
 | `targetID` | ***string***||
 ## AlbTargetGroupAttachmentStatus
-##### (Appears on:[AlbTargetGroupAttachment](#AlbTargetGroupAttachment))
+
+Appears on:[AlbTargetGroupAttachment](#AlbTargetGroupAttachment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

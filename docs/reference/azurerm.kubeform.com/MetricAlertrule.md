@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MetricAlertruleSpec](#MetricAlertruleSpec)***||
 | `status` | ***[MetricAlertruleStatus](#MetricAlertruleStatus)***||
 ## MetricAlertruleSpec
-##### (Appears on:[MetricAlertrule](#MetricAlertrule), [MetricAlertruleStatus](#MetricAlertruleStatus))
+
+Appears on:[MetricAlertrule](#MetricAlertrule), [MetricAlertruleStatus](#MetricAlertruleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,19 +41,25 @@ section_menu_id: reference
 | `threshold` | ***encoding/json.Number***||
 | `webhookAction` | ***[[]MetricAlertruleSpecWebhookAction](#MetricAlertruleSpecWebhookAction)***| ***(Optional)*** |
 ## MetricAlertruleSpecEmailAction
-##### (Appears on:[MetricAlertruleSpec](#MetricAlertruleSpec))
+
+Appears on:[MetricAlertruleSpec](#MetricAlertruleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `customEmails` | ***[]string***| ***(Optional)*** |
 | `sendToServiceOwners` | ***bool***| ***(Optional)*** |
 ## MetricAlertruleSpecWebhookAction
-##### (Appears on:[MetricAlertruleSpec](#MetricAlertruleSpec))
+
+Appears on:[MetricAlertruleSpec](#MetricAlertruleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `properties` | ***map[string]string***| ***(Optional)*** |
 | `serviceURI` | ***string***||
 ## MetricAlertruleStatus
-##### (Appears on:[MetricAlertrule](#MetricAlertrule))
+
+Appears on:[MetricAlertrule](#MetricAlertrule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

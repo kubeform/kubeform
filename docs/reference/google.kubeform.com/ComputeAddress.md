@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeAddressSpec](#ComputeAddressSpec)***||
 | `status` | ***[ComputeAddressStatus](#ComputeAddressStatus)***||
 ## ComputeAddressSpec
-##### (Appears on:[ComputeAddress](#ComputeAddress), [ComputeAddressStatus](#ComputeAddressStatus))
+
+Appears on:[ComputeAddress](#ComputeAddress), [ComputeAddressStatus](#ComputeAddressStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,7 +40,9 @@ section_menu_id: reference
 | `subnetwork` | ***string***| ***(Optional)*** |
 | `users` | ***[]string***| ***(Optional)*** |
 ## ComputeAddressStatus
-##### (Appears on:[ComputeAddress](#ComputeAddress))
+
+Appears on:[ComputeAddress](#ComputeAddress)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

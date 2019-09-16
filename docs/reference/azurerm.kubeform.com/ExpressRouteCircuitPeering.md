@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ExpressRouteCircuitPeeringSpec](#ExpressRouteCircuitPeeringSpec)***||
 | `status` | ***[ExpressRouteCircuitPeeringStatus](#ExpressRouteCircuitPeeringStatus)***||
 ## ExpressRouteCircuitPeeringSpec
-##### (Appears on:[ExpressRouteCircuitPeering](#ExpressRouteCircuitPeering), [ExpressRouteCircuitPeeringStatus](#ExpressRouteCircuitPeeringStatus))
+
+Appears on:[ExpressRouteCircuitPeering](#ExpressRouteCircuitPeering), [ExpressRouteCircuitPeeringStatus](#ExpressRouteCircuitPeeringStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,12 +39,16 @@ section_menu_id: reference
 | `secondaryPeerAddressPrefix` | ***string***||
 | `vlanID` | ***int***||
 ## ExpressRouteCircuitPeeringSpecMicrosoftPeeringConfig
-##### (Appears on:[ExpressRouteCircuitPeeringSpec](#ExpressRouteCircuitPeeringSpec))
+
+Appears on:[ExpressRouteCircuitPeeringSpec](#ExpressRouteCircuitPeeringSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `advertisedPublicPrefixes` | ***[]string***||
 ## ExpressRouteCircuitPeeringStatus
-##### (Appears on:[ExpressRouteCircuitPeering](#ExpressRouteCircuitPeering))
+
+Appears on:[ExpressRouteCircuitPeering](#ExpressRouteCircuitPeering)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

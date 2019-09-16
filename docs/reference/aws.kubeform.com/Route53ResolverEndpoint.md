@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Route53ResolverEndpointSpec](#Route53ResolverEndpointSpec)***||
 | `status` | ***[Route53ResolverEndpointStatus](#Route53ResolverEndpointStatus)***||
 ## Route53ResolverEndpointSpec
-##### (Appears on:[Route53ResolverEndpoint](#Route53ResolverEndpoint), [Route53ResolverEndpointStatus](#Route53ResolverEndpointStatus))
+
+Appears on:[Route53ResolverEndpoint](#Route53ResolverEndpoint), [Route53ResolverEndpointStatus](#Route53ResolverEndpointStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,14 +34,18 @@ section_menu_id: reference
 | `securityGroupIDS` | ***[]string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## Route53ResolverEndpointSpecIpAddress
-##### (Appears on:[Route53ResolverEndpointSpec](#Route53ResolverEndpointSpec))
+
+Appears on:[Route53ResolverEndpointSpec](#Route53ResolverEndpointSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ip` | ***string***| ***(Optional)*** |
 | `ipID` | ***string***| ***(Optional)*** |
 | `subnetID` | ***string***||
 ## Route53ResolverEndpointStatus
-##### (Appears on:[Route53ResolverEndpoint](#Route53ResolverEndpoint))
+
+Appears on:[Route53ResolverEndpoint](#Route53ResolverEndpoint)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

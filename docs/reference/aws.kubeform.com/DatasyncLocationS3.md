@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DatasyncLocationS3Spec](#DatasyncLocationS3Spec)***||
 | `status` | ***[DatasyncLocationS3Status](#DatasyncLocationS3Status)***||
 ## DatasyncLocationS3Spec
-##### (Appears on:[DatasyncLocationS3](#DatasyncLocationS3), [DatasyncLocationS3Status](#DatasyncLocationS3Status))
+
+Appears on:[DatasyncLocationS3](#DatasyncLocationS3), [DatasyncLocationS3Status](#DatasyncLocationS3Status)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,12 +33,16 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `uri` | ***string***| ***(Optional)*** |
 ## DatasyncLocationS3SpecS3Config
-##### (Appears on:[DatasyncLocationS3Spec](#DatasyncLocationS3Spec))
+
+Appears on:[DatasyncLocationS3Spec](#DatasyncLocationS3Spec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketAccessRoleArn` | ***string***||
 ## DatasyncLocationS3Status
-##### (Appears on:[DatasyncLocationS3](#DatasyncLocationS3))
+
+Appears on:[DatasyncLocationS3](#DatasyncLocationS3)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

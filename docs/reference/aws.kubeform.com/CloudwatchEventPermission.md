@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CloudwatchEventPermissionSpec](#CloudwatchEventPermissionSpec)***||
 | `status` | ***[CloudwatchEventPermissionStatus](#CloudwatchEventPermissionStatus)***||
 ## CloudwatchEventPermissionSpec
-##### (Appears on:[CloudwatchEventPermission](#CloudwatchEventPermission), [CloudwatchEventPermissionStatus](#CloudwatchEventPermissionStatus))
+
+Appears on:[CloudwatchEventPermission](#CloudwatchEventPermission), [CloudwatchEventPermissionStatus](#CloudwatchEventPermissionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,14 +31,18 @@ section_menu_id: reference
 | `principal` | ***string***||
 | `statementID` | ***string***||
 ## CloudwatchEventPermissionSpecCondition
-##### (Appears on:[CloudwatchEventPermissionSpec](#CloudwatchEventPermissionSpec))
+
+Appears on:[CloudwatchEventPermissionSpec](#CloudwatchEventPermissionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `key` | ***string***||
 | `type` | ***string***||
 | `value` | ***string***||
 ## CloudwatchEventPermissionStatus
-##### (Appears on:[CloudwatchEventPermission](#CloudwatchEventPermission))
+
+Appears on:[CloudwatchEventPermission](#CloudwatchEventPermission)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

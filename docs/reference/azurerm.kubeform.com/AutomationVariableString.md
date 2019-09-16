@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AutomationVariableStringSpec](#AutomationVariableStringSpec)***||
 | `status` | ***[AutomationVariableStringStatus](#AutomationVariableStringStatus)***||
 ## AutomationVariableStringSpec
-##### (Appears on:[AutomationVariableString](#AutomationVariableString), [AutomationVariableStringStatus](#AutomationVariableStringStatus))
+
+Appears on:[AutomationVariableString](#AutomationVariableString), [AutomationVariableStringStatus](#AutomationVariableStringStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `value` | ***string***| ***(Optional)*** |
 ## AutomationVariableStringStatus
-##### (Appears on:[AutomationVariableString](#AutomationVariableString))
+
+Appears on:[AutomationVariableString](#AutomationVariableString)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

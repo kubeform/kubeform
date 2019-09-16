@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NeptuneParameterGroupSpec](#NeptuneParameterGroupSpec)***||
 | `status` | ***[NeptuneParameterGroupStatus](#NeptuneParameterGroupStatus)***||
 ## NeptuneParameterGroupSpec
-##### (Appears on:[NeptuneParameterGroup](#NeptuneParameterGroup), [NeptuneParameterGroupStatus](#NeptuneParameterGroupStatus))
+
+Appears on:[NeptuneParameterGroup](#NeptuneParameterGroup), [NeptuneParameterGroupStatus](#NeptuneParameterGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,14 +33,18 @@ section_menu_id: reference
 | `parameter` | ***[[]NeptuneParameterGroupSpecParameter](#NeptuneParameterGroupSpecParameter)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## NeptuneParameterGroupSpecParameter
-##### (Appears on:[NeptuneParameterGroupSpec](#NeptuneParameterGroupSpec))
+
+Appears on:[NeptuneParameterGroupSpec](#NeptuneParameterGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `applyMethod` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `value` | ***string***||
 ## NeptuneParameterGroupStatus
-##### (Appears on:[NeptuneParameterGroup](#NeptuneParameterGroup))
+
+Appears on:[NeptuneParameterGroup](#NeptuneParameterGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

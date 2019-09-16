@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SwfDomainSpec](#SwfDomainSpec)***||
 | `status` | ***[SwfDomainStatus](#SwfDomainStatus)***||
 ## SwfDomainSpec
-##### (Appears on:[SwfDomain](#SwfDomain), [SwfDomainStatus](#SwfDomainStatus))
+
+Appears on:[SwfDomain](#SwfDomain), [SwfDomainStatus](#SwfDomainStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `namePrefix` | ***string***| ***(Optional)*** |
 | `workflowExecutionRetentionPeriodInDays` | ***string***||
 ## SwfDomainStatus
-##### (Appears on:[SwfDomain](#SwfDomain))
+
+Appears on:[SwfDomain](#SwfDomain)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

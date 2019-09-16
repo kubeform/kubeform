@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AlbTargetGroupSpec](#AlbTargetGroupSpec)***||
 | `status` | ***[AlbTargetGroupStatus](#AlbTargetGroupStatus)***||
 ## AlbTargetGroupSpec
-##### (Appears on:[AlbTargetGroup](#AlbTargetGroup), [AlbTargetGroupStatus](#AlbTargetGroupStatus))
+
+Appears on:[AlbTargetGroup](#AlbTargetGroup), [AlbTargetGroupStatus](#AlbTargetGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -40,7 +42,9 @@ section_menu_id: reference
 | `targetType` | ***string***| ***(Optional)*** |
 | `vpcID` | ***string***| ***(Optional)*** |
 ## AlbTargetGroupSpecHealthCheck
-##### (Appears on:[AlbTargetGroupSpec](#AlbTargetGroupSpec))
+
+Appears on:[AlbTargetGroupSpec](#AlbTargetGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
@@ -53,14 +57,18 @@ section_menu_id: reference
 | `timeout` | ***int***| ***(Optional)*** |
 | `unhealthyThreshold` | ***int***| ***(Optional)*** |
 ## AlbTargetGroupSpecStickiness
-##### (Appears on:[AlbTargetGroupSpec](#AlbTargetGroupSpec))
+
+Appears on:[AlbTargetGroupSpec](#AlbTargetGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cookieDuration` | ***int***| ***(Optional)*** |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `type` | ***string***||
 ## AlbTargetGroupStatus
-##### (Appears on:[AlbTargetGroup](#AlbTargetGroup))
+
+Appears on:[AlbTargetGroup](#AlbTargetGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

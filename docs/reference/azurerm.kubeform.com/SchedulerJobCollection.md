@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SchedulerJobCollectionSpec](#SchedulerJobCollectionSpec)***||
 | `status` | ***[SchedulerJobCollectionStatus](#SchedulerJobCollectionStatus)***||
 ## SchedulerJobCollectionSpec
-##### (Appears on:[SchedulerJobCollection](#SchedulerJobCollection), [SchedulerJobCollectionStatus](#SchedulerJobCollectionStatus))
+
+Appears on:[SchedulerJobCollection](#SchedulerJobCollection), [SchedulerJobCollectionStatus](#SchedulerJobCollectionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `state` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SchedulerJobCollectionSpecQuota
-##### (Appears on:[SchedulerJobCollectionSpec](#SchedulerJobCollectionSpec))
+
+Appears on:[SchedulerJobCollectionSpec](#SchedulerJobCollectionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `maxJobCount` | ***int***| ***(Optional)*** |
@@ -40,7 +44,9 @@ section_menu_id: reference
 | `maxRecurrenceInterval` | ***int***| ***(Optional)*** |
 | `maxRetryInterval` | ***int***| ***(Optional)*** Deprecated|
 ## SchedulerJobCollectionStatus
-##### (Appears on:[SchedulerJobCollection](#SchedulerJobCollection))
+
+Appears on:[SchedulerJobCollection](#SchedulerJobCollection)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

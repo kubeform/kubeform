@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)***||
 | `status` | ***[ElasticsearchDomainStatus](#ElasticsearchDomainStatus)***||
 ## ElasticsearchDomainSpec
-##### (Appears on:[ElasticsearchDomain](#ElasticsearchDomain), [ElasticsearchDomainStatus](#ElasticsearchDomainStatus))
+
+Appears on:[ElasticsearchDomain](#ElasticsearchDomain), [ElasticsearchDomainStatus](#ElasticsearchDomainStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -42,7 +44,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpcOptions` | ***[[]ElasticsearchDomainSpecVpcOptions](#ElasticsearchDomainSpecVpcOptions)***| ***(Optional)*** |
 ## ElasticsearchDomainSpecClusterConfig
-##### (Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec))
+
+Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dedicatedMasterCount` | ***int***| ***(Optional)*** |
@@ -52,7 +56,9 @@ section_menu_id: reference
 | `instanceType` | ***string***| ***(Optional)*** |
 | `zoneAwarenessEnabled` | ***bool***| ***(Optional)*** |
 ## ElasticsearchDomainSpecCognitoOptions
-##### (Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec))
+
+Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
@@ -60,7 +66,9 @@ section_menu_id: reference
 | `roleArn` | ***string***||
 | `userPoolID` | ***string***||
 ## ElasticsearchDomainSpecEbsOptions
-##### (Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec))
+
+Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ebsEnabled` | ***bool***||
@@ -68,30 +76,40 @@ section_menu_id: reference
 | `volumeSize` | ***int***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## ElasticsearchDomainSpecEncryptAtRest
-##### (Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec))
+
+Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 | `kmsKeyID` | ***string***| ***(Optional)*** |
 ## ElasticsearchDomainSpecLogPublishingOptions
-##### (Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec))
+
+Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cloudwatchLogGroupArn` | ***string***||
 | `enabled` | ***bool***| ***(Optional)*** |
 | `logType` | ***string***||
 ## ElasticsearchDomainSpecNodeToNodeEncryption
-##### (Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec))
+
+Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 ## ElasticsearchDomainSpecSnapshotOptions
-##### (Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec))
+
+Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `automatedSnapshotStartHour` | ***int***||
 ## ElasticsearchDomainSpecVpcOptions
-##### (Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec))
+
+Appears on:[ElasticsearchDomainSpec](#ElasticsearchDomainSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `availabilityZones` | ***[]string***| ***(Optional)*** |
@@ -99,7 +117,9 @@ section_menu_id: reference
 | `subnetIDS` | ***[]string***| ***(Optional)*** |
 | `vpcID` | ***string***| ***(Optional)*** |
 ## ElasticsearchDomainStatus
-##### (Appears on:[ElasticsearchDomain](#ElasticsearchDomain))
+
+Appears on:[ElasticsearchDomain](#ElasticsearchDomain)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

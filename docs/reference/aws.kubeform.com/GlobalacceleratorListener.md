@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GlobalacceleratorListenerSpec](#GlobalacceleratorListenerSpec)***||
 | `status` | ***[GlobalacceleratorListenerStatus](#GlobalacceleratorListenerStatus)***||
 ## GlobalacceleratorListenerSpec
-##### (Appears on:[GlobalacceleratorListener](#GlobalacceleratorListener), [GlobalacceleratorListenerStatus](#GlobalacceleratorListenerStatus))
+
+Appears on:[GlobalacceleratorListener](#GlobalacceleratorListener), [GlobalacceleratorListenerStatus](#GlobalacceleratorListenerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,13 +31,17 @@ section_menu_id: reference
 | `portRange` | ***[[]GlobalacceleratorListenerSpecPortRange](#GlobalacceleratorListenerSpecPortRange)***||
 | `protocol` | ***string***||
 ## GlobalacceleratorListenerSpecPortRange
-##### (Appears on:[GlobalacceleratorListenerSpec](#GlobalacceleratorListenerSpec))
+
+Appears on:[GlobalacceleratorListenerSpec](#GlobalacceleratorListenerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `fromPort` | ***int***| ***(Optional)*** |
 | `toPort` | ***int***| ***(Optional)*** |
 ## GlobalacceleratorListenerStatus
-##### (Appears on:[GlobalacceleratorListener](#GlobalacceleratorListener))
+
+Appears on:[GlobalacceleratorListener](#GlobalacceleratorListener)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

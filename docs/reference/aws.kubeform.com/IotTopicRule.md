@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[IotTopicRuleSpec](#IotTopicRuleSpec)***||
 | `status` | ***[IotTopicRuleStatus](#IotTopicRuleStatus)***||
 ## IotTopicRuleSpec
-##### (Appears on:[IotTopicRule](#IotTopicRule), [IotTopicRuleStatus](#IotTopicRuleStatus))
+
+Appears on:[IotTopicRule](#IotTopicRule), [IotTopicRuleStatus](#IotTopicRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -42,7 +44,9 @@ section_menu_id: reference
 | `sqlVersion` | ***string***||
 | `sqs` | ***[[]IotTopicRuleSpecSqs](#IotTopicRuleSpecSqs)***| ***(Optional)*** |
 ## IotTopicRuleSpecCloudwatchAlarm
-##### (Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec))
+
+Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `alarmName` | ***string***||
@@ -50,7 +54,9 @@ section_menu_id: reference
 | `stateReason` | ***string***||
 | `stateValue` | ***string***||
 ## IotTopicRuleSpecCloudwatchMetric
-##### (Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec))
+
+Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `metricName` | ***string***||
@@ -60,7 +66,9 @@ section_menu_id: reference
 | `metricValue` | ***string***||
 | `roleArn` | ***string***||
 ## IotTopicRuleSpecDynamodb
-##### (Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec))
+
+Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `hashKeyField` | ***string***||
@@ -73,7 +81,9 @@ section_menu_id: reference
 | `roleArn` | ***string***||
 | `tableName` | ***string***||
 ## IotTopicRuleSpecElasticsearch
-##### (Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec))
+
+Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `endpoint` | ***string***||
@@ -82,53 +92,69 @@ section_menu_id: reference
 | `roleArn` | ***string***||
 | `type` | ***string***||
 ## IotTopicRuleSpecFirehose
-##### (Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec))
+
+Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deliveryStreamName` | ***string***||
 | `roleArn` | ***string***||
 | `separator` | ***string***| ***(Optional)*** |
 ## IotTopicRuleSpecKinesis
-##### (Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec))
+
+Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `partitionKey` | ***string***| ***(Optional)*** |
 | `roleArn` | ***string***||
 | `streamName` | ***string***||
 ## IotTopicRuleSpecLambda
-##### (Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec))
+
+Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `functionArn` | ***string***||
 ## IotTopicRuleSpecRepublish
-##### (Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec))
+
+Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `roleArn` | ***string***||
 | `topic` | ***string***||
 ## IotTopicRuleSpecS3
-##### (Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec))
+
+Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketName` | ***string***||
 | `key` | ***string***||
 | `roleArn` | ***string***||
 ## IotTopicRuleSpecSns
-##### (Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec))
+
+Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `messageFormat` | ***string***| ***(Optional)*** |
 | `roleArn` | ***string***||
 | `targetArn` | ***string***||
 ## IotTopicRuleSpecSqs
-##### (Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec))
+
+Appears on:[IotTopicRuleSpec](#IotTopicRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `queueURL` | ***string***||
 | `roleArn` | ***string***||
 | `useBase64` | ***bool***||
 ## IotTopicRuleStatus
-##### (Appears on:[IotTopicRule](#IotTopicRule))
+
+Appears on:[IotTopicRule](#IotTopicRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

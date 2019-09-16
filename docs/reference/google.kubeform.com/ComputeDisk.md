@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeDiskSpec](#ComputeDiskSpec)***||
 | `status` | ***[ComputeDiskStatus](#ComputeDiskStatus)***||
 ## ComputeDiskSpec
-##### (Appears on:[ComputeDisk](#ComputeDisk), [ComputeDiskStatus](#ComputeDiskStatus))
+
+Appears on:[ComputeDisk](#ComputeDisk), [ComputeDiskStatus](#ComputeDiskStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -47,25 +49,33 @@ section_menu_id: reference
 | `users` | ***[]string***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
 ## ComputeDiskSpecDiskEncryptionKey
-##### (Appears on:[ComputeDiskSpec](#ComputeDiskSpec))
+
+Appears on:[ComputeDiskSpec](#ComputeDiskSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `rawKey` | ***string***| ***(Optional)*** |
 | `sha256` | ***string***| ***(Optional)*** |
 ## ComputeDiskSpecSourceImageEncryptionKey
-##### (Appears on:[ComputeDiskSpec](#ComputeDiskSpec))
+
+Appears on:[ComputeDiskSpec](#ComputeDiskSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `rawKey` | ***string***| ***(Optional)*** |
 | `sha256` | ***string***| ***(Optional)*** |
 ## ComputeDiskSpecSourceSnapshotEncryptionKey
-##### (Appears on:[ComputeDiskSpec](#ComputeDiskSpec))
+
+Appears on:[ComputeDiskSpec](#ComputeDiskSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `rawKey` | ***string***| ***(Optional)*** |
 | `sha256` | ***string***| ***(Optional)*** |
 ## ComputeDiskStatus
-##### (Appears on:[ComputeDisk](#ComputeDisk))
+
+Appears on:[ComputeDisk](#ComputeDisk)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

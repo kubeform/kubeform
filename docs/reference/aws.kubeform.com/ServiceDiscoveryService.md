@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ServiceDiscoveryServiceSpec](#ServiceDiscoveryServiceSpec)***||
 | `status` | ***[ServiceDiscoveryServiceStatus](#ServiceDiscoveryServiceStatus)***||
 ## ServiceDiscoveryServiceSpec
-##### (Appears on:[ServiceDiscoveryService](#ServiceDiscoveryService), [ServiceDiscoveryServiceStatus](#ServiceDiscoveryServiceStatus))
+
+Appears on:[ServiceDiscoveryService](#ServiceDiscoveryService), [ServiceDiscoveryServiceStatus](#ServiceDiscoveryServiceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,32 +33,42 @@ section_menu_id: reference
 | `healthCheckCustomConfig` | ***[[]ServiceDiscoveryServiceSpecHealthCheckCustomConfig](#ServiceDiscoveryServiceSpecHealthCheckCustomConfig)***| ***(Optional)*** |
 | `name` | ***string***||
 ## ServiceDiscoveryServiceSpecDnsConfig
-##### (Appears on:[ServiceDiscoveryServiceSpec](#ServiceDiscoveryServiceSpec))
+
+Appears on:[ServiceDiscoveryServiceSpec](#ServiceDiscoveryServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dnsRecords` | ***[[]ServiceDiscoveryServiceSpecDnsConfigDnsRecords](#ServiceDiscoveryServiceSpecDnsConfigDnsRecords)***||
 | `namespaceID` | ***string***||
 | `routingPolicy` | ***string***| ***(Optional)*** |
 ## ServiceDiscoveryServiceSpecDnsConfigDnsRecords
-##### (Appears on:[ServiceDiscoveryServiceSpecDnsConfig](#ServiceDiscoveryServiceSpecDnsConfig))
+
+Appears on:[ServiceDiscoveryServiceSpecDnsConfig](#ServiceDiscoveryServiceSpecDnsConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ttl` | ***int***||
 | `type` | ***string***||
 ## ServiceDiscoveryServiceSpecHealthCheckConfig
-##### (Appears on:[ServiceDiscoveryServiceSpec](#ServiceDiscoveryServiceSpec))
+
+Appears on:[ServiceDiscoveryServiceSpec](#ServiceDiscoveryServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `failureThreshold` | ***int***| ***(Optional)*** |
 | `resourcePath` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## ServiceDiscoveryServiceSpecHealthCheckCustomConfig
-##### (Appears on:[ServiceDiscoveryServiceSpec](#ServiceDiscoveryServiceSpec))
+
+Appears on:[ServiceDiscoveryServiceSpec](#ServiceDiscoveryServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `failureThreshold` | ***int***| ***(Optional)*** |
 ## ServiceDiscoveryServiceStatus
-##### (Appears on:[ServiceDiscoveryService](#ServiceDiscoveryService))
+
+Appears on:[ServiceDiscoveryService](#ServiceDiscoveryService)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

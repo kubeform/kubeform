@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StoragegatewayWorkingStorageSpec](#StoragegatewayWorkingStorageSpec)***||
 | `status` | ***[StoragegatewayWorkingStorageStatus](#StoragegatewayWorkingStorageStatus)***||
 ## StoragegatewayWorkingStorageSpec
-##### (Appears on:[StoragegatewayWorkingStorage](#StoragegatewayWorkingStorage), [StoragegatewayWorkingStorageStatus](#StoragegatewayWorkingStorageStatus))
+
+Appears on:[StoragegatewayWorkingStorage](#StoragegatewayWorkingStorage), [StoragegatewayWorkingStorageStatus](#StoragegatewayWorkingStorageStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `diskID` | ***string***||
 | `gatewayArn` | ***string***||
 ## StoragegatewayWorkingStorageStatus
-##### (Appears on:[StoragegatewayWorkingStorage](#StoragegatewayWorkingStorage))
+
+Appears on:[StoragegatewayWorkingStorage](#StoragegatewayWorkingStorage)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

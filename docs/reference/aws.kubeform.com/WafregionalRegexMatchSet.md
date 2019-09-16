@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WafregionalRegexMatchSetSpec](#WafregionalRegexMatchSetSpec)***||
 | `status` | ***[WafregionalRegexMatchSetStatus](#WafregionalRegexMatchSetStatus)***||
 ## WafregionalRegexMatchSetSpec
-##### (Appears on:[WafregionalRegexMatchSet](#WafregionalRegexMatchSet), [WafregionalRegexMatchSetStatus](#WafregionalRegexMatchSetStatus))
+
+Appears on:[WafregionalRegexMatchSet](#WafregionalRegexMatchSet), [WafregionalRegexMatchSetStatus](#WafregionalRegexMatchSetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,20 +29,26 @@ section_menu_id: reference
 | `name` | ***string***||
 | `regexMatchTuple` | ***[[]WafregionalRegexMatchSetSpecRegexMatchTuple](#WafregionalRegexMatchSetSpecRegexMatchTuple)***| ***(Optional)*** |
 ## WafregionalRegexMatchSetSpecRegexMatchTuple
-##### (Appears on:[WafregionalRegexMatchSetSpec](#WafregionalRegexMatchSetSpec))
+
+Appears on:[WafregionalRegexMatchSetSpec](#WafregionalRegexMatchSetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `fieldToMatch` | ***[[]WafregionalRegexMatchSetSpecRegexMatchTupleFieldToMatch](#WafregionalRegexMatchSetSpecRegexMatchTupleFieldToMatch)***||
 | `regexPatternSetID` | ***string***||
 | `textTransformation` | ***string***||
 ## WafregionalRegexMatchSetSpecRegexMatchTupleFieldToMatch
-##### (Appears on:[WafregionalRegexMatchSetSpecRegexMatchTuple](#WafregionalRegexMatchSetSpecRegexMatchTuple))
+
+Appears on:[WafregionalRegexMatchSetSpecRegexMatchTuple](#WafregionalRegexMatchSetSpecRegexMatchTuple)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `data` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## WafregionalRegexMatchSetStatus
-##### (Appears on:[WafregionalRegexMatchSet](#WafregionalRegexMatchSet))
+
+Appears on:[WafregionalRegexMatchSet](#WafregionalRegexMatchSet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

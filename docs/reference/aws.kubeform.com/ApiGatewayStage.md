@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApiGatewayStageSpec](#ApiGatewayStageSpec)***||
 | `status` | ***[ApiGatewayStageStatus](#ApiGatewayStageStatus)***||
 ## ApiGatewayStageSpec
-##### (Appears on:[ApiGatewayStage](#ApiGatewayStage), [ApiGatewayStageStatus](#ApiGatewayStageStatus))
+
+Appears on:[ApiGatewayStage](#ApiGatewayStage), [ApiGatewayStageStatus](#ApiGatewayStageStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,13 +41,17 @@ section_menu_id: reference
 | `variables` | ***map[string]string***| ***(Optional)*** |
 | `xrayTracingEnabled` | ***bool***| ***(Optional)*** |
 ## ApiGatewayStageSpecAccessLogSettings
-##### (Appears on:[ApiGatewayStageSpec](#ApiGatewayStageSpec))
+
+Appears on:[ApiGatewayStageSpec](#ApiGatewayStageSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `destinationArn` | ***string***||
 | `format` | ***string***||
 ## ApiGatewayStageStatus
-##### (Appears on:[ApiGatewayStage](#ApiGatewayStage))
+
+Appears on:[ApiGatewayStage](#ApiGatewayStage)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

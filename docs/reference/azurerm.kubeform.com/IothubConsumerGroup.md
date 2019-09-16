@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[IothubConsumerGroupSpec](#IothubConsumerGroupSpec)***||
 | `status` | ***[IothubConsumerGroupStatus](#IothubConsumerGroupStatus)***||
 ## IothubConsumerGroupSpec
-##### (Appears on:[IothubConsumerGroup](#IothubConsumerGroup), [IothubConsumerGroupStatus](#IothubConsumerGroupStatus))
+
+Appears on:[IothubConsumerGroup](#IothubConsumerGroup), [IothubConsumerGroupStatus](#IothubConsumerGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 ## IothubConsumerGroupStatus
-##### (Appears on:[IothubConsumerGroup](#IothubConsumerGroup))
+
+Appears on:[IothubConsumerGroup](#IothubConsumerGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

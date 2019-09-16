@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DbClusterSnapshotSpec](#DbClusterSnapshotSpec)***||
 | `status` | ***[DbClusterSnapshotStatus](#DbClusterSnapshotStatus)***||
 ## DbClusterSnapshotSpec
-##### (Appears on:[DbClusterSnapshot](#DbClusterSnapshot), [DbClusterSnapshotStatus](#DbClusterSnapshotStatus))
+
+Appears on:[DbClusterSnapshot](#DbClusterSnapshot), [DbClusterSnapshotStatus](#DbClusterSnapshotStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -40,7 +42,9 @@ section_menu_id: reference
 | `storageEncrypted` | ***bool***| ***(Optional)*** |
 | `vpcID` | ***string***| ***(Optional)*** |
 ## DbClusterSnapshotStatus
-##### (Appears on:[DbClusterSnapshot](#DbClusterSnapshot))
+
+Appears on:[DbClusterSnapshot](#DbClusterSnapshot)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

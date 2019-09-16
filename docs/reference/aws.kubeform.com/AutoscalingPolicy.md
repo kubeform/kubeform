@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AutoscalingPolicySpec](#AutoscalingPolicySpec)***||
 | `status` | ***[AutoscalingPolicyStatus](#AutoscalingPolicyStatus)***||
 ## AutoscalingPolicySpec
-##### (Appears on:[AutoscalingPolicy](#AutoscalingPolicy), [AutoscalingPolicyStatus](#AutoscalingPolicyStatus))
+
+Appears on:[AutoscalingPolicy](#AutoscalingPolicy), [AutoscalingPolicyStatus](#AutoscalingPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,14 +39,18 @@ section_menu_id: reference
 | `stepAdjustment` | ***[[]AutoscalingPolicySpecStepAdjustment](#AutoscalingPolicySpecStepAdjustment)***| ***(Optional)*** |
 | `targetTrackingConfiguration` | ***[[]AutoscalingPolicySpecTargetTrackingConfiguration](#AutoscalingPolicySpecTargetTrackingConfiguration)***| ***(Optional)*** |
 ## AutoscalingPolicySpecStepAdjustment
-##### (Appears on:[AutoscalingPolicySpec](#AutoscalingPolicySpec))
+
+Appears on:[AutoscalingPolicySpec](#AutoscalingPolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `metricIntervalLowerBound` | ***string***| ***(Optional)*** |
 | `metricIntervalUpperBound` | ***string***| ***(Optional)*** |
 | `scalingAdjustment` | ***int***||
 ## AutoscalingPolicySpecTargetTrackingConfiguration
-##### (Appears on:[AutoscalingPolicySpec](#AutoscalingPolicySpec))
+
+Appears on:[AutoscalingPolicySpec](#AutoscalingPolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `customizedMetricSpecification` | ***[[]AutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecification](#AutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecification)***| ***(Optional)*** |
@@ -52,7 +58,9 @@ section_menu_id: reference
 | `predefinedMetricSpecification` | ***[[]AutoscalingPolicySpecTargetTrackingConfigurationPredefinedMetricSpecification](#AutoscalingPolicySpecTargetTrackingConfigurationPredefinedMetricSpecification)***| ***(Optional)*** |
 | `targetValue` | ***encoding/json.Number***||
 ## AutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecification
-##### (Appears on:[AutoscalingPolicySpecTargetTrackingConfiguration](#AutoscalingPolicySpecTargetTrackingConfiguration))
+
+Appears on:[AutoscalingPolicySpecTargetTrackingConfiguration](#AutoscalingPolicySpecTargetTrackingConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `metricDimension` | ***[[]AutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension](#AutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension)***| ***(Optional)*** |
@@ -61,19 +69,25 @@ section_menu_id: reference
 | `statistic` | ***string***||
 | `unit` | ***string***| ***(Optional)*** |
 ## AutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension
-##### (Appears on:[AutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecification](#AutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecification))
+
+Appears on:[AutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecification](#AutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecification)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `value` | ***string***||
 ## AutoscalingPolicySpecTargetTrackingConfigurationPredefinedMetricSpecification
-##### (Appears on:[AutoscalingPolicySpecTargetTrackingConfiguration](#AutoscalingPolicySpecTargetTrackingConfiguration))
+
+Appears on:[AutoscalingPolicySpecTargetTrackingConfiguration](#AutoscalingPolicySpecTargetTrackingConfiguration)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `predefinedMetricType` | ***string***||
 | `resourceLabel` | ***string***| ***(Optional)*** |
 ## AutoscalingPolicyStatus
-##### (Appears on:[AutoscalingPolicy](#AutoscalingPolicy))
+
+Appears on:[AutoscalingPolicy](#AutoscalingPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

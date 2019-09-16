@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[NodebalancerConfigSpec](#NodebalancerConfigSpec)***||
 | `status` | ***[NodebalancerConfigStatus](#NodebalancerConfigStatus)***||
 ## NodebalancerConfigSpec
-##### (Appears on:[NodebalancerConfig](#NodebalancerConfig), [NodebalancerConfigStatus](#NodebalancerConfigStatus))
+
+Appears on:[NodebalancerConfig](#NodebalancerConfig), [NodebalancerConfigStatus](#NodebalancerConfigStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,7 +45,9 @@ section_menu_id: reference
 | `sslFingerprint` | ***string***| ***(Optional)*** The fingerprint for the SSL certification this port is serving if this port is not configured to use SSL.|
 | `stickiness` | ***string***| ***(Optional)*** Controls how session stickiness is handled on this port: 'none', 'table', 'http_cookie'|
 ## NodebalancerConfigStatus
-##### (Appears on:[NodebalancerConfig](#NodebalancerConfig))
+
+Appears on:[NodebalancerConfig](#NodebalancerConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

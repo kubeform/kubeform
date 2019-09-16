@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[OrganizationsOrganizationSpec](#OrganizationsOrganizationSpec)***||
 | `status` | ***[OrganizationsOrganizationStatus](#OrganizationsOrganizationStatus)***||
 ## OrganizationsOrganizationSpec
-##### (Appears on:[OrganizationsOrganization](#OrganizationsOrganization), [OrganizationsOrganizationStatus](#OrganizationsOrganizationStatus))
+
+Appears on:[OrganizationsOrganization](#OrganizationsOrganization), [OrganizationsOrganizationStatus](#OrganizationsOrganizationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `masterAccountID` | ***string***| ***(Optional)*** |
 | `roots` | ***[[]OrganizationsOrganizationSpecRoots](#OrganizationsOrganizationSpecRoots)***| ***(Optional)*** |
 ## OrganizationsOrganizationSpecAccounts
-##### (Appears on:[OrganizationsOrganizationSpec](#OrganizationsOrganizationSpec))
+
+Appears on:[OrganizationsOrganizationSpec](#OrganizationsOrganizationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `arn` | ***string***| ***(Optional)*** |
@@ -42,7 +46,9 @@ section_menu_id: reference
 | `ID` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 ## OrganizationsOrganizationSpecRoots
-##### (Appears on:[OrganizationsOrganizationSpec](#OrganizationsOrganizationSpec))
+
+Appears on:[OrganizationsOrganizationSpec](#OrganizationsOrganizationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `arn` | ***string***| ***(Optional)*** |
@@ -50,13 +56,17 @@ section_menu_id: reference
 | `name` | ***string***| ***(Optional)*** |
 | `policyTypes` | ***[[]OrganizationsOrganizationSpecRootsPolicyTypes](#OrganizationsOrganizationSpecRootsPolicyTypes)***| ***(Optional)*** |
 ## OrganizationsOrganizationSpecRootsPolicyTypes
-##### (Appears on:[OrganizationsOrganizationSpecRoots](#OrganizationsOrganizationSpecRoots))
+
+Appears on:[OrganizationsOrganizationSpecRoots](#OrganizationsOrganizationSpecRoots)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `status` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## OrganizationsOrganizationStatus
-##### (Appears on:[OrganizationsOrganization](#OrganizationsOrganization))
+
+Appears on:[OrganizationsOrganization](#OrganizationsOrganization)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

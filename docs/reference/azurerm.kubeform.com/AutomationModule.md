@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AutomationModuleSpec](#AutomationModuleSpec)***||
 | `status` | ***[AutomationModuleStatus](#AutomationModuleStatus)***||
 ## AutomationModuleSpec
-##### (Appears on:[AutomationModule](#AutomationModule), [AutomationModuleStatus](#AutomationModuleStatus))
+
+Appears on:[AutomationModule](#AutomationModule), [AutomationModuleStatus](#AutomationModuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,19 +31,25 @@ section_menu_id: reference
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 ## AutomationModuleSpecModuleLink
-##### (Appears on:[AutomationModuleSpec](#AutomationModuleSpec))
+
+Appears on:[AutomationModuleSpec](#AutomationModuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `hash` | ***[[]AutomationModuleSpecModuleLinkHash](#AutomationModuleSpecModuleLinkHash)***| ***(Optional)*** |
 | `uri` | ***string***||
 ## AutomationModuleSpecModuleLinkHash
-##### (Appears on:[AutomationModuleSpecModuleLink](#AutomationModuleSpecModuleLink))
+
+Appears on:[AutomationModuleSpecModuleLink](#AutomationModuleSpecModuleLink)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `algorithm` | ***string***||
 | `value` | ***string***||
 ## AutomationModuleStatus
-##### (Appears on:[AutomationModule](#AutomationModule))
+
+Appears on:[AutomationModule](#AutomationModule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MonitorMetricAlertSpec](#MonitorMetricAlertSpec)***||
 | `status` | ***[MonitorMetricAlertStatus](#MonitorMetricAlertStatus)***||
 ## MonitorMetricAlertSpec
-##### (Appears on:[MonitorMetricAlert](#MonitorMetricAlert), [MonitorMetricAlertStatus](#MonitorMetricAlertStatus))
+
+Appears on:[MonitorMetricAlert](#MonitorMetricAlert), [MonitorMetricAlertStatus](#MonitorMetricAlertStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,13 +39,17 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `windowSize` | ***string***| ***(Optional)*** |
 ## MonitorMetricAlertSpecAction
-##### (Appears on:[MonitorMetricAlertSpec](#MonitorMetricAlertSpec))
+
+Appears on:[MonitorMetricAlertSpec](#MonitorMetricAlertSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `actionGroupID` | ***string***||
 | `webhookProperties` | ***map[string]string***| ***(Optional)*** |
 ## MonitorMetricAlertSpecCriteria
-##### (Appears on:[MonitorMetricAlertSpec](#MonitorMetricAlertSpec))
+
+Appears on:[MonitorMetricAlertSpec](#MonitorMetricAlertSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `aggregation` | ***string***||
@@ -53,14 +59,18 @@ section_menu_id: reference
 | `operator` | ***string***||
 | `threshold` | ***encoding/json.Number***||
 ## MonitorMetricAlertSpecCriteriaDimension
-##### (Appears on:[MonitorMetricAlertSpecCriteria](#MonitorMetricAlertSpecCriteria))
+
+Appears on:[MonitorMetricAlertSpecCriteria](#MonitorMetricAlertSpecCriteria)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `operator` | ***string***||
 | `values` | ***[]string***||
 ## MonitorMetricAlertStatus
-##### (Appears on:[MonitorMetricAlert](#MonitorMetricAlert))
+
+Appears on:[MonitorMetricAlert](#MonitorMetricAlert)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

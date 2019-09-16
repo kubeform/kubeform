@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[EcsServiceSpec](#EcsServiceSpec)***||
 | `status` | ***[EcsServiceStatus](#EcsServiceStatus)***||
 ## EcsServiceSpec
-##### (Appears on:[EcsService](#EcsService), [EcsServiceStatus](#EcsServiceStatus))
+
+Appears on:[EcsService](#EcsService), [EcsServiceStatus](#EcsServiceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -45,12 +47,16 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `taskDefinition` | ***string***||
 ## EcsServiceSpecDeploymentController
-##### (Appears on:[EcsServiceSpec](#EcsServiceSpec))
+
+Appears on:[EcsServiceSpec](#EcsServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***| ***(Optional)*** |
 ## EcsServiceSpecLoadBalancer
-##### (Appears on:[EcsServiceSpec](#EcsServiceSpec))
+
+Appears on:[EcsServiceSpec](#EcsServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `containerName` | ***string***||
@@ -58,26 +64,34 @@ section_menu_id: reference
 | `elbName` | ***string***| ***(Optional)*** |
 | `targetGroupArn` | ***string***| ***(Optional)*** |
 ## EcsServiceSpecNetworkConfiguration
-##### (Appears on:[EcsServiceSpec](#EcsServiceSpec))
+
+Appears on:[EcsServiceSpec](#EcsServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `assignPublicIP` | ***bool***| ***(Optional)*** |
 | `securityGroups` | ***[]string***| ***(Optional)*** |
 | `subnets` | ***[]string***||
 ## EcsServiceSpecOrderedPlacementStrategy
-##### (Appears on:[EcsServiceSpec](#EcsServiceSpec))
+
+Appears on:[EcsServiceSpec](#EcsServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `field` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## EcsServiceSpecPlacementConstraints
-##### (Appears on:[EcsServiceSpec](#EcsServiceSpec))
+
+Appears on:[EcsServiceSpec](#EcsServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `expression` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## EcsServiceSpecServiceRegistries
-##### (Appears on:[EcsServiceSpec](#EcsServiceSpec))
+
+Appears on:[EcsServiceSpec](#EcsServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `containerName` | ***string***| ***(Optional)*** |
@@ -85,7 +99,9 @@ section_menu_id: reference
 | `port` | ***int***| ***(Optional)*** |
 | `registryArn` | ***string***||
 ## EcsServiceStatus
-##### (Appears on:[EcsService](#EcsService))
+
+Appears on:[EcsService](#EcsService)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

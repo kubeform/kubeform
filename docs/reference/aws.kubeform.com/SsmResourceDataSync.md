@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SsmResourceDataSyncSpec](#SsmResourceDataSyncSpec)***||
 | `status` | ***[SsmResourceDataSyncStatus](#SsmResourceDataSyncStatus)***||
 ## SsmResourceDataSyncSpec
-##### (Appears on:[SsmResourceDataSync](#SsmResourceDataSync), [SsmResourceDataSyncStatus](#SsmResourceDataSyncStatus))
+
+Appears on:[SsmResourceDataSync](#SsmResourceDataSync), [SsmResourceDataSyncStatus](#SsmResourceDataSyncStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `s3Destination` | ***[[]SsmResourceDataSyncSpecS3Destination](#SsmResourceDataSyncSpecS3Destination)***||
 ## SsmResourceDataSyncSpecS3Destination
-##### (Appears on:[SsmResourceDataSyncSpec](#SsmResourceDataSyncSpec))
+
+Appears on:[SsmResourceDataSyncSpec](#SsmResourceDataSyncSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketName` | ***string***||
@@ -36,7 +40,9 @@ section_menu_id: reference
 | `region` | ***string***||
 | `syncFormat` | ***string***| ***(Optional)*** |
 ## SsmResourceDataSyncStatus
-##### (Appears on:[SsmResourceDataSync](#SsmResourceDataSync))
+
+Appears on:[SsmResourceDataSync](#SsmResourceDataSync)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

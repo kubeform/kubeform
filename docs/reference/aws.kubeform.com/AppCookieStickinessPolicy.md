@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AppCookieStickinessPolicySpec](#AppCookieStickinessPolicySpec)***||
 | `status` | ***[AppCookieStickinessPolicyStatus](#AppCookieStickinessPolicyStatus)***||
 ## AppCookieStickinessPolicySpec
-##### (Appears on:[AppCookieStickinessPolicy](#AppCookieStickinessPolicy), [AppCookieStickinessPolicyStatus](#AppCookieStickinessPolicyStatus))
+
+Appears on:[AppCookieStickinessPolicy](#AppCookieStickinessPolicy), [AppCookieStickinessPolicyStatus](#AppCookieStickinessPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `loadBalancer` | ***string***||
 | `name` | ***string***||
 ## AppCookieStickinessPolicyStatus
-##### (Appears on:[AppCookieStickinessPolicy](#AppCookieStickinessPolicy))
+
+Appears on:[AppCookieStickinessPolicy](#AppCookieStickinessPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApiManagementAPIOperationSpec](#ApiManagementAPIOperationSpec)***||
 | `status` | ***[ApiManagementAPIOperationStatus](#ApiManagementAPIOperationStatus)***||
 ## ApiManagementAPIOperationSpec
-##### (Appears on:[ApiManagementAPIOperation](#ApiManagementAPIOperation), [ApiManagementAPIOperationStatus](#ApiManagementAPIOperationStatus))
+
+Appears on:[ApiManagementAPIOperation](#ApiManagementAPIOperation), [ApiManagementAPIOperationStatus](#ApiManagementAPIOperationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,7 +38,9 @@ section_menu_id: reference
 | `templateParameter` | ***[[]ApiManagementAPIOperationSpecTemplateParameter](#ApiManagementAPIOperationSpecTemplateParameter)***| ***(Optional)*** |
 | `urlTemplate` | ***string***||
 ## ApiManagementAPIOperationSpecRequest
-##### (Appears on:[ApiManagementAPIOperationSpec](#ApiManagementAPIOperationSpec))
+
+Appears on:[ApiManagementAPIOperationSpec](#ApiManagementAPIOperationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `description` | ***string***| ***(Optional)*** |
@@ -44,7 +48,9 @@ section_menu_id: reference
 | `queryParameter` | ***[[]ApiManagementAPIOperationSpecRequestQueryParameter](#ApiManagementAPIOperationSpecRequestQueryParameter)***| ***(Optional)*** |
 | `representation` | ***[[]ApiManagementAPIOperationSpecRequestRepresentation](#ApiManagementAPIOperationSpecRequestRepresentation)***| ***(Optional)*** |
 ## ApiManagementAPIOperationSpecRequestHeader
-##### (Appears on:[ApiManagementAPIOperationSpecRequest](#ApiManagementAPIOperationSpecRequest))
+
+Appears on:[ApiManagementAPIOperationSpecRequest](#ApiManagementAPIOperationSpecRequest)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultValue` | ***string***| ***(Optional)*** |
@@ -54,7 +60,9 @@ section_menu_id: reference
 | `type` | ***string***||
 | `values` | ***[]string***| ***(Optional)*** |
 ## ApiManagementAPIOperationSpecRequestQueryParameter
-##### (Appears on:[ApiManagementAPIOperationSpecRequest](#ApiManagementAPIOperationSpecRequest))
+
+Appears on:[ApiManagementAPIOperationSpecRequest](#ApiManagementAPIOperationSpecRequest)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultValue` | ***string***| ***(Optional)*** |
@@ -64,7 +72,9 @@ section_menu_id: reference
 | `type` | ***string***||
 | `values` | ***[]string***| ***(Optional)*** |
 ## ApiManagementAPIOperationSpecRequestRepresentation
-##### (Appears on:[ApiManagementAPIOperationSpecRequest](#ApiManagementAPIOperationSpecRequest))
+
+Appears on:[ApiManagementAPIOperationSpecRequest](#ApiManagementAPIOperationSpecRequest)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `contentType` | ***string***||
@@ -73,7 +83,9 @@ section_menu_id: reference
 | `schemaID` | ***string***| ***(Optional)*** |
 | `typeName` | ***string***| ***(Optional)*** |
 ## ApiManagementAPIOperationSpecRequestRepresentationFormParameter
-##### (Appears on:[ApiManagementAPIOperationSpecRequestRepresentation](#ApiManagementAPIOperationSpecRequestRepresentation))
+
+Appears on:[ApiManagementAPIOperationSpecRequestRepresentation](#ApiManagementAPIOperationSpecRequestRepresentation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultValue` | ***string***| ***(Optional)*** |
@@ -83,7 +95,9 @@ section_menu_id: reference
 | `type` | ***string***||
 | `values` | ***[]string***| ***(Optional)*** |
 ## ApiManagementAPIOperationSpecResponse
-##### (Appears on:[ApiManagementAPIOperationSpec](#ApiManagementAPIOperationSpec))
+
+Appears on:[ApiManagementAPIOperationSpec](#ApiManagementAPIOperationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `description` | ***string***| ***(Optional)*** |
@@ -91,7 +105,9 @@ section_menu_id: reference
 | `representation` | ***[[]ApiManagementAPIOperationSpecResponseRepresentation](#ApiManagementAPIOperationSpecResponseRepresentation)***| ***(Optional)*** |
 | `statusCode` | ***int***||
 ## ApiManagementAPIOperationSpecResponseHeader
-##### (Appears on:[ApiManagementAPIOperationSpecResponse](#ApiManagementAPIOperationSpecResponse))
+
+Appears on:[ApiManagementAPIOperationSpecResponse](#ApiManagementAPIOperationSpecResponse)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultValue` | ***string***| ***(Optional)*** |
@@ -101,7 +117,9 @@ section_menu_id: reference
 | `type` | ***string***||
 | `values` | ***[]string***| ***(Optional)*** |
 ## ApiManagementAPIOperationSpecResponseRepresentation
-##### (Appears on:[ApiManagementAPIOperationSpecResponse](#ApiManagementAPIOperationSpecResponse))
+
+Appears on:[ApiManagementAPIOperationSpecResponse](#ApiManagementAPIOperationSpecResponse)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `contentType` | ***string***||
@@ -110,7 +128,9 @@ section_menu_id: reference
 | `schemaID` | ***string***| ***(Optional)*** |
 | `typeName` | ***string***| ***(Optional)*** |
 ## ApiManagementAPIOperationSpecResponseRepresentationFormParameter
-##### (Appears on:[ApiManagementAPIOperationSpecResponseRepresentation](#ApiManagementAPIOperationSpecResponseRepresentation))
+
+Appears on:[ApiManagementAPIOperationSpecResponseRepresentation](#ApiManagementAPIOperationSpecResponseRepresentation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultValue` | ***string***| ***(Optional)*** |
@@ -120,7 +140,9 @@ section_menu_id: reference
 | `type` | ***string***||
 | `values` | ***[]string***| ***(Optional)*** |
 ## ApiManagementAPIOperationSpecTemplateParameter
-##### (Appears on:[ApiManagementAPIOperationSpec](#ApiManagementAPIOperationSpec))
+
+Appears on:[ApiManagementAPIOperationSpec](#ApiManagementAPIOperationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultValue` | ***string***| ***(Optional)*** |
@@ -130,7 +152,9 @@ section_menu_id: reference
 | `type` | ***string***||
 | `values` | ***[]string***| ***(Optional)*** |
 ## ApiManagementAPIOperationStatus
-##### (Appears on:[ApiManagementAPIOperation](#ApiManagementAPIOperation))
+
+Appears on:[ApiManagementAPIOperation](#ApiManagementAPIOperation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

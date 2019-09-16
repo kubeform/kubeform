@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[RelayNamespaceSpec](#RelayNamespaceSpec)***||
 | `status` | ***[RelayNamespaceStatus](#RelayNamespaceStatus)***||
 ## RelayNamespaceSpec
-##### (Appears on:[RelayNamespace](#RelayNamespace), [RelayNamespaceStatus](#RelayNamespaceStatus))
+
+Appears on:[RelayNamespace](#RelayNamespace), [RelayNamespaceStatus](#RelayNamespaceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,12 +35,16 @@ section_menu_id: reference
 | `skuName` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## RelayNamespaceSpecSku
-##### (Appears on:[RelayNamespaceSpec](#RelayNamespaceSpec))
+
+Appears on:[RelayNamespaceSpec](#RelayNamespaceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 ## RelayNamespaceStatus
-##### (Appears on:[RelayNamespace](#RelayNamespace))
+
+Appears on:[RelayNamespace](#RelayNamespace)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

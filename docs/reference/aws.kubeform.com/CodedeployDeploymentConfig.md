@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CodedeployDeploymentConfigSpec](#CodedeployDeploymentConfigSpec)***||
 | `status` | ***[CodedeployDeploymentConfigStatus](#CodedeployDeploymentConfigStatus)***||
 ## CodedeployDeploymentConfigSpec
-##### (Appears on:[CodedeployDeploymentConfig](#CodedeployDeploymentConfig), [CodedeployDeploymentConfigStatus](#CodedeployDeploymentConfigStatus))
+
+Appears on:[CodedeployDeploymentConfig](#CodedeployDeploymentConfig), [CodedeployDeploymentConfigStatus](#CodedeployDeploymentConfigStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,32 +32,42 @@ section_menu_id: reference
 | `minimumHealthyHosts` | ***[[]CodedeployDeploymentConfigSpecMinimumHealthyHosts](#CodedeployDeploymentConfigSpecMinimumHealthyHosts)***| ***(Optional)*** |
 | `trafficRoutingConfig` | ***[[]CodedeployDeploymentConfigSpecTrafficRoutingConfig](#CodedeployDeploymentConfigSpecTrafficRoutingConfig)***| ***(Optional)*** |
 ## CodedeployDeploymentConfigSpecMinimumHealthyHosts
-##### (Appears on:[CodedeployDeploymentConfigSpec](#CodedeployDeploymentConfigSpec))
+
+Appears on:[CodedeployDeploymentConfigSpec](#CodedeployDeploymentConfigSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***| ***(Optional)*** |
 | `value` | ***int***| ***(Optional)*** |
 ## CodedeployDeploymentConfigSpecTrafficRoutingConfig
-##### (Appears on:[CodedeployDeploymentConfigSpec](#CodedeployDeploymentConfigSpec))
+
+Appears on:[CodedeployDeploymentConfigSpec](#CodedeployDeploymentConfigSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `timeBasedCanary` | ***[[]CodedeployDeploymentConfigSpecTrafficRoutingConfigTimeBasedCanary](#CodedeployDeploymentConfigSpecTrafficRoutingConfigTimeBasedCanary)***| ***(Optional)*** |
 | `timeBasedLinear` | ***[[]CodedeployDeploymentConfigSpecTrafficRoutingConfigTimeBasedLinear](#CodedeployDeploymentConfigSpecTrafficRoutingConfigTimeBasedLinear)***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## CodedeployDeploymentConfigSpecTrafficRoutingConfigTimeBasedCanary
-##### (Appears on:[CodedeployDeploymentConfigSpecTrafficRoutingConfig](#CodedeployDeploymentConfigSpecTrafficRoutingConfig))
+
+Appears on:[CodedeployDeploymentConfigSpecTrafficRoutingConfig](#CodedeployDeploymentConfigSpecTrafficRoutingConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `interval` | ***int***| ***(Optional)*** |
 | `percentage` | ***int***| ***(Optional)*** |
 ## CodedeployDeploymentConfigSpecTrafficRoutingConfigTimeBasedLinear
-##### (Appears on:[CodedeployDeploymentConfigSpecTrafficRoutingConfig](#CodedeployDeploymentConfigSpecTrafficRoutingConfig))
+
+Appears on:[CodedeployDeploymentConfigSpecTrafficRoutingConfig](#CodedeployDeploymentConfigSpecTrafficRoutingConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `interval` | ***int***| ***(Optional)*** |
 | `percentage` | ***int***| ***(Optional)*** |
 ## CodedeployDeploymentConfigStatus
-##### (Appears on:[CodedeployDeploymentConfig](#CodedeployDeploymentConfig))
+
+Appears on:[CodedeployDeploymentConfig](#CodedeployDeploymentConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

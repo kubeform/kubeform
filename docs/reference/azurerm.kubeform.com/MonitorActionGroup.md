@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MonitorActionGroupSpec](#MonitorActionGroupSpec)***||
 | `status` | ***[MonitorActionGroupStatus](#MonitorActionGroupStatus)***||
 ## MonitorActionGroupSpec
-##### (Appears on:[MonitorActionGroup](#MonitorActionGroup), [MonitorActionGroupStatus](#MonitorActionGroupStatus))
+
+Appears on:[MonitorActionGroup](#MonitorActionGroup), [MonitorActionGroupStatus](#MonitorActionGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,26 +35,34 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `webhookReceiver` | ***[[]MonitorActionGroupSpecWebhookReceiver](#MonitorActionGroupSpecWebhookReceiver)***| ***(Optional)*** |
 ## MonitorActionGroupSpecEmailReceiver
-##### (Appears on:[MonitorActionGroupSpec](#MonitorActionGroupSpec))
+
+Appears on:[MonitorActionGroupSpec](#MonitorActionGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `emailAddress` | ***string***||
 | `name` | ***string***||
 ## MonitorActionGroupSpecSmsReceiver
-##### (Appears on:[MonitorActionGroupSpec](#MonitorActionGroupSpec))
+
+Appears on:[MonitorActionGroupSpec](#MonitorActionGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `countryCode` | ***string***||
 | `name` | ***string***||
 | `phoneNumber` | ***string***||
 ## MonitorActionGroupSpecWebhookReceiver
-##### (Appears on:[MonitorActionGroupSpec](#MonitorActionGroupSpec))
+
+Appears on:[MonitorActionGroupSpec](#MonitorActionGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `serviceURI` | ***string***||
 ## MonitorActionGroupStatus
-##### (Appears on:[MonitorActionGroup](#MonitorActionGroup))
+
+Appears on:[MonitorActionGroup](#MonitorActionGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

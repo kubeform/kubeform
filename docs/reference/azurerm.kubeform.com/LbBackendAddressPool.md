@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LbBackendAddressPoolSpec](#LbBackendAddressPoolSpec)***||
 | `status` | ***[LbBackendAddressPoolStatus](#LbBackendAddressPoolStatus)***||
 ## LbBackendAddressPoolSpec
-##### (Appears on:[LbBackendAddressPool](#LbBackendAddressPool), [LbBackendAddressPoolStatus](#LbBackendAddressPoolStatus))
+
+Appears on:[LbBackendAddressPool](#LbBackendAddressPool), [LbBackendAddressPoolStatus](#LbBackendAddressPoolStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 ## LbBackendAddressPoolStatus
-##### (Appears on:[LbBackendAddressPool](#LbBackendAddressPool))
+
+Appears on:[LbBackendAddressPool](#LbBackendAddressPool)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

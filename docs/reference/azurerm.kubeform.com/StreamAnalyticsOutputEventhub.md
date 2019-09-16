@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StreamAnalyticsOutputEventhubSpec](#StreamAnalyticsOutputEventhubSpec)***||
 | `status` | ***[StreamAnalyticsOutputEventhubStatus](#StreamAnalyticsOutputEventhubStatus)***||
 ## StreamAnalyticsOutputEventhubSpec
-##### (Appears on:[StreamAnalyticsOutputEventhub](#StreamAnalyticsOutputEventhub), [StreamAnalyticsOutputEventhubStatus](#StreamAnalyticsOutputEventhubStatus))
+
+Appears on:[StreamAnalyticsOutputEventhub](#StreamAnalyticsOutputEventhub), [StreamAnalyticsOutputEventhubStatus](#StreamAnalyticsOutputEventhubStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `sharedAccessPolicyName` | ***string***||
 | `streamAnalyticsJobName` | ***string***||
 ## StreamAnalyticsOutputEventhubSpecSerialization
-##### (Appears on:[StreamAnalyticsOutputEventhubSpec](#StreamAnalyticsOutputEventhubSpec))
+
+Appears on:[StreamAnalyticsOutputEventhubSpec](#StreamAnalyticsOutputEventhubSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `encoding` | ***string***| ***(Optional)*** |
@@ -41,7 +45,9 @@ section_menu_id: reference
 | `format` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## StreamAnalyticsOutputEventhubStatus
-##### (Appears on:[StreamAnalyticsOutputEventhub](#StreamAnalyticsOutputEventhub))
+
+Appears on:[StreamAnalyticsOutputEventhub](#StreamAnalyticsOutputEventhub)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

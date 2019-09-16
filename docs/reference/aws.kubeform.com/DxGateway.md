@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DxGatewaySpec](#DxGatewaySpec)***||
 | `status` | ***[DxGatewayStatus](#DxGatewayStatus)***||
 ## DxGatewaySpec
-##### (Appears on:[DxGateway](#DxGateway), [DxGatewayStatus](#DxGatewayStatus))
+
+Appears on:[DxGateway](#DxGateway), [DxGatewayStatus](#DxGatewayStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `ownerAccountID` | ***string***| ***(Optional)*** |
 ## DxGatewayStatus
-##### (Appears on:[DxGateway](#DxGateway))
+
+Appears on:[DxGateway](#DxGateway)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[IamGroupSpec](#IamGroupSpec)***||
 | `status` | ***[IamGroupStatus](#IamGroupStatus)***||
 ## IamGroupSpec
-##### (Appears on:[IamGroup](#IamGroup), [IamGroupStatus](#IamGroupStatus))
+
+Appears on:[IamGroup](#IamGroup), [IamGroupStatus](#IamGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `path` | ***string***| ***(Optional)*** |
 | `uniqueID` | ***string***| ***(Optional)*** |
 ## IamGroupStatus
-##### (Appears on:[IamGroup](#IamGroup))
+
+Appears on:[IamGroup](#IamGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CodepipelineSpec](#CodepipelineSpec)***||
 | `status` | ***[CodepipelineStatus](#CodepipelineStatus)***||
 ## CodepipelineSpec
-##### (Appears on:[Codepipeline](#Codepipeline), [CodepipelineStatus](#CodepipelineStatus))
+
+Appears on:[Codepipeline](#Codepipeline), [CodepipelineStatus](#CodepipelineStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,26 +32,34 @@ section_menu_id: reference
 | `roleArn` | ***string***||
 | `stage` | ***[[]CodepipelineSpecStage](#CodepipelineSpecStage)***||
 ## CodepipelineSpecArtifactStore
-##### (Appears on:[CodepipelineSpec](#CodepipelineSpec))
+
+Appears on:[CodepipelineSpec](#CodepipelineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `encryptionKey` | ***[[]CodepipelineSpecArtifactStoreEncryptionKey](#CodepipelineSpecArtifactStoreEncryptionKey)***| ***(Optional)*** |
 | `location` | ***string***||
 | `type` | ***string***||
 ## CodepipelineSpecArtifactStoreEncryptionKey
-##### (Appears on:[CodepipelineSpecArtifactStore](#CodepipelineSpecArtifactStore))
+
+Appears on:[CodepipelineSpecArtifactStore](#CodepipelineSpecArtifactStore)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***||
 | `type` | ***string***||
 ## CodepipelineSpecStage
-##### (Appears on:[CodepipelineSpec](#CodepipelineSpec))
+
+Appears on:[CodepipelineSpec](#CodepipelineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***[[]CodepipelineSpecStageAction](#CodepipelineSpecStageAction)***||
 | `name` | ***string***||
 ## CodepipelineSpecStageAction
-##### (Appears on:[CodepipelineSpecStage](#CodepipelineSpecStage))
+
+Appears on:[CodepipelineSpecStage](#CodepipelineSpecStage)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `category` | ***string***||
@@ -63,7 +73,9 @@ section_menu_id: reference
 | `runOrder` | ***int***| ***(Optional)*** |
 | `version` | ***string***||
 ## CodepipelineStatus
-##### (Appears on:[Codepipeline](#Codepipeline))
+
+Appears on:[Codepipeline](#Codepipeline)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

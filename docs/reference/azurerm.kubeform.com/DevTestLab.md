@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DevTestLabSpec](#DevTestLabSpec)***||
 | `status` | ***[DevTestLabStatus](#DevTestLabStatus)***||
 ## DevTestLabSpec
-##### (Appears on:[DevTestLab](#DevTestLab), [DevTestLabStatus](#DevTestLabStatus))
+
+Appears on:[DevTestLab](#DevTestLab), [DevTestLabStatus](#DevTestLabStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,7 +38,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `uniqueIdentifier` | ***string***| ***(Optional)*** |
 ## DevTestLabStatus
-##### (Appears on:[DevTestLab](#DevTestLab))
+
+Appears on:[DevTestLab](#DevTestLab)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

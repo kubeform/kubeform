@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeInstanceGroupManagerSpec](#ComputeInstanceGroupManagerSpec)***||
 | `status` | ***[ComputeInstanceGroupManagerStatus](#ComputeInstanceGroupManagerStatus)***||
 ## ComputeInstanceGroupManagerSpec
-##### (Appears on:[ComputeInstanceGroupManager](#ComputeInstanceGroupManager), [ComputeInstanceGroupManagerStatus](#ComputeInstanceGroupManagerStatus))
+
+Appears on:[ComputeInstanceGroupManager](#ComputeInstanceGroupManager), [ComputeInstanceGroupManagerStatus](#ComputeInstanceGroupManagerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -42,19 +44,25 @@ section_menu_id: reference
 | `waitForInstances` | ***bool***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
 ## ComputeInstanceGroupManagerSpecAutoHealingPolicies
-##### (Appears on:[ComputeInstanceGroupManagerSpec](#ComputeInstanceGroupManagerSpec))
+
+Appears on:[ComputeInstanceGroupManagerSpec](#ComputeInstanceGroupManagerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `healthCheck` | ***string***||
 | `initialDelaySec` | ***int***||
 ## ComputeInstanceGroupManagerSpecNamedPort
-##### (Appears on:[ComputeInstanceGroupManagerSpec](#ComputeInstanceGroupManagerSpec))
+
+Appears on:[ComputeInstanceGroupManagerSpec](#ComputeInstanceGroupManagerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `port` | ***int***||
 ## ComputeInstanceGroupManagerSpecRollingUpdatePolicy
-##### (Appears on:[ComputeInstanceGroupManagerSpec](#ComputeInstanceGroupManagerSpec))
+
+Appears on:[ComputeInstanceGroupManagerSpec](#ComputeInstanceGroupManagerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `maxSurgeFixed` | ***int***| ***(Optional)*** |
@@ -65,20 +73,26 @@ section_menu_id: reference
 | `minimalAction` | ***string***||
 | `type` | ***string***||
 ## ComputeInstanceGroupManagerSpecVersion
-##### (Appears on:[ComputeInstanceGroupManagerSpec](#ComputeInstanceGroupManagerSpec))
+
+Appears on:[ComputeInstanceGroupManagerSpec](#ComputeInstanceGroupManagerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `instanceTemplate` | ***string***||
 | `name` | ***string***||
 | `targetSize` | ***[[]ComputeInstanceGroupManagerSpecVersionTargetSize](#ComputeInstanceGroupManagerSpecVersionTargetSize)***| ***(Optional)*** |
 ## ComputeInstanceGroupManagerSpecVersionTargetSize
-##### (Appears on:[ComputeInstanceGroupManagerSpecVersion](#ComputeInstanceGroupManagerSpecVersion))
+
+Appears on:[ComputeInstanceGroupManagerSpecVersion](#ComputeInstanceGroupManagerSpecVersion)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `fixed` | ***int***| ***(Optional)*** |
 | `percent` | ***int***| ***(Optional)*** |
 ## ComputeInstanceGroupManagerStatus
-##### (Appears on:[ComputeInstanceGroupManager](#ComputeInstanceGroupManager))
+
+Appears on:[ComputeInstanceGroupManager](#ComputeInstanceGroupManager)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

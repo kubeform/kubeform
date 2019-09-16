@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DataFactoryLinkedServiceSQLServerSpec](#DataFactoryLinkedServiceSQLServerSpec)***||
 | `status` | ***[DataFactoryLinkedServiceSQLServerStatus](#DataFactoryLinkedServiceSQLServerStatus)***||
 ## DataFactoryLinkedServiceSQLServerSpec
-##### (Appears on:[DataFactoryLinkedServiceSQLServer](#DataFactoryLinkedServiceSQLServer), [DataFactoryLinkedServiceSQLServerStatus](#DataFactoryLinkedServiceSQLServerStatus))
+
+Appears on:[DataFactoryLinkedServiceSQLServer](#DataFactoryLinkedServiceSQLServer), [DataFactoryLinkedServiceSQLServerStatus](#DataFactoryLinkedServiceSQLServerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `parameters` | ***map[string]string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 ## DataFactoryLinkedServiceSQLServerStatus
-##### (Appears on:[DataFactoryLinkedServiceSQLServer](#DataFactoryLinkedServiceSQLServer))
+
+Appears on:[DataFactoryLinkedServiceSQLServer](#DataFactoryLinkedServiceSQLServer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

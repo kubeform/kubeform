@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[RecoveryServicesProtectionPolicyVmSpec](#RecoveryServicesProtectionPolicyVmSpec)***||
 | `status` | ***[RecoveryServicesProtectionPolicyVmStatus](#RecoveryServicesProtectionPolicyVmStatus)***||
 ## RecoveryServicesProtectionPolicyVmSpec
-##### (Appears on:[RecoveryServicesProtectionPolicyVm](#RecoveryServicesProtectionPolicyVm), [RecoveryServicesProtectionPolicyVmStatus](#RecoveryServicesProtectionPolicyVmStatus))
+
+Appears on:[RecoveryServicesProtectionPolicyVm](#RecoveryServicesProtectionPolicyVm), [RecoveryServicesProtectionPolicyVmStatus](#RecoveryServicesProtectionPolicyVmStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,32 +37,42 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `timezone` | ***string***| ***(Optional)*** |
 ## RecoveryServicesProtectionPolicyVmSpecBackup
-##### (Appears on:[RecoveryServicesProtectionPolicyVmSpec](#RecoveryServicesProtectionPolicyVmSpec))
+
+Appears on:[RecoveryServicesProtectionPolicyVmSpec](#RecoveryServicesProtectionPolicyVmSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `frequency` | ***string***||
 | `time` | ***string***||
 | `weekdays` | ***[]string***| ***(Optional)*** |
 ## RecoveryServicesProtectionPolicyVmSpecRetentionDaily
-##### (Appears on:[RecoveryServicesProtectionPolicyVmSpec](#RecoveryServicesProtectionPolicyVmSpec))
+
+Appears on:[RecoveryServicesProtectionPolicyVmSpec](#RecoveryServicesProtectionPolicyVmSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `count` | ***int***||
 ## RecoveryServicesProtectionPolicyVmSpecRetentionMonthly
-##### (Appears on:[RecoveryServicesProtectionPolicyVmSpec](#RecoveryServicesProtectionPolicyVmSpec))
+
+Appears on:[RecoveryServicesProtectionPolicyVmSpec](#RecoveryServicesProtectionPolicyVmSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `count` | ***int***||
 | `weekdays` | ***[]string***||
 | `weeks` | ***[]string***||
 ## RecoveryServicesProtectionPolicyVmSpecRetentionWeekly
-##### (Appears on:[RecoveryServicesProtectionPolicyVmSpec](#RecoveryServicesProtectionPolicyVmSpec))
+
+Appears on:[RecoveryServicesProtectionPolicyVmSpec](#RecoveryServicesProtectionPolicyVmSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `count` | ***int***||
 | `weekdays` | ***[]string***||
 ## RecoveryServicesProtectionPolicyVmSpecRetentionYearly
-##### (Appears on:[RecoveryServicesProtectionPolicyVmSpec](#RecoveryServicesProtectionPolicyVmSpec))
+
+Appears on:[RecoveryServicesProtectionPolicyVmSpec](#RecoveryServicesProtectionPolicyVmSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `count` | ***int***||
@@ -68,7 +80,9 @@ section_menu_id: reference
 | `weekdays` | ***[]string***||
 | `weeks` | ***[]string***||
 ## RecoveryServicesProtectionPolicyVmStatus
-##### (Appears on:[RecoveryServicesProtectionPolicyVm](#RecoveryServicesProtectionPolicyVm))
+
+Appears on:[RecoveryServicesProtectionPolicyVm](#RecoveryServicesProtectionPolicyVm)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

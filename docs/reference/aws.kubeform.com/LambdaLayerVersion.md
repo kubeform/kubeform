@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LambdaLayerVersionSpec](#LambdaLayerVersionSpec)***||
 | `status` | ***[LambdaLayerVersionStatus](#LambdaLayerVersionStatus)***||
 ## LambdaLayerVersionSpec
-##### (Appears on:[LambdaLayerVersion](#LambdaLayerVersion), [LambdaLayerVersionStatus](#LambdaLayerVersionStatus))
+
+Appears on:[LambdaLayerVersion](#LambdaLayerVersion), [LambdaLayerVersionStatus](#LambdaLayerVersionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,7 +41,9 @@ section_menu_id: reference
 | `sourceCodeSize` | ***int***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
 ## LambdaLayerVersionStatus
-##### (Appears on:[LambdaLayerVersion](#LambdaLayerVersion))
+
+Appears on:[LambdaLayerVersion](#LambdaLayerVersion)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WafregionalWebACLAssociationSpec](#WafregionalWebACLAssociationSpec)***||
 | `status` | ***[WafregionalWebACLAssociationStatus](#WafregionalWebACLAssociationStatus)***||
 ## WafregionalWebACLAssociationSpec
-##### (Appears on:[WafregionalWebACLAssociation](#WafregionalWebACLAssociation), [WafregionalWebACLAssociationStatus](#WafregionalWebACLAssociationStatus))
+
+Appears on:[WafregionalWebACLAssociation](#WafregionalWebACLAssociation), [WafregionalWebACLAssociationStatus](#WafregionalWebACLAssociationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `resourceArn` | ***string***||
 | `webACLID` | ***string***||
 ## WafregionalWebACLAssociationStatus
-##### (Appears on:[WafregionalWebACLAssociation](#WafregionalWebACLAssociation))
+
+Appears on:[WafregionalWebACLAssociation](#WafregionalWebACLAssociation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

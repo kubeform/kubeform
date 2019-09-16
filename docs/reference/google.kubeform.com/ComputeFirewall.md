@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeFirewallSpec](#ComputeFirewallSpec)***||
 | `status` | ***[ComputeFirewallStatus](#ComputeFirewallStatus)***||
 ## ComputeFirewallSpec
-##### (Appears on:[ComputeFirewall](#ComputeFirewall), [ComputeFirewallStatus](#ComputeFirewallStatus))
+
+Appears on:[ComputeFirewall](#ComputeFirewall), [ComputeFirewallStatus](#ComputeFirewallStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,19 +45,25 @@ section_menu_id: reference
 | `targetServiceAccounts` | ***[]string***| ***(Optional)*** |
 | `targetTags` | ***[]string***| ***(Optional)*** |
 ## ComputeFirewallSpecAllow
-##### (Appears on:[ComputeFirewallSpec](#ComputeFirewallSpec))
+
+Appears on:[ComputeFirewallSpec](#ComputeFirewallSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ports` | ***[]string***| ***(Optional)*** |
 | `protocol` | ***string***||
 ## ComputeFirewallSpecDeny
-##### (Appears on:[ComputeFirewallSpec](#ComputeFirewallSpec))
+
+Appears on:[ComputeFirewallSpec](#ComputeFirewallSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ports` | ***[]string***| ***(Optional)*** |
 | `protocol` | ***string***||
 ## ComputeFirewallStatus
-##### (Appears on:[ComputeFirewall](#ComputeFirewall))
+
+Appears on:[ComputeFirewall](#ComputeFirewall)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

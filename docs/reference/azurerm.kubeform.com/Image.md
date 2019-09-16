@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ImageSpec](#ImageSpec)***||
 | `status` | ***[ImageStatus](#ImageStatus)***||
 ## ImageSpec
-##### (Appears on:[Image](#Image), [ImageStatus](#ImageStatus))
+
+Appears on:[Image](#Image), [ImageStatus](#ImageStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `zoneResilient` | ***bool***| ***(Optional)*** |
 ## ImageSpecDataDisk
-##### (Appears on:[ImageSpec](#ImageSpec))
+
+Appears on:[ImageSpec](#ImageSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `blobURI` | ***string***| ***(Optional)*** |
@@ -42,7 +46,9 @@ section_menu_id: reference
 | `managedDiskID` | ***string***| ***(Optional)*** |
 | `sizeGb` | ***int***| ***(Optional)*** |
 ## ImageSpecOsDisk
-##### (Appears on:[ImageSpec](#ImageSpec))
+
+Appears on:[ImageSpec](#ImageSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `blobURI` | ***string***| ***(Optional)*** |
@@ -52,7 +58,9 @@ section_menu_id: reference
 | `osType` | ***string***| ***(Optional)*** |
 | `sizeGb` | ***int***| ***(Optional)*** |
 ## ImageStatus
-##### (Appears on:[Image](#Image))
+
+Appears on:[Image](#Image)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

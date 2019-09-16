@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeInstanceGroupSpec](#ComputeInstanceGroupSpec)***||
 | `status` | ***[ComputeInstanceGroupStatus](#ComputeInstanceGroupStatus)***||
 ## ComputeInstanceGroupSpec
-##### (Appears on:[ComputeInstanceGroup](#ComputeInstanceGroup), [ComputeInstanceGroupStatus](#ComputeInstanceGroupStatus))
+
+Appears on:[ComputeInstanceGroup](#ComputeInstanceGroup), [ComputeInstanceGroupStatus](#ComputeInstanceGroupStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,13 +36,17 @@ section_menu_id: reference
 | `size` | ***int***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
 ## ComputeInstanceGroupSpecNamedPort
-##### (Appears on:[ComputeInstanceGroupSpec](#ComputeInstanceGroupSpec))
+
+Appears on:[ComputeInstanceGroupSpec](#ComputeInstanceGroupSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `port` | ***int***||
 ## ComputeInstanceGroupStatus
-##### (Appears on:[ComputeInstanceGroup](#ComputeInstanceGroup))
+
+Appears on:[ComputeInstanceGroup](#ComputeInstanceGroup)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

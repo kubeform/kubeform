@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VpcIpv4CIDRBlockAssociationSpec](#VpcIpv4CIDRBlockAssociationSpec)***||
 | `status` | ***[VpcIpv4CIDRBlockAssociationStatus](#VpcIpv4CIDRBlockAssociationStatus)***||
 ## VpcIpv4CIDRBlockAssociationSpec
-##### (Appears on:[VpcIpv4CIDRBlockAssociation](#VpcIpv4CIDRBlockAssociation), [VpcIpv4CIDRBlockAssociationStatus](#VpcIpv4CIDRBlockAssociationStatus))
+
+Appears on:[VpcIpv4CIDRBlockAssociation](#VpcIpv4CIDRBlockAssociation), [VpcIpv4CIDRBlockAssociationStatus](#VpcIpv4CIDRBlockAssociationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `cidrBlock` | ***string***||
 | `vpcID` | ***string***||
 ## VpcIpv4CIDRBlockAssociationStatus
-##### (Appears on:[VpcIpv4CIDRBlockAssociation](#VpcIpv4CIDRBlockAssociation))
+
+Appears on:[VpcIpv4CIDRBlockAssociation](#VpcIpv4CIDRBlockAssociation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

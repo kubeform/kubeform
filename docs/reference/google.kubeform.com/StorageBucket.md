@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StorageBucketSpec](#StorageBucketSpec)***||
 | `status` | ***[StorageBucketStatus](#StorageBucketStatus)***||
 ## StorageBucketSpec
-##### (Appears on:[StorageBucket](#StorageBucket), [StorageBucketStatus](#StorageBucketStatus))
+
+Appears on:[StorageBucket](#StorageBucket), [StorageBucketStatus](#StorageBucketStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,7 +41,9 @@ section_menu_id: reference
 | `versioning` | ***[[]StorageBucketSpecVersioning](#StorageBucketSpecVersioning)***| ***(Optional)*** |
 | `website` | ***[[]StorageBucketSpecWebsite](#StorageBucketSpecWebsite)***| ***(Optional)*** |
 ## StorageBucketSpecCors
-##### (Appears on:[StorageBucketSpec](#StorageBucketSpec))
+
+Appears on:[StorageBucketSpec](#StorageBucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `maxAgeSeconds` | ***int***| ***(Optional)*** |
@@ -47,24 +51,32 @@ section_menu_id: reference
 | `origin` | ***[]string***| ***(Optional)*** |
 | `responseHeader` | ***[]string***| ***(Optional)*** |
 ## StorageBucketSpecEncryption
-##### (Appears on:[StorageBucketSpec](#StorageBucketSpec))
+
+Appears on:[StorageBucketSpec](#StorageBucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultKmsKeyName` | ***string***||
 ## StorageBucketSpecLifecycleRule
-##### (Appears on:[StorageBucketSpec](#StorageBucketSpec))
+
+Appears on:[StorageBucketSpec](#StorageBucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***[[]StorageBucketSpecLifecycleRuleAction](#StorageBucketSpecLifecycleRuleAction)***||
 | `condition` | ***[[]StorageBucketSpecLifecycleRuleCondition](#StorageBucketSpecLifecycleRuleCondition)***||
 ## StorageBucketSpecLifecycleRuleAction
-##### (Appears on:[StorageBucketSpecLifecycleRule](#StorageBucketSpecLifecycleRule))
+
+Appears on:[StorageBucketSpecLifecycleRule](#StorageBucketSpecLifecycleRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `storageClass` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## StorageBucketSpecLifecycleRuleCondition
-##### (Appears on:[StorageBucketSpecLifecycleRule](#StorageBucketSpecLifecycleRule))
+
+Appears on:[StorageBucketSpecLifecycleRule](#StorageBucketSpecLifecycleRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `age` | ***int***| ***(Optional)*** |
@@ -73,24 +85,32 @@ section_menu_id: reference
 | `matchesStorageClass` | ***[]string***| ***(Optional)*** |
 | `numNewerVersions` | ***int***| ***(Optional)*** |
 ## StorageBucketSpecLogging
-##### (Appears on:[StorageBucketSpec](#StorageBucketSpec))
+
+Appears on:[StorageBucketSpec](#StorageBucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `logBucket` | ***string***||
 | `logObjectPrefix` | ***string***| ***(Optional)*** |
 ## StorageBucketSpecVersioning
-##### (Appears on:[StorageBucketSpec](#StorageBucketSpec))
+
+Appears on:[StorageBucketSpec](#StorageBucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
 ## StorageBucketSpecWebsite
-##### (Appears on:[StorageBucketSpec](#StorageBucketSpec))
+
+Appears on:[StorageBucketSpec](#StorageBucketSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `mainPageSuffix` | ***string***| ***(Optional)*** |
 | `notFoundPage` | ***string***| ***(Optional)*** |
 ## StorageBucketStatus
-##### (Appears on:[StorageBucket](#StorageBucket))
+
+Appears on:[StorageBucket](#StorageBucket)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

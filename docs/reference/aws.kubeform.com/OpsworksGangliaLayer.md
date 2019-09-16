@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[OpsworksGangliaLayerSpec](#OpsworksGangliaLayerSpec)***||
 | `status` | ***[OpsworksGangliaLayerStatus](#OpsworksGangliaLayerStatus)***||
 ## OpsworksGangliaLayerSpec
-##### (Appears on:[OpsworksGangliaLayer](#OpsworksGangliaLayer), [OpsworksGangliaLayerStatus](#OpsworksGangliaLayerStatus))
+
+Appears on:[OpsworksGangliaLayer](#OpsworksGangliaLayer), [OpsworksGangliaLayerStatus](#OpsworksGangliaLayerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -48,7 +50,9 @@ section_menu_id: reference
 | `useEbsOptimizedInstances` | ***bool***| ***(Optional)*** |
 | `username` | ***string***| ***(Optional)*** |
 ## OpsworksGangliaLayerSpecEbsVolume
-##### (Appears on:[OpsworksGangliaLayerSpec](#OpsworksGangliaLayerSpec))
+
+Appears on:[OpsworksGangliaLayerSpec](#OpsworksGangliaLayerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `iops` | ***int***| ***(Optional)*** |
@@ -58,7 +62,9 @@ section_menu_id: reference
 | `size` | ***int***||
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksGangliaLayerStatus
-##### (Appears on:[OpsworksGangliaLayer](#OpsworksGangliaLayer))
+
+Appears on:[OpsworksGangliaLayer](#OpsworksGangliaLayer)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

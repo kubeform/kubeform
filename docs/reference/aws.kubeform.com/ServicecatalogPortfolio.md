@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ServicecatalogPortfolioSpec](#ServicecatalogPortfolioSpec)***||
 | `status` | ***[ServicecatalogPortfolioStatus](#ServicecatalogPortfolioStatus)***||
 ## ServicecatalogPortfolioSpec
-##### (Appears on:[ServicecatalogPortfolio](#ServicecatalogPortfolio), [ServicecatalogPortfolioStatus](#ServicecatalogPortfolioStatus))
+
+Appears on:[ServicecatalogPortfolio](#ServicecatalogPortfolio), [ServicecatalogPortfolioStatus](#ServicecatalogPortfolioStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `providerName` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ServicecatalogPortfolioStatus
-##### (Appears on:[ServicecatalogPortfolio](#ServicecatalogPortfolio))
+
+Appears on:[ServicecatalogPortfolio](#ServicecatalogPortfolio)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

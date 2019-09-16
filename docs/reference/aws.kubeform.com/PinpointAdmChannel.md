@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[PinpointAdmChannelSpec](#PinpointAdmChannelSpec)***||
 | `status` | ***[PinpointAdmChannelStatus](#PinpointAdmChannelStatus)***||
 ## PinpointAdmChannelSpec
-##### (Appears on:[PinpointAdmChannel](#PinpointAdmChannel), [PinpointAdmChannelStatus](#PinpointAdmChannelStatus))
+
+Appears on:[PinpointAdmChannel](#PinpointAdmChannel), [PinpointAdmChannelStatus](#PinpointAdmChannelStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `applicationID` | ***string***||
 | `enabled` | ***bool***| ***(Optional)*** |
 ## PinpointAdmChannelStatus
-##### (Appears on:[PinpointAdmChannel](#PinpointAdmChannel))
+
+Appears on:[PinpointAdmChannel](#PinpointAdmChannel)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

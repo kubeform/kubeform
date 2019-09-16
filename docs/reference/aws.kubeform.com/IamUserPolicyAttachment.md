@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[IamUserPolicyAttachmentSpec](#IamUserPolicyAttachmentSpec)***||
 | `status` | ***[IamUserPolicyAttachmentStatus](#IamUserPolicyAttachmentStatus)***||
 ## IamUserPolicyAttachmentSpec
-##### (Appears on:[IamUserPolicyAttachment](#IamUserPolicyAttachment), [IamUserPolicyAttachmentStatus](#IamUserPolicyAttachmentStatus))
+
+Appears on:[IamUserPolicyAttachment](#IamUserPolicyAttachment), [IamUserPolicyAttachmentStatus](#IamUserPolicyAttachmentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `policyArn` | ***string***||
 | `user` | ***string***||
 ## IamUserPolicyAttachmentStatus
-##### (Appears on:[IamUserPolicyAttachment](#IamUserPolicyAttachment))
+
+Appears on:[IamUserPolicyAttachment](#IamUserPolicyAttachment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

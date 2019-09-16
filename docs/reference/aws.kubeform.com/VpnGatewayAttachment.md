@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VpnGatewayAttachmentSpec](#VpnGatewayAttachmentSpec)***||
 | `status` | ***[VpnGatewayAttachmentStatus](#VpnGatewayAttachmentStatus)***||
 ## VpnGatewayAttachmentSpec
-##### (Appears on:[VpnGatewayAttachment](#VpnGatewayAttachment), [VpnGatewayAttachmentStatus](#VpnGatewayAttachmentStatus))
+
+Appears on:[VpnGatewayAttachment](#VpnGatewayAttachment), [VpnGatewayAttachmentStatus](#VpnGatewayAttachmentStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `vpcID` | ***string***||
 | `vpnGatewayID` | ***string***||
 ## VpnGatewayAttachmentStatus
-##### (Appears on:[VpnGatewayAttachment](#VpnGatewayAttachment))
+
+Appears on:[VpnGatewayAttachment](#VpnGatewayAttachment)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

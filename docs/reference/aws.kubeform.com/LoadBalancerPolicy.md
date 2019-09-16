@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LoadBalancerPolicySpec](#LoadBalancerPolicySpec)***||
 | `status` | ***[LoadBalancerPolicyStatus](#LoadBalancerPolicyStatus)***||
 ## LoadBalancerPolicySpec
-##### (Appears on:[LoadBalancerPolicy](#LoadBalancerPolicy), [LoadBalancerPolicyStatus](#LoadBalancerPolicyStatus))
+
+Appears on:[LoadBalancerPolicy](#LoadBalancerPolicy), [LoadBalancerPolicyStatus](#LoadBalancerPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,13 +31,17 @@ section_menu_id: reference
 | `policyName` | ***string***||
 | `policyTypeName` | ***string***||
 ## LoadBalancerPolicySpecPolicyAttribute
-##### (Appears on:[LoadBalancerPolicySpec](#LoadBalancerPolicySpec))
+
+Appears on:[LoadBalancerPolicySpec](#LoadBalancerPolicySpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***| ***(Optional)*** |
 | `value` | ***string***| ***(Optional)*** |
 ## LoadBalancerPolicyStatus
-##### (Appears on:[LoadBalancerPolicy](#LoadBalancerPolicy))
+
+Appears on:[LoadBalancerPolicy](#LoadBalancerPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

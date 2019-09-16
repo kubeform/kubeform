@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LbListenerSpec](#LbListenerSpec)***||
 | `status` | ***[LbListenerStatus](#LbListenerStatus)***||
 ## LbListenerSpec
-##### (Appears on:[LbListener](#LbListener), [LbListenerStatus](#LbListenerStatus))
+
+Appears on:[LbListener](#LbListener), [LbListenerStatus](#LbListenerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `protocol` | ***string***| ***(Optional)*** |
 | `sslPolicy` | ***string***| ***(Optional)*** |
 ## LbListenerSpecDefaultAction
-##### (Appears on:[LbListenerSpec](#LbListenerSpec))
+
+Appears on:[LbListenerSpec](#LbListenerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticateCognito` | ***[[]LbListenerSpecDefaultActionAuthenticateCognito](#LbListenerSpecDefaultActionAuthenticateCognito)***| ***(Optional)*** |
@@ -44,7 +48,9 @@ section_menu_id: reference
 | `targetGroupArn` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## LbListenerSpecDefaultActionAuthenticateCognito
-##### (Appears on:[LbListenerSpecDefaultAction](#LbListenerSpecDefaultAction))
+
+Appears on:[LbListenerSpecDefaultAction](#LbListenerSpecDefaultAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticationRequestExtraParams` | ***map[string]string***| ***(Optional)*** |
@@ -56,7 +62,9 @@ section_menu_id: reference
 | `userPoolClientID` | ***string***||
 | `userPoolDomain` | ***string***||
 ## LbListenerSpecDefaultActionAuthenticateOidc
-##### (Appears on:[LbListenerSpecDefaultAction](#LbListenerSpecDefaultAction))
+
+Appears on:[LbListenerSpecDefaultAction](#LbListenerSpecDefaultAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authenticationRequestExtraParams` | ***map[string]string***| ***(Optional)*** |
@@ -70,14 +78,18 @@ section_menu_id: reference
 | `tokenEndpoint` | ***string***||
 | `userInfoEndpoint` | ***string***||
 ## LbListenerSpecDefaultActionFixedResponse
-##### (Appears on:[LbListenerSpecDefaultAction](#LbListenerSpecDefaultAction))
+
+Appears on:[LbListenerSpecDefaultAction](#LbListenerSpecDefaultAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `contentType` | ***string***||
 | `messageBody` | ***string***| ***(Optional)*** |
 | `statusCode` | ***string***| ***(Optional)*** |
 ## LbListenerSpecDefaultActionRedirect
-##### (Appears on:[LbListenerSpecDefaultAction](#LbListenerSpecDefaultAction))
+
+Appears on:[LbListenerSpecDefaultAction](#LbListenerSpecDefaultAction)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `host` | ***string***| ***(Optional)*** |
@@ -87,7 +99,9 @@ section_menu_id: reference
 | `query` | ***string***| ***(Optional)*** |
 | `statusCode` | ***string***||
 ## LbListenerStatus
-##### (Appears on:[LbListener](#LbListener))
+
+Appears on:[LbListener](#LbListener)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

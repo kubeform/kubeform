@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeHTTPSHealthCheckSpec](#ComputeHTTPSHealthCheckSpec)***||
 | `status` | ***[ComputeHTTPSHealthCheckStatus](#ComputeHTTPSHealthCheckStatus)***||
 ## ComputeHTTPSHealthCheckSpec
-##### (Appears on:[ComputeHTTPSHealthCheck](#ComputeHTTPSHealthCheck), [ComputeHTTPSHealthCheckStatus](#ComputeHTTPSHealthCheckStatus))
+
+Appears on:[ComputeHTTPSHealthCheck](#ComputeHTTPSHealthCheck), [ComputeHTTPSHealthCheckStatus](#ComputeHTTPSHealthCheckStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,7 +39,9 @@ section_menu_id: reference
 | `timeoutSec` | ***int***| ***(Optional)*** |
 | `unhealthyThreshold` | ***int***| ***(Optional)*** |
 ## ComputeHTTPSHealthCheckStatus
-##### (Appears on:[ComputeHTTPSHealthCheck](#ComputeHTTPSHealthCheck))
+
+Appears on:[ComputeHTTPSHealthCheck](#ComputeHTTPSHealthCheck)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

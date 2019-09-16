@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[EventgridDomainSpec](#EventgridDomainSpec)***||
 | `status` | ***[EventgridDomainStatus](#EventgridDomainStatus)***||
 ## EventgridDomainSpec
-##### (Appears on:[EventgridDomain](#EventgridDomain), [EventgridDomainStatus](#EventgridDomainStatus))
+
+Appears on:[EventgridDomain](#EventgridDomain), [EventgridDomainStatus](#EventgridDomainStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,14 +35,18 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## EventgridDomainSpecInputMappingDefaultValues
-##### (Appears on:[EventgridDomainSpec](#EventgridDomainSpec))
+
+Appears on:[EventgridDomainSpec](#EventgridDomainSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dataVersion` | ***string***| ***(Optional)*** |
 | `eventType` | ***string***| ***(Optional)*** |
 | `subject` | ***string***| ***(Optional)*** |
 ## EventgridDomainSpecInputMappingFields
-##### (Appears on:[EventgridDomainSpec](#EventgridDomainSpec))
+
+Appears on:[EventgridDomainSpec](#EventgridDomainSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dataVersion` | ***string***| ***(Optional)*** |
@@ -50,7 +56,9 @@ section_menu_id: reference
 | `subject` | ***string***| ***(Optional)*** |
 | `topic` | ***string***| ***(Optional)*** |
 ## EventgridDomainStatus
-##### (Appears on:[EventgridDomain](#EventgridDomain))
+
+Appears on:[EventgridDomain](#EventgridDomain)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

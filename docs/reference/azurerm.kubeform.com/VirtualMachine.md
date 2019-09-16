@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[VirtualMachineSpec](#VirtualMachineSpec)***||
 | `status` | ***[VirtualMachineStatus](#VirtualMachineStatus)***||
 ## VirtualMachineSpec
-##### (Appears on:[VirtualMachine](#VirtualMachine), [VirtualMachineStatus](#VirtualMachineStatus))
+
+Appears on:[VirtualMachine](#VirtualMachine), [VirtualMachineStatus](#VirtualMachineStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -48,51 +50,67 @@ section_menu_id: reference
 | `vmSize` | ***string***||
 | `zones` | ***[]string***| ***(Optional)*** |
 ## VirtualMachineSpecBootDiagnostics
-##### (Appears on:[VirtualMachineSpec](#VirtualMachineSpec))
+
+Appears on:[VirtualMachineSpec](#VirtualMachineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 | `storageURI` | ***string***||
 ## VirtualMachineSpecIdentity
-##### (Appears on:[VirtualMachineSpec](#VirtualMachineSpec))
+
+Appears on:[VirtualMachineSpec](#VirtualMachineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `identityIDS` | ***[]string***| ***(Optional)*** |
 | `principalID` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## VirtualMachineSpecOsProfile
-##### (Appears on:[VirtualMachineSpec](#VirtualMachineSpec))
+
+Appears on:[VirtualMachineSpec](#VirtualMachineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `adminUsername` | ***string***||
 | `computerName` | ***string***||
 | `customData` | ***string***| ***(Optional)*** |
 ## VirtualMachineSpecOsProfileLinuxConfig
-##### (Appears on:[VirtualMachineSpec](#VirtualMachineSpec))
+
+Appears on:[VirtualMachineSpec](#VirtualMachineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `disablePasswordAuthentication` | ***bool***||
 | `sshKeys` | ***[[]VirtualMachineSpecOsProfileLinuxConfigSshKeys](#VirtualMachineSpecOsProfileLinuxConfigSshKeys)***| ***(Optional)*** |
 ## VirtualMachineSpecOsProfileLinuxConfigSshKeys
-##### (Appears on:[VirtualMachineSpecOsProfileLinuxConfig](#VirtualMachineSpecOsProfileLinuxConfig))
+
+Appears on:[VirtualMachineSpecOsProfileLinuxConfig](#VirtualMachineSpecOsProfileLinuxConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `keyData` | ***string***||
 | `path` | ***string***||
 ## VirtualMachineSpecOsProfileSecrets
-##### (Appears on:[VirtualMachineSpec](#VirtualMachineSpec))
+
+Appears on:[VirtualMachineSpec](#VirtualMachineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `sourceVaultID` | ***string***||
 | `vaultCertificates` | ***[[]VirtualMachineSpecOsProfileSecretsVaultCertificates](#VirtualMachineSpecOsProfileSecretsVaultCertificates)***| ***(Optional)*** |
 ## VirtualMachineSpecOsProfileSecretsVaultCertificates
-##### (Appears on:[VirtualMachineSpecOsProfileSecrets](#VirtualMachineSpecOsProfileSecrets))
+
+Appears on:[VirtualMachineSpecOsProfileSecrets](#VirtualMachineSpecOsProfileSecrets)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `certificateStore` | ***string***| ***(Optional)*** |
 | `certificateURL` | ***string***||
 ## VirtualMachineSpecOsProfileWindowsConfig
-##### (Appears on:[VirtualMachineSpec](#VirtualMachineSpec))
+
+Appears on:[VirtualMachineSpec](#VirtualMachineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `additionalUnattendConfig` | ***[[]VirtualMachineSpecOsProfileWindowsConfigAdditionalUnattendConfig](#VirtualMachineSpecOsProfileWindowsConfigAdditionalUnattendConfig)***| ***(Optional)*** |
@@ -101,27 +119,35 @@ section_menu_id: reference
 | `timezone` | ***string***| ***(Optional)*** |
 | `winrm` | ***[[]VirtualMachineSpecOsProfileWindowsConfigWinrm](#VirtualMachineSpecOsProfileWindowsConfigWinrm)***| ***(Optional)*** |
 ## VirtualMachineSpecOsProfileWindowsConfigAdditionalUnattendConfig
-##### (Appears on:[VirtualMachineSpecOsProfileWindowsConfig](#VirtualMachineSpecOsProfileWindowsConfig))
+
+Appears on:[VirtualMachineSpecOsProfileWindowsConfig](#VirtualMachineSpecOsProfileWindowsConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `component` | ***string***||
 | `pass` | ***string***||
 | `settingName` | ***string***||
 ## VirtualMachineSpecOsProfileWindowsConfigWinrm
-##### (Appears on:[VirtualMachineSpecOsProfileWindowsConfig](#VirtualMachineSpecOsProfileWindowsConfig))
+
+Appears on:[VirtualMachineSpecOsProfileWindowsConfig](#VirtualMachineSpecOsProfileWindowsConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `certificateURL` | ***string***| ***(Optional)*** |
 | `protocol` | ***string***||
 ## VirtualMachineSpecPlan
-##### (Appears on:[VirtualMachineSpec](#VirtualMachineSpec))
+
+Appears on:[VirtualMachineSpec](#VirtualMachineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `product` | ***string***||
 | `publisher` | ***string***||
 ## VirtualMachineSpecStorageDataDisk
-##### (Appears on:[VirtualMachineSpec](#VirtualMachineSpec))
+
+Appears on:[VirtualMachineSpec](#VirtualMachineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `caching` | ***string***| ***(Optional)*** |
@@ -134,7 +160,9 @@ section_menu_id: reference
 | `vhdURI` | ***string***| ***(Optional)*** |
 | `writeAcceleratorEnabled` | ***bool***| ***(Optional)*** |
 ## VirtualMachineSpecStorageImageReference
-##### (Appears on:[VirtualMachineSpec](#VirtualMachineSpec))
+
+Appears on:[VirtualMachineSpec](#VirtualMachineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
@@ -143,7 +171,9 @@ section_menu_id: reference
 | `sku` | ***string***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
 ## VirtualMachineSpecStorageOsDisk
-##### (Appears on:[VirtualMachineSpec](#VirtualMachineSpec))
+
+Appears on:[VirtualMachineSpec](#VirtualMachineSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `caching` | ***string***| ***(Optional)*** |
@@ -157,7 +187,9 @@ section_menu_id: reference
 | `vhdURI` | ***string***| ***(Optional)*** |
 | `writeAcceleratorEnabled` | ***bool***| ***(Optional)*** |
 ## VirtualMachineStatus
-##### (Appears on:[VirtualMachine](#VirtualMachine))
+
+Appears on:[VirtualMachine](#VirtualMachine)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec)***||
 | `status` | ***[ComputeInstanceFromTemplateStatus](#ComputeInstanceFromTemplateStatus)***||
 ## ComputeInstanceFromTemplateSpec
-##### (Appears on:[ComputeInstanceFromTemplate](#ComputeInstanceFromTemplate), [ComputeInstanceFromTemplateStatus](#ComputeInstanceFromTemplateStatus))
+
+Appears on:[ComputeInstanceFromTemplate](#ComputeInstanceFromTemplate), [ComputeInstanceFromTemplateStatus](#ComputeInstanceFromTemplateStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -53,7 +55,9 @@ section_menu_id: reference
 | `tagsFingerprint` | ***string***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
 ## ComputeInstanceFromTemplateSpecAttachedDisk
-##### (Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec))
+
+Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deviceName` | ***string***| ***(Optional)*** |
@@ -61,7 +65,9 @@ section_menu_id: reference
 | `mode` | ***string***| ***(Optional)*** |
 | `source` | ***string***||
 ## ComputeInstanceFromTemplateSpecBootDisk
-##### (Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec))
+
+Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `autoDelete` | ***bool***| ***(Optional)*** |
@@ -70,20 +76,26 @@ section_menu_id: reference
 | `initializeParams` | ***[[]ComputeInstanceFromTemplateSpecBootDiskInitializeParams](#ComputeInstanceFromTemplateSpecBootDiskInitializeParams)***| ***(Optional)*** |
 | `source` | ***string***| ***(Optional)*** |
 ## ComputeInstanceFromTemplateSpecBootDiskInitializeParams
-##### (Appears on:[ComputeInstanceFromTemplateSpecBootDisk](#ComputeInstanceFromTemplateSpecBootDisk))
+
+Appears on:[ComputeInstanceFromTemplateSpecBootDisk](#ComputeInstanceFromTemplateSpecBootDisk)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `image` | ***string***| ***(Optional)*** |
 | `size` | ***int***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## ComputeInstanceFromTemplateSpecGuestAccelerator
-##### (Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec))
+
+Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `count` | ***int***||
 | `type` | ***string***||
 ## ComputeInstanceFromTemplateSpecNetworkInterface
-##### (Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec))
+
+Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `accessConfig` | ***[[]ComputeInstanceFromTemplateSpecNetworkInterfaceAccessConfig](#ComputeInstanceFromTemplateSpecNetworkInterfaceAccessConfig)***| ***(Optional)*** |
@@ -95,7 +107,9 @@ section_menu_id: reference
 | `subnetwork` | ***string***| ***(Optional)*** |
 | `subnetworkProject` | ***string***| ***(Optional)*** |
 ## ComputeInstanceFromTemplateSpecNetworkInterfaceAccessConfig
-##### (Appears on:[ComputeInstanceFromTemplateSpecNetworkInterface](#ComputeInstanceFromTemplateSpecNetworkInterface))
+
+Appears on:[ComputeInstanceFromTemplateSpecNetworkInterface](#ComputeInstanceFromTemplateSpecNetworkInterface)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `assignedNATIP` | ***string***| ***(Optional)*** Deprecated|
@@ -103,31 +117,41 @@ section_menu_id: reference
 | `networkTier` | ***string***| ***(Optional)*** |
 | `publicPtrDomainName` | ***string***| ***(Optional)*** |
 ## ComputeInstanceFromTemplateSpecNetworkInterfaceAliasIPRange
-##### (Appears on:[ComputeInstanceFromTemplateSpecNetworkInterface](#ComputeInstanceFromTemplateSpecNetworkInterface))
+
+Appears on:[ComputeInstanceFromTemplateSpecNetworkInterface](#ComputeInstanceFromTemplateSpecNetworkInterface)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ipCIDRRange` | ***string***||
 | `subnetworkRangeName` | ***string***| ***(Optional)*** |
 ## ComputeInstanceFromTemplateSpecScheduling
-##### (Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec))
+
+Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `automaticRestart` | ***bool***| ***(Optional)*** |
 | `onHostMaintenance` | ***string***| ***(Optional)*** |
 | `preemptible` | ***bool***| ***(Optional)*** |
 ## ComputeInstanceFromTemplateSpecScratchDisk
-##### (Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec))
+
+Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `interface` | ***string***| ***(Optional)*** |
 ## ComputeInstanceFromTemplateSpecServiceAccount
-##### (Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec))
+
+Appears on:[ComputeInstanceFromTemplateSpec](#ComputeInstanceFromTemplateSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `email` | ***string***| ***(Optional)*** |
 | `scopes` | ***[]string***||
 ## ComputeInstanceFromTemplateStatus
-##### (Appears on:[ComputeInstanceFromTemplate](#ComputeInstanceFromTemplate))
+
+Appears on:[ComputeInstanceFromTemplate](#ComputeInstanceFromTemplate)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

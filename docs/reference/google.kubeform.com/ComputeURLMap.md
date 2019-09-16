@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeURLMapSpec](#ComputeURLMapSpec)***||
 | `status` | ***[ComputeURLMapStatus](#ComputeURLMapStatus)***||
 ## ComputeURLMapSpec
-##### (Appears on:[ComputeURLMap](#ComputeURLMap), [ComputeURLMapStatus](#ComputeURLMapStatus))
+
+Appears on:[ComputeURLMap](#ComputeURLMap), [ComputeURLMapStatus](#ComputeURLMapStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,14 +37,18 @@ section_menu_id: reference
 | `selfLink` | ***string***| ***(Optional)*** |
 | `test` | ***[[]ComputeURLMapSpecTest](#ComputeURLMapSpecTest)***| ***(Optional)*** |
 ## ComputeURLMapSpecHostRule
-##### (Appears on:[ComputeURLMapSpec](#ComputeURLMapSpec))
+
+Appears on:[ComputeURLMapSpec](#ComputeURLMapSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `description` | ***string***| ***(Optional)*** |
 | `hosts` | ***[]string***||
 | `pathMatcher` | ***string***||
 ## ComputeURLMapSpecPathMatcher
-##### (Appears on:[ComputeURLMapSpec](#ComputeURLMapSpec))
+
+Appears on:[ComputeURLMapSpec](#ComputeURLMapSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultService` | ***string***||
@@ -50,13 +56,17 @@ section_menu_id: reference
 | `name` | ***string***||
 | `pathRule` | ***[[]ComputeURLMapSpecPathMatcherPathRule](#ComputeURLMapSpecPathMatcherPathRule)***| ***(Optional)*** |
 ## ComputeURLMapSpecPathMatcherPathRule
-##### (Appears on:[ComputeURLMapSpecPathMatcher](#ComputeURLMapSpecPathMatcher))
+
+Appears on:[ComputeURLMapSpecPathMatcher](#ComputeURLMapSpecPathMatcher)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `paths` | ***[]string***||
 | `service` | ***string***||
 ## ComputeURLMapSpecTest
-##### (Appears on:[ComputeURLMapSpec](#ComputeURLMapSpec))
+
+Appears on:[ComputeURLMapSpec](#ComputeURLMapSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `description` | ***string***| ***(Optional)*** |
@@ -64,7 +74,9 @@ section_menu_id: reference
 | `path` | ***string***||
 | `service` | ***string***||
 ## ComputeURLMapStatus
-##### (Appears on:[ComputeURLMap](#ComputeURLMap))
+
+Appears on:[ComputeURLMap](#ComputeURLMap)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

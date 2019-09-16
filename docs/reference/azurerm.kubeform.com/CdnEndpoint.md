@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CdnEndpointSpec](#CdnEndpointSpec)***||
 | `status` | ***[CdnEndpointStatus](#CdnEndpointStatus)***||
 ## CdnEndpointSpec
-##### (Appears on:[CdnEndpoint](#CdnEndpoint), [CdnEndpointStatus](#CdnEndpointStatus))
+
+Appears on:[CdnEndpoint](#CdnEndpoint), [CdnEndpointStatus](#CdnEndpointStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -42,14 +44,18 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## CdnEndpointSpecGeoFilter
-##### (Appears on:[CdnEndpointSpec](#CdnEndpointSpec))
+
+Appears on:[CdnEndpointSpec](#CdnEndpointSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***string***||
 | `countryCodes` | ***[]string***||
 | `relativePath` | ***string***||
 ## CdnEndpointSpecOrigin
-##### (Appears on:[CdnEndpointSpec](#CdnEndpointSpec))
+
+Appears on:[CdnEndpointSpec](#CdnEndpointSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `hostName` | ***string***||
@@ -57,7 +63,9 @@ section_menu_id: reference
 | `httpsPort` | ***int***| ***(Optional)*** |
 | `name` | ***string***||
 ## CdnEndpointStatus
-##### (Appears on:[CdnEndpoint](#CdnEndpoint))
+
+Appears on:[CdnEndpoint](#CdnEndpoint)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

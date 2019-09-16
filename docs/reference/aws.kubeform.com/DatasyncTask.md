@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DatasyncTaskSpec](#DatasyncTaskSpec)***||
 | `status` | ***[DatasyncTaskStatus](#DatasyncTaskStatus)***||
 ## DatasyncTaskSpec
-##### (Appears on:[DatasyncTask](#DatasyncTask), [DatasyncTaskStatus](#DatasyncTaskStatus))
+
+Appears on:[DatasyncTask](#DatasyncTask), [DatasyncTaskStatus](#DatasyncTaskStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `sourceLocationArn` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DatasyncTaskSpecOptions
-##### (Appears on:[DatasyncTaskSpec](#DatasyncTaskSpec))
+
+Appears on:[DatasyncTaskSpec](#DatasyncTaskSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `atime` | ***string***| ***(Optional)*** |
@@ -45,7 +49,9 @@ section_menu_id: reference
 | `uid` | ***string***| ***(Optional)*** |
 | `verifyMode` | ***string***| ***(Optional)*** |
 ## DatasyncTaskStatus
-##### (Appears on:[DatasyncTask](#DatasyncTask))
+
+Appears on:[DatasyncTask](#DatasyncTask)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

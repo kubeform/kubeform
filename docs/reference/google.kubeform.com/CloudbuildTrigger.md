@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CloudbuildTriggerSpec](#CloudbuildTriggerSpec)***||
 | `status` | ***[CloudbuildTriggerStatus](#CloudbuildTriggerStatus)***||
 ## CloudbuildTriggerSpec
-##### (Appears on:[CloudbuildTrigger](#CloudbuildTrigger), [CloudbuildTriggerStatus](#CloudbuildTriggerStatus))
+
+Appears on:[CloudbuildTrigger](#CloudbuildTrigger), [CloudbuildTriggerStatus](#CloudbuildTriggerStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,20 +33,26 @@ section_menu_id: reference
 | `substitutions` | ***map[string]string***| ***(Optional)*** |
 | `triggerTemplate` | ***[[]CloudbuildTriggerSpecTriggerTemplate](#CloudbuildTriggerSpecTriggerTemplate)***| ***(Optional)*** |
 ## CloudbuildTriggerSpecBuild
-##### (Appears on:[CloudbuildTriggerSpec](#CloudbuildTriggerSpec))
+
+Appears on:[CloudbuildTriggerSpec](#CloudbuildTriggerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `images` | ***[]string***| ***(Optional)*** |
 | `step` | ***[[]CloudbuildTriggerSpecBuildStep](#CloudbuildTriggerSpecBuildStep)***| ***(Optional)*** |
 | `tags` | ***[]string***| ***(Optional)*** |
 ## CloudbuildTriggerSpecBuildStep
-##### (Appears on:[CloudbuildTriggerSpecBuild](#CloudbuildTriggerSpecBuild))
+
+Appears on:[CloudbuildTriggerSpecBuild](#CloudbuildTriggerSpecBuild)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `args` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 ## CloudbuildTriggerSpecTriggerTemplate
-##### (Appears on:[CloudbuildTriggerSpec](#CloudbuildTriggerSpec))
+
+Appears on:[CloudbuildTriggerSpec](#CloudbuildTriggerSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `branchName` | ***string***| ***(Optional)*** |
@@ -54,7 +62,9 @@ section_menu_id: reference
 | `repoName` | ***string***| ***(Optional)*** |
 | `tagName` | ***string***| ***(Optional)*** |
 ## CloudbuildTriggerStatus
-##### (Appears on:[CloudbuildTrigger](#CloudbuildTrigger))
+
+Appears on:[CloudbuildTrigger](#CloudbuildTrigger)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

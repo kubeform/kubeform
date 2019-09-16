@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApiGatewayUsagePlanSpec](#ApiGatewayUsagePlanSpec)***||
 | `status` | ***[ApiGatewayUsagePlanStatus](#ApiGatewayUsagePlanStatus)***||
 ## ApiGatewayUsagePlanSpec
-##### (Appears on:[ApiGatewayUsagePlan](#ApiGatewayUsagePlan), [ApiGatewayUsagePlanStatus](#ApiGatewayUsagePlanStatus))
+
+Appears on:[ApiGatewayUsagePlan](#ApiGatewayUsagePlan), [ApiGatewayUsagePlanStatus](#ApiGatewayUsagePlanStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,26 +33,34 @@ section_menu_id: reference
 | `quotaSettings` | ***[[]ApiGatewayUsagePlanSpecQuotaSettings](#ApiGatewayUsagePlanSpecQuotaSettings)***| ***(Optional)*** |
 | `throttleSettings` | ***[[]ApiGatewayUsagePlanSpecThrottleSettings](#ApiGatewayUsagePlanSpecThrottleSettings)***| ***(Optional)*** |
 ## ApiGatewayUsagePlanSpecApiStages
-##### (Appears on:[ApiGatewayUsagePlanSpec](#ApiGatewayUsagePlanSpec))
+
+Appears on:[ApiGatewayUsagePlanSpec](#ApiGatewayUsagePlanSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `apiID` | ***string***||
 | `stage` | ***string***||
 ## ApiGatewayUsagePlanSpecQuotaSettings
-##### (Appears on:[ApiGatewayUsagePlanSpec](#ApiGatewayUsagePlanSpec))
+
+Appears on:[ApiGatewayUsagePlanSpec](#ApiGatewayUsagePlanSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `limit` | ***int***||
 | `offset` | ***int***| ***(Optional)*** |
 | `period` | ***string***||
 ## ApiGatewayUsagePlanSpecThrottleSettings
-##### (Appears on:[ApiGatewayUsagePlanSpec](#ApiGatewayUsagePlanSpec))
+
+Appears on:[ApiGatewayUsagePlanSpec](#ApiGatewayUsagePlanSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `burstLimit` | ***int***| ***(Optional)*** |
 | `rateLimit` | ***encoding/json.Number***| ***(Optional)*** |
 ## ApiGatewayUsagePlanStatus
-##### (Appears on:[ApiGatewayUsagePlan](#ApiGatewayUsagePlan))
+
+Appears on:[ApiGatewayUsagePlan](#ApiGatewayUsagePlan)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

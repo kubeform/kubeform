@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec)***||
 | `status` | ***[SsmMaintenanceWindowTaskStatus](#SsmMaintenanceWindowTaskStatus)***||
 ## SsmMaintenanceWindowTaskSpec
-##### (Appears on:[SsmMaintenanceWindowTask](#SsmMaintenanceWindowTask), [SsmMaintenanceWindowTaskStatus](#SsmMaintenanceWindowTaskStatus))
+
+Appears on:[SsmMaintenanceWindowTask](#SsmMaintenanceWindowTask), [SsmMaintenanceWindowTaskStatus](#SsmMaintenanceWindowTaskStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,26 +39,34 @@ section_menu_id: reference
 | `taskType` | ***string***||
 | `windowID` | ***string***||
 ## SsmMaintenanceWindowTaskSpecLoggingInfo
-##### (Appears on:[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec))
+
+Appears on:[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `s3BucketName` | ***string***||
 | `s3BucketPrefix` | ***string***| ***(Optional)*** |
 | `s3Region` | ***string***||
 ## SsmMaintenanceWindowTaskSpecTargets
-##### (Appears on:[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec))
+
+Appears on:[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `key` | ***string***||
 | `values` | ***[]string***||
 ## SsmMaintenanceWindowTaskSpecTaskParameters
-##### (Appears on:[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec))
+
+Appears on:[SsmMaintenanceWindowTaskSpec](#SsmMaintenanceWindowTaskSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `values` | ***[]string***||
 ## SsmMaintenanceWindowTaskStatus
-##### (Appears on:[SsmMaintenanceWindowTask](#SsmMaintenanceWindowTask))
+
+Appears on:[SsmMaintenanceWindowTask](#SsmMaintenanceWindowTask)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

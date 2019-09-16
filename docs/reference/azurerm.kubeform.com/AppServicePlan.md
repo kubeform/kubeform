@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AppServicePlanSpec](#AppServicePlanSpec)***||
 | `status` | ***[AppServicePlanStatus](#AppServicePlanStatus)***||
 ## AppServicePlanSpec
-##### (Appears on:[AppServicePlan](#AppServicePlan), [AppServicePlanStatus](#AppServicePlanStatus))
+
+Appears on:[AppServicePlan](#AppServicePlan), [AppServicePlanStatus](#AppServicePlanStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,21 +40,27 @@ section_menu_id: reference
 | `sku` | ***[[]AppServicePlanSpecSku](#AppServicePlanSpecSku)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## AppServicePlanSpecProperties
-##### (Appears on:[AppServicePlanSpec](#AppServicePlanSpec))
+
+Appears on:[AppServicePlanSpec](#AppServicePlanSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `appServiceEnvironmentID` | ***string***| ***(Optional)*** Deprecated|
 | `perSiteScaling` | ***bool***| ***(Optional)*** Deprecated|
 | `reserved` | ***bool***| ***(Optional)*** Deprecated|
 ## AppServicePlanSpecSku
-##### (Appears on:[AppServicePlanSpec](#AppServicePlanSpec))
+
+Appears on:[AppServicePlanSpec](#AppServicePlanSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `capacity` | ***int***| ***(Optional)*** |
 | `size` | ***string***||
 | `tier` | ***string***||
 ## AppServicePlanStatus
-##### (Appears on:[AppServicePlan](#AppServicePlan))
+
+Appears on:[AppServicePlan](#AppServicePlan)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

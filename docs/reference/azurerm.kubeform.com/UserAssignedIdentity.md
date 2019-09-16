@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[UserAssignedIdentitySpec](#UserAssignedIdentitySpec)***||
 | `status` | ***[UserAssignedIdentityStatus](#UserAssignedIdentityStatus)***||
 ## UserAssignedIdentitySpec
-##### (Appears on:[UserAssignedIdentity](#UserAssignedIdentity), [UserAssignedIdentityStatus](#UserAssignedIdentityStatus))
+
+Appears on:[UserAssignedIdentity](#UserAssignedIdentity), [UserAssignedIdentityStatus](#UserAssignedIdentityStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## UserAssignedIdentityStatus
-##### (Appears on:[UserAssignedIdentity](#UserAssignedIdentity))
+
+Appears on:[UserAssignedIdentity](#UserAssignedIdentity)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

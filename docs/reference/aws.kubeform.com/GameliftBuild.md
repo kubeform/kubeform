@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[GameliftBuildSpec](#GameliftBuildSpec)***||
 | `status` | ***[GameliftBuildStatus](#GameliftBuildStatus)***||
 ## GameliftBuildSpec
-##### (Appears on:[GameliftBuild](#GameliftBuild), [GameliftBuildStatus](#GameliftBuildStatus))
+
+Appears on:[GameliftBuild](#GameliftBuild), [GameliftBuildStatus](#GameliftBuildStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,14 +31,18 @@ section_menu_id: reference
 | `storageLocation` | ***[[]GameliftBuildSpecStorageLocation](#GameliftBuildSpecStorageLocation)***||
 | `version` | ***string***| ***(Optional)*** |
 ## GameliftBuildSpecStorageLocation
-##### (Appears on:[GameliftBuildSpec](#GameliftBuildSpec))
+
+Appears on:[GameliftBuildSpec](#GameliftBuildSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucket` | ***string***||
 | `key` | ***string***||
 | `roleArn` | ***string***||
 ## GameliftBuildStatus
-##### (Appears on:[GameliftBuild](#GameliftBuild))
+
+Appears on:[GameliftBuild](#GameliftBuild)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

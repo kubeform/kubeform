@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DxConnectionAssociationSpec](#DxConnectionAssociationSpec)***||
 | `status` | ***[DxConnectionAssociationStatus](#DxConnectionAssociationStatus)***||
 ## DxConnectionAssociationSpec
-##### (Appears on:[DxConnectionAssociation](#DxConnectionAssociation), [DxConnectionAssociationStatus](#DxConnectionAssociationStatus))
+
+Appears on:[DxConnectionAssociation](#DxConnectionAssociation), [DxConnectionAssociationStatus](#DxConnectionAssociationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,7 +29,9 @@ section_menu_id: reference
 | `connectionID` | ***string***||
 | `lagID` | ***string***||
 ## DxConnectionAssociationStatus
-##### (Appears on:[DxConnectionAssociation](#DxConnectionAssociation))
+
+Appears on:[DxConnectionAssociation](#DxConnectionAssociation)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

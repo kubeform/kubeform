@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DnsMxRecordSpec](#DnsMxRecordSpec)***||
 | `status` | ***[DnsMxRecordStatus](#DnsMxRecordStatus)***||
 ## DnsMxRecordSpec
-##### (Appears on:[DnsMxRecord](#DnsMxRecord), [DnsMxRecordStatus](#DnsMxRecordStatus))
+
+Appears on:[DnsMxRecord](#DnsMxRecord), [DnsMxRecordStatus](#DnsMxRecordStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,13 +33,17 @@ section_menu_id: reference
 | `ttl` | ***int***||
 | `zoneName` | ***string***||
 ## DnsMxRecordSpecRecord
-##### (Appears on:[DnsMxRecordSpec](#DnsMxRecordSpec))
+
+Appears on:[DnsMxRecordSpec](#DnsMxRecordSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `exchange` | ***string***||
 | `preference` | ***string***||
 ## DnsMxRecordStatus
-##### (Appears on:[DnsMxRecord](#DnsMxRecord))
+
+Appears on:[DnsMxRecord](#DnsMxRecord)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

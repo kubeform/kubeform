@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[TokenSpec](#TokenSpec)***||
 | `status` | ***[TokenStatus](#TokenStatus)***||
 ## TokenSpec
-##### (Appears on:[Token](#Token), [TokenStatus](#TokenStatus))
+
+Appears on:[Token](#Token), [TokenStatus](#TokenStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `scopes` | ***string***|The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure.|
 | `token` | ***string***| ***(Optional)*** The token used to access the API.|
 ## TokenStatus
-##### (Appears on:[Token](#Token))
+
+Appears on:[Token](#Token)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

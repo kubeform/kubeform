@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LogAnalyticsWorkspaceSpec](#LogAnalyticsWorkspaceSpec)***||
 | `status` | ***[LogAnalyticsWorkspaceStatus](#LogAnalyticsWorkspaceStatus)***||
 ## LogAnalyticsWorkspaceSpec
-##### (Appears on:[LogAnalyticsWorkspace](#LogAnalyticsWorkspace), [LogAnalyticsWorkspaceStatus](#LogAnalyticsWorkspaceStatus))
+
+Appears on:[LogAnalyticsWorkspace](#LogAnalyticsWorkspace), [LogAnalyticsWorkspaceStatus](#LogAnalyticsWorkspaceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -34,7 +36,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `workspaceID` | ***string***| ***(Optional)*** |
 ## LogAnalyticsWorkspaceStatus
-##### (Appears on:[LogAnalyticsWorkspace](#LogAnalyticsWorkspace))
+
+Appears on:[LogAnalyticsWorkspace](#LogAnalyticsWorkspace)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

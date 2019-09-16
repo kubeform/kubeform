@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)***||
 | `status` | ***[ComputeHealthCheckStatus](#ComputeHealthCheckStatus)***||
 ## ComputeHealthCheckSpec
-##### (Appears on:[ComputeHealthCheck](#ComputeHealthCheck), [ComputeHealthCheckStatus](#ComputeHealthCheckStatus))
+
+Appears on:[ComputeHealthCheck](#ComputeHealthCheck), [ComputeHealthCheckStatus](#ComputeHealthCheckStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,7 +41,9 @@ section_menu_id: reference
 | `type` | ***string***| ***(Optional)*** |
 | `unhealthyThreshold` | ***int***| ***(Optional)*** |
 ## ComputeHealthCheckSpecHttpHealthCheck
-##### (Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec))
+
+Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `host` | ***string***| ***(Optional)*** |
@@ -48,7 +52,9 @@ section_menu_id: reference
 | `requestPath` | ***string***| ***(Optional)*** |
 | `response` | ***string***| ***(Optional)*** |
 ## ComputeHealthCheckSpecHttpsHealthCheck
-##### (Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec))
+
+Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `host` | ***string***| ***(Optional)*** |
@@ -57,7 +63,9 @@ section_menu_id: reference
 | `requestPath` | ***string***| ***(Optional)*** |
 | `response` | ***string***| ***(Optional)*** |
 ## ComputeHealthCheckSpecSslHealthCheck
-##### (Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec))
+
+Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `port` | ***int***| ***(Optional)*** |
@@ -65,7 +73,9 @@ section_menu_id: reference
 | `request` | ***string***| ***(Optional)*** |
 | `response` | ***string***| ***(Optional)*** |
 ## ComputeHealthCheckSpecTcpHealthCheck
-##### (Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec))
+
+Appears on:[ComputeHealthCheckSpec](#ComputeHealthCheckSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `port` | ***int***| ***(Optional)*** |
@@ -73,7 +83,9 @@ section_menu_id: reference
 | `request` | ***string***| ***(Optional)*** |
 | `response` | ***string***| ***(Optional)*** |
 ## ComputeHealthCheckStatus
-##### (Appears on:[ComputeHealthCheck](#ComputeHealthCheck))
+
+Appears on:[ComputeHealthCheck](#ComputeHealthCheck)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Ec2TransitGatewayRouteTableSpec](#Ec2TransitGatewayRouteTableSpec)***||
 | `status` | ***[Ec2TransitGatewayRouteTableStatus](#Ec2TransitGatewayRouteTableStatus)***||
 ## Ec2TransitGatewayRouteTableSpec
-##### (Appears on:[Ec2TransitGatewayRouteTable](#Ec2TransitGatewayRouteTable), [Ec2TransitGatewayRouteTableStatus](#Ec2TransitGatewayRouteTableStatus))
+
+Appears on:[Ec2TransitGatewayRouteTable](#Ec2TransitGatewayRouteTable), [Ec2TransitGatewayRouteTableStatus](#Ec2TransitGatewayRouteTableStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `transitGatewayID` | ***string***||
 ## Ec2TransitGatewayRouteTableStatus
-##### (Appears on:[Ec2TransitGatewayRouteTable](#Ec2TransitGatewayRouteTable))
+
+Appears on:[Ec2TransitGatewayRouteTable](#Ec2TransitGatewayRouteTable)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

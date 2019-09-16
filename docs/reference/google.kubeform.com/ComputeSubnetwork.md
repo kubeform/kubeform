@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ComputeSubnetworkSpec](#ComputeSubnetworkSpec)***||
 | `status` | ***[ComputeSubnetworkStatus](#ComputeSubnetworkStatus)***||
 ## ComputeSubnetworkSpec
-##### (Appears on:[ComputeSubnetwork](#ComputeSubnetwork), [ComputeSubnetworkStatus](#ComputeSubnetworkStatus))
+
+Appears on:[ComputeSubnetwork](#ComputeSubnetwork), [ComputeSubnetworkStatus](#ComputeSubnetworkStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,13 +40,17 @@ section_menu_id: reference
 | `secondaryIPRange` | ***[[]ComputeSubnetworkSpecSecondaryIPRange](#ComputeSubnetworkSpecSecondaryIPRange)***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 ## ComputeSubnetworkSpecSecondaryIPRange
-##### (Appears on:[ComputeSubnetworkSpec](#ComputeSubnetworkSpec))
+
+Appears on:[ComputeSubnetworkSpec](#ComputeSubnetworkSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ipCIDRRange` | ***string***||
 | `rangeName` | ***string***||
 ## ComputeSubnetworkStatus
-##### (Appears on:[ComputeSubnetwork](#ComputeSubnetwork))
+
+Appears on:[ComputeSubnetwork](#ComputeSubnetwork)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

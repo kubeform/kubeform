@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DynamodbTableSpec](#DynamodbTableSpec)***||
 | `status` | ***[DynamodbTableStatus](#DynamodbTableStatus)***||
 ## DynamodbTableSpec
-##### (Appears on:[DynamodbTable](#DynamodbTable), [DynamodbTableStatus](#DynamodbTableStatus))
+
+Appears on:[DynamodbTable](#DynamodbTable), [DynamodbTableStatus](#DynamodbTableStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -43,13 +45,17 @@ section_menu_id: reference
 | `ttl` | ***[[]DynamodbTableSpecTtl](#DynamodbTableSpecTtl)***| ***(Optional)*** |
 | `writeCapacity` | ***int***| ***(Optional)*** |
 ## DynamodbTableSpecAttribute
-##### (Appears on:[DynamodbTableSpec](#DynamodbTableSpec))
+
+Appears on:[DynamodbTableSpec](#DynamodbTableSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
 | `type` | ***string***||
 ## DynamodbTableSpecGlobalSecondaryIndex
-##### (Appears on:[DynamodbTableSpec](#DynamodbTableSpec))
+
+Appears on:[DynamodbTableSpec](#DynamodbTableSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `hashKey` | ***string***||
@@ -60,7 +66,9 @@ section_menu_id: reference
 | `readCapacity` | ***int***| ***(Optional)*** |
 | `writeCapacity` | ***int***| ***(Optional)*** |
 ## DynamodbTableSpecLocalSecondaryIndex
-##### (Appears on:[DynamodbTableSpec](#DynamodbTableSpec))
+
+Appears on:[DynamodbTableSpec](#DynamodbTableSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
@@ -68,23 +76,31 @@ section_menu_id: reference
 | `projectionType` | ***string***||
 | `rangeKey` | ***string***||
 ## DynamodbTableSpecPointInTimeRecovery
-##### (Appears on:[DynamodbTableSpec](#DynamodbTableSpec))
+
+Appears on:[DynamodbTableSpec](#DynamodbTableSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 ## DynamodbTableSpecServerSideEncryption
-##### (Appears on:[DynamodbTableSpec](#DynamodbTableSpec))
+
+Appears on:[DynamodbTableSpec](#DynamodbTableSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 ## DynamodbTableSpecTtl
-##### (Appears on:[DynamodbTableSpec](#DynamodbTableSpec))
+
+Appears on:[DynamodbTableSpec](#DynamodbTableSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `attributeName` | ***string***||
 | `enabled` | ***bool***| ***(Optional)*** |
 ## DynamodbTableStatus
-##### (Appears on:[DynamodbTable](#DynamodbTable))
+
+Appears on:[DynamodbTable](#DynamodbTable)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

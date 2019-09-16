@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[BigqueryTableSpec](#BigqueryTableSpec)***||
 | `status` | ***[BigqueryTableStatus](#BigqueryTableStatus)***||
 ## BigqueryTableSpec
-##### (Appears on:[BigqueryTable](#BigqueryTable), [BigqueryTableStatus](#BigqueryTableStatus))
+
+Appears on:[BigqueryTable](#BigqueryTable), [BigqueryTableStatus](#BigqueryTableStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -44,20 +46,26 @@ section_menu_id: reference
 | `type` | ***string***| ***(Optional)*** |
 | `view` | ***[[]BigqueryTableSpecView](#BigqueryTableSpecView)***| ***(Optional)*** |
 ## BigqueryTableSpecTimePartitioning
-##### (Appears on:[BigqueryTableSpec](#BigqueryTableSpec))
+
+Appears on:[BigqueryTableSpec](#BigqueryTableSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `expirationMs` | ***int***| ***(Optional)*** |
 | `field` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## BigqueryTableSpecView
-##### (Appears on:[BigqueryTableSpec](#BigqueryTableSpec))
+
+Appears on:[BigqueryTableSpec](#BigqueryTableSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `query` | ***string***||
 | `useLegacySQL` | ***bool***| ***(Optional)*** |
 ## BigqueryTableStatus
-##### (Appears on:[BigqueryTable](#BigqueryTable))
+
+Appears on:[BigqueryTable](#BigqueryTable)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DirectoryServiceConditionalForwarderSpec](#DirectoryServiceConditionalForwarderSpec)***||
 | `status` | ***[DirectoryServiceConditionalForwarderStatus](#DirectoryServiceConditionalForwarderStatus)***||
 ## DirectoryServiceConditionalForwarderSpec
-##### (Appears on:[DirectoryServiceConditionalForwarder](#DirectoryServiceConditionalForwarder), [DirectoryServiceConditionalForwarderStatus](#DirectoryServiceConditionalForwarderStatus))
+
+Appears on:[DirectoryServiceConditionalForwarder](#DirectoryServiceConditionalForwarder), [DirectoryServiceConditionalForwarderStatus](#DirectoryServiceConditionalForwarderStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,7 +30,9 @@ section_menu_id: reference
 | `dnsIPS` | ***[]string***||
 | `remoteDomainName` | ***string***||
 ## DirectoryServiceConditionalForwarderStatus
-##### (Appears on:[DirectoryServiceConditionalForwarder](#DirectoryServiceConditionalForwarder))
+
+Appears on:[DirectoryServiceConditionalForwarder](#DirectoryServiceConditionalForwarder)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

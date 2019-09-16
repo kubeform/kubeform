@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ConfigConfigRuleSpec](#ConfigConfigRuleSpec)***||
 | `status` | ***[ConfigConfigRuleStatus](#ConfigConfigRuleStatus)***||
 ## ConfigConfigRuleSpec
-##### (Appears on:[ConfigConfigRule](#ConfigConfigRule), [ConfigConfigRuleStatus](#ConfigConfigRuleStatus))
+
+Appears on:[ConfigConfigRule](#ConfigConfigRule), [ConfigConfigRuleStatus](#ConfigConfigRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -33,7 +35,9 @@ section_menu_id: reference
 | `scope` | ***[[]ConfigConfigRuleSpecScope](#ConfigConfigRuleSpecScope)***| ***(Optional)*** |
 | `source` | ***[[]ConfigConfigRuleSpecSource](#ConfigConfigRuleSpecSource)***||
 ## ConfigConfigRuleSpecScope
-##### (Appears on:[ConfigConfigRuleSpec](#ConfigConfigRuleSpec))
+
+Appears on:[ConfigConfigRuleSpec](#ConfigConfigRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `complianceResourceID` | ***string***| ***(Optional)*** |
@@ -41,21 +45,27 @@ section_menu_id: reference
 | `tagKey` | ***string***| ***(Optional)*** |
 | `tagValue` | ***string***| ***(Optional)*** |
 ## ConfigConfigRuleSpecSource
-##### (Appears on:[ConfigConfigRuleSpec](#ConfigConfigRuleSpec))
+
+Appears on:[ConfigConfigRuleSpec](#ConfigConfigRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `owner` | ***string***||
 | `sourceDetail` | ***[[]ConfigConfigRuleSpecSourceSourceDetail](#ConfigConfigRuleSpecSourceSourceDetail)***| ***(Optional)*** |
 | `sourceIdentifier` | ***string***||
 ## ConfigConfigRuleSpecSourceSourceDetail
-##### (Appears on:[ConfigConfigRuleSpecSource](#ConfigConfigRuleSpecSource))
+
+Appears on:[ConfigConfigRuleSpecSource](#ConfigConfigRuleSpecSource)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `eventSource` | ***string***| ***(Optional)*** |
 | `maximumExecutionFrequency` | ***string***| ***(Optional)*** |
 | `messageType` | ***string***| ***(Optional)*** |
 ## ConfigConfigRuleStatus
-##### (Appears on:[ConfigConfigRule](#ConfigConfigRule))
+
+Appears on:[ConfigConfigRule](#ConfigConfigRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

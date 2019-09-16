@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[DatabaseClusterSpec](#DatabaseClusterSpec)***||
 | `status` | ***[DatabaseClusterStatus](#DatabaseClusterStatus)***||
 ## DatabaseClusterSpec
-##### (Appears on:[DatabaseCluster](#DatabaseCluster), [DatabaseClusterStatus](#DatabaseClusterStatus))
+
+Appears on:[DatabaseCluster](#DatabaseCluster), [DatabaseClusterStatus](#DatabaseClusterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,13 +40,17 @@ section_menu_id: reference
 | `user` | ***string***| ***(Optional)*** |
 | `version` | ***string***||
 ## DatabaseClusterSpecMaintenanceWindow
-##### (Appears on:[DatabaseClusterSpec](#DatabaseClusterSpec))
+
+Appears on:[DatabaseClusterSpec](#DatabaseClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `day` | ***string***||
 | `hour` | ***string***||
 ## DatabaseClusterStatus
-##### (Appears on:[DatabaseCluster](#DatabaseCluster))
+
+Appears on:[DatabaseCluster](#DatabaseCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

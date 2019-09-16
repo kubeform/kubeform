@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[HdinsightKafkaClusterSpec](#HdinsightKafkaClusterSpec)***||
 | `status` | ***[HdinsightKafkaClusterStatus](#HdinsightKafkaClusterStatus)***||
 ## HdinsightKafkaClusterSpec
-##### (Appears on:[HdinsightKafkaCluster](#HdinsightKafkaCluster), [HdinsightKafkaClusterStatus](#HdinsightKafkaClusterStatus))
+
+Appears on:[HdinsightKafkaCluster](#HdinsightKafkaCluster), [HdinsightKafkaClusterStatus](#HdinsightKafkaClusterStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,25 +40,33 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `tier` | ***string***||
 ## HdinsightKafkaClusterSpecComponentVersion
-##### (Appears on:[HdinsightKafkaClusterSpec](#HdinsightKafkaClusterSpec))
+
+Appears on:[HdinsightKafkaClusterSpec](#HdinsightKafkaClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `kafka` | ***string***||
 ## HdinsightKafkaClusterSpecGateway
-##### (Appears on:[HdinsightKafkaClusterSpec](#HdinsightKafkaClusterSpec))
+
+Appears on:[HdinsightKafkaClusterSpec](#HdinsightKafkaClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 | `username` | ***string***||
 ## HdinsightKafkaClusterSpecRoles
-##### (Appears on:[HdinsightKafkaClusterSpec](#HdinsightKafkaClusterSpec))
+
+Appears on:[HdinsightKafkaClusterSpec](#HdinsightKafkaClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `headNode` | ***[[]HdinsightKafkaClusterSpecRolesHeadNode](#HdinsightKafkaClusterSpecRolesHeadNode)***||
 | `workerNode` | ***[[]HdinsightKafkaClusterSpecRolesWorkerNode](#HdinsightKafkaClusterSpecRolesWorkerNode)***||
 | `zookeeperNode` | ***[[]HdinsightKafkaClusterSpecRolesZookeeperNode](#HdinsightKafkaClusterSpecRolesZookeeperNode)***||
 ## HdinsightKafkaClusterSpecRolesHeadNode
-##### (Appears on:[HdinsightKafkaClusterSpecRoles](#HdinsightKafkaClusterSpecRoles))
+
+Appears on:[HdinsightKafkaClusterSpecRoles](#HdinsightKafkaClusterSpecRoles)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `sshKeys` | ***[]string***| ***(Optional)*** |
@@ -65,7 +75,9 @@ section_menu_id: reference
 | `virtualNetworkID` | ***string***| ***(Optional)*** |
 | `vmSize` | ***string***||
 ## HdinsightKafkaClusterSpecRolesWorkerNode
-##### (Appears on:[HdinsightKafkaClusterSpecRoles](#HdinsightKafkaClusterSpecRoles))
+
+Appears on:[HdinsightKafkaClusterSpecRoles](#HdinsightKafkaClusterSpecRoles)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `minInstanceCount` | ***int***| ***(Optional)*** |
@@ -77,7 +89,9 @@ section_menu_id: reference
 | `virtualNetworkID` | ***string***| ***(Optional)*** |
 | `vmSize` | ***string***||
 ## HdinsightKafkaClusterSpecRolesZookeeperNode
-##### (Appears on:[HdinsightKafkaClusterSpecRoles](#HdinsightKafkaClusterSpecRoles))
+
+Appears on:[HdinsightKafkaClusterSpecRoles](#HdinsightKafkaClusterSpecRoles)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `sshKeys` | ***[]string***| ***(Optional)*** |
@@ -86,13 +100,17 @@ section_menu_id: reference
 | `virtualNetworkID` | ***string***| ***(Optional)*** |
 | `vmSize` | ***string***||
 ## HdinsightKafkaClusterSpecStorageAccount
-##### (Appears on:[HdinsightKafkaClusterSpec](#HdinsightKafkaClusterSpec))
+
+Appears on:[HdinsightKafkaClusterSpec](#HdinsightKafkaClusterSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `isDefault` | ***bool***||
 | `storageContainerID` | ***string***||
 ## HdinsightKafkaClusterStatus
-##### (Appears on:[HdinsightKafkaCluster](#HdinsightKafkaCluster))
+
+Appears on:[HdinsightKafkaCluster](#HdinsightKafkaCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

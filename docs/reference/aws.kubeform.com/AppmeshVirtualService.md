@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[AppmeshVirtualServiceSpec](#AppmeshVirtualServiceSpec)***||
 | `status` | ***[AppmeshVirtualServiceStatus](#AppmeshVirtualServiceStatus)***||
 ## AppmeshVirtualServiceSpec
-##### (Appears on:[AppmeshVirtualService](#AppmeshVirtualService), [AppmeshVirtualServiceStatus](#AppmeshVirtualServiceStatus))
+
+Appears on:[AppmeshVirtualService](#AppmeshVirtualService), [AppmeshVirtualServiceStatus](#AppmeshVirtualServiceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,28 +33,38 @@ section_menu_id: reference
 | `name` | ***string***||
 | `spec` | ***[[]AppmeshVirtualServiceSpecSpec](#AppmeshVirtualServiceSpecSpec)***||
 ## AppmeshVirtualServiceSpecSpec
-##### (Appears on:[AppmeshVirtualServiceSpec](#AppmeshVirtualServiceSpec))
+
+Appears on:[AppmeshVirtualServiceSpec](#AppmeshVirtualServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `provider` | ***[[]AppmeshVirtualServiceSpecSpecProvider](#AppmeshVirtualServiceSpecSpecProvider)***| ***(Optional)*** |
 ## AppmeshVirtualServiceSpecSpecProvider
-##### (Appears on:[AppmeshVirtualServiceSpecSpec](#AppmeshVirtualServiceSpecSpec))
+
+Appears on:[AppmeshVirtualServiceSpecSpec](#AppmeshVirtualServiceSpecSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `virtualNode` | ***[[]AppmeshVirtualServiceSpecSpecProviderVirtualNode](#AppmeshVirtualServiceSpecSpecProviderVirtualNode)***| ***(Optional)*** |
 | `virtualRouter` | ***[[]AppmeshVirtualServiceSpecSpecProviderVirtualRouter](#AppmeshVirtualServiceSpecSpecProviderVirtualRouter)***| ***(Optional)*** |
 ## AppmeshVirtualServiceSpecSpecProviderVirtualNode
-##### (Appears on:[AppmeshVirtualServiceSpecSpecProvider](#AppmeshVirtualServiceSpecSpecProvider))
+
+Appears on:[AppmeshVirtualServiceSpecSpecProvider](#AppmeshVirtualServiceSpecSpecProvider)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `virtualNodeName` | ***string***||
 ## AppmeshVirtualServiceSpecSpecProviderVirtualRouter
-##### (Appears on:[AppmeshVirtualServiceSpecSpecProvider](#AppmeshVirtualServiceSpecSpecProvider))
+
+Appears on:[AppmeshVirtualServiceSpecSpecProvider](#AppmeshVirtualServiceSpecSpecProvider)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `virtualRouterName` | ***string***||
 ## AppmeshVirtualServiceStatus
-##### (Appears on:[AppmeshVirtualService](#AppmeshVirtualService))
+
+Appears on:[AppmeshVirtualService](#AppmeshVirtualService)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[IamGroupPolicySpec](#IamGroupPolicySpec)***||
 | `status` | ***[IamGroupPolicyStatus](#IamGroupPolicyStatus)***||
 ## IamGroupPolicySpec
-##### (Appears on:[IamGroupPolicy](#IamGroupPolicy), [IamGroupPolicyStatus](#IamGroupPolicyStatus))
+
+Appears on:[IamGroupPolicy](#IamGroupPolicy), [IamGroupPolicyStatus](#IamGroupPolicyStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -29,7 +31,9 @@ section_menu_id: reference
 | `namePrefix` | ***string***| ***(Optional)*** |
 | `policy` | ***string***||
 ## IamGroupPolicyStatus
-##### (Appears on:[IamGroupPolicy](#IamGroupPolicy))
+
+Appears on:[IamGroupPolicy](#IamGroupPolicy)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

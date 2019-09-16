@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WafregionalIpsetSpec](#WafregionalIpsetSpec)***||
 | `status` | ***[WafregionalIpsetStatus](#WafregionalIpsetStatus)***||
 ## WafregionalIpsetSpec
-##### (Appears on:[WafregionalIpset](#WafregionalIpset), [WafregionalIpsetStatus](#WafregionalIpsetStatus))
+
+Appears on:[WafregionalIpset](#WafregionalIpset), [WafregionalIpsetStatus](#WafregionalIpsetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -28,13 +30,17 @@ section_menu_id: reference
 | `ipSetDescriptor` | ***[[]WafregionalIpsetSpecIpSetDescriptor](#WafregionalIpsetSpecIpSetDescriptor)***| ***(Optional)*** |
 | `name` | ***string***||
 ## WafregionalIpsetSpecIpSetDescriptor
-##### (Appears on:[WafregionalIpsetSpec](#WafregionalIpsetSpec))
+
+Appears on:[WafregionalIpsetSpec](#WafregionalIpsetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 | `value` | ***string***||
 ## WafregionalIpsetStatus
-##### (Appears on:[WafregionalIpset](#WafregionalIpset))
+
+Appears on:[WafregionalIpset](#WafregionalIpset)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

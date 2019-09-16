@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LoggingOrganizationSinkSpec](#LoggingOrganizationSinkSpec)***||
 | `status` | ***[LoggingOrganizationSinkStatus](#LoggingOrganizationSinkStatus)***||
 ## LoggingOrganizationSinkSpec
-##### (Appears on:[LoggingOrganizationSink](#LoggingOrganizationSink), [LoggingOrganizationSinkStatus](#LoggingOrganizationSinkStatus))
+
+Appears on:[LoggingOrganizationSink](#LoggingOrganizationSink), [LoggingOrganizationSinkStatus](#LoggingOrganizationSinkStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `orgID` | ***string***||
 | `writerIdentity` | ***string***| ***(Optional)*** |
 ## LoggingOrganizationSinkStatus
-##### (Appears on:[LoggingOrganizationSink](#LoggingOrganizationSink))
+
+Appears on:[LoggingOrganizationSink](#LoggingOrganizationSink)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

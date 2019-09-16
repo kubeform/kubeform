@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[WafregionalGeoMatchSetSpec](#WafregionalGeoMatchSetSpec)***||
 | `status` | ***[WafregionalGeoMatchSetStatus](#WafregionalGeoMatchSetStatus)***||
 ## WafregionalGeoMatchSetSpec
-##### (Appears on:[WafregionalGeoMatchSet](#WafregionalGeoMatchSet), [WafregionalGeoMatchSetStatus](#WafregionalGeoMatchSetStatus))
+
+Appears on:[WafregionalGeoMatchSet](#WafregionalGeoMatchSet), [WafregionalGeoMatchSetStatus](#WafregionalGeoMatchSetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -27,13 +29,17 @@ section_menu_id: reference
 | `geoMatchConstraint` | ***[[]WafregionalGeoMatchSetSpecGeoMatchConstraint](#WafregionalGeoMatchSetSpecGeoMatchConstraint)***| ***(Optional)*** |
 | `name` | ***string***||
 ## WafregionalGeoMatchSetSpecGeoMatchConstraint
-##### (Appears on:[WafregionalGeoMatchSetSpec](#WafregionalGeoMatchSetSpec))
+
+Appears on:[WafregionalGeoMatchSetSpec](#WafregionalGeoMatchSetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `type` | ***string***||
 | `value` | ***string***||
 ## WafregionalGeoMatchSetStatus
-##### (Appears on:[WafregionalGeoMatchSet](#WafregionalGeoMatchSet))
+
+Appears on:[WafregionalGeoMatchSet](#WafregionalGeoMatchSet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

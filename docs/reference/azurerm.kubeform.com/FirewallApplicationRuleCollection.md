@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[FirewallApplicationRuleCollectionSpec](#FirewallApplicationRuleCollectionSpec)***||
 | `status` | ***[FirewallApplicationRuleCollectionStatus](#FirewallApplicationRuleCollectionStatus)***||
 ## FirewallApplicationRuleCollectionSpec
-##### (Appears on:[FirewallApplicationRuleCollection](#FirewallApplicationRuleCollection), [FirewallApplicationRuleCollectionStatus](#FirewallApplicationRuleCollectionStatus))
+
+Appears on:[FirewallApplicationRuleCollection](#FirewallApplicationRuleCollection), [FirewallApplicationRuleCollectionStatus](#FirewallApplicationRuleCollectionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `resourceGroupName` | ***string***||
 | `rule` | ***[[]FirewallApplicationRuleCollectionSpecRule](#FirewallApplicationRuleCollectionSpecRule)***||
 ## FirewallApplicationRuleCollectionSpecRule
-##### (Appears on:[FirewallApplicationRuleCollectionSpec](#FirewallApplicationRuleCollectionSpec))
+
+Appears on:[FirewallApplicationRuleCollectionSpec](#FirewallApplicationRuleCollectionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `description` | ***string***| ***(Optional)*** |
@@ -41,13 +45,17 @@ section_menu_id: reference
 | `sourceAddresses` | ***[]string***||
 | `targetFqdns` | ***[]string***| ***(Optional)*** |
 ## FirewallApplicationRuleCollectionSpecRuleProtocol
-##### (Appears on:[FirewallApplicationRuleCollectionSpecRule](#FirewallApplicationRuleCollectionSpecRule))
+
+Appears on:[FirewallApplicationRuleCollectionSpecRule](#FirewallApplicationRuleCollectionSpecRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `port` | ***int***| ***(Optional)*** |
 | `type` | ***string***||
 ## FirewallApplicationRuleCollectionStatus
-##### (Appears on:[FirewallApplicationRuleCollection](#FirewallApplicationRuleCollection))
+
+Appears on:[FirewallApplicationRuleCollection](#FirewallApplicationRuleCollection)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

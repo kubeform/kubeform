@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Ec2FleetSpec](#Ec2FleetSpec)***||
 | `status` | ***[Ec2FleetStatus](#Ec2FleetStatus)***||
 ## Ec2FleetSpec
-##### (Appears on:[Ec2Fleet](#Ec2Fleet), [Ec2FleetStatus](#Ec2FleetStatus))
+
+Appears on:[Ec2Fleet](#Ec2Fleet), [Ec2FleetStatus](#Ec2FleetStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,20 +37,26 @@ section_menu_id: reference
 | `terminateInstancesWithExpiration` | ***bool***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## Ec2FleetSpecLaunchTemplateConfig
-##### (Appears on:[Ec2FleetSpec](#Ec2FleetSpec))
+
+Appears on:[Ec2FleetSpec](#Ec2FleetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `launchTemplateSpecification` | ***[[]Ec2FleetSpecLaunchTemplateConfigLaunchTemplateSpecification](#Ec2FleetSpecLaunchTemplateConfigLaunchTemplateSpecification)***||
 | `override` | ***[[]Ec2FleetSpecLaunchTemplateConfigOverride](#Ec2FleetSpecLaunchTemplateConfigOverride)***| ***(Optional)*** |
 ## Ec2FleetSpecLaunchTemplateConfigLaunchTemplateSpecification
-##### (Appears on:[Ec2FleetSpecLaunchTemplateConfig](#Ec2FleetSpecLaunchTemplateConfig))
+
+Appears on:[Ec2FleetSpecLaunchTemplateConfig](#Ec2FleetSpecLaunchTemplateConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `launchTemplateID` | ***string***| ***(Optional)*** |
 | `launchTemplateName` | ***string***| ***(Optional)*** |
 | `version` | ***string***||
 ## Ec2FleetSpecLaunchTemplateConfigOverride
-##### (Appears on:[Ec2FleetSpecLaunchTemplateConfig](#Ec2FleetSpecLaunchTemplateConfig))
+
+Appears on:[Ec2FleetSpecLaunchTemplateConfig](#Ec2FleetSpecLaunchTemplateConfig)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `availabilityZone` | ***string***| ***(Optional)*** |
@@ -58,19 +66,25 @@ section_menu_id: reference
 | `subnetID` | ***string***| ***(Optional)*** |
 | `weightedCapacity` | ***encoding/json.Number***| ***(Optional)*** |
 ## Ec2FleetSpecOnDemandOptions
-##### (Appears on:[Ec2FleetSpec](#Ec2FleetSpec))
+
+Appears on:[Ec2FleetSpec](#Ec2FleetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allocationStrategy` | ***string***| ***(Optional)*** |
 ## Ec2FleetSpecSpotOptions
-##### (Appears on:[Ec2FleetSpec](#Ec2FleetSpec))
+
+Appears on:[Ec2FleetSpec](#Ec2FleetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `allocationStrategy` | ***string***| ***(Optional)*** |
 | `instanceInterruptionBehavior` | ***string***| ***(Optional)*** |
 | `instancePoolsToUseCount` | ***int***| ***(Optional)*** |
 ## Ec2FleetSpecTargetCapacitySpecification
-##### (Appears on:[Ec2FleetSpec](#Ec2FleetSpec))
+
+Appears on:[Ec2FleetSpec](#Ec2FleetSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultTargetCapacityType` | ***string***||
@@ -78,7 +92,9 @@ section_menu_id: reference
 | `spotTargetCapacity` | ***int***| ***(Optional)*** |
 | `totalTargetCapacity` | ***int***||
 ## Ec2FleetStatus
-##### (Appears on:[Ec2Fleet](#Ec2Fleet))
+
+Appears on:[Ec2Fleet](#Ec2Fleet)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

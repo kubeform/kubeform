@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ContainerServiceSpec](#ContainerServiceSpec)***||
 | `status` | ***[ContainerServiceStatus](#ContainerServiceStatus)***||
 ## ContainerServiceSpec
-##### (Appears on:[ContainerService](#ContainerService), [ContainerServiceStatus](#ContainerServiceStatus))
+
+Appears on:[ContainerService](#ContainerService), [ContainerServiceStatus](#ContainerServiceStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,7 +38,9 @@ section_menu_id: reference
 | `servicePrincipal` | ***[[]ContainerServiceSpecServicePrincipal](#ContainerServiceSpecServicePrincipal)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## ContainerServiceSpecAgentPoolProfile
-##### (Appears on:[ContainerServiceSpec](#ContainerServiceSpec))
+
+Appears on:[ContainerServiceSpec](#ContainerServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `count` | ***int***| ***(Optional)*** |
@@ -45,36 +49,48 @@ section_menu_id: reference
 | `name` | ***string***||
 | `vmSize` | ***string***||
 ## ContainerServiceSpecDiagnosticsProfile
-##### (Appears on:[ContainerServiceSpec](#ContainerServiceSpec))
+
+Appears on:[ContainerServiceSpec](#ContainerServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***||
 | `storageURI` | ***string***| ***(Optional)*** |
 ## ContainerServiceSpecLinuxProfile
-##### (Appears on:[ContainerServiceSpec](#ContainerServiceSpec))
+
+Appears on:[ContainerServiceSpec](#ContainerServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `adminUsername` | ***string***||
 | `sshKey` | ***[[]ContainerServiceSpecLinuxProfileSshKey](#ContainerServiceSpecLinuxProfileSshKey)***||
 ## ContainerServiceSpecLinuxProfileSshKey
-##### (Appears on:[ContainerServiceSpecLinuxProfile](#ContainerServiceSpecLinuxProfile))
+
+Appears on:[ContainerServiceSpecLinuxProfile](#ContainerServiceSpecLinuxProfile)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `keyData` | ***string***||
 ## ContainerServiceSpecMasterProfile
-##### (Appears on:[ContainerServiceSpec](#ContainerServiceSpec))
+
+Appears on:[ContainerServiceSpec](#ContainerServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `count` | ***int***| ***(Optional)*** |
 | `dnsPrefix` | ***string***||
 | `fqdn` | ***string***| ***(Optional)*** |
 ## ContainerServiceSpecServicePrincipal
-##### (Appears on:[ContainerServiceSpec](#ContainerServiceSpec))
+
+Appears on:[ContainerServiceSpec](#ContainerServiceSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `clientID` | ***string***||
 ## ContainerServiceStatus
-##### (Appears on:[ContainerService](#ContainerService))
+
+Appears on:[ContainerService](#ContainerService)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

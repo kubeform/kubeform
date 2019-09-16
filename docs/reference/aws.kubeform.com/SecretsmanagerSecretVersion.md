@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SecretsmanagerSecretVersionSpec](#SecretsmanagerSecretVersionSpec)***||
 | `status` | ***[SecretsmanagerSecretVersionStatus](#SecretsmanagerSecretVersionStatus)***||
 ## SecretsmanagerSecretVersionSpec
-##### (Appears on:[SecretsmanagerSecretVersion](#SecretsmanagerSecretVersion), [SecretsmanagerSecretVersionStatus](#SecretsmanagerSecretVersionStatus))
+
+Appears on:[SecretsmanagerSecretVersion](#SecretsmanagerSecretVersion), [SecretsmanagerSecretVersionStatus](#SecretsmanagerSecretVersionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -30,7 +32,9 @@ section_menu_id: reference
 | `versionID` | ***string***| ***(Optional)*** |
 | `versionStages` | ***[]string***| ***(Optional)*** |
 ## SecretsmanagerSecretVersionStatus
-##### (Appears on:[SecretsmanagerSecretVersion](#SecretsmanagerSecretVersion))
+
+Appears on:[SecretsmanagerSecretVersion](#SecretsmanagerSecretVersion)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

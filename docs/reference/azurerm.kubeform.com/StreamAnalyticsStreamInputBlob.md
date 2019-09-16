@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[StreamAnalyticsStreamInputBlobSpec](#StreamAnalyticsStreamInputBlobSpec)***||
 | `status` | ***[StreamAnalyticsStreamInputBlobStatus](#StreamAnalyticsStreamInputBlobStatus)***||
 ## StreamAnalyticsStreamInputBlobSpec
-##### (Appears on:[StreamAnalyticsStreamInputBlob](#StreamAnalyticsStreamInputBlob), [StreamAnalyticsStreamInputBlobStatus](#StreamAnalyticsStreamInputBlobStatus))
+
+Appears on:[StreamAnalyticsStreamInputBlob](#StreamAnalyticsStreamInputBlob), [StreamAnalyticsStreamInputBlobStatus](#StreamAnalyticsStreamInputBlobStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,14 +37,18 @@ section_menu_id: reference
 | `streamAnalyticsJobName` | ***string***||
 | `timeFormat` | ***string***||
 ## StreamAnalyticsStreamInputBlobSpecSerialization
-##### (Appears on:[StreamAnalyticsStreamInputBlobSpec](#StreamAnalyticsStreamInputBlobSpec))
+
+Appears on:[StreamAnalyticsStreamInputBlobSpec](#StreamAnalyticsStreamInputBlobSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `encoding` | ***string***| ***(Optional)*** |
 | `fieldDelimiter` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## StreamAnalyticsStreamInputBlobStatus
-##### (Appears on:[StreamAnalyticsStreamInputBlob](#StreamAnalyticsStreamInputBlob))
+
+Appears on:[StreamAnalyticsStreamInputBlob](#StreamAnalyticsStreamInputBlob)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LogAnalyticsSolutionSpec](#LogAnalyticsSolutionSpec)***||
 | `status` | ***[LogAnalyticsSolutionStatus](#LogAnalyticsSolutionStatus)***||
 ## LogAnalyticsSolutionSpec
-##### (Appears on:[LogAnalyticsSolution](#LogAnalyticsSolution), [LogAnalyticsSolutionStatus](#LogAnalyticsSolutionStatus))
+
+Appears on:[LogAnalyticsSolution](#LogAnalyticsSolution), [LogAnalyticsSolutionStatus](#LogAnalyticsSolutionStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -31,7 +33,9 @@ section_menu_id: reference
 | `workspaceName` | ***string***||
 | `workspaceResourceID` | ***string***||
 ## LogAnalyticsSolutionSpecPlan
-##### (Appears on:[LogAnalyticsSolutionSpec](#LogAnalyticsSolutionSpec))
+
+Appears on:[LogAnalyticsSolutionSpec](#LogAnalyticsSolutionSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***| ***(Optional)*** |
@@ -39,7 +43,9 @@ section_menu_id: reference
 | `promotionCode` | ***string***| ***(Optional)*** |
 | `publisher` | ***string***||
 ## LogAnalyticsSolutionStatus
-##### (Appears on:[LogAnalyticsSolution](#LogAnalyticsSolution))
+
+Appears on:[LogAnalyticsSolution](#LogAnalyticsSolution)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

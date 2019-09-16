@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[LbProbeSpec](#LbProbeSpec)***||
 | `status` | ***[LbProbeStatus](#LbProbeStatus)***||
 ## LbProbeSpec
-##### (Appears on:[LbProbe](#LbProbe), [LbProbeStatus](#LbProbeStatus))
+
+Appears on:[LbProbe](#LbProbe), [LbProbeStatus](#LbProbeStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -35,7 +37,9 @@ section_menu_id: reference
 | `requestPath` | ***string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 ## LbProbeStatus
-##### (Appears on:[LbProbe](#LbProbe))
+
+Appears on:[LbProbe](#LbProbe)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

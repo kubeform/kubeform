@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SesEventDestinationSpec](#SesEventDestinationSpec)***||
 | `status` | ***[SesEventDestinationStatus](#SesEventDestinationStatus)***||
 ## SesEventDestinationSpec
-##### (Appears on:[SesEventDestination](#SesEventDestination), [SesEventDestinationStatus](#SesEventDestinationStatus))
+
+Appears on:[SesEventDestination](#SesEventDestination), [SesEventDestinationStatus](#SesEventDestinationStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,25 +34,33 @@ section_menu_id: reference
 | `name` | ***string***||
 | `snsDestination` | ***[[]SesEventDestinationSpecSnsDestination](#SesEventDestinationSpecSnsDestination)***| ***(Optional)*** |
 ## SesEventDestinationSpecCloudwatchDestination
-##### (Appears on:[SesEventDestinationSpec](#SesEventDestinationSpec))
+
+Appears on:[SesEventDestinationSpec](#SesEventDestinationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultValue` | ***string***||
 | `dimensionName` | ***string***||
 | `valueSource` | ***string***||
 ## SesEventDestinationSpecKinesisDestination
-##### (Appears on:[SesEventDestinationSpec](#SesEventDestinationSpec))
+
+Appears on:[SesEventDestinationSpec](#SesEventDestinationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `roleArn` | ***string***||
 | `streamArn` | ***string***||
 ## SesEventDestinationSpecSnsDestination
-##### (Appears on:[SesEventDestinationSpec](#SesEventDestinationSpec))
+
+Appears on:[SesEventDestinationSpec](#SesEventDestinationSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `topicArn` | ***string***||
 ## SesEventDestinationStatus
-##### (Appears on:[SesEventDestination](#SesEventDestination))
+
+Appears on:[SesEventDestination](#SesEventDestination)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

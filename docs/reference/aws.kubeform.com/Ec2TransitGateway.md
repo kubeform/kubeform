@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[Ec2TransitGatewaySpec](#Ec2TransitGatewaySpec)***||
 | `status` | ***[Ec2TransitGatewayStatus](#Ec2TransitGatewayStatus)***||
 ## Ec2TransitGatewaySpec
-##### (Appears on:[Ec2TransitGateway](#Ec2TransitGateway), [Ec2TransitGatewayStatus](#Ec2TransitGatewayStatus))
+
+Appears on:[Ec2TransitGateway](#Ec2TransitGateway), [Ec2TransitGatewayStatus](#Ec2TransitGatewayStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -37,7 +39,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `vpnEcmpSupport` | ***string***| ***(Optional)*** |
 ## Ec2TransitGatewayStatus
-##### (Appears on:[Ec2TransitGateway](#Ec2TransitGateway))
+
+Appears on:[Ec2TransitGateway](#Ec2TransitGateway)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

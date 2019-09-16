@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[ApiManagementBackendSpec](#ApiManagementBackendSpec)***||
 | `status` | ***[ApiManagementBackendStatus](#ApiManagementBackendStatus)***||
 ## ApiManagementBackendSpec
-##### (Appears on:[ApiManagementBackend](#ApiManagementBackend), [ApiManagementBackendStatus](#ApiManagementBackendStatus))
+
+Appears on:[ApiManagementBackend](#ApiManagementBackend), [ApiManagementBackendStatus](#ApiManagementBackendStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -38,7 +40,9 @@ section_menu_id: reference
 | `tls` | ***[[]ApiManagementBackendSpecTls](#ApiManagementBackendSpecTls)***| ***(Optional)*** |
 | `url` | ***string***||
 ## ApiManagementBackendSpecCredentials
-##### (Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec))
+
+Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `authorization` | ***[[]ApiManagementBackendSpecCredentialsAuthorization](#ApiManagementBackendSpecCredentialsAuthorization)***| ***(Optional)*** |
@@ -46,19 +50,25 @@ section_menu_id: reference
 | `header` | ***map[string]string***| ***(Optional)*** |
 | `query` | ***map[string]string***| ***(Optional)*** |
 ## ApiManagementBackendSpecCredentialsAuthorization
-##### (Appears on:[ApiManagementBackendSpecCredentials](#ApiManagementBackendSpecCredentials))
+
+Appears on:[ApiManagementBackendSpecCredentials](#ApiManagementBackendSpecCredentials)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `parameter` | ***string***| ***(Optional)*** |
 | `scheme` | ***string***| ***(Optional)*** |
 ## ApiManagementBackendSpecProxy
-##### (Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec))
+
+Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `url` | ***string***||
 | `username` | ***string***||
 ## ApiManagementBackendSpecServiceFabricCluster
-##### (Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec))
+
+Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `clientCertificateThumbprint` | ***string***||
@@ -67,19 +77,25 @@ section_menu_id: reference
 | `serverCertificateThumbprints` | ***[]string***| ***(Optional)*** |
 | `serverX509Name` | ***[[]ApiManagementBackendSpecServiceFabricClusterServerX509Name](#ApiManagementBackendSpecServiceFabricClusterServerX509Name)***| ***(Optional)*** |
 ## ApiManagementBackendSpecServiceFabricClusterServerX509Name
-##### (Appears on:[ApiManagementBackendSpecServiceFabricCluster](#ApiManagementBackendSpecServiceFabricCluster))
+
+Appears on:[ApiManagementBackendSpecServiceFabricCluster](#ApiManagementBackendSpecServiceFabricCluster)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `issuerCertificateThumbprint` | ***string***||
 | `name` | ***string***||
 ## ApiManagementBackendSpecTls
-##### (Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec))
+
+Appears on:[ApiManagementBackendSpec](#ApiManagementBackendSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `validateCertificateChain` | ***bool***| ***(Optional)*** |
 | `validateCertificateName` | ***bool***| ***(Optional)*** |
 ## ApiManagementBackendStatus
-##### (Appears on:[ApiManagementBackend](#ApiManagementBackend))
+
+Appears on:[ApiManagementBackend](#ApiManagementBackend)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

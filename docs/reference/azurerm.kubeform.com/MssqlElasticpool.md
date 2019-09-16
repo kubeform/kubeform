@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[MssqlElasticpoolSpec](#MssqlElasticpoolSpec)***||
 | `status` | ***[MssqlElasticpoolStatus](#MssqlElasticpoolStatus)***||
 ## MssqlElasticpoolSpec
-##### (Appears on:[MssqlElasticpool](#MssqlElasticpool), [MssqlElasticpoolStatus](#MssqlElasticpoolStatus))
+
+Appears on:[MssqlElasticpool](#MssqlElasticpool), [MssqlElasticpoolStatus](#MssqlElasticpoolStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -36,7 +38,9 @@ section_menu_id: reference
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `zoneRedundant` | ***bool***| ***(Optional)*** |
 ## MssqlElasticpoolSpecElasticPoolProperties
-##### (Appears on:[MssqlElasticpoolSpec](#MssqlElasticpoolSpec))
+
+Appears on:[MssqlElasticpoolSpec](#MssqlElasticpoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `creationDate` | ***string***| ***(Optional)*** Deprecated|
@@ -45,13 +49,17 @@ section_menu_id: reference
 | `state` | ***string***| ***(Optional)*** Deprecated|
 | `zoneRedundant` | ***bool***| ***(Optional)*** Deprecated|
 ## MssqlElasticpoolSpecPerDatabaseSettings
-##### (Appears on:[MssqlElasticpoolSpec](#MssqlElasticpoolSpec))
+
+Appears on:[MssqlElasticpoolSpec](#MssqlElasticpoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `maxCapacity` | ***encoding/json.Number***||
 | `minCapacity` | ***encoding/json.Number***||
 ## MssqlElasticpoolSpecSku
-##### (Appears on:[MssqlElasticpoolSpec](#MssqlElasticpoolSpec))
+
+Appears on:[MssqlElasticpoolSpec](#MssqlElasticpoolSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `capacity` | ***int***||
@@ -59,7 +67,9 @@ section_menu_id: reference
 | `name` | ***string***||
 | `tier` | ***string***||
 ## MssqlElasticpoolStatus
-##### (Appears on:[MssqlElasticpool](#MssqlElasticpool))
+
+Appears on:[MssqlElasticpool](#MssqlElasticpool)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[SesReceiptRuleSpec](#SesReceiptRuleSpec)***||
 | `status` | ***[SesReceiptRuleStatus](#SesReceiptRuleStatus)***||
 ## SesReceiptRuleSpec
-##### (Appears on:[SesReceiptRule](#SesReceiptRule), [SesReceiptRuleStatus](#SesReceiptRuleStatus))
+
+Appears on:[SesReceiptRule](#SesReceiptRule), [SesReceiptRuleStatus](#SesReceiptRuleStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -39,14 +41,18 @@ section_menu_id: reference
 | `tlsPolicy` | ***string***| ***(Optional)*** |
 | `workmailAction` | ***[[]SesReceiptRuleSpecWorkmailAction](#SesReceiptRuleSpecWorkmailAction)***| ***(Optional)*** |
 ## SesReceiptRuleSpecAddHeaderAction
-##### (Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec))
+
+Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `headerName` | ***string***||
 | `headerValue` | ***string***||
 | `position` | ***int***||
 ## SesReceiptRuleSpecBounceAction
-##### (Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec))
+
+Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `message` | ***string***||
@@ -56,7 +62,9 @@ section_menu_id: reference
 | `statusCode` | ***string***| ***(Optional)*** |
 | `topicArn` | ***string***| ***(Optional)*** |
 ## SesReceiptRuleSpecLambdaAction
-##### (Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec))
+
+Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `functionArn` | ***string***||
@@ -64,7 +72,9 @@ section_menu_id: reference
 | `position` | ***int***||
 | `topicArn` | ***string***| ***(Optional)*** |
 ## SesReceiptRuleSpecS3Action
-##### (Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec))
+
+Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketName` | ***string***||
@@ -73,27 +83,35 @@ section_menu_id: reference
 | `position` | ***int***||
 | `topicArn` | ***string***| ***(Optional)*** |
 ## SesReceiptRuleSpecSnsAction
-##### (Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec))
+
+Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `position` | ***int***||
 | `topicArn` | ***string***||
 ## SesReceiptRuleSpecStopAction
-##### (Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec))
+
+Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `position` | ***int***||
 | `scope` | ***string***||
 | `topicArn` | ***string***| ***(Optional)*** |
 ## SesReceiptRuleSpecWorkmailAction
-##### (Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec))
+
+Appears on:[SesReceiptRuleSpec](#SesReceiptRuleSpec)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `organizationArn` | ***string***||
 | `position` | ***int***||
 | `topicArn` | ***string***| ***(Optional)*** |
 ## SesReceiptRuleStatus
-##### (Appears on:[SesReceiptRule](#SesReceiptRule))
+
+Appears on:[SesReceiptRule](#SesReceiptRule)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|

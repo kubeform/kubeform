@@ -19,7 +19,9 @@ section_menu_id: reference
 | `spec` | ***[CloudhsmV2HsmSpec](#CloudhsmV2HsmSpec)***||
 | `status` | ***[CloudhsmV2HsmStatus](#CloudhsmV2HsmStatus)***||
 ## CloudhsmV2HsmSpec
-##### (Appears on:[CloudhsmV2Hsm](#CloudhsmV2Hsm), [CloudhsmV2HsmStatus](#CloudhsmV2HsmStatus))
+
+Appears on:[CloudhsmV2Hsm](#CloudhsmV2Hsm), [CloudhsmV2HsmStatus](#CloudhsmV2HsmStatus)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
@@ -32,7 +34,9 @@ section_menu_id: reference
 | `ipAddress` | ***string***| ***(Optional)*** |
 | `subnetID` | ***string***| ***(Optional)*** |
 ## CloudhsmV2HsmStatus
-##### (Appears on:[CloudhsmV2Hsm](#CloudhsmV2Hsm))
+
+Appears on:[CloudhsmV2Hsm](#CloudhsmV2Hsm)
+
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
