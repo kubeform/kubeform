@@ -14,7 +14,6 @@ require (
 	github.com/google/gofuzz v1.0.0 // indirect
 	github.com/googleapis/gnostic v0.3.0 // indirect
 	github.com/gophercloud/gophercloud v0.3.0 // indirect
-	github.com/hashicorp/hcl v1.0.0
 	github.com/hashicorp/terraform v0.12.7-0.20190808211310-979a2fa6d13b
 	github.com/hashicorp/terraform-config-inspect v0.0.0-20190327195015-8022a2663a70
 	github.com/json-iterator/go v1.1.6 // indirect
@@ -38,6 +37,7 @@ require (
 )
 
 replace (
+	git.apache.org/thrift.git => github.com/apache/thrift v0.12.0
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.2+incompatible
 	github.com/hashicorp/hcl => github.com/hashicorp/hcl v0.0.0-20170504190234-a4b07c25de5f
 	github.com/ugorji/go => github.com/ugorji/go v0.0.0-20171019201919-bdcc60b419d1

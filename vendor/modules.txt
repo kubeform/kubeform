@@ -818,41 +818,6 @@ gopkg.in/resty.v1
 gopkg.in/yaml.v2
 # k8s.io/api v0.0.0-20190503110853-61630f889b3c => k8s.io/api v0.0.0-20190313235455-40a48860b5ab
 k8s.io/api/core/v1
-k8s.io/api/admissionregistration/v1beta1
-k8s.io/api/apps/v1
-k8s.io/api/apps/v1beta1
-k8s.io/api/apps/v1beta2
-k8s.io/api/auditregistration/v1alpha1
-k8s.io/api/authentication/v1
-k8s.io/api/authentication/v1beta1
-k8s.io/api/authorization/v1
-k8s.io/api/authorization/v1beta1
-k8s.io/api/autoscaling/v1
-k8s.io/api/autoscaling/v2beta1
-k8s.io/api/autoscaling/v2beta2
-k8s.io/api/batch/v1
-k8s.io/api/batch/v1beta1
-k8s.io/api/batch/v2alpha1
-k8s.io/api/certificates/v1beta1
-k8s.io/api/coordination/v1
-k8s.io/api/coordination/v1beta1
-k8s.io/api/events/v1beta1
-k8s.io/api/extensions/v1beta1
-k8s.io/api/networking/v1
-k8s.io/api/networking/v1beta1
-k8s.io/api/node/v1alpha1
-k8s.io/api/node/v1beta1
-k8s.io/api/policy/v1beta1
-k8s.io/api/rbac/v1
-k8s.io/api/rbac/v1alpha1
-k8s.io/api/rbac/v1beta1
-k8s.io/api/scheduling/v1
-k8s.io/api/scheduling/v1alpha1
-k8s.io/api/scheduling/v1beta1
-k8s.io/api/settings/v1alpha1
-k8s.io/api/storage/v1
-k8s.io/api/storage/v1alpha1
-k8s.io/api/storage/v1beta1
 # k8s.io/apimachinery v0.0.0-20190508063446-a3da69d3723c => github.com/kmodules/apimachinery v0.0.0-20190508045248-a52a97a7a2bf
 k8s.io/apimachinery/pkg/runtime
 k8s.io/apimachinery/pkg/util/runtime
@@ -861,8 +826,8 @@ k8s.io/apimachinery/pkg/apis/meta/v1
 k8s.io/apimachinery/pkg/runtime/schema
 k8s.io/apimachinery/pkg/util/intstr
 k8s.io/apimachinery/pkg/runtime/serializer
-k8s.io/apimachinery/pkg/watch
 k8s.io/apimachinery/pkg/types
+k8s.io/apimachinery/pkg/watch
 k8s.io/apimachinery/pkg/labels
 k8s.io/apimachinery/pkg/api/errors
 k8s.io/apimachinery/pkg/conversion
@@ -874,18 +839,17 @@ k8s.io/apimachinery/pkg/util/sets
 k8s.io/apimachinery/pkg/api/apitesting/roundtrip
 k8s.io/apimachinery/pkg/fields
 k8s.io/apimachinery/pkg/selection
-k8s.io/apimachinery/pkg/version
-k8s.io/apimachinery/pkg/runtime/serializer/streaming
-k8s.io/apimachinery/pkg/util/net
-k8s.io/apimachinery/pkg/util/clock
 k8s.io/apimachinery/pkg/runtime/serializer/json
 k8s.io/apimachinery/pkg/runtime/serializer/protobuf
 k8s.io/apimachinery/pkg/runtime/serializer/recognizer
 k8s.io/apimachinery/pkg/runtime/serializer/versioning
+k8s.io/apimachinery/pkg/util/net
+k8s.io/apimachinery/pkg/runtime/serializer/streaming
+k8s.io/apimachinery/pkg/util/validation
 k8s.io/apimachinery/pkg/api/meta
 k8s.io/apimachinery/pkg/util/strategicpatch
-k8s.io/apimachinery/pkg/util/validation
 k8s.io/apimachinery/pkg/util/cache
+k8s.io/apimachinery/pkg/util/clock
 k8s.io/apimachinery/pkg/util/diff
 k8s.io/apimachinery/pkg/util/wait
 k8s.io/apimachinery/pkg/util/validation/field
@@ -897,18 +861,15 @@ k8s.io/apimachinery/pkg/apis/meta/fuzzer
 k8s.io/apimachinery/pkg/util/framer
 k8s.io/apimachinery/pkg/util/yaml
 k8s.io/apimachinery/pkg/apis/meta/v1/unstructured
+k8s.io/apimachinery/pkg/version
 k8s.io/apimachinery/pkg/apis/meta/v1beta1
 k8s.io/apimachinery/pkg/util/mergepatch
 k8s.io/apimachinery/third_party/forked/golang/json
 k8s.io/apimachinery/pkg/apis/meta/internalversion
 # k8s.io/client-go v11.0.0+incompatible
-k8s.io/client-go/discovery
 k8s.io/client-go/rest
-k8s.io/client-go/util/flowcontrol
-k8s.io/client-go/discovery/fake
 k8s.io/client-go/testing
 k8s.io/client-go/tools/cache
-k8s.io/client-go/kubernetes/scheme
 k8s.io/client-go/pkg/version
 k8s.io/client-go/plugin/pkg/client/auth/exec
 k8s.io/client-go/rest/watch
@@ -916,6 +877,7 @@ k8s.io/client-go/tools/clientcmd/api
 k8s.io/client-go/tools/metrics
 k8s.io/client-go/transport
 k8s.io/client-go/util/cert
+k8s.io/client-go/util/flowcontrol
 k8s.io/client-go/tools/pager
 k8s.io/client-go/util/retry
 k8s.io/client-go/pkg/apis/clientauthentication/v1alpha1
@@ -929,8 +891,8 @@ k8s.io/klog
 k8s.io/kube-openapi/pkg/common
 k8s.io/kube-openapi/pkg/util/proto
 # k8s.io/utils v0.0.0-20190506122338-8fab8cb257d5 => k8s.io/utils v0.0.0-20190221042446-c2654d5206da
-k8s.io/utils/integer
 k8s.io/utils/buffer
 k8s.io/utils/trace
+k8s.io/utils/integer
 # sigs.k8s.io/yaml v1.1.0
 sigs.k8s.io/yaml
