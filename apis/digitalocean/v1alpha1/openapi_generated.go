@@ -12489,14 +12489,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_CdnStatus(ref common.ReferenceCa
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.CdnSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.CdnSpec"},
 	}
 }
 
@@ -12696,14 +12696,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_CertificateStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.CertificateSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.CertificateSpec"},
 	}
 }
 
@@ -12952,14 +12952,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DatabaseClusterStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.DatabaseClusterSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.DatabaseClusterSpec"},
 	}
 }
 
@@ -13117,14 +13117,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DomainStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.DomainSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.DomainSpec"},
 	}
 }
 
@@ -13397,14 +13397,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletSnapshotStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.DropletSnapshotSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.DropletSnapshotSpec"},
 	}
 }
 
@@ -13619,14 +13619,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletStatus(ref common.Referen
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.DropletSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.DropletSpec"},
 	}
 }
 
@@ -14030,14 +14030,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FirewallStatus(ref common.Refere
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.FirewallSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.FirewallSpec"},
 	}
 }
 
@@ -14232,14 +14232,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FloatingIPAssignmentStatus(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.FloatingIPAssignmentSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.FloatingIPAssignmentSpec"},
 	}
 }
 
@@ -14361,14 +14361,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FloatingIPStatus(ref common.Refe
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.FloatingIPSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.FloatingIPSpec"},
 	}
 }
 
@@ -14753,14 +14753,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesClusterStatus(ref comm
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.KubernetesClusterSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.KubernetesClusterSpec"},
 	}
 }
 
@@ -14991,14 +14991,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesNodePoolStatus(ref com
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.KubernetesNodePoolSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.KubernetesNodePoolSpec"},
 	}
 }
 
@@ -15376,14 +15376,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_LoadbalancerStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.LoadbalancerSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.LoadbalancerSpec"},
 	}
 }
 
@@ -15593,14 +15593,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_ProjectStatus(ref common.Referen
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.ProjectSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.ProjectSpec"},
 	}
 }
 
@@ -15806,14 +15806,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_RecordStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.RecordSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.RecordSpec"},
 	}
 }
 
@@ -15995,14 +15995,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_SpacesBucketStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.SpacesBucketSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.SpacesBucketSpec"},
 	}
 }
 
@@ -16160,14 +16160,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_SshKeyStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.SshKeySpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.SshKeySpec"},
 	}
 }
 
@@ -16313,14 +16313,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_TagStatus(ref common.ReferenceCa
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.TagSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.TagSpec"},
 	}
 }
 
@@ -16515,14 +16515,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeAttachmentStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.VolumeAttachmentSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.VolumeAttachmentSpec"},
 	}
 }
 
@@ -16752,14 +16752,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeSnapshotStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.VolumeSnapshotSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.VolumeSnapshotSpec"},
 	}
 }
 
@@ -16884,13 +16884,13 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.VolumeSpec"},
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/digitalocean/v1alpha1.VolumeSpec"},
 	}
 }

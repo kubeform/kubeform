@@ -49,7 +49,7 @@ endif
 ### These variables should not need tweaking.
 ###
 
-SRC_DIRS := *.go apis client util # directories which hold app source (not vendored)
+SRC_DIRS := *.go apis client util hack/gencrd # directories which hold app source (not vendored)
 
 DOCKER_PLATFORMS := linux/amd64 linux/arm linux/arm64
 BIN_PLATFORMS    := $(DOCKER_PLATFORMS) windows/amd64 darwin/amd64
@@ -61,7 +61,7 @@ ARCH := $(if $(GOARCH),$(GOARCH),$(shell go env GOARCH))
 BASEIMAGE_PROD   ?= gcr.io/distroless/static
 BASEIMAGE_DBG    ?= debian:stretch
 
-GO_VERSION       ?= 1.12.8
+GO_VERSION       ?= 1.12.10
 BUILD_IMAGE      ?= appscode/golang-dev:$(GO_VERSION)-stretch
 
 OUTBIN = bin/$(OS)_$(ARCH)/$(BIN)
@@ -115,12 +115,23 @@ clientset:
 			all                                          \
 			$(GO_PKG)/$(REPO)/client                     \
 			$(GO_PKG)/$(REPO)/apis                       \
-			"$(API_GROUPS)" \
+			"$(API_GROUPS)"    \
 			--go-header-file "./hack/boilerplate.go.txt"
 
 # Generate openapi schema
 .PHONY: openapi
 openapi: $(addprefix openapi-, $(subst :,_, $(API_GROUPS)))
+	@echo "Generating api/openapi-spec/swagger.json"
+	@docker run --rm -ti                                 \
+		-u $$(id -u):$$(id -g)                           \
+		-v /tmp:/.cache                                  \
+		-v $$(pwd):$(DOCKER_REPO_ROOT)                   \
+		-w $(DOCKER_REPO_ROOT)                           \
+		--env HTTP_PROXY=$(HTTP_PROXY)                   \
+		--env HTTPS_PROXY=$(HTTPS_PROXY)                 \
+		$(BUILD_IMAGE)                                   \
+		go run hack/gencrd/main.go
+
 openapi-%:
 	@echo "Generating openapi schema for $(subst _,/,$*)"
 	@mkdir -p api/api-rules
@@ -157,7 +168,7 @@ gen-crds:
 			output:crd:artifacts:config=api/crds
 
 .PHONY: label-crds
-label-crds:
+label-crds: $(BUILD_DIRS)
 	@for f in api/crds/*.yaml; do \
 		echo "applying app=kubeform label to $$f"; \
 		kubectl label --overwrite -f $$f --local=true -o yaml app=kubeform > bin/crd.yaml; \
@@ -270,7 +281,7 @@ lint: $(BUILD_DIRS)
 	    --env GO111MODULE=on                                    \
 	    --env GOFLAGS="-mod=vendor"                             \
 	    $(BUILD_IMAGE)                                          \
-	    golangci-lint run --enable $(ADDTL_LINTERS)
+	    golangci-lint run --enable $(ADDTL_LINTERS) --skip-dirs-use-default --skip-dirs=client
 
 $(BUILD_DIRS):
 	@mkdir -p $@

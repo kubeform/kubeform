@@ -14011,14 +14011,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AnalysisServicesServerStatus(ref comm
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AnalysisServicesServerSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -14417,14 +14417,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPIOperationPolicyStatus
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIOperationPolicySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIOperationPolicySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -15103,14 +15103,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPIOperationStatus(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIOperationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIOperationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -15280,14 +15280,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPIPolicyStatus(ref comm
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIPolicySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIPolicySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -15463,14 +15463,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPISchemaStatus(ref comm
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPISchemaSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPISchemaSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -15724,14 +15724,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPIStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPISpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPISpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -15919,14 +15919,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPIVersionSetStatus(ref 
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIVersionSetSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIVersionSetSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -16232,14 +16232,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAuthorizationServerStatu
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAuthorizationServerSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAuthorizationServerSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -16710,14 +16710,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementBackendSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -16898,14 +16898,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementCertificateStatus(ref co
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementCertificateSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementCertificateSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -17087,14 +17087,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementGroupStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementGroupSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementGroupSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -17258,14 +17258,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementGroupUserStatus(ref comm
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementGroupUserSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementGroupUserSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -17540,14 +17540,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementLoggerStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementLoggerSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementLoggerSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -17728,14 +17728,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementOpenidConnectProviderSta
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementOpenidConnectProviderSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementOpenidConnectProviderSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -17942,14 +17942,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementProductAPIStatus(ref com
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductAPISpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductAPISpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -18113,14 +18113,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementProductGroupStatus(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductGroupSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductGroupSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -18337,14 +18337,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementProductPolicyStatus(ref 
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductPolicySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductPolicySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -18454,14 +18454,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementProductStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -18650,14 +18650,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementPropertyStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementPropertySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementPropertySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -19386,14 +19386,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementStatus(ref common.Refere
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -19580,14 +19580,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementSubscriptionStatus(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementSubscriptionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementSubscriptionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -19786,14 +19786,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementUserStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementUserSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementUserSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -19994,14 +19994,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceActiveSlotStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceActiveSlotSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceActiveSlotSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -20159,14 +20159,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceCustomHostnameBindingStatus
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceCustomHostnameBindingSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceCustomHostnameBindingSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -20516,14 +20516,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServicePlanStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServicePlanSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServicePlanSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -21422,14 +21422,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -22524,14 +22524,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceStatus(ref common.Reference
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -24463,14 +24463,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewayStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -24696,14 +24696,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationInsightsAPIKeyStatus(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationInsightsAPIKeySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationInsightsAPIKeySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -24849,14 +24849,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationInsightsStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationInsightsSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationInsightsSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -25095,14 +25095,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationInsightsWebTestStatus(ref 
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationInsightsWebTestSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationInsightsWebTestSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -25274,14 +25274,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationSecurityGroupStatus(ref co
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationSecurityGroupSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationSecurityGroupSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -25508,14 +25508,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationAccountStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationAccountSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationAccountSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -25690,14 +25690,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationCredentialStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationCredentialSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationCredentialSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -25885,14 +25885,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationDscConfigurationStatus(ref 
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationDscConfigurationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationDscConfigurationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -26062,14 +26062,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationDscNodeconfigurationStatus(
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationDscNodeconfigurationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationDscNodeconfigurationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -26297,14 +26297,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationModuleStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationModuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationModuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -26588,14 +26588,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationRunbookStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationRunbookSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationRunbookSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -26859,14 +26859,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationScheduleStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationScheduleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationScheduleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -27042,14 +27042,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationVariableBoolStatus(ref comm
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableBoolSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableBoolSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -27225,14 +27225,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationVariableDatetimeStatus(ref 
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableDatetimeSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableDatetimeSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -27408,14 +27408,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationVariableIntStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableIntSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableIntSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -27591,14 +27591,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationVariableStringStatus(ref co
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableStringSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableStringSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -28240,14 +28240,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutoscaleSettingStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutoscaleSettingSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutoscaleSettingSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -28437,14 +28437,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AvailabilitySetStatus(ref common.Refe
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AvailabilitySetSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AvailabilitySetSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -28640,14 +28640,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzureadApplicationStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzureadApplicationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzureadApplicationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -28906,14 +28906,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzureadServicePrincipalPasswordStatus
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzureadServicePrincipalPasswordSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzureadServicePrincipalPasswordSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -28975,14 +28975,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzureadServicePrincipalStatus(ref com
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzureadServicePrincipalSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzureadServicePrincipalSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -29214,14 +29214,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchAccountStatus(ref common.Referen
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchAccountSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchAccountSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -29397,14 +29397,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchApplicationStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplicationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchApplicationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -29591,14 +29591,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchCertificateStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchCertificateSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchCertificateSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -30192,14 +30192,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchPoolStatus(ref common.ReferenceC
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchPoolSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchPoolSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -30543,14 +30543,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_CdnEndpointStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.CdnEndpointSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CdnEndpointSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -30728,14 +30728,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_CdnProfileStatus(ref common.Reference
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.CdnProfileSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CdnProfileSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -30961,14 +30961,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_CognitiveAccountStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.CognitiveAccountSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CognitiveAccountSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -31238,14 +31238,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ConnectionMonitorStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ConnectionMonitorSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ConnectionMonitorSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -32077,14 +32077,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerGroupSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerGroupSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -32405,14 +32405,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistryStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -32825,14 +32825,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerServiceStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerServiceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerServiceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -33275,14 +33275,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbAccountStatus(ref common.Refe
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbAccountSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbAccountSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -33440,14 +33440,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbCassandraKeyspaceStatus(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbCassandraKeyspaceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbCassandraKeyspaceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -33660,14 +33660,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbMongoCollectionStatus(ref com
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbMongoCollectionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbMongoCollectionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -33825,14 +33825,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbMongoDatabaseStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbMongoDatabaseSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbMongoDatabaseSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -33990,14 +33990,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbSQLDatabaseStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbSQLDatabaseSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbSQLDatabaseSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -34155,14 +34155,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbTableStatus(ref common.Refere
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbTableSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbTableSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -34471,14 +34471,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryDatasetMysqlStatus(ref com
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryDatasetMysqlSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryDatasetMysqlSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -34744,14 +34744,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryDatasetPostgresqlStatus(re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryDatasetPostgresqlSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryDatasetPostgresqlSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -35017,14 +35017,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryDatasetSQLServerTableStatu
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryDatasetSQLServerTableSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryDatasetSQLServerTableSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -35259,14 +35259,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryLinkedServiceDataLakeStora
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2Spec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2Spec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -35483,14 +35483,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryLinkedServiceMysqlStatus(r
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServiceMysqlSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServiceMysqlSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -35707,14 +35707,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryLinkedServicePostgresqlSta
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServicePostgresqlSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServicePostgresqlSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -35931,14 +35931,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryLinkedServiceSQLServerStat
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServiceSQLServerSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServiceSQLServerSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -36190,14 +36190,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryPipelineStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryPipelineSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryPipelineSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -36438,14 +36438,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactorySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactorySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -36629,14 +36629,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataLakeAnalyticsAccountStatus(ref co
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeAnalyticsAccountSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeAnalyticsAccountSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -36806,14 +36806,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataLakeAnalyticsFirewallRuleStatus(r
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeAnalyticsFirewallRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeAnalyticsFirewallRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -37014,14 +37014,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataLakeStoreFileStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeStoreFileSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeStoreFileSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -37191,14 +37191,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataLakeStoreFirewallRuleStatus(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeStoreFirewallRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeStoreFirewallRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -37363,14 +37363,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataLakeStoreStatus(ref common.Refere
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeStoreSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeStoreSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -37560,14 +37560,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DatabricksWorkspaceStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DatabricksWorkspaceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DatabricksWorkspaceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -37752,14 +37752,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DdosProtectionPlanStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DdosProtectionPlanSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DdosProtectionPlanSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -37973,14 +37973,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestLabStatus(ref common.Reference
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestLabSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestLabSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -38321,14 +38321,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestLinuxVirtualMachineStatus(ref 
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestLinuxVirtualMachineSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestLinuxVirtualMachineSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -38530,14 +38530,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestPolicyStatus(ref common.Refere
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestPolicySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestPolicySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -38763,14 +38763,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestVirtualNetworkStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestVirtualNetworkSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestVirtualNetworkSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -39106,14 +39106,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestWindowsVirtualMachineStatus(re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestWindowsVirtualMachineSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestWindowsVirtualMachineSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -39345,14 +39345,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevspaceControllerStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevspaceControllerSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevspaceControllerSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -39543,14 +39543,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsARecordStatus(ref common.Reference
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsARecordSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsARecordSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -39741,14 +39741,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsAaaaRecordStatus(ref common.Refere
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsAaaaRecordSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsAaaaRecordSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -39969,14 +39969,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsCaaRecordStatus(ref common.Referen
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsCaaRecordSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsCaaRecordSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -40160,14 +40160,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsCnameRecordStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsCnameRecordSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsCnameRecordSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -40382,14 +40382,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsMxRecordStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsMxRecordSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsMxRecordSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -40612,14 +40612,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsNsRecordStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsNsRecordSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsNsRecordSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -40810,14 +40810,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsPtrRecordStatus(ref common.Referen
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsPtrRecordSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsPtrRecordSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -41044,14 +41044,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsSrvRecordStatus(ref common.Referen
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsSrvRecordSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsSrvRecordSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -41260,14 +41260,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsTxtRecordStatus(ref common.Referen
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsTxtRecordSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsTxtRecordSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -41490,14 +41490,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsZoneStatus(ref common.ReferenceCal
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsZoneSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsZoneSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -41783,14 +41783,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventgridDomainStatus(ref common.Refe
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventgridDomainSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventgridDomainSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -42226,14 +42226,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventgridEventSubscriptionStatus(ref 
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventgridEventSubscriptionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventgridEventSubscriptionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -42416,14 +42416,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventgridTopicStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventgridTopicSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventgridTopicSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -42660,14 +42660,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubAuthorizationRuleStatus(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubAuthorizationRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubAuthorizationRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -42844,14 +42844,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubConsumerGroupStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubConsumerGroupSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubConsumerGroupSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -43086,14 +43086,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceAuthorizationRuleSta
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceAuthorizationRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceAuthorizationRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -43300,14 +43300,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespace_Status(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_Spec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespace_Spec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -43513,14 +43513,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubStatus(ref common.ReferenceCa
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -43732,14 +43732,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitAuthorizationStatu
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ExpressRouteCircuitAuthorizationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ExpressRouteCircuitAuthorizationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -44029,14 +44029,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitPeeringStatus(ref 
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ExpressRouteCircuitPeeringSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ExpressRouteCircuitPeeringSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -44190,14 +44190,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ExpressRouteCircuitSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ExpressRouteCircuitSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -44525,14 +44525,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_FirewallApplicationRuleCollectionStat
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallApplicationRuleCollectionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallApplicationRuleCollectionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -44850,14 +44850,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_FirewallNATRuleCollectionStatus(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallNATRuleCollectionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallNATRuleCollectionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -45116,14 +45116,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_FirewallNetworkRuleCollectionStatus(r
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallNetworkRuleCollectionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallNetworkRuleCollectionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -45261,14 +45261,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_FirewallStatus(ref common.ReferenceCa
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -45980,14 +45980,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_FunctionAppStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -46518,14 +46518,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightHadoopClusterStatus(ref comm
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightHadoopClusterSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightHadoopClusterSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -47056,14 +47056,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightHbaseClusterStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightHbaseClusterSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightHbaseClusterSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -47594,14 +47594,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightInteractiveQueryClusterStatu
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightInteractiveQueryClusterSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightInteractiveQueryClusterSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -48138,14 +48138,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightKafkaClusterStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightKafkaClusterSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightKafkaClusterSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -48719,14 +48719,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightMlServicesClusterStatus(ref 
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightMlServicesClusterSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightMlServicesClusterSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -49300,14 +49300,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightRserverClusterStatus(ref com
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightRserverClusterSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightRserverClusterSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -49838,14 +49838,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightSparkClusterStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightSparkClusterSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightSparkClusterSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -50376,14 +50376,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightStormClusterStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightStormClusterSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightStormClusterSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -50681,14 +50681,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ImageStatus(ref common.ReferenceCallb
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ImageSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ImageSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -50894,14 +50894,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_IotDpsCertificateStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IotDpsCertificateSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IotDpsCertificateSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -51073,14 +51073,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_IotDpsStatus(ref common.ReferenceCall
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IotDpsSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IotDpsSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -51287,14 +51287,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubConsumerGroupStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubConsumerGroupSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubConsumerGroupSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -51528,14 +51528,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubSharedAccessPolicyStatus(ref co
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSharedAccessPolicySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSharedAccessPolicySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -52025,14 +52025,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubStatus(ref common.ReferenceCall
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -52305,14 +52305,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultAccessPolicyStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultAccessPolicySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultAccessPolicySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -52896,14 +52896,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultCertificateStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultCertificateSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultCertificateSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -53137,14 +53137,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultKeyStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultKeySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultKeySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -53381,14 +53381,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultSecretStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultSecretSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultSecretSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -53695,14 +53695,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultStatus(ref common.ReferenceCa
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -54549,14 +54549,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -54790,14 +54790,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbBackendAddressPoolStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbBackendAddressPoolSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbBackendAddressPoolSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -55045,14 +55045,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbNATPoolStatus(ref common.ReferenceC
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbNATPoolSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbNATPoolSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -55259,14 +55259,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbNATRuleStatus(ref common.ReferenceC
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbNATRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbNATRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -55491,14 +55491,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbOutboundRuleStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbOutboundRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbOutboundRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -55706,14 +55706,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbProbeStatus(ref common.ReferenceCal
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbProbeSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbProbeSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -55944,14 +55944,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbRuleStatus(ref common.ReferenceCall
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -56171,14 +56171,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbStatus(ref common.ReferenceCallback
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -56412,14 +56412,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LocalNetworkGatewayStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LocalNetworkGatewaySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LocalNetworkGatewaySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -56634,14 +56634,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogAnalyticsLinkedServiceStatus(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsLinkedServiceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsLinkedServiceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -56860,14 +56860,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogAnalyticsSolutionStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsSolutionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsSolutionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -57125,14 +57125,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogAnalyticsWorkspaceLinkedServiceSta
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsWorkspaceLinkedServiceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsWorkspaceLinkedServiceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -57290,14 +57290,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogAnalyticsWorkspaceStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsWorkspaceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsWorkspaceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -57455,14 +57455,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogicAppActionCustomStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppActionCustomSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppActionCustomSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -57646,14 +57646,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogicAppActionHTTPStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppActionHTTPSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppActionHTTPSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -57811,14 +57811,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogicAppTriggerCustomStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppTriggerCustomSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppTriggerCustomSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -57988,14 +57988,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogicAppTriggerHTTPRequestStatus(ref 
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppTriggerHTTPRequestSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppTriggerHTTPRequestSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -58159,14 +58159,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogicAppTriggerRecurrenceStatus(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppTriggerRecurrenceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppTriggerRecurrenceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -58370,14 +58370,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogicAppWorkflowStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppWorkflowSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppWorkflowSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -58711,14 +58711,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ManagedDiskStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagedDiskSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagedDiskSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -58889,14 +58889,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ManagementGroupStatus(ref common.Refe
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagementGroupSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagementGroupSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -59060,14 +59060,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ManagementLockStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagementLockSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagementLockSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -59250,14 +59250,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MapsAccountStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccountSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MapsAccountSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -59427,14 +59427,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MariadbDatabaseStatus(ref common.Refe
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbDatabaseSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbDatabaseSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -59604,14 +59604,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MariadbFirewallRuleStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbFirewallRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbFirewallRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -59904,14 +59904,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MariadbServerStatus(ref common.Refere
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbServerSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbServerSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -60106,14 +60106,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MediaServicesAccountStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MediaServicesAccountSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MediaServicesAccountSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -60421,14 +60421,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MetricAlertruleStatus(ref common.Refe
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MetricAlertruleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MetricAlertruleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -60723,14 +60723,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorActionGroupStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorActionGroupSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorActionGroupSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -61051,14 +61051,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorActivityLogAlertStatus(ref com
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorActivityLogAlertSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorActivityLogAlertSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -61700,14 +61700,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorAutoscaleSettingStatus(ref com
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorAutoscaleSettingSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorAutoscaleSettingSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -62035,14 +62035,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorDiagnosticSettingStatus(ref co
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorDiagnosticSettingSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorDiagnosticSettingSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -62263,14 +62263,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorLogProfileStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorLogProfileSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorLogProfileSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -62637,14 +62637,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorMetricAlertStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorMetricAlertSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorMetricAlertSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -62952,14 +62952,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorMetricAlertruleStatus(ref comm
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorMetricAlertruleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorMetricAlertruleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -63301,14 +63301,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MssqlElasticpoolStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MssqlElasticpoolSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MssqlElasticpoolSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -63472,14 +63472,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlConfigurationStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlConfigurationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlConfigurationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -63649,14 +63649,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlDatabaseStatus(ref common.Refere
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlDatabaseSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlDatabaseSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -63826,14 +63826,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlFirewallRuleStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlFirewallRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlFirewallRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -64126,14 +64126,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlServerStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlServerSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlServerSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -64297,14 +64297,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlVirtualNetworkRuleStatus(ref com
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlVirtualNetworkRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlVirtualNetworkRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -64574,14 +64574,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkConnectionMonitorStatus(ref co
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkConnectionMonitorSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkConnectionMonitorSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -64766,14 +64766,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkDdosProtectionPlanStatus(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkDdosProtectionPlanSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkDdosProtectionPlanSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -64974,14 +64974,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkInterfaceApplicationGatewayBac
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -65139,14 +65139,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkInterfaceApplicationSecurityGr
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceApplicationSecurityGroupAssociationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceApplicationSecurityGroupAssociationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -65304,14 +65304,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkInterfaceBackendAddressPoolAss
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceBackendAddressPoolAssociationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceBackendAddressPoolAssociationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -65516,14 +65516,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkInterfaceNATRuleAssociationSta
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceNATRuleAssociationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceNATRuleAssociationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -65816,14 +65816,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkInterfaceStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -66102,14 +66102,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkPacketCaptureStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkPacketCaptureSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkPacketCaptureSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -66364,14 +66364,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkProfileStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkProfileSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkProfileSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -66706,14 +66706,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkSecurityGroupStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkSecurityGroupSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkSecurityGroupSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -67003,14 +67003,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkSecurityRuleStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkSecurityRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkSecurityRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -67182,14 +67182,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkWatcherStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkWatcherSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkWatcherSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -67426,14 +67426,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubAuthorizationRuleStatu
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubAuthorizationRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubAuthorizationRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -67694,14 +67694,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespace_Status(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_Spec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespace_Spec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -67851,14 +67851,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubStatus(ref common.Refe
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -68137,14 +68137,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_PacketCaptureStatus(ref common.Refere
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PacketCaptureSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PacketCaptureSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -68381,14 +68381,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_PolicyAssignmentStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PolicyAssignmentSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PolicyAssignmentSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -68582,14 +68582,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_PolicyDefinitionStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PolicyDefinitionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PolicyDefinitionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -68777,14 +68777,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_PolicySetDefinitionStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PolicySetDefinitionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PolicySetDefinitionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -68948,14 +68948,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlConfigurationStatus(ref com
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlConfigurationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlConfigurationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -69125,14 +69125,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlDatabaseStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlDatabaseSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlDatabaseSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -69302,14 +69302,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlFirewallRuleStatus(ref comm
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlFirewallRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlFirewallRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -69602,14 +69602,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlServerStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlServerSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlServerSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -69779,14 +69779,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlVirtualNetworkRuleStatus(re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlVirtualNetworkRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlVirtualNetworkRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -69977,14 +69977,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSARecordStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecordSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSARecordSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -70174,14 +70174,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSZoneStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSZoneSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSZoneSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -70474,14 +70474,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_PublicIPPrefixStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PublicIPPrefixSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PublicIPPrefixSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -70637,14 +70637,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_PublicIPStatus(ref common.ReferenceCa
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.PublicIPSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PublicIPSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -70822,14 +70822,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_RecoveryServicesProtectedVmStatus(ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.RecoveryServicesProtectedVmSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RecoveryServicesProtectedVmSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -71259,14 +71259,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_RecoveryServicesProtectionPolicyVmSta
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.RecoveryServicesProtectionPolicyVmSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RecoveryServicesProtectionPolicyVmSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -71444,14 +71444,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_RecoveryServicesVaultStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.RecoveryServicesVaultSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RecoveryServicesVaultSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -71834,14 +71834,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_RedisCacheStatus(ref common.Reference
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.RedisCacheSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RedisCacheSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -72011,14 +72011,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_RedisFirewallRuleStatus(ref common.Re
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.RedisFirewallRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RedisFirewallRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -72239,14 +72239,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_RelayNamespaceStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.RelayNamespaceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RelayNamespaceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -72412,14 +72412,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ResourceGroupStatus(ref common.Refere
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ResourceGroupSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ResourceGroupSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -72589,14 +72589,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_RoleAssignmentStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.RoleAssignmentSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RoleAssignmentSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -72849,14 +72849,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_RoleDefinitionStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.RoleDefinitionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RoleDefinitionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -73032,14 +73032,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_RouteStatus(ref common.ReferenceCallb
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.RouteSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RouteSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -73279,14 +73279,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_RouteTableStatus(ref common.Reference
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.RouteTableSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RouteTableSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -73563,14 +73563,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SchedulerJobCollectionStatus(ref comm
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SchedulerJobCollectionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SchedulerJobCollectionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -74326,14 +74326,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SchedulerJobStatus(ref common.Referen
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SchedulerJobSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SchedulerJobSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -74535,14 +74535,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SearchServiceStatus(ref common.Refere
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SearchServiceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SearchServiceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -74706,14 +74706,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SecurityCenterContactStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SecurityCenterContactSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SecurityCenterContactSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -74859,14 +74859,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SecurityCenterSubscriptionPricingStat
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SecurityCenterSubscriptionPricingSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SecurityCenterSubscriptionPricingSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -75018,14 +75018,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SecurityCenterWorkspaceStatus(ref com
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SecurityCenterWorkspaceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SecurityCenterWorkspaceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -75753,14 +75753,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServiceFabricClusterStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServiceFabricClusterSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServiceFabricClusterSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -75984,14 +75984,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusNamespaceAuthorizationRuleS
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusNamespaceAuthorizationRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusNamespaceAuthorizationRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -76137,14 +76137,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusNamespaceStatus(ref common.
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusNamespaceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusNamespaceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -76374,14 +76374,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusQueueAuthorizationRuleStatu
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusQueueAuthorizationRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusQueueAuthorizationRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -76583,14 +76583,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusQueueStatus(ref common.Refe
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusQueueSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusQueueSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -76940,14 +76940,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusSubscriptionRuleStatus(ref 
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusSubscriptionRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusSubscriptionRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -77083,14 +77083,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusSubscriptionStatus(ref comm
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusSubscriptionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusSubscriptionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -77320,14 +77320,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusTopicAuthorizationRuleStatu
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusTopicAuthorizationRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusTopicAuthorizationRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -77516,14 +77516,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusTopicStatus(ref common.Refe
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusTopicSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusTopicSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -77750,14 +77750,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SharedImageGalleryStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SharedImageGallerySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SharedImageGallerySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -77965,14 +77965,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SharedImageStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SharedImageSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SharedImageSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -78205,14 +78205,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SharedImageVersionStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SharedImageVersionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SharedImageVersionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -78450,14 +78450,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SignalrServiceStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SignalrServiceSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SignalrServiceSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -78766,14 +78766,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SnapshotStatus(ref common.ReferenceCa
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SnapshotSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SnapshotSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -78943,14 +78943,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlActiveDirectoryAdministratorStatus
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlActiveDirectoryAdministratorSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlActiveDirectoryAdministratorSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -79352,14 +79352,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlDatabaseStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlDatabaseSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlDatabaseSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -79573,14 +79573,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlElasticpoolStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlElasticpoolSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlElasticpoolSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -79750,14 +79750,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlFirewallRuleStatus(ref common.Refe
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlFirewallRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlFirewallRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -79952,14 +79952,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlServerStatus(ref common.ReferenceC
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlServerSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlServerSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -80129,14 +80129,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlVirtualNetworkRuleStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlVirtualNetworkRuleSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlVirtualNetworkRuleSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -80947,14 +80947,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -81180,14 +81180,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageBlobStatus(ref common.Referenc
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageBlobSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageBlobSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -81393,14 +81393,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageContainerStatus(ref common.Ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageContainerSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageContainerSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -81573,14 +81573,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageQueueStatus(ref common.Referen
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageQueueSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageQueueSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -81795,14 +81795,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageShareDirectoryStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectorySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareDirectorySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -82020,14 +82020,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageShareStatus(ref common.Referen
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -82248,14 +82248,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageTableEntityStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntitySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableEntitySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -82447,14 +82447,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageTableStatus(ref common.Referen
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -82680,14 +82680,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsFunctionJavascriptUdfS
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsFunctionJavascriptUdfSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsFunctionJavascriptUdfSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -82913,14 +82913,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsJobStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsJobSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsJobSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -83162,14 +83162,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsOutputBlobStatus(ref c
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputBlobSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputBlobSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -83399,14 +83399,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsOutputEventhubStatus(r
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputEventhubSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputEventhubSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -83593,14 +83593,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsOutputMssqlStatus(ref 
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputMssqlSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputMssqlSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -83830,14 +83830,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsOutputServicebusQueueS
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputServicebusQueueSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputServicebusQueueSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -84073,14 +84073,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsStreamInputBlobStatus(
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsStreamInputBlobSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsStreamInputBlobSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -84310,14 +84310,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsStreamInputEventhubSta
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsStreamInputEventhubSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsStreamInputEventhubSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -84547,14 +84547,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsStreamInputIothubStatu
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsStreamInputIothubSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsStreamInputIothubSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -84796,14 +84796,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SubnetNetworkSecurityGroupAssociation
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SubnetNetworkSecurityGroupAssociationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SubnetNetworkSecurityGroupAssociationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -84955,14 +84955,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SubnetRouteTableAssociationStatus(ref
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SubnetRouteTableAssociationSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SubnetRouteTableAssociationSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -85153,14 +85153,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SubnetStatus(ref common.ReferenceCall
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.SubnetSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SubnetSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -85358,14 +85358,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_TemplateDeploymentStatus(ref common.R
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.TemplateDeploymentSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TemplateDeploymentSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -85670,14 +85670,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointStatus(ref comm
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpointSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpointSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -85941,14 +85941,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerProfileStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerProfileSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerProfileSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -86132,14 +86132,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_UserAssignedIdentityStatus(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.UserAssignedIdentitySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.UserAssignedIdentitySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -86358,14 +86358,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineDataDiskAttachmentStatu
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineDataDiskAttachmentSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineDataDiskAttachmentSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -86578,14 +86578,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineExtensionStatus(ref com
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineExtensionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineExtensionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -87883,14 +87883,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineScaleSetStatus(ref comm
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineScaleSetSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineScaleSetSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -88694,14 +88694,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -89091,14 +89091,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualNetworkGatewayConnectionStatus
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkGatewayConnectionSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkGatewayConnectionSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -89493,14 +89493,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualNetworkGatewayStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkGatewaySpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkGatewaySpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -89735,14 +89735,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualNetworkPeeringStatus(ref commo
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkPeeringSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkPeeringSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
 
@@ -89936,13 +89936,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualNetworkStatus(ref common.Refer
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis.State"),
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"kubeform.dev/kubeform/apis.State", "kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkSpec"},
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkSpec", "kubeform.dev/kubeform/apis/base/v1alpha1.State"},
 	}
 }
