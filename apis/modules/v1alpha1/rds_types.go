@@ -11,6 +11,7 @@ import (
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
+// +kubebuilder:subresource:status
 
 type RDS struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
