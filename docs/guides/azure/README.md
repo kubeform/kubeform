@@ -45,26 +45,10 @@ This config creates an Azure Redis Cache. We'll create the exact configuration u
 
 ## 1. Create CRD:
 
-At first, create the CRD of Azure Redis Cache using the following yaml:
-
-```yaml
-apiVersion: apiextensions.k8s.io/v1beta1
-kind: CustomResourceDefinition
-metadata:
-  name: rediscaches.azurerm.kubeform.com
-spec:
-  group: azurerm.kubeform.com
-  version: v1alpha1
-  names:
-    kind: RedisCache
-    plural: rediscaches
-  scope: Namespaced
-```
-
-Save it in a file (eg. `crd.yaml`) then apply it using kubectl.
+At first, create the CRD of Azure Redis using the following kubectl command:
 
 ```bash
-$ kubectl apply -f crd.yaml
+$ kubectl apply -f https://github.com/kubeform/kubeform/raw/master/api/crds/azurerm.kubeform.com_rediscaches.yaml
 ```
 
 ## 2. Create Azure Provider Secret

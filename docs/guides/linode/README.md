@@ -47,26 +47,10 @@ This config creates a Linode Instance. We'll create the exact configuration usin
 
 ## 1. Create CRD:
 
-At first, create the CRD of Linode Instance using the following yaml:
-
-```yaml
-apiVersion: apiextensions.k8s.io/v1beta1
-kind: CustomResourceDefinition
-metadata:
-  name: instances.linode.kubeform.com
-spec:
-  group: linode.kubeform.com
-  version: v1alpha1
-  names:
-    kind: Instance
-    plural: instances
-  scope: Namespaced
-```
-
-Save it in a file (eg. `crd.yaml`) then apply it using kubectl.
+At first, create the CRD of Linode Instance using the following kubectl command:
 
 ```bash
-$ kubectl apply -f crd.yaml
+$ kubectl apply -f https://github.com/kubeform/kubeform/raw/master/api/crds/linode.kubeform.com_instances.yaml
 ```
 
 ## 2. Create Linode Provider Secret

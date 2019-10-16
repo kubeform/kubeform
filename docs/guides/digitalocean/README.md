@@ -45,26 +45,10 @@ This config creates a Digitalocean Database Cluster. We'll create the exact conf
 
 ## 1. Create CRD:
 
-At first, create the CRD of Digitalocean Database Cluster using the following yaml:
-
-```yaml
-apiVersion: apiextensions.k8s.io/v1beta1
-kind: CustomResourceDefinition
-metadata:
-  name: databaseclusters.digitalocean.kubeform.com
-spec:
-  group: digitalocean.kubeform.com
-  version: v1alpha1
-  names:
-    kind: DatabaseCluster
-    plural: databaseclusters
-  scope: Namespaced
-```
-
-Save it in a file (eg. `crd.yaml`) then apply it using kubectl.
+At first, create the CRD of Digitalocean Database Cluster using the following kubectl command:
 
 ```bash
-$ kubectl apply -f crd.yaml
+$ kubectl apply -f https://github.com/kubeform/kubeform/raw/master/api/crds/digitalocean.kubeform.com_databaseclusters.yaml
 ```
 
 ## 2. Create DigitalOcean Provider Secret

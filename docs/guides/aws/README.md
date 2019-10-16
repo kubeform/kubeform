@@ -55,25 +55,10 @@ This config creates an AWS RDS instance. We'll create the exact configuration us
 
 ## 1. Create CRD:
 
-At first, create the CRD of AWS RDS using the following yaml:
-
-```yaml
-apiVersion: apiextensions.k8s.io/v1beta1
-kind: CustomResourceDefinition
-metadata:
-    name: dbinstances.aws.kubeform.com
-spec:
-    group: aws.kubeform.com
-    version: v1alpha1
-    kind: DbInstance
-    plural: dbinstances
-    scope: Namespaced
-```
-
-Save it in a file (eg. `crd.yaml`) then apply it using kubectl.
+At first, create the CRD of AWS RDS using the following kubectl command:
 
 ```bash
-$ kubectl apply -f crd.yaml
+$ kubectl apply -f https://github.com/kubeform/kubeform/raw/master/api/crds/aws.kubeform.com_dbinstances.yaml
 ```
 
 ## 2. Create AWS Provider Secret

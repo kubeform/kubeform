@@ -46,26 +46,10 @@ This config creates a Google Storage Bucket. We'll create the exact configuratio
 
 ## 1. Create CRD:
 
-At first, create the CRD of Google Storage Bucket using the following yaml:
-
-```yaml
-apiVersion: apiextensions.k8s.io/v1beta1
-kind: CustomResourceDefinition
-metadata:
-  name: storagebuckets.google.kubeform.com
-spec:
-  group: google.kubeform.com
-  version: v1alpha1
-  names:
-    kind: StorageBucket
-    plural: storagebuckets
-  scope: Namespaced
-```
-
-Save it in a file (eg. `crd.yaml`) then apply it using kubectl.
+At first, create the CRD of Google Storage Bucket using the following kubectl command:
 
 ```bash
-$ kubectl apply -f crd.yaml
+$ kubectl apply -f https://github.com/kubeform/kubeform/raw/master/api/crds/google.kubeform.com_storagebuckets.yaml
 ```
 
 ## 2. Create Google Provider Secret
