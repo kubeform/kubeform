@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: opsworkspermissions.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: OpsworksPermission
@@ -458,6 +462,8 @@ spec:
               - providerRef
               - userArn
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

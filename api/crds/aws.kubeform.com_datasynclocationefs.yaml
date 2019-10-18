@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: datasynclocationefs.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: DatasyncLocationEfs
@@ -494,6 +498,8 @@ spec:
               - efsFileSystemArn
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

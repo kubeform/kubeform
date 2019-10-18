@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: computeregionautoscalers.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
     kind: ComputeRegionAutoscaler
@@ -576,6 +580,8 @@ spec:
               - providerRef
               - target
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

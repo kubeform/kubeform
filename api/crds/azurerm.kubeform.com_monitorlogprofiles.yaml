@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: monitorlogprofiles.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: MonitorLogProfile
@@ -500,6 +504,8 @@ spec:
               - providerRef
               - retentionPolicy
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

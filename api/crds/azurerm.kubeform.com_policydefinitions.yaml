@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: policydefinitions.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: PolicyDefinition
@@ -480,6 +484,8 @@ spec:
               - policyType
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

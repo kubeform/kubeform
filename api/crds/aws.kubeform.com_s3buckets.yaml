@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: s3buckets.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: S3Bucket
@@ -1042,6 +1046,8 @@ spec:
               required:
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: hdinsightmlservicesclusters.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: HdinsightMlServicesCluster
@@ -766,6 +770,8 @@ spec:
               - storageAccount
               - tier
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

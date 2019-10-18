@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: dxpublicvirtualinterfaces.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: DxPublicVirtualInterface
@@ -506,6 +510,8 @@ spec:
               - routeFilterPrefixes
               - vlan
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: rdsclusterparametergroups.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: RdsClusterParameterGroup
@@ -494,6 +498,8 @@ spec:
               - family
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

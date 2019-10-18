@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: networksecurityrules.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: NetworkSecurityRule
@@ -550,6 +554,8 @@ spec:
               - providerRef
               - resourceGroupName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

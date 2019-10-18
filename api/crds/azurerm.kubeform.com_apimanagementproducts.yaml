@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: apimanagementproducts.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: ApiManagementProduct
@@ -488,6 +492,8 @@ spec:
               - resourceGroupName
               - subscriptionRequired
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

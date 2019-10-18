@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: sshkeys.linode.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: linode.kubeform.com
   names:
     kind: Sshkey
@@ -460,6 +464,8 @@ spec:
               - providerRef
               - sshKey
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

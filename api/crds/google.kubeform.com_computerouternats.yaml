@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: computerouternats.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
     kind: ComputeRouterNAT
@@ -528,6 +532,8 @@ spec:
               - providerRef
               - router
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: storagegatewaysmbfileshares.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: StoragegatewaySmbFileShare
@@ -510,6 +514,8 @@ spec:
               - providerRef
               - roleArn
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: projectiambindings.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
     kind: ProjectIamBinding
@@ -460,6 +464,8 @@ spec:
               - providerRef
               - role
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

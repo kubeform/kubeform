@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: appautoscalingpolicies.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: AppautoscalingPolicy
@@ -648,6 +652,8 @@ spec:
               - scalableDimension
               - serviceNamespace
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

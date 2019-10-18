@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: datafactories.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: DataFactory
@@ -584,6 +588,8 @@ spec:
               - providerRef
               - resourceGroupName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

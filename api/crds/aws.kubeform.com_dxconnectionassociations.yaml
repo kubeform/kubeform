@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: dxconnectionassociations.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: DxConnectionAssociation
@@ -448,6 +452,8 @@ spec:
               - lagID
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

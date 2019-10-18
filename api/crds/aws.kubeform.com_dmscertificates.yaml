@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: dmscertificates.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: DmsCertificate
@@ -464,6 +468,8 @@ spec:
               - certificateID
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: opsworksrdsdbinstances.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: OpsworksRdsDbInstance
@@ -472,6 +476,8 @@ spec:
               - rdsDbInstanceArn
               - stackID
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

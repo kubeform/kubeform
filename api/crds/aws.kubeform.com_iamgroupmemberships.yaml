@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: iamgroupmemberships.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: IamGroupMembership
@@ -458,6 +462,8 @@ spec:
               - providerRef
               - users
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

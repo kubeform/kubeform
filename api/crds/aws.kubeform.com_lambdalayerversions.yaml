@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: lambdalayerversions.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: LambdaLayerVersion
@@ -500,6 +504,8 @@ spec:
               - layerName
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: streamanalyticsfunctionjavascriptudfs.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: StreamAnalyticsFunctionJavascriptUdf
@@ -504,6 +508,8 @@ spec:
               - script
               - streamAnalyticsJobName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

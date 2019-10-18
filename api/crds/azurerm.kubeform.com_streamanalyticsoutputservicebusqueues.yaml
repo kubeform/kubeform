@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: streamanalyticsoutputservicebusqueues.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: StreamAnalyticsOutputServicebusQueue
@@ -524,6 +528,8 @@ spec:
               - sharedAccessPolicyName
               - streamAnalyticsJobName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

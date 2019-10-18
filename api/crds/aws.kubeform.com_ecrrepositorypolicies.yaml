@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: ecrrepositorypolicies.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: EcrRepositoryPolicy
@@ -452,6 +456,8 @@ spec:
               - providerRef
               - repository
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

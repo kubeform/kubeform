@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: dmsreplicationinstances.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: DmsReplicationInstance
@@ -524,6 +528,8 @@ spec:
               - replicationInstanceClass
               - replicationInstanceID
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

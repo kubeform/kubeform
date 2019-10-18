@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: floatingipassignments.digitalocean.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: digitalocean.kubeform.com
   names:
     kind: FloatingIPAssignment
@@ -448,6 +452,8 @@ spec:
               - ipAddress
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: computeinstances.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
     kind: ComputeInstance
@@ -814,6 +818,8 @@ spec:
               - networkInterface
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

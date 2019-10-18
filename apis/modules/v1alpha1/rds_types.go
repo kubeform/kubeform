@@ -5,6 +5,7 @@ import (
 
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 )
 
 // +genclient
@@ -12,6 +13,7 @@ import (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 // +kubebuilder:subresource:status
+// +kubebuilder:printcolumn:name="Phase",type=string,JSONPath=`.status.phase`
 
 type RDS struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -250,6 +252,8 @@ type RDSStatus struct {
 	Output *RDSOutput `json:"output,omitempty"`
 	// +optional
 	State string `json:"state,omitempty"`
+	// +optional
+	Phase base.Phase `json:"phase,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: backupselections.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: BackupSelection
@@ -492,6 +496,8 @@ spec:
               - planID
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

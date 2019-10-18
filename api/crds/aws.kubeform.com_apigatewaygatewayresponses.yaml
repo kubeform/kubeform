@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: apigatewaygatewayresponses.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: ApiGatewayGatewayResponse
@@ -468,6 +472,8 @@ spec:
               - responseType
               - restAPIID
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: loganalyticsworkspaces.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: LogAnalyticsWorkspace
@@ -498,6 +502,8 @@ spec:
               - resourceGroupName
               - sku
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

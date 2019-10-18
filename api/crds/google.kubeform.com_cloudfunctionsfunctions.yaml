@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: cloudfunctionsfunctions.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
     kind: CloudfunctionsFunction
@@ -570,6 +574,8 @@ spec:
               - sourceArchiveBucket
               - sourceArchiveObject
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

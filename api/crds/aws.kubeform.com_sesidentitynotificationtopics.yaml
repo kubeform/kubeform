@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: sesidentitynotificationtopics.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: SesIdentityNotificationTopic
@@ -452,6 +456,8 @@ spec:
               - notificationType
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

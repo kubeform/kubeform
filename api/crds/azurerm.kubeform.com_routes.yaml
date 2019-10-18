@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: routes.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: Route
@@ -470,6 +474,8 @@ spec:
               - resourceGroupName
               - routeTableName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

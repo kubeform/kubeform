@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: defaultsubnets.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: DefaultSubnet
@@ -486,6 +490,8 @@ spec:
               - availabilityZone
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: cloudtrails.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: Cloudtrail
@@ -554,6 +558,8 @@ spec:
               - providerRef
               - s3BucketName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

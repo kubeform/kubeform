@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: projectorganizationpolicies.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
     kind: ProjectOrganizationPolicy
@@ -564,6 +568,8 @@ spec:
               - project
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

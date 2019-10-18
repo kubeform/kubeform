@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: lbs.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: Lb
@@ -552,6 +556,8 @@ spec:
               - providerRef
               - resourceGroupName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

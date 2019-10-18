@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: kubernetesclusters.digitalocean.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: digitalocean.kubeform.com
   names:
     kind: KubernetesCluster
@@ -598,6 +602,8 @@ spec:
               - region
               - version
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

@@ -1211,6 +1211,9 @@
         "output": {
           "$ref": "#/definitions/dev.kubeform.kubeform.apis.aws.v1alpha1.AlbSpec"
         },
+        "phase": {
+          "type": "string"
+        },
         "state": {
           "$ref": "#/definitions/dev.kubeform.kubeform.apis.base.v1alpha1.State"
         }

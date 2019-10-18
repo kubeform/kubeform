@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: servicebustopicauthorizationrules.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: ServicebusTopicAuthorizationRule
@@ -490,6 +494,8 @@ spec:
               - resourceGroupName
               - topicName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

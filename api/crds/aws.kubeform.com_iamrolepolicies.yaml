@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: iamrolepolicies.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: IamRolePolicy
@@ -456,6 +460,8 @@ spec:
               - providerRef
               - role
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

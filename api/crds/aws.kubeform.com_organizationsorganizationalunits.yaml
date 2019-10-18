@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: organizationsorganizationalunits.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: OrganizationsOrganizationalUnit
@@ -478,6 +482,8 @@ spec:
               - parentID
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

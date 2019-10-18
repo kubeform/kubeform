@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: athenanamedqueries.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: AthenaNamedQuery
@@ -458,6 +462,8 @@ spec:
               - providerRef
               - query
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

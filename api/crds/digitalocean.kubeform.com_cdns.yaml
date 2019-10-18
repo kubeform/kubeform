@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: cdns.digitalocean.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: digitalocean.kubeform.com
   names:
     kind: Cdn
@@ -481,6 +485,8 @@ spec:
               - origin
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

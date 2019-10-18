@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: dnssrvrecords.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: DnsSrvRecord
@@ -506,6 +510,8 @@ spec:
               - ttl
               - zoneName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

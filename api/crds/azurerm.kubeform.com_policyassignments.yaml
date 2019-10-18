@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: policyassignments.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: PolicyAssignment
@@ -502,6 +506,8 @@ spec:
               - providerRef
               - scope
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: spotdatafeedsubscriptions.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: SpotDatafeedSubscription
@@ -446,6 +450,8 @@ spec:
               - bucket
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

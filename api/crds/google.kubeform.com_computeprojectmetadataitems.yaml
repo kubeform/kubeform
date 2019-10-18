@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: computeprojectmetadataitems.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
     kind: ComputeProjectMetadataItem
@@ -452,6 +456,8 @@ spec:
               - providerRef
               - value
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

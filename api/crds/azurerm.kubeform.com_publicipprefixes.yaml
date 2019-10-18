@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: publicipprefixes.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: PublicIPPrefix
@@ -484,6 +488,8 @@ spec:
               - providerRef
               - resourceGroupName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

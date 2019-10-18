@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: ec2capacityreservations.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: Ec2CapacityReservation
@@ -492,6 +496,8 @@ spec:
               - instanceType
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

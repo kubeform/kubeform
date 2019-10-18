@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: keyvaultkeys.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: KeyVaultKey
@@ -504,6 +508,8 @@ spec:
               - name
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

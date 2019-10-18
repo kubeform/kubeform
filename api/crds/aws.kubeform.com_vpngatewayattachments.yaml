@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: vpngatewayattachments.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: VpnGatewayAttachment
@@ -448,6 +452,8 @@ spec:
               - vpcID
               - vpnGatewayID
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

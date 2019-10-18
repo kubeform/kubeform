@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: emrclusters.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: EmrCluster
@@ -802,6 +806,8 @@ spec:
               - releaseLabel
               - serviceRole
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

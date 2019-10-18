@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: bigtableinstances.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
     kind: BigtableInstance
@@ -506,6 +510,8 @@ spec:
               - name
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

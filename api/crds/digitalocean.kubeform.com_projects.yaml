@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: projects.digitalocean.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: digitalocean.kubeform.com
   names:
     kind: Project
@@ -497,6 +501,8 @@ spec:
               - name
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

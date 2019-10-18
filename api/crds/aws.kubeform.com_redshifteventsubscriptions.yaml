@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: redshifteventsubscriptions.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: RedshiftEventSubscription
@@ -492,6 +496,8 @@ spec:
               - providerRef
               - snsTopicArn
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

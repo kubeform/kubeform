@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: sfnstatemachines.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: SfnStateMachine
@@ -470,6 +474,8 @@ spec:
               - providerRef
               - roleArn
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: opsworksganglialayers.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: OpsworksGangliaLayer
@@ -598,6 +602,8 @@ spec:
               - providerRef
               - stackID
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

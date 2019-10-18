@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: vpcs.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: Vpc
@@ -510,6 +514,8 @@ spec:
               - cidrBlock
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

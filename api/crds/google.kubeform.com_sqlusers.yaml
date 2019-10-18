@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: sqlusers.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
     kind: SqlUser
@@ -474,6 +478,8 @@ spec:
               - name
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

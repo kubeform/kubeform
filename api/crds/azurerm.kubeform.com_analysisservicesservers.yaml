@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: analysisservicesservers.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: AnalysisServicesServer
@@ -514,6 +518,8 @@ spec:
               - resourceGroupName
               - sku
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

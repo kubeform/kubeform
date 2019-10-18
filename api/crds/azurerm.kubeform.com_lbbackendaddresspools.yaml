@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: lbbackendaddresspools.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: LbBackendAddressPool
@@ -476,6 +480,8 @@ spec:
               - providerRef
               - resourceGroupName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

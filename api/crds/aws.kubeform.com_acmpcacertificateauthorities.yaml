@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: acmpcacertificateauthorities.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: AcmpcaCertificateAuthority
@@ -626,6 +630,8 @@ spec:
               - certificateAuthorityConfiguration
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

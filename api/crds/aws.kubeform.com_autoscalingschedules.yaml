@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: autoscalingschedules.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: AutoscalingSchedule
@@ -476,6 +480,8 @@ spec:
               - providerRef
               - scheduledActionName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: route53zoneassociations.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: Route53ZoneAssociation
@@ -452,6 +456,8 @@ spec:
               - vpcID
               - zoneID
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

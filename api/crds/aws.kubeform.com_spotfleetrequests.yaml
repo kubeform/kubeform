@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: spotfleetrequests.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: SpotFleetRequest
@@ -702,6 +706,8 @@ spec:
               - providerRef
               - targetCapacity
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

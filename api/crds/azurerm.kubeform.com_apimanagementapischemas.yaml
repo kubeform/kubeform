@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: apimanagementapischemas.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: ApiManagementAPISchema
@@ -472,6 +476,8 @@ spec:
               - schemaID
               - value
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

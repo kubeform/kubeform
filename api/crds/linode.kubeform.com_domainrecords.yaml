@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: domainrecords.linode.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: linode.kubeform.com
   names:
     kind: DomainRecord
@@ -537,6 +541,8 @@ spec:
               - recordType
               - target
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

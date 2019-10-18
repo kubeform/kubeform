@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: apigatewayrequestvalidators.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: ApiGatewayRequestValidator
@@ -456,6 +460,8 @@ spec:
               - providerRef
               - restAPIID
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

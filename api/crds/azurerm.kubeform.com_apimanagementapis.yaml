@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: apimanagementapis.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: ApiManagementAPI
@@ -588,6 +592,8 @@ spec:
               - resourceGroupName
               - revision
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

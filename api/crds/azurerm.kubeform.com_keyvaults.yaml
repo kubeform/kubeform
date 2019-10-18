@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: keyvaults.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: KeyVault
@@ -610,6 +614,8 @@ spec:
               - resourceGroupName
               - tenantID
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

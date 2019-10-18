@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: keypairs.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: KeyPair
@@ -454,6 +458,8 @@ spec:
               - providerRef
               - publicKey
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

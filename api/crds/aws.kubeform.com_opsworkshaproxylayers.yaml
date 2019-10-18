@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: opsworkshaproxylayers.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: OpsworksHaproxyLayer
@@ -610,6 +614,8 @@ spec:
               - stackID
               - statsPassword
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

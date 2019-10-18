@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: applicationsecuritygroups.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: ApplicationSecurityGroup
@@ -462,6 +466,8 @@ spec:
               - providerRef
               - resourceGroupName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

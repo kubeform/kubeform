@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: sesreceiptrulesets.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: SesReceiptRuleSet
@@ -442,6 +446,8 @@ spec:
               - providerRef
               - ruleSetName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

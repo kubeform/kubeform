@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: xraysamplingrules.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: XraySamplingRule
@@ -514,6 +518,8 @@ spec:
               - urlPath
               - version
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

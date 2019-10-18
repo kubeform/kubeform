@@ -6,9 +6,13 @@ metadata:
     app: kubeform
   name: projectservices.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
-    kind: ProjectService
+    kind: ProjectServices
     plural: projectservices
   scope: ""
   subresources:
@@ -414,11 +418,13 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            service:
-              type: string
+            services:
+              items:
+                type: string
+              type: array
           required:
           - providerRef
-          - service
+          - services
           type: object
         status:
           properties:
@@ -444,12 +450,16 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
-                service:
-                  type: string
+                services:
+                  items:
+                    type: string
+                  type: array
               required:
               - providerRef
-              - service
+              - services
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

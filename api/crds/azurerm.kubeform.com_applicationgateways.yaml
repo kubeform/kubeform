@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: applicationgateways.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: ApplicationGateway
@@ -1656,6 +1660,8 @@ spec:
               - resourceGroupName
               - sku
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

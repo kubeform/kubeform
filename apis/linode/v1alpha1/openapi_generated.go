@@ -12593,6 +12593,12 @@ func schema_kubeform_apis_linode_v1alpha1_DomainRecordStatus(ref common.Referenc
 							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
 			},
 		},
@@ -12760,6 +12766,12 @@ func schema_kubeform_apis_linode_v1alpha1_DomainStatus(ref common.ReferenceCallb
 					"state": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
+						},
+					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
@@ -12991,6 +13003,12 @@ func schema_kubeform_apis_linode_v1alpha1_ImageStatus(ref common.ReferenceCallba
 					"state": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
+						},
+					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
@@ -14101,6 +14119,12 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceStatus(ref common.ReferenceCal
 							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
 			},
 		},
@@ -14447,6 +14471,12 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigStatus(ref common.Re
 							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
 			},
 		},
@@ -14690,6 +14720,12 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerNodeStatus(ref common.Refe
 							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
 			},
 		},
@@ -14861,6 +14897,12 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerStatus(ref common.Referenc
 							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
 			},
 		},
@@ -15020,6 +15062,12 @@ func schema_kubeform_apis_linode_v1alpha1_RdnsStatus(ref common.ReferenceCallbac
 					"state": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
+						},
+					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
@@ -15188,6 +15236,12 @@ func schema_kubeform_apis_linode_v1alpha1_SshkeyStatus(ref common.ReferenceCallb
 					"state": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
+						},
+					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
@@ -15489,6 +15543,12 @@ func schema_kubeform_apis_linode_v1alpha1_StackscriptStatus(ref common.Reference
 							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
 						},
 					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
 			},
 		},
@@ -15669,6 +15729,12 @@ func schema_kubeform_apis_linode_v1alpha1_TokenStatus(ref common.ReferenceCallba
 					"state": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
+						},
+					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
@@ -15872,6 +15938,12 @@ func schema_kubeform_apis_linode_v1alpha1_VolumeStatus(ref common.ReferenceCallb
 					"state": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
+						},
+					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},

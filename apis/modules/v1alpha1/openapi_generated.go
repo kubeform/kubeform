@@ -12952,6 +12952,12 @@ func schema_kubeform_apis_modules_v1alpha1_RDSStatus(ref common.ReferenceCallbac
 							Format: "",
 						},
 					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
 			},
 		},

@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: rds.modules.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: modules.kubeform.com
   names:
     kind: RDS
@@ -743,6 +747,8 @@ spec:
               - thisDbSubnetGroupArn
               - thisDbSubnetGroupID
               type: object
+            phase:
+              type: string
             state:
               type: string
           type: object

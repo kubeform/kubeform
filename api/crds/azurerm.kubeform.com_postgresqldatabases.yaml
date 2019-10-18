@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: postgresqldatabases.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: PostgresqlDatabase
@@ -466,6 +470,8 @@ spec:
               - resourceGroupName
               - serverName
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

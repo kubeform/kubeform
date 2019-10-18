@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: volumes.digitalocean.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: digitalocean.kubeform.com
   names:
     kind: Volume
@@ -496,6 +500,8 @@ spec:
               - region
               - size
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

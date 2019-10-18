@@ -11,6 +11,7 @@ import (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 // +kubebuilder:subresource:status
+// +kubebuilder:printcolumn:name="Phase",type=string,JSONPath=`.status.phase`
 
 type ComputeRegionDisk struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -86,6 +87,8 @@ type ComputeRegionDiskStatus struct {
 	Output *ComputeRegionDiskSpec `json:"output,omitempty"`
 	// +optional
 	State *base.State `json:"state,omitempty"`
+	// +optional
+	Phase base.Phase `json:"phase,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

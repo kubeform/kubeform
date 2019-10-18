@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: dataprocjobs.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
     kind: DataprocJob
@@ -1134,6 +1138,8 @@ spec:
               - placement
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

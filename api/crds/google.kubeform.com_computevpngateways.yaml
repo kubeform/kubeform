@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: computevpngateways.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
     kind: ComputeVPNGateway
@@ -468,6 +472,8 @@ spec:
               - network
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

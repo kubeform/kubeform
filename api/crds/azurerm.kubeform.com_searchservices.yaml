@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: searchservices.azurerm.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: azurerm.kubeform.com
   names:
     kind: SearchService
@@ -484,6 +488,8 @@ spec:
               - resourceGroupName
               - sku
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

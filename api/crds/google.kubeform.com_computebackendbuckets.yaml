@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: computebackendbuckets.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
     kind: ComputeBackendBucket
@@ -468,6 +472,8 @@ spec:
               - name
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

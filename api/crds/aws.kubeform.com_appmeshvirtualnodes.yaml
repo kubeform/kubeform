@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: appmeshvirtualnodes.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: AppmeshVirtualNode
@@ -686,6 +690,8 @@ spec:
               - providerRef
               - spec
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

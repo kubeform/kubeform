@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: storagebucketiampolicies.google.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: google.kubeform.com
   names:
     kind: StorageBucketIamPolicy
@@ -452,6 +456,8 @@ spec:
               - policyData
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:

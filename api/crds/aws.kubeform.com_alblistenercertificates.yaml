@@ -6,6 +6,10 @@ metadata:
     app: kubeform
   name: alblistenercertificates.aws.kubeform.com
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.phase
+    name: Phase
+    type: string
   group: aws.kubeform.com
   names:
     kind: AlbListenerCertificate
@@ -448,6 +452,8 @@ spec:
               - listenerArn
               - providerRef
               type: object
+            phase:
+              type: string
             state:
               properties:
                 lineage:
