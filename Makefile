@@ -138,10 +138,24 @@ clientset:
 		--env HTTPS_PROXY=$(HTTPS_PROXY)                 \
 		$(CODE_GENERATOR_IMAGE)                          \
 		/go/src/k8s.io/code-generator/generate-groups.sh \
+			deepcopy                                     \
+			$(GO_PKG)/$(REPO)/client                     \
+			$(GO_PKG)/$(REPO)/apis                       \
+			"base:v1alpha1"                              \
+			--go-header-file "./hack/boilerplate.go.txt"
+	@docker run --rm                                     \
+		-u $$(id -u):$$(id -g)                           \
+		-v /tmp:/.cache                                  \
+		-v $$(pwd):$(DOCKER_REPO_ROOT)                   \
+		-w $(DOCKER_REPO_ROOT)                           \
+		--env HTTP_PROXY=$(HTTP_PROXY)                   \
+		--env HTTPS_PROXY=$(HTTPS_PROXY)                 \
+		$(CODE_GENERATOR_IMAGE)                          \
+		/go/src/k8s.io/code-generator/generate-groups.sh \
 			all                                          \
 			$(GO_PKG)/$(REPO)/client                     \
 			$(GO_PKG)/$(REPO)/apis                       \
-			"$(API_GROUPS)"                              \
+			"$(subst base:v1alpha1,, $(API_GROUPS))"     \
 			--go-header-file "./hack/boilerplate.go.txt"
 
 # Generate openapi schema

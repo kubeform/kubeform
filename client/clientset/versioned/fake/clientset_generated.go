@@ -29,8 +29,6 @@ import (
 	fakeawsv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/aws/v1alpha1/fake"
 	azurermv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/azurerm/v1alpha1"
 	fakeazurermv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/azurerm/v1alpha1/fake"
-	basev1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/base/v1alpha1"
-	fakebasev1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/base/v1alpha1/fake"
 	digitaloceanv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/digitalocean/v1alpha1"
 	fakedigitaloceanv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/digitalocean/v1alpha1/fake"
 	googlev1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/google/v1alpha1"
@@ -91,11 +89,6 @@ func (c *Clientset) AwsV1alpha1() awsv1alpha1.AwsV1alpha1Interface {
 // AzurermV1alpha1 retrieves the AzurermV1alpha1Client
 func (c *Clientset) AzurermV1alpha1() azurermv1alpha1.AzurermV1alpha1Interface {
 	return &fakeazurermv1alpha1.FakeAzurermV1alpha1{Fake: &c.Fake}
-}
-
-// BaseV1alpha1 retrieves the BaseV1alpha1Client
-func (c *Clientset) BaseV1alpha1() basev1alpha1.BaseV1alpha1Interface {
-	return &fakebasev1alpha1.FakeBaseV1alpha1{Fake: &c.Fake}
 }
 
 // DigitaloceanV1alpha1 retrieves the DigitaloceanV1alpha1Client
