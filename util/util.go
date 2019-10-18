@@ -90,6 +90,8 @@ func GenerateProviderAPIS(providerName, version string, schmeas []map[string]*sc
 		}
 	}
 
+	sort.Strings(structNames)
+
 	apiData := ApisData{
 		ProviderName: providerName,
 		Version:      version,
