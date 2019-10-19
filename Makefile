@@ -61,7 +61,7 @@ ARCH := $(if $(GOARCH),$(GOARCH),$(shell go env GOARCH))
 BASEIMAGE_PROD   ?= gcr.io/distroless/static
 BASEIMAGE_DBG    ?= debian:stretch
 
-GO_VERSION       ?= 1.12.10
+GO_VERSION       ?= 1.12.12
 BUILD_IMAGE      ?= appscode/golang-dev:$(GO_VERSION)-stretch
 
 OUTBIN = bin/$(OS)_$(ARCH)/$(BIN)
@@ -321,7 +321,7 @@ lint: $(BUILD_DIRS)
 	    --env GO111MODULE=on                                    \
 	    --env GOFLAGS="-mod=vendor"                             \
 	    $(BUILD_IMAGE)                                          \
-	    golangci-lint run --enable $(ADDTL_LINTERS) --deadline=10m --skip-dirs-use-default --skip-dirs=client,vendor --skip-files="generated.*\.go$\"
+	    golangci-lint run --enable $(ADDTL_LINTERS) --timeout=10m --skip-dirs-use-default --skip-dirs=client,vendor --skip-files="generated.*\.go$\"
 
 $(BUILD_DIRS):
 	@mkdir -p $@
