@@ -12,7 +12,7 @@ spec:
     type: string
   group: google.kubeform.com
   names:
-    kind: ProjectServices
+    kind: ProjectService
     plural: projectservices
   scope: ""
   subresources:
@@ -418,13 +418,11 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            services:
-              items:
-                type: string
-              type: array
+            service:
+              type: string
           required:
           - providerRef
-          - services
+          - service
           type: object
         status:
           properties:
@@ -450,13 +448,11 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
-                services:
-                  items:
-                    type: string
-                  type: array
+                service:
+                  type: string
               required:
               - providerRef
-              - services
+              - service
               type: object
             phase:
               type: string
