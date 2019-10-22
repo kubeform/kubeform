@@ -49,7 +49,7 @@ endif
 ### These variables should not need tweaking.
 ###
 
-SRC_DIRS := *.go apis client util hack/gencrd # directories which hold app source (not vendored)
+SRC_DIRS := *.go apis client data util hack/gencrd # directories which hold app source (not vendored)
 
 DOCKER_PLATFORMS := linux/amd64 linux/arm linux/arm64
 BIN_PLATFORMS    := $(DOCKER_PLATFORMS)
@@ -188,7 +188,7 @@ openapi-%:
 			--go-header-file "./hack/boilerplate.go.txt" \
 			--input-dirs "$(GO_PKG)/$(REPO)/apis/$(subst _,/,$*),k8s.io/apimachinery/pkg/apis/meta/v1,k8s.io/apimachinery/pkg/api/resource,k8s.io/apimachinery/pkg/runtime,k8s.io/apimachinery/pkg/util/intstr,k8s.io/api/core/v1" \
 			--output-package "$(GO_PKG)/$(REPO)/apis/$(subst _,/,$*)" \
-			--report-filename api/api-rules/violation_exceptions.list
+			--report-filename /tmp/violation_exceptions.list
 
 # Generate CRD manifests
 .PHONY: gen-crds
@@ -344,13 +344,13 @@ verify-modules:
 	fi
 
 .PHONY: verify-gen
-verify-gen: gen
+verify-gen: gen fmt
 	@if !(git diff --exit-code HEAD); then \
 		echo "generated files are out of date, run make gen"; exit 1; \
 	fi
 
 .PHONY: ci
-ci: verify-gen lint test #build cover
+ci: verify lint test #build cover
 
 .PHONY: clean
 clean:

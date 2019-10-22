@@ -23,10 +23,6 @@ import (
 	sync "sync"
 	time "time"
 
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
-	cache "k8s.io/client-go/tools/cache"
 	versioned "kubeform.dev/kubeform/client/clientset/versioned"
 	aws "kubeform.dev/kubeform/client/informers/externalversions/aws"
 	azurerm "kubeform.dev/kubeform/client/informers/externalversions/azurerm"
@@ -35,6 +31,11 @@ import (
 	internalinterfaces "kubeform.dev/kubeform/client/informers/externalversions/internalinterfaces"
 	linode "kubeform.dev/kubeform/client/informers/externalversions/linode"
 	modules "kubeform.dev/kubeform/client/informers/externalversions/modules"
+
+	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	runtime "k8s.io/apimachinery/pkg/runtime"
+	schema "k8s.io/apimachinery/pkg/runtime/schema"
+	cache "k8s.io/client-go/tools/cache"
 )
 
 // SharedInformerOption defines the functional option type for SharedInformerFactory.

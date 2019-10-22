@@ -19,10 +19,11 @@ limitations under the License.
 package v1alpha1
 
 import (
-	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
-	rest "k8s.io/client-go/rest"
 	v1alpha1 "kubeform.dev/kubeform/apis/modules/v1alpha1"
 	"kubeform.dev/kubeform/client/clientset/versioned/scheme"
+
+	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
+	rest "k8s.io/client-go/rest"
 )
 
 type ModulesV1alpha1Interface interface {

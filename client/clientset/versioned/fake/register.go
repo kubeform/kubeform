@@ -19,17 +19,18 @@ limitations under the License.
 package fake
 
 import (
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
-	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
-	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	awsv1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
 	azurermv1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 	digitaloceanv1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 	googlev1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
 	linodev1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
 	modulesv1alpha1 "kubeform.dev/kubeform/apis/modules/v1alpha1"
+
+	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	runtime "k8s.io/apimachinery/pkg/runtime"
+	schema "k8s.io/apimachinery/pkg/runtime/schema"
+	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
+	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 )
 
 var scheme = runtime.NewScheme()
