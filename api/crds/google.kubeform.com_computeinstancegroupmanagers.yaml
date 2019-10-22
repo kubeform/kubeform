@@ -658,8 +658,8 @@ spec:
                 terraform_version:
                   type: string
                 version:
-                  description: A Number represents a JSON number literal.
-                  type: string
+                  format: int64
+                  type: integer
               required:
               - lineage
               - serial

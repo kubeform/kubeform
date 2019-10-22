@@ -12,7 +12,7 @@ spec:
     type: string
   group: google.kubeform.com
   names:
-    kind: ProjectService
+    kind: ProjectServices
     plural: projectservices
   scope: ""
   subresources:
@@ -418,11 +418,13 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            service:
-              type: string
+            services:
+              items:
+                type: string
+              type: array
           required:
           - providerRef
-          - service
+          - services
           type: object
         status:
           properties:
@@ -448,11 +450,13 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
-                service:
-                  type: string
+                services:
+                  items:
+                    type: string
+                  type: array
               required:
               - providerRef
-              - service
+              - services
               type: object
             phase:
               type: string
@@ -466,8 +470,8 @@ spec:
                 terraform_version:
                   type: string
                 version:
-                  description: A Number represents a JSON number literal.
-                  type: string
+                  format: int64
+                  type: integer
               required:
               - lineage
               - serial

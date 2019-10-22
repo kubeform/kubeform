@@ -12229,8 +12229,8 @@ func schema_kubeform_apis_base_v1alpha1_State(ref common.ReferenceCallback) comm
 				Properties: map[string]spec.Schema{
 					"version": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"integer"},
+							Format: "int64",
 						},
 					},
 					"terraform_version": {
