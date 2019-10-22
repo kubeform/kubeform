@@ -16,11 +16,12 @@ import (
 	"strings"
 	"text/template"
 
+	"kubeform.dev/kubeform/data"
+
 	. "github.com/dave/jennifer/jen"
 	"github.com/gobuffalo/flect"
 	"github.com/hashicorp/terraform-config-inspect/tfconfig"
 	"github.com/hashicorp/terraform/helper/schema"
-	"kubeform.dev/kubeform/data"
 )
 
 type TypeData struct {

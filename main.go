@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strings"
 
+	"kubeform.dev/kubeform/util"
+
 	"github.com/gobuffalo/flect"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
@@ -12,7 +14,6 @@ import (
 	"github.com/terraform-providers/terraform-provider-digitalocean/digitalocean"
 	"github.com/terraform-providers/terraform-provider-google/google"
 	"github.com/terraform-providers/terraform-provider-linode/linode"
-	"kubeform.dev/kubeform/util"
 )
 
 func main() {

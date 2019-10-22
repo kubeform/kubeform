@@ -17,9 +17,10 @@ limitations under the License.
 package install
 
 import (
+	"kubeform.dev/kubeform/apis/google/v1alpha1"
+
 	"k8s.io/apimachinery/pkg/runtime"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
-	"kubeform.dev/kubeform/apis/google/v1alpha1"
 )
 
 // Install registers the API group and adds types to a scheme

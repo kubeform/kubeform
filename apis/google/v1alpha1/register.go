@@ -1,10 +1,11 @@
 package v1alpha1
 
 import (
+	"kubeform.dev/kubeform/apis/google"
+
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
-	"kubeform.dev/kubeform/apis/google"
 )
 
 var SchemeGroupVersion = schema.GroupVersion{Group: google.GroupName, Version: "v1alpha1"}

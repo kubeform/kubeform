@@ -5,6 +5,10 @@ import (
 	"os"
 	"path/filepath"
 
+	awsinstall "kubeform.dev/kubeform/apis/aws/install"
+	awsv1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
+	basev1alpha1 "kubeform.dev/kubeform/apis/base/v1alpha1"
+
 	gort "github.com/appscode/go/runtime"
 	"github.com/go-openapi/spec"
 	"github.com/golang/glog"
@@ -12,9 +16,6 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/kube-openapi/pkg/common"
 	"kmodules.xyz/client-go/openapi"
-	awsinstall "kubeform.dev/kubeform/apis/aws/install"
-	awsv1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
-	basev1alpha1 "kubeform.dev/kubeform/apis/base/v1alpha1"
 )
 
 func generateSwaggerJson() {

@@ -1,10 +1,11 @@
 package v1alpha1
 
 import (
+	"kubeform.dev/kubeform/apis/digitalocean"
+
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
-	"kubeform.dev/kubeform/apis/digitalocean"
 )
 
 var SchemeGroupVersion = schema.GroupVersion{Group: digitalocean.GroupName, Version: "v1alpha1"}

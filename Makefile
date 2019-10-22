@@ -251,7 +251,10 @@ fmt: $(BUILD_DIRS)
 	    --env HTTP_PROXY=$(HTTP_PROXY)                          \
 	    --env HTTPS_PROXY=$(HTTPS_PROXY)                        \
 	    $(BUILD_IMAGE)                                          \
-	    ./hack/fmt.sh $(SRC_DIRS)
+	    /bin/bash -c "                                          \
+	        REPO_PKG=$(GO_PKG)                                  \
+	        ./hack/fmt.sh $(SRC_DIRS)                           \
+	    "
 
 .PHONY: build
 build: $(BUILD_DIRS)
@@ -336,13 +339,13 @@ verify: verify-modules verify-gen
 verify-modules:
 	GO111MODULE=on go mod tidy
 	GO111MODULE=on go mod vendor
-	@if !(git diff --quiet HEAD); then \
+	@if !(git diff --exit-code HEAD); then \
 		echo "go module files are out of date"; exit 1; \
 	fi
 
 .PHONY: verify-gen
 verify-gen: gen
-	@if !(git diff --quiet HEAD); then \
+	@if !(git diff --exit-code HEAD); then \
 		echo "generated files are out of date, run make gen"; exit 1; \
 	fi
 
