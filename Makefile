@@ -125,6 +125,7 @@ gen-types: $(BUILD_DIRS)
 	        VERSION=$(VERSION)                                  \
 	        ./hack/run.sh                                       \
 	    "
+	@$(MAKE) fmt --no-print-directory
 
 # Generate a typed clientset
 .PHONY: clientset
@@ -236,7 +237,7 @@ gen-crd-docs:
 manifests: gen-crds label-crds
 
 .PHONY: gen
-gen: gen-types fmt clientset openapi manifests
+gen: gen-types clientset openapi manifests
 
 fmt: $(BUILD_DIRS)
 	@docker run                                                 \
