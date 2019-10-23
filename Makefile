@@ -325,7 +325,7 @@ lint: $(BUILD_DIRS)
 	    --env GO111MODULE=on                                    \
 	    --env GOFLAGS="-mod=vendor"                             \
 	    $(BUILD_IMAGE)                                          \
-	    golangci-lint run --enable $(ADDTL_LINTERS) --timeout=10m --skip-files="generated.*\.go$\" --skip-dirs-use-default --skip-dirs=client,vendor
+	    golangci-lint run --enable $(ADDTL_LINTERS) --timeout=60m --skip-files="generated.*\.go$\" --skip-dirs-use-default --skip-dirs=client,vendor
 
 $(BUILD_DIRS):
 	@mkdir -p $@
@@ -347,7 +347,7 @@ verify-modules:
 .PHONY: verify-gen
 verify-gen: gen fmt
 	@if !(git diff --exit-code HEAD); then \
-		echo "generated files are out of date, run make gen"; exit 1; \
+		echo "files are out of date, run make gen fmt"; exit 1; \
 	fi
 
 .PHONY: ci

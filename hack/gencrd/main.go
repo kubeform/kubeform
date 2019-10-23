@@ -46,6 +46,7 @@ func generateSwaggerJson() {
 			awsv1alpha1.GetOpenAPIDefinitions,
 			basev1alpha1.GetOpenAPIDefinitions,
 		},
+		//nolint:govet
 		Resources: []openapi.TypeInfo{
 			{awsv1alpha1.SchemeGroupVersion, "albs", "Alb", true},
 		},
