@@ -20,7 +20,9 @@ section_menu_id: reference
 | `status` | ***[MskClusterStatus](#mskclusterstatus)***||
 ## MskClusterSpec
 
+
 Appears on:[MskCluster](#mskcluster), [MskClusterStatus](#mskclusterstatus)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -42,7 +44,9 @@ Appears on:[MskCluster](#mskcluster), [MskClusterStatus](#mskclusterstatus)
 | `zookeeperConnectString` | ***string***| ***(Optional)*** |
 ## MskClusterSpecBrokerNodeGroupInfo
 
+
 Appears on:[MskClusterSpec](#mskclusterspec)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -53,21 +57,27 @@ Appears on:[MskClusterSpec](#mskclusterspec)
 | `securityGroups` | ***[]string***||
 ## MskClusterSpecClientAuthentication
 
+
 Appears on:[MskClusterSpec](#mskclusterspec)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `tls` | ***[[]MskClusterSpecClientAuthenticationTls](#mskclusterspecclientauthenticationtls)***| ***(Optional)*** |
 ## MskClusterSpecClientAuthenticationTls
 
+
 Appears on:[MskClusterSpecClientAuthentication](#mskclusterspecclientauthentication)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `certificateAuthorityArns` | ***[]string***| ***(Optional)*** |
 ## MskClusterSpecConfigurationInfo
 
+
 Appears on:[MskClusterSpec](#mskclusterspec)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -75,7 +85,9 @@ Appears on:[MskClusterSpec](#mskclusterspec)
 | `revision` | ***int***||
 ## MskClusterSpecEncryptionInfo
 
+
 Appears on:[MskClusterSpec](#mskclusterspec)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -83,7 +95,9 @@ Appears on:[MskClusterSpec](#mskclusterspec)
 | `encryptionInTransit` | ***[[]MskClusterSpecEncryptionInfoEncryptionInTransit](#mskclusterspecencryptioninfoencryptionintransit)***| ***(Optional)*** |
 ## MskClusterSpecEncryptionInfoEncryptionInTransit
 
+
 Appears on:[MskClusterSpecEncryptionInfo](#mskclusterspecencryptioninfo)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -91,7 +105,9 @@ Appears on:[MskClusterSpecEncryptionInfo](#mskclusterspecencryptioninfo)
 | `inCluster` | ***bool***| ***(Optional)*** |
 ## MskClusterStatus
 
+
 Appears on:[MskCluster](#mskcluster)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |

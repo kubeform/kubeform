@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[VolumeSpec](#volumespec)***||
 | `status` | ***[VolumeStatus](#volumestatus)***||
+## Phase(`string` alias)
+
+Appears on:[VolumeStatus](#volumestatus)
+
 ## VolumeSpec
 
 Appears on:[Volume](#volume), [VolumeStatus](#volumestatus)
@@ -45,5 +49,6 @@ Appears on:[Volume](#volume)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[VolumeSpec](#volumespec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

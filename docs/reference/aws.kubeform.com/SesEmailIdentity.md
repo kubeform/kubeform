@@ -20,7 +20,9 @@ section_menu_id: reference
 | `status` | ***[SesEmailIdentityStatus](#sesemailidentitystatus)***||
 ## SesEmailIdentitySpec
 
+
 Appears on:[SesEmailIdentity](#sesemailidentity), [SesEmailIdentityStatus](#sesemailidentitystatus)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -30,7 +32,9 @@ Appears on:[SesEmailIdentity](#sesemailidentity), [SesEmailIdentityStatus](#sese
 | `email` | ***string***||
 ## SesEmailIdentityStatus
 
+
 Appears on:[SesEmailIdentity](#sesemailidentity)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -46,5 +46,10 @@ Appears on:[ElasticacheParameterGroup](#elasticacheparametergroup)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[ElasticacheParameterGroupSpec](#elasticacheparametergroupspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[ElasticacheParameterGroupStatus](#elasticacheparametergroupstatus)
+
 ---

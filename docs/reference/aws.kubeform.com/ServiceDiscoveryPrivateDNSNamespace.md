@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ServiceDiscoveryPrivateDNSNamespaceSpec](#servicediscoveryprivatednsnamespacespec)***||
 | `status` | ***[ServiceDiscoveryPrivateDNSNamespaceStatus](#servicediscoveryprivatednsnamespacestatus)***||
+## Phase(`string` alias)
+
+Appears on:[ServiceDiscoveryPrivateDNSNamespaceStatus](#servicediscoveryprivatednsnamespacestatus)
+
 ## ServiceDiscoveryPrivateDNSNamespaceSpec
 
 Appears on:[ServiceDiscoveryPrivateDNSNamespace](#servicediscoveryprivatednsnamespace), [ServiceDiscoveryPrivateDNSNamespaceStatus](#servicediscoveryprivatednsnamespacestatus)
@@ -39,5 +43,6 @@ Appears on:[ServiceDiscoveryPrivateDNSNamespace](#servicediscoveryprivatednsname
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[ServiceDiscoveryPrivateDNSNamespaceSpec](#servicediscoveryprivatednsnamespacespec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

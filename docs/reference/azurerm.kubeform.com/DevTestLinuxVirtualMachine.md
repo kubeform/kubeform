@@ -72,7 +72,12 @@ Appears on:[DevTestLinuxVirtualMachine](#devtestlinuxvirtualmachine)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[DevTestLinuxVirtualMachineSpec](#devtestlinuxvirtualmachinespec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[DevTestLinuxVirtualMachineStatus](#devtestlinuxvirtualmachinestatus)
+
 ---
 ## Sensitive Values
 | Name | Type | Description |

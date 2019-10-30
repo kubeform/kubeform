@@ -20,7 +20,9 @@ section_menu_id: reference
 | `status` | ***[Ec2TransitGatewayVpcAttachmentAccepterStatus](#ec2transitgatewayvpcattachmentaccepterstatus)***||
 ## Ec2TransitGatewayVpcAttachmentAccepterSpec
 
+
 Appears on:[Ec2TransitGatewayVpcAttachmentAccepter](#ec2transitgatewayvpcattachmentaccepter), [Ec2TransitGatewayVpcAttachmentAccepterStatus](#ec2transitgatewayvpcattachmentaccepterstatus)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -38,7 +40,9 @@ Appears on:[Ec2TransitGatewayVpcAttachmentAccepter](#ec2transitgatewayvpcattachm
 | `vpcOwnerID` | ***string***| ***(Optional)*** |
 ## Ec2TransitGatewayVpcAttachmentAccepterStatus
 
+
 Appears on:[Ec2TransitGatewayVpcAttachmentAccepter](#ec2transitgatewayvpcattachmentaccepter)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |

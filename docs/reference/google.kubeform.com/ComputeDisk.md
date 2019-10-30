@@ -80,7 +80,12 @@ Appears on:[ComputeDisk](#computedisk)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[ComputeDiskSpec](#computediskspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[ComputeDiskStatus](#computediskstatus)
+
 ---
 ## Sensitive Values
 | Name | Type | Description |

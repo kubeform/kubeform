@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[SpannerDatabaseIamPolicySpec](#spannerdatabaseiampolicyspec)***||
 | `status` | ***[SpannerDatabaseIamPolicyStatus](#spannerdatabaseiampolicystatus)***||
+## Phase(`string` alias)
+
+Appears on:[SpannerDatabaseIamPolicyStatus](#spannerdatabaseiampolicystatus)
+
 ## SpannerDatabaseIamPolicySpec
 
 Appears on:[SpannerDatabaseIamPolicy](#spannerdatabaseiampolicy), [SpannerDatabaseIamPolicyStatus](#spannerdatabaseiampolicystatus)
@@ -39,5 +43,6 @@ Appears on:[SpannerDatabaseIamPolicy](#spannerdatabaseiampolicy)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[SpannerDatabaseIamPolicySpec](#spannerdatabaseiampolicyspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

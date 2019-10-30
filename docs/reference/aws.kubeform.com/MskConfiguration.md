@@ -20,7 +20,9 @@ section_menu_id: reference
 | `status` | ***[MskConfigurationStatus](#mskconfigurationstatus)***||
 ## MskConfigurationSpec
 
+
 Appears on:[MskConfiguration](#mskconfiguration), [MskConfigurationStatus](#mskconfigurationstatus)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,7 +36,9 @@ Appears on:[MskConfiguration](#mskconfiguration), [MskConfigurationStatus](#mskc
 | `serverProperties` | ***string***||
 ## MskConfigurationStatus
 
+
 Appears on:[MskConfiguration](#mskconfiguration)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |

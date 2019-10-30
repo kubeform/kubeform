@@ -41,5 +41,10 @@ Appears on:[CloudhsmV2Hsm](#cloudhsmv2hsm)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[CloudhsmV2HsmSpec](#cloudhsmv2hsmspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[CloudhsmV2HsmStatus](#cloudhsmv2hsmstatus)
+
 ---

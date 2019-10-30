@@ -61,5 +61,10 @@ Appears on:[NetworkSecurityGroup](#networksecuritygroup)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[NetworkSecurityGroupSpec](#networksecuritygroupspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[NetworkSecurityGroupStatus](#networksecuritygroupstatus)
+
 ---

@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[PostgresqlServerSpec](#postgresqlserverspec)***||
 | `status` | ***[PostgresqlServerStatus](#postgresqlserverstatus)***||
+## Phase(`string` alias)
+
+Appears on:[PostgresqlServerStatus](#postgresqlserverstatus)
+
 ## PostgresqlServerSpec
 
 Appears on:[PostgresqlServer](#postgresqlserver), [PostgresqlServerStatus](#postgresqlserverstatus)
@@ -64,7 +68,8 @@ Appears on:[PostgresqlServer](#postgresqlserver)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[PostgresqlServerSpec](#postgresqlserverspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---
 ## Sensitive Values
 | Name | Type | Description |

@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[VpcPeeringConnectionSpec](#vpcpeeringconnectionspec)***||
 | `status` | ***[VpcPeeringConnectionStatus](#vpcpeeringconnectionstatus)***||
+## Phase(`string` alias)
+
+Appears on:[VpcPeeringConnectionStatus](#vpcpeeringconnectionstatus)
+
 ## VpcPeeringConnectionSpec
 
 Appears on:[VpcPeeringConnection](#vpcpeeringconnection), [VpcPeeringConnectionStatus](#vpcpeeringconnectionstatus)
@@ -61,5 +65,6 @@ Appears on:[VpcPeeringConnection](#vpcpeeringconnection)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[VpcPeeringConnectionSpec](#vpcpeeringconnectionspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

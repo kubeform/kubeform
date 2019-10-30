@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[VpcIpv4CIDRBlockAssociationSpec](#vpcipv4cidrblockassociationspec)***||
 | `status` | ***[VpcIpv4CIDRBlockAssociationStatus](#vpcipv4cidrblockassociationstatus)***||
+## Phase(`string` alias)
+
+Appears on:[VpcIpv4CIDRBlockAssociationStatus](#vpcipv4cidrblockassociationstatus)
+
 ## VpcIpv4CIDRBlockAssociationSpec
 
 Appears on:[VpcIpv4CIDRBlockAssociation](#vpcipv4cidrblockassociation), [VpcIpv4CIDRBlockAssociationStatus](#vpcipv4cidrblockassociationstatus)
@@ -36,5 +40,6 @@ Appears on:[VpcIpv4CIDRBlockAssociation](#vpcipv4cidrblockassociation)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[VpcIpv4CIDRBlockAssociationSpec](#vpcipv4cidrblockassociationspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

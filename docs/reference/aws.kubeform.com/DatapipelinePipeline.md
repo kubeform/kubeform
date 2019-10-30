@@ -20,7 +20,9 @@ section_menu_id: reference
 | `status` | ***[DatapipelinePipelineStatus](#datapipelinepipelinestatus)***||
 ## DatapipelinePipelineSpec
 
+
 Appears on:[DatapipelinePipeline](#datapipelinepipeline), [DatapipelinePipelineStatus](#datapipelinepipelinestatus)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,7 +33,9 @@ Appears on:[DatapipelinePipeline](#datapipelinepipeline), [DatapipelinePipelineS
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## DatapipelinePipelineStatus
 
+
 Appears on:[DatapipelinePipeline](#datapipelinepipeline)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |

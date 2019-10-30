@@ -20,7 +20,9 @@ section_menu_id: reference
 | `status` | ***[AthenaWorkgroupStatus](#athenaworkgroupstatus)***||
 ## AthenaWorkgroupSpec
 
+
 Appears on:[AthenaWorkgroup](#athenaworkgroup), [AthenaWorkgroupStatus](#athenaworkgroupstatus)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -34,7 +36,9 @@ Appears on:[AthenaWorkgroup](#athenaworkgroup), [AthenaWorkgroupStatus](#athenaw
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## AthenaWorkgroupSpecConfiguration
 
+
 Appears on:[AthenaWorkgroupSpec](#athenaworkgroupspec)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -44,7 +48,9 @@ Appears on:[AthenaWorkgroupSpec](#athenaworkgroupspec)
 | `resultConfiguration` | ***[[]AthenaWorkgroupSpecConfigurationResultConfiguration](#athenaworkgroupspecconfigurationresultconfiguration)***| ***(Optional)*** |
 ## AthenaWorkgroupSpecConfigurationResultConfiguration
 
+
 Appears on:[AthenaWorkgroupSpecConfiguration](#athenaworkgroupspecconfiguration)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -52,7 +58,9 @@ Appears on:[AthenaWorkgroupSpecConfiguration](#athenaworkgroupspecconfiguration)
 | `outputLocation` | ***string***| ***(Optional)*** |
 ## AthenaWorkgroupSpecConfigurationResultConfigurationEncryptionConfiguration
 
+
 Appears on:[AthenaWorkgroupSpecConfigurationResultConfiguration](#athenaworkgroupspecconfigurationresultconfiguration)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -60,7 +68,9 @@ Appears on:[AthenaWorkgroupSpecConfigurationResultConfiguration](#athenaworkgrou
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
 ## AthenaWorkgroupStatus
 
+
 Appears on:[AthenaWorkgroup](#athenaworkgroup)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |

@@ -115,7 +115,12 @@ Appears on:[HdinsightKafkaCluster](#hdinsightkafkacluster)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[HdinsightKafkaClusterSpec](#hdinsightkafkaclusterspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[HdinsightKafkaClusterStatus](#hdinsightkafkaclusterstatus)
+
 ---
 ## Sensitive Values
 | Name | Type | Description |

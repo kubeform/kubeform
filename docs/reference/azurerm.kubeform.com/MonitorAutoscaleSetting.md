@@ -138,5 +138,10 @@ Appears on:[MonitorAutoscaleSetting](#monitorautoscalesetting)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[MonitorAutoscaleSettingSpec](#monitorautoscalesettingspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[MonitorAutoscaleSettingStatus](#monitorautoscalesettingstatus)
+
 ---

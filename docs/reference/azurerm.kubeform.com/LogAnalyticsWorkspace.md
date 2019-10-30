@@ -43,7 +43,12 @@ Appears on:[LogAnalyticsWorkspace](#loganalyticsworkspace)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[LogAnalyticsWorkspaceSpec](#loganalyticsworkspacespec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[LogAnalyticsWorkspaceStatus](#loganalyticsworkspacestatus)
+
 ---
 ## Sensitive Values
 | Name | Type | Description |

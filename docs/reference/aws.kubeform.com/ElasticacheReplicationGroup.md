@@ -71,7 +71,12 @@ Appears on:[ElasticacheReplicationGroup](#elasticachereplicationgroup)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[ElasticacheReplicationGroupSpec](#elasticachereplicationgroupspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[ElasticacheReplicationGroupStatus](#elasticachereplicationgroupstatus)
+
 ---
 ## Sensitive Values
 | Name | Type | Description |

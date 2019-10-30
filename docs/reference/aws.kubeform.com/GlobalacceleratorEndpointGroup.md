@@ -20,7 +20,9 @@ section_menu_id: reference
 | `status` | ***[GlobalacceleratorEndpointGroupStatus](#globalacceleratorendpointgroupstatus)***||
 ## GlobalacceleratorEndpointGroupSpec
 
+
 Appears on:[GlobalacceleratorEndpointGroup](#globalacceleratorendpointgroup), [GlobalacceleratorEndpointGroupStatus](#globalacceleratorendpointgroupstatus)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,7 +39,9 @@ Appears on:[GlobalacceleratorEndpointGroup](#globalacceleratorendpointgroup), [G
 | `trafficDialPercentage` | ***encoding/json.Number***| ***(Optional)*** |
 ## GlobalacceleratorEndpointGroupSpecEndpointConfiguration
 
+
 Appears on:[GlobalacceleratorEndpointGroupSpec](#globalacceleratorendpointgroupspec)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -45,7 +49,9 @@ Appears on:[GlobalacceleratorEndpointGroupSpec](#globalacceleratorendpointgroups
 | `weight` | ***int***| ***(Optional)*** |
 ## GlobalacceleratorEndpointGroupStatus
 
+
 Appears on:[GlobalacceleratorEndpointGroup](#globalacceleratorendpointgroup)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |

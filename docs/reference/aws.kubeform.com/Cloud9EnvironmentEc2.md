@@ -42,5 +42,10 @@ Appears on:[Cloud9EnvironmentEc2](#cloud9environmentec2)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[Cloud9EnvironmentEc2Spec](#cloud9environmentec2spec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[Cloud9EnvironmentEc2Status](#cloud9environmentec2status)
+
 ---

@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[RdsGlobalClusterSpec](#rdsglobalclusterspec)***||
 | `status` | ***[RdsGlobalClusterStatus](#rdsglobalclusterstatus)***||
+## Phase(`string` alias)
+
+Appears on:[RdsGlobalClusterStatus](#rdsglobalclusterstatus)
+
 ## RdsGlobalClusterSpec
 
 Appears on:[RdsGlobalCluster](#rdsglobalcluster), [RdsGlobalClusterStatus](#rdsglobalclusterstatus)
@@ -42,5 +46,6 @@ Appears on:[RdsGlobalCluster](#rdsglobalcluster)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[RdsGlobalClusterSpec](#rdsglobalclusterspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

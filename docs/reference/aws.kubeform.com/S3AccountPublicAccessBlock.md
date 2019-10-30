@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[S3AccountPublicAccessBlockSpec](#s3accountpublicaccessblockspec)***||
 | `status` | ***[S3AccountPublicAccessBlockStatus](#s3accountpublicaccessblockstatus)***||
+## Phase(`string` alias)
+
+Appears on:[S3AccountPublicAccessBlockStatus](#s3accountpublicaccessblockstatus)
+
 ## S3AccountPublicAccessBlockSpec
 
 Appears on:[S3AccountPublicAccessBlock](#s3accountpublicaccessblock), [S3AccountPublicAccessBlockStatus](#s3accountpublicaccessblockstatus)
@@ -39,5 +43,6 @@ Appears on:[S3AccountPublicAccessBlock](#s3accountpublicaccessblock)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[S3AccountPublicAccessBlockSpec](#s3accountpublicaccessblockspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

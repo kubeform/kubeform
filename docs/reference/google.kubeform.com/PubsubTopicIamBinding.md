@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[PubsubTopicIamBindingSpec](#pubsubtopiciambindingspec)***||
 | `status` | ***[PubsubTopicIamBindingStatus](#pubsubtopiciambindingstatus)***||
+## Phase(`string` alias)
+
+Appears on:[PubsubTopicIamBindingStatus](#pubsubtopiciambindingstatus)
+
 ## PubsubTopicIamBindingSpec
 
 Appears on:[PubsubTopicIamBinding](#pubsubtopiciambinding), [PubsubTopicIamBindingStatus](#pubsubtopiciambindingstatus)
@@ -39,5 +43,6 @@ Appears on:[PubsubTopicIamBinding](#pubsubtopiciambinding)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[PubsubTopicIamBindingSpec](#pubsubtopiciambindingspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

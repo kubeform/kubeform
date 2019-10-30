@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[SesDomainDkimSpec](#sesdomaindkimspec)***||
 | `status` | ***[SesDomainDkimStatus](#sesdomaindkimstatus)***||
+## Phase(`string` alias)
+
+Appears on:[SesDomainDkimStatus](#sesdomaindkimstatus)
+
 ## SesDomainDkimSpec
 
 Appears on:[SesDomainDkim](#sesdomaindkim), [SesDomainDkimStatus](#sesdomaindkimstatus)
@@ -36,5 +40,6 @@ Appears on:[SesDomainDkim](#sesdomaindkim)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[SesDomainDkimSpec](#sesdomaindkimspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

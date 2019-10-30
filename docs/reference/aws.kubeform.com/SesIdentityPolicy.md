@@ -20,7 +20,9 @@ section_menu_id: reference
 | `status` | ***[SesIdentityPolicyStatus](#sesidentitypolicystatus)***||
 ## SesIdentityPolicySpec
 
+
 Appears on:[SesIdentityPolicy](#sesidentitypolicy), [SesIdentityPolicyStatus](#sesidentitypolicystatus)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -31,7 +33,9 @@ Appears on:[SesIdentityPolicy](#sesidentitypolicy), [SesIdentityPolicyStatus](#s
 | `policy` | ***string***||
 ## SesIdentityPolicyStatus
 
+
 Appears on:[SesIdentityPolicy](#sesidentitypolicy)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |

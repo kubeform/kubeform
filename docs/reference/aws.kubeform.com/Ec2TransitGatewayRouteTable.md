@@ -38,5 +38,10 @@ Appears on:[Ec2TransitGatewayRouteTable](#ec2transitgatewayroutetable)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[Ec2TransitGatewayRouteTableSpec](#ec2transitgatewayroutetablespec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[Ec2TransitGatewayRouteTableStatus](#ec2transitgatewayroutetablestatus)
+
 ---

@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[StoragegatewayCachedIscsiVolumeSpec](#storagegatewaycachediscsivolumespec)***||
 | `status` | ***[StoragegatewayCachedIscsiVolumeStatus](#storagegatewaycachediscsivolumestatus)***||
+## Phase(`string` alias)
+
+Appears on:[StoragegatewayCachedIscsiVolumeStatus](#storagegatewaycachediscsivolumestatus)
+
 ## StoragegatewayCachedIscsiVolumeSpec
 
 Appears on:[StoragegatewayCachedIscsiVolume](#storagegatewaycachediscsivolume), [StoragegatewayCachedIscsiVolumeStatus](#storagegatewaycachediscsivolumestatus)
@@ -47,5 +51,6 @@ Appears on:[StoragegatewayCachedIscsiVolume](#storagegatewaycachediscsivolume)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[StoragegatewayCachedIscsiVolumeSpec](#storagegatewaycachediscsivolumespec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

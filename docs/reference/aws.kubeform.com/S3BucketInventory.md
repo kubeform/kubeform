@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[S3BucketInventorySpec](#s3bucketinventoryspec)***||
 | `status` | ***[S3BucketInventoryStatus](#s3bucketinventorystatus)***||
+## Phase(`string` alias)
+
+Appears on:[S3BucketInventoryStatus](#s3bucketinventorystatus)
+
 ## S3BucketInventorySpec
 
 Appears on:[S3BucketInventory](#s3bucketinventory), [S3BucketInventoryStatus](#s3bucketinventorystatus)
@@ -93,5 +97,6 @@ Appears on:[S3BucketInventory](#s3bucketinventory)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[S3BucketInventorySpec](#s3bucketinventoryspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

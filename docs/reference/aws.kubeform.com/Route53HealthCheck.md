@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[Route53HealthCheckSpec](#route53healthcheckspec)***||
 | `status` | ***[Route53HealthCheckStatus](#route53healthcheckstatus)***||
+## Phase(`string` alias)
+
+Appears on:[Route53HealthCheckStatus](#route53healthcheckstatus)
+
 ## Route53HealthCheckSpec
 
 Appears on:[Route53HealthCheck](#route53healthcheck), [Route53HealthCheckStatus](#route53healthcheckstatus)
@@ -53,5 +57,6 @@ Appears on:[Route53HealthCheck](#route53healthcheck)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[Route53HealthCheckSpec](#route53healthcheckspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

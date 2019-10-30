@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[TransferSSHKeySpec](#transfersshkeyspec)***||
 | `status` | ***[TransferSSHKeyStatus](#transfersshkeystatus)***||
+## Phase(`string` alias)
+
+Appears on:[TransferSSHKeyStatus](#transfersshkeystatus)
+
 ## TransferSSHKeySpec
 
 Appears on:[TransferSSHKey](#transfersshkey), [TransferSSHKeyStatus](#transfersshkeystatus)
@@ -37,5 +41,6 @@ Appears on:[TransferSSHKey](#transfersshkey)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[TransferSSHKeySpec](#transfersshkeyspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

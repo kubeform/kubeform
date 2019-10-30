@@ -20,7 +20,9 @@ section_menu_id: reference
 | `status` | ***[AppsyncFunctionStatus](#appsyncfunctionstatus)***||
 ## AppsyncFunctionSpec
 
+
 Appears on:[AppsyncFunction](#appsyncfunction), [AppsyncFunctionStatus](#appsyncfunctionstatus)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -37,7 +39,9 @@ Appears on:[AppsyncFunction](#appsyncfunction), [AppsyncFunctionStatus](#appsync
 | `responseMappingTemplate` | ***string***||
 ## AppsyncFunctionStatus
 
+
 Appears on:[AppsyncFunction](#appsyncfunction)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |

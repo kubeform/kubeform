@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[ProjectIamCustomRoleSpec](#projectiamcustomrolespec)***||
 | `status` | ***[ProjectIamCustomRoleStatus](#projectiamcustomrolestatus)***||
+## Phase(`string` alias)
+
+Appears on:[ProjectIamCustomRoleStatus](#projectiamcustomrolestatus)
+
 ## ProjectIamCustomRoleSpec
 
 Appears on:[ProjectIamCustomRole](#projectiamcustomrole), [ProjectIamCustomRoleStatus](#projectiamcustomrolestatus)
@@ -41,5 +45,6 @@ Appears on:[ProjectIamCustomRole](#projectiamcustomrole)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[ProjectIamCustomRoleSpec](#projectiamcustomrolespec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

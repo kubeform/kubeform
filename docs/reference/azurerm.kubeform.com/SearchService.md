@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[SearchServiceSpec](#searchservicespec)***||
 | `status` | ***[SearchServiceStatus](#searchservicestatus)***||
+## Phase(`string` alias)
+
+Appears on:[SearchServiceStatus](#searchservicestatus)
+
 ## SearchServiceSpec
 
 Appears on:[SearchService](#searchservice), [SearchServiceStatus](#searchservicestatus)
@@ -43,5 +47,6 @@ Appears on:[SearchService](#searchservice)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[SearchServiceSpec](#searchservicespec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---

@@ -44,7 +44,12 @@ Appears on:[EventhubNamespace_](#eventhubnamespace_)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[EventhubNamespace_Spec](#eventhubnamespace_spec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[EventhubNamespace_Status](#eventhubnamespace_status)
+
 ---
 ## Sensitive Values
 | Name | Type | Description |

@@ -49,5 +49,10 @@ Appears on:[NotificationHubNamespace_](#notificationhubnamespace_)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[NotificationHubNamespace_Spec](#notificationhubnamespace_spec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
+## Phase(`string` alias)
+
+Appears on:[NotificationHubNamespace_Status](#notificationhubnamespace_status)
+
 ---

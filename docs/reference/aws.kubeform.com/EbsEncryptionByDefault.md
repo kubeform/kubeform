@@ -20,7 +20,9 @@ section_menu_id: reference
 | `status` | ***[EbsEncryptionByDefaultStatus](#ebsencryptionbydefaultstatus)***||
 ## EbsEncryptionByDefaultSpec
 
+
 Appears on:[EbsEncryptionByDefault](#ebsencryptionbydefault), [EbsEncryptionByDefaultStatus](#ebsencryptionbydefaultstatus)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -29,7 +31,9 @@ Appears on:[EbsEncryptionByDefault](#ebsencryptionbydefault), [EbsEncryptionByDe
 | `enabled` | ***bool***| ***(Optional)*** |
 ## EbsEncryptionByDefaultStatus
 
+
 Appears on:[EbsEncryptionByDefault](#ebsencryptionbydefault)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |

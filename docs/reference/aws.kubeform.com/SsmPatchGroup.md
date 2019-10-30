@@ -18,6 +18,10 @@ section_menu_id: reference
 | `metadata` | ***[Kubernetes meta/v1.ObjectMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#objectmeta-v1-meta)***|Refer to the Kubernetes API documentation for the fields of the `metadata` field.|
 | `spec` | ***[SsmPatchGroupSpec](#ssmpatchgroupspec)***||
 | `status` | ***[SsmPatchGroupStatus](#ssmpatchgroupstatus)***||
+## Phase(`string` alias)
+
+Appears on:[SsmPatchGroupStatus](#ssmpatchgroupstatus)
+
 ## SsmPatchGroupSpec
 
 Appears on:[SsmPatchGroup](#ssmpatchgroup), [SsmPatchGroupStatus](#ssmpatchgroupstatus)
@@ -36,5 +40,6 @@ Appears on:[SsmPatchGroup](#ssmpatchgroup)
 | ------ | ----- | ----------- |
 | `observedGeneration` | ***int64***| ***(Optional)*** Resource generation, which is updated on mutation by the API Server.|
 | `output` | ***[SsmPatchGroupSpec](#ssmpatchgroupspec)***| ***(Optional)*** |
-| `state` | ***kubeform.dev/kubeform/apis.State***| ***(Optional)*** |
+| `state` | ***kubeform.dev/kubeform/apis/base/v1alpha1.State***| ***(Optional)*** |
+| `phase` | ***[Phase](#phase)***| ***(Optional)*** |
 ---
