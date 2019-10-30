@@ -351,7 +351,7 @@ verify-gen: gen fmt
 	fi
 
 .PHONY: ci
-ci: verify lint test #build cover
+ci: lint test #build cover
 
 .PHONY: clean
 clean:

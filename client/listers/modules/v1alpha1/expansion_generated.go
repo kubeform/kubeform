@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// GoogleServiceAccountListerExpansion allows custom methods to be added to
+// GoogleServiceAccountLister.
+type GoogleServiceAccountListerExpansion interface{}
+
+// GoogleServiceAccountNamespaceListerExpansion allows custom methods to be added to
+// GoogleServiceAccountNamespaceLister.
+type GoogleServiceAccountNamespaceListerExpansion interface{}
+
 // RDSListerExpansion allows custom methods to be added to
 // RDSLister.
 type RDSListerExpansion interface{}

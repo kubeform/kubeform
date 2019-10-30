@@ -208,40 +208,58 @@ type RDSSpec struct {
 
 type RDSOutput struct {
 	// The address of the RDS instance
+	// +optional
 	ThisDbInstanceAddress string `json:"thisDbInstanceAddress" tf:"this_db_instance_address"`
 	// The ARN of the RDS instance
+	// +optional
 	ThisDbInstanceArn string `json:"thisDbInstanceArn" tf:"this_db_instance_arn"`
 	// The availability zone of the RDS instance
+	// +optional
 	ThisDbInstanceAvailabilityZone string `json:"thisDbInstanceAvailabilityZone" tf:"this_db_instance_availability_zone"`
 	// The connection endpoint
+	// +optional
 	ThisDbInstanceEndpoint string `json:"thisDbInstanceEndpoint" tf:"this_db_instance_endpoint"`
 	// The canonical hosted zone ID of the DB instance (to be used in a Route 53 Alias record)
+	// +optional
 	ThisDbInstanceHostedZoneID string `json:"thisDbInstanceHostedZoneID" tf:"this_db_instance_hosted_zone_id"`
 	// The RDS instance ID
+	// +optional
 	ThisDbInstanceID string `json:"thisDbInstanceID" tf:"this_db_instance_id"`
 	// The database name
+	// +optional
 	ThisDbInstanceName string `json:"thisDbInstanceName" tf:"this_db_instance_name"`
 	// The database password (this password may be old, because Terraform doesn't track it after initial creation)
+	// +optional
 	ThisDbInstancePassword string `json:"thisDbInstancePassword" tf:"this_db_instance_password"`
 	// The database port
+	// +optional
 	ThisDbInstancePort string `json:"thisDbInstancePort" tf:"this_db_instance_port"`
 	// The RDS Resource ID of this instance
+	// +optional
 	ThisDbInstanceResourceID string `json:"thisDbInstanceResourceID" tf:"this_db_instance_resource_id"`
 	// The RDS instance status
+	// +optional
 	ThisDbInstanceStatus string `json:"thisDbInstanceStatus" tf:"this_db_instance_status"`
 	// The master username for the database
+	// +optional
 	ThisDbInstanceUsername string `json:"thisDbInstanceUsername" tf:"this_db_instance_username"`
 	// The ARN of the db option group
+	// +optional
 	ThisDbOptionGroupArn string `json:"thisDbOptionGroupArn" tf:"this_db_option_group_arn"`
 	// The db option group id
+	// +optional
 	ThisDbOptionGroupID string `json:"thisDbOptionGroupID" tf:"this_db_option_group_id"`
 	// The ARN of the db parameter group
+	// +optional
 	ThisDbParameterGroupArn string `json:"thisDbParameterGroupArn" tf:"this_db_parameter_group_arn"`
 	// The db parameter group id
+	// +optional
 	ThisDbParameterGroupID string `json:"thisDbParameterGroupID" tf:"this_db_parameter_group_id"`
 	// The ARN of the db subnet group
+	// +optional
 	ThisDbSubnetGroupArn string `json:"thisDbSubnetGroupArn" tf:"this_db_subnet_group_arn"`
 	// The db subnet group name
+	// +optional
 	ThisDbSubnetGroupID string `json:"thisDbSubnetGroupID" tf:"this_db_subnet_group_id"`
 }
 

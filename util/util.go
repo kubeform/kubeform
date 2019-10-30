@@ -254,6 +254,9 @@ func GenerateModuleCRD(path, name string) string {
 		for _, key := range keys {
 			variable := variables[key]
 			varName := key
+			if variable.Type == "" {
+				variable.Type = "any"
+			}
 			tk := varName + ",omitempty"
 			jk := flect.Camelize(varName)
 			id := flect.Capitalize(jk)
@@ -273,6 +276,11 @@ func GenerateModuleCRD(path, name string) string {
 				typ := strings.FieldsFunc(variable.Type, func(r rune) bool {
 					return r == '(' || r == ')'
 				})
+
+				if len(typ) == 1 {
+					specStatements = append(specStatements, Id(id).Index().String().Tag(map[string]string{"json": jk, "tf": tk}))
+					continue
+				}
 
 				if typ[1] == "bool" {
 					specStatements = append(specStatements, Id(id).Index().Bool().Tag(map[string]string{"json": jk, "tf": tk}))
@@ -327,6 +335,7 @@ func GenerateModuleCRD(path, name string) string {
 			jk := flect.Camelize(varName)
 			id := flect.Capitalize(jk)
 			outputStatements = append(outputStatements, Comment(out.Description))
+			outputStatements = append(outputStatements, Comment("// +optional"))
 			outputStatements = append(outputStatements, Id(id).String().Tag(map[string]string{"json": jk, "tf": tk}))
 		}
 		out = out + fmt.Sprintf("%#v\n", Type().Id(name+"Output").Struct(outputStatements...))
@@ -367,8 +376,6 @@ func DownloadRepository(name, link, outputPath string) (string, error) {
 		return "", err
 	}
 
-	log.Println("Downloading zip completed")
-
 	extractedRepoPath, err := Unzip(zipPath, outputPath)
 	if err != nil {
 		return "", err
@@ -377,8 +384,6 @@ func DownloadRepository(name, link, outputPath string) (string, error) {
 }
 
 func Unzip(src string, dest string) ([]string, error) {
-	log.Println("Unzipping zip in the directory : ", dest)
-
 	var filenames []string
 
 	r, err := zip.OpenReader(src)
@@ -424,7 +429,6 @@ func Unzip(src string, dest string) ([]string, error) {
 			return filenames, err
 		}
 	}
-	log.Println("Unzipping completed")
 	return filenames, nil
 }
 

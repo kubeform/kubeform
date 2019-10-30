@@ -5,5 +5,12 @@
       "provider": "aws",
       "url": "https://github.com/terraform-aws-modules/terraform-aws-rds/archive/master.zip",
       "subDirectory": ""
+    },
+    {
+      "name": "GoogleServiceAccount",
+      "source": "terraform-google-modules/service-accounts/google",
+      "provider": "google",
+      "url": "https://github.com/terraform-google-modules/terraform-google-service-accounts/archive/master.zip",
+      "subDirectory": ""
     }
 ]

@@ -24,6 +24,8 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// GoogleServiceAccounts returns a GoogleServiceAccountInformer.
+	GoogleServiceAccounts() GoogleServiceAccountInformer
 	// RDSs returns a RDSInformer.
 	RDSs() RDSInformer
 }
@@ -37,6 +39,11 @@ type version struct {
 // New returns a new Interface.
 func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakListOptions internalinterfaces.TweakListOptionsFunc) Interface {
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
+}
+
+// GoogleServiceAccounts returns a GoogleServiceAccountInformer.
+func (v *version) GoogleServiceAccounts() GoogleServiceAccountInformer {
+	return &googleServiceAccountInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // RDSs returns a RDSInformer.

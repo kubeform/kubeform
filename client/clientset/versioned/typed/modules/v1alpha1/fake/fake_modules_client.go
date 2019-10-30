@@ -29,6 +29,10 @@ type FakeModulesV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeModulesV1alpha1) GoogleServiceAccounts(namespace string) v1alpha1.GoogleServiceAccountInterface {
+	return &FakeGoogleServiceAccounts{c, namespace}
+}
+
 func (c *FakeModulesV1alpha1) RDSs(namespace string) v1alpha1.RDSInterface {
 	return &FakeRDSs{c, namespace}
 }

@@ -1983,6 +1983,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Linode().V1alpha1().Volumes().Informer()}, nil
 
 		// Group=modules.kubeform.com, Version=v1alpha1
+	case modulesv1alpha1.SchemeGroupVersion.WithResource("googleserviceaccounts"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Modules().V1alpha1().GoogleServiceAccounts().Informer()}, nil
 	case modulesv1alpha1.SchemeGroupVersion.WithResource("rdss"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Modules().V1alpha1().RDSs().Informer()}, nil
 

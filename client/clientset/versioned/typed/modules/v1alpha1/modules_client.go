@@ -28,12 +28,17 @@ import (
 
 type ModulesV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	GoogleServiceAccountsGetter
 	RDSsGetter
 }
 
 // ModulesV1alpha1Client is used to interact with features provided by the modules.kubeform.com group.
 type ModulesV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *ModulesV1alpha1Client) GoogleServiceAccounts(namespace string) GoogleServiceAccountInterface {
+	return newGoogleServiceAccounts(c, namespace)
 }
 
 func (c *ModulesV1alpha1Client) RDSs(namespace string) RDSInterface {
