@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright 2019 AppsCode Inc.
-# Copyright 2016 The Kubernetes Authors.
+# Copyright The Kubeform Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,12 +16,12 @@
 
 set -eou pipefail
 
-export CGO_ENABLED=0
+export CGO_ENABLED=1
 export GO111MODULE=on
 export GOFLAGS="-mod=vendor"
 
 TARGETS=$(for d in "$@"; do echo ./$d/...; done)
 
 echo "Running tests:"
-go test -installsuffix "static" ${TARGETS}
+go test -race -installsuffix "static" ${TARGETS}
 echo
