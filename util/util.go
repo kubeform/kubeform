@@ -55,6 +55,7 @@ var execeptionList = map[string]string{
 	"ConfigConfigurationRecorderStatus": "ConfigConfigurationRecorderStatus_",
 	"EventhubNamespace":                 "EventhubNamespace_",
 	"NotificationHubNamespace":          "NotificationHubNamespace_",
+	"ProjectServices":                   "ProjectServiceBatch",
 }
 
 func GenerateProviderAPIS(providerName, version string, schmeas []map[string]*schema.Schema, structNames []string) error {

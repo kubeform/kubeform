@@ -29,14 +29,14 @@ import (
 // +kubebuilder:subresource:status
 // +kubebuilder:printcolumn:name="Phase",type=string,JSONPath=`.status.phase`
 
-type ProjectServices struct {
+type ProjectServiceBatch struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              ProjectServicesSpec   `json:"spec,omitempty"`
-	Status            ProjectServicesStatus `json:"status,omitempty"`
+	Spec              ProjectServiceBatchSpec   `json:"spec,omitempty"`
+	Status            ProjectServiceBatchStatus `json:"status,omitempty"`
 }
 
-type ProjectServicesSpec struct {
+type ProjectServiceBatchSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
@@ -48,12 +48,12 @@ type ProjectServicesSpec struct {
 	Services []string `json:"services" tf:"services"`
 }
 
-type ProjectServicesStatus struct {
+type ProjectServiceBatchStatus struct {
 	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 	// +optional
-	Output *ProjectServicesSpec `json:"output,omitempty"`
+	Output *ProjectServiceBatchSpec `json:"output,omitempty"`
 	// +optional
 	State *base.State `json:"state,omitempty"`
 	// +optional
@@ -63,10 +63,10 @@ type ProjectServicesStatus struct {
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 
-// ProjectServicesList is a list of ProjectServicess
-type ProjectServicesList struct {
+// ProjectServiceBatchList is a list of ProjectServiceBatchs
+type ProjectServiceBatchList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	// Items is a list of ProjectServices CRD objects
-	Items []ProjectServices `json:"items,omitempty"`
+	// Items is a list of ProjectServiceBatch CRD objects
+	Items []ProjectServiceBatch `json:"items,omitempty"`
 }

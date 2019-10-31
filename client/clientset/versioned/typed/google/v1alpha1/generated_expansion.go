@@ -240,7 +240,7 @@ type ProjectOrganizationPolicyExpansion interface{}
 
 type ProjectServiceExpansion interface{}
 
-type ProjectServicesExpansion interface{}
+type ProjectServiceBatchExpansion interface{}
 
 type ProjectUsageExportBucketExpansion interface{}
 

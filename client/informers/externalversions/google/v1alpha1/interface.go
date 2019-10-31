@@ -246,8 +246,8 @@ type Interface interface {
 	ProjectOrganizationPolicies() ProjectOrganizationPolicyInformer
 	// ProjectServices returns a ProjectServiceInformer.
 	ProjectServices() ProjectServiceInformer
-	// ProjectServiceses returns a ProjectServicesInformer.
-	ProjectServiceses() ProjectServicesInformer
+	// ProjectServiceBatches returns a ProjectServiceBatchInformer.
+	ProjectServiceBatches() ProjectServiceBatchInformer
 	// ProjectUsageExportBuckets returns a ProjectUsageExportBucketInformer.
 	ProjectUsageExportBuckets() ProjectUsageExportBucketInformer
 	// PubsubSubscriptions returns a PubsubSubscriptionInformer.
@@ -900,9 +900,9 @@ func (v *version) ProjectServices() ProjectServiceInformer {
 	return &projectServiceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
-// ProjectServiceses returns a ProjectServicesInformer.
-func (v *version) ProjectServiceses() ProjectServicesInformer {
-	return &projectServicesInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+// ProjectServiceBatches returns a ProjectServiceBatchInformer.
+func (v *version) ProjectServiceBatches() ProjectServiceBatchInformer {
+	return &projectServiceBatchInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ProjectUsageExportBuckets returns a ProjectUsageExportBucketInformer.

@@ -906,13 +906,13 @@ type ProjectServiceListerExpansion interface{}
 // ProjectServiceNamespaceLister.
 type ProjectServiceNamespaceListerExpansion interface{}
 
-// ProjectServicesListerExpansion allows custom methods to be added to
-// ProjectServicesLister.
-type ProjectServicesListerExpansion interface{}
+// ProjectServiceBatchListerExpansion allows custom methods to be added to
+// ProjectServiceBatchLister.
+type ProjectServiceBatchListerExpansion interface{}
 
-// ProjectServicesNamespaceListerExpansion allows custom methods to be added to
-// ProjectServicesNamespaceLister.
-type ProjectServicesNamespaceListerExpansion interface{}
+// ProjectServiceBatchNamespaceListerExpansion allows custom methods to be added to
+// ProjectServiceBatchNamespaceLister.
+type ProjectServiceBatchNamespaceListerExpansion interface{}
 
 // ProjectUsageExportBucketListerExpansion allows custom methods to be added to
 // ProjectUsageExportBucketLister.

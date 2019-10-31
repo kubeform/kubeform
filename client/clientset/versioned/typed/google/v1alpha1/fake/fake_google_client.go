@@ -473,8 +473,8 @@ func (c *FakeGoogleV1alpha1) ProjectServices(namespace string) v1alpha1.ProjectS
 	return &FakeProjectServices{c, namespace}
 }
 
-func (c *FakeGoogleV1alpha1) ProjectServiceses(namespace string) v1alpha1.ProjectServicesInterface {
-	return &FakeProjectServiceses{c, namespace}
+func (c *FakeGoogleV1alpha1) ProjectServiceBatches(namespace string) v1alpha1.ProjectServiceBatchInterface {
+	return &FakeProjectServiceBatches{c, namespace}
 }
 
 func (c *FakeGoogleV1alpha1) ProjectUsageExportBuckets(namespace string) v1alpha1.ProjectUsageExportBucketInterface {

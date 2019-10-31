@@ -1869,8 +1869,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ProjectOrganizationPolicies().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("projectservices"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ProjectServices().Informer()}, nil
-	case googlev1alpha1.SchemeGroupVersion.WithResource("projectserviceses"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ProjectServiceses().Informer()}, nil
+	case googlev1alpha1.SchemeGroupVersion.WithResource("projectservicebatches"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ProjectServiceBatches().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("projectusageexportbuckets"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Google().V1alpha1().ProjectUsageExportBuckets().Informer()}, nil
 	case googlev1alpha1.SchemeGroupVersion.WithResource("pubsubsubscriptions"):

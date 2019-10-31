@@ -915,13 +915,13 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectOrganizationPolicySpecRestorePolicy":                                   schema_kubeform_apis_google_v1alpha1_ProjectOrganizationPolicySpecRestorePolicy(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectOrganizationPolicyStatus":                                              schema_kubeform_apis_google_v1alpha1_ProjectOrganizationPolicyStatus(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectService":                                                               schema_kubeform_apis_google_v1alpha1_ProjectService(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceBatch":                                                          schema_kubeform_apis_google_v1alpha1_ProjectServiceBatch(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceBatchList":                                                      schema_kubeform_apis_google_v1alpha1_ProjectServiceBatchList(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceBatchSpec":                                                      schema_kubeform_apis_google_v1alpha1_ProjectServiceBatchSpec(ref),
+		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceBatchStatus":                                                    schema_kubeform_apis_google_v1alpha1_ProjectServiceBatchStatus(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceList":                                                           schema_kubeform_apis_google_v1alpha1_ProjectServiceList(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceSpec":                                                           schema_kubeform_apis_google_v1alpha1_ProjectServiceSpec(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceStatus":                                                         schema_kubeform_apis_google_v1alpha1_ProjectServiceStatus(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServices":                                                              schema_kubeform_apis_google_v1alpha1_ProjectServices(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServicesList":                                                          schema_kubeform_apis_google_v1alpha1_ProjectServicesList(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServicesSpec":                                                          schema_kubeform_apis_google_v1alpha1_ProjectServicesSpec(ref),
-		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServicesStatus":                                                        schema_kubeform_apis_google_v1alpha1_ProjectServicesStatus(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectSpec":                                                                  schema_kubeform_apis_google_v1alpha1_ProjectSpec(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectSpecAppEngine":                                                         schema_kubeform_apis_google_v1alpha1_ProjectSpecAppEngine(ref),
 		"kubeform.dev/kubeform/apis/google/v1alpha1.ProjectSpecAppEngineFeatureSettings":                                          schema_kubeform_apis_google_v1alpha1_ProjectSpecAppEngineFeatureSettings(ref),
@@ -44709,6 +44709,184 @@ func schema_kubeform_apis_google_v1alpha1_ProjectService(ref common.ReferenceCal
 	}
 }
 
+func schema_kubeform_apis_google_v1alpha1_ProjectServiceBatch(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceBatchSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceBatchStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceBatchSpec", "kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceBatchStatus"},
+	}
+}
+
+func schema_kubeform_apis_google_v1alpha1_ProjectServiceBatchList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ProjectServiceBatchList is a list of ProjectServiceBatchs",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of ProjectServiceBatch CRD objects",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceBatch"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceBatch"},
+	}
+}
+
+func schema_kubeform_apis_google_v1alpha1_ProjectServiceBatchSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"disableOnDestroy": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"project": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"services": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"providerRef", "services"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.LocalObjectReference"},
+	}
+}
+
+func schema_kubeform_apis_google_v1alpha1_ProjectServiceBatchStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"output": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceBatchSpec"),
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
+						},
+					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceBatchSpec"},
+	}
+}
+
 func schema_kubeform_apis_google_v1alpha1_ProjectServiceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -44834,184 +45012,6 @@ func schema_kubeform_apis_google_v1alpha1_ProjectServiceStatus(ref common.Refere
 		},
 		Dependencies: []string{
 			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServiceSpec"},
-	}
-}
-
-func schema_kubeform_apis_google_v1alpha1_ProjectServices(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
-						},
-					},
-					"spec": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServicesSpec"),
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServicesStatus"),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServicesSpec", "kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServicesStatus"},
-	}
-}
-
-func schema_kubeform_apis_google_v1alpha1_ProjectServicesList(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "ProjectServicesList is a list of ProjectServicess",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
-						},
-					},
-					"items": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Items is a list of ProjectServices CRD objects",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServices"),
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServices"},
-	}
-}
-
-func schema_kubeform_apis_google_v1alpha1_ProjectServicesSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"disableOnDestroy": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"project": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"services": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-				},
-				Required: []string{"providerRef", "services"},
-			},
-		},
-		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
-	}
-}
-
-func schema_kubeform_apis_google_v1alpha1_ProjectServicesStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"observedGeneration": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Resource generation, which is updated on mutation by the API Server.",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServicesSpec"),
-						},
-					},
-					"state": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("kubeform.dev/kubeform/apis/base/v1alpha1.State"),
-						},
-					},
-					"phase": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"kubeform.dev/kubeform/apis/base/v1alpha1.State", "kubeform.dev/kubeform/apis/google/v1alpha1.ProjectServicesSpec"},
 	}
 }
 

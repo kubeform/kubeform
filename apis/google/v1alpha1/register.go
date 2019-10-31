@@ -387,8 +387,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ProjectService{},
 		&ProjectServiceList{},
 
-		&ProjectServices{},
-		&ProjectServicesList{},
+		&ProjectServiceBatch{},
+		&ProjectServiceBatchList{},
 
 		&ProjectUsageExportBucket{},
 		&ProjectUsageExportBucketList{},

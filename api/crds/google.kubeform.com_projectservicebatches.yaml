@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: kubeform
-  name: projectservices.google.kubeform.com
+  name: projectservicebatches.google.kubeform.com
 spec:
   additionalPrinterColumns:
   - JSONPath: .status.phase
@@ -12,8 +12,8 @@ spec:
     type: string
   group: google.kubeform.com
   names:
-    kind: ProjectService
-    plural: projectservices
+    kind: ProjectServiceBatch
+    plural: projectservicebatches
   scope: ""
   subresources:
     status: {}
@@ -418,11 +418,13 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            service:
-              type: string
+            services:
+              items:
+                type: string
+              type: array
           required:
           - providerRef
-          - service
+          - services
           type: object
         status:
           properties:
@@ -448,11 +450,13 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
-                service:
-                  type: string
+                services:
+                  items:
+                    type: string
+                  type: array
               required:
               - providerRef
-              - service
+              - services
               type: object
             phase:
               type: string

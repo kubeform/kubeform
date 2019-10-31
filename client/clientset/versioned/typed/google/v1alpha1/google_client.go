@@ -139,7 +139,7 @@ type GoogleV1alpha1Interface interface {
 	ProjectIamPoliciesGetter
 	ProjectOrganizationPoliciesGetter
 	ProjectServicesGetter
-	ProjectServicesesGetter
+	ProjectServiceBatchesGetter
 	ProjectUsageExportBucketsGetter
 	PubsubSubscriptionsGetter
 	PubsubSubscriptionIamBindingsGetter
@@ -633,8 +633,8 @@ func (c *GoogleV1alpha1Client) ProjectServices(namespace string) ProjectServiceI
 	return newProjectServices(c, namespace)
 }
 
-func (c *GoogleV1alpha1Client) ProjectServiceses(namespace string) ProjectServicesInterface {
-	return newProjectServiceses(c, namespace)
+func (c *GoogleV1alpha1Client) ProjectServiceBatches(namespace string) ProjectServiceBatchInterface {
+	return newProjectServiceBatches(c, namespace)
 }
 
 func (c *GoogleV1alpha1Client) ProjectUsageExportBuckets(namespace string) ProjectUsageExportBucketInterface {
