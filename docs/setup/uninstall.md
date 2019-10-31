@@ -12,7 +12,7 @@ section_menu_id: setup
 
 # Uninstall Kubeform
 
-To uninstall kubeform installed using helm, use the following command.
+To uninstall Kubeform installed using helm, use the following command.
 
 ```console
 $ helm delete kfc

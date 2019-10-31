@@ -41,13 +41,13 @@ resource "digitalocean_database_cluster" "test1" {
 }⏎
 ```
 
-This config creates a Digitalocean Database Cluster. We'll create the exact configuration using kubeform. The steps are given below:
+This config creates a Digitalocean Database Cluster. We'll create the exact configuration using Kubeform. The steps are given below:
 
 ## 1. Create CRD:
 
 At first, create the CRD of Digitalocean Database Cluster using the following kubectl command:
 
-```bash
+```console
 $ kubectl apply -f https://github.com/kubeform/kubeform/raw/master/api/crds/digitalocean.kubeform.com_databaseclusters.yaml
 ```
 
@@ -67,9 +67,10 @@ data:
 
 Here we can see that, the data of the secret is same as the field of the provider part in the terraform config file. Save it in a file (eg. `secret.yaml`) then apply it using kubectl.
 
-```bash
+```console
 $ kubectl apply -f secret.yaml
 ```
+
 > **Note:** here, data key (eg. `token`) must be in snake case format (same as the tf configuration file)
 
 ## 3. Create Digitalocean Database Cluster
@@ -96,7 +97,7 @@ Here, we can see that the provider secret is referenced using a field called `pr
 
 Save it in a file (eg. `db_cluster.yaml`) then apply it using kubectl.
 
-```bash
+```console
 $ kubectl apply -f db_cluster.yaml
 ```
 
@@ -106,6 +107,6 @@ After that, an Digitalocean Database Cluster will be created!
 
 To delete the Digitalocean Database Cluster just run:
 
-```bash
+```console
 kubectl delete -f db_cluster.yaml
 ```

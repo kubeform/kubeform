@@ -21,10 +21,10 @@ section_menu_id: concepts
   Standard Kubernetes is all you need. If you can run Kubernetes, you can provision and manage cloud infrastructure using Kubeform. Use standard Kubernetes CLI and API to provision and manage different cloud infrastructures. This native integration with Kubernetes means your cloud infrastructures are ready for any higher level deployment tooling like GitOps, Open Policy Agent (OPA), etc.
 
 - **Built on Terrafrom**
-  Terraform is a popular tool for provisioning cloud infrastructure. Kubeform is built on top of Terraform. You can think it like a kubernetes operator for terraform. You can easily convert any resource of terrafrom using a CRD. You can just write a yaml for the resource which is almost same as a `tf` configuration. After applying the yaml using kubernetes API, kubeform will provision the cloud infrastructure for you!
+  Terraform is a popular tool for provisioning cloud infrastructure. Kubeform is built on top of Terraform. You can think it like a kubernetes operator for terraform. You can easily convert any resource of terrafrom using a CRD. You can just write a yaml for the resource which is almost same as a `tf` configuration. After applying the yaml using kubernetes API, Kubeform will provision the cloud infrastructure for you!
 
 - **Infrastructure as Code**:
-  Using kubeform, you can just write a yaml and provision a cloud infrastructure in popular cloud platforms. You can easily provision and manage cloud infrastructures using codes. You can automate the lifecycle of cloud infrastructure using kubeform.
+  Using Kubeform, you can just write a yaml and provision a cloud infrastructure in popular cloud platforms. You can easily provision and manage cloud infrastructures using codes. You can automate the lifecycle of cloud infrastructure using Kubeform.
 
 - **Supports Multiple Cloud Platform**:
   Kubeform supports 5 top cloud platforms. These are AWS, Google Cloud, Azure, Digitalocean & Linode. Using Kubeform, Infrastructure of any of these clouds can be provisioned using a simple CRD instance.

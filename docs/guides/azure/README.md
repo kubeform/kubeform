@@ -47,7 +47,7 @@ This config creates an Azure Redis Cache. We'll create the exact configuration u
 
 At first, create the CRD of Azure Redis using the following kubectl command:
 
-```bash
+```console
 $ kubectl apply -f https://github.com/kubeform/kubeform/raw/master/api/crds/azurerm.kubeform.com_rediscaches.yaml
 ```
 
@@ -71,9 +71,10 @@ data:
 
 Here we can see that, the data of the secret is same as the field of the provider part in the terraform config file. Save it in a file (eg. `secret.yaml`) then apply it using kubectl.
 
-```bash
+```console
 $ kubectl apply -f secret.yaml
 ```
+
 > **Note:** here, data key (eg. `client_id`, `tenant_id` etc.) must be in snake case format (same as the tf configuration file)
 
 
@@ -103,7 +104,7 @@ Here, we can see that the provider secret is referenced using a field called `pr
 
 Save it in a file (eg. `redis.yaml`) then apply it using kubectl.
 
-```bash
+```console
 $ kubectl apply -f redis.yaml
 ```
 
@@ -113,6 +114,6 @@ After that, an Azure Redis Cache will be created!
 
 To delete the Azure Redis Cache just run:
 
-```bash
+```console
 kubectl delete -f redis.yaml
 ```

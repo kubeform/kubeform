@@ -57,7 +57,7 @@ This config creates an AWS RDS instance. We'll create the exact configuration us
 
 At first, create the CRD of AWS RDS using the following kubectl command:
 
-```bash
+```console
 $ kubectl apply -f https://github.com/kubeform/kubeform/raw/master/api/crds/aws.kubeform.com_dbinstances.yaml
 ```
 
@@ -79,7 +79,7 @@ data:
 
 Here we can see that, the data of the secret is same as the field of the provider part in the terraform config file. Save it in a file (eg. `secret.yaml`) then apply it using kubectl.
 
-```bash
+```console
 $ kubectl apply -f secret.yaml
 ```
 
@@ -102,9 +102,10 @@ data:
 
 we'll reference this secret from the RDS CRD. Save it in a file (eg. `provider.yaml`) then apply it using kubectl.
 
-```bash
+```console
 $ kubectl apply -f provider.yaml
 ```
+
 > **Note:** here, data key (eg. `password`) must be in snake case format (same as the tf configuration file)
 
 ## 4. Create RDS
@@ -130,11 +131,12 @@ spec:
     secretRef:
         name: rds-pass
 ```
+
 Here, we can see that the provider secret is referenced using a field called `providerRef` and the sensitive value secret is referenced using a field called `secretRef`.
 
 Save it in a file (eg. `rds.yaml`) then apply it using kubectl.
 
-```bash
+```console
 $ kubectl apply -f rds.yaml
 ```
 
@@ -144,6 +146,6 @@ After that, an AWS RDS will be created!
 
 To delete the RDS just run:
 
-```bash
+```console
 kubectl delete -f rds.yaml
 ```

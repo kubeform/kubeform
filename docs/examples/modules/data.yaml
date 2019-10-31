@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: rds-pass
+type: kubeform.com/aws
+data:
+    password: Zm9vYmFyMTIzNAo=

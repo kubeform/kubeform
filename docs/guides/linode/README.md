@@ -43,13 +43,13 @@ resource "linode_instance" "instance-test1" {
 }
 ```
 
-This config creates a Linode Instance. We'll create the exact configuration using kubeform. The steps are given below:
+This config creates a Linode Instance. We'll create the exact configuration using Kubeform. The steps are given below:
 
 ## 1. Create CRD:
 
 At first, create the CRD of Linode Instance using the following kubectl command:
 
-```bash
+```console
 $ kubectl apply -f https://github.com/kubeform/kubeform/raw/master/api/crds/linode.kubeform.com_instances.yaml
 ```
 
@@ -69,9 +69,10 @@ data:
 
 Here we can see that, the data of the secret is same as the field of the provider part in the terraform config file. Save it in a file (eg. `secret.yaml`) then apply it using kubectl.
 
-```bash
+```console
 $ kubectl apply -f secret.yaml
 ```
+
 > **Note:** here, data key (eg. `token`) must be in snake case format (same as the tf configuration file)
 
 ## 3. Create Secrets for Sensitive Data
@@ -91,9 +92,10 @@ data:
 
 we'll reference this secret from the Instance CRD. Save it in a file (eg. `provider.yaml`) then apply it using kubectl.
 
-```bash
+```console
 $ kubectl apply -f provider.yaml
 ```
+
 > **Note:** here, data key (eg. `root_pass`, `stackscript_data` etc.) must be in snake case format (same as the tf configuration file)
 
 ## 4. Create Instance
@@ -120,7 +122,7 @@ Here, we can see that the provider secret is referenced using a field called `pr
 
 Save it in a file (eg. `instance.yaml`) then apply it using kubectl.
 
-```bash
+```console
 $ kubectl apply -f instance.yaml
 ```
 
@@ -130,6 +132,6 @@ After that, an Linode Instance will be created!
 
 To delete the Instance just run:
 
-```bash
+```console
 kubectl delete -f instance.yaml
 ```

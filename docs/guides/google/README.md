@@ -42,13 +42,13 @@ resource "google_storage_bucket" "test1" {
 }
 ```
 
-This config creates a Google Storage Bucket. We'll create the exact configuration using kubeform. The steps are given below:
+This config creates a Google Storage Bucket. We'll create the exact configuration using Kubeform. The steps are given below:
 
 ## 1. Create CRD:
 
 At first, create the CRD of Google Storage Bucket using the following kubectl command:
 
-```bash
+```console
 $ kubectl apply -f https://github.com/kubeform/kubeform/raw/master/api/crds/google.kubeform.com_storagebuckets.yaml
 ```
 
@@ -70,9 +70,10 @@ data:
 
 Here we can see that, the data of the secret is same as the field of the provider part in the terraform config file. Save it in a file (eg. `secret.yaml`) then apply it using kubectl.
 
-```bash
+```console
 $ kubectl apply -f secret.yaml
 ```
+
 > **Note:** here, data key (eg. `project`, `region` etc.) must be in snake case format (same as the tf configuration file)
 
 ## 3. Create Google Storage Bucket
@@ -98,7 +99,7 @@ Here, we can see that the provider secret is referenced using a field called `pr
 
 Save it in a file (eg. `bucket.yaml`) then apply it using kubectl.
 
-```bash
+```console
 $ kubectl apply -f bucket.yaml
 ```
 
@@ -108,6 +109,6 @@ After that, an Google Storage Bucket will be created!
 
 To delete the Google Storage Bucket just run:
 
-```bash
+```console
 kubectl delete -f bucket.yaml
 ```
