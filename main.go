@@ -16,7 +16,9 @@ limitations under the License.
 package main
 
 import (
-	"fmt"
+	"flag"
+	"io/ioutil"
+	"log"
 	"strings"
 
 	"kubeform.dev/kubeform/util"
@@ -31,7 +33,24 @@ import (
 	"github.com/terraform-providers/terraform-provider-linode/linode"
 )
 
+var licenseHeaderFile string
+
+func init() {
+	flag.StringVar(&licenseHeaderFile, "license-header-file", "", "Path to the license file.")
+}
+
 func main() {
+	flag.Parse()
+
+	if licenseHeaderFile != "" {
+		byt, err := ioutil.ReadFile(licenseHeaderFile)
+		if err != nil {
+			log.Println(err.Error())
+		}
+
+		util.License = string(byt)
+	}
+
 	version := "v1alpha1"
 
 	providersMap := map[string]terraform.ResourceProvider{
@@ -56,13 +75,13 @@ func main() {
 
 			err := util.GenerateProviderAPIS(key, version, schemas, structNames)
 			if err != nil {
-				fmt.Println(err.Error())
+				log.Println(err.Error())
 			}
 		}
 	}
 
 	err := util.GenerateProviderAPIS("modules", version, nil, nil)
 	if err != nil {
-		fmt.Println(err.Error())
+		log.Println(err.Error())
 	}
 }

@@ -41,15 +41,19 @@ import (
 )
 
 type TypeData struct {
-	Name string
-	Spec string
+	Name    string
+	Spec    string
+	License string
 }
 
 type ApisData struct {
 	ProviderName string
 	Version      string
 	StructName   []string
+	License      string
 }
+
+var License string
 
 var execeptionList = map[string]string{
 	"ConfigConfigurationRecorderStatus": "ConfigConfigurationRecorderStatus_",
@@ -84,8 +88,9 @@ func GenerateProviderAPIS(providerName, version string, schmeas []map[string]*sc
 			name := structNames[i]
 			out := GenerateModuleCRD(modulePath, name)
 			typeData := TypeData{
-				Name: name,
-				Spec: out,
+				Name:    name,
+				Spec:    out,
+				License: License,
 			}
 			modulePaths[i] = name
 			templateToGoFile(filepath.Join(templatePath, "module_types.tmpl"), filepath.Join(versionPath, flect.Underscore(name)+"_types.go"), typeData)
@@ -100,8 +105,9 @@ func GenerateProviderAPIS(providerName, version string, schmeas []map[string]*sc
 			genSecret := false
 			TerraformSchemaToStruct(schmeas[i], structName+"Spec", providerName, true, &genSecret, &out)
 			typeData := TypeData{
-				Name: structName,
-				Spec: out,
+				Name:    structName,
+				Spec:    out,
+				License: License,
 			}
 
 			templateToGoFile(filepath.Join(templatePath, "types.tmpl"), filepath.Join(versionPath, flect.Underscore(structName)+"_types.go"), typeData)
@@ -114,6 +120,7 @@ func GenerateProviderAPIS(providerName, version string, schmeas []map[string]*sc
 		ProviderName: providerName,
 		Version:      version,
 		StructName:   structNames,
+		License:      License,
 	}
 
 	templateToGoFile(filepath.Join(templatePath, "doc.tmpl"), filepath.Join(versionPath, "doc.go"), apiData)
@@ -478,9 +485,11 @@ func GenerateModuleData(fileName, templateFile, generatedFilePath string) (modul
 	tmpl := template.Must(template.ParseFiles(templateFile))
 	var buffer bytes.Buffer
 	err = tmpl.Execute(&buffer, struct {
-		Data string
+		Data    string
+		License string
 	}{
-		cfgStr,
+		Data:    cfgStr,
+		License: License,
 	})
 	if err != nil {
 		return

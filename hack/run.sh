@@ -35,4 +35,4 @@ export GOOS="${OS}"
 export GO111MODULE=on
 export GOFLAGS="-mod=vendor"
 
-go run *.go
+go run main.go --license-header-file=./hack/license/go.txt
