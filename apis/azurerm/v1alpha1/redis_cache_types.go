@@ -42,7 +42,7 @@ type RedisCache struct {
 type RedisCacheSpecPatchSchedule struct {
 	DayOfWeek string `json:"dayOfWeek" tf:"day_of_week"`
 	// +optional
-	StartHourUtc int `json:"startHourUtc,omitempty" tf:"start_hour_utc,omitempty"`
+	StartHourUtc int64 `json:"startHourUtc,omitempty" tf:"start_hour_utc,omitempty"`
 }
 
 type RedisCacheSpecRedisConfiguration struct {
@@ -55,23 +55,23 @@ type RedisCacheSpecRedisConfiguration struct {
 	// +optional
 	EnableAuthentication bool `json:"enableAuthentication,omitempty" tf:"enable_authentication,omitempty"`
 	// +optional
-	Maxclients int `json:"maxclients,omitempty" tf:"maxclients,omitempty"`
+	Maxclients int64 `json:"maxclients,omitempty" tf:"maxclients,omitempty"`
 	// +optional
-	MaxfragmentationmemoryReserved int `json:"maxfragmentationmemoryReserved,omitempty" tf:"maxfragmentationmemory_reserved,omitempty"`
+	MaxfragmentationmemoryReserved int64 `json:"maxfragmentationmemoryReserved,omitempty" tf:"maxfragmentationmemory_reserved,omitempty"`
 	// +optional
-	MaxmemoryDelta int `json:"maxmemoryDelta,omitempty" tf:"maxmemory_delta,omitempty"`
+	MaxmemoryDelta int64 `json:"maxmemoryDelta,omitempty" tf:"maxmemory_delta,omitempty"`
 	// +optional
 	MaxmemoryPolicy string `json:"maxmemoryPolicy,omitempty" tf:"maxmemory_policy,omitempty"`
 	// +optional
-	MaxmemoryReserved int `json:"maxmemoryReserved,omitempty" tf:"maxmemory_reserved,omitempty"`
+	MaxmemoryReserved int64 `json:"maxmemoryReserved,omitempty" tf:"maxmemory_reserved,omitempty"`
 	// +optional
 	NotifyKeyspaceEvents string `json:"notifyKeyspaceEvents,omitempty" tf:"notify_keyspace_events,omitempty"`
 	// +optional
 	RdbBackupEnabled bool `json:"rdbBackupEnabled,omitempty" tf:"rdb_backup_enabled,omitempty"`
 	// +optional
-	RdbBackupFrequency int `json:"rdbBackupFrequency,omitempty" tf:"rdb_backup_frequency,omitempty"`
+	RdbBackupFrequency int64 `json:"rdbBackupFrequency,omitempty" tf:"rdb_backup_frequency,omitempty"`
 	// +optional
-	RdbBackupMaxSnapshotCount int `json:"rdbBackupMaxSnapshotCount,omitempty" tf:"rdb_backup_max_snapshot_count,omitempty"`
+	RdbBackupMaxSnapshotCount int64 `json:"rdbBackupMaxSnapshotCount,omitempty" tf:"rdb_backup_max_snapshot_count,omitempty"`
 	// +optional
 	RdbStorageConnectionString string `json:"-" sensitive:"true" tf:"rdb_storage_connection_string,omitempty"`
 }
@@ -83,7 +83,7 @@ type RedisCacheSpec struct {
 
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
-	Capacity int `json:"capacity" tf:"capacity"`
+	Capacity int64 `json:"capacity" tf:"capacity"`
 	// +optional
 	EnableNonSSLPort bool   `json:"enableNonSSLPort,omitempty" tf:"enable_non_ssl_port,omitempty"`
 	Family           string `json:"family" tf:"family"`
@@ -96,7 +96,7 @@ type RedisCacheSpec struct {
 	// +optional
 	PatchSchedule []RedisCacheSpecPatchSchedule `json:"patchSchedule,omitempty" tf:"patch_schedule,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	PrimaryAccessKey string `json:"-" sensitive:"true" tf:"primary_access_key,omitempty"`
 	// +optional
@@ -108,10 +108,10 @@ type RedisCacheSpec struct {
 	// +optional
 	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key,omitempty"`
 	// +optional
-	ShardCount int    `json:"shardCount,omitempty" tf:"shard_count,omitempty"`
+	ShardCount int64  `json:"shardCount,omitempty" tf:"shard_count,omitempty"`
 	SkuName    string `json:"skuName" tf:"sku_name"`
 	// +optional
-	SslPort int `json:"sslPort,omitempty" tf:"ssl_port,omitempty"`
+	SslPort int64 `json:"sslPort,omitempty" tf:"ssl_port,omitempty"`
 	// +optional
 	SubnetID string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
 	// +optional

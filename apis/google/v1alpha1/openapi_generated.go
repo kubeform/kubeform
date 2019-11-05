@@ -13460,7 +13460,7 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryDatasetSpec(ref common.Referen
 					"creationTime": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"datasetID": {
@@ -13472,7 +13472,7 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryDatasetSpec(ref common.Referen
 					"defaultTableExpirationMs": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"description": {
@@ -13510,7 +13510,7 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryDatasetSpec(ref common.Referen
 					"lastModifiedTime": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"location": {
@@ -13774,7 +13774,7 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryTableSpec(ref common.Reference
 					"creationTime": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"datasetID": {
@@ -13798,7 +13798,7 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryTableSpec(ref common.Reference
 					"expirationTime": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"friendlyName": {
@@ -13824,7 +13824,7 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryTableSpec(ref common.Reference
 					"lastModifiedTime": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"location": {
@@ -13836,19 +13836,19 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryTableSpec(ref common.Reference
 					"numBytes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"numLongTermBytes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"numRows": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"project": {
@@ -13923,7 +13923,7 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryTableSpecTimePartitioning(ref 
 					"expirationMs": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"field": {
@@ -14155,7 +14155,7 @@ func schema_kubeform_apis_google_v1alpha1_BigtableInstanceSpec(ref common.Refere
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"project": {
@@ -14202,7 +14202,7 @@ func schema_kubeform_apis_google_v1alpha1_BigtableInstanceSpecCluster(ref common
 					"numNodes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"storageType": {
@@ -15974,7 +15974,7 @@ func schema_kubeform_apis_google_v1alpha1_CloudfunctionsFunctionSpec(ref common.
 					"availableMemoryMb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"description": {
@@ -16081,7 +16081,7 @@ func schema_kubeform_apis_google_v1alpha1_CloudfunctionsFunctionSpec(ref common.
 					"timeout": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"triggerBucket": {
@@ -16770,7 +16770,7 @@ func schema_kubeform_apis_google_v1alpha1_ComposerEnvironmentSpecConfig(ref comm
 					"nodeCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"softwareConfig": {
@@ -16802,7 +16802,7 @@ func schema_kubeform_apis_google_v1alpha1_ComposerEnvironmentSpecConfigNodeConfi
 					"diskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"machineType": {
@@ -17580,7 +17580,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAutoscalerSpecAutoscalingPolicy
 					"cooldownPeriod": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"cpuUtilization": {
@@ -17610,7 +17610,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAutoscalerSpecAutoscalingPolicy
 					"maxReplicas": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"metric": {
@@ -17628,7 +17628,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAutoscalerSpecAutoscalingPolicy
 					"minReplicas": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -17648,8 +17648,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAutoscalerSpecAutoscalingPolicy
 				Properties: map[string]spec.Schema{
 					"target": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 				},
@@ -17667,8 +17667,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAutoscalerSpecAutoscalingPolicy
 				Properties: map[string]spec.Schema{
 					"target": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 				},
@@ -17692,8 +17692,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAutoscalerSpecAutoscalingPolicy
 					},
 					"target": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"type": {
@@ -18080,7 +18080,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeBackendServiceSpec(ref common.R
 					"connectionDrainingTimeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"customRequestHeaders": {
@@ -18185,7 +18185,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeBackendServiceSpec(ref common.R
 					"timeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -18211,8 +18211,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeBackendServiceSpecBackend(ref c
 					},
 					"capacityScaler": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"description": {
@@ -18230,31 +18230,31 @@ func schema_kubeform_apis_google_v1alpha1_ComputeBackendServiceSpecBackend(ref c
 					"maxConnections": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxConnectionsPerInstance": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxRate": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxRatePerInstance": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"maxUtilization": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 				},
@@ -18603,7 +18603,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeDiskSpec(ref common.ReferenceCa
 					"size": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"snapshot": {
@@ -18981,7 +18981,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeFirewallSpec(ref common.Referen
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"project": {
@@ -19643,7 +19643,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeGlobalAddressSpec(ref common.Re
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"project": {
@@ -20049,7 +20049,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPHealthCheckSpec(ref common.
 					"checkIntervalSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"creationTimestamp": {
@@ -20067,7 +20067,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPHealthCheckSpec(ref common.
 					"healthyThreshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"host": {
@@ -20085,7 +20085,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPHealthCheckSpec(ref common.
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"project": {
@@ -20109,13 +20109,13 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPHealthCheckSpec(ref common.
 					"timeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"unhealthyThreshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -20274,7 +20274,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPSHealthCheckSpec(ref common
 					"checkIntervalSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"creationTimestamp": {
@@ -20292,7 +20292,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPSHealthCheckSpec(ref common
 					"healthyThreshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"host": {
@@ -20310,7 +20310,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPSHealthCheckSpec(ref common
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"project": {
@@ -20334,13 +20334,13 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPSHealthCheckSpec(ref common
 					"timeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"unhealthyThreshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -20499,7 +20499,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHealthCheckSpec(ref common.Refe
 					"checkIntervalSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"creationTimestamp": {
@@ -20517,7 +20517,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHealthCheckSpec(ref common.Refe
 					"healthyThreshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"httpHealthCheck": {
@@ -20589,7 +20589,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHealthCheckSpec(ref common.Refe
 					"timeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"type": {
@@ -20601,7 +20601,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHealthCheckSpec(ref common.Refe
 					"unhealthyThreshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -20628,7 +20628,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHealthCheckSpecHttpHealthCheck(
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"proxyHeader": {
@@ -20670,7 +20670,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHealthCheckSpecHttpsHealthCheck
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"proxyHeader": {
@@ -20706,7 +20706,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHealthCheckSpecSslHealthCheck(r
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"proxyHeader": {
@@ -20742,7 +20742,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHealthCheckSpecTcpHealthCheck(r
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"proxyHeader": {
@@ -20917,7 +20917,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeImageSpec(ref common.ReferenceC
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"description": {
@@ -21571,7 +21571,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpecBootDis
 					"size": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"type": {
@@ -21595,7 +21595,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpecGuestAc
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"type": {
@@ -22164,7 +22164,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceGroupManagerSpec(ref co
 					"targetSize": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"updateStrategy": {
@@ -22222,7 +22222,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceGroupManagerSpecAutoHea
 					"initialDelaySec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -22247,7 +22247,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceGroupManagerSpecNamedPo
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -22266,31 +22266,31 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceGroupManagerSpecRolling
 					"maxSurgeFixed": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxSurgePercent": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxUnavailableFixed": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxUnavailablePercent": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"minReadySec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"minimalAction": {
@@ -22360,13 +22360,13 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceGroupManagerSpecVersion
 					"fixed": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"percent": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -22487,7 +22487,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceGroupSpec(ref common.Re
 					"size": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"zone": {
@@ -22520,7 +22520,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceGroupSpecNamedPort(ref 
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -22682,7 +22682,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpec(ref common.Referen
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"deletionProtection": {
@@ -22975,7 +22975,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpecBootDiskInitializeP
 					"size": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"type": {
@@ -22999,7 +22999,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpecGuestAccelerator(re
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"type": {
@@ -23609,7 +23609,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceTemplateSpecDisk(ref co
 					"diskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"diskType": {
@@ -23683,7 +23683,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceTemplateSpecGuestAccele
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"type": {
@@ -24126,7 +24126,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInterconnectAttachmentSpecPriva
 					"tag8021q": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -25086,7 +25086,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionAutoscalerSpecAutoscaling
 					"cooldownPeriod": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"cpuUtilization": {
@@ -25116,7 +25116,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionAutoscalerSpecAutoscaling
 					"maxReplicas": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"metric": {
@@ -25134,7 +25134,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionAutoscalerSpecAutoscaling
 					"minReplicas": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -25154,8 +25154,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionAutoscalerSpecAutoscaling
 				Properties: map[string]spec.Schema{
 					"target": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 				},
@@ -25173,8 +25173,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionAutoscalerSpecAutoscaling
 				Properties: map[string]spec.Schema{
 					"target": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 				},
@@ -25198,8 +25198,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionAutoscalerSpecAutoscaling
 					},
 					"target": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"type": {
@@ -25374,7 +25374,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionBackendServiceSpec(ref co
 					"connectionDrainingTimeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"description": {
@@ -25441,7 +25441,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionBackendServiceSpec(ref co
 					"timeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -25717,7 +25717,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionDiskSpec(ref common.Refer
 					"size": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"snapshot": {
@@ -26085,7 +26085,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionInstanceGroupManagerSpec(
 					"targetSize": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"updateStrategy": {
@@ -26138,7 +26138,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionInstanceGroupManagerSpecA
 					"initialDelaySec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -26163,7 +26163,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionInstanceGroupManagerSpecN
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -26182,31 +26182,31 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionInstanceGroupManagerSpecR
 					"maxSurgeFixed": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxSurgePercent": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxUnavailableFixed": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxUnavailablePercent": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"minReadySec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"minimalAction": {
@@ -26276,13 +26276,13 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionInstanceGroupManagerSpecV
 					"fixed": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"percent": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -26498,7 +26498,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouteSpec(ref common.ReferenceC
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"project": {
@@ -26961,13 +26961,13 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterNATSpec(ref common.Refere
 					"icmpIdleTimeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"minPortsPerVm": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -27034,19 +27034,19 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterNATSpec(ref common.Refere
 					"tcpEstablishedIdleTimeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"tcpTransitoryIdleTimeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"udpIdleTimeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -27250,7 +27250,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterPeerSpec(ref common.Refer
 					"advertisedRoutePriority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"interface": {
@@ -27274,7 +27274,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterPeerSpec(ref common.Refer
 					"peerAsn": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"peerIPAddress": {
@@ -27467,7 +27467,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterSpecBgp(ref common.Refere
 					"asn": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -27655,7 +27655,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSSLCertificateSpec(ref common.R
 					"certificateID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"creationTimestamp": {
@@ -28164,7 +28164,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSecurityPolicySpecRule(ref comm
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -28723,7 +28723,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpec(ref common.Referen
 					"diskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"labelFingerprint": {
@@ -28799,7 +28799,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpec(ref common.Referen
 					"snapshotID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sourceDisk": {
@@ -28836,7 +28836,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpec(ref common.Referen
 					"storageBytes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"zone": {
@@ -29892,7 +29892,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetHTTPProxySpec(ref common.
 					"proxyID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"selfLink": {
@@ -30087,7 +30087,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetHTTPSProxySpec(ref common
 					"proxyID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"quicOverride": {
@@ -30294,8 +30294,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetPoolSpec(ref common.Refer
 					},
 					"failoverRatio": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"healthChecks": {
@@ -30546,7 +30546,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetSSLProxySpec(ref common.R
 					"proxyID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"selfLink": {
@@ -30766,7 +30766,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetTcpProxySpec(ref common.R
 					"proxyID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"selfLink": {
@@ -31532,7 +31532,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeVPNTunnelSpec(ref common.Refere
 					"ikeVersion": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"labelFingerprint": {
@@ -32082,7 +32082,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpec(ref common.Refere
 					"initialNodeCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"instanceGroupUrls": {
@@ -32698,7 +32698,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecNodeConfig(ref com
 					"diskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"diskType": {
@@ -32742,7 +32742,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecNodeConfig(ref com
 					"localSsdCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"machineType": {
@@ -32852,7 +32852,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecNodeConfigGuestAcc
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"type": {
@@ -32939,7 +32939,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecNodePool(ref commo
 					"initialNodeCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"instanceGroupUrls": {
@@ -32971,7 +32971,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecNodePool(ref commo
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"name": {
@@ -33002,7 +33002,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecNodePool(ref commo
 					"nodeCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"version": {
@@ -33028,13 +33028,13 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecNodePoolAutoscalin
 					"maxNodeCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"minNodeCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -33077,7 +33077,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecNodePoolNodeConfig
 					"diskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"diskType": {
@@ -33121,7 +33121,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecNodePoolNodeConfig
 					"localSsdCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"machineType": {
@@ -33231,7 +33231,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecNodePoolNodeConfig
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"type": {
@@ -33523,7 +33523,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerNodePoolSpec(ref common.Refer
 					"initialNodeCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"instanceGroupUrls": {
@@ -33555,7 +33555,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerNodePoolSpec(ref common.Refer
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"name": {
@@ -33586,7 +33586,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerNodePoolSpec(ref common.Refer
 					"nodeCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"project": {
@@ -33631,13 +33631,13 @@ func schema_kubeform_apis_google_v1alpha1_ContainerNodePoolSpecAutoscaling(ref c
 					"maxNodeCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"minNodeCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -33680,7 +33680,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerNodePoolSpecNodeConfig(ref co
 					"diskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"diskType": {
@@ -33724,7 +33724,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerNodePoolSpecNodeConfig(ref co
 					"localSsdCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"machineType": {
@@ -33834,7 +33834,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerNodePoolSpecNodeConfigGuestAc
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"type": {
@@ -34047,7 +34047,7 @@ func schema_kubeform_apis_google_v1alpha1_DataflowJobSpec(ref common.ReferenceCa
 					"maxWorkers": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -34520,7 +34520,7 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfigInitia
 					"timeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -34570,7 +34570,7 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfigMaster
 					"numInstances": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -34590,7 +34590,7 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfigMaster
 					"bootDiskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"bootDiskType": {
@@ -34602,7 +34602,7 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfigMaster
 					"numLocalSsds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -34645,7 +34645,7 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfigPreemp
 					"numInstances": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -34665,7 +34665,7 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfigPreemp
 					"bootDiskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -34760,7 +34760,7 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfigWorker
 					"numInstances": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -34780,7 +34780,7 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfigWorker
 					"bootDiskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"bootDiskType": {
@@ -34792,7 +34792,7 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfigWorker
 					"numLocalSsds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -35655,7 +35655,7 @@ func schema_kubeform_apis_google_v1alpha1_DataprocJobSpecScheduling(ref common.R
 						SchemaProps: spec.SchemaProps{
 							Description: "Maximum number of times per hour a driver may be restarted as a result of driver terminating with non-zero code before job is reported failed.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 				},
@@ -36332,7 +36332,7 @@ func schema_kubeform_apis_google_v1alpha1_DnsRecordSetSpec(ref common.ReferenceC
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"type": {
@@ -36922,7 +36922,7 @@ func schema_kubeform_apis_google_v1alpha1_FilestoreInstanceSpecFileShares(ref co
 					"capacityGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -37818,7 +37818,7 @@ func schema_kubeform_apis_google_v1alpha1_FolderOrganizationPolicySpec(ref commo
 					"version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -41183,13 +41183,13 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringAlertPolicySpecConditionsCon
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"percent": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 				},
@@ -41254,8 +41254,8 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringAlertPolicySpecConditionsCon
 					},
 					"thresholdValue": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"trigger": {
@@ -41374,13 +41374,13 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringAlertPolicySpecConditionsCon
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"percent": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 				},
@@ -42169,7 +42169,7 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringUptimeCheckConfigSpecHttpChe
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"useSSL": {
@@ -42312,7 +42312,7 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringUptimeCheckConfigSpecTcpChec
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -43264,7 +43264,7 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationPolicySpec(ref common.Refe
 					"version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -44473,7 +44473,7 @@ func schema_kubeform_apis_google_v1alpha1_ProjectOrganizationPolicySpec(ref comm
 					"version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -46118,7 +46118,7 @@ func schema_kubeform_apis_google_v1alpha1_PubsubSubscriptionSpec(ref common.Refe
 					"ackDeadlineSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -47117,7 +47117,7 @@ func schema_kubeform_apis_google_v1alpha1_RedisInstanceSpec(ref common.Reference
 					"memorySizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -47129,7 +47129,7 @@ func schema_kubeform_apis_google_v1alpha1_RedisInstanceSpec(ref common.Reference
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"project": {
@@ -48852,7 +48852,7 @@ func schema_kubeform_apis_google_v1alpha1_SourcerepoRepositorySpec(ref common.Re
 					"size": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"url": {
@@ -50357,7 +50357,7 @@ func schema_kubeform_apis_google_v1alpha1_SpannerInstanceSpec(ref common.Referen
 					"numNodes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"project": {
@@ -50735,7 +50735,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpecReplicaConfigur
 					"connectRetryInterval": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"dumpFilePath": {
@@ -50753,7 +50753,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpecReplicaConfigur
 					"masterHeartbeatPeriod": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sslCipher": {
@@ -50892,7 +50892,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpecSettings(ref co
 					"diskSize": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"diskType": {
@@ -50972,7 +50972,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpecSettings(ref co
 					"version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -51145,13 +51145,13 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpecSettingsMainten
 					"day": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"hour": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"updateTrack": {
@@ -52937,7 +52937,7 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketSpecCors(ref common.Refer
 					"maxAgeSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"method": {
@@ -53077,7 +53077,7 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketSpecLifecycleRuleConditio
 					"age": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"createdBefore": {
@@ -53108,7 +53108,7 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketSpecLifecycleRuleConditio
 					"numNewerVersions": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -53533,7 +53533,7 @@ func schema_kubeform_apis_google_v1alpha1_StorageDefaultObjectAccessControlSpec(
 					"generation": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"object": {
@@ -54164,7 +54164,7 @@ func schema_kubeform_apis_google_v1alpha1_StorageObjectAccessControlSpec(ref com
 					"generation": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"object": {

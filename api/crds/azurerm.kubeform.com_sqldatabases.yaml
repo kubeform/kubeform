@@ -498,6 +498,7 @@ spec:
                       type: string
                     type: array
                   retentionDays:
+                    format: int64
                     type: integer
                   state:
                     type: string
@@ -619,6 +620,7 @@ spec:
                           type: string
                         type: array
                       retentionDays:
+                        format: int64
                         type: integer
                       state:
                         type: string

@@ -50,13 +50,13 @@ type PinpointAppSpecCampaignHook struct {
 
 type PinpointAppSpecLimits struct {
 	// +optional
-	Daily int `json:"daily,omitempty" tf:"daily,omitempty"`
+	Daily int64 `json:"daily,omitempty" tf:"daily,omitempty"`
 	// +optional
-	MaximumDuration int `json:"maximumDuration,omitempty" tf:"maximum_duration,omitempty"`
+	MaximumDuration int64 `json:"maximumDuration,omitempty" tf:"maximum_duration,omitempty"`
 	// +optional
-	MessagesPerSecond int `json:"messagesPerSecond,omitempty" tf:"messages_per_second,omitempty"`
+	MessagesPerSecond int64 `json:"messagesPerSecond,omitempty" tf:"messages_per_second,omitempty"`
 	// +optional
-	Total int `json:"total,omitempty" tf:"total,omitempty"`
+	Total int64 `json:"total,omitempty" tf:"total,omitempty"`
 }
 
 type PinpointAppSpecQuietTime struct {

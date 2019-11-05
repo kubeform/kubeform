@@ -423,6 +423,7 @@ spec:
                 Domain is no longer authoritative. Valid values are 0, 00, 3600, 7200,
                 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200
                 - any other value will be rounded to the nearest valid value.
+              format: int64
               type: integer
             group:
               description: The group this Domain belongs to. This is for display purposes
@@ -449,12 +450,14 @@ spec:
                 be refreshed. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600,
                 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value
                 will be rounded to the nearest valid value.
+              format: int64
               type: integer
             retrySec:
               description: The interval, in seconds, at which a failed refresh should
                 be retried. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600,
                 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value
                 will be rounded to the nearest valid value.
+              format: int64
               type: integer
             soaEmail:
               description: Start of Authority email address. This is required for
@@ -476,6 +479,7 @@ spec:
                 servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600,
                 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value
                 will be rounded to the nearest valid value.'
+              format: int64
               type: integer
             type:
               description: If this Domain represents the authoritative source of information
@@ -518,6 +522,7 @@ spec:
                     3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800,
                     1209600, and 2419200 - any other value will be rounded to the
                     nearest valid value.
+                  format: int64
                   type: integer
                 group:
                   description: The group this Domain belongs to. This is for display
@@ -545,12 +550,14 @@ spec:
                     be refreshed. Valid values are 0, 300, 3600, 7200, 14400, 28800,
                     57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any
                     other value will be rounded to the nearest valid value.
+                  format: int64
                   type: integer
                 retrySec:
                   description: The interval, in seconds, at which a failed refresh
                     should be retried. Valid values are 0, 300, 3600, 7200, 14400,
                     28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200
                     - any other value will be rounded to the nearest valid value.
+                  format: int64
                   type: integer
                 soaEmail:
                   description: Start of Authority email address. This is required
@@ -572,6 +579,7 @@ spec:
                     servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600,
                     86400, 172800, 345600, 604800, 1209600, and 2419200 - any other
                     value will be rounded to the nearest valid value.'
+                  format: int64
                   type: integer
                 type:
                   description: If this Domain represents the authoritative source

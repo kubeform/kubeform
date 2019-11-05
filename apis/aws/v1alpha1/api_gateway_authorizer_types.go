@@ -47,7 +47,7 @@ type ApiGatewayAuthorizerSpec struct {
 	// +optional
 	AuthorizerCredentials string `json:"authorizerCredentials,omitempty" tf:"authorizer_credentials,omitempty"`
 	// +optional
-	AuthorizerResultTtlInSeconds int `json:"authorizerResultTtlInSeconds,omitempty" tf:"authorizer_result_ttl_in_seconds,omitempty"`
+	AuthorizerResultTtlInSeconds int64 `json:"authorizerResultTtlInSeconds,omitempty" tf:"authorizer_result_ttl_in_seconds,omitempty"`
 	// +optional
 	AuthorizerURI string `json:"authorizerURI,omitempty" tf:"authorizer_uri,omitempty"`
 	// +optional

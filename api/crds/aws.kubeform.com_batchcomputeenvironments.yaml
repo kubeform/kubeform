@@ -411,8 +411,10 @@ spec:
               items:
                 properties:
                   bidPercentage:
+                    format: int64
                     type: integer
                   desiredVcpus:
+                    format: int64
                     type: integer
                   ec2KeyPair:
                     type: string
@@ -437,8 +439,10 @@ spec:
                     maxItems: 1
                     type: array
                   maxVcpus:
+                    format: int64
                     type: integer
                   minVcpus:
+                    format: int64
                     type: integer
                   securityGroupIDS:
                     items:
@@ -513,8 +517,10 @@ spec:
                   items:
                     properties:
                       bidPercentage:
+                        format: int64
                         type: integer
                       desiredVcpus:
+                        format: int64
                         type: integer
                       ec2KeyPair:
                         type: string
@@ -539,8 +545,10 @@ spec:
                         maxItems: 1
                         type: array
                       maxVcpus:
+                        format: int64
                         type: integer
                       minVcpus:
+                        format: int64
                         type: integer
                       securityGroupIDS:
                         items:

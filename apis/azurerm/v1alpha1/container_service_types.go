@@ -41,7 +41,7 @@ type ContainerService struct {
 
 type ContainerServiceSpecAgentPoolProfile struct {
 	// +optional
-	Count     int    `json:"count,omitempty" tf:"count,omitempty"`
+	Count     int64  `json:"count,omitempty" tf:"count,omitempty"`
 	DnsPrefix string `json:"dnsPrefix" tf:"dns_prefix"`
 	// +optional
 	Fqdn   string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
@@ -67,7 +67,7 @@ type ContainerServiceSpecLinuxProfile struct {
 
 type ContainerServiceSpecMasterProfile struct {
 	// +optional
-	Count     int    `json:"count,omitempty" tf:"count,omitempty"`
+	Count     int64  `json:"count,omitempty" tf:"count,omitempty"`
 	DnsPrefix string `json:"dnsPrefix" tf:"dns_prefix"`
 	// +optional
 	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`

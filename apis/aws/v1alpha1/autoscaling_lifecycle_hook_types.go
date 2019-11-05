@@ -48,7 +48,7 @@ type AutoscalingLifecycleHookSpec struct {
 	// +optional
 	DefaultResult string `json:"defaultResult,omitempty" tf:"default_result,omitempty"`
 	// +optional
-	HeartbeatTimeout    int    `json:"heartbeatTimeout,omitempty" tf:"heartbeat_timeout,omitempty"`
+	HeartbeatTimeout    int64  `json:"heartbeatTimeout,omitempty" tf:"heartbeat_timeout,omitempty"`
 	LifecycleTransition string `json:"lifecycleTransition" tf:"lifecycle_transition"`
 	Name                string `json:"name" tf:"name"`
 	// +optional

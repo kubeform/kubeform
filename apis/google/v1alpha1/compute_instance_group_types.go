@@ -41,7 +41,7 @@ type ComputeInstanceGroup struct {
 
 type ComputeInstanceGroupSpecNamedPort struct {
 	Name string `json:"name" tf:"name"`
-	Port int    `json:"port" tf:"port"`
+	Port int64  `json:"port" tf:"port"`
 }
 
 type ComputeInstanceGroupSpec struct {
@@ -63,7 +63,7 @@ type ComputeInstanceGroupSpec struct {
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
-	Size int `json:"size,omitempty" tf:"size,omitempty"`
+	Size int64 `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
 	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }

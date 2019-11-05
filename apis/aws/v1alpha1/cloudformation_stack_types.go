@@ -70,7 +70,7 @@ type CloudformationStackSpec struct {
 	// +optional
 	TemplateURL string `json:"templateURL,omitempty" tf:"template_url,omitempty"`
 	// +optional
-	TimeoutInMinutes int `json:"timeoutInMinutes,omitempty" tf:"timeout_in_minutes,omitempty"`
+	TimeoutInMinutes int64 `json:"timeoutInMinutes,omitempty" tf:"timeout_in_minutes,omitempty"`
 }
 
 type CloudformationStackStatus struct {

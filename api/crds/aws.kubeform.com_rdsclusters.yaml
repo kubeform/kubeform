@@ -412,8 +412,10 @@ spec:
                 type: string
               type: array
             backtrackWindow:
+              format: int64
               type: integer
             backupRetentionPeriod:
+              format: int64
               type: integer
             clusterIdentifier:
               type: string
@@ -466,6 +468,7 @@ spec:
             masterUsername:
               type: string
             port:
+              format: int64
               type: integer
             preferredBackupWindow:
               type: string
@@ -511,10 +514,13 @@ spec:
                   autoPause:
                     type: boolean
                   maxCapacity:
+                    format: int64
                     type: integer
                   minCapacity:
+                    format: int64
                     type: integer
                   secondsUntilAutoPause:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -565,8 +571,10 @@ spec:
                     type: string
                   type: array
                 backtrackWindow:
+                  format: int64
                   type: integer
                 backupRetentionPeriod:
+                  format: int64
                   type: integer
                 clusterIdentifier:
                   type: string
@@ -619,6 +627,7 @@ spec:
                 masterUsername:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 preferredBackupWindow:
                   type: string
@@ -664,10 +673,13 @@ spec:
                       autoPause:
                         type: boolean
                       maxCapacity:
+                        format: int64
                         type: integer
                       minCapacity:
+                        format: int64
                         type: integer
                       secondsUntilAutoPause:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1

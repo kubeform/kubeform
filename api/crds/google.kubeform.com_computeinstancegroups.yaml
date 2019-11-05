@@ -419,6 +419,7 @@ spec:
                   name:
                     type: string
                   port:
+                    format: int64
                     type: integer
                 required:
                 - name
@@ -441,6 +442,7 @@ spec:
             selfLink:
               type: string
             size:
+              format: int64
               type: integer
             zone:
               type: string
@@ -473,6 +475,7 @@ spec:
                       name:
                         type: string
                       port:
+                        format: int64
                         type: integer
                     required:
                     - name
@@ -495,6 +498,7 @@ spec:
                 selfLink:
                   type: string
                 size:
+                  format: int64
                   type: integer
                 zone:
                   type: string

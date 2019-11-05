@@ -418,6 +418,7 @@ spec:
             instanceInterruptionBehaviour:
               type: string
             instancePoolsToUseCount:
+              format: int64
               type: integer
             launchSpecification:
               items:
@@ -438,10 +439,12 @@ spec:
                         encrypted:
                           type: boolean
                         iops:
+                          format: int64
                           type: integer
                         snapshotID:
                           type: string
                         volumeSize:
+                          format: int64
                           type: integer
                         volumeType:
                           type: string
@@ -483,8 +486,10 @@ spec:
                         deleteOnTermination:
                           type: boolean
                         iops:
+                          format: int64
                           type: integer
                         volumeSize:
+                          format: int64
                           type: integer
                         volumeType:
                           type: string
@@ -531,6 +536,7 @@ spec:
             spotRequestState:
               type: string
             targetCapacity:
+              format: int64
               type: integer
             targetGroupArns:
               items:
@@ -574,6 +580,7 @@ spec:
                 instanceInterruptionBehaviour:
                   type: string
                 instancePoolsToUseCount:
+                  format: int64
                   type: integer
                 launchSpecification:
                   items:
@@ -594,10 +601,12 @@ spec:
                             encrypted:
                               type: boolean
                             iops:
+                              format: int64
                               type: integer
                             snapshotID:
                               type: string
                             volumeSize:
+                              format: int64
                               type: integer
                             volumeType:
                               type: string
@@ -639,8 +648,10 @@ spec:
                             deleteOnTermination:
                               type: boolean
                             iops:
+                              format: int64
                               type: integer
                             volumeSize:
+                              format: int64
                               type: integer
                             volumeType:
                               type: string
@@ -687,6 +698,7 @@ spec:
                 spotRequestState:
                   type: string
                 targetCapacity:
+                  format: int64
                   type: integer
                 targetGroupArns:
                   items:

@@ -47,7 +47,7 @@ type LicensemanagerLicenseConfigurationSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	LicenseCount int `json:"licenseCount,omitempty" tf:"license_count,omitempty"`
+	LicenseCount int64 `json:"licenseCount,omitempty" tf:"license_count,omitempty"`
 	// +optional
 	LicenseCountHardLimit bool   `json:"licenseCountHardLimit,omitempty" tf:"license_count_hard_limit,omitempty"`
 	LicenseCountingType   string `json:"licenseCountingType" tf:"license_counting_type"`

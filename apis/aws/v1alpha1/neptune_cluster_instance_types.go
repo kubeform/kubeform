@@ -75,13 +75,13 @@ type NeptuneClusterInstanceSpec struct {
 	// +optional
 	NeptuneSubnetGroupName string `json:"neptuneSubnetGroupName,omitempty" tf:"neptune_subnet_group_name,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	PreferredBackupWindow string `json:"preferredBackupWindow,omitempty" tf:"preferred_backup_window,omitempty"`
 	// +optional
 	PreferredMaintenanceWindow string `json:"preferredMaintenanceWindow,omitempty" tf:"preferred_maintenance_window,omitempty"`
 	// +optional
-	PromotionTier int `json:"promotionTier,omitempty" tf:"promotion_tier,omitempty"`
+	PromotionTier int64 `json:"promotionTier,omitempty" tf:"promotion_tier,omitempty"`
 	// +optional
 	PubliclyAccessible bool `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
 	// +optional

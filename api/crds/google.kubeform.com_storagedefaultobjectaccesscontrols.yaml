@@ -414,6 +414,7 @@ spec:
             entityID:
               type: string
             generation:
+              format: int64
               type: integer
             id:
               type: string
@@ -466,6 +467,7 @@ spec:
                 entityID:
                   type: string
                 generation:
+                  format: int64
                   type: integer
                 id:
                   type: string

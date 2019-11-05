@@ -67,7 +67,7 @@ type ApiGatewayRestAPISpec struct {
 	// +optional
 	ExecutionArn string `json:"executionArn,omitempty" tf:"execution_arn,omitempty"`
 	// +optional
-	MinimumCompressionSize int    `json:"minimumCompressionSize,omitempty" tf:"minimum_compression_size,omitempty"`
+	MinimumCompressionSize int64  `json:"minimumCompressionSize,omitempty" tf:"minimum_compression_size,omitempty"`
 	Name                   string `json:"name" tf:"name"`
 	// +optional
 	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`

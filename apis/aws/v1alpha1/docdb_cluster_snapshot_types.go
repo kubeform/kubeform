@@ -57,7 +57,7 @@ type DocdbClusterSnapshotSpec struct {
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	SnapshotType string `json:"snapshotType,omitempty" tf:"snapshot_type,omitempty"`
 	// +optional

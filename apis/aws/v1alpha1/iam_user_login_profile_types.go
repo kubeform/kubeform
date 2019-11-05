@@ -49,7 +49,7 @@ type IamUserLoginProfileSpec struct {
 	// +optional
 	KeyFingerprint string `json:"keyFingerprint,omitempty" tf:"key_fingerprint,omitempty"`
 	// +optional
-	PasswordLength int `json:"passwordLength,omitempty" tf:"password_length,omitempty"`
+	PasswordLength int64 `json:"passwordLength,omitempty" tf:"password_length,omitempty"`
 	// +optional
 	PasswordResetRequired bool   `json:"passwordResetRequired,omitempty" tf:"password_reset_required,omitempty"`
 	PgpKey                string `json:"pgpKey" tf:"pgp_key"`

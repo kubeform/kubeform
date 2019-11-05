@@ -412,6 +412,7 @@ spec:
             id:
               type: string
             ikeVersion:
+              format: int64
               type: integer
             labelFingerprint:
               type: string
@@ -485,6 +486,7 @@ spec:
                 id:
                   type: string
                 ikeVersion:
+                  format: int64
                   type: integer
                 labelFingerprint:
                   type: string

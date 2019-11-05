@@ -41,9 +41,9 @@ type CloudwatchEventTarget struct {
 
 type CloudwatchEventTargetSpecBatchTarget struct {
 	// +optional
-	ArraySize int `json:"arraySize,omitempty" tf:"array_size,omitempty"`
+	ArraySize int64 `json:"arraySize,omitempty" tf:"array_size,omitempty"`
 	// +optional
-	JobAttempts   int    `json:"jobAttempts,omitempty" tf:"job_attempts,omitempty"`
+	JobAttempts   int64  `json:"jobAttempts,omitempty" tf:"job_attempts,omitempty"`
 	JobDefinition string `json:"jobDefinition" tf:"job_definition"`
 	JobName       string `json:"jobName" tf:"job_name"`
 }
@@ -67,7 +67,7 @@ type CloudwatchEventTargetSpecEcsTarget struct {
 	// +optional
 	PlatformVersion string `json:"platformVersion,omitempty" tf:"platform_version,omitempty"`
 	// +optional
-	TaskCount         int    `json:"taskCount,omitempty" tf:"task_count,omitempty"`
+	TaskCount         int64  `json:"taskCount,omitempty" tf:"task_count,omitempty"`
 	TaskDefinitionArn string `json:"taskDefinitionArn" tf:"task_definition_arn"`
 }
 

@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             attempts:
+              format: int64
               type: integer
             contentType:
               type: string
@@ -416,6 +417,7 @@ spec:
             name:
               type: string
             parallelism:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -429,6 +431,7 @@ spec:
             resourceGroupName:
               type: string
             size:
+              format: int64
               type: integer
             source:
               type: string
@@ -459,6 +462,7 @@ spec:
             output:
               properties:
                 attempts:
+                  format: int64
                   type: integer
                 contentType:
                   type: string
@@ -471,6 +475,7 @@ spec:
                 name:
                   type: string
                 parallelism:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -484,6 +489,7 @@ spec:
                 resourceGroupName:
                   type: string
                 size:
+                  format: int64
                   type: integer
                 source:
                   type: string

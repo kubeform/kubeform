@@ -47,7 +47,7 @@ type Cloud9EnvironmentEc2Spec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
-	AutomaticStopTimeMinutes int `json:"automaticStopTimeMinutes,omitempty" tf:"automatic_stop_time_minutes,omitempty"`
+	AutomaticStopTimeMinutes int64 `json:"automaticStopTimeMinutes,omitempty" tf:"automatic_stop_time_minutes,omitempty"`
 	// +optional
 	Description  string `json:"description,omitempty" tf:"description,omitempty"`
 	InstanceType string `json:"instanceType" tf:"instance_type"`

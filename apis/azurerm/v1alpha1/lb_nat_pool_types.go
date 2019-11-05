@@ -44,12 +44,12 @@ type LbNATPoolSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	BackendPort int `json:"backendPort" tf:"backend_port"`
+	BackendPort int64 `json:"backendPort" tf:"backend_port"`
 	// +optional
 	FrontendIPConfigurationID   string `json:"frontendIPConfigurationID,omitempty" tf:"frontend_ip_configuration_id,omitempty"`
 	FrontendIPConfigurationName string `json:"frontendIPConfigurationName" tf:"frontend_ip_configuration_name"`
-	FrontendPortEnd             int    `json:"frontendPortEnd" tf:"frontend_port_end"`
-	FrontendPortStart           int    `json:"frontendPortStart" tf:"frontend_port_start"`
+	FrontendPortEnd             int64  `json:"frontendPortEnd" tf:"frontend_port_end"`
+	FrontendPortStart           int64  `json:"frontendPortStart" tf:"frontend_port_start"`
 	LoadbalancerID              string `json:"loadbalancerID" tf:"loadbalancer_id"`
 	// +optional
 	// Deprecated

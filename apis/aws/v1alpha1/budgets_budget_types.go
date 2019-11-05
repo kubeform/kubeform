@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -72,9 +70,9 @@ type BudgetsBudgetSpecNotification struct {
 	// +optional
 	SubscriberEmailAddresses []string `json:"subscriberEmailAddresses,omitempty" tf:"subscriber_email_addresses,omitempty"`
 	// +optional
-	SubscriberSnsTopicArns []string    `json:"subscriberSnsTopicArns,omitempty" tf:"subscriber_sns_topic_arns,omitempty"`
-	Threshold              json.Number `json:"threshold" tf:"threshold"`
-	ThresholdType          string      `json:"thresholdType" tf:"threshold_type"`
+	SubscriberSnsTopicArns []string `json:"subscriberSnsTopicArns,omitempty" tf:"subscriber_sns_topic_arns,omitempty"`
+	Threshold              float64  `json:"threshold" tf:"threshold"`
+	ThresholdType          string   `json:"thresholdType" tf:"threshold_type"`
 }
 
 type BudgetsBudgetSpec struct {

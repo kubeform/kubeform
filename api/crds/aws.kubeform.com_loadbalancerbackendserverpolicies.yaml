@@ -406,6 +406,7 @@ spec:
             id:
               type: string
             instancePort:
+              format: int64
               type: integer
             loadBalancerName:
               type: string
@@ -439,6 +440,7 @@ spec:
                 id:
                   type: string
                 instancePort:
+                  format: int64
                   type: integer
                 loadBalancerName:
                   type: string

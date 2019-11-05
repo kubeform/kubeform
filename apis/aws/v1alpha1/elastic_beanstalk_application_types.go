@@ -43,9 +43,9 @@ type ElasticBeanstalkApplicationSpecAppversionLifecycle struct {
 	// +optional
 	DeleteSourceFromS3 bool `json:"deleteSourceFromS3,omitempty" tf:"delete_source_from_s3,omitempty"`
 	// +optional
-	MaxAgeInDays int `json:"maxAgeInDays,omitempty" tf:"max_age_in_days,omitempty"`
+	MaxAgeInDays int64 `json:"maxAgeInDays,omitempty" tf:"max_age_in_days,omitempty"`
 	// +optional
-	MaxCount    int    `json:"maxCount,omitempty" tf:"max_count,omitempty"`
+	MaxCount    int64  `json:"maxCount,omitempty" tf:"max_count,omitempty"`
 	ServiceRole string `json:"serviceRole" tf:"service_role"`
 }
 

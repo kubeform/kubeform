@@ -62,7 +62,7 @@ type ComputeRouteSpec struct {
 	// +optional
 	NextHopVPNTunnel string `json:"nextHopVPNTunnel,omitempty" tf:"next_hop_vpn_tunnel,omitempty"`
 	// +optional
-	Priority int `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

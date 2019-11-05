@@ -48,7 +48,7 @@ type ComputeSSLCertificateSpec struct {
 
 	Certificate string `json:"-" sensitive:"true" tf:"certificate"`
 	// +optional
-	CertificateID int `json:"certificateID,omitempty" tf:"certificate_id,omitempty"`
+	CertificateID int64 `json:"certificateID,omitempty" tf:"certificate_id,omitempty"`
 	// +optional
 	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional

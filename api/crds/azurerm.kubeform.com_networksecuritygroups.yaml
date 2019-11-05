@@ -448,6 +448,7 @@ spec:
                   name:
                     type: string
                   priority:
+                    format: int64
                     type: integer
                   protocol:
                     type: string
@@ -539,6 +540,7 @@ spec:
                       name:
                         type: string
                       priority:
+                        format: int64
                         type: integer
                       protocol:
                         type: string

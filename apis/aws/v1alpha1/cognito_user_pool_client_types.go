@@ -70,7 +70,7 @@ type CognitoUserPoolClientSpec struct {
 	// +optional
 	ReadAttributes []string `json:"readAttributes,omitempty" tf:"read_attributes,omitempty"`
 	// +optional
-	RefreshTokenValidity int `json:"refreshTokenValidity,omitempty" tf:"refresh_token_validity,omitempty"`
+	RefreshTokenValidity int64 `json:"refreshTokenValidity,omitempty" tf:"refresh_token_validity,omitempty"`
 	// +optional
 	SupportedIdentityProviders []string `json:"supportedIdentityProviders,omitempty" tf:"supported_identity_providers,omitempty"`
 	UserPoolID                 string   `json:"userPoolID" tf:"user_pool_id"`

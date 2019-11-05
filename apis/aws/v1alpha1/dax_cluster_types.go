@@ -47,7 +47,7 @@ type DaxClusterSpecNodes struct {
 	// +optional
 	ID string `json:"ID,omitempty" tf:"id,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type DaxClusterSpecServerSideEncryption struct {
@@ -82,8 +82,8 @@ type DaxClusterSpec struct {
 	// +optional
 	ParameterGroupName string `json:"parameterGroupName,omitempty" tf:"parameter_group_name,omitempty"`
 	// +optional
-	Port              int `json:"port,omitempty" tf:"port,omitempty"`
-	ReplicationFactor int `json:"replicationFactor" tf:"replication_factor"`
+	Port              int64 `json:"port,omitempty" tf:"port,omitempty"`
+	ReplicationFactor int64 `json:"replicationFactor" tf:"replication_factor"`
 	// +optional
 	SecurityGroupIDS []string `json:"securityGroupIDS,omitempty" tf:"security_group_ids,omitempty"`
 	// +optional

@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -47,7 +45,7 @@ type CloudwatchMetricAlarmSpecMetricQueryMetric struct {
 	MetricName string            `json:"metricName" tf:"metric_name"`
 	// +optional
 	Namespace string `json:"namespace,omitempty" tf:"namespace,omitempty"`
-	Period    int    `json:"period" tf:"period"`
+	Period    int64  `json:"period" tf:"period"`
 	Stat      string `json:"stat" tf:"stat"`
 	// +optional
 	Unit string `json:"unit,omitempty" tf:"unit,omitempty"`
@@ -82,12 +80,12 @@ type CloudwatchMetricAlarmSpec struct {
 	Arn                string `json:"arn,omitempty" tf:"arn,omitempty"`
 	ComparisonOperator string `json:"comparisonOperator" tf:"comparison_operator"`
 	// +optional
-	DatapointsToAlarm int `json:"datapointsToAlarm,omitempty" tf:"datapoints_to_alarm,omitempty"`
+	DatapointsToAlarm int64 `json:"datapointsToAlarm,omitempty" tf:"datapoints_to_alarm,omitempty"`
 	// +optional
 	Dimensions map[string]string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 	// +optional
 	EvaluateLowSampleCountPercentiles string `json:"evaluateLowSampleCountPercentiles,omitempty" tf:"evaluate_low_sample_count_percentiles,omitempty"`
-	EvaluationPeriods                 int    `json:"evaluationPeriods" tf:"evaluation_periods"`
+	EvaluationPeriods                 int64  `json:"evaluationPeriods" tf:"evaluation_periods"`
 	// +optional
 	ExtendedStatistic string `json:"extendedStatistic,omitempty" tf:"extended_statistic,omitempty"`
 	// +optional
@@ -101,12 +99,12 @@ type CloudwatchMetricAlarmSpec struct {
 	// +optional
 	OkActions []string `json:"okActions,omitempty" tf:"ok_actions,omitempty"`
 	// +optional
-	Period int `json:"period,omitempty" tf:"period,omitempty"`
+	Period int64 `json:"period,omitempty" tf:"period,omitempty"`
 	// +optional
 	Statistic string `json:"statistic,omitempty" tf:"statistic,omitempty"`
 	// +optional
 	Tags      map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	Threshold json.Number       `json:"threshold" tf:"threshold"`
+	Threshold float64           `json:"threshold" tf:"threshold"`
 	// +optional
 	TreatMissingData string `json:"treatMissingData,omitempty" tf:"treat_missing_data,omitempty"`
 	// +optional

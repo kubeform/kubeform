@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -50,7 +48,7 @@ type MssqlElasticpoolSpecElasticPoolProperties struct {
 	LicenseType string `json:"licenseType,omitempty" tf:"license_type,omitempty"`
 	// +optional
 	// Deprecated
-	MaxSizeBytes int `json:"maxSizeBytes,omitempty" tf:"max_size_bytes,omitempty"`
+	MaxSizeBytes int64 `json:"maxSizeBytes,omitempty" tf:"max_size_bytes,omitempty"`
 	// +optional
 	// Deprecated
 	State string `json:"state,omitempty" tf:"state,omitempty"`
@@ -60,12 +58,12 @@ type MssqlElasticpoolSpecElasticPoolProperties struct {
 }
 
 type MssqlElasticpoolSpecPerDatabaseSettings struct {
-	MaxCapacity json.Number `json:"maxCapacity" tf:"max_capacity"`
-	MinCapacity json.Number `json:"minCapacity" tf:"min_capacity"`
+	MaxCapacity float64 `json:"maxCapacity" tf:"max_capacity"`
+	MinCapacity float64 `json:"minCapacity" tf:"min_capacity"`
 }
 
 type MssqlElasticpoolSpecSku struct {
-	Capacity int `json:"capacity" tf:"capacity"`
+	Capacity int64 `json:"capacity" tf:"capacity"`
 	// +optional
 	Family string `json:"family,omitempty" tf:"family,omitempty"`
 	Name   string `json:"name" tf:"name"`
@@ -83,10 +81,10 @@ type MssqlElasticpoolSpec struct {
 	ElasticPoolProperties []MssqlElasticpoolSpecElasticPoolProperties `json:"elasticPoolProperties,omitempty" tf:"elastic_pool_properties,omitempty"`
 	Location              string                                      `json:"location" tf:"location"`
 	// +optional
-	MaxSizeBytes int `json:"maxSizeBytes,omitempty" tf:"max_size_bytes,omitempty"`
+	MaxSizeBytes int64 `json:"maxSizeBytes,omitempty" tf:"max_size_bytes,omitempty"`
 	// +optional
-	MaxSizeGb json.Number `json:"maxSizeGb,omitempty" tf:"max_size_gb,omitempty"`
-	Name      string      `json:"name" tf:"name"`
+	MaxSizeGb float64 `json:"maxSizeGb,omitempty" tf:"max_size_gb,omitempty"`
+	Name      string  `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1
 	PerDatabaseSettings []MssqlElasticpoolSpecPerDatabaseSettings `json:"perDatabaseSettings" tf:"per_database_settings"`
 	ResourceGroupName   string                                    `json:"resourceGroupName" tf:"resource_group_name"`

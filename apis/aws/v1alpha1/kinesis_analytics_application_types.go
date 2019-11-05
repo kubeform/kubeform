@@ -57,7 +57,7 @@ type KinesisAnalyticsApplicationSpecInputsKinesisStream struct {
 }
 
 type KinesisAnalyticsApplicationSpecInputsParallelism struct {
-	Count int `json:"count" tf:"count"`
+	Count int64 `json:"count" tf:"count"`
 }
 
 type KinesisAnalyticsApplicationSpecInputsProcessingConfigurationLambda struct {
@@ -265,7 +265,7 @@ type KinesisAnalyticsApplicationSpec struct {
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
-	Version int `json:"version,omitempty" tf:"version,omitempty"`
+	Version int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type KinesisAnalyticsApplicationStatus struct {

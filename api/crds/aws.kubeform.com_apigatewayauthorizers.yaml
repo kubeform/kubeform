@@ -406,6 +406,7 @@ spec:
             authorizerCredentials:
               type: string
             authorizerResultTtlInSeconds:
+              format: int64
               type: integer
             authorizerURI:
               type: string
@@ -451,6 +452,7 @@ spec:
                 authorizerCredentials:
                   type: string
                 authorizerResultTtlInSeconds:
+                  format: int64
                   type: integer
                 authorizerURI:
                   type: string

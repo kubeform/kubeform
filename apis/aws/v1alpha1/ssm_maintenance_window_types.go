@@ -45,9 +45,9 @@ type SsmMaintenanceWindowSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	AllowUnassociatedTargets bool `json:"allowUnassociatedTargets,omitempty" tf:"allow_unassociated_targets,omitempty"`
-	Cutoff                   int  `json:"cutoff" tf:"cutoff"`
-	Duration                 int  `json:"duration" tf:"duration"`
+	AllowUnassociatedTargets bool  `json:"allowUnassociatedTargets,omitempty" tf:"allow_unassociated_targets,omitempty"`
+	Cutoff                   int64 `json:"cutoff" tf:"cutoff"`
+	Duration                 int64 `json:"duration" tf:"duration"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional

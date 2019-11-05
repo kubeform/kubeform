@@ -76,7 +76,7 @@ type ComputeFirewallSpec struct {
 	Name          string `json:"name" tf:"name"`
 	Network       string `json:"network" tf:"network"`
 	// +optional
-	Priority int `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

@@ -51,11 +51,11 @@ type IamAccountPasswordPolicySpec struct {
 	// +optional
 	HardExpiry bool `json:"hardExpiry,omitempty" tf:"hard_expiry,omitempty"`
 	// +optional
-	MaxPasswordAge int `json:"maxPasswordAge,omitempty" tf:"max_password_age,omitempty"`
+	MaxPasswordAge int64 `json:"maxPasswordAge,omitempty" tf:"max_password_age,omitempty"`
 	// +optional
-	MinimumPasswordLength int `json:"minimumPasswordLength,omitempty" tf:"minimum_password_length,omitempty"`
+	MinimumPasswordLength int64 `json:"minimumPasswordLength,omitempty" tf:"minimum_password_length,omitempty"`
 	// +optional
-	PasswordReusePrevention int `json:"passwordReusePrevention,omitempty" tf:"password_reuse_prevention,omitempty"`
+	PasswordReusePrevention int64 `json:"passwordReusePrevention,omitempty" tf:"password_reuse_prevention,omitempty"`
 	// +optional
 	RequireLowercaseCharacters bool `json:"requireLowercaseCharacters,omitempty" tf:"require_lowercase_characters,omitempty"`
 	// +optional

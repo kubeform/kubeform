@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -49,13 +47,13 @@ type VolumeSnapshotSpec struct {
 	// +optional
 	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 	// +optional
-	MinDiskSize int    `json:"minDiskSize,omitempty" tf:"min_disk_size,omitempty"`
+	MinDiskSize int64  `json:"minDiskSize,omitempty" tf:"min_disk_size,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
 	Regions []string `json:"regions,omitempty" tf:"regions,omitempty"`
 	// +optional
-	Size     json.Number `json:"size,omitempty" tf:"size,omitempty"`
-	VolumeID string      `json:"volumeID" tf:"volume_id"`
+	Size     float64 `json:"size,omitempty" tf:"size,omitempty"`
+	VolumeID string  `json:"volumeID" tf:"volume_id"`
 }
 
 type VolumeSnapshotStatus struct {

@@ -49,17 +49,17 @@ type SqsQueueSpec struct {
 	// +optional
 	ContentBasedDeduplication bool `json:"contentBasedDeduplication,omitempty" tf:"content_based_deduplication,omitempty"`
 	// +optional
-	DelaySeconds int `json:"delaySeconds,omitempty" tf:"delay_seconds,omitempty"`
+	DelaySeconds int64 `json:"delaySeconds,omitempty" tf:"delay_seconds,omitempty"`
 	// +optional
 	FifoQueue bool `json:"fifoQueue,omitempty" tf:"fifo_queue,omitempty"`
 	// +optional
-	KmsDataKeyReusePeriodSeconds int `json:"kmsDataKeyReusePeriodSeconds,omitempty" tf:"kms_data_key_reuse_period_seconds,omitempty"`
+	KmsDataKeyReusePeriodSeconds int64 `json:"kmsDataKeyReusePeriodSeconds,omitempty" tf:"kms_data_key_reuse_period_seconds,omitempty"`
 	// +optional
 	KmsMasterKeyID string `json:"kmsMasterKeyID,omitempty" tf:"kms_master_key_id,omitempty"`
 	// +optional
-	MaxMessageSize int `json:"maxMessageSize,omitempty" tf:"max_message_size,omitempty"`
+	MaxMessageSize int64 `json:"maxMessageSize,omitempty" tf:"max_message_size,omitempty"`
 	// +optional
-	MessageRetentionSeconds int `json:"messageRetentionSeconds,omitempty" tf:"message_retention_seconds,omitempty"`
+	MessageRetentionSeconds int64 `json:"messageRetentionSeconds,omitempty" tf:"message_retention_seconds,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
@@ -67,13 +67,13 @@ type SqsQueueSpec struct {
 	// +optional
 	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 	// +optional
-	ReceiveWaitTimeSeconds int `json:"receiveWaitTimeSeconds,omitempty" tf:"receive_wait_time_seconds,omitempty"`
+	ReceiveWaitTimeSeconds int64 `json:"receiveWaitTimeSeconds,omitempty" tf:"receive_wait_time_seconds,omitempty"`
 	// +optional
 	RedrivePolicy string `json:"redrivePolicy,omitempty" tf:"redrive_policy,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	VisibilityTimeoutSeconds int `json:"visibilityTimeoutSeconds,omitempty" tf:"visibility_timeout_seconds,omitempty"`
+	VisibilityTimeoutSeconds int64 `json:"visibilityTimeoutSeconds,omitempty" tf:"visibility_timeout_seconds,omitempty"`
 }
 
 type SqsQueueStatus struct {

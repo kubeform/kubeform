@@ -443,14 +443,17 @@ spec:
               items:
                 properties:
                   iops:
+                    format: int64
                     type: integer
                   mountPoint:
                     type: string
                   numberOfDisks:
+                    format: int64
                     type: integer
                   raidLevel:
                     type: string
                   size:
+                    format: int64
                     type: integer
                   type:
                     type: string
@@ -471,6 +474,7 @@ spec:
             installUpdatesOnBoot:
               type: boolean
             instanceShutdownTimeout:
+              format: int64
               type: integer
             name:
               type: string
@@ -553,14 +557,17 @@ spec:
                   items:
                     properties:
                       iops:
+                        format: int64
                         type: integer
                       mountPoint:
                         type: string
                       numberOfDisks:
+                        format: int64
                         type: integer
                       raidLevel:
                         type: string
                       size:
+                        format: int64
                         type: integer
                       type:
                         type: string
@@ -581,6 +588,7 @@ spec:
                 installUpdatesOnBoot:
                   type: boolean
                 instanceShutdownTimeout:
+                  format: int64
                   type: integer
                 name:
                   type: string

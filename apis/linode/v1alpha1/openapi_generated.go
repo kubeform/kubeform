@@ -12488,7 +12488,7 @@ func schema_kubeform_apis_linode_v1alpha1_DomainRecordSpec(ref common.ReferenceC
 						SchemaProps: spec.SchemaProps{
 							Description: "The ID of the Domain to access.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"name": {
@@ -12502,14 +12502,14 @@ func schema_kubeform_apis_linode_v1alpha1_DomainRecordSpec(ref common.ReferenceC
 						SchemaProps: spec.SchemaProps{
 							Description: "The port this Record points to.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The priority of the target host. Lower values are preferred.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"protocol": {
@@ -12551,14 +12551,14 @@ func schema_kubeform_apis_linode_v1alpha1_DomainRecordSpec(ref common.ReferenceC
 						SchemaProps: spec.SchemaProps{
 							Description: "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"weight": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The relative weight of this Record. Higher values are preferred.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 				},
@@ -12656,7 +12656,7 @@ func schema_kubeform_apis_linode_v1alpha1_DomainSpec(ref common.ReferenceCallbac
 						SchemaProps: spec.SchemaProps{
 							Description: "The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 00, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"group": {
@@ -12684,14 +12684,14 @@ func schema_kubeform_apis_linode_v1alpha1_DomainSpec(ref common.ReferenceCallbac
 						SchemaProps: spec.SchemaProps{
 							Description: "The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"retrySec": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The interval, in seconds, at which a failed refresh should be retried. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"soaEmail": {
@@ -12726,7 +12726,7 @@ func schema_kubeform_apis_linode_v1alpha1_DomainSpec(ref common.ReferenceCallbac
 						SchemaProps: spec.SchemaProps{
 							Description: "'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"type": {
@@ -12921,7 +12921,7 @@ func schema_kubeform_apis_linode_v1alpha1_ImageSpec(ref common.ReferenceCallback
 						SchemaProps: spec.SchemaProps{
 							Description: "The ID of the Linode Disk that this Image will be created from.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"expiry": {
@@ -12949,14 +12949,14 @@ func schema_kubeform_apis_linode_v1alpha1_ImageSpec(ref common.ReferenceCallback
 						SchemaProps: spec.SchemaProps{
 							Description: "The ID of the Linode that this Image will be created from.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"size": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The minimum size this Image needs to deploy. Size is in MB.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"type": {
@@ -13175,7 +13175,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 						SchemaProps: spec.SchemaProps{
 							Description: "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"backups": {
@@ -13316,7 +13316,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 						SchemaProps: spec.SchemaProps{
 							Description: "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"status": {
@@ -13330,7 +13330,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 						SchemaProps: spec.SchemaProps{
 							Description: "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"tags": {
@@ -13380,35 +13380,35 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecAlerts(ref common.Referenc
 						SchemaProps: spec.SchemaProps{
 							Description: "The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"io": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"networkIn": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"networkOut": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"transferQuota": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 				},
@@ -13533,7 +13533,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfig(ref common.Referenc
 						SchemaProps: spec.SchemaProps{
 							Description: "Defaults to the total RAM of the Linode",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"rootDevice": {
@@ -13686,7 +13686,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSda(ref commo
 						SchemaProps: spec.SchemaProps{
 							Description: "The Disk ID to map to this disk slot",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"diskLabel": {
@@ -13700,7 +13700,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSda(ref commo
 						SchemaProps: spec.SchemaProps{
 							Description: "The Block Storage volume ID to map to this disk slot",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 				},
@@ -13718,7 +13718,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSdb(ref commo
 					"diskID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"diskLabel": {
@@ -13730,7 +13730,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSdb(ref commo
 					"volumeID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -13748,7 +13748,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSdc(ref commo
 					"diskID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"diskLabel": {
@@ -13760,7 +13760,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSdc(ref commo
 					"volumeID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -13778,7 +13778,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSdd(ref commo
 					"diskID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"diskLabel": {
@@ -13790,7 +13790,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSdd(ref commo
 					"volumeID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -13808,7 +13808,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSde(ref commo
 					"diskID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"diskLabel": {
@@ -13820,7 +13820,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSde(ref commo
 					"volumeID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -13838,7 +13838,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSdf(ref commo
 					"diskID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"diskLabel": {
@@ -13850,7 +13850,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSdf(ref commo
 					"volumeID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -13868,7 +13868,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSdg(ref commo
 					"diskID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"diskLabel": {
@@ -13880,7 +13880,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSdg(ref commo
 					"volumeID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -13898,7 +13898,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSdh(ref commo
 					"diskID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"diskLabel": {
@@ -13910,7 +13910,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecConfigDevicesSdh(ref commo
 					"volumeID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -14011,7 +14011,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecDisk(ref common.ReferenceC
 						SchemaProps: spec.SchemaProps{
 							Description: "The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"image": {
@@ -14039,14 +14039,14 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecDisk(ref common.ReferenceC
 						SchemaProps: spec.SchemaProps{
 							Description: "The size of the Disk in MB.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"stackscriptID": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 				},
@@ -14066,28 +14066,28 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecSpecs(ref common.Reference
 						SchemaProps: spec.SchemaProps{
 							Description: "The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"memory": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"transfer": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The amount of network transfer this Linode is allotted each month.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"vcpus": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 				},
@@ -14306,7 +14306,7 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigSpec(ref common.Refe
 						SchemaProps: spec.SchemaProps{
 							Description: "How many times to attempt a check before considering a backend to be down. (1-30)",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"checkBody": {
@@ -14320,7 +14320,7 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigSpec(ref common.Refe
 						SchemaProps: spec.SchemaProps{
 							Description: "How often, in seconds, to check that backends are up and serving requests.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"checkPassive": {
@@ -14341,7 +14341,7 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigSpec(ref common.Refe
 						SchemaProps: spec.SchemaProps{
 							Description: "How long, in seconds, to wait for a check attempt before considering it failed. (1-30)",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"cipherSuite": {
@@ -14368,14 +14368,14 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigSpec(ref common.Refe
 						SchemaProps: spec.SchemaProps{
 							Description: "The ID of the NodeBalancer to access.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"protocol": {
@@ -14432,14 +14432,14 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigSpecNodeStatus(ref c
 						SchemaProps: spec.SchemaProps{
 							Description: "The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"statusUp": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The number of backends considered to be 'UP' and healthy, and that are serving requests.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 				},
@@ -14650,7 +14650,7 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerNodeSpec(ref common.Refere
 						SchemaProps: spec.SchemaProps{
 							Description: "The ID of the NodeBalancerConfig to access.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"label": {
@@ -14671,7 +14671,7 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerNodeSpec(ref common.Refere
 						SchemaProps: spec.SchemaProps{
 							Description: "The ID of the NodeBalancer to access.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"status": {
@@ -14685,7 +14685,7 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerNodeSpec(ref common.Refere
 						SchemaProps: spec.SchemaProps{
 							Description: "Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255)",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 				},
@@ -14755,7 +14755,7 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerSpec(ref common.ReferenceC
 						SchemaProps: spec.SchemaProps{
 							Description: "Throttle connections per second (0-20). Set to 0 (zero) to disable throttling.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"created": {
@@ -14850,22 +14850,22 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerSpecTransfer(ref common.Re
 					"in": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The total transfer, in MB, used by this NodeBalancer this month",
-							Type:        []string{"string"},
-							Format:      "",
+							Type:        []string{"number"},
+							Format:      "double",
 						},
 					},
 					"out": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The total inbound transfer, in MB, used for this NodeBalancer this month",
-							Type:        []string{"string"},
-							Format:      "",
+							Type:        []string{"number"},
+							Format:      "double",
 						},
 					},
 					"total": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The total outbound transfer, in MB, used for this NodeBalancer this month",
-							Type:        []string{"string"},
-							Format:      "",
+							Type:        []string{"number"},
+							Format:      "double",
 						},
 					},
 				},
@@ -15370,14 +15370,14 @@ func schema_kubeform_apis_linode_v1alpha1_StackscriptSpec(ref common.ReferenceCa
 						SchemaProps: spec.SchemaProps{
 							Description: "Count of currently active, deployed Linodes created from this StackScript.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"deploymentsTotal": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The total number of times this StackScript has been deployed.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"description": {
@@ -15870,7 +15870,7 @@ func schema_kubeform_apis_linode_v1alpha1_VolumeSpec(ref common.ReferenceCallbac
 						SchemaProps: spec.SchemaProps{
 							Description: "The Linode ID where the Volume should be attached.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"region": {
@@ -15884,7 +15884,7 @@ func schema_kubeform_apis_linode_v1alpha1_VolumeSpec(ref common.ReferenceCallbac
 						SchemaProps: spec.SchemaProps{
 							Description: "Size of the Volume in GB",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"status": {

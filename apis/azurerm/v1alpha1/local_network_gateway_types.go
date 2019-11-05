@@ -40,10 +40,10 @@ type LocalNetworkGateway struct {
 }
 
 type LocalNetworkGatewaySpecBgpSettings struct {
-	Asn               int    `json:"asn" tf:"asn"`
+	Asn               int64  `json:"asn" tf:"asn"`
 	BgpPeeringAddress string `json:"bgpPeeringAddress" tf:"bgp_peering_address"`
 	// +optional
-	PeerWeight int `json:"peerWeight,omitempty" tf:"peer_weight,omitempty"`
+	PeerWeight int64 `json:"peerWeight,omitempty" tf:"peer_weight,omitempty"`
 }
 
 type LocalNetworkGatewaySpec struct {

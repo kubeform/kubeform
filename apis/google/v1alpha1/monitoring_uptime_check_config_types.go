@@ -62,7 +62,7 @@ type MonitoringUptimeCheckConfigSpecHttpCheck struct {
 	// +optional
 	Path string `json:"path,omitempty" tf:"path,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	UseSSL bool `json:"useSSL,omitempty" tf:"use_ssl,omitempty"`
 }
@@ -93,7 +93,7 @@ type MonitoringUptimeCheckConfigSpecResourceGroup struct {
 }
 
 type MonitoringUptimeCheckConfigSpecTcpCheck struct {
-	Port int `json:"port" tf:"port"`
+	Port int64 `json:"port" tf:"port"`
 }
 
 type MonitoringUptimeCheckConfigSpec struct {

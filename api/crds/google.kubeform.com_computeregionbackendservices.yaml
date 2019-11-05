@@ -413,6 +413,7 @@ spec:
                 type: object
               type: array
             connectionDrainingTimeoutSec:
+              format: int64
               type: integer
             description:
               type: string
@@ -448,6 +449,7 @@ spec:
             sessionAffinity:
               type: string
             timeoutSec:
+              format: int64
               type: integer
           required:
           - healthChecks
@@ -473,6 +475,7 @@ spec:
                     type: object
                   type: array
                 connectionDrainingTimeoutSec:
+                  format: int64
                   type: integer
                 description:
                   type: string
@@ -508,6 +511,7 @@ spec:
                 sessionAffinity:
                   type: string
                 timeoutSec:
+                  format: int64
                   type: integer
               required:
               - healthChecks

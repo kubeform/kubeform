@@ -406,6 +406,7 @@ spec:
             allowVersionUpgrade:
               type: boolean
             automatedSnapshotRetentionPeriod:
+              format: int64
               type: integer
             availabilityZone:
               type: string
@@ -468,10 +469,12 @@ spec:
             nodeType:
               type: string
             numberOfNodes:
+              format: int64
               type: integer
             ownerAccount:
               type: string
             port:
+              format: int64
               type: integer
             preferredMaintenanceWindow:
               type: string
@@ -507,6 +510,7 @@ spec:
                   grantName:
                     type: string
                   retentionPeriod:
+                    format: int64
                     type: integer
                 required:
                 - destinationRegion
@@ -540,6 +544,7 @@ spec:
                 allowVersionUpgrade:
                   type: boolean
                 automatedSnapshotRetentionPeriod:
+                  format: int64
                   type: integer
                 availabilityZone:
                   type: string
@@ -602,10 +607,12 @@ spec:
                 nodeType:
                   type: string
                 numberOfNodes:
+                  format: int64
                   type: integer
                 ownerAccount:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 preferredMaintenanceWindow:
                   type: string
@@ -641,6 +648,7 @@ spec:
                       grantName:
                         type: string
                       retentionPeriod:
+                        format: int64
                         type: integer
                     required:
                     - destinationRegion

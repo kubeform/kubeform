@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -49,7 +47,7 @@ type GlueJobSpecCommand struct {
 
 type GlueJobSpecExecutionProperty struct {
 	// +optional
-	MaxConcurrentRuns int `json:"maxConcurrentRuns,omitempty" tf:"max_concurrent_runs,omitempty"`
+	MaxConcurrentRuns int64 `json:"maxConcurrentRuns,omitempty" tf:"max_concurrent_runs,omitempty"`
 }
 
 type GlueJobSpec struct {
@@ -59,7 +57,7 @@ type GlueJobSpec struct {
 
 	// +optional
 	// Deprecated
-	AllocatedCapacity int `json:"allocatedCapacity,omitempty" tf:"allocated_capacity,omitempty"`
+	AllocatedCapacity int64 `json:"allocatedCapacity,omitempty" tf:"allocated_capacity,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	Command []GlueJobSpecCommand `json:"command" tf:"command"`
 	// +optional
@@ -72,15 +70,15 @@ type GlueJobSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	ExecutionProperty []GlueJobSpecExecutionProperty `json:"executionProperty,omitempty" tf:"execution_property,omitempty"`
 	// +optional
-	MaxCapacity json.Number `json:"maxCapacity,omitempty" tf:"max_capacity,omitempty"`
+	MaxCapacity float64 `json:"maxCapacity,omitempty" tf:"max_capacity,omitempty"`
 	// +optional
-	MaxRetries int    `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
+	MaxRetries int64  `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 	Name       string `json:"name" tf:"name"`
 	RoleArn    string `json:"roleArn" tf:"role_arn"`
 	// +optional
 	SecurityConfiguration string `json:"securityConfiguration,omitempty" tf:"security_configuration,omitempty"`
 	// +optional
-	Timeout int `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	Timeout int64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 }
 
 type GlueJobStatus struct {

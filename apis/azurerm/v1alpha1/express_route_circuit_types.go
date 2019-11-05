@@ -53,7 +53,7 @@ type ExpressRouteCircuitSpec struct {
 
 	// +optional
 	AllowClassicOperations bool   `json:"allowClassicOperations,omitempty" tf:"allow_classic_operations,omitempty"`
-	BandwidthInMbps        int    `json:"bandwidthInMbps" tf:"bandwidth_in_mbps"`
+	BandwidthInMbps        int64  `json:"bandwidthInMbps" tf:"bandwidth_in_mbps"`
 	Location               string `json:"location" tf:"location"`
 	Name                   string `json:"name" tf:"name"`
 	PeeringLocation        string `json:"peeringLocation" tf:"peering_location"`

@@ -41,8 +41,8 @@ type MonitorDiagnosticSetting struct {
 
 type MonitorDiagnosticSettingSpecLogRetentionPolicy struct {
 	// +optional
-	Days    int  `json:"days,omitempty" tf:"days,omitempty"`
-	Enabled bool `json:"enabled" tf:"enabled"`
+	Days    int64 `json:"days,omitempty" tf:"days,omitempty"`
+	Enabled bool  `json:"enabled" tf:"enabled"`
 }
 
 type MonitorDiagnosticSettingSpecLog struct {
@@ -55,8 +55,8 @@ type MonitorDiagnosticSettingSpecLog struct {
 
 type MonitorDiagnosticSettingSpecMetricRetentionPolicy struct {
 	// +optional
-	Days    int  `json:"days,omitempty" tf:"days,omitempty"`
-	Enabled bool `json:"enabled" tf:"enabled"`
+	Days    int64 `json:"days,omitempty" tf:"days,omitempty"`
+	Enabled bool  `json:"enabled" tf:"enabled"`
 }
 
 type MonitorDiagnosticSettingSpecMetric struct {

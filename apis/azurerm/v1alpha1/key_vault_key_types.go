@@ -50,7 +50,7 @@ type KeyVaultKeySpec struct {
 	E       string   `json:"e,omitempty" tf:"e,omitempty"`
 	KeyOpts []string `json:"keyOpts" tf:"key_opts"`
 	// +optional
-	KeySize int    `json:"keySize,omitempty" tf:"key_size,omitempty"`
+	KeySize int64  `json:"keySize,omitempty" tf:"key_size,omitempty"`
 	KeyType string `json:"keyType" tf:"key_type"`
 	// +optional
 	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`

@@ -475,8 +475,10 @@ spec:
                     items:
                       properties:
                         minInstanceCount:
+                          format: int64
                           type: integer
                         numberOfDisksPerNode:
+                          format: int64
                           type: integer
                         sshKeys:
                           items:
@@ -485,6 +487,7 @@ spec:
                         subnetID:
                           type: string
                         targetInstanceCount:
+                          format: int64
                           type: integer
                         username:
                           type: string
@@ -650,8 +653,10 @@ spec:
                         items:
                           properties:
                             minInstanceCount:
+                              format: int64
                               type: integer
                             numberOfDisksPerNode:
+                              format: int64
                               type: integer
                             sshKeys:
                               items:
@@ -660,6 +665,7 @@ spec:
                             subnetID:
                               type: string
                             targetInstanceCount:
+                              format: int64
                               type: integer
                             username:
                               type: string

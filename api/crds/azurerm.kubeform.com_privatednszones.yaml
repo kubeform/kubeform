@@ -406,14 +406,18 @@ spec:
             id:
               type: string
             maxNumberOfRecordSets:
+              format: int64
               type: integer
             maxNumberOfVirtualNetworkLinks:
+              format: int64
               type: integer
             maxNumberOfVirtualNetworkLinksWithRegistration:
+              format: int64
               type: integer
             name:
               type: string
             numberOfRecordSets:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -447,14 +451,18 @@ spec:
                 id:
                   type: string
                 maxNumberOfRecordSets:
+                  format: int64
                   type: integer
                 maxNumberOfVirtualNetworkLinks:
+                  format: int64
                   type: integer
                 maxNumberOfVirtualNetworkLinksWithRegistration:
+                  format: int64
                   type: integer
                 name:
                   type: string
                 numberOfRecordSets:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

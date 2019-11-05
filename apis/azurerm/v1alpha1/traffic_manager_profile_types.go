@@ -41,13 +41,13 @@ type TrafficManagerProfile struct {
 
 type TrafficManagerProfileSpecDnsConfig struct {
 	RelativeName string `json:"relativeName" tf:"relative_name"`
-	Ttl          int    `json:"ttl" tf:"ttl"`
+	Ttl          int64  `json:"ttl" tf:"ttl"`
 }
 
 type TrafficManagerProfileSpecMonitorConfig struct {
 	// +optional
 	Path     string `json:"path,omitempty" tf:"path,omitempty"`
-	Port     int    `json:"port" tf:"port"`
+	Port     int64  `json:"port" tf:"port"`
 	Protocol string `json:"protocol" tf:"protocol"`
 }
 

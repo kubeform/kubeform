@@ -64,10 +64,10 @@ type StackscriptSpec struct {
 	Created string `json:"created,omitempty" tf:"created,omitempty"`
 	// Count of currently active, deployed Linodes created from this StackScript.
 	// +optional
-	DeploymentsActive int `json:"deploymentsActive,omitempty" tf:"deployments_active,omitempty"`
+	DeploymentsActive int64 `json:"deploymentsActive,omitempty" tf:"deployments_active,omitempty"`
 	// The total number of times this StackScript has been deployed.
 	// +optional
-	DeploymentsTotal int `json:"deploymentsTotal,omitempty" tf:"deployments_total,omitempty"`
+	DeploymentsTotal int64 `json:"deploymentsTotal,omitempty" tf:"deployments_total,omitempty"`
 	// A description for the StackScript.
 	Description string `json:"description" tf:"description"`
 	// An array of Image IDs representing the Images that this StackScript is compatible for deploying with.

@@ -58,8 +58,8 @@ type ComputeSecurityPolicySpecRule struct {
 	// +kubebuilder:validation:MaxItems=1
 	Match []ComputeSecurityPolicySpecRuleMatch `json:"match" tf:"match"`
 	// +optional
-	Preview  bool `json:"preview,omitempty" tf:"preview,omitempty"`
-	Priority int  `json:"priority" tf:"priority"`
+	Preview  bool  `json:"preview,omitempty" tf:"preview,omitempty"`
+	Priority int64 `json:"priority" tf:"priority"`
 }
 
 type ComputeSecurityPolicySpec struct {

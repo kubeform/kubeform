@@ -457,6 +457,7 @@ spec:
                   preview:
                     type: boolean
                   priority:
+                    format: int64
                     type: integer
                 required:
                 - action
@@ -533,6 +534,7 @@ spec:
                       preview:
                         type: boolean
                       priority:
+                        format: int64
                         type: integer
                     required:
                     - action

@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -100,7 +98,7 @@ type AppServiceSlotSpecAuthSettings struct {
 	// +optional
 	RuntimeVersion string `json:"runtimeVersion,omitempty" tf:"runtime_version,omitempty"`
 	// +optional
-	TokenRefreshExtensionHours json.Number `json:"tokenRefreshExtensionHours,omitempty" tf:"token_refresh_extension_hours,omitempty"`
+	TokenRefreshExtensionHours float64 `json:"tokenRefreshExtensionHours,omitempty" tf:"token_refresh_extension_hours,omitempty"`
 	// +optional
 	TokenStoreEnabled bool `json:"tokenStoreEnabled,omitempty" tf:"token_store_enabled,omitempty"`
 	// +optional

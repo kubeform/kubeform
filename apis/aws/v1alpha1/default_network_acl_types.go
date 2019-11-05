@@ -43,32 +43,32 @@ type DefaultNetworkACLSpecEgress struct {
 	Action string `json:"action" tf:"action"`
 	// +optional
 	CidrBlock string `json:"cidrBlock,omitempty" tf:"cidr_block,omitempty"`
-	FromPort  int    `json:"fromPort" tf:"from_port"`
+	FromPort  int64  `json:"fromPort" tf:"from_port"`
 	// +optional
-	IcmpCode int `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
+	IcmpCode int64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
 	// +optional
-	IcmpType int `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
+	IcmpType int64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
 	// +optional
 	Ipv6CIDRBlock string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block,omitempty"`
 	Protocol      string `json:"protocol" tf:"protocol"`
-	RuleNo        int    `json:"ruleNo" tf:"rule_no"`
-	ToPort        int    `json:"toPort" tf:"to_port"`
+	RuleNo        int64  `json:"ruleNo" tf:"rule_no"`
+	ToPort        int64  `json:"toPort" tf:"to_port"`
 }
 
 type DefaultNetworkACLSpecIngress struct {
 	Action string `json:"action" tf:"action"`
 	// +optional
 	CidrBlock string `json:"cidrBlock,omitempty" tf:"cidr_block,omitempty"`
-	FromPort  int    `json:"fromPort" tf:"from_port"`
+	FromPort  int64  `json:"fromPort" tf:"from_port"`
 	// +optional
-	IcmpCode int `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
+	IcmpCode int64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
 	// +optional
-	IcmpType int `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
+	IcmpType int64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
 	// +optional
 	Ipv6CIDRBlock string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block,omitempty"`
 	Protocol      string `json:"protocol" tf:"protocol"`
-	RuleNo        int    `json:"ruleNo" tf:"rule_no"`
-	ToPort        int    `json:"toPort" tf:"to_port"`
+	RuleNo        int64  `json:"ruleNo" tf:"rule_no"`
+	ToPort        int64  `json:"toPort" tf:"to_port"`
 }
 
 type DefaultNetworkACLSpec struct {

@@ -438,6 +438,7 @@ spec:
                   ip:
                     type: string
                   port:
+                    format: int64
                     type: integer
                 required:
                 - ip
@@ -492,6 +493,7 @@ spec:
                       ip:
                         type: string
                       port:
+                        format: int64
                         type: integer
                     required:
                     - ip

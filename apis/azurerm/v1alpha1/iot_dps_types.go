@@ -40,7 +40,7 @@ type IotDps struct {
 }
 
 type IotDpsSpecSku struct {
-	Capacity int    `json:"capacity" tf:"capacity"`
+	Capacity int64  `json:"capacity" tf:"capacity"`
 	Name     string `json:"name" tf:"name"`
 	Tier     string `json:"tier" tf:"tier"`
 }

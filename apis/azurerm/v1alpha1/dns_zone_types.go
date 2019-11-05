@@ -45,12 +45,12 @@ type DnsZoneSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	MaxNumberOfRecordSets int    `json:"maxNumberOfRecordSets,omitempty" tf:"max_number_of_record_sets,omitempty"`
+	MaxNumberOfRecordSets int64  `json:"maxNumberOfRecordSets,omitempty" tf:"max_number_of_record_sets,omitempty"`
 	Name                  string `json:"name" tf:"name"`
 	// +optional
 	NameServers []string `json:"nameServers,omitempty" tf:"name_servers,omitempty"`
 	// +optional
-	NumberOfRecordSets int `json:"numberOfRecordSets,omitempty" tf:"number_of_record_sets,omitempty"`
+	NumberOfRecordSets int64 `json:"numberOfRecordSets,omitempty" tf:"number_of_record_sets,omitempty"`
 	// +optional
 	RegistrationVirtualNetworkIDS []string `json:"registrationVirtualNetworkIDS,omitempty" tf:"registration_virtual_network_ids,omitempty"`
 	// +optional

@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -45,7 +43,7 @@ type ApiGatewayMethodSettingsSpecSettings struct {
 	// +optional
 	CacheDataEncrypted bool `json:"cacheDataEncrypted,omitempty" tf:"cache_data_encrypted,omitempty"`
 	// +optional
-	CacheTtlInSeconds int `json:"cacheTtlInSeconds,omitempty" tf:"cache_ttl_in_seconds,omitempty"`
+	CacheTtlInSeconds int64 `json:"cacheTtlInSeconds,omitempty" tf:"cache_ttl_in_seconds,omitempty"`
 	// +optional
 	CachingEnabled bool `json:"cachingEnabled,omitempty" tf:"caching_enabled,omitempty"`
 	// +optional
@@ -57,9 +55,9 @@ type ApiGatewayMethodSettingsSpecSettings struct {
 	// +optional
 	RequireAuthorizationForCacheControl bool `json:"requireAuthorizationForCacheControl,omitempty" tf:"require_authorization_for_cache_control,omitempty"`
 	// +optional
-	ThrottlingBurstLimit int `json:"throttlingBurstLimit,omitempty" tf:"throttling_burst_limit,omitempty"`
+	ThrottlingBurstLimit int64 `json:"throttlingBurstLimit,omitempty" tf:"throttling_burst_limit,omitempty"`
 	// +optional
-	ThrottlingRateLimit json.Number `json:"throttlingRateLimit,omitempty" tf:"throttling_rate_limit,omitempty"`
+	ThrottlingRateLimit float64 `json:"throttlingRateLimit,omitempty" tf:"throttling_rate_limit,omitempty"`
 	// +optional
 	UnauthorizedCacheControlHeaderStrategy string `json:"unauthorizedCacheControlHeaderStrategy,omitempty" tf:"unauthorized_cache_control_header_strategy,omitempty"`
 }

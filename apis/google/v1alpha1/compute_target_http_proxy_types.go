@@ -52,7 +52,7 @@ type ComputeTargetHTTPProxySpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	ProxyID int `json:"proxyID,omitempty" tf:"proxy_id,omitempty"`
+	ProxyID int64 `json:"proxyID,omitempty" tf:"proxy_id,omitempty"`
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	UrlMap   string `json:"urlMap" tf:"url_map"`

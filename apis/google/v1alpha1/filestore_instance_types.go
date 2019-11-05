@@ -40,7 +40,7 @@ type FilestoreInstance struct {
 }
 
 type FilestoreInstanceSpecFileShares struct {
-	CapacityGb int    `json:"capacityGb" tf:"capacity_gb"`
+	CapacityGb int64  `json:"capacityGb" tf:"capacity_gb"`
 	Name       string `json:"name" tf:"name"`
 }
 

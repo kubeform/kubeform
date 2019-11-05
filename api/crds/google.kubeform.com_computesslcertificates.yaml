@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             certificateID:
+              format: int64
               type: integer
             creationTimestamp:
               type: string
@@ -450,6 +451,7 @@ spec:
             output:
               properties:
                 certificateID:
+                  format: int64
                   type: integer
                 creationTimestamp:
                   type: string

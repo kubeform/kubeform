@@ -42,7 +42,7 @@ type NetworkInterface struct {
 type NetworkInterfaceSpecAttachment struct {
 	// +optional
 	AttachmentID string `json:"attachmentID,omitempty" tf:"attachment_id,omitempty"`
-	DeviceIndex  int    `json:"deviceIndex" tf:"device_index"`
+	DeviceIndex  int64  `json:"deviceIndex" tf:"device_index"`
 	Instance     string `json:"instance" tf:"instance"`
 }
 
@@ -62,7 +62,7 @@ type NetworkInterfaceSpec struct {
 	// +optional
 	PrivateIPS []string `json:"privateIPS,omitempty" tf:"private_ips,omitempty"`
 	// +optional
-	PrivateIPSCount int `json:"privateIPSCount,omitempty" tf:"private_ips_count,omitempty"`
+	PrivateIPSCount int64 `json:"privateIPSCount,omitempty" tf:"private_ips_count,omitempty"`
 	// +optional
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional

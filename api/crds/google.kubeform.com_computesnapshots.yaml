@@ -408,6 +408,7 @@ spec:
             description:
               type: string
             diskSizeGb:
+              format: int64
               type: integer
             id:
               type: string
@@ -457,6 +458,7 @@ spec:
               description: Deprecated
               type: string
             snapshotID:
+              format: int64
               type: integer
             sourceDisk:
               type: string
@@ -471,6 +473,7 @@ spec:
             sourceDiskLink:
               type: string
             storageBytes:
+              format: int64
               type: integer
             zone:
               type: string
@@ -493,6 +496,7 @@ spec:
                 description:
                   type: string
                 diskSizeGb:
+                  format: int64
                   type: integer
                 id:
                   type: string
@@ -542,6 +546,7 @@ spec:
                   description: Deprecated
                   type: string
                 snapshotID:
+                  format: int64
                   type: integer
                 sourceDisk:
                   type: string
@@ -556,6 +561,7 @@ spec:
                 sourceDiskLink:
                   type: string
                 storageBytes:
+                  format: int64
                   type: integer
                 zone:
                   type: string

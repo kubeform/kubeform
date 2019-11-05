@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             allocatedStorage:
+              format: int64
               type: integer
             availabilityZones:
               items:
@@ -426,6 +427,7 @@ spec:
             licenseModel:
               type: string
             port:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -461,6 +463,7 @@ spec:
             output:
               properties:
                 allocatedStorage:
+                  format: int64
                   type: integer
                 availabilityZones:
                   items:
@@ -483,6 +486,7 @@ spec:
                 licenseModel:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

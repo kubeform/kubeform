@@ -415,6 +415,7 @@ spec:
                     type: string
                   maxSizeBytes:
                     description: Deprecated
+                    format: int64
                     type: integer
                   state:
                     description: Deprecated
@@ -430,21 +431,22 @@ spec:
             location:
               type: string
             maxSizeBytes:
+              format: int64
               type: integer
             maxSizeGb:
-              description: A Number represents a JSON number literal.
-              type: string
+              format: float
+              type: number
             name:
               type: string
             perDatabaseSettings:
               items:
                 properties:
                   maxCapacity:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                   minCapacity:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                 required:
                 - maxCapacity
                 - minCapacity
@@ -468,6 +470,7 @@ spec:
               items:
                 properties:
                   capacity:
+                    format: int64
                     type: integer
                   family:
                     type: string
@@ -518,6 +521,7 @@ spec:
                         type: string
                       maxSizeBytes:
                         description: Deprecated
+                        format: int64
                         type: integer
                       state:
                         description: Deprecated
@@ -533,21 +537,22 @@ spec:
                 location:
                   type: string
                 maxSizeBytes:
+                  format: int64
                   type: integer
                 maxSizeGb:
-                  description: A Number represents a JSON number literal.
-                  type: string
+                  format: float
+                  type: number
                 name:
                   type: string
                 perDatabaseSettings:
                   items:
                     properties:
                       maxCapacity:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                       minCapacity:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                     required:
                     - maxCapacity
                     - minCapacity
@@ -571,6 +576,7 @@ spec:
                   items:
                     properties:
                       capacity:
+                        format: int64
                         type: integer
                       family:
                         type: string

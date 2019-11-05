@@ -416,6 +416,7 @@ spec:
             id:
               type: string
             latestRevision:
+              format: int64
               type: integer
             name:
               type: string
@@ -461,6 +462,7 @@ spec:
                 id:
                   type: string
                 latestRevision:
+                  format: int64
                   type: integer
                 name:
                   type: string

@@ -45,7 +45,7 @@ type DmsReplicationInstanceSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	AllocatedStorage int `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
+	AllocatedStorage int64 `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
 	// +optional
 	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
 	// +optional

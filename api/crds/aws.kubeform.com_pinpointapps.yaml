@@ -423,12 +423,16 @@ spec:
               items:
                 properties:
                   daily:
+                    format: int64
                     type: integer
                   maximumDuration:
+                    format: int64
                     type: integer
                   messagesPerSecond:
+                    format: int64
                     type: integer
                   total:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -488,12 +492,16 @@ spec:
                   items:
                     properties:
                       daily:
+                        format: int64
                         type: integer
                       maximumDuration:
+                        format: int64
                         type: integer
                       messagesPerSecond:
+                        format: int64
                         type: integer
                       total:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1

@@ -41,9 +41,9 @@ type GlobalacceleratorListener struct {
 
 type GlobalacceleratorListenerSpecPortRange struct {
 	// +optional
-	FromPort int `json:"fromPort,omitempty" tf:"from_port,omitempty"`
+	FromPort int64 `json:"fromPort,omitempty" tf:"from_port,omitempty"`
 	// +optional
-	ToPort int `json:"toPort,omitempty" tf:"to_port,omitempty"`
+	ToPort int64 `json:"toPort,omitempty" tf:"to_port,omitempty"`
 }
 
 type GlobalacceleratorListenerSpec struct {

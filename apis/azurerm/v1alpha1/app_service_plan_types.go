@@ -53,7 +53,7 @@ type AppServicePlanSpecProperties struct {
 
 type AppServicePlanSpecSku struct {
 	// +optional
-	Capacity int    `json:"capacity,omitempty" tf:"capacity,omitempty"`
+	Capacity int64  `json:"capacity,omitempty" tf:"capacity,omitempty"`
 	Size     string `json:"size" tf:"size"`
 	Tier     string `json:"tier" tf:"tier"`
 }
@@ -71,9 +71,9 @@ type AppServicePlanSpec struct {
 	Kind     string `json:"kind,omitempty" tf:"kind,omitempty"`
 	Location string `json:"location" tf:"location"`
 	// +optional
-	MaximumElasticWorkerCount int `json:"maximumElasticWorkerCount,omitempty" tf:"maximum_elastic_worker_count,omitempty"`
+	MaximumElasticWorkerCount int64 `json:"maximumElasticWorkerCount,omitempty" tf:"maximum_elastic_worker_count,omitempty"`
 	// +optional
-	MaximumNumberOfWorkers int    `json:"maximumNumberOfWorkers,omitempty" tf:"maximum_number_of_workers,omitempty"`
+	MaximumNumberOfWorkers int64  `json:"maximumNumberOfWorkers,omitempty" tf:"maximum_number_of_workers,omitempty"`
 	Name                   string `json:"name" tf:"name"`
 	// +optional
 	PerSiteScaling bool `json:"perSiteScaling,omitempty" tf:"per_site_scaling,omitempty"`

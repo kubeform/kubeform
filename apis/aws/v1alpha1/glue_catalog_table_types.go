@@ -75,7 +75,7 @@ type GlueCatalogTableSpecStorageDescriptorSkewedInfo struct {
 
 type GlueCatalogTableSpecStorageDescriptorSortColumns struct {
 	Column    string `json:"column" tf:"column"`
-	SortOrder int    `json:"sortOrder" tf:"sort_order"`
+	SortOrder int64  `json:"sortOrder" tf:"sort_order"`
 }
 
 type GlueCatalogTableSpecStorageDescriptor struct {
@@ -90,7 +90,7 @@ type GlueCatalogTableSpecStorageDescriptor struct {
 	// +optional
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional
-	NumberOfBuckets int `json:"numberOfBuckets,omitempty" tf:"number_of_buckets,omitempty"`
+	NumberOfBuckets int64 `json:"numberOfBuckets,omitempty" tf:"number_of_buckets,omitempty"`
 	// +optional
 	OutputFormat string `json:"outputFormat,omitempty" tf:"output_format,omitempty"`
 	// +optional
@@ -125,7 +125,7 @@ type GlueCatalogTableSpec struct {
 	// +optional
 	PartitionKeys []GlueCatalogTableSpecPartitionKeys `json:"partitionKeys,omitempty" tf:"partition_keys,omitempty"`
 	// +optional
-	Retention int `json:"retention,omitempty" tf:"retention,omitempty"`
+	Retention int64 `json:"retention,omitempty" tf:"retention,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	StorageDescriptor []GlueCatalogTableSpecStorageDescriptor `json:"storageDescriptor,omitempty" tf:"storage_descriptor,omitempty"`

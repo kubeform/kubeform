@@ -436,6 +436,7 @@ spec:
             rateKey:
               type: string
             rateLimit:
+              format: int64
               type: integer
           required:
           - metricName
@@ -486,6 +487,7 @@ spec:
                 rateKey:
                   type: string
                 rateLimit:
+                  format: int64
                   type: integer
               required:
               - metricName

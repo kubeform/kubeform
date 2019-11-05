@@ -41,7 +41,7 @@ type StorageBucket struct {
 
 type StorageBucketSpecCors struct {
 	// +optional
-	MaxAgeSeconds int `json:"maxAgeSeconds,omitempty" tf:"max_age_seconds,omitempty"`
+	MaxAgeSeconds int64 `json:"maxAgeSeconds,omitempty" tf:"max_age_seconds,omitempty"`
 	// +optional
 	Method []string `json:"method,omitempty" tf:"method,omitempty"`
 	// +optional
@@ -62,7 +62,7 @@ type StorageBucketSpecLifecycleRuleAction struct {
 
 type StorageBucketSpecLifecycleRuleCondition struct {
 	// +optional
-	Age int `json:"age,omitempty" tf:"age,omitempty"`
+	Age int64 `json:"age,omitempty" tf:"age,omitempty"`
 	// +optional
 	CreatedBefore string `json:"createdBefore,omitempty" tf:"created_before,omitempty"`
 	// +optional
@@ -71,7 +71,7 @@ type StorageBucketSpecLifecycleRuleCondition struct {
 	// +kubebuilder:validation:MinItems=1
 	MatchesStorageClass []string `json:"matchesStorageClass,omitempty" tf:"matches_storage_class,omitempty"`
 	// +optional
-	NumNewerVersions int `json:"numNewerVersions,omitempty" tf:"num_newer_versions,omitempty"`
+	NumNewerVersions int64 `json:"numNewerVersions,omitempty" tf:"num_newer_versions,omitempty"`
 }
 
 type StorageBucketSpecLifecycleRule struct {

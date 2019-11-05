@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -100,7 +98,7 @@ type AppServiceSpecAuthSettings struct {
 	// +optional
 	RuntimeVersion string `json:"runtimeVersion,omitempty" tf:"runtime_version,omitempty"`
 	// +optional
-	TokenRefreshExtensionHours json.Number `json:"tokenRefreshExtensionHours,omitempty" tf:"token_refresh_extension_hours,omitempty"`
+	TokenRefreshExtensionHours float64 `json:"tokenRefreshExtensionHours,omitempty" tf:"token_refresh_extension_hours,omitempty"`
 	// +optional
 	TokenStoreEnabled bool `json:"tokenStoreEnabled,omitempty" tf:"token_store_enabled,omitempty"`
 	// +optional
@@ -111,12 +109,12 @@ type AppServiceSpecAuthSettings struct {
 }
 
 type AppServiceSpecBackupSchedule struct {
-	FrequencyInterval int    `json:"frequencyInterval" tf:"frequency_interval"`
+	FrequencyInterval int64  `json:"frequencyInterval" tf:"frequency_interval"`
 	FrequencyUnit     string `json:"frequencyUnit" tf:"frequency_unit"`
 	// +optional
 	KeepAtLeastOneBackup bool `json:"keepAtLeastOneBackup,omitempty" tf:"keep_at_least_one_backup,omitempty"`
 	// +optional
-	RetentionPeriodInDays int `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	RetentionPeriodInDays int64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
 	// +optional
 	StartTime string `json:"startTime,omitempty" tf:"start_time,omitempty"`
 }
@@ -149,7 +147,7 @@ type AppServiceSpecIdentity struct {
 
 type AppServiceSpecLogsApplicationLogsAzureBlobStorage struct {
 	Level           string `json:"level" tf:"level"`
-	RetentionInDays int    `json:"retentionInDays" tf:"retention_in_days"`
+	RetentionInDays int64  `json:"retentionInDays" tf:"retention_in_days"`
 	SasURL          string `json:"-" sensitive:"true" tf:"sas_url"`
 }
 

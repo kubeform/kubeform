@@ -40,7 +40,7 @@ type SecretsmanagerSecret struct {
 }
 
 type SecretsmanagerSecretSpecRotationRules struct {
-	AutomaticallyAfterDays int `json:"automaticallyAfterDays" tf:"automatically_after_days"`
+	AutomaticallyAfterDays int64 `json:"automaticallyAfterDays" tf:"automatically_after_days"`
 }
 
 type SecretsmanagerSecretSpec struct {
@@ -61,7 +61,7 @@ type SecretsmanagerSecretSpec struct {
 	// +optional
 	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 	// +optional
-	RecoveryWindowInDays int `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 	// +optional
 	RotationEnabled bool `json:"rotationEnabled,omitempty" tf:"rotation_enabled,omitempty"`
 	// +optional

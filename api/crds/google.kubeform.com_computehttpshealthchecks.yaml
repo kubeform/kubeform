@@ -404,12 +404,14 @@ spec:
         spec:
           properties:
             checkIntervalSec:
+              format: int64
               type: integer
             creationTimestamp:
               type: string
             description:
               type: string
             healthyThreshold:
+              format: int64
               type: integer
             host:
               type: string
@@ -418,6 +420,7 @@ spec:
             name:
               type: string
             port:
+              format: int64
               type: integer
             project:
               type: string
@@ -435,8 +438,10 @@ spec:
             selfLink:
               type: string
             timeoutSec:
+              format: int64
               type: integer
             unhealthyThreshold:
+              format: int64
               type: integer
           required:
           - name
@@ -452,12 +457,14 @@ spec:
             output:
               properties:
                 checkIntervalSec:
+                  format: int64
                   type: integer
                 creationTimestamp:
                   type: string
                 description:
                   type: string
                 healthyThreshold:
+                  format: int64
                   type: integer
                 host:
                   type: string
@@ -466,6 +473,7 @@ spec:
                 name:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 project:
                   type: string
@@ -483,8 +491,10 @@ spec:
                 selfLink:
                   type: string
                 timeoutSec:
+                  format: int64
                   type: integer
                 unhealthyThreshold:
+                  format: int64
                   type: integer
               required:
               - name

@@ -41,10 +41,10 @@ type CloudfrontDistribution struct {
 
 type CloudfrontDistributionSpecCustomErrorResponse struct {
 	// +optional
-	ErrorCachingMinTtl int `json:"errorCachingMinTtl,omitempty" tf:"error_caching_min_ttl,omitempty"`
-	ErrorCode          int `json:"errorCode" tf:"error_code"`
+	ErrorCachingMinTtl int64 `json:"errorCachingMinTtl,omitempty" tf:"error_caching_min_ttl,omitempty"`
+	ErrorCode          int64 `json:"errorCode" tf:"error_code"`
 	// +optional
-	ResponseCode int `json:"responseCode,omitempty" tf:"response_code,omitempty"`
+	ResponseCode int64 `json:"responseCode,omitempty" tf:"response_code,omitempty"`
 	// +optional
 	ResponsePagePath string `json:"responsePagePath,omitempty" tf:"response_page_path,omitempty"`
 }
@@ -78,7 +78,7 @@ type CloudfrontDistributionSpecDefaultCacheBehavior struct {
 	// +optional
 	Compress bool `json:"compress,omitempty" tf:"compress,omitempty"`
 	// +optional
-	DefaultTtl int `json:"defaultTtl,omitempty" tf:"default_ttl,omitempty"`
+	DefaultTtl int64 `json:"defaultTtl,omitempty" tf:"default_ttl,omitempty"`
 	// +optional
 	FieldLevelEncryptionID string `json:"fieldLevelEncryptionID,omitempty" tf:"field_level_encryption_id,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
@@ -87,9 +87,9 @@ type CloudfrontDistributionSpecDefaultCacheBehavior struct {
 	// +kubebuilder:validation:MaxItems=4
 	LambdaFunctionAssociation []CloudfrontDistributionSpecDefaultCacheBehaviorLambdaFunctionAssociation `json:"lambdaFunctionAssociation,omitempty" tf:"lambda_function_association,omitempty"`
 	// +optional
-	MaxTtl int `json:"maxTtl,omitempty" tf:"max_ttl,omitempty"`
+	MaxTtl int64 `json:"maxTtl,omitempty" tf:"max_ttl,omitempty"`
 	// +optional
-	MinTtl int `json:"minTtl,omitempty" tf:"min_ttl,omitempty"`
+	MinTtl int64 `json:"minTtl,omitempty" tf:"min_ttl,omitempty"`
 	// +optional
 	SmoothStreaming bool   `json:"smoothStreaming,omitempty" tf:"smooth_streaming,omitempty"`
 	TargetOriginID  string `json:"targetOriginID" tf:"target_origin_id"`
@@ -135,7 +135,7 @@ type CloudfrontDistributionSpecOrderedCacheBehavior struct {
 	// +optional
 	Compress bool `json:"compress,omitempty" tf:"compress,omitempty"`
 	// +optional
-	DefaultTtl int `json:"defaultTtl,omitempty" tf:"default_ttl,omitempty"`
+	DefaultTtl int64 `json:"defaultTtl,omitempty" tf:"default_ttl,omitempty"`
 	// +optional
 	FieldLevelEncryptionID string `json:"fieldLevelEncryptionID,omitempty" tf:"field_level_encryption_id,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
@@ -144,9 +144,9 @@ type CloudfrontDistributionSpecOrderedCacheBehavior struct {
 	// +kubebuilder:validation:MaxItems=4
 	LambdaFunctionAssociation []CloudfrontDistributionSpecOrderedCacheBehaviorLambdaFunctionAssociation `json:"lambdaFunctionAssociation,omitempty" tf:"lambda_function_association,omitempty"`
 	// +optional
-	MaxTtl int `json:"maxTtl,omitempty" tf:"max_ttl,omitempty"`
+	MaxTtl int64 `json:"maxTtl,omitempty" tf:"max_ttl,omitempty"`
 	// +optional
-	MinTtl      int    `json:"minTtl,omitempty" tf:"min_ttl,omitempty"`
+	MinTtl      int64  `json:"minTtl,omitempty" tf:"min_ttl,omitempty"`
 	PathPattern string `json:"pathPattern" tf:"path_pattern"`
 	// +optional
 	SmoothStreaming bool   `json:"smoothStreaming,omitempty" tf:"smooth_streaming,omitempty"`
@@ -162,13 +162,13 @@ type CloudfrontDistributionSpecOriginCustomHeader struct {
 }
 
 type CloudfrontDistributionSpecOriginCustomOriginConfig struct {
-	HttpPort  int `json:"httpPort" tf:"http_port"`
-	HttpsPort int `json:"httpsPort" tf:"https_port"`
+	HttpPort  int64 `json:"httpPort" tf:"http_port"`
+	HttpsPort int64 `json:"httpsPort" tf:"https_port"`
 	// +optional
-	OriginKeepaliveTimeout int    `json:"originKeepaliveTimeout,omitempty" tf:"origin_keepalive_timeout,omitempty"`
+	OriginKeepaliveTimeout int64  `json:"originKeepaliveTimeout,omitempty" tf:"origin_keepalive_timeout,omitempty"`
 	OriginProtocolPolicy   string `json:"originProtocolPolicy" tf:"origin_protocol_policy"`
 	// +optional
-	OriginReadTimeout  int      `json:"originReadTimeout,omitempty" tf:"origin_read_timeout,omitempty"`
+	OriginReadTimeout  int64    `json:"originReadTimeout,omitempty" tf:"origin_read_timeout,omitempty"`
 	OriginSSLProtocols []string `json:"originSSLProtocols" tf:"origin_ssl_protocols"`
 }
 
@@ -262,7 +262,7 @@ type CloudfrontDistributionSpec struct {
 	// +optional
 	HttpVersion string `json:"httpVersion,omitempty" tf:"http_version,omitempty"`
 	// +optional
-	InProgressValidationBatches int `json:"inProgressValidationBatches,omitempty" tf:"in_progress_validation_batches,omitempty"`
+	InProgressValidationBatches int64 `json:"inProgressValidationBatches,omitempty" tf:"in_progress_validation_batches,omitempty"`
 	// +optional
 	IsIpv6Enabled bool `json:"isIpv6Enabled,omitempty" tf:"is_ipv6_enabled,omitempty"`
 	// +optional

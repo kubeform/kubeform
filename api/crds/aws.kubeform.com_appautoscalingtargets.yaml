@@ -406,8 +406,10 @@ spec:
             id:
               type: string
             maxCapacity:
+              format: int64
               type: integer
             minCapacity:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -446,8 +448,10 @@ spec:
                 id:
                   type: string
                 maxCapacity:
+                  format: int64
                   type: integer
                 minCapacity:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

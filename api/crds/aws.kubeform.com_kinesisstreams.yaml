@@ -423,8 +423,10 @@ spec:
                   type: string
               type: object
             retentionPeriod:
+              format: int64
               type: integer
             shardCount:
+              format: int64
               type: integer
             shardLevelMetrics:
               items:
@@ -468,8 +470,10 @@ spec:
                       type: string
                   type: object
                 retentionPeriod:
+                  format: int64
                   type: integer
                 shardCount:
+                  format: int64
                   type: integer
                 shardLevelMetrics:
                   items:

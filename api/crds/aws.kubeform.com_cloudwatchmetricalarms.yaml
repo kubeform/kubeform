@@ -418,6 +418,7 @@ spec:
             comparisonOperator:
               type: string
             datapointsToAlarm:
+              format: int64
               type: integer
             dimensions:
               additionalProperties:
@@ -426,6 +427,7 @@ spec:
             evaluateLowSampleCountPercentiles:
               type: string
             evaluationPeriods:
+              format: int64
               type: integer
             extendedStatistic:
               type: string
@@ -458,6 +460,7 @@ spec:
                         namespace:
                           type: string
                         period:
+                          format: int64
                           type: integer
                         stat:
                           type: string
@@ -483,6 +486,7 @@ spec:
                 type: string
               type: array
             period:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -500,8 +504,8 @@ spec:
                 type: string
               type: object
             threshold:
-              description: A Number represents a JSON number literal.
-              type: string
+              format: float
+              type: number
             treatMissingData:
               type: string
             unit:
@@ -537,6 +541,7 @@ spec:
                 comparisonOperator:
                   type: string
                 datapointsToAlarm:
+                  format: int64
                   type: integer
                 dimensions:
                   additionalProperties:
@@ -545,6 +550,7 @@ spec:
                 evaluateLowSampleCountPercentiles:
                   type: string
                 evaluationPeriods:
+                  format: int64
                   type: integer
                 extendedStatistic:
                   type: string
@@ -577,6 +583,7 @@ spec:
                             namespace:
                               type: string
                             period:
+                              format: int64
                               type: integer
                             stat:
                               type: string
@@ -602,6 +609,7 @@ spec:
                     type: string
                   type: array
                 period:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -619,8 +627,8 @@ spec:
                     type: string
                   type: object
                 threshold:
-                  description: A Number represents a JSON number literal.
-                  type: string
+                  format: float
+                  type: number
                 treatMissingData:
                   type: string
                 unit:

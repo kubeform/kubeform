@@ -451,8 +451,8 @@ spec:
                 type: string
               type: object
             threshold:
-              description: A Number represents a JSON number literal.
-              type: string
+              format: float
+              type: number
             webhookAction:
               items:
                 properties:
@@ -536,8 +536,8 @@ spec:
                     type: string
                   type: object
                 threshold:
-                  description: A Number represents a JSON number literal.
-                  type: string
+                  format: float
+                  type: number
                 webhookAction:
                   items:
                     properties:

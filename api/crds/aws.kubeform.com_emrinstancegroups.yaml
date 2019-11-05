@@ -409,12 +409,15 @@ spec:
               items:
                 properties:
                   iops:
+                    format: int64
                     type: integer
                   size:
+                    format: int64
                     type: integer
                   type:
                     type: string
                   volumesPerInstance:
+                    format: int64
                     type: integer
                 required:
                 - size
@@ -426,6 +429,7 @@ spec:
             id:
               type: string
             instanceCount:
+              format: int64
               type: integer
             instanceType:
               type: string
@@ -441,6 +445,7 @@ spec:
                   type: string
               type: object
             runningInstanceCount:
+              format: int64
               type: integer
             status:
               type: string
@@ -464,12 +469,15 @@ spec:
                   items:
                     properties:
                       iops:
+                        format: int64
                         type: integer
                       size:
+                        format: int64
                         type: integer
                       type:
                         type: string
                       volumesPerInstance:
+                        format: int64
                         type: integer
                     required:
                     - size
@@ -481,6 +489,7 @@ spec:
                 id:
                   type: string
                 instanceCount:
+                  format: int64
                   type: integer
                 instanceType:
                   type: string
@@ -496,6 +505,7 @@ spec:
                       type: string
                   type: object
                 runningInstanceCount:
+                  format: int64
                   type: integer
                 status:
                   type: string

@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             allocatedOutboundPorts:
+              format: int64
               type: integer
             backendAddressPoolID:
               type: string
@@ -424,6 +425,7 @@ spec:
             id:
               type: string
             idleTimeoutInMinutes:
+              format: int64
               type: integer
             loadbalancerID:
               type: string
@@ -460,6 +462,7 @@ spec:
             output:
               properties:
                 allocatedOutboundPorts:
+                  format: int64
                   type: integer
                 backendAddressPoolID:
                   type: string
@@ -480,6 +483,7 @@ spec:
                 id:
                   type: string
                 idleTimeoutInMinutes:
+                  format: int64
                   type: integer
                 loadbalancerID:
                   type: string

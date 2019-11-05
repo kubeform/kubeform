@@ -408,6 +408,7 @@ spec:
             id:
               type: string
             lbPort:
+              format: int64
               type: integer
             loadBalancer:
               type: string
@@ -443,6 +444,7 @@ spec:
                 id:
                   type: string
                 lbPort:
+                  format: int64
                   type: integer
                 loadBalancer:
                   type: string

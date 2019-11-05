@@ -406,6 +406,7 @@ spec:
             allowClassicOperations:
               type: boolean
             bandwidthInMbps:
+              format: int64
               type: integer
             id:
               type: string
@@ -478,6 +479,7 @@ spec:
                 allowClassicOperations:
                   type: boolean
                 bandwidthInMbps:
+                  format: int64
                   type: integer
                 id:
                   type: string

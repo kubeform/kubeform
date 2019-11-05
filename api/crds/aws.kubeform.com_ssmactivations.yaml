@@ -427,8 +427,10 @@ spec:
                   type: string
               type: object
             registrationCount:
+              format: int64
               type: integer
             registrationLimit:
+              format: int64
               type: integer
             tags:
               additionalProperties:
@@ -471,8 +473,10 @@ spec:
                       type: string
                   type: object
                 registrationCount:
+                  format: int64
                   type: integer
                 registrationLimit:
+                  format: int64
                   type: integer
                 tags:
                   additionalProperties:

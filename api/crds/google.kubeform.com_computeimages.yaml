@@ -405,6 +405,7 @@ spec:
           properties:
             createTimeout:
               description: Deprecated
+              format: int64
               type: integer
             description:
               type: string
@@ -468,6 +469,7 @@ spec:
               properties:
                 createTimeout:
                   description: Deprecated
+                  format: int64
                   type: integer
                 description:
                   type: string

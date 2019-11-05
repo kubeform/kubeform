@@ -419,6 +419,7 @@ spec:
                   atime:
                     type: string
                   bytesPerSecond:
+                    format: int64
                     type: integer
                   gid:
                     type: string
@@ -482,6 +483,7 @@ spec:
                       atime:
                         type: string
                       bytesPerSecond:
+                        format: int64
                         type: integer
                       gid:
                         type: string

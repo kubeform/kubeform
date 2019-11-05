@@ -59,7 +59,7 @@ type VolumeSpec struct {
 	InitialFilesystemType string `json:"initialFilesystemType,omitempty" tf:"initial_filesystem_type,omitempty"`
 	Name                  string `json:"name" tf:"name"`
 	Region                string `json:"region" tf:"region"`
-	Size                  int    `json:"size" tf:"size"`
+	Size                  int64  `json:"size" tf:"size"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 	// the uniform resource name for the volume.

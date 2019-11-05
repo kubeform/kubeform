@@ -49,7 +49,7 @@ type DnsCnameRecordSpec struct {
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	Ttl      int               `json:"ttl" tf:"ttl"`
+	Ttl      int64             `json:"ttl" tf:"ttl"`
 	ZoneName string            `json:"zoneName" tf:"zone_name"`
 }
 

@@ -43,7 +43,7 @@ type MqBrokerSpecConfiguration struct {
 	// +optional
 	ID string `json:"ID,omitempty" tf:"id,omitempty"`
 	// +optional
-	Revision int `json:"revision,omitempty" tf:"revision,omitempty"`
+	Revision int64 `json:"revision,omitempty" tf:"revision,omitempty"`
 }
 
 type MqBrokerSpecInstances struct {

@@ -422,13 +422,16 @@ spec:
               items:
                 properties:
                   completionWindow:
+                    format: int64
                     type: integer
                   lifecycle:
                     items:
                       properties:
                         coldStorageAfter:
+                          format: int64
                           type: integer
                         deleteAfter:
+                          format: int64
                           type: integer
                       type: object
                     maxItems: 1
@@ -442,6 +445,7 @@ spec:
                   schedule:
                     type: string
                   startWindow:
+                    format: int64
                     type: integer
                   targetVaultName:
                     type: string
@@ -489,13 +493,16 @@ spec:
                   items:
                     properties:
                       completionWindow:
+                        format: int64
                         type: integer
                       lifecycle:
                         items:
                           properties:
                             coldStorageAfter:
+                              format: int64
                               type: integer
                             deleteAfter:
+                              format: int64
                               type: integer
                           type: object
                         maxItems: 1
@@ -509,6 +516,7 @@ spec:
                       schedule:
                         type: string
                       startWindow:
+                        format: int64
                         type: integer
                       targetVaultName:
                         type: string

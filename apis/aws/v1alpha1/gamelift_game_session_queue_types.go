@@ -40,9 +40,9 @@ type GameliftGameSessionQueue struct {
 }
 
 type GameliftGameSessionQueueSpecPlayerLatencyPolicy struct {
-	MaximumIndividualPlayerLatencyMilliseconds int `json:"maximumIndividualPlayerLatencyMilliseconds" tf:"maximum_individual_player_latency_milliseconds"`
+	MaximumIndividualPlayerLatencyMilliseconds int64 `json:"maximumIndividualPlayerLatencyMilliseconds" tf:"maximum_individual_player_latency_milliseconds"`
 	// +optional
-	PolicyDurationSeconds int `json:"policyDurationSeconds,omitempty" tf:"policy_duration_seconds,omitempty"`
+	PolicyDurationSeconds int64 `json:"policyDurationSeconds,omitempty" tf:"policy_duration_seconds,omitempty"`
 }
 
 type GameliftGameSessionQueueSpec struct {
@@ -58,7 +58,7 @@ type GameliftGameSessionQueueSpec struct {
 	// +optional
 	PlayerLatencyPolicy []GameliftGameSessionQueueSpecPlayerLatencyPolicy `json:"playerLatencyPolicy,omitempty" tf:"player_latency_policy,omitempty"`
 	// +optional
-	TimeoutInSeconds int `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 }
 
 type GameliftGameSessionQueueStatus struct {

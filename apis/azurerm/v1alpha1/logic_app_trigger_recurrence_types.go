@@ -45,7 +45,7 @@ type LogicAppTriggerRecurrenceSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	Frequency  string `json:"frequency" tf:"frequency"`
-	Interval   int    `json:"interval" tf:"interval"`
+	Interval   int64  `json:"interval" tf:"interval"`
 	LogicAppID string `json:"logicAppID" tf:"logic_app_id"`
 	Name       string `json:"name" tf:"name"`
 }

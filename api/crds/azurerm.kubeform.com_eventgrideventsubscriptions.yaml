@@ -450,8 +450,10 @@ spec:
               items:
                 properties:
                   eventTimeToLive:
+                    format: int64
                     type: integer
                   maxDeliveryAttempts:
+                    format: int64
                     type: integer
                 required:
                 - eventTimeToLive
@@ -572,8 +574,10 @@ spec:
                   items:
                     properties:
                       eventTimeToLive:
+                        format: int64
                         type: integer
                       maxDeliveryAttempts:
+                        format: int64
                         type: integer
                     required:
                     - eventTimeToLive

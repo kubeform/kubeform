@@ -451,8 +451,10 @@ spec:
                   resizeTimeout:
                     type: string
                   targetDedicatedNodes:
+                    format: int64
                     type: integer
                   targetLowPriorityNodes:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -460,6 +462,7 @@ spec:
             id:
               type: string
             maxTasksPerNode:
+              format: int64
               type: integer
             name:
               type: string
@@ -486,6 +489,7 @@ spec:
                       type: string
                     type: object
                   maxTaskRetryCount:
+                    format: int64
                     type: integer
                   resourceFile:
                     items:
@@ -616,8 +620,10 @@ spec:
                       resizeTimeout:
                         type: string
                       targetDedicatedNodes:
+                        format: int64
                         type: integer
                       targetLowPriorityNodes:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1
@@ -625,6 +631,7 @@ spec:
                 id:
                   type: string
                 maxTasksPerNode:
+                  format: int64
                   type: integer
                 name:
                   type: string
@@ -651,6 +658,7 @@ spec:
                           type: string
                         type: object
                       maxTaskRetryCount:
+                        format: int64
                         type: integer
                       resourceFile:
                         items:

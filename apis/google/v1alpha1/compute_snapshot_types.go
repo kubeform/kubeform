@@ -63,7 +63,7 @@ type ComputeSnapshotSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
 	// +optional
 	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
 	// +optional
@@ -84,7 +84,7 @@ type ComputeSnapshotSpec struct {
 	// Deprecated
 	SnapshotEncryptionKeySha256 string `json:"snapshotEncryptionKeySha256,omitempty" tf:"snapshot_encryption_key_sha256,omitempty"`
 	// +optional
-	SnapshotID int    `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
+	SnapshotID int64  `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 	SourceDisk string `json:"sourceDisk" tf:"source_disk"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -97,7 +97,7 @@ type ComputeSnapshotSpec struct {
 	// +optional
 	SourceDiskLink string `json:"sourceDiskLink,omitempty" tf:"source_disk_link,omitempty"`
 	// +optional
-	StorageBytes int `json:"storageBytes,omitempty" tf:"storage_bytes,omitempty"`
+	StorageBytes int64 `json:"storageBytes,omitempty" tf:"storage_bytes,omitempty"`
 	// +optional
 	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }

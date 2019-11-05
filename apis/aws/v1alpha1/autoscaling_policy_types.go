@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -46,7 +44,7 @@ type AutoscalingPolicySpecStepAdjustment struct {
 	MetricIntervalLowerBound string `json:"metricIntervalLowerBound,omitempty" tf:"metric_interval_lower_bound,omitempty"`
 	// +optional
 	MetricIntervalUpperBound string `json:"metricIntervalUpperBound,omitempty" tf:"metric_interval_upper_bound,omitempty"`
-	ScalingAdjustment        int    `json:"scalingAdjustment" tf:"scaling_adjustment"`
+	ScalingAdjustment        int64  `json:"scalingAdjustment" tf:"scaling_adjustment"`
 }
 
 type AutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension struct {
@@ -79,7 +77,7 @@ type AutoscalingPolicySpecTargetTrackingConfiguration struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	PredefinedMetricSpecification []AutoscalingPolicySpecTargetTrackingConfigurationPredefinedMetricSpecification `json:"predefinedMetricSpecification,omitempty" tf:"predefined_metric_specification,omitempty"`
-	TargetValue                   json.Number                                                                     `json:"targetValue" tf:"target_value"`
+	TargetValue                   float64                                                                         `json:"targetValue" tf:"target_value"`
 }
 
 type AutoscalingPolicySpec struct {
@@ -93,18 +91,18 @@ type AutoscalingPolicySpec struct {
 	Arn                  string `json:"arn,omitempty" tf:"arn,omitempty"`
 	AutoscalingGroupName string `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
 	// +optional
-	Cooldown int `json:"cooldown,omitempty" tf:"cooldown,omitempty"`
+	Cooldown int64 `json:"cooldown,omitempty" tf:"cooldown,omitempty"`
 	// +optional
-	EstimatedInstanceWarmup int `json:"estimatedInstanceWarmup,omitempty" tf:"estimated_instance_warmup,omitempty"`
+	EstimatedInstanceWarmup int64 `json:"estimatedInstanceWarmup,omitempty" tf:"estimated_instance_warmup,omitempty"`
 	// +optional
 	MetricAggregationType string `json:"metricAggregationType,omitempty" tf:"metric_aggregation_type,omitempty"`
 	// +optional
-	MinAdjustmentMagnitude int    `json:"minAdjustmentMagnitude,omitempty" tf:"min_adjustment_magnitude,omitempty"`
+	MinAdjustmentMagnitude int64  `json:"minAdjustmentMagnitude,omitempty" tf:"min_adjustment_magnitude,omitempty"`
 	Name                   string `json:"name" tf:"name"`
 	// +optional
 	PolicyType string `json:"policyType,omitempty" tf:"policy_type,omitempty"`
 	// +optional
-	ScalingAdjustment int `json:"scalingAdjustment,omitempty" tf:"scaling_adjustment,omitempty"`
+	ScalingAdjustment int64 `json:"scalingAdjustment,omitempty" tf:"scaling_adjustment,omitempty"`
 	// +optional
 	StepAdjustment []AutoscalingPolicySpecStepAdjustment `json:"stepAdjustment,omitempty" tf:"step_adjustment,omitempty"`
 	// +optional

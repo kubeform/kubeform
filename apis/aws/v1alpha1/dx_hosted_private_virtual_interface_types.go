@@ -51,7 +51,7 @@ type DxHostedPrivateVirtualInterfaceSpec struct {
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	AwsDevice string `json:"awsDevice,omitempty" tf:"aws_device,omitempty"`
-	BgpAsn    int    `json:"bgpAsn" tf:"bgp_asn"`
+	BgpAsn    int64  `json:"bgpAsn" tf:"bgp_asn"`
 	// +optional
 	BgpAuthKey   string `json:"bgpAuthKey,omitempty" tf:"bgp_auth_key,omitempty"`
 	ConnectionID string `json:"connectionID" tf:"connection_id"`
@@ -60,10 +60,10 @@ type DxHostedPrivateVirtualInterfaceSpec struct {
 	// +optional
 	JumboFrameCapable bool `json:"jumboFrameCapable,omitempty" tf:"jumbo_frame_capable,omitempty"`
 	// +optional
-	Mtu            int    `json:"mtu,omitempty" tf:"mtu,omitempty"`
+	Mtu            int64  `json:"mtu,omitempty" tf:"mtu,omitempty"`
 	Name           string `json:"name" tf:"name"`
 	OwnerAccountID string `json:"ownerAccountID" tf:"owner_account_id"`
-	Vlan           int    `json:"vlan" tf:"vlan"`
+	Vlan           int64  `json:"vlan" tf:"vlan"`
 }
 
 type DxHostedPrivateVirtualInterfaceStatus struct {

@@ -75,7 +75,7 @@ type RdsClusterInstanceSpec struct {
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional
-	MonitoringInterval int `json:"monitoringInterval,omitempty" tf:"monitoring_interval,omitempty"`
+	MonitoringInterval int64 `json:"monitoringInterval,omitempty" tf:"monitoring_interval,omitempty"`
 	// +optional
 	MonitoringRoleArn string `json:"monitoringRoleArn,omitempty" tf:"monitoring_role_arn,omitempty"`
 	// +optional
@@ -83,13 +83,13 @@ type RdsClusterInstanceSpec struct {
 	// +optional
 	PerformanceInsightsKmsKeyID string `json:"performanceInsightsKmsKeyID,omitempty" tf:"performance_insights_kms_key_id,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	PreferredBackupWindow string `json:"preferredBackupWindow,omitempty" tf:"preferred_backup_window,omitempty"`
 	// +optional
 	PreferredMaintenanceWindow string `json:"preferredMaintenanceWindow,omitempty" tf:"preferred_maintenance_window,omitempty"`
 	// +optional
-	PromotionTier int `json:"promotionTier,omitempty" tf:"promotion_tier,omitempty"`
+	PromotionTier int64 `json:"promotionTier,omitempty" tf:"promotion_tier,omitempty"`
 	// +optional
 	PubliclyAccessible bool `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
 	// +optional

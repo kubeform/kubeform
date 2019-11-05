@@ -55,7 +55,7 @@ type WafRateBasedRuleSpec struct {
 	// +optional
 	Predicates []WafRateBasedRuleSpecPredicates `json:"predicates,omitempty" tf:"predicates,omitempty"`
 	RateKey    string                           `json:"rateKey" tf:"rate_key"`
-	RateLimit  int                              `json:"rateLimit" tf:"rate_limit"`
+	RateLimit  int64                            `json:"rateLimit" tf:"rate_limit"`
 }
 
 type WafRateBasedRuleStatus struct {

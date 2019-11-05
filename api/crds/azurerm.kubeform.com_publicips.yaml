@@ -412,6 +412,7 @@ spec:
             id:
               type: string
             idleTimeoutInMinutes:
+              format: int64
               type: integer
             ipAddress:
               type: string
@@ -474,6 +475,7 @@ spec:
                 id:
                   type: string
                 idleTimeoutInMinutes:
+                  format: int64
                   type: integer
                 ipAddress:
                   type: string

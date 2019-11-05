@@ -449,6 +449,7 @@ spec:
                 type: string
               type: array
             revision:
+              format: int64
               type: integer
             tags:
               additionalProperties:
@@ -547,6 +548,7 @@ spec:
                     type: string
                   type: array
                 revision:
+                  format: int64
                   type: integer
                 tags:
                   additionalProperties:

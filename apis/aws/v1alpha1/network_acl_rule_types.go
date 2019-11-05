@@ -49,7 +49,7 @@ type NetworkACLRuleSpec struct {
 	// +optional
 	Egress bool `json:"egress,omitempty" tf:"egress,omitempty"`
 	// +optional
-	FromPort int `json:"fromPort,omitempty" tf:"from_port,omitempty"`
+	FromPort int64 `json:"fromPort,omitempty" tf:"from_port,omitempty"`
 	// +optional
 	IcmpCode string `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
 	// +optional
@@ -59,9 +59,9 @@ type NetworkACLRuleSpec struct {
 	NetworkACLID  string `json:"networkACLID" tf:"network_acl_id"`
 	Protocol      string `json:"protocol" tf:"protocol"`
 	RuleAction    string `json:"ruleAction" tf:"rule_action"`
-	RuleNumber    int    `json:"ruleNumber" tf:"rule_number"`
+	RuleNumber    int64  `json:"ruleNumber" tf:"rule_number"`
 	// +optional
-	ToPort int `json:"toPort,omitempty" tf:"to_port,omitempty"`
+	ToPort int64 `json:"toPort,omitempty" tf:"to_port,omitempty"`
 }
 
 type NetworkACLRuleStatus struct {

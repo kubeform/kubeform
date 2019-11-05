@@ -46,11 +46,11 @@ type AppsyncGraphqlAPISpecLogConfig struct {
 
 type AppsyncGraphqlAPISpecOpenidConnectConfig struct {
 	// +optional
-	AuthTtl int `json:"authTtl,omitempty" tf:"auth_ttl,omitempty"`
+	AuthTtl int64 `json:"authTtl,omitempty" tf:"auth_ttl,omitempty"`
 	// +optional
 	ClientID string `json:"clientID,omitempty" tf:"client_id,omitempty"`
 	// +optional
-	IatTtl int    `json:"iatTtl,omitempty" tf:"iat_ttl,omitempty"`
+	IatTtl int64  `json:"iatTtl,omitempty" tf:"iat_ttl,omitempty"`
 	Issuer string `json:"issuer" tf:"issuer"`
 }
 

@@ -406,6 +406,7 @@ spec:
             address:
               type: string
             allocatedStorage:
+              format: int64
               type: integer
             allowMajorVersionUpgrade:
               type: boolean
@@ -418,6 +419,7 @@ spec:
             availabilityZone:
               type: string
             backupRetentionPeriod:
+              format: int64
               type: integer
             backupWindow:
               type: string
@@ -460,6 +462,7 @@ spec:
             instanceClass:
               type: string
             iops:
+              format: int64
               type: integer
             kmsKeyID:
               type: string
@@ -468,6 +471,7 @@ spec:
             maintenanceWindow:
               type: string
             monitoringInterval:
+              format: int64
               type: integer
             monitoringRoleArn:
               type: string
@@ -480,6 +484,7 @@ spec:
             parameterGroupName:
               type: string
             port:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -572,6 +577,7 @@ spec:
                 address:
                   type: string
                 allocatedStorage:
+                  format: int64
                   type: integer
                 allowMajorVersionUpgrade:
                   type: boolean
@@ -584,6 +590,7 @@ spec:
                 availabilityZone:
                   type: string
                 backupRetentionPeriod:
+                  format: int64
                   type: integer
                 backupWindow:
                   type: string
@@ -626,6 +633,7 @@ spec:
                 instanceClass:
                   type: string
                 iops:
+                  format: int64
                   type: integer
                 kmsKeyID:
                   type: string
@@ -634,6 +642,7 @@ spec:
                 maintenanceWindow:
                   type: string
                 monitoringInterval:
+                  format: int64
                   type: integer
                 monitoringRoleArn:
                   type: string
@@ -646,6 +655,7 @@ spec:
                 parameterGroupName:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

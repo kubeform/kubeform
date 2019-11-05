@@ -52,8 +52,8 @@ type Ec2CapacityReservationSpec struct {
 	// +optional
 	EndDateType string `json:"endDateType,omitempty" tf:"end_date_type,omitempty"`
 	// +optional
-	EphemeralStorage bool `json:"ephemeralStorage,omitempty" tf:"ephemeral_storage,omitempty"`
-	InstanceCount    int  `json:"instanceCount" tf:"instance_count"`
+	EphemeralStorage bool  `json:"ephemeralStorage,omitempty" tf:"ephemeral_storage,omitempty"`
+	InstanceCount    int64 `json:"instanceCount" tf:"instance_count"`
 	// +optional
 	InstanceMatchCriteria string `json:"instanceMatchCriteria,omitempty" tf:"instance_match_criteria,omitempty"`
 	InstancePlatform      string `json:"instancePlatform" tf:"instance_platform"`

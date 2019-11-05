@@ -50,9 +50,9 @@ type BatchComputeEnvironmentSpecComputeResourcesLaunchTemplate struct {
 
 type BatchComputeEnvironmentSpecComputeResources struct {
 	// +optional
-	BidPercentage int `json:"bidPercentage,omitempty" tf:"bid_percentage,omitempty"`
+	BidPercentage int64 `json:"bidPercentage,omitempty" tf:"bid_percentage,omitempty"`
 	// +optional
-	DesiredVcpus int `json:"desiredVcpus,omitempty" tf:"desired_vcpus,omitempty"`
+	DesiredVcpus int64 `json:"desiredVcpus,omitempty" tf:"desired_vcpus,omitempty"`
 	// +optional
 	Ec2KeyPair string `json:"ec2KeyPair,omitempty" tf:"ec2_key_pair,omitempty"`
 	// +optional
@@ -62,8 +62,8 @@ type BatchComputeEnvironmentSpecComputeResources struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	LaunchTemplate   []BatchComputeEnvironmentSpecComputeResourcesLaunchTemplate `json:"launchTemplate,omitempty" tf:"launch_template,omitempty"`
-	MaxVcpus         int                                                         `json:"maxVcpus" tf:"max_vcpus"`
-	MinVcpus         int                                                         `json:"minVcpus" tf:"min_vcpus"`
+	MaxVcpus         int64                                                       `json:"maxVcpus" tf:"max_vcpus"`
+	MinVcpus         int64                                                       `json:"minVcpus" tf:"min_vcpus"`
 	SecurityGroupIDS []string                                                    `json:"securityGroupIDS" tf:"security_group_ids"`
 	// +optional
 	SpotIamFleetRole string   `json:"spotIamFleetRole,omitempty" tf:"spot_iam_fleet_role,omitempty"`

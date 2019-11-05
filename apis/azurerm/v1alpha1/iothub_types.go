@@ -41,7 +41,7 @@ type Iothub struct {
 
 type IothubSpecEndpoint struct {
 	// +optional
-	BatchFrequencyInSeconds int    `json:"batchFrequencyInSeconds,omitempty" tf:"batch_frequency_in_seconds,omitempty"`
+	BatchFrequencyInSeconds int64  `json:"batchFrequencyInSeconds,omitempty" tf:"batch_frequency_in_seconds,omitempty"`
 	ConnectionString        string `json:"-" sensitive:"true" tf:"connection_string"`
 	// +optional
 	ContainerName string `json:"containerName,omitempty" tf:"container_name,omitempty"`
@@ -50,7 +50,7 @@ type IothubSpecEndpoint struct {
 	// +optional
 	FileNameFormat string `json:"fileNameFormat,omitempty" tf:"file_name_format,omitempty"`
 	// +optional
-	MaxChunkSizeInBytes int    `json:"maxChunkSizeInBytes,omitempty" tf:"max_chunk_size_in_bytes,omitempty"`
+	MaxChunkSizeInBytes int64  `json:"maxChunkSizeInBytes,omitempty" tf:"max_chunk_size_in_bytes,omitempty"`
 	Name                string `json:"name" tf:"name"`
 	Type                string `json:"type" tf:"type"`
 }
@@ -74,7 +74,7 @@ type IothubSpecFileUpload struct {
 	// +optional
 	LockDuration string `json:"lockDuration,omitempty" tf:"lock_duration,omitempty"`
 	// +optional
-	MaxDeliveryCount int `json:"maxDeliveryCount,omitempty" tf:"max_delivery_count,omitempty"`
+	MaxDeliveryCount int64 `json:"maxDeliveryCount,omitempty" tf:"max_delivery_count,omitempty"`
 	// +optional
 	Notifications bool `json:"notifications,omitempty" tf:"notifications,omitempty"`
 	// +optional
@@ -108,7 +108,7 @@ type IothubSpecSharedAccessPolicy struct {
 }
 
 type IothubSpecSku struct {
-	Capacity int    `json:"capacity" tf:"capacity"`
+	Capacity int64  `json:"capacity" tf:"capacity"`
 	Name     string `json:"name" tf:"name"`
 	Tier     string `json:"tier" tf:"tier"`
 }

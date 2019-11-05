@@ -14864,7 +14864,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPIOperationSpecResponse
 					"statusCode": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -16652,7 +16652,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementBackendSpecServiceFabric
 					"maxPartitionResolutionRetries": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"serverCertificateThumbprints": {
@@ -18518,7 +18518,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementProductSpec(ref common.R
 					"subscriptionsLimit": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"terms": {
@@ -19464,7 +19464,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementSpecSku(ref common.Refer
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -20495,13 +20495,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServicePlanSpec(ref common.Referen
 					"maximumElasticWorkerCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maximumNumberOfWorkers": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -20618,7 +20618,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServicePlanSpecSku(ref common.Refe
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"size": {
@@ -21047,8 +21047,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpecAuthSettings(ref co
 					},
 					"tokenRefreshExtensionHours": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"tokenStoreEnabled": {
@@ -21929,8 +21929,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecAuthSettings(ref common
 					},
 					"tokenRefreshExtensionHours": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"tokenStoreEnabled": {
@@ -22161,7 +22161,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecBackupSchedule(ref comm
 					"frequencyInterval": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"frequencyUnit": {
@@ -22179,7 +22179,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecBackupSchedule(ref comm
 					"retentionPeriodInDays": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"startTime": {
@@ -22331,7 +22331,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpecLogsApplicationLogsAzur
 					"retentionInDays": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -23145,13 +23145,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecAutoscaleConfig
 					"maxCapacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"minCapacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -23315,7 +23315,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecBackendHTTPSett
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"probeID": {
@@ -23339,7 +23339,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecBackendHTTPSett
 					"requestTimeout": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -23385,7 +23385,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecBackendHTTPSett
 					"drainTimeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"enabled": {
@@ -23502,7 +23502,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecFrontendPort(re
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -23720,7 +23720,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecProbe(ref commo
 					"interval": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"match": {
@@ -23738,7 +23738,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecProbe(ref commo
 					"minimumServers": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -23768,13 +23768,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecProbe(ref commo
 					"timeout": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"unhealthyThreshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -24071,7 +24071,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecRewriteRuleSetR
 					"ruleSequence": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -24179,7 +24179,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecSku(ref common.
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -24500,7 +24500,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecWafConfiguratio
 					"fileUploadLimitMb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"firewallMode": {
@@ -24512,7 +24512,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpecWafConfiguratio
 					"maxRequestBodySizeKb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"requestBodyCheck": {
@@ -25174,7 +25174,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationInsightsWebTestSpec(ref co
 					"frequency": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"geoLocations": {
@@ -25243,7 +25243,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationInsightsWebTestSpec(ref co
 					"timeout": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -26968,7 +26968,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationScheduleSpec(ref common.Ref
 					"interval": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"monthDays": {
@@ -27057,7 +27057,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationScheduleSpecMonthlyOccurren
 					"occurrence": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -27622,7 +27622,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationVariableIntSpec(ref common.
 					"value": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -28230,19 +28230,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutoscaleSettingSpecProfileCapacity(r
 					"default": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maximum": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"minimum": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -28412,8 +28412,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutoscaleSettingSpecProfileRuleMetric
 					},
 					"threshold": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"timeAggregation": {
@@ -28468,7 +28468,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutoscaleSettingSpecProfileRuleScaleA
 					"value": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -28643,13 +28643,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AvailabilitySetSpec(ref common.Refere
 					"platformFaultDomainCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"platformUpdateDomainCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"resourceGroupName": {
@@ -30078,7 +30078,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchPoolSpec(ref common.ReferenceCal
 					"maxTasksPerNode": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -30246,13 +30246,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchPoolSpecFixedScale(ref common.Re
 					"targetDedicatedNodes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"targetLowPriorityNodes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -30290,7 +30290,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchPoolSpecStartTask(ref common.Ref
 					"maxTaskRetryCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"resourceFile": {
@@ -30813,13 +30813,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_CdnEndpointSpecOrigin(ref common.Refe
 					"httpPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"httpsPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -31430,7 +31430,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ConnectionMonitorSpec(ref common.Refe
 					"intervalInSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"location": {
@@ -31507,7 +31507,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ConnectionMonitorSpecDestination(ref 
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"virtualMachineID": {
@@ -31532,7 +31532,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ConnectionMonitorSpecSource(ref commo
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"virtualMachineID": {
@@ -31850,8 +31850,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupSpecContainer(ref commo
 					},
 					"cpu": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"environmentVariables": {
@@ -31900,8 +31900,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupSpecContainer(ref commo
 					},
 					"memory": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"name": {
@@ -31914,7 +31914,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupSpecContainer(ref commo
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"ports": {
@@ -31978,7 +31978,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupSpecContainerGpu(ref co
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sku": {
@@ -32015,7 +32015,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupSpecContainerLivenessPr
 					"failureThreshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"httpGet": {
@@ -32033,25 +32033,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupSpecContainerLivenessPr
 					"initialDelaySeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"periodSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"successThreshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"timeoutSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -32077,7 +32077,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupSpecContainerLivenessPr
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"scheme": {
@@ -32101,7 +32101,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupSpecContainerPorts(ref 
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"protocol": {
@@ -32138,7 +32138,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupSpecContainerReadinessP
 					"failureThreshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"httpGet": {
@@ -32156,25 +32156,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupSpecContainerReadinessP
 					"initialDelaySeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"periodSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"successThreshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"timeoutSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -32200,7 +32200,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupSpecContainerReadinessP
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"scheme": {
@@ -32992,7 +32992,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerServiceSpecAgentPoolProfile(
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"dnsPrefix": {
@@ -33112,7 +33112,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerServiceSpecMasterProfile(ref
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"dnsPrefix": {
@@ -33506,13 +33506,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbAccountSpecConsistencyPolicy(
 					"maxIntervalInSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxStalenessPrefix": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -33543,7 +33543,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbAccountSpecFailoverPolicy(ref
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -33562,7 +33562,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbAccountSpecGeoLocation(ref co
 					"failoverPriority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"ID": {
@@ -33939,7 +33939,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbMongoCollectionSpec(ref commo
 					"defaultTtlSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"indexes": {
@@ -38771,13 +38771,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestLinuxVirtualMachineSpecInbound
 					"backendPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"frontendPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"protocol": {
@@ -39574,13 +39574,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestWindowsVirtualMachineSpecInbou
 					"backendPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"frontendPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"protocol": {
@@ -40027,7 +40027,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsARecordSpec(ref common.ReferenceCa
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"zoneName": {
@@ -40231,7 +40231,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsAaaaRecordSpec(ref common.Referenc
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"zoneName": {
@@ -40434,7 +40434,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsCaaRecordSpec(ref common.Reference
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"zoneName": {
@@ -40461,7 +40461,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsCaaRecordSpecRecord(ref common.Ref
 					"flags": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"tag": {
@@ -40662,7 +40662,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsCnameRecordSpec(ref common.Referen
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"zoneName": {
@@ -40865,7 +40865,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsMxRecordSpec(ref common.ReferenceC
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"zoneName": {
@@ -41107,7 +41107,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsNsRecordSpec(ref common.ReferenceC
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"zoneName": {
@@ -41330,7 +41330,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsPtrRecordSpec(ref common.Reference
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"zoneName": {
@@ -41533,7 +41533,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsSrvRecordSpec(ref common.Reference
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"zoneName": {
@@ -41560,13 +41560,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsSrvRecordSpecRecord(ref common.Ref
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"target": {
@@ -41578,7 +41578,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsSrvRecordSpecRecord(ref common.Ref
 					"weight": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -41773,7 +41773,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsTxtRecordSpec(ref common.Reference
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"zoneName": {
@@ -41957,7 +41957,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsZoneSpec(ref common.ReferenceCallb
 					"maxNumberOfRecordSets": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -41982,7 +41982,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsZoneSpec(ref common.ReferenceCallb
 					"numberOfRecordSets": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"registrationVirtualNetworkIDS": {
@@ -42679,13 +42679,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventgridEventSubscriptionSpecRetryPo
 					"eventTimeToLive": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxDeliveryAttempts": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -43836,7 +43836,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespace_Spec(ref common.Ref
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"kafkaEnabled": {
@@ -43854,7 +43854,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespace_Spec(ref common.Ref
 					"maximumThroughputUnits": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -43974,7 +43974,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubSpec(ref common.ReferenceCall
 					"messageRetention": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -43992,7 +43992,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubSpec(ref common.ReferenceCall
 					"partitionCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"partitionIDS": {
@@ -44056,13 +44056,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubSpecCaptureDescription(ref co
 					"intervalInSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sizeLimitInBytes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"skipEmptyArchives": {
@@ -44541,7 +44541,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitPeeringSpec(ref co
 					"azureAsn": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"expressRouteCircuitName": {
@@ -44565,7 +44565,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitPeeringSpec(ref co
 					"peerAsn": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"peeringType": {
@@ -44607,7 +44607,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitPeeringSpec(ref co
 					"vlanID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -44713,7 +44713,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitSpec(ref common.Re
 					"bandwidthInMbps": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"location": {
@@ -45020,7 +45020,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_FirewallApplicationRuleCollectionSpec
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"resourceGroupName": {
@@ -45137,7 +45137,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_FirewallApplicationRuleCollectionSpec
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"type": {
@@ -45365,7 +45365,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_FirewallNATRuleCollectionSpec(ref com
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"resourceGroupName": {
@@ -45649,7 +45649,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_FirewallNetworkRuleCollectionSpec(ref
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"resourceGroupName": {
@@ -46338,8 +46338,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpecAuthSettings(ref commo
 					},
 					"tokenRefreshExtensionHours": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"tokenStoreEnabled": {
@@ -47048,7 +47048,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightHadoopClusterSpecRolesWorker
 					"minInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sshKeys": {
@@ -47073,7 +47073,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightHadoopClusterSpecRolesWorker
 					"targetInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"username": {
@@ -47592,7 +47592,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightHbaseClusterSpecRolesWorkerN
 					"minInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sshKeys": {
@@ -47617,7 +47617,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightHbaseClusterSpecRolesWorkerN
 					"targetInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"username": {
@@ -48136,7 +48136,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightInteractiveQueryClusterSpecR
 					"minInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sshKeys": {
@@ -48161,7 +48161,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightInteractiveQueryClusterSpecR
 					"targetInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"username": {
@@ -48680,13 +48680,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightKafkaClusterSpecRolesWorkerN
 					"minInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"numberOfDisksPerNode": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sshKeys": {
@@ -48711,7 +48711,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightKafkaClusterSpecRolesWorkerN
 					"targetInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"username": {
@@ -49273,7 +49273,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightMlServicesClusterSpecRolesWo
 					"minInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sshKeys": {
@@ -49298,7 +49298,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightMlServicesClusterSpecRolesWo
 					"targetInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"username": {
@@ -49860,7 +49860,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightRserverClusterSpecRolesWorke
 					"minInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sshKeys": {
@@ -49885,7 +49885,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightRserverClusterSpecRolesWorke
 					"targetInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"username": {
@@ -50404,7 +50404,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightSparkClusterSpecRolesWorkerN
 					"minInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sshKeys": {
@@ -50429,7 +50429,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightSparkClusterSpecRolesWorkerN
 					"targetInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"username": {
@@ -50948,7 +50948,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightStormClusterSpecRolesWorkerN
 					"minInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sshKeys": {
@@ -50973,7 +50973,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightStormClusterSpecRolesWorkerN
 					"targetInstanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"username": {
@@ -51318,7 +51318,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ImageSpecDataDisk(ref common.Referenc
 					"lun": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"managedDiskID": {
@@ -51330,7 +51330,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ImageSpecDataDisk(ref common.Referenc
 					"sizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -51378,7 +51378,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ImageSpecOsDisk(ref common.ReferenceC
 					"sizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -51769,7 +51769,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_IotDpsSpecSku(ref common.ReferenceCal
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -52487,7 +52487,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubSpecEndpoint(ref common.Referen
 					"batchFrequencyInSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"containerName": {
@@ -52511,7 +52511,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubSpecEndpoint(ref common.Referen
 					"maxChunkSizeInBytes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -52603,7 +52603,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubSpecFileUpload(ref common.Refer
 					"maxDeliveryCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"notifications": {
@@ -52739,7 +52739,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubSpecSku(ref common.ReferenceCal
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -53405,7 +53405,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultCertificateSpecCertificatePol
 					"keySize": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"keyType": {
@@ -53494,13 +53494,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultCertificateSpecCertificatePol
 					"daysBeforeExpiry": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"lifetimePercentage": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -53581,7 +53581,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultCertificateSpecCertificatePol
 					"validityInMonths": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -53816,7 +53816,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultKeySpec(ref common.ReferenceC
 					"keySize": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"keyType": {
@@ -54943,7 +54943,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecAgentPoolProfile
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"dnsPrefix": {
@@ -54969,19 +54969,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecAgentPoolProfile
 					"maxCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxPods": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"minCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -55006,7 +55006,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpecAgentPoolProfile
 					"osDiskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"osType": {
@@ -55762,7 +55762,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbNATPoolSpec(ref common.ReferenceCal
 					"backendPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"frontendIPConfigurationID": {
@@ -55780,13 +55780,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbNATPoolSpec(ref common.ReferenceCal
 					"frontendPortEnd": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"frontendPortStart": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"loadbalancerID": {
@@ -55982,7 +55982,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbNATRuleSpec(ref common.ReferenceCal
 					"backendPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"enableFloatingIP": {
@@ -56006,7 +56006,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbNATRuleSpec(ref common.ReferenceCal
 					"frontendPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"loadbalancerID": {
@@ -56196,7 +56196,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbOutboundRuleSpec(ref common.Referen
 					"allocatedOutboundPorts": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"backendAddressPoolID": {
@@ -56226,7 +56226,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbOutboundRuleSpec(ref common.Referen
 					"idleTimeoutInMinutes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"loadbalancerID": {
@@ -56434,7 +56434,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbProbeSpec(ref common.ReferenceCallb
 					"intervalInSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"loadBalancerRules": {
@@ -56472,13 +56472,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbProbeSpec(ref common.ReferenceCallb
 					"numberOfProbes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"protocol": {
@@ -56661,7 +56661,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbRuleSpec(ref common.ReferenceCallba
 					"backendPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"disableOutboundSnat": {
@@ -56691,13 +56691,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbRuleSpec(ref common.ReferenceCallba
 					"frontendPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"idleTimeoutInMinutes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"loadDistribution": {
@@ -57210,7 +57210,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_LocalNetworkGatewaySpecBgpSettings(re
 					"asn": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"bgpPeeringAddress": {
@@ -57222,7 +57222,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_LocalNetworkGatewaySpecBgpSettings(re
 					"peerWeight": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -58096,7 +58096,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogAnalyticsWorkspaceSpec(ref common.
 					"retentionInDays": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sku": {
@@ -59009,7 +59009,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogicAppTriggerRecurrenceSpec(ref com
 					"interval": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"logicAppID": {
@@ -59403,7 +59403,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ManagedDiskSpec(ref common.ReferenceC
 					"diskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"encryptionSettings": {
@@ -60767,7 +60767,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MariadbServerSpecSku(ref common.Refer
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"family": {
@@ -60804,7 +60804,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MariadbServerSpecStorageProfile(ref c
 					"backupRetentionDays": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"geoRedundantBackup": {
@@ -60816,7 +60816,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MariadbServerSpecStorageProfile(ref c
 					"storageMb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -61266,8 +61266,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_MetricAlertruleSpec(ref common.Refere
 					},
 					"threshold": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"webhookAction": {
@@ -62404,19 +62404,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorAutoscaleSettingSpecProfileCap
 					"default": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maximum": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"minimum": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -62586,8 +62586,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorAutoscaleSettingSpecProfileRul
 					},
 					"threshold": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"timeAggregation": {
@@ -62642,7 +62642,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorAutoscaleSettingSpecProfileRul
 					"value": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -62913,7 +62913,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorDiagnosticSettingSpecLogRetent
 					"days": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"enabled": {
@@ -62977,7 +62977,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorDiagnosticSettingSpecMetricRet
 					"days": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"enabled": {
@@ -63211,7 +63211,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorLogProfileSpecRetentionPolicy(
 					"days": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"enabled": {
@@ -63447,7 +63447,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorMetricAlertSpec(ref common.Ref
 					"severity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"tags": {
@@ -63556,8 +63556,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorMetricAlertSpecCriteria(ref co
 					},
 					"threshold": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 				},
@@ -63839,8 +63839,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorMetricAlertruleSpec(ref common
 					},
 					"threshold": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"webhookAction": {
@@ -64094,13 +64094,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_MssqlElasticpoolSpec(ref common.Refer
 					"maxSizeBytes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxSizeGb": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"name": {
@@ -64198,7 +64198,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MssqlElasticpoolSpecElasticPoolProper
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"state": {
@@ -64229,14 +64229,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_MssqlElasticpoolSpecPerDatabaseSettin
 				Properties: map[string]spec.Schema{
 					"maxCapacity": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"minCapacity": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 				},
@@ -64255,7 +64255,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MssqlElasticpoolSpecSku(ref common.Re
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"family": {
@@ -65073,7 +65073,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlServerSpecSku(ref common.Referen
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"family": {
@@ -65110,7 +65110,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlServerSpecStorageProfile(ref com
 					"backupRetentionDays": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"geoRedundantBackup": {
@@ -65122,7 +65122,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlServerSpecStorageProfile(ref com
 					"storageMb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -65474,7 +65474,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkConnectionMonitorSpec(ref comm
 					"intervalInSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"location": {
@@ -65551,7 +65551,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkConnectionMonitorSpecDestinati
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"virtualMachineID": {
@@ -65576,7 +65576,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkConnectionMonitorSpecSource(re
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"virtualMachineID": {
@@ -67029,19 +67029,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkPacketCaptureSpec(ref common.R
 					"maximumBytesPerPacket": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maximumBytesPerSession": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maximumCaptureDuration": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -67711,7 +67711,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkSecurityGroupSpecSecurityRule(
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"protocol": {
@@ -68006,7 +68006,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkSecurityRuleSpec(ref common.Re
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"protocol": {
@@ -69112,19 +69112,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_PacketCaptureSpec(ref common.Referenc
 					"maximumBytesPerPacket": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maximumBytesPerSession": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maximumCaptureDuration": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -70693,7 +70693,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlServerSpecSku(ref common.Re
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"family": {
@@ -70730,7 +70730,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlServerSpecStorageProfile(re
 					"backupRetentionDays": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"geoRedundantBackup": {
@@ -70742,7 +70742,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlServerSpecStorageProfile(re
 					"storageMb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -71121,7 +71121,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSARecordSpec(ref common.Refe
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"zoneName": {
@@ -71286,19 +71286,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSZoneSpec(ref common.Referen
 					"maxNumberOfRecordSets": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxNumberOfVirtualNetworkLinks": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxNumberOfVirtualNetworkLinksWithRegistration": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -71310,7 +71310,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSZoneSpec(ref common.Referen
 					"numberOfRecordSets": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"resourceGroupName": {
@@ -71597,7 +71597,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_PublicIPPrefixSpec(ref common.Referen
 					"prefixLength": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"resourceGroupName": {
@@ -71723,7 +71723,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_PublicIPSpec(ref common.ReferenceCall
 					"idleTimeoutInMinutes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"ipAddress": {
@@ -72306,7 +72306,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_RecoveryServicesProtectionPolicyVmSpe
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -72325,7 +72325,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_RecoveryServicesProtectionPolicyVmSpe
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"weekdays": {
@@ -72370,7 +72370,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_RecoveryServicesProtectionPolicyVmSpe
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"weekdays": {
@@ -72402,7 +72402,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_RecoveryServicesProtectionPolicyVmSpe
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"months": {
@@ -72794,7 +72794,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_RedisCacheSpec(ref common.ReferenceCa
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"enableNonSSLPort": {
@@ -72848,7 +72848,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_RedisCacheSpec(ref common.ReferenceCa
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"privateStaticIPAddress": {
@@ -72878,7 +72878,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_RedisCacheSpec(ref common.ReferenceCa
 					"shardCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"skuName": {
@@ -72890,7 +72890,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_RedisCacheSpec(ref common.ReferenceCa
 					"sslPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"subnetID": {
@@ -72950,7 +72950,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_RedisCacheSpecPatchSchedule(ref commo
 					"startHourUtc": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -72981,19 +72981,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_RedisCacheSpecRedisConfiguration(ref 
 					"maxclients": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxfragmentationmemoryReserved": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxmemoryDelta": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxmemoryPolicy": {
@@ -73005,7 +73005,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_RedisCacheSpecRedisConfiguration(ref 
 					"maxmemoryReserved": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"notifyKeyspaceEvents": {
@@ -73023,13 +73023,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_RedisCacheSpecRedisConfiguration(ref 
 					"rdbBackupFrequency": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"rdbBackupMaxSnapshotCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -74786,7 +74786,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SchedulerJobCollectionSpecQuota(ref c
 					"maxJobCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxRecurrenceFrequency": {
@@ -74798,14 +74798,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_SchedulerJobCollectionSpecQuota(ref c
 					"maxRecurrenceInterval": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxRetryInterval": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 				},
@@ -75441,7 +75441,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SchedulerJobSpecRecurrence(ref common
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"endTime": {
@@ -75472,7 +75472,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SchedulerJobSpecRecurrence(ref common
 					"interval": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"minutes": {
@@ -75550,7 +75550,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SchedulerJobSpecRecurrenceMonthlyOccu
 					"occurrence": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -75569,7 +75569,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SchedulerJobSpecRetry(ref common.Refe
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"interval": {
@@ -75743,7 +75743,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SearchServiceSpec(ref common.Referenc
 					"partitionCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"primaryKey": {
@@ -75755,7 +75755,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SearchServiceSpec(ref common.Referenc
 					"replicaCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"resourceGroupName": {
@@ -76886,7 +76886,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServiceFabricClusterSpecNodeType(ref 
 					"clientEndpointPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"durabilityLevel": {
@@ -76910,13 +76910,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServiceFabricClusterSpecNodeType(ref 
 					"httpEndpointPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"instanceCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"isPrimary": {
@@ -76948,7 +76948,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServiceFabricClusterSpecNodeType(ref 
 					"reverseProxyEndpointPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -76969,13 +76969,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServiceFabricClusterSpecNodeTypeAppli
 					"endPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"startPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -76994,13 +76994,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServiceFabricClusterSpecNodeTypeEphem
 					"endPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"startPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -77387,7 +77387,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusNamespaceSpec(ref common.Re
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"location": {
@@ -77840,13 +77840,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusQueueSpec(ref common.Refere
 					"maxDeliveryCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxSizeInMegabytes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -78365,7 +78365,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusSubscriptionSpec(ref common
 					"maxDeliveryCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -78804,7 +78804,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusTopicSpec(ref common.Refere
 					"maxSizeInMegabytes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -79549,7 +79549,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SharedImageVersionSpecTargetRegion(re
 					"regionalReplicaCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -79735,7 +79735,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SignalrServiceSpec(ref common.Referen
 					"publicPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"resourceGroupName": {
@@ -79747,7 +79747,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SignalrServiceSpec(ref common.Referen
 					"serverPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"sku": {
@@ -79794,7 +79794,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SignalrServiceSpecSku(ref common.Refe
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -79963,7 +79963,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SnapshotSpec(ref common.ReferenceCall
 					"diskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"encryptionSettings": {
@@ -80703,7 +80703,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlDatabaseSpecThreatDetectionPolicy(
 					"retentionDays": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"state": {
@@ -80883,19 +80883,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlElasticpoolSpec(ref common.Referen
 					"dbDtuMax": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"dbDtuMin": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"dtu": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"edition": {
@@ -80919,7 +80919,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlElasticpoolSpec(ref common.Referen
 					"poolSize": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"resourceGroupName": {
@@ -82228,7 +82228,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueuePropertiesCors
 					"maxAgeInSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -82259,7 +82259,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueuePropertiesHour
 					"retentionPolicyDays": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"version": {
@@ -82296,7 +82296,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueuePropertiesLogg
 					"retentionPolicyDays": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"version": {
@@ -82339,7 +82339,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpecQueuePropertiesMinu
 					"retentionPolicyDays": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"version": {
@@ -82502,7 +82502,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageBlobSpec(ref common.ReferenceC
 					"attempts": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"contentType": {
@@ -82534,7 +82534,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageBlobSpec(ref common.ReferenceC
 					"parallelism": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"resourceGroupName": {
@@ -82546,7 +82546,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageBlobSpec(ref common.ReferenceC
 					"size": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"source": {
@@ -83363,7 +83363,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageShareSpec(ref common.Reference
 					"quota": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"resourceGroupName": {
@@ -84295,13 +84295,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsJobSpec(ref common.Ref
 					"eventsLateArrivalMaxDelayInSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"eventsOutOfOrderMaxDelayInSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"eventsOutOfOrderPolicy": {
@@ -84343,7 +84343,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsJobSpec(ref common.Ref
 					"streamingUnits": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"tags": {
@@ -87076,7 +87076,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointSpec(ref common
 					"minChildEndpoints": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -87088,7 +87088,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointSpec(ref common
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"profileName": {
@@ -87136,7 +87136,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointSpec(ref common
 					"weight": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -87194,7 +87194,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointSpecSubnet(ref 
 					"scope": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -87440,7 +87440,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerProfileSpecDnsConfig(re
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -87465,7 +87465,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerProfileSpecMonitorConfi
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"protocol": {
@@ -87880,7 +87880,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineDataDiskAttachmentSpec(
 					"lun": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"managedDiskID": {
@@ -88934,7 +88934,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineScaleSetSpecNetworkProf
 					"idleTimeout": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -89242,19 +89242,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineScaleSetSpecRollingUpgr
 					"maxBatchInstancePercent": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxUnhealthyInstancePercent": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"maxUnhealthyUpgradedInstancePercent": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"pauseTimeBetweenBatches": {
@@ -89278,7 +89278,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineScaleSetSpecSku(ref com
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -89321,13 +89321,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineScaleSetSpecStorageProf
 					"diskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"lun": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"managedDiskType": {
@@ -90103,13 +90103,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineSpecStorageDataDisk(ref
 					"diskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"lun": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"managedDiskID": {
@@ -90212,7 +90212,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineSpecStorageOsDisk(ref c
 					"diskSizeGb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"imageURI": {
@@ -90562,7 +90562,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualNetworkGatewayConnectionSpec(r
 					"routingWeight": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"tags": {
@@ -90651,13 +90651,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualNetworkGatewayConnectionSpecIp
 					"saDatasize": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"saLifetime": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -90890,13 +90890,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualNetworkGatewaySpecBgpSettings(
 					"asn": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"peerWeight": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"peeringAddress": {

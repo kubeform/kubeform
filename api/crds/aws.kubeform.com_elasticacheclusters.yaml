@@ -419,6 +419,7 @@ spec:
                   availabilityZone:
                     type: string
                   port:
+                    format: int64
                     type: integer
                 type: object
               type: array
@@ -441,10 +442,12 @@ spec:
             notificationTopicArn:
               type: string
             numCacheNodes:
+              format: int64
               type: integer
             parameterGroupName:
               type: string
             port:
+              format: int64
               type: integer
             preferredAvailabilityZones:
               items:
@@ -476,6 +479,7 @@ spec:
             snapshotName:
               type: string
             snapshotRetentionLimit:
+              format: int64
               type: integer
             snapshotWindow:
               type: string
@@ -514,6 +518,7 @@ spec:
                       availabilityZone:
                         type: string
                       port:
+                        format: int64
                         type: integer
                     type: object
                   type: array
@@ -536,10 +541,12 @@ spec:
                 notificationTopicArn:
                   type: string
                 numCacheNodes:
+                  format: int64
                   type: integer
                 parameterGroupName:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 preferredAvailabilityZones:
                   items:
@@ -571,6 +578,7 @@ spec:
                 snapshotName:
                   type: string
                 snapshotRetentionLimit:
+                  format: int64
                   type: integer
                 snapshotWindow:
                   type: string

@@ -48,7 +48,7 @@ type SourcerepoRepositorySpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Size int `json:"size,omitempty" tf:"size,omitempty"`
+	Size int64 `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
 	Url string `json:"url,omitempty" tf:"url,omitempty"`
 }

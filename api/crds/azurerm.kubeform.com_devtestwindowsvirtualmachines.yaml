@@ -434,8 +434,10 @@ spec:
               items:
                 properties:
                   backendPort:
+                    format: int64
                     type: integer
                   frontendPort:
+                    format: int64
                     type: integer
                   protocol:
                     type: string
@@ -535,8 +537,10 @@ spec:
                   items:
                     properties:
                       backendPort:
+                        format: int64
                         type: integer
                       frontendPort:
+                        format: int64
                         type: integer
                       protocol:
                         type: string

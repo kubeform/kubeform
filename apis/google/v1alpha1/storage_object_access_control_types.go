@@ -60,7 +60,7 @@ type StorageObjectAccessControlSpec struct {
 	// +optional
 	EntityID string `json:"entityID,omitempty" tf:"entity_id,omitempty"`
 	// +optional
-	Generation int    `json:"generation,omitempty" tf:"generation,omitempty"`
+	Generation int64  `json:"generation,omitempty" tf:"generation,omitempty"`
 	Object     string `json:"object" tf:"object"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

@@ -112,7 +112,7 @@ type CodebuildProjectSpecSecondarySources struct {
 	// +optional
 	Buildspec string `json:"buildspec,omitempty" tf:"buildspec,omitempty"`
 	// +optional
-	GitCloneDepth int `json:"gitCloneDepth,omitempty" tf:"git_clone_depth,omitempty"`
+	GitCloneDepth int64 `json:"gitCloneDepth,omitempty" tf:"git_clone_depth,omitempty"`
 	// +optional
 	InsecureSSL bool `json:"insecureSSL,omitempty" tf:"insecure_ssl,omitempty"`
 	// +optional
@@ -135,7 +135,7 @@ type CodebuildProjectSpecSource struct {
 	// +optional
 	Buildspec string `json:"buildspec,omitempty" tf:"buildspec,omitempty"`
 	// +optional
-	GitCloneDepth int `json:"gitCloneDepth,omitempty" tf:"git_clone_depth,omitempty"`
+	GitCloneDepth int64 `json:"gitCloneDepth,omitempty" tf:"git_clone_depth,omitempty"`
 	// +optional
 	InsecureSSL bool `json:"insecureSSL,omitempty" tf:"insecure_ssl,omitempty"`
 	// +optional
@@ -169,7 +169,7 @@ type CodebuildProjectSpec struct {
 	// +optional
 	BadgeURL string `json:"badgeURL,omitempty" tf:"badge_url,omitempty"`
 	// +optional
-	BuildTimeout int `json:"buildTimeout,omitempty" tf:"build_timeout,omitempty"`
+	BuildTimeout int64 `json:"buildTimeout,omitempty" tf:"build_timeout,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Cache []CodebuildProjectSpecCache `json:"cache,omitempty" tf:"cache,omitempty"`

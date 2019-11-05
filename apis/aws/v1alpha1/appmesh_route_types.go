@@ -41,7 +41,7 @@ type AppmeshRoute struct {
 
 type AppmeshRouteSpecSpecHttpRouteActionWeightedTarget struct {
 	VirtualNode string `json:"virtualNode" tf:"virtual_node"`
-	Weight      int    `json:"weight" tf:"weight"`
+	Weight      int64  `json:"weight" tf:"weight"`
 }
 
 type AppmeshRouteSpecSpecHttpRouteAction struct {
@@ -65,7 +65,7 @@ type AppmeshRouteSpecSpecHttpRoute struct {
 
 type AppmeshRouteSpecSpecTcpRouteActionWeightedTarget struct {
 	VirtualNode string `json:"virtualNode" tf:"virtual_node"`
-	Weight      int    `json:"weight" tf:"weight"`
+	Weight      int64  `json:"weight" tf:"weight"`
 }
 
 type AppmeshRouteSpecSpecTcpRouteAction struct {

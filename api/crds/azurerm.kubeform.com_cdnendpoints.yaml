@@ -446,8 +446,10 @@ spec:
                   hostName:
                     type: string
                   httpPort:
+                    format: int64
                     type: integer
                   httpsPort:
+                    format: int64
                     type: integer
                   name:
                     type: string
@@ -541,8 +543,10 @@ spec:
                       hostName:
                         type: string
                       httpPort:
+                        format: int64
                         type: integer
                       httpsPort:
+                        format: int64
                         type: integer
                       name:
                         type: string

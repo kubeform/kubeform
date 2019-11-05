@@ -652,6 +652,7 @@ spec:
                     description: Maximum number of times per hour a driver may be
                       restarted as a result of driver terminating with non-zero code
                       before job is reported failed.
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -1025,6 +1026,7 @@ spec:
                         description: Maximum number of times per hour a driver may
                           be restarted as a result of driver terminating with non-zero
                           code before job is reported failed.
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1

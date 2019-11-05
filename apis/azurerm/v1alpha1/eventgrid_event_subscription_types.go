@@ -48,8 +48,8 @@ type EventgridEventSubscriptionSpecHybridConnectionEndpoint struct {
 }
 
 type EventgridEventSubscriptionSpecRetryPolicy struct {
-	EventTimeToLive     int `json:"eventTimeToLive" tf:"event_time_to_live"`
-	MaxDeliveryAttempts int `json:"maxDeliveryAttempts" tf:"max_delivery_attempts"`
+	EventTimeToLive     int64 `json:"eventTimeToLive" tf:"event_time_to_live"`
+	MaxDeliveryAttempts int64 `json:"maxDeliveryAttempts" tf:"max_delivery_attempts"`
 }
 
 type EventgridEventSubscriptionSpecStorageBlobDeadLetterDestination struct {

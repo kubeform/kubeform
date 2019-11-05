@@ -427,6 +427,7 @@ spec:
             proxyHeader:
               type: string
             proxyID:
+              format: int64
               type: integer
             selfLink:
               type: string
@@ -468,6 +469,7 @@ spec:
                 proxyHeader:
                   type: string
                 proxyID:
+                  format: int64
                   type: integer
                 selfLink:
                   type: string

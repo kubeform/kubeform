@@ -41,13 +41,13 @@ type SchedulerJobCollection struct {
 
 type SchedulerJobCollectionSpecQuota struct {
 	// +optional
-	MaxJobCount            int    `json:"maxJobCount,omitempty" tf:"max_job_count,omitempty"`
+	MaxJobCount            int64  `json:"maxJobCount,omitempty" tf:"max_job_count,omitempty"`
 	MaxRecurrenceFrequency string `json:"maxRecurrenceFrequency" tf:"max_recurrence_frequency"`
 	// +optional
-	MaxRecurrenceInterval int `json:"maxRecurrenceInterval,omitempty" tf:"max_recurrence_interval,omitempty"`
+	MaxRecurrenceInterval int64 `json:"maxRecurrenceInterval,omitempty" tf:"max_recurrence_interval,omitempty"`
 	// +optional
 	// Deprecated
-	MaxRetryInterval int `json:"maxRetryInterval,omitempty" tf:"max_retry_interval,omitempty"`
+	MaxRetryInterval int64 `json:"maxRetryInterval,omitempty" tf:"max_retry_interval,omitempty"`
 }
 
 type SchedulerJobCollectionSpec struct {

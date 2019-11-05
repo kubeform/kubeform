@@ -406,6 +406,7 @@ spec:
             id:
               type: string
             intervalInSeconds:
+              format: int64
               type: integer
             loadBalancerRules:
               items:
@@ -419,8 +420,10 @@ spec:
             name:
               type: string
             numberOfProbes:
+              format: int64
               type: integer
             port:
+              format: int64
               type: integer
             protocol:
               type: string
@@ -456,6 +459,7 @@ spec:
                 id:
                   type: string
                 intervalInSeconds:
+                  format: int64
                   type: integer
                 loadBalancerRules:
                   items:
@@ -469,8 +473,10 @@ spec:
                 name:
                   type: string
                 numberOfProbes:
+                  format: int64
                   type: integer
                 port:
+                  format: int64
                   type: integer
                 protocol:
                   type: string

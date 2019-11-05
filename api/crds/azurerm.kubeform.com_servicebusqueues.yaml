@@ -426,8 +426,10 @@ spec:
             lockDuration:
               type: string
             maxDeliveryCount:
+              format: int64
               type: integer
             maxSizeInMegabytes:
+              format: int64
               type: integer
             name:
               type: string
@@ -489,8 +491,10 @@ spec:
                 lockDuration:
                   type: string
                 maxDeliveryCount:
+                  format: int64
                   type: integer
                 maxSizeInMegabytes:
+                  format: int64
                   type: integer
                 name:
                   type: string

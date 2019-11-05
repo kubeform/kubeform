@@ -47,15 +47,15 @@ type SqlElasticpoolSpec struct {
 	// +optional
 	CreationDate string `json:"creationDate,omitempty" tf:"creation_date,omitempty"`
 	// +optional
-	DbDtuMax int `json:"dbDtuMax,omitempty" tf:"db_dtu_max,omitempty"`
+	DbDtuMax int64 `json:"dbDtuMax,omitempty" tf:"db_dtu_max,omitempty"`
 	// +optional
-	DbDtuMin int    `json:"dbDtuMin,omitempty" tf:"db_dtu_min,omitempty"`
-	Dtu      int    `json:"dtu" tf:"dtu"`
+	DbDtuMin int64  `json:"dbDtuMin,omitempty" tf:"db_dtu_min,omitempty"`
+	Dtu      int64  `json:"dtu" tf:"dtu"`
 	Edition  string `json:"edition" tf:"edition"`
 	Location string `json:"location" tf:"location"`
 	Name     string `json:"name" tf:"name"`
 	// +optional
-	PoolSize          int    `json:"poolSize,omitempty" tf:"pool_size,omitempty"`
+	PoolSize          int64  `json:"poolSize,omitempty" tf:"pool_size,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	ServerName        string `json:"serverName" tf:"server_name"`
 	// +optional

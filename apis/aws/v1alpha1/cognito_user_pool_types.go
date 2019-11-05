@@ -55,7 +55,7 @@ type CognitoUserPoolSpecAdminCreateUserConfig struct {
 	// +kubebuilder:validation:MaxItems=1
 	InviteMessageTemplate []CognitoUserPoolSpecAdminCreateUserConfigInviteMessageTemplate `json:"inviteMessageTemplate,omitempty" tf:"invite_message_template,omitempty"`
 	// +optional
-	UnusedAccountValidityDays int `json:"unusedAccountValidityDays,omitempty" tf:"unused_account_validity_days,omitempty"`
+	UnusedAccountValidityDays int64 `json:"unusedAccountValidityDays,omitempty" tf:"unused_account_validity_days,omitempty"`
 }
 
 type CognitoUserPoolSpecDeviceConfiguration struct {
@@ -97,7 +97,7 @@ type CognitoUserPoolSpecLambdaConfig struct {
 
 type CognitoUserPoolSpecPasswordPolicy struct {
 	// +optional
-	MinimumLength int `json:"minimumLength,omitempty" tf:"minimum_length,omitempty"`
+	MinimumLength int64 `json:"minimumLength,omitempty" tf:"minimum_length,omitempty"`
 	// +optional
 	RequireLowercase bool `json:"requireLowercase,omitempty" tf:"require_lowercase,omitempty"`
 	// +optional

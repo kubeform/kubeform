@@ -46,7 +46,7 @@ type WafRuleGroupSpecActivatedRuleAction struct {
 type WafRuleGroupSpecActivatedRule struct {
 	// +kubebuilder:validation:MaxItems=1
 	Action   []WafRuleGroupSpecActivatedRuleAction `json:"action" tf:"action"`
-	Priority int                                   `json:"priority" tf:"priority"`
+	Priority int64                                 `json:"priority" tf:"priority"`
 	RuleID   string                                `json:"ruleID" tf:"rule_id"`
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`

@@ -427,6 +427,7 @@ spec:
                   diskName:
                     type: string
                   diskSizeGb:
+                    format: int64
                     type: integer
                   diskType:
                     type: string
@@ -446,6 +447,7 @@ spec:
               items:
                 properties:
                   count:
+                    format: int64
                     type: integer
                   type:
                     type: string
@@ -601,6 +603,7 @@ spec:
                       diskName:
                         type: string
                       diskSizeGb:
+                        format: int64
                         type: integer
                       diskType:
                         type: string
@@ -620,6 +623,7 @@ spec:
                   items:
                     properties:
                       count:
+                        format: int64
                         type: integer
                       type:
                         type: string

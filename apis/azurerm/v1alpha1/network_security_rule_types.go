@@ -61,7 +61,7 @@ type NetworkSecurityRuleSpec struct {
 	Direction                string   `json:"direction" tf:"direction"`
 	Name                     string   `json:"name" tf:"name"`
 	NetworkSecurityGroupName string   `json:"networkSecurityGroupName" tf:"network_security_group_name"`
-	Priority                 int      `json:"priority" tf:"priority"`
+	Priority                 int64    `json:"priority" tf:"priority"`
 	Protocol                 string   `json:"protocol" tf:"protocol"`
 	ResourceGroupName        string   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional

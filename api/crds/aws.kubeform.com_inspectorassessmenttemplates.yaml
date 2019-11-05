@@ -406,6 +406,7 @@ spec:
             arn:
               type: string
             duration:
+              format: int64
               type: integer
             id:
               type: string
@@ -445,6 +446,7 @@ spec:
                 arn:
                   type: string
                 duration:
+                  format: int64
                   type: integer
                 id:
                   type: string

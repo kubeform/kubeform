@@ -435,6 +435,7 @@ spec:
             region:
               type: string
             size:
+              format: int64
               type: integer
             snapshotID:
               type: string
@@ -488,6 +489,7 @@ spec:
                 region:
                   type: string
                 size:
+                  format: int64
                   type: integer
                 snapshotID:
                   type: string

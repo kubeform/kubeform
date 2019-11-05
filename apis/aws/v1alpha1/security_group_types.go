@@ -44,7 +44,7 @@ type SecurityGroupSpecEgress struct {
 	CidrBlocks []string `json:"cidrBlocks,omitempty" tf:"cidr_blocks,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	FromPort    int    `json:"fromPort" tf:"from_port"`
+	FromPort    int64  `json:"fromPort" tf:"from_port"`
 	// +optional
 	Ipv6CIDRBlocks []string `json:"ipv6CIDRBlocks,omitempty" tf:"ipv6_cidr_blocks,omitempty"`
 	// +optional
@@ -53,8 +53,8 @@ type SecurityGroupSpecEgress struct {
 	// +optional
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
-	Self   bool `json:"self,omitempty" tf:"self,omitempty"`
-	ToPort int  `json:"toPort" tf:"to_port"`
+	Self   bool  `json:"self,omitempty" tf:"self,omitempty"`
+	ToPort int64 `json:"toPort" tf:"to_port"`
 }
 
 type SecurityGroupSpecIngress struct {
@@ -62,7 +62,7 @@ type SecurityGroupSpecIngress struct {
 	CidrBlocks []string `json:"cidrBlocks,omitempty" tf:"cidr_blocks,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	FromPort    int    `json:"fromPort" tf:"from_port"`
+	FromPort    int64  `json:"fromPort" tf:"from_port"`
 	// +optional
 	Ipv6CIDRBlocks []string `json:"ipv6CIDRBlocks,omitempty" tf:"ipv6_cidr_blocks,omitempty"`
 	// +optional
@@ -71,8 +71,8 @@ type SecurityGroupSpecIngress struct {
 	// +optional
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
-	Self   bool `json:"self,omitempty" tf:"self,omitempty"`
-	ToPort int  `json:"toPort" tf:"to_port"`
+	Self   bool  `json:"self,omitempty" tf:"self,omitempty"`
+	ToPort int64 `json:"toPort" tf:"to_port"`
 }
 
 type SecurityGroupSpec struct {

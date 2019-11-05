@@ -47,11 +47,11 @@ type SearchServiceSpec struct {
 	Location string `json:"location" tf:"location"`
 	Name     string `json:"name" tf:"name"`
 	// +optional
-	PartitionCount int `json:"partitionCount,omitempty" tf:"partition_count,omitempty"`
+	PartitionCount int64 `json:"partitionCount,omitempty" tf:"partition_count,omitempty"`
 	// +optional
 	PrimaryKey string `json:"primaryKey,omitempty" tf:"primary_key,omitempty"`
 	// +optional
-	ReplicaCount      int    `json:"replicaCount,omitempty" tf:"replica_count,omitempty"`
+	ReplicaCount      int64  `json:"replicaCount,omitempty" tf:"replica_count,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	SecondaryKey string `json:"secondaryKey,omitempty" tf:"secondary_key,omitempty"`

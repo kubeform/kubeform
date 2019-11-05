@@ -416,6 +416,7 @@ spec:
             id:
               type: string
             maxSessionDuration:
+              format: int64
               type: integer
             name:
               type: string
@@ -466,6 +467,7 @@ spec:
                 id:
                   type: string
                 maxSessionDuration:
+                  format: int64
                   type: integer
                 name:
                   type: string

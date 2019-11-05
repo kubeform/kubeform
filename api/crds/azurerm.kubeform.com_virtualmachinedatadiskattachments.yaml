@@ -410,6 +410,7 @@ spec:
             id:
               type: string
             lun:
+              format: int64
               type: integer
             managedDiskID:
               type: string
@@ -449,6 +450,7 @@ spec:
                 id:
                   type: string
                 lun:
+                  format: int64
                   type: integer
                 managedDiskID:
                   type: string

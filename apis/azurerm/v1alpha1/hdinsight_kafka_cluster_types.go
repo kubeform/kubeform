@@ -64,15 +64,15 @@ type HdinsightKafkaClusterSpecRolesHeadNode struct {
 
 type HdinsightKafkaClusterSpecRolesWorkerNode struct {
 	// +optional
-	MinInstanceCount     int `json:"minInstanceCount,omitempty" tf:"min_instance_count,omitempty"`
-	NumberOfDisksPerNode int `json:"numberOfDisksPerNode" tf:"number_of_disks_per_node"`
+	MinInstanceCount     int64 `json:"minInstanceCount,omitempty" tf:"min_instance_count,omitempty"`
+	NumberOfDisksPerNode int64 `json:"numberOfDisksPerNode" tf:"number_of_disks_per_node"`
 	// +optional
 	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
 	// +optional
 	SubnetID            string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
-	TargetInstanceCount int    `json:"targetInstanceCount" tf:"target_instance_count"`
+	TargetInstanceCount int64  `json:"targetInstanceCount" tf:"target_instance_count"`
 	Username            string `json:"username" tf:"username"`
 	// +optional
 	VirtualNetworkID string `json:"virtualNetworkID,omitempty" tf:"virtual_network_id,omitempty"`

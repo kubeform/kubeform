@@ -419,6 +419,7 @@ spec:
             diskID:
               description: The ID of the Linode Disk that this Image will be created
                 from.
+              format: int64
               type: integer
             expiry:
               description: Only Images created automatically (from a deleted Linode;
@@ -435,6 +436,7 @@ spec:
               type: string
             linodeID:
               description: The ID of the Linode that this Image will be created from.
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -448,6 +450,7 @@ spec:
             size:
               description: The minimum size this Image needs to deploy. Size is in
                 MB.
+              format: int64
               type: integer
             type:
               description: How the Image was created. 'Manual' Images can be created
@@ -488,6 +491,7 @@ spec:
                 diskID:
                   description: The ID of the Linode Disk that this Image will be created
                     from.
+                  format: int64
                   type: integer
                 expiry:
                   description: Only Images created automatically (from a deleted Linode;
@@ -505,6 +509,7 @@ spec:
                 linodeID:
                   description: The ID of the Linode that this Image will be created
                     from.
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -518,6 +523,7 @@ spec:
                 size:
                   description: The minimum size this Image needs to deploy. Size is
                     in MB.
+                  format: int64
                   type: integer
                 type:
                   description: How the Image was created. 'Manual' Images can be created

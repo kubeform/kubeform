@@ -435,10 +435,12 @@ spec:
                 type: object
               type: array
             creationTime:
+              format: int64
               type: integer
             datasetID:
               type: string
             defaultTableExpirationMs:
+              format: int64
               type: integer
             description:
               type: string
@@ -453,6 +455,7 @@ spec:
                 type: string
               type: object
             lastModifiedTime:
+              format: int64
               type: integer
             location:
               type: string
@@ -514,10 +517,12 @@ spec:
                     type: object
                   type: array
                 creationTime:
+                  format: int64
                   type: integer
                 datasetID:
                   type: string
                 defaultTableExpirationMs:
+                  format: int64
                   type: integer
                 description:
                   type: string
@@ -532,6 +537,7 @@ spec:
                     type: string
                   type: object
                 lastModifiedTime:
+                  format: int64
                   type: integer
                 location:
                   type: string

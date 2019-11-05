@@ -447,6 +447,7 @@ spec:
               maxItems: 5
               type: array
             memorySize:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -462,6 +463,7 @@ spec:
             qualifiedArn:
               type: string
             reservedConcurrentExecutions:
+              format: int64
               type: integer
             role:
               type: string
@@ -476,12 +478,14 @@ spec:
             sourceCodeHash:
               type: string
             sourceCodeSize:
+              format: int64
               type: integer
             tags:
               additionalProperties:
                 type: string
               type: object
             timeout:
+              format: int64
               type: integer
             tracingConfig:
               items:
@@ -574,6 +578,7 @@ spec:
                   maxItems: 5
                   type: array
                 memorySize:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -589,6 +594,7 @@ spec:
                 qualifiedArn:
                   type: string
                 reservedConcurrentExecutions:
+                  format: int64
                   type: integer
                 role:
                   type: string
@@ -603,12 +609,14 @@ spec:
                 sourceCodeHash:
                   type: string
                 sourceCodeSize:
+                  format: int64
                   type: integer
                 tags:
                   additionalProperties:
                     type: string
                   type: object
                 timeout:
+                  format: int64
                   type: integer
                 tracingConfig:
                   items:

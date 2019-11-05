@@ -406,6 +406,7 @@ spec:
             createOption:
               type: string
             diskSizeGb:
+              format: int64
               type: integer
             encryptionSettings:
               items:
@@ -489,6 +490,7 @@ spec:
                 createOption:
                   type: string
                 diskSizeGb:
+                  format: int64
                   type: integer
                 encryptionSettings:
                   items:

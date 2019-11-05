@@ -60,7 +60,7 @@ type StorageDefaultObjectAccessControlSpec struct {
 	// +optional
 	EntityID string `json:"entityID,omitempty" tf:"entity_id,omitempty"`
 	// +optional
-	Generation int `json:"generation,omitempty" tf:"generation,omitempty"`
+	Generation int64 `json:"generation,omitempty" tf:"generation,omitempty"`
 	// +optional
 	Object string `json:"object,omitempty" tf:"object,omitempty"`
 	// +optional

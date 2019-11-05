@@ -408,6 +408,7 @@ spec:
             loadBalancerName:
               type: string
             loadBalancerPort:
+              format: int64
               type: integer
             policyNames:
               items:
@@ -441,6 +442,7 @@ spec:
                 loadBalancerName:
                   type: string
                 loadBalancerPort:
+                  format: int64
                   type: integer
                 policyNames:
                   items:

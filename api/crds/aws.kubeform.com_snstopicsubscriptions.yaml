@@ -406,6 +406,7 @@ spec:
             arn:
               type: string
             confirmationTimeoutInMinutes:
+              format: int64
               type: integer
             deliveryPolicy:
               type: string
@@ -450,6 +451,7 @@ spec:
                 arn:
                   type: string
                 confirmationTimeoutInMinutes:
+                  format: int64
                   type: integer
                 deliveryPolicy:
                   type: string

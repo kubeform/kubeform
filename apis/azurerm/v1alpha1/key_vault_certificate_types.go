@@ -51,7 +51,7 @@ type KeyVaultCertificateSpecCertificatePolicyIssuerParameters struct {
 
 type KeyVaultCertificateSpecCertificatePolicyKeyProperties struct {
 	Exportable bool   `json:"exportable" tf:"exportable"`
-	KeySize    int    `json:"keySize" tf:"key_size"`
+	KeySize    int64  `json:"keySize" tf:"key_size"`
 	KeyType    string `json:"keyType" tf:"key_type"`
 	ReuseKey   bool   `json:"reuseKey" tf:"reuse_key"`
 }
@@ -62,9 +62,9 @@ type KeyVaultCertificateSpecCertificatePolicyLifetimeActionAction struct {
 
 type KeyVaultCertificateSpecCertificatePolicyLifetimeActionTrigger struct {
 	// +optional
-	DaysBeforeExpiry int `json:"daysBeforeExpiry,omitempty" tf:"days_before_expiry,omitempty"`
+	DaysBeforeExpiry int64 `json:"daysBeforeExpiry,omitempty" tf:"days_before_expiry,omitempty"`
 	// +optional
-	LifetimePercentage int `json:"lifetimePercentage,omitempty" tf:"lifetime_percentage,omitempty"`
+	LifetimePercentage int64 `json:"lifetimePercentage,omitempty" tf:"lifetime_percentage,omitempty"`
 }
 
 type KeyVaultCertificateSpecCertificatePolicyLifetimeAction struct {
@@ -95,7 +95,7 @@ type KeyVaultCertificateSpecCertificatePolicyX509CertificateProperties struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SubjectAlternativeNames []KeyVaultCertificateSpecCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames `json:"subjectAlternativeNames,omitempty" tf:"subject_alternative_names,omitempty"`
-	ValidityInMonths        int                                                                                        `json:"validityInMonths" tf:"validity_in_months"`
+	ValidityInMonths        int64                                                                                      `json:"validityInMonths" tf:"validity_in_months"`
 }
 
 type KeyVaultCertificateSpecCertificatePolicy struct {

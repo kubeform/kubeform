@@ -438,6 +438,7 @@ spec:
                   name:
                     type: string
                   nodeCount:
+                    format: int64
                     type: integer
                   nodes:
                     items:
@@ -542,6 +543,7 @@ spec:
                       name:
                         type: string
                       nodeCount:
+                        format: int64
                         type: integer
                       nodes:
                         items:

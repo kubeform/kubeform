@@ -424,10 +424,12 @@ spec:
             locationID:
               type: string
             memorySizeGb:
+              format: int64
               type: integer
             name:
               type: string
             port:
+              format: int64
               type: integer
             project:
               type: string
@@ -487,10 +489,12 @@ spec:
                 locationID:
                   type: string
                 memorySizeGb:
+                  format: int64
                   type: integer
                 name:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 project:
                   type: string

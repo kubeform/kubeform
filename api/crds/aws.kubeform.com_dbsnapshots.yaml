@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             allocatedStorage:
+              format: int64
               type: integer
             availabilityZone:
               type: string
@@ -422,6 +423,7 @@ spec:
             id:
               type: string
             iops:
+              format: int64
               type: integer
             kmsKeyID:
               type: string
@@ -430,6 +432,7 @@ spec:
             optionGroupName:
               type: string
             port:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -471,6 +474,7 @@ spec:
             output:
               properties:
                 allocatedStorage:
+                  format: int64
                   type: integer
                 availabilityZone:
                   type: string
@@ -489,6 +493,7 @@ spec:
                 id:
                   type: string
                 iops:
+                  format: int64
                   type: integer
                 kmsKeyID:
                   type: string
@@ -497,6 +502,7 @@ spec:
                 optionGroupName:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

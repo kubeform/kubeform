@@ -55,7 +55,7 @@ type WafregionalRateBasedRuleSpec struct {
 	// +optional
 	Predicate []WafregionalRateBasedRuleSpecPredicate `json:"predicate,omitempty" tf:"predicate,omitempty"`
 	RateKey   string                                  `json:"rateKey" tf:"rate_key"`
-	RateLimit int                                     `json:"rateLimit" tf:"rate_limit"`
+	RateLimit int64                                   `json:"rateLimit" tf:"rate_limit"`
 }
 
 type WafregionalRateBasedRuleStatus struct {

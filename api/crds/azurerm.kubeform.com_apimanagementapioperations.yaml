@@ -587,6 +587,7 @@ spec:
                       type: object
                     type: array
                   statusCode:
+                    format: int64
                     type: integer
                 required:
                 - statusCode
@@ -820,6 +821,7 @@ spec:
                           type: object
                         type: array
                       statusCode:
+                        format: int64
                         type: integer
                     required:
                     - statusCode

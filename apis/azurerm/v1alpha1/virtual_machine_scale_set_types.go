@@ -74,7 +74,7 @@ type VirtualMachineScaleSetSpecNetworkProfileDnsSettings struct {
 
 type VirtualMachineScaleSetSpecNetworkProfileIpConfigurationPublicIPAddressConfiguration struct {
 	DomainNameLabel string `json:"domainNameLabel" tf:"domain_name_label"`
-	IdleTimeout     int    `json:"idleTimeout" tf:"idle_timeout"`
+	IdleTimeout     int64  `json:"idleTimeout" tf:"idle_timeout"`
 	Name            string `json:"name" tf:"name"`
 }
 
@@ -177,17 +177,17 @@ type VirtualMachineScaleSetSpecPlan struct {
 
 type VirtualMachineScaleSetSpecRollingUpgradePolicy struct {
 	// +optional
-	MaxBatchInstancePercent int `json:"maxBatchInstancePercent,omitempty" tf:"max_batch_instance_percent,omitempty"`
+	MaxBatchInstancePercent int64 `json:"maxBatchInstancePercent,omitempty" tf:"max_batch_instance_percent,omitempty"`
 	// +optional
-	MaxUnhealthyInstancePercent int `json:"maxUnhealthyInstancePercent,omitempty" tf:"max_unhealthy_instance_percent,omitempty"`
+	MaxUnhealthyInstancePercent int64 `json:"maxUnhealthyInstancePercent,omitempty" tf:"max_unhealthy_instance_percent,omitempty"`
 	// +optional
-	MaxUnhealthyUpgradedInstancePercent int `json:"maxUnhealthyUpgradedInstancePercent,omitempty" tf:"max_unhealthy_upgraded_instance_percent,omitempty"`
+	MaxUnhealthyUpgradedInstancePercent int64 `json:"maxUnhealthyUpgradedInstancePercent,omitempty" tf:"max_unhealthy_upgraded_instance_percent,omitempty"`
 	// +optional
 	PauseTimeBetweenBatches string `json:"pauseTimeBetweenBatches,omitempty" tf:"pause_time_between_batches,omitempty"`
 }
 
 type VirtualMachineScaleSetSpecSku struct {
-	Capacity int    `json:"capacity" tf:"capacity"`
+	Capacity int64  `json:"capacity" tf:"capacity"`
 	Name     string `json:"name" tf:"name"`
 	// +optional
 	Tier string `json:"tier,omitempty" tf:"tier,omitempty"`
@@ -198,8 +198,8 @@ type VirtualMachineScaleSetSpecStorageProfileDataDisk struct {
 	Caching      string `json:"caching,omitempty" tf:"caching,omitempty"`
 	CreateOption string `json:"createOption" tf:"create_option"`
 	// +optional
-	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
-	Lun        int `json:"lun" tf:"lun"`
+	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	Lun        int64 `json:"lun" tf:"lun"`
 	// +optional
 	ManagedDiskType string `json:"managedDiskType,omitempty" tf:"managed_disk_type,omitempty"`
 }

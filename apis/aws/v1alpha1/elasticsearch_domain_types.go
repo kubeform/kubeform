@@ -41,13 +41,13 @@ type ElasticsearchDomain struct {
 
 type ElasticsearchDomainSpecClusterConfig struct {
 	// +optional
-	DedicatedMasterCount int `json:"dedicatedMasterCount,omitempty" tf:"dedicated_master_count,omitempty"`
+	DedicatedMasterCount int64 `json:"dedicatedMasterCount,omitempty" tf:"dedicated_master_count,omitempty"`
 	// +optional
 	DedicatedMasterEnabled bool `json:"dedicatedMasterEnabled,omitempty" tf:"dedicated_master_enabled,omitempty"`
 	// +optional
 	DedicatedMasterType string `json:"dedicatedMasterType,omitempty" tf:"dedicated_master_type,omitempty"`
 	// +optional
-	InstanceCount int `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
+	InstanceCount int64 `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
 	// +optional
 	InstanceType string `json:"instanceType,omitempty" tf:"instance_type,omitempty"`
 	// +optional
@@ -65,9 +65,9 @@ type ElasticsearchDomainSpecCognitoOptions struct {
 type ElasticsearchDomainSpecEbsOptions struct {
 	EbsEnabled bool `json:"ebsEnabled" tf:"ebs_enabled"`
 	// +optional
-	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
-	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	VolumeSize int64 `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 	// +optional
 	VolumeType string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
 }
@@ -90,7 +90,7 @@ type ElasticsearchDomainSpecNodeToNodeEncryption struct {
 }
 
 type ElasticsearchDomainSpecSnapshotOptions struct {
-	AutomatedSnapshotStartHour int `json:"automatedSnapshotStartHour" tf:"automated_snapshot_start_hour"`
+	AutomatedSnapshotStartHour int64 `json:"automatedSnapshotStartHour" tf:"automated_snapshot_start_hour"`
 }
 
 type ElasticsearchDomainSpecVpcOptions struct {

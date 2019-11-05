@@ -420,10 +420,11 @@ spec:
               items:
                 properties:
                   burstLimit:
+                    format: int64
                     type: integer
                   rateLimit:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                 type: object
               maxItems: 1
               type: array
@@ -456,10 +457,11 @@ spec:
                   items:
                     properties:
                       burstLimit:
+                        format: int64
                         type: integer
                       rateLimit:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                     type: object
                   maxItems: 1
                   type: array

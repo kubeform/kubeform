@@ -41,7 +41,7 @@ type AutomationSchedule struct {
 
 type AutomationScheduleSpecMonthlyOccurrence struct {
 	Day        string `json:"day" tf:"day"`
-	Occurrence int    `json:"occurrence" tf:"occurrence"`
+	Occurrence int64  `json:"occurrence" tf:"occurrence"`
 }
 
 type AutomationScheduleSpec struct {
@@ -60,7 +60,7 @@ type AutomationScheduleSpec struct {
 	ExpiryTime string `json:"expiryTime,omitempty" tf:"expiry_time,omitempty"`
 	Frequency  string `json:"frequency" tf:"frequency"`
 	// +optional
-	Interval int `json:"interval,omitempty" tf:"interval,omitempty"`
+	Interval int64 `json:"interval,omitempty" tf:"interval,omitempty"`
 	// +optional
 	MonthDays []int64 `json:"monthDays,omitempty" tf:"month_days,omitempty"`
 	// +optional

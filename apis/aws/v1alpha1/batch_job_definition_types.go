@@ -41,12 +41,12 @@ type BatchJobDefinition struct {
 
 type BatchJobDefinitionSpecRetryStrategy struct {
 	// +optional
-	Attempts int `json:"attempts,omitempty" tf:"attempts,omitempty"`
+	Attempts int64 `json:"attempts,omitempty" tf:"attempts,omitempty"`
 }
 
 type BatchJobDefinitionSpecTimeout struct {
 	// +optional
-	AttemptDurationSeconds int `json:"attemptDurationSeconds,omitempty" tf:"attempt_duration_seconds,omitempty"`
+	AttemptDurationSeconds int64 `json:"attemptDurationSeconds,omitempty" tf:"attempt_duration_seconds,omitempty"`
 }
 
 type BatchJobDefinitionSpec struct {
@@ -65,7 +65,7 @@ type BatchJobDefinitionSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	RetryStrategy []BatchJobDefinitionSpecRetryStrategy `json:"retryStrategy,omitempty" tf:"retry_strategy,omitempty"`
 	// +optional
-	Revision int `json:"revision,omitempty" tf:"revision,omitempty"`
+	Revision int64 `json:"revision,omitempty" tf:"revision,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Timeout []BatchJobDefinitionSpecTimeout `json:"timeout,omitempty" tf:"timeout,omitempty"`

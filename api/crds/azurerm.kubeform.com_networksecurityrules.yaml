@@ -433,6 +433,7 @@ spec:
             networkSecurityGroupName:
               type: string
             priority:
+              format: int64
               type: integer
             protocol:
               type: string
@@ -513,6 +514,7 @@ spec:
                 networkSecurityGroupName:
                   type: string
                 priority:
+                  format: int64
                   type: integer
                 protocol:
                   type: string

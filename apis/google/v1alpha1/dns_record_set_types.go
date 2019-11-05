@@ -49,7 +49,7 @@ type DnsRecordSetSpec struct {
 	// +optional
 	Project string   `json:"project,omitempty" tf:"project,omitempty"`
 	Rrdatas []string `json:"rrdatas" tf:"rrdatas"`
-	Ttl     int      `json:"ttl" tf:"ttl"`
+	Ttl     int64    `json:"ttl" tf:"ttl"`
 	Type    string   `json:"type" tf:"type"`
 }
 

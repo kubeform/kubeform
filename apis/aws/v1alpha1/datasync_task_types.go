@@ -43,7 +43,7 @@ type DatasyncTaskSpecOptions struct {
 	// +optional
 	Atime string `json:"atime,omitempty" tf:"atime,omitempty"`
 	// +optional
-	BytesPerSecond int `json:"bytesPerSecond,omitempty" tf:"bytes_per_second,omitempty"`
+	BytesPerSecond int64 `json:"bytesPerSecond,omitempty" tf:"bytes_per_second,omitempty"`
 	// +optional
 	Gid string `json:"gid,omitempty" tf:"gid,omitempty"`
 	// +optional

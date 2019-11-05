@@ -453,6 +453,7 @@ spec:
                 type: string
               type: array
             refreshTokenValidity:
+              format: int64
               type: integer
             supportedIdentityProviders:
               items:
@@ -528,6 +529,7 @@ spec:
                     type: string
                   type: array
                 refreshTokenValidity:
+                  format: int64
                   type: integer
                 supportedIdentityProviders:
                   items:

@@ -50,11 +50,11 @@ type EbsVolumeSpec struct {
 	// +optional
 	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
 	// +optional
-	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional
-	Size int `json:"size,omitempty" tf:"size,omitempty"`
+	Size int64 `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 	// +optional

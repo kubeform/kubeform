@@ -51,7 +51,7 @@ type DxHostedPublicVirtualInterfaceSpec struct {
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	AwsDevice string `json:"awsDevice,omitempty" tf:"aws_device,omitempty"`
-	BgpAsn    int    `json:"bgpAsn" tf:"bgp_asn"`
+	BgpAsn    int64  `json:"bgpAsn" tf:"bgp_asn"`
 	// +optional
 	BgpAuthKey   string `json:"bgpAuthKey,omitempty" tf:"bgp_auth_key,omitempty"`
 	ConnectionID string `json:"connectionID" tf:"connection_id"`
@@ -61,7 +61,7 @@ type DxHostedPublicVirtualInterfaceSpec struct {
 	OwnerAccountID  string `json:"ownerAccountID" tf:"owner_account_id"`
 	// +kubebuilder:validation:MinItems=1
 	RouteFilterPrefixes []string `json:"routeFilterPrefixes" tf:"route_filter_prefixes"`
-	Vlan                int      `json:"vlan" tf:"vlan"`
+	Vlan                int64    `json:"vlan" tf:"vlan"`
 }
 
 type DxHostedPublicVirtualInterfaceStatus struct {

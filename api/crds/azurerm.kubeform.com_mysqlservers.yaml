@@ -437,6 +437,7 @@ spec:
               items:
                 properties:
                   capacity:
+                    format: int64
                     type: integer
                   family:
                     type: string
@@ -458,10 +459,12 @@ spec:
               items:
                 properties:
                   backupRetentionDays:
+                    format: int64
                     type: integer
                   geoRedundantBackup:
                     type: string
                   storageMb:
+                    format: int64
                     type: integer
                 required:
                 - storageMb
@@ -528,6 +531,7 @@ spec:
                   items:
                     properties:
                       capacity:
+                        format: int64
                         type: integer
                       family:
                         type: string
@@ -549,10 +553,12 @@ spec:
                   items:
                     properties:
                       backupRetentionDays:
+                        format: int64
                         type: integer
                       geoRedundantBackup:
                         type: string
                       storageMb:
+                        format: int64
                         type: integer
                     required:
                     - storageMb

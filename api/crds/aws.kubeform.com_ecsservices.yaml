@@ -414,14 +414,18 @@ spec:
               maxItems: 1
               type: array
             deploymentMaximumPercent:
+              format: int64
               type: integer
             deploymentMinimumHealthyPercent:
+              format: int64
               type: integer
             desiredCount:
+              format: int64
               type: integer
             enableEcsManagedTags:
               type: boolean
             healthCheckGracePeriodSeconds:
+              format: int64
               type: integer
             iamRole:
               type: string
@@ -435,6 +439,7 @@ spec:
                   containerName:
                     type: string
                   containerPort:
+                    format: int64
                     type: integer
                   elbName:
                     type: string
@@ -511,8 +516,10 @@ spec:
                   containerName:
                     type: string
                   containerPort:
+                    format: int64
                     type: integer
                   port:
+                    format: int64
                     type: integer
                   registryArn:
                     type: string
@@ -552,14 +559,18 @@ spec:
                   maxItems: 1
                   type: array
                 deploymentMaximumPercent:
+                  format: int64
                   type: integer
                 deploymentMinimumHealthyPercent:
+                  format: int64
                   type: integer
                 desiredCount:
+                  format: int64
                   type: integer
                 enableEcsManagedTags:
                   type: boolean
                 healthCheckGracePeriodSeconds:
+                  format: int64
                   type: integer
                 iamRole:
                   type: string
@@ -573,6 +584,7 @@ spec:
                       containerName:
                         type: string
                       containerPort:
+                        format: int64
                         type: integer
                       elbName:
                         type: string
@@ -649,8 +661,10 @@ spec:
                       containerName:
                         type: string
                       containerPort:
+                        format: int64
                         type: integer
                       port:
+                        format: int64
                         type: integer
                       registryArn:
                         type: string

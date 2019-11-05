@@ -71,7 +71,7 @@ type SsmMaintenanceWindowTaskSpec struct {
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	Priority       int                                   `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority       int64                                 `json:"priority,omitempty" tf:"priority,omitempty"`
 	ServiceRoleArn string                                `json:"serviceRoleArn" tf:"service_role_arn"`
 	Targets        []SsmMaintenanceWindowTaskSpecTargets `json:"targets" tf:"targets"`
 	TaskArn        string                                `json:"taskArn" tf:"task_arn"`

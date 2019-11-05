@@ -410,6 +410,7 @@ spec:
             description:
               type: string
             fromPort:
+              format: int64
               type: integer
             id:
               type: string
@@ -439,6 +440,7 @@ spec:
             sourceSecurityGroupID:
               type: string
             toPort:
+              format: int64
               type: integer
             type:
               description: Type of rule, ingress (inbound) or egress (outbound).
@@ -467,6 +469,7 @@ spec:
                 description:
                   type: string
                 fromPort:
+                  format: int64
                   type: integer
                 id:
                   type: string
@@ -496,6 +499,7 @@ spec:
                 sourceSecurityGroupID:
                   type: string
                 toPort:
+                  format: int64
                   type: integer
                 type:
                   description: Type of rule, ingress (inbound) or egress (outbound).

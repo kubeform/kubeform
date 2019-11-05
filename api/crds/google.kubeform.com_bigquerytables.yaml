@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             creationTime:
+              format: int64
               type: integer
             datasetID:
               type: string
@@ -412,6 +413,7 @@ spec:
             etag:
               type: string
             expirationTime:
+              format: int64
               type: integer
             friendlyName:
               type: string
@@ -422,14 +424,18 @@ spec:
                 type: string
               type: object
             lastModifiedTime:
+              format: int64
               type: integer
             location:
               type: string
             numBytes:
+              format: int64
               type: integer
             numLongTermBytes:
+              format: int64
               type: integer
             numRows:
+              format: int64
               type: integer
             project:
               type: string
@@ -452,6 +458,7 @@ spec:
               items:
                 properties:
                   expirationMs:
+                    format: int64
                     type: integer
                   field:
                     type: string
@@ -491,6 +498,7 @@ spec:
             output:
               properties:
                 creationTime:
+                  format: int64
                   type: integer
                 datasetID:
                   type: string
@@ -499,6 +507,7 @@ spec:
                 etag:
                   type: string
                 expirationTime:
+                  format: int64
                   type: integer
                 friendlyName:
                   type: string
@@ -509,14 +518,18 @@ spec:
                     type: string
                   type: object
                 lastModifiedTime:
+                  format: int64
                   type: integer
                 location:
                   type: string
                 numBytes:
+                  format: int64
                   type: integer
                 numLongTermBytes:
+                  format: int64
                   type: integer
                 numRows:
+                  format: int64
                   type: integer
                 project:
                   type: string
@@ -539,6 +552,7 @@ spec:
                   items:
                     properties:
                       expirationMs:
+                        format: int64
                         type: integer
                       field:
                         type: string

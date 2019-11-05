@@ -407,6 +407,7 @@ spec:
               items:
                 properties:
                   approveAfterDays:
+                    format: int64
                     type: integer
                   complianceLevel:
                     type: string
@@ -495,6 +496,7 @@ spec:
                   items:
                     properties:
                       approveAfterDays:
+                        format: int64
                         type: integer
                       complianceLevel:
                         type: string

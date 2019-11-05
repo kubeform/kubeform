@@ -441,6 +441,7 @@ spec:
               items:
                 properties:
                   count:
+                    format: int64
                     type: integer
                 required:
                 - count
@@ -451,6 +452,7 @@ spec:
               items:
                 properties:
                   count:
+                    format: int64
                     type: integer
                   weekdays:
                     items:
@@ -471,6 +473,7 @@ spec:
               items:
                 properties:
                   count:
+                    format: int64
                     type: integer
                   weekdays:
                     items:
@@ -486,6 +489,7 @@ spec:
               items:
                 properties:
                   count:
+                    format: int64
                     type: integer
                   months:
                     items:
@@ -567,6 +571,7 @@ spec:
                   items:
                     properties:
                       count:
+                        format: int64
                         type: integer
                     required:
                     - count
@@ -577,6 +582,7 @@ spec:
                   items:
                     properties:
                       count:
+                        format: int64
                         type: integer
                       weekdays:
                         items:
@@ -597,6 +603,7 @@ spec:
                   items:
                     properties:
                       count:
+                        format: int64
                         type: integer
                       weekdays:
                         items:
@@ -612,6 +619,7 @@ spec:
                   items:
                     properties:
                       count:
+                        format: int64
                         type: integer
                       months:
                         items:

@@ -406,6 +406,7 @@ spec:
             attachmentID:
               type: string
             deviceIndex:
+              format: int64
               type: integer
             id:
               type: string
@@ -442,6 +443,7 @@ spec:
                 attachmentID:
                   type: string
                 deviceIndex:
+                  format: int64
                   type: integer
                 id:
                   type: string

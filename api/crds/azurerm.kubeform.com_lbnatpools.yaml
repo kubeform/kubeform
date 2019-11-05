@@ -404,14 +404,17 @@ spec:
         spec:
           properties:
             backendPort:
+              format: int64
               type: integer
             frontendIPConfigurationID:
               type: string
             frontendIPConfigurationName:
               type: string
             frontendPortEnd:
+              format: int64
               type: integer
             frontendPortStart:
+              format: int64
               type: integer
             id:
               type: string
@@ -456,14 +459,17 @@ spec:
             output:
               properties:
                 backendPort:
+                  format: int64
                   type: integer
                 frontendIPConfigurationID:
                   type: string
                 frontendIPConfigurationName:
                   type: string
                 frontendPortEnd:
+                  format: int64
                   type: integer
                 frontendPortStart:
+                  format: int64
                   type: integer
                 id:
                   type: string

@@ -45,18 +45,18 @@ type ComputeHTTPHealthCheckSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	CheckIntervalSec int `json:"checkIntervalSec,omitempty" tf:"check_interval_sec,omitempty"`
+	CheckIntervalSec int64 `json:"checkIntervalSec,omitempty" tf:"check_interval_sec,omitempty"`
 	// +optional
 	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	HealthyThreshold int `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
+	HealthyThreshold int64 `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
 	// +optional
 	Host string `json:"host,omitempty" tf:"host,omitempty"`
 	Name string `json:"name" tf:"name"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
@@ -64,9 +64,9 @@ type ComputeHTTPHealthCheckSpec struct {
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
-	TimeoutSec int `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
+	TimeoutSec int64 `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
 	// +optional
-	UnhealthyThreshold int `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
+	UnhealthyThreshold int64 `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
 }
 
 type ComputeHTTPHealthCheckStatus struct {

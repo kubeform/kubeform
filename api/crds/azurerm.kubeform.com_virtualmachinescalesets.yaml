@@ -518,6 +518,7 @@ spec:
                               domainNameLabel:
                                 type: string
                               idleTimeout:
+                                format: int64
                                 type: integer
                               name:
                                 type: string
@@ -675,10 +676,13 @@ spec:
               items:
                 properties:
                   maxBatchInstancePercent:
+                    format: int64
                     type: integer
                   maxUnhealthyInstancePercent:
+                    format: int64
                     type: integer
                   maxUnhealthyUpgradedInstancePercent:
+                    format: int64
                     type: integer
                   pauseTimeBetweenBatches:
                     type: string
@@ -700,6 +704,7 @@ spec:
               items:
                 properties:
                   capacity:
+                    format: int64
                     type: integer
                   name:
                     type: string
@@ -719,8 +724,10 @@ spec:
                   createOption:
                     type: string
                   diskSizeGb:
+                    format: int64
                     type: integer
                   lun:
+                    format: int64
                     type: integer
                   managedDiskType:
                     type: string
@@ -914,6 +921,7 @@ spec:
                                   domainNameLabel:
                                     type: string
                                   idleTimeout:
+                                    format: int64
                                     type: integer
                                   name:
                                     type: string
@@ -1071,10 +1079,13 @@ spec:
                   items:
                     properties:
                       maxBatchInstancePercent:
+                        format: int64
                         type: integer
                       maxUnhealthyInstancePercent:
+                        format: int64
                         type: integer
                       maxUnhealthyUpgradedInstancePercent:
+                        format: int64
                         type: integer
                       pauseTimeBetweenBatches:
                         type: string
@@ -1096,6 +1107,7 @@ spec:
                   items:
                     properties:
                       capacity:
+                        format: int64
                         type: integer
                       name:
                         type: string
@@ -1115,8 +1127,10 @@ spec:
                       createOption:
                         type: string
                       diskSizeGb:
+                        format: int64
                         type: integer
                       lun:
+                        format: int64
                         type: integer
                       managedDiskType:
                         type: string

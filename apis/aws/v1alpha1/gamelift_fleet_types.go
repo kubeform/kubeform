@@ -40,21 +40,21 @@ type GameliftFleet struct {
 }
 
 type GameliftFleetSpecEc2InboundPermission struct {
-	FromPort int    `json:"fromPort" tf:"from_port"`
+	FromPort int64  `json:"fromPort" tf:"from_port"`
 	IpRange  string `json:"ipRange" tf:"ip_range"`
 	Protocol string `json:"protocol" tf:"protocol"`
-	ToPort   int    `json:"toPort" tf:"to_port"`
+	ToPort   int64  `json:"toPort" tf:"to_port"`
 }
 
 type GameliftFleetSpecResourceCreationLimitPolicy struct {
 	// +optional
-	NewGameSessionsPerCreator int `json:"newGameSessionsPerCreator,omitempty" tf:"new_game_sessions_per_creator,omitempty"`
+	NewGameSessionsPerCreator int64 `json:"newGameSessionsPerCreator,omitempty" tf:"new_game_sessions_per_creator,omitempty"`
 	// +optional
-	PolicyPeriodInMinutes int `json:"policyPeriodInMinutes,omitempty" tf:"policy_period_in_minutes,omitempty"`
+	PolicyPeriodInMinutes int64 `json:"policyPeriodInMinutes,omitempty" tf:"policy_period_in_minutes,omitempty"`
 }
 
 type GameliftFleetSpecRuntimeConfigurationServerProcess struct {
-	ConcurrentExecutions int    `json:"concurrentExecutions" tf:"concurrent_executions"`
+	ConcurrentExecutions int64  `json:"concurrentExecutions" tf:"concurrent_executions"`
 	LaunchPath           string `json:"launchPath" tf:"launch_path"`
 	// +optional
 	Parameters string `json:"parameters,omitempty" tf:"parameters,omitempty"`
@@ -62,9 +62,9 @@ type GameliftFleetSpecRuntimeConfigurationServerProcess struct {
 
 type GameliftFleetSpecRuntimeConfiguration struct {
 	// +optional
-	GameSessionActivationTimeoutSeconds int `json:"gameSessionActivationTimeoutSeconds,omitempty" tf:"game_session_activation_timeout_seconds,omitempty"`
+	GameSessionActivationTimeoutSeconds int64 `json:"gameSessionActivationTimeoutSeconds,omitempty" tf:"game_session_activation_timeout_seconds,omitempty"`
 	// +optional
-	MaxConcurrentGameSessionActivations int `json:"maxConcurrentGameSessionActivations,omitempty" tf:"max_concurrent_game_session_activations,omitempty"`
+	MaxConcurrentGameSessionActivations int64 `json:"maxConcurrentGameSessionActivations,omitempty" tf:"max_concurrent_game_session_activations,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=50
 	ServerProcess []GameliftFleetSpecRuntimeConfigurationServerProcess `json:"serverProcess,omitempty" tf:"server_process,omitempty"`

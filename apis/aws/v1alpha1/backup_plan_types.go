@@ -41,14 +41,14 @@ type BackupPlan struct {
 
 type BackupPlanSpecRuleLifecycle struct {
 	// +optional
-	ColdStorageAfter int `json:"coldStorageAfter,omitempty" tf:"cold_storage_after,omitempty"`
+	ColdStorageAfter int64 `json:"coldStorageAfter,omitempty" tf:"cold_storage_after,omitempty"`
 	// +optional
-	DeleteAfter int `json:"deleteAfter,omitempty" tf:"delete_after,omitempty"`
+	DeleteAfter int64 `json:"deleteAfter,omitempty" tf:"delete_after,omitempty"`
 }
 
 type BackupPlanSpecRule struct {
 	// +optional
-	CompletionWindow int `json:"completionWindow,omitempty" tf:"completion_window,omitempty"`
+	CompletionWindow int64 `json:"completionWindow,omitempty" tf:"completion_window,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Lifecycle []BackupPlanSpecRuleLifecycle `json:"lifecycle,omitempty" tf:"lifecycle,omitempty"`
@@ -58,7 +58,7 @@ type BackupPlanSpecRule struct {
 	// +optional
 	Schedule string `json:"schedule,omitempty" tf:"schedule,omitempty"`
 	// +optional
-	StartWindow     int    `json:"startWindow,omitempty" tf:"start_window,omitempty"`
+	StartWindow     int64  `json:"startWindow,omitempty" tf:"start_window,omitempty"`
 	TargetVaultName string `json:"targetVaultName" tf:"target_vault_name"`
 }
 

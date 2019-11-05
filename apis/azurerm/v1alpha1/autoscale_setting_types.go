@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -65,9 +63,9 @@ type AutoscaleSettingSpecNotification struct {
 }
 
 type AutoscaleSettingSpecProfileCapacity struct {
-	Default int `json:"default" tf:"default"`
-	Maximum int `json:"maximum" tf:"maximum"`
-	Minimum int `json:"minimum" tf:"minimum"`
+	Default int64 `json:"default" tf:"default"`
+	Maximum int64 `json:"maximum" tf:"maximum"`
+	Minimum int64 `json:"minimum" tf:"minimum"`
 }
 
 type AutoscaleSettingSpecProfileFixedDate struct {
@@ -88,21 +86,21 @@ type AutoscaleSettingSpecProfileRecurrence struct {
 }
 
 type AutoscaleSettingSpecProfileRuleMetricTrigger struct {
-	MetricName       string      `json:"metricName" tf:"metric_name"`
-	MetricResourceID string      `json:"metricResourceID" tf:"metric_resource_id"`
-	Operator         string      `json:"operator" tf:"operator"`
-	Statistic        string      `json:"statistic" tf:"statistic"`
-	Threshold        json.Number `json:"threshold" tf:"threshold"`
-	TimeAggregation  string      `json:"timeAggregation" tf:"time_aggregation"`
-	TimeGrain        string      `json:"timeGrain" tf:"time_grain"`
-	TimeWindow       string      `json:"timeWindow" tf:"time_window"`
+	MetricName       string  `json:"metricName" tf:"metric_name"`
+	MetricResourceID string  `json:"metricResourceID" tf:"metric_resource_id"`
+	Operator         string  `json:"operator" tf:"operator"`
+	Statistic        string  `json:"statistic" tf:"statistic"`
+	Threshold        float64 `json:"threshold" tf:"threshold"`
+	TimeAggregation  string  `json:"timeAggregation" tf:"time_aggregation"`
+	TimeGrain        string  `json:"timeGrain" tf:"time_grain"`
+	TimeWindow       string  `json:"timeWindow" tf:"time_window"`
 }
 
 type AutoscaleSettingSpecProfileRuleScaleAction struct {
 	Cooldown  string `json:"cooldown" tf:"cooldown"`
 	Direction string `json:"direction" tf:"direction"`
 	Type      string `json:"type" tf:"type"`
-	Value     int    `json:"value" tf:"value"`
+	Value     int64  `json:"value" tf:"value"`
 }
 
 type AutoscaleSettingSpecProfileRule struct {

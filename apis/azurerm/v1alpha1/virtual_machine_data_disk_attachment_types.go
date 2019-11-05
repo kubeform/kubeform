@@ -47,7 +47,7 @@ type VirtualMachineDataDiskAttachmentSpec struct {
 	Caching string `json:"caching" tf:"caching"`
 	// +optional
 	CreateOption     string `json:"createOption,omitempty" tf:"create_option,omitempty"`
-	Lun              int    `json:"lun" tf:"lun"`
+	Lun              int64  `json:"lun" tf:"lun"`
 	ManagedDiskID    string `json:"managedDiskID" tf:"managed_disk_id"`
 	VirtualMachineID string `json:"virtualMachineID" tf:"virtual_machine_id"`
 	// +optional

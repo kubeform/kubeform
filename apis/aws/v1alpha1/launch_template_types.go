@@ -45,13 +45,13 @@ type LaunchTemplateSpecBlockDeviceMappingsEbs struct {
 	// +optional
 	Encrypted string `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
 	// +optional
-	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 	// +optional
-	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	VolumeSize int64 `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 	// +optional
 	VolumeType string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
 }
@@ -103,7 +103,7 @@ type LaunchTemplateSpecIamInstanceProfile struct {
 
 type LaunchTemplateSpecInstanceMarketOptionsSpotOptions struct {
 	// +optional
-	BlockDurationMinutes int `json:"blockDurationMinutes,omitempty" tf:"block_duration_minutes,omitempty"`
+	BlockDurationMinutes int64 `json:"blockDurationMinutes,omitempty" tf:"block_duration_minutes,omitempty"`
 	// +optional
 	InstanceInterruptionBehavior string `json:"instanceInterruptionBehavior,omitempty" tf:"instance_interruption_behavior,omitempty"`
 	// +optional
@@ -139,13 +139,13 @@ type LaunchTemplateSpecNetworkInterfaces struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	DeviceIndex int `json:"deviceIndex,omitempty" tf:"device_index,omitempty"`
+	DeviceIndex int64 `json:"deviceIndex,omitempty" tf:"device_index,omitempty"`
 	// +optional
-	Ipv4AddressCount int `json:"ipv4AddressCount,omitempty" tf:"ipv4_address_count,omitempty"`
+	Ipv4AddressCount int64 `json:"ipv4AddressCount,omitempty" tf:"ipv4_address_count,omitempty"`
 	// +optional
 	Ipv4Addresses []string `json:"ipv4Addresses,omitempty" tf:"ipv4_addresses,omitempty"`
 	// +optional
-	Ipv6AddressCount int `json:"ipv6AddressCount,omitempty" tf:"ipv6_address_count,omitempty"`
+	Ipv6AddressCount int64 `json:"ipv6AddressCount,omitempty" tf:"ipv6_address_count,omitempty"`
 	// +optional
 	Ipv6Addresses []string `json:"ipv6Addresses,omitempty" tf:"ipv6_addresses,omitempty"`
 	// +optional
@@ -196,7 +196,7 @@ type LaunchTemplateSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	CreditSpecification []LaunchTemplateSpecCreditSpecification `json:"creditSpecification,omitempty" tf:"credit_specification,omitempty"`
 	// +optional
-	DefaultVersion int `json:"defaultVersion,omitempty" tf:"default_version,omitempty"`
+	DefaultVersion int64 `json:"defaultVersion,omitempty" tf:"default_version,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -225,7 +225,7 @@ type LaunchTemplateSpec struct {
 	// +optional
 	KeyName string `json:"keyName,omitempty" tf:"key_name,omitempty"`
 	// +optional
-	LatestVersion int `json:"latestVersion,omitempty" tf:"latest_version,omitempty"`
+	LatestVersion int64 `json:"latestVersion,omitempty" tf:"latest_version,omitempty"`
 	// +optional
 	LicenseSpecification []LaunchTemplateSpecLicenseSpecification `json:"licenseSpecification,omitempty" tf:"license_specification,omitempty"`
 	// +optional

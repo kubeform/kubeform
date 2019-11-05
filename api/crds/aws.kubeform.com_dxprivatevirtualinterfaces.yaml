@@ -412,6 +412,7 @@ spec:
             awsDevice:
               type: string
             bgpAsn:
+              format: int64
               type: integer
             bgpAuthKey:
               type: string
@@ -426,6 +427,7 @@ spec:
             jumboFrameCapable:
               type: boolean
             mtu:
+              format: int64
               type: integer
             name:
               type: string
@@ -443,6 +445,7 @@ spec:
                 type: string
               type: object
             vlan:
+              format: int64
               type: integer
             vpnGatewayID:
               type: string
@@ -472,6 +475,7 @@ spec:
                 awsDevice:
                   type: string
                 bgpAsn:
+                  format: int64
                   type: integer
                 bgpAuthKey:
                   type: string
@@ -486,6 +490,7 @@ spec:
                 jumboFrameCapable:
                   type: boolean
                 mtu:
+                  format: int64
                   type: integer
                 name:
                   type: string
@@ -503,6 +508,7 @@ spec:
                     type: string
                   type: object
                 vlan:
+                  format: int64
                   type: integer
                 vpnGatewayID:
                   type: string

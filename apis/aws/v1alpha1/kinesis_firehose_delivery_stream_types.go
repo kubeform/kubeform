@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -70,9 +68,9 @@ type KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfig
 
 type KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration struct {
 	// +optional
-	BufferingInterval int `json:"bufferingInterval,omitempty" tf:"buffering_interval,omitempty"`
+	BufferingInterval int64 `json:"bufferingInterval,omitempty" tf:"buffering_interval,omitempty"`
 	// +optional
-	BufferingSize int `json:"bufferingSize,omitempty" tf:"buffering_size,omitempty"`
+	BufferingSize int64 `json:"bufferingSize,omitempty" tf:"buffering_size,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
@@ -84,7 +82,7 @@ type KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration struct {
 	// +kubebuilder:validation:MaxItems=1
 	ProcessingConfiguration []KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfiguration `json:"processingConfiguration,omitempty" tf:"processing_configuration,omitempty"`
 	// +optional
-	RetryDuration int    `json:"retryDuration,omitempty" tf:"retry_duration,omitempty"`
+	RetryDuration int64  `json:"retryDuration,omitempty" tf:"retry_duration,omitempty"`
 	RoleArn       string `json:"roleArn" tf:"role_arn"`
 	// +optional
 	S3BackupMode string `json:"s3BackupMode,omitempty" tf:"s3_backup_mode,omitempty"`
@@ -131,38 +129,38 @@ type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversio
 
 type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe struct {
 	// +optional
-	BlockSizeBytes int `json:"blockSizeBytes,omitempty" tf:"block_size_bytes,omitempty"`
+	BlockSizeBytes int64 `json:"blockSizeBytes,omitempty" tf:"block_size_bytes,omitempty"`
 	// +optional
 	BloomFilterColumns []string `json:"bloomFilterColumns,omitempty" tf:"bloom_filter_columns,omitempty"`
 	// +optional
-	BloomFilterFalsePositiveProbability json.Number `json:"bloomFilterFalsePositiveProbability,omitempty" tf:"bloom_filter_false_positive_probability,omitempty"`
+	BloomFilterFalsePositiveProbability float64 `json:"bloomFilterFalsePositiveProbability,omitempty" tf:"bloom_filter_false_positive_probability,omitempty"`
 	// +optional
 	Compression string `json:"compression,omitempty" tf:"compression,omitempty"`
 	// +optional
-	DictionaryKeyThreshold json.Number `json:"dictionaryKeyThreshold,omitempty" tf:"dictionary_key_threshold,omitempty"`
+	DictionaryKeyThreshold float64 `json:"dictionaryKeyThreshold,omitempty" tf:"dictionary_key_threshold,omitempty"`
 	// +optional
 	EnablePadding bool `json:"enablePadding,omitempty" tf:"enable_padding,omitempty"`
 	// +optional
 	FormatVersion string `json:"formatVersion,omitempty" tf:"format_version,omitempty"`
 	// +optional
-	PaddingTolerance json.Number `json:"paddingTolerance,omitempty" tf:"padding_tolerance,omitempty"`
+	PaddingTolerance float64 `json:"paddingTolerance,omitempty" tf:"padding_tolerance,omitempty"`
 	// +optional
-	RowIndexStride int `json:"rowIndexStride,omitempty" tf:"row_index_stride,omitempty"`
+	RowIndexStride int64 `json:"rowIndexStride,omitempty" tf:"row_index_stride,omitempty"`
 	// +optional
-	StripeSizeBytes int `json:"stripeSizeBytes,omitempty" tf:"stripe_size_bytes,omitempty"`
+	StripeSizeBytes int64 `json:"stripeSizeBytes,omitempty" tf:"stripe_size_bytes,omitempty"`
 }
 
 type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe struct {
 	// +optional
-	BlockSizeBytes int `json:"blockSizeBytes,omitempty" tf:"block_size_bytes,omitempty"`
+	BlockSizeBytes int64 `json:"blockSizeBytes,omitempty" tf:"block_size_bytes,omitempty"`
 	// +optional
 	Compression string `json:"compression,omitempty" tf:"compression,omitempty"`
 	// +optional
 	EnableDictionaryCompression bool `json:"enableDictionaryCompression,omitempty" tf:"enable_dictionary_compression,omitempty"`
 	// +optional
-	MaxPaddingBytes int `json:"maxPaddingBytes,omitempty" tf:"max_padding_bytes,omitempty"`
+	MaxPaddingBytes int64 `json:"maxPaddingBytes,omitempty" tf:"max_padding_bytes,omitempty"`
 	// +optional
-	PageSizeBytes int `json:"pageSizeBytes,omitempty" tf:"page_size_bytes,omitempty"`
+	PageSizeBytes int64 `json:"pageSizeBytes,omitempty" tf:"page_size_bytes,omitempty"`
 	// +optional
 	WriterVersion string `json:"writerVersion,omitempty" tf:"writer_version,omitempty"`
 }
@@ -234,9 +232,9 @@ type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurati
 type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfiguration struct {
 	BucketArn string `json:"bucketArn" tf:"bucket_arn"`
 	// +optional
-	BufferInterval int `json:"bufferInterval,omitempty" tf:"buffer_interval,omitempty"`
+	BufferInterval int64 `json:"bufferInterval,omitempty" tf:"buffer_interval,omitempty"`
 	// +optional
-	BufferSize int `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
+	BufferSize int64 `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
@@ -252,9 +250,9 @@ type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurati
 type KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration struct {
 	BucketArn string `json:"bucketArn" tf:"bucket_arn"`
 	// +optional
-	BufferInterval int `json:"bufferInterval,omitempty" tf:"buffer_interval,omitempty"`
+	BufferInterval int64 `json:"bufferInterval,omitempty" tf:"buffer_interval,omitempty"`
 	// +optional
-	BufferSize int `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
+	BufferSize int64 `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
@@ -324,9 +322,9 @@ type KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfiguration
 type KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfiguration struct {
 	BucketArn string `json:"bucketArn" tf:"bucket_arn"`
 	// +optional
-	BufferInterval int `json:"bufferInterval,omitempty" tf:"buffer_interval,omitempty"`
+	BufferInterval int64 `json:"bufferInterval,omitempty" tf:"buffer_interval,omitempty"`
 	// +optional
-	BufferSize int `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
+	BufferSize int64 `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
@@ -354,7 +352,7 @@ type KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration struct {
 	// +kubebuilder:validation:MaxItems=1
 	ProcessingConfiguration []KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfiguration `json:"processingConfiguration,omitempty" tf:"processing_configuration,omitempty"`
 	// +optional
-	RetryDuration int    `json:"retryDuration,omitempty" tf:"retry_duration,omitempty"`
+	RetryDuration int64  `json:"retryDuration,omitempty" tf:"retry_duration,omitempty"`
 	RoleArn       string `json:"roleArn" tf:"role_arn"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -376,9 +374,9 @@ type KinesisFirehoseDeliveryStreamSpecS3ConfigurationCloudwatchLoggingOptions st
 type KinesisFirehoseDeliveryStreamSpecS3Configuration struct {
 	BucketArn string `json:"bucketArn" tf:"bucket_arn"`
 	// +optional
-	BufferInterval int `json:"bufferInterval,omitempty" tf:"buffer_interval,omitempty"`
+	BufferInterval int64 `json:"bufferInterval,omitempty" tf:"buffer_interval,omitempty"`
 	// +optional
-	BufferSize int `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
+	BufferSize int64 `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecS3ConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
@@ -423,7 +421,7 @@ type KinesisFirehoseDeliveryStreamSpecSplunkConfiguration struct {
 	// +kubebuilder:validation:MaxItems=1
 	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
 	// +optional
-	HecAcknowledgmentTimeout int    `json:"hecAcknowledgmentTimeout,omitempty" tf:"hec_acknowledgment_timeout,omitempty"`
+	HecAcknowledgmentTimeout int64  `json:"hecAcknowledgmentTimeout,omitempty" tf:"hec_acknowledgment_timeout,omitempty"`
 	HecEndpoint              string `json:"hecEndpoint" tf:"hec_endpoint"`
 	// +optional
 	HecEndpointType string `json:"hecEndpointType,omitempty" tf:"hec_endpoint_type,omitempty"`
@@ -432,7 +430,7 @@ type KinesisFirehoseDeliveryStreamSpecSplunkConfiguration struct {
 	// +kubebuilder:validation:MaxItems=1
 	ProcessingConfiguration []KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfiguration `json:"processingConfiguration,omitempty" tf:"processing_configuration,omitempty"`
 	// +optional
-	RetryDuration int `json:"retryDuration,omitempty" tf:"retry_duration,omitempty"`
+	RetryDuration int64 `json:"retryDuration,omitempty" tf:"retry_duration,omitempty"`
 	// +optional
 	S3BackupMode string `json:"s3BackupMode,omitempty" tf:"s3_backup_mode,omitempty"`
 }

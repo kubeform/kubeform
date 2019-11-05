@@ -50,7 +50,7 @@ type LightsailInstanceSpec struct {
 	BlueprintID      string `json:"blueprintID" tf:"blueprint_id"`
 	BundleID         string `json:"bundleID" tf:"bundle_id"`
 	// +optional
-	CpuCount int `json:"cpuCount,omitempty" tf:"cpu_count,omitempty"`
+	CpuCount int64 `json:"cpuCount,omitempty" tf:"cpu_count,omitempty"`
 	// +optional
 	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 	// +optional
@@ -65,7 +65,7 @@ type LightsailInstanceSpec struct {
 	// +optional
 	PublicIPAddress string `json:"publicIPAddress,omitempty" tf:"public_ip_address,omitempty"`
 	// +optional
-	RamSize int `json:"ramSize,omitempty" tf:"ram_size,omitempty"`
+	RamSize int64 `json:"ramSize,omitempty" tf:"ram_size,omitempty"`
 	// +optional
 	UserData string `json:"userData,omitempty" tf:"user_data,omitempty"`
 	// +optional

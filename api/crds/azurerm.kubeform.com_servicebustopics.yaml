@@ -424,6 +424,7 @@ spec:
               description: Deprecated
               type: string
             maxSizeInMegabytes:
+              format: int64
               type: integer
             name:
               type: string
@@ -482,6 +483,7 @@ spec:
                   description: Deprecated
                   type: string
                 maxSizeInMegabytes:
+                  format: int64
                   type: integer
                 name:
                   type: string

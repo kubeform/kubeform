@@ -63,7 +63,7 @@ type Route53RecordSpecLatencyRoutingPolicy struct {
 }
 
 type Route53RecordSpecWeightedRoutingPolicy struct {
-	Weight int `json:"weight" tf:"weight"`
+	Weight int64 `json:"weight" tf:"weight"`
 }
 
 type Route53RecordSpec struct {
@@ -93,7 +93,7 @@ type Route53RecordSpec struct {
 	// +optional
 	SetIdentifier string `json:"setIdentifier,omitempty" tf:"set_identifier,omitempty"`
 	// +optional
-	Ttl  int    `json:"ttl,omitempty" tf:"ttl,omitempty"`
+	Ttl  int64  `json:"ttl,omitempty" tf:"ttl,omitempty"`
 	Type string `json:"type" tf:"type"`
 	// +optional
 	WeightedRoutingPolicy []Route53RecordSpecWeightedRoutingPolicy `json:"weightedRoutingPolicy,omitempty" tf:"weighted_routing_policy,omitempty"`

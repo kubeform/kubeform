@@ -54,7 +54,7 @@ type IotThingSpec struct {
 	// +optional
 	ThingTypeName string `json:"thingTypeName,omitempty" tf:"thing_type_name,omitempty"`
 	// +optional
-	Version int `json:"version,omitempty" tf:"version,omitempty"`
+	Version int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type IotThingStatus struct {

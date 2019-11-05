@@ -46,22 +46,22 @@ type RecordSpec struct {
 
 	Domain string `json:"domain" tf:"domain"`
 	// +optional
-	Flags int `json:"flags,omitempty" tf:"flags,omitempty"`
+	Flags int64 `json:"flags,omitempty" tf:"flags,omitempty"`
 	// +optional
 	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 	Name string `json:"name" tf:"name"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
-	Priority int `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 	// +optional
 	Tag string `json:"tag,omitempty" tf:"tag,omitempty"`
 	// +optional
-	Ttl   int    `json:"ttl,omitempty" tf:"ttl,omitempty"`
+	Ttl   int64  `json:"ttl,omitempty" tf:"ttl,omitempty"`
 	Type  string `json:"type" tf:"type"`
 	Value string `json:"value" tf:"value"`
 	// +optional
-	Weight int `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type RecordStatus struct {

@@ -58,7 +58,7 @@ type SqlDatabaseSpecThreatDetectionPolicy struct {
 	// +optional
 	EmailAddresses []string `json:"emailAddresses,omitempty" tf:"email_addresses,omitempty"`
 	// +optional
-	RetentionDays int `json:"retentionDays,omitempty" tf:"retention_days,omitempty"`
+	RetentionDays int64 `json:"retentionDays,omitempty" tf:"retention_days,omitempty"`
 	// +optional
 	State string `json:"state,omitempty" tf:"state,omitempty"`
 	// +optional

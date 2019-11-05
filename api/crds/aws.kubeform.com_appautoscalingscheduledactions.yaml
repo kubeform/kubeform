@@ -428,8 +428,10 @@ spec:
               items:
                 properties:
                   maxCapacity:
+                    format: int64
                     type: integer
                   minCapacity:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -480,8 +482,10 @@ spec:
                   items:
                     properties:
                       maxCapacity:
+                        format: int64
                         type: integer
                       minCapacity:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1

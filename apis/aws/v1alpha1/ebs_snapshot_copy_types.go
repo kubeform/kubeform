@@ -63,7 +63,7 @@ type EbsSnapshotCopySpec struct {
 	// +optional
 	VolumeID string `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 	// +optional
-	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	VolumeSize int64 `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 }
 
 type EbsSnapshotCopyStatus struct {

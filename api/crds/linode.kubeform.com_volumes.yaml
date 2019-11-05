@@ -414,6 +414,7 @@ spec:
               type: string
             linodeID:
               description: The Linode ID where the Volume should be attached.
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -429,6 +430,7 @@ spec:
               type: string
             size:
               description: Size of the Volume in GB
+              format: int64
               type: integer
             status:
               description: The status of the volume, indicating the current readiness
@@ -466,6 +468,7 @@ spec:
                   type: string
                 linodeID:
                   description: The Linode ID where the Volume should be attached.
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -481,6 +484,7 @@ spec:
                   type: string
                 size:
                   description: Size of the Volume in GB
+                  format: int64
                   type: integer
                 status:
                   description: The status of the volume, indicating the current readiness

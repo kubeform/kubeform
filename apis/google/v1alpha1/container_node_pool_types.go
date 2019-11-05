@@ -40,8 +40,8 @@ type ContainerNodePool struct {
 }
 
 type ContainerNodePoolSpecAutoscaling struct {
-	MaxNodeCount int `json:"maxNodeCount" tf:"max_node_count"`
-	MinNodeCount int `json:"minNodeCount" tf:"min_node_count"`
+	MaxNodeCount int64 `json:"maxNodeCount" tf:"max_node_count"`
+	MinNodeCount int64 `json:"minNodeCount" tf:"min_node_count"`
 }
 
 type ContainerNodePoolSpecManagement struct {
@@ -52,7 +52,7 @@ type ContainerNodePoolSpecManagement struct {
 }
 
 type ContainerNodePoolSpecNodeConfigGuestAccelerator struct {
-	Count int    `json:"count" tf:"count"`
+	Count int64  `json:"count" tf:"count"`
 	Type  string `json:"type" tf:"type"`
 }
 
@@ -68,7 +68,7 @@ type ContainerNodePoolSpecNodeConfigWorkloadMetadataConfig struct {
 
 type ContainerNodePoolSpecNodeConfig struct {
 	// +optional
-	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
 	// +optional
 	DiskType string `json:"diskType,omitempty" tf:"disk_type,omitempty"`
 	// +optional
@@ -78,7 +78,7 @@ type ContainerNodePoolSpecNodeConfig struct {
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
-	LocalSsdCount int `json:"localSsdCount,omitempty" tf:"local_ssd_count,omitempty"`
+	LocalSsdCount int64 `json:"localSsdCount,omitempty" tf:"local_ssd_count,omitempty"`
 	// +optional
 	MachineType string `json:"machineType,omitempty" tf:"machine_type,omitempty"`
 	// +optional
@@ -112,7 +112,7 @@ type ContainerNodePoolSpec struct {
 	Autoscaling []ContainerNodePoolSpecAutoscaling `json:"autoscaling,omitempty" tf:"autoscaling,omitempty"`
 	Cluster     string                             `json:"cluster" tf:"cluster"`
 	// +optional
-	InitialNodeCount int `json:"initialNodeCount,omitempty" tf:"initial_node_count,omitempty"`
+	InitialNodeCount int64 `json:"initialNodeCount,omitempty" tf:"initial_node_count,omitempty"`
 	// +optional
 	InstanceGroupUrls []string `json:"instanceGroupUrls,omitempty" tf:"instance_group_urls,omitempty"`
 	// +optional
@@ -120,7 +120,7 @@ type ContainerNodePoolSpec struct {
 	Management []ContainerNodePoolSpecManagement `json:"management,omitempty" tf:"management,omitempty"`
 	// +optional
 	// Deprecated
-	MaxPodsPerNode int `json:"maxPodsPerNode,omitempty" tf:"max_pods_per_node,omitempty"`
+	MaxPodsPerNode int64 `json:"maxPodsPerNode,omitempty" tf:"max_pods_per_node,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
@@ -130,7 +130,7 @@ type ContainerNodePoolSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	NodeConfig []ContainerNodePoolSpecNodeConfig `json:"nodeConfig,omitempty" tf:"node_config,omitempty"`
 	// +optional
-	NodeCount int `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

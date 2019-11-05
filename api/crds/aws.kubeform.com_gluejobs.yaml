@@ -405,6 +405,7 @@ spec:
           properties:
             allocatedCapacity:
               description: Deprecated
+              format: int64
               type: integer
             command:
               items:
@@ -432,6 +433,7 @@ spec:
               items:
                 properties:
                   maxConcurrentRuns:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -439,9 +441,10 @@ spec:
             id:
               type: string
             maxCapacity:
-              description: A Number represents a JSON number literal.
-              type: string
+              format: float
+              type: number
             maxRetries:
+              format: int64
               type: integer
             name:
               type: string
@@ -459,6 +462,7 @@ spec:
             securityConfiguration:
               type: string
             timeout:
+              format: int64
               type: integer
           required:
           - command
@@ -477,6 +481,7 @@ spec:
               properties:
                 allocatedCapacity:
                   description: Deprecated
+                  format: int64
                   type: integer
                 command:
                   items:
@@ -504,6 +509,7 @@ spec:
                   items:
                     properties:
                       maxConcurrentRuns:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1
@@ -511,9 +517,10 @@ spec:
                 id:
                   type: string
                 maxCapacity:
-                  description: A Number represents a JSON number literal.
-                  type: string
+                  format: float
+                  type: number
                 maxRetries:
+                  format: int64
                   type: integer
                 name:
                   type: string
@@ -531,6 +538,7 @@ spec:
                 securityConfiguration:
                   type: string
                 timeout:
+                  format: int64
                   type: integer
               required:
               - command

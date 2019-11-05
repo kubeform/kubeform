@@ -49,7 +49,7 @@ type TrafficManagerEndpointSpecSubnet struct {
 	// +optional
 	Last string `json:"last,omitempty" tf:"last,omitempty"`
 	// +optional
-	Scope int `json:"scope,omitempty" tf:"scope,omitempty"`
+	Scope int64 `json:"scope,omitempty" tf:"scope,omitempty"`
 }
 
 type TrafficManagerEndpointSpec struct {
@@ -68,10 +68,10 @@ type TrafficManagerEndpointSpec struct {
 	// +optional
 	GeoMappings []string `json:"geoMappings,omitempty" tf:"geo_mappings,omitempty"`
 	// +optional
-	MinChildEndpoints int    `json:"minChildEndpoints,omitempty" tf:"min_child_endpoints,omitempty"`
+	MinChildEndpoints int64  `json:"minChildEndpoints,omitempty" tf:"min_child_endpoints,omitempty"`
 	Name              string `json:"name" tf:"name"`
 	// +optional
-	Priority          int    `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority          int64  `json:"priority,omitempty" tf:"priority,omitempty"`
 	ProfileName       string `json:"profileName" tf:"profile_name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
@@ -82,7 +82,7 @@ type TrafficManagerEndpointSpec struct {
 	TargetResourceID string `json:"targetResourceID,omitempty" tf:"target_resource_id,omitempty"`
 	Type             string `json:"type" tf:"type"`
 	// +optional
-	Weight int `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type TrafficManagerEndpointStatus struct {

@@ -409,9 +409,11 @@ spec:
             deploymentsActive:
               description: Count of currently active, deployed Linodes created from
                 this StackScript.
+              format: int64
               type: integer
             deploymentsTotal:
               description: The total number of times this StackScript has been deployed.
+              format: int64
               type: integer
             description:
               description: A description for the StackScript.
@@ -499,10 +501,12 @@ spec:
                 deploymentsActive:
                   description: Count of currently active, deployed Linodes created
                     from this StackScript.
+                  format: int64
                   type: integer
                 deploymentsTotal:
                   description: The total number of times this StackScript has been
                     deployed.
+                  format: int64
                   type: integer
                 description:
                   description: A description for the StackScript.

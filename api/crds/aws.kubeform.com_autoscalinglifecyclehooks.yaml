@@ -408,6 +408,7 @@ spec:
             defaultResult:
               type: string
             heartbeatTimeout:
+              format: int64
               type: integer
             id:
               type: string
@@ -450,6 +451,7 @@ spec:
                 defaultResult:
                   type: string
                 heartbeatTimeout:
+                  format: int64
                   type: integer
                 id:
                   type: string

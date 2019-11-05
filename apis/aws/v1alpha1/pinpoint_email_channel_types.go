@@ -50,7 +50,7 @@ type PinpointEmailChannelSpec struct {
 	FromAddress string `json:"fromAddress" tf:"from_address"`
 	Identity    string `json:"identity" tf:"identity"`
 	// +optional
-	MessagesPerSecond int    `json:"messagesPerSecond,omitempty" tf:"messages_per_second,omitempty"`
+	MessagesPerSecond int64  `json:"messagesPerSecond,omitempty" tf:"messages_per_second,omitempty"`
 	RoleArn           string `json:"roleArn" tf:"role_arn"`
 }
 

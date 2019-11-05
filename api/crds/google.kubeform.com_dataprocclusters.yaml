@@ -445,6 +445,7 @@ spec:
                         script:
                           type: string
                         timeoutSec:
+                          format: int64
                           type: integer
                       required:
                       - script
@@ -457,10 +458,12 @@ spec:
                           items:
                             properties:
                               bootDiskSizeGb:
+                                format: int64
                                 type: integer
                               bootDiskType:
                                 type: string
                               numLocalSsds:
+                                format: int64
                                 type: integer
                             type: object
                           maxItems: 1
@@ -472,6 +475,7 @@ spec:
                         machineType:
                           type: string
                         numInstances:
+                          format: int64
                           type: integer
                       type: object
                     maxItems: 1
@@ -483,6 +487,7 @@ spec:
                           items:
                             properties:
                               bootDiskSizeGb:
+                                format: int64
                                 type: integer
                             type: object
                           maxItems: 1
@@ -492,6 +497,7 @@ spec:
                             type: string
                           type: array
                         numInstances:
+                          format: int64
                           type: integer
                       type: object
                     maxItems: 1
@@ -521,10 +527,12 @@ spec:
                           items:
                             properties:
                               bootDiskSizeGb:
+                                format: int64
                                 type: integer
                               bootDiskType:
                                 type: string
                               numLocalSsds:
+                                format: int64
                                 type: integer
                             type: object
                           maxItems: 1
@@ -536,6 +544,7 @@ spec:
                         machineType:
                           type: string
                         numInstances:
+                          format: int64
                           type: integer
                       type: object
                     maxItems: 1
@@ -619,6 +628,7 @@ spec:
                             script:
                               type: string
                             timeoutSec:
+                              format: int64
                               type: integer
                           required:
                           - script
@@ -631,10 +641,12 @@ spec:
                               items:
                                 properties:
                                   bootDiskSizeGb:
+                                    format: int64
                                     type: integer
                                   bootDiskType:
                                     type: string
                                   numLocalSsds:
+                                    format: int64
                                     type: integer
                                 type: object
                               maxItems: 1
@@ -646,6 +658,7 @@ spec:
                             machineType:
                               type: string
                             numInstances:
+                              format: int64
                               type: integer
                           type: object
                         maxItems: 1
@@ -657,6 +670,7 @@ spec:
                               items:
                                 properties:
                                   bootDiskSizeGb:
+                                    format: int64
                                     type: integer
                                 type: object
                               maxItems: 1
@@ -666,6 +680,7 @@ spec:
                                 type: string
                               type: array
                             numInstances:
+                              format: int64
                               type: integer
                           type: object
                         maxItems: 1
@@ -695,10 +710,12 @@ spec:
                               items:
                                 properties:
                                   bootDiskSizeGb:
+                                    format: int64
                                     type: integer
                                   bootDiskType:
                                     type: string
                                   numLocalSsds:
+                                    format: int64
                                     type: integer
                                 type: object
                               maxItems: 1
@@ -710,6 +727,7 @@ spec:
                             machineType:
                               type: string
                             numInstances:
+                              format: int64
                               type: integer
                           type: object
                         maxItems: 1

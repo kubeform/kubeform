@@ -435,8 +435,10 @@ spec:
                   rangeKey:
                     type: string
                   readCapacity:
+                    format: int64
                     type: integer
                   writeCapacity:
+                    format: int64
                     type: integer
                 required:
                 - hashKey
@@ -491,6 +493,7 @@ spec:
             rangeKey:
               type: string
             readCapacity:
+              format: int64
               type: integer
             serverSideEncryption:
               items:
@@ -527,6 +530,7 @@ spec:
               maxItems: 1
               type: array
             writeCapacity:
+              format: int64
               type: integer
           required:
           - attribute
@@ -575,8 +579,10 @@ spec:
                       rangeKey:
                         type: string
                       readCapacity:
+                        format: int64
                         type: integer
                       writeCapacity:
+                        format: int64
                         type: integer
                     required:
                     - hashKey
@@ -631,6 +637,7 @@ spec:
                 rangeKey:
                   type: string
                 readCapacity:
+                  format: int64
                   type: integer
                 serverSideEncryption:
                   items:
@@ -667,6 +674,7 @@ spec:
                   maxItems: 1
                   type: array
                 writeCapacity:
+                  format: int64
                   type: integer
               required:
               - attribute

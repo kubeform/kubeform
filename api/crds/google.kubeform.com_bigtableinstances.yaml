@@ -409,6 +409,7 @@ spec:
                   clusterID:
                     type: string
                   numNodes:
+                    format: int64
                     type: integer
                   storageType:
                     type: string
@@ -430,6 +431,7 @@ spec:
               type: string
             numNodes:
               description: Deprecated
+              format: int64
               type: integer
             project:
               type: string
@@ -467,6 +469,7 @@ spec:
                       clusterID:
                         type: string
                       numNodes:
+                        format: int64
                         type: integer
                       storageType:
                         type: string
@@ -488,6 +491,7 @@ spec:
                   type: string
                 numNodes:
                   description: Deprecated
+                  format: int64
                   type: integer
                 project:
                   type: string

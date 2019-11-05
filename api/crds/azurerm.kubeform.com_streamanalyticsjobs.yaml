@@ -408,8 +408,10 @@ spec:
             dataLocale:
               type: string
             eventsLateArrivalMaxDelayInSeconds:
+              format: int64
               type: integer
             eventsOutOfOrderMaxDelayInSeconds:
+              format: int64
               type: integer
             eventsOutOfOrderPolicy:
               type: string
@@ -435,6 +437,7 @@ spec:
             resourceGroupName:
               type: string
             streamingUnits:
+              format: int64
               type: integer
             tags:
               additionalProperties:
@@ -470,8 +473,10 @@ spec:
                 dataLocale:
                   type: string
                 eventsLateArrivalMaxDelayInSeconds:
+                  format: int64
                   type: integer
                 eventsOutOfOrderMaxDelayInSeconds:
+                  format: int64
                   type: integer
                 eventsOutOfOrderPolicy:
                   type: string
@@ -497,6 +502,7 @@ spec:
                 resourceGroupName:
                   type: string
                 streamingUnits:
+                  format: int64
                   type: integer
                 tags:
                   additionalProperties:

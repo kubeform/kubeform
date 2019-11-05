@@ -429,6 +429,7 @@ spec:
               type: string
             prefixLength:
               description: Deprecated
+              format: int64
               type: integer
             project:
               type: string
@@ -485,6 +486,7 @@ spec:
                   type: string
                 prefixLength:
                   description: Deprecated
+                  format: int64
                   type: integer
                 project:
                   type: string

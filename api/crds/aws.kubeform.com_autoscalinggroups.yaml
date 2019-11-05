@@ -410,8 +410,10 @@ spec:
                 type: string
               type: array
             defaultCooldown:
+              format: int64
               type: integer
             desiredCapacity:
+              format: int64
               type: integer
             enabledMetrics:
               items:
@@ -420,6 +422,7 @@ spec:
             forceDelete:
               type: boolean
             healthCheckGracePeriod:
+              format: int64
               type: integer
             healthCheckType:
               type: string
@@ -431,6 +434,7 @@ spec:
                   defaultResult:
                     type: string
                   heartbeatTimeout:
+                    format: int64
                     type: integer
                   lifecycleTransition:
                     type: string
@@ -466,12 +470,15 @@ spec:
                 type: string
               type: array
             maxSize:
+              format: int64
               type: integer
             metricsGranularity:
               type: string
             minElbCapacity:
+              format: int64
               type: integer
             minSize:
+              format: int64
               type: integer
             mixedInstancesPolicy:
               items:
@@ -482,12 +489,15 @@ spec:
                         onDemandAllocationStrategy:
                           type: string
                         onDemandBaseCapacity:
+                          format: int64
                           type: integer
                         onDemandPercentageAboveBaseCapacity:
+                          format: int64
                           type: integer
                         spotAllocationStrategy:
                           type: string
                         spotInstancePools:
+                          format: int64
                           type: integer
                         spotMaxPrice:
                           type: string
@@ -581,6 +591,7 @@ spec:
             waitForCapacityTimeout:
               type: string
             waitForElbCapacity:
+              format: int64
               type: integer
           required:
           - maxSize
@@ -603,8 +614,10 @@ spec:
                     type: string
                   type: array
                 defaultCooldown:
+                  format: int64
                   type: integer
                 desiredCapacity:
+                  format: int64
                   type: integer
                 enabledMetrics:
                   items:
@@ -613,6 +626,7 @@ spec:
                 forceDelete:
                   type: boolean
                 healthCheckGracePeriod:
+                  format: int64
                   type: integer
                 healthCheckType:
                   type: string
@@ -624,6 +638,7 @@ spec:
                       defaultResult:
                         type: string
                       heartbeatTimeout:
+                        format: int64
                         type: integer
                       lifecycleTransition:
                         type: string
@@ -659,12 +674,15 @@ spec:
                     type: string
                   type: array
                 maxSize:
+                  format: int64
                   type: integer
                 metricsGranularity:
                   type: string
                 minElbCapacity:
+                  format: int64
                   type: integer
                 minSize:
+                  format: int64
                   type: integer
                 mixedInstancesPolicy:
                   items:
@@ -675,12 +693,15 @@ spec:
                             onDemandAllocationStrategy:
                               type: string
                             onDemandBaseCapacity:
+                              format: int64
                               type: integer
                             onDemandPercentageAboveBaseCapacity:
+                              format: int64
                               type: integer
                             spotAllocationStrategy:
                               type: string
                             spotInstancePools:
+                              format: int64
                               type: integer
                             spotMaxPrice:
                               type: string
@@ -774,6 +795,7 @@ spec:
                 waitForCapacityTimeout:
                   type: string
                 waitForElbCapacity:
+                  format: int64
                   type: integer
               required:
               - maxSize

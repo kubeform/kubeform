@@ -438,6 +438,7 @@ spec:
                   name:
                     type: string
                   regionalReplicaCount:
+                    format: int64
                     type: integer
                 required:
                 - name
@@ -498,6 +499,7 @@ spec:
                       name:
                         type: string
                       regionalReplicaCount:
+                        format: int64
                         type: integer
                     required:
                     - name

@@ -428,16 +428,19 @@ spec:
               items:
                 properties:
                   attempts:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
               type: array
             revision:
+              format: int64
               type: integer
             timeout:
               items:
                 properties:
                   attemptDurationSeconds:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -483,16 +486,19 @@ spec:
                   items:
                     properties:
                       attempts:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1
                   type: array
                 revision:
+                  format: int64
                   type: integer
                 timeout:
                   items:
                     properties:
                       attemptDurationSeconds:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1

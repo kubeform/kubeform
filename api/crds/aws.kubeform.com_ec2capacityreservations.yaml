@@ -416,6 +416,7 @@ spec:
             id:
               type: string
             instanceCount:
+              format: int64
               type: integer
             instanceMatchCriteria:
               type: string
@@ -467,6 +468,7 @@ spec:
                 id:
                   type: string
                 instanceCount:
+                  format: int64
                   type: integer
                 instanceMatchCriteria:
                   type: string

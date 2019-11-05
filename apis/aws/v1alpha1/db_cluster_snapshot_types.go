@@ -45,7 +45,7 @@ type DbClusterSnapshotSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	AllocatedStorage int `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
+	AllocatedStorage int64 `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
 	// +optional
 	AvailabilityZones   []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	DbClusterIdentifier string   `json:"dbClusterIdentifier" tf:"db_cluster_identifier"`
@@ -61,7 +61,7 @@ type DbClusterSnapshotSpec struct {
 	// +optional
 	LicenseModel string `json:"licenseModel,omitempty" tf:"license_model,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	SnapshotType string `json:"snapshotType,omitempty" tf:"snapshot_type,omitempty"`
 	// +optional

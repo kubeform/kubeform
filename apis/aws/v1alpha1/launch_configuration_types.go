@@ -46,13 +46,13 @@ type LaunchConfigurationSpecEbsBlockDevice struct {
 	// +optional
 	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
 	// +optional
-	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
 	NoDevice bool `json:"noDevice,omitempty" tf:"no_device,omitempty"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 	// +optional
-	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	VolumeSize int64 `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 	// +optional
 	VolumeType string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
 }
@@ -66,9 +66,9 @@ type LaunchConfigurationSpecRootBlockDevice struct {
 	// +optional
 	DeleteOnTermination bool `json:"deleteOnTermination,omitempty" tf:"delete_on_termination,omitempty"`
 	// +optional
-	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
-	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	VolumeSize int64 `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 	// +optional
 	VolumeType string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
 }

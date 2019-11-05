@@ -406,6 +406,7 @@ spec:
             domain:
               type: string
             flags:
+              format: int64
               type: integer
             fqdn:
               type: string
@@ -414,8 +415,10 @@ spec:
             name:
               type: string
             port:
+              format: int64
               type: integer
             priority:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -429,12 +432,14 @@ spec:
             tag:
               type: string
             ttl:
+              format: int64
               type: integer
             type:
               type: string
             value:
               type: string
             weight:
+              format: int64
               type: integer
           required:
           - domain
@@ -455,6 +460,7 @@ spec:
                 domain:
                   type: string
                 flags:
+                  format: int64
                   type: integer
                 fqdn:
                   type: string
@@ -463,8 +469,10 @@ spec:
                 name:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 priority:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -478,12 +486,14 @@ spec:
                 tag:
                   type: string
                 ttl:
+                  format: int64
                   type: integer
                 type:
                   type: string
                 value:
                   type: string
                 weight:
+                  format: int64
                   type: integer
               required:
               - domain

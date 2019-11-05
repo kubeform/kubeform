@@ -57,7 +57,7 @@ type CloudfunctionsFunctionSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	AvailableMemoryMb int `json:"availableMemoryMb,omitempty" tf:"available_memory_mb,omitempty"`
+	AvailableMemoryMb int64 `json:"availableMemoryMb,omitempty" tf:"available_memory_mb,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -84,7 +84,7 @@ type CloudfunctionsFunctionSpec struct {
 	SourceArchiveBucket string `json:"sourceArchiveBucket" tf:"source_archive_bucket"`
 	SourceArchiveObject string `json:"sourceArchiveObject" tf:"source_archive_object"`
 	// +optional
-	Timeout int `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	Timeout int64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 	// +optional
 	// Deprecated
 	TriggerBucket string `json:"triggerBucket,omitempty" tf:"trigger_bucket,omitempty"`

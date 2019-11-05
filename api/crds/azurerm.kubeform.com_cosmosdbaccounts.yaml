@@ -418,8 +418,10 @@ spec:
                   consistencyLevel:
                     type: string
                   maxIntervalInSeconds:
+                    format: int64
                     type: integer
                   maxStalenessPrefix:
+                    format: int64
                     type: integer
                 required:
                 - consistencyLevel
@@ -441,6 +443,7 @@ spec:
                   location:
                     type: string
                   priority:
+                    format: int64
                     type: integer
                 required:
                 - location
@@ -453,6 +456,7 @@ spec:
                   ID:
                     type: string
                   failoverPriority:
+                    format: int64
                     type: integer
                   location:
                     type: string
@@ -549,8 +553,10 @@ spec:
                       consistencyLevel:
                         type: string
                       maxIntervalInSeconds:
+                        format: int64
                         type: integer
                       maxStalenessPrefix:
+                        format: int64
                         type: integer
                     required:
                     - consistencyLevel
@@ -572,6 +578,7 @@ spec:
                       location:
                         type: string
                       priority:
+                        format: int64
                         type: integer
                     required:
                     - location
@@ -584,6 +591,7 @@ spec:
                       ID:
                         type: string
                       failoverPriority:
+                        format: int64
                         type: integer
                       location:
                         type: string

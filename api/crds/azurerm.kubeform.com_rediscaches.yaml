@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             capacity:
+              format: int64
               type: integer
             enableNonSSLPort:
               type: boolean
@@ -425,12 +426,14 @@ spec:
                   dayOfWeek:
                     type: string
                   startHourUtc:
+                    format: int64
                     type: integer
                 required:
                 - dayOfWeek
                 type: object
               type: array
             port:
+              format: int64
               type: integer
             privateStaticIPAddress:
               type: string
@@ -451,22 +454,28 @@ spec:
                   enableAuthentication:
                     type: boolean
                   maxclients:
+                    format: int64
                     type: integer
                   maxfragmentationmemoryReserved:
+                    format: int64
                     type: integer
                   maxmemoryDelta:
+                    format: int64
                     type: integer
                   maxmemoryPolicy:
                     type: string
                   maxmemoryReserved:
+                    format: int64
                     type: integer
                   notifyKeyspaceEvents:
                     type: string
                   rdbBackupEnabled:
                     type: boolean
                   rdbBackupFrequency:
+                    format: int64
                     type: integer
                   rdbBackupMaxSnapshotCount:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -483,10 +492,12 @@ spec:
                   type: string
               type: object
             shardCount:
+              format: int64
               type: integer
             skuName:
               type: string
             sslPort:
+              format: int64
               type: integer
             subnetID:
               type: string
@@ -518,6 +529,7 @@ spec:
             output:
               properties:
                 capacity:
+                  format: int64
                   type: integer
                 enableNonSSLPort:
                   type: boolean
@@ -539,12 +551,14 @@ spec:
                       dayOfWeek:
                         type: string
                       startHourUtc:
+                        format: int64
                         type: integer
                     required:
                     - dayOfWeek
                     type: object
                   type: array
                 port:
+                  format: int64
                   type: integer
                 privateStaticIPAddress:
                   type: string
@@ -565,22 +579,28 @@ spec:
                       enableAuthentication:
                         type: boolean
                       maxclients:
+                        format: int64
                         type: integer
                       maxfragmentationmemoryReserved:
+                        format: int64
                         type: integer
                       maxmemoryDelta:
+                        format: int64
                         type: integer
                       maxmemoryPolicy:
                         type: string
                       maxmemoryReserved:
+                        format: int64
                         type: integer
                       notifyKeyspaceEvents:
                         type: string
                       rdbBackupEnabled:
                         type: boolean
                       rdbBackupFrequency:
+                        format: int64
                         type: integer
                       rdbBackupMaxSnapshotCount:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1
@@ -597,10 +617,12 @@ spec:
                       type: string
                   type: object
                 shardCount:
+                  format: int64
                   type: integer
                 skuName:
                   type: string
                 sslPort:
+                  format: int64
                   type: integer
                 subnetID:
                   type: string

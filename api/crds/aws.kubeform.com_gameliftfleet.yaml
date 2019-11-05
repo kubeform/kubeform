@@ -413,12 +413,14 @@ spec:
               items:
                 properties:
                   fromPort:
+                    format: int64
                     type: integer
                   ipRange:
                     type: string
                   protocol:
                     type: string
                   toPort:
+                    format: int64
                     type: integer
                 required:
                 - fromPort
@@ -459,8 +461,10 @@ spec:
               items:
                 properties:
                   newGameSessionsPerCreator:
+                    format: int64
                     type: integer
                   policyPeriodInMinutes:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -469,13 +473,16 @@ spec:
               items:
                 properties:
                   gameSessionActivationTimeoutSeconds:
+                    format: int64
                     type: integer
                   maxConcurrentGameSessionActivations:
+                    format: int64
                     type: integer
                   serverProcess:
                     items:
                       properties:
                         concurrentExecutions:
+                          format: int64
                           type: integer
                         launchPath:
                           type: string
@@ -515,12 +522,14 @@ spec:
                   items:
                     properties:
                       fromPort:
+                        format: int64
                         type: integer
                       ipRange:
                         type: string
                       protocol:
                         type: string
                       toPort:
+                        format: int64
                         type: integer
                     required:
                     - fromPort
@@ -561,8 +570,10 @@ spec:
                   items:
                     properties:
                       newGameSessionsPerCreator:
+                        format: int64
                         type: integer
                       policyPeriodInMinutes:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1
@@ -571,13 +582,16 @@ spec:
                   items:
                     properties:
                       gameSessionActivationTimeoutSeconds:
+                        format: int64
                         type: integer
                       maxConcurrentGameSessionActivations:
+                        format: int64
                         type: integer
                       serverProcess:
                         items:
                           properties:
                             concurrentExecutions:
+                              format: int64
                               type: integer
                             launchPath:
                               type: string

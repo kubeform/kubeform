@@ -406,6 +406,7 @@ spec:
             autoInflateEnabled:
               type: boolean
             capacity:
+              format: int64
               type: integer
             id:
               type: string
@@ -414,6 +415,7 @@ spec:
             location:
               type: string
             maximumThroughputUnits:
+              format: int64
               type: integer
             name:
               type: string
@@ -462,6 +464,7 @@ spec:
                 autoInflateEnabled:
                   type: boolean
                 capacity:
+                  format: int64
                   type: integer
                 id:
                   type: string
@@ -470,6 +473,7 @@ spec:
                 location:
                   type: string
                 maximumThroughputUnits:
+                  format: int64
                   type: integer
                 name:
                   type: string

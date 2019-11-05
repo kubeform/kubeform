@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             availableMemoryMb:
+              format: int64
               type: integer
             description:
               type: string
@@ -469,6 +470,7 @@ spec:
             sourceArchiveObject:
               type: string
             timeout:
+              format: int64
               type: integer
             triggerBucket:
               description: Deprecated
@@ -494,6 +496,7 @@ spec:
             output:
               properties:
                 availableMemoryMb:
+                  format: int64
                   type: integer
                 description:
                   type: string
@@ -559,6 +562,7 @@ spec:
                 sourceArchiveObject:
                   type: string
                 timeout:
+                  format: int64
                   type: integer
                 triggerBucket:
                   description: Deprecated

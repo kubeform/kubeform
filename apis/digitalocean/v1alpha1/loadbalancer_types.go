@@ -42,9 +42,9 @@ type Loadbalancer struct {
 type LoadbalancerSpecForwardingRule struct {
 	// +optional
 	CertificateID  string `json:"certificateID,omitempty" tf:"certificate_id,omitempty"`
-	EntryPort      int    `json:"entryPort" tf:"entry_port"`
+	EntryPort      int64  `json:"entryPort" tf:"entry_port"`
 	EntryProtocol  string `json:"entryProtocol" tf:"entry_protocol"`
-	TargetPort     int    `json:"targetPort" tf:"target_port"`
+	TargetPort     int64  `json:"targetPort" tf:"target_port"`
 	TargetProtocol string `json:"targetProtocol" tf:"target_protocol"`
 	// +optional
 	TlsPassthrough bool `json:"tlsPassthrough,omitempty" tf:"tls_passthrough,omitempty"`
@@ -52,24 +52,24 @@ type LoadbalancerSpecForwardingRule struct {
 
 type LoadbalancerSpecHealthcheck struct {
 	// +optional
-	CheckIntervalSeconds int `json:"checkIntervalSeconds,omitempty" tf:"check_interval_seconds,omitempty"`
+	CheckIntervalSeconds int64 `json:"checkIntervalSeconds,omitempty" tf:"check_interval_seconds,omitempty"`
 	// +optional
-	HealthyThreshold int `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
+	HealthyThreshold int64 `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
 	// +optional
 	Path     string `json:"path,omitempty" tf:"path,omitempty"`
-	Port     int    `json:"port" tf:"port"`
+	Port     int64  `json:"port" tf:"port"`
 	Protocol string `json:"protocol" tf:"protocol"`
 	// +optional
-	ResponseTimeoutSeconds int `json:"responseTimeoutSeconds,omitempty" tf:"response_timeout_seconds,omitempty"`
+	ResponseTimeoutSeconds int64 `json:"responseTimeoutSeconds,omitempty" tf:"response_timeout_seconds,omitempty"`
 	// +optional
-	UnhealthyThreshold int `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
+	UnhealthyThreshold int64 `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
 }
 
 type LoadbalancerSpecStickySessions struct {
 	// +optional
 	CookieName string `json:"cookieName,omitempty" tf:"cookie_name,omitempty"`
 	// +optional
-	CookieTtlSeconds int `json:"cookieTtlSeconds,omitempty" tf:"cookie_ttl_seconds,omitempty"`
+	CookieTtlSeconds int64 `json:"cookieTtlSeconds,omitempty" tf:"cookie_ttl_seconds,omitempty"`
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }

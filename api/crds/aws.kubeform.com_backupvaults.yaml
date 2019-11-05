@@ -421,6 +421,7 @@ spec:
                   type: string
               type: object
             recoveryPoints:
+              format: int64
               type: integer
             tags:
               additionalProperties:
@@ -457,6 +458,7 @@ spec:
                       type: string
                   type: object
                 recoveryPoints:
+                  format: int64
                   type: integer
                 tags:
                   additionalProperties:

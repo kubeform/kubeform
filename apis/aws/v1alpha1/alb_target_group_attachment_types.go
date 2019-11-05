@@ -47,7 +47,7 @@ type AlbTargetGroupAttachmentSpec struct {
 	// +optional
 	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 	// +optional
-	Port           int    `json:"port,omitempty" tf:"port,omitempty"`
+	Port           int64  `json:"port,omitempty" tf:"port,omitempty"`
 	TargetGroupArn string `json:"targetGroupArn" tf:"target_group_arn"`
 	TargetID       string `json:"targetID" tf:"target_id"`
 }

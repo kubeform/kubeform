@@ -416,6 +416,7 @@ spec:
             name:
               type: string
             numNodes:
+              format: int64
               type: integer
             project:
               type: string
@@ -457,6 +458,7 @@ spec:
                 name:
                   type: string
                 numNodes:
+                  format: int64
                   type: integer
                 project:
                   type: string

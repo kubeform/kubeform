@@ -418,8 +418,10 @@ spec:
               items:
                 properties:
                   maxCapacity:
+                    format: int64
                     type: integer
                   minCapacity:
+                    format: int64
                     type: integer
                 required:
                 - minCapacity
@@ -481,6 +483,7 @@ spec:
                     items:
                       properties:
                         drainTimeoutSec:
+                          format: int64
                           type: integer
                         enabled:
                           type: boolean
@@ -501,6 +504,7 @@ spec:
                   pickHostNameFromBackendAddress:
                     type: boolean
                   port:
+                    format: int64
                     type: integer
                   probeID:
                     type: string
@@ -509,6 +513,7 @@ spec:
                   protocol:
                     type: string
                   requestTimeout:
+                    format: int64
                     type: integer
                 required:
                 - cookieBasedAffinity
@@ -567,6 +572,7 @@ spec:
                   name:
                     type: string
                   port:
+                    format: int64
                     type: integer
                 required:
                 - name
@@ -664,6 +670,7 @@ spec:
                   host:
                     type: string
                   interval:
+                    format: int64
                     type: integer
                   match:
                     items:
@@ -678,6 +685,7 @@ spec:
                     maxItems: 1
                     type: array
                   minimumServers:
+                    format: int64
                     type: integer
                   name:
                     type: string
@@ -688,8 +696,10 @@ spec:
                   protocol:
                     type: string
                   timeout:
+                    format: int64
                     type: integer
                   unhealthyThreshold:
+                    format: int64
                     type: integer
                 required:
                 - interval
@@ -828,6 +838,7 @@ spec:
                             type: object
                           type: array
                         ruleSequence:
+                          format: int64
                           type: integer
                       required:
                       - name
@@ -851,6 +862,7 @@ spec:
               items:
                 properties:
                   capacity:
+                    format: int64
                     type: integer
                   name:
                     type: string
@@ -991,10 +1003,12 @@ spec:
                       type: object
                     type: array
                   fileUploadLimitMb:
+                    format: int64
                     type: integer
                   firewallMode:
                     type: string
                   maxRequestBodySizeKb:
+                    format: int64
                     type: integer
                   requestBodyCheck:
                     type: boolean
@@ -1051,8 +1065,10 @@ spec:
                   items:
                     properties:
                       maxCapacity:
+                        format: int64
                         type: integer
                       minCapacity:
+                        format: int64
                         type: integer
                     required:
                     - minCapacity
@@ -1114,6 +1130,7 @@ spec:
                         items:
                           properties:
                             drainTimeoutSec:
+                              format: int64
                               type: integer
                             enabled:
                               type: boolean
@@ -1134,6 +1151,7 @@ spec:
                       pickHostNameFromBackendAddress:
                         type: boolean
                       port:
+                        format: int64
                         type: integer
                       probeID:
                         type: string
@@ -1142,6 +1160,7 @@ spec:
                       protocol:
                         type: string
                       requestTimeout:
+                        format: int64
                         type: integer
                     required:
                     - cookieBasedAffinity
@@ -1200,6 +1219,7 @@ spec:
                       name:
                         type: string
                       port:
+                        format: int64
                         type: integer
                     required:
                     - name
@@ -1297,6 +1317,7 @@ spec:
                       host:
                         type: string
                       interval:
+                        format: int64
                         type: integer
                       match:
                         items:
@@ -1311,6 +1332,7 @@ spec:
                         maxItems: 1
                         type: array
                       minimumServers:
+                        format: int64
                         type: integer
                       name:
                         type: string
@@ -1321,8 +1343,10 @@ spec:
                       protocol:
                         type: string
                       timeout:
+                        format: int64
                         type: integer
                       unhealthyThreshold:
+                        format: int64
                         type: integer
                     required:
                     - interval
@@ -1461,6 +1485,7 @@ spec:
                                 type: object
                               type: array
                             ruleSequence:
+                              format: int64
                               type: integer
                           required:
                           - name
@@ -1484,6 +1509,7 @@ spec:
                   items:
                     properties:
                       capacity:
+                        format: int64
                         type: integer
                       name:
                         type: string
@@ -1624,10 +1650,12 @@ spec:
                           type: object
                         type: array
                       fileUploadLimitMb:
+                        format: int64
                         type: integer
                       firewallMode:
                         type: string
                       maxRequestBodySizeKb:
+                        format: int64
                         type: integer
                       requestBodyCheck:
                         type: boolean

@@ -84,7 +84,7 @@ type ComputeRegionDiskSpec struct {
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
-	Size int `json:"size,omitempty" tf:"size,omitempty"`
+	Size int64 `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
 	Snapshot string `json:"snapshot,omitempty" tf:"snapshot,omitempty"`
 	// +optional

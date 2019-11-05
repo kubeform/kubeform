@@ -408,18 +408,22 @@ spec:
             contentBasedDeduplication:
               type: boolean
             delaySeconds:
+              format: int64
               type: integer
             fifoQueue:
               type: boolean
             id:
               type: string
             kmsDataKeyReusePeriodSeconds:
+              format: int64
               type: integer
             kmsMasterKeyID:
               type: string
             maxMessageSize:
+              format: int64
               type: integer
             messageRetentionSeconds:
+              format: int64
               type: integer
             name:
               type: string
@@ -437,6 +441,7 @@ spec:
                   type: string
               type: object
             receiveWaitTimeSeconds:
+              format: int64
               type: integer
             redrivePolicy:
               type: string
@@ -445,6 +450,7 @@ spec:
                 type: string
               type: object
             visibilityTimeoutSeconds:
+              format: int64
               type: integer
           required:
           - providerRef
@@ -463,18 +469,22 @@ spec:
                 contentBasedDeduplication:
                   type: boolean
                 delaySeconds:
+                  format: int64
                   type: integer
                 fifoQueue:
                   type: boolean
                 id:
                   type: string
                 kmsDataKeyReusePeriodSeconds:
+                  format: int64
                   type: integer
                 kmsMasterKeyID:
                   type: string
                 maxMessageSize:
+                  format: int64
                   type: integer
                 messageRetentionSeconds:
+                  format: int64
                   type: integer
                 name:
                   type: string
@@ -492,6 +502,7 @@ spec:
                       type: string
                   type: object
                 receiveWaitTimeSeconds:
+                  format: int64
                   type: integer
                 redrivePolicy:
                   type: string
@@ -500,6 +511,7 @@ spec:
                     type: string
                   type: object
                 visibilityTimeoutSeconds:
+                  format: int64
                   type: integer
               required:
               - providerRef

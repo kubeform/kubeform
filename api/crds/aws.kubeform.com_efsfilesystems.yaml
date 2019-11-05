@@ -427,8 +427,8 @@ spec:
                   type: string
               type: object
             provisionedThroughputInMibps:
-              description: A Number represents a JSON number literal.
-              type: string
+              format: float
+              type: number
             tags:
               additionalProperties:
                 type: string
@@ -471,8 +471,8 @@ spec:
                       type: string
                   type: object
                 provisionedThroughputInMibps:
-                  description: A Number represents a JSON number literal.
-                  type: string
+                  format: float
+                  type: number
                 tags:
                   additionalProperties:
                     type: string

@@ -419,6 +419,7 @@ spec:
               type: string
             ownerID:
               description: the id of the project owner.
+              format: int64
               type: integer
             ownerUUID:
               description: the unique universal identifier of the project owner.
@@ -472,6 +473,7 @@ spec:
                   type: string
                 ownerID:
                   description: the id of the project owner.
+                  format: int64
                   type: integer
                 ownerUUID:
                   description: the unique universal identifier of the project owner.

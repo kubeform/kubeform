@@ -434,6 +434,7 @@ spec:
                           items:
                             properties:
                               port:
+                                format: int64
                                 type: integer
                               protocol:
                                 type: string
@@ -502,6 +503,7 @@ spec:
                               items:
                                 properties:
                                   port:
+                                    format: int64
                                     type: integer
                                   protocol:
                                     type: string

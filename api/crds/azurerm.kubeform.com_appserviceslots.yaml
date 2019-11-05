@@ -487,8 +487,8 @@ spec:
                   runtimeVersion:
                     type: string
                   tokenRefreshExtensionHours:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                   tokenStoreEnabled:
                     type: boolean
                   twitter:
@@ -763,8 +763,8 @@ spec:
                       runtimeVersion:
                         type: string
                       tokenRefreshExtensionHours:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                       tokenStoreEnabled:
                         type: boolean
                       twitter:

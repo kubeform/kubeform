@@ -414,8 +414,8 @@ spec:
                       type: string
                     type: array
                   cpu:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                   environmentVariables:
                     additionalProperties:
                       type: string
@@ -424,6 +424,7 @@ spec:
                     items:
                       properties:
                         count:
+                          format: int64
                           type: integer
                         sku:
                           type: string
@@ -440,6 +441,7 @@ spec:
                             type: string
                           type: array
                         failureThreshold:
+                          format: int64
                           type: integer
                         httpGet:
                           items:
@@ -447,34 +449,41 @@ spec:
                               path:
                                 type: string
                               port:
+                                format: int64
                                 type: integer
                               scheme:
                                 type: string
                             type: object
                           type: array
                         initialDelaySeconds:
+                          format: int64
                           type: integer
                         periodSeconds:
+                          format: int64
                           type: integer
                         successThreshold:
+                          format: int64
                           type: integer
                         timeoutSeconds:
+                          format: int64
                           type: integer
                       type: object
                     maxItems: 1
                     type: array
                   memory:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                   name:
                     type: string
                   port:
                     description: Deprecated
+                    format: int64
                     type: integer
                   ports:
                     items:
                       properties:
                         port:
+                          format: int64
                           type: integer
                         protocol:
                           type: string
@@ -491,6 +500,7 @@ spec:
                             type: string
                           type: array
                         failureThreshold:
+                          format: int64
                           type: integer
                         httpGet:
                           items:
@@ -498,18 +508,23 @@ spec:
                               path:
                                 type: string
                               port:
+                                format: int64
                                 type: integer
                               scheme:
                                 type: string
                             type: object
                           type: array
                         initialDelaySeconds:
+                          format: int64
                           type: integer
                         periodSeconds:
+                          format: int64
                           type: integer
                         successThreshold:
+                          format: int64
                           type: integer
                         timeoutSeconds:
+                          format: int64
                           type: integer
                       type: object
                     maxItems: 1
@@ -668,8 +683,8 @@ spec:
                           type: string
                         type: array
                       cpu:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                       environmentVariables:
                         additionalProperties:
                           type: string
@@ -678,6 +693,7 @@ spec:
                         items:
                           properties:
                             count:
+                              format: int64
                               type: integer
                             sku:
                               type: string
@@ -694,6 +710,7 @@ spec:
                                 type: string
                               type: array
                             failureThreshold:
+                              format: int64
                               type: integer
                             httpGet:
                               items:
@@ -701,34 +718,41 @@ spec:
                                   path:
                                     type: string
                                   port:
+                                    format: int64
                                     type: integer
                                   scheme:
                                     type: string
                                 type: object
                               type: array
                             initialDelaySeconds:
+                              format: int64
                               type: integer
                             periodSeconds:
+                              format: int64
                               type: integer
                             successThreshold:
+                              format: int64
                               type: integer
                             timeoutSeconds:
+                              format: int64
                               type: integer
                           type: object
                         maxItems: 1
                         type: array
                       memory:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                       name:
                         type: string
                       port:
                         description: Deprecated
+                        format: int64
                         type: integer
                       ports:
                         items:
                           properties:
                             port:
+                              format: int64
                               type: integer
                             protocol:
                               type: string
@@ -745,6 +769,7 @@ spec:
                                 type: string
                               type: array
                             failureThreshold:
+                              format: int64
                               type: integer
                             httpGet:
                               items:
@@ -752,18 +777,23 @@ spec:
                                   path:
                                     type: string
                                   port:
+                                    format: int64
                                     type: integer
                                   scheme:
                                     type: string
                                 type: object
                               type: array
                             initialDelaySeconds:
+                              format: int64
                               type: integer
                             periodSeconds:
+                              format: int64
                               type: integer
                             successThreshold:
+                              format: int64
                               type: integer
                             timeoutSeconds:
+                              format: int64
                               type: integer
                           type: object
                         maxItems: 1

@@ -49,7 +49,7 @@ type PublicIPPrefixSpec struct {
 	Location string `json:"location" tf:"location"`
 	Name     string `json:"name" tf:"name"`
 	// +optional
-	PrefixLength      int    `json:"prefixLength,omitempty" tf:"prefix_length,omitempty"`
+	PrefixLength      int64  `json:"prefixLength,omitempty" tf:"prefix_length,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Sku string `json:"sku,omitempty" tf:"sku,omitempty"`

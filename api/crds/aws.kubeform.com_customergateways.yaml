@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             bgpAsn:
+              format: int64
               type: integer
             id:
               type: string
@@ -440,6 +441,7 @@ spec:
             output:
               properties:
                 bgpAsn:
+                  format: int64
                   type: integer
                 id:
                   type: string

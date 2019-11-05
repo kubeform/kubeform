@@ -417,6 +417,7 @@ spec:
                     maxItems: 1
                     type: array
                   priority:
+                    format: int64
                     type: integer
                   ruleID:
                     type: string
@@ -471,6 +472,7 @@ spec:
                         maxItems: 1
                         type: array
                       priority:
+                        format: int64
                         type: integer
                       ruleID:
                         type: string

@@ -414,6 +414,7 @@ spec:
                 type: string
               type: array
             keySize:
+              format: int64
               type: integer
             keyType:
               type: string
@@ -471,6 +472,7 @@ spec:
                     type: string
                   type: array
                 keySize:
+                  format: int64
                   type: integer
                 keyType:
                   type: string

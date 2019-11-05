@@ -408,14 +408,17 @@ spec:
             autoscalingGroupName:
               type: string
             desiredCapacity:
+              format: int64
               type: integer
             endTime:
               type: string
             id:
               type: string
             maxSize:
+              format: int64
               type: integer
             minSize:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -451,14 +454,17 @@ spec:
                 autoscalingGroupName:
                   type: string
                 desiredCapacity:
+                  format: int64
                   type: integer
                 endTime:
                   type: string
                 id:
                   type: string
                 maxSize:
+                  format: int64
                   type: integer
                 minSize:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

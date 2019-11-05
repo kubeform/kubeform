@@ -46,7 +46,7 @@ type NetworkInterfaceAttachmentSpec struct {
 
 	// +optional
 	AttachmentID       string `json:"attachmentID,omitempty" tf:"attachment_id,omitempty"`
-	DeviceIndex        int    `json:"deviceIndex" tf:"device_index"`
+	DeviceIndex        int64  `json:"deviceIndex" tf:"device_index"`
 	InstanceID         string `json:"instanceID" tf:"instance_id"`
 	NetworkInterfaceID string `json:"networkInterfaceID" tf:"network_interface_id"`
 	// +optional

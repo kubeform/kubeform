@@ -66,7 +66,7 @@ type CodepipelineSpecStageAction struct {
 	// +optional
 	RoleArn string `json:"roleArn,omitempty" tf:"role_arn,omitempty"`
 	// +optional
-	RunOrder int    `json:"runOrder,omitempty" tf:"run_order,omitempty"`
+	RunOrder int64  `json:"runOrder,omitempty" tf:"run_order,omitempty"`
 	Version  string `json:"version" tf:"version"`
 }
 

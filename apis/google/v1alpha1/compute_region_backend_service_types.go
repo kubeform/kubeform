@@ -54,7 +54,7 @@ type ComputeRegionBackendServiceSpec struct {
 	// +optional
 	Backend []ComputeRegionBackendServiceSpecBackend `json:"backend,omitempty" tf:"backend,omitempty"`
 	// +optional
-	ConnectionDrainingTimeoutSec int `json:"connectionDrainingTimeoutSec,omitempty" tf:"connection_draining_timeout_sec,omitempty"`
+	ConnectionDrainingTimeoutSec int64 `json:"connectionDrainingTimeoutSec,omitempty" tf:"connection_draining_timeout_sec,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -74,7 +74,7 @@ type ComputeRegionBackendServiceSpec struct {
 	// +optional
 	SessionAffinity string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 	// +optional
-	TimeoutSec int `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
+	TimeoutSec int64 `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
 }
 
 type ComputeRegionBackendServiceStatus struct {

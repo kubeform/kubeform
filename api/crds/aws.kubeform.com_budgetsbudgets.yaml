@@ -465,8 +465,8 @@ spec:
                       type: string
                     type: array
                   threshold:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                   thresholdType:
                     type: string
                 required:
@@ -570,8 +570,8 @@ spec:
                           type: string
                         type: array
                       threshold:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                       thresholdType:
                         type: string
                     required:

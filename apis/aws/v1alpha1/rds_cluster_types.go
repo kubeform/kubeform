@@ -52,11 +52,11 @@ type RdsClusterSpecScalingConfiguration struct {
 	// +optional
 	AutoPause bool `json:"autoPause,omitempty" tf:"auto_pause,omitempty"`
 	// +optional
-	MaxCapacity int `json:"maxCapacity,omitempty" tf:"max_capacity,omitempty"`
+	MaxCapacity int64 `json:"maxCapacity,omitempty" tf:"max_capacity,omitempty"`
 	// +optional
-	MinCapacity int `json:"minCapacity,omitempty" tf:"min_capacity,omitempty"`
+	MinCapacity int64 `json:"minCapacity,omitempty" tf:"min_capacity,omitempty"`
 	// +optional
-	SecondsUntilAutoPause int `json:"secondsUntilAutoPause,omitempty" tf:"seconds_until_auto_pause,omitempty"`
+	SecondsUntilAutoPause int64 `json:"secondsUntilAutoPause,omitempty" tf:"seconds_until_auto_pause,omitempty"`
 }
 
 type RdsClusterSpec struct {
@@ -73,9 +73,9 @@ type RdsClusterSpec struct {
 	// +optional
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	// +optional
-	BacktrackWindow int `json:"backtrackWindow,omitempty" tf:"backtrack_window,omitempty"`
+	BacktrackWindow int64 `json:"backtrackWindow,omitempty" tf:"backtrack_window,omitempty"`
 	// +optional
-	BackupRetentionPeriod int `json:"backupRetentionPeriod,omitempty" tf:"backup_retention_period,omitempty"`
+	BackupRetentionPeriod int64 `json:"backupRetentionPeriod,omitempty" tf:"backup_retention_period,omitempty"`
 	// +optional
 	ClusterIdentifier string `json:"clusterIdentifier,omitempty" tf:"cluster_identifier,omitempty"`
 	// +optional
@@ -121,7 +121,7 @@ type RdsClusterSpec struct {
 	// +optional
 	MasterUsername string `json:"masterUsername,omitempty" tf:"master_username,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	PreferredBackupWindow string `json:"preferredBackupWindow,omitempty" tf:"preferred_backup_window,omitempty"`
 	// +optional

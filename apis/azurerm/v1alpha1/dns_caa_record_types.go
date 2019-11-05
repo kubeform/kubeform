@@ -40,7 +40,7 @@ type DnsCaaRecord struct {
 }
 
 type DnsCaaRecordSpecRecord struct {
-	Flags int    `json:"flags" tf:"flags"`
+	Flags int64  `json:"flags" tf:"flags"`
 	Tag   string `json:"tag" tf:"tag"`
 	Value string `json:"value" tf:"value"`
 }
@@ -55,7 +55,7 @@ type DnsCaaRecordSpec struct {
 	ResourceGroupName string                   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	Ttl      int               `json:"ttl" tf:"ttl"`
+	Ttl      int64             `json:"ttl" tf:"ttl"`
 	ZoneName string            `json:"zoneName" tf:"zone_name"`
 }
 

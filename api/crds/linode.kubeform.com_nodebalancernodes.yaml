@@ -409,6 +409,7 @@ spec:
               type: string
             configID:
               description: The ID of the NodeBalancerConfig to access.
+              format: int64
               type: integer
             id:
               type: string
@@ -424,6 +425,7 @@ spec:
               type: string
             nodebalancerID:
               description: The ID of the NodeBalancer to access.
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -442,6 +444,7 @@ spec:
               description: Used when picking a backend to serve a request and is not
                 pinned to a single backend yet. Nodes with a higher weight will receive
                 more traffic. (1-255)
+              format: int64
               type: integer
           required:
           - address
@@ -465,6 +468,7 @@ spec:
                   type: string
                 configID:
                   description: The ID of the NodeBalancerConfig to access.
+                  format: int64
                   type: integer
                 id:
                   type: string
@@ -482,6 +486,7 @@ spec:
                   type: string
                 nodebalancerID:
                   description: The ID of the NodeBalancer to access.
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -500,6 +505,7 @@ spec:
                   description: Used when picking a backend to serve a request and
                     is not pinned to a single backend yet. Nodes with a higher weight
                     will receive more traffic. (1-255)
+                  format: int64
                   type: integer
               required:
               - address

@@ -414,6 +414,7 @@ spec:
                     items:
                       properties:
                         ttl:
+                          format: int64
                           type: integer
                         type:
                           type: string
@@ -436,6 +437,7 @@ spec:
               items:
                 properties:
                   failureThreshold:
+                    format: int64
                     type: integer
                   resourcePath:
                     type: string
@@ -448,6 +450,7 @@ spec:
               items:
                 properties:
                   failureThreshold:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -490,6 +493,7 @@ spec:
                         items:
                           properties:
                             ttl:
+                              format: int64
                               type: integer
                             type:
                               type: string
@@ -512,6 +516,7 @@ spec:
                   items:
                     properties:
                       failureThreshold:
+                        format: int64
                         type: integer
                       resourcePath:
                         type: string
@@ -524,6 +529,7 @@ spec:
                   items:
                     properties:
                       failureThreshold:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1

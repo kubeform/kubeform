@@ -56,9 +56,9 @@ type SsmActivationSpec struct {
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	RegistrationCount int `json:"registrationCount,omitempty" tf:"registration_count,omitempty"`
+	RegistrationCount int64 `json:"registrationCount,omitempty" tf:"registration_count,omitempty"`
 	// +optional
-	RegistrationLimit int `json:"registrationLimit,omitempty" tf:"registration_limit,omitempty"`
+	RegistrationLimit int64 `json:"registrationLimit,omitempty" tf:"registration_limit,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

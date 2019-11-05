@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -46,18 +44,18 @@ type AppautoscalingPolicySpecStepScalingPolicyConfigurationStepAdjustment struct
 	MetricIntervalLowerBound string `json:"metricIntervalLowerBound,omitempty" tf:"metric_interval_lower_bound,omitempty"`
 	// +optional
 	MetricIntervalUpperBound string `json:"metricIntervalUpperBound,omitempty" tf:"metric_interval_upper_bound,omitempty"`
-	ScalingAdjustment        int    `json:"scalingAdjustment" tf:"scaling_adjustment"`
+	ScalingAdjustment        int64  `json:"scalingAdjustment" tf:"scaling_adjustment"`
 }
 
 type AppautoscalingPolicySpecStepScalingPolicyConfiguration struct {
 	// +optional
 	AdjustmentType string `json:"adjustmentType,omitempty" tf:"adjustment_type,omitempty"`
 	// +optional
-	Cooldown int `json:"cooldown,omitempty" tf:"cooldown,omitempty"`
+	Cooldown int64 `json:"cooldown,omitempty" tf:"cooldown,omitempty"`
 	// +optional
 	MetricAggregationType string `json:"metricAggregationType,omitempty" tf:"metric_aggregation_type,omitempty"`
 	// +optional
-	MinAdjustmentMagnitude int `json:"minAdjustmentMagnitude,omitempty" tf:"min_adjustment_magnitude,omitempty"`
+	MinAdjustmentMagnitude int64 `json:"minAdjustmentMagnitude,omitempty" tf:"min_adjustment_magnitude,omitempty"`
 	// +optional
 	StepAdjustment []AppautoscalingPolicySpecStepScalingPolicyConfigurationStepAdjustment `json:"stepAdjustment,omitempty" tf:"step_adjustment,omitempty"`
 }
@@ -93,10 +91,10 @@ type AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration struct {
 	// +kubebuilder:validation:MaxItems=1
 	PredefinedMetricSpecification []AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification `json:"predefinedMetricSpecification,omitempty" tf:"predefined_metric_specification,omitempty"`
 	// +optional
-	ScaleInCooldown int `json:"scaleInCooldown,omitempty" tf:"scale_in_cooldown,omitempty"`
+	ScaleInCooldown int64 `json:"scaleInCooldown,omitempty" tf:"scale_in_cooldown,omitempty"`
 	// +optional
-	ScaleOutCooldown int         `json:"scaleOutCooldown,omitempty" tf:"scale_out_cooldown,omitempty"`
-	TargetValue      json.Number `json:"targetValue" tf:"target_value"`
+	ScaleOutCooldown int64   `json:"scaleOutCooldown,omitempty" tf:"scale_out_cooldown,omitempty"`
+	TargetValue      float64 `json:"targetValue" tf:"target_value"`
 }
 
 type AppautoscalingPolicySpec struct {

@@ -59,7 +59,7 @@ type FirewallNATRuleCollectionSpec struct {
 	Action            string `json:"action" tf:"action"`
 	AzureFirewallName string `json:"azureFirewallName" tf:"azure_firewall_name"`
 	Name              string `json:"name" tf:"name"`
-	Priority          int    `json:"priority" tf:"priority"`
+	Priority          int64  `json:"priority" tf:"priority"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MinItems=1
 	Rule []FirewallNATRuleCollectionSpecRule `json:"rule" tf:"rule"`

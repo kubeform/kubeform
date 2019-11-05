@@ -450,18 +450,23 @@ spec:
                           items:
                             properties:
                               healthyThreshold:
+                                format: int64
                                 type: integer
                               intervalMillis:
+                                format: int64
                                 type: integer
                               path:
                                 type: string
                               port:
+                                format: int64
                                 type: integer
                               protocol:
                                 type: string
                               timeoutMillis:
+                                format: int64
                                 type: integer
                               unhealthyThreshold:
+                                format: int64
                                 type: integer
                             required:
                             - healthyThreshold
@@ -476,6 +481,7 @@ spec:
                           items:
                             properties:
                               port:
+                                format: int64
                                 type: integer
                               protocol:
                                 type: string
@@ -598,18 +604,23 @@ spec:
                               items:
                                 properties:
                                   healthyThreshold:
+                                    format: int64
                                     type: integer
                                   intervalMillis:
+                                    format: int64
                                     type: integer
                                   path:
                                     type: string
                                   port:
+                                    format: int64
                                     type: integer
                                   protocol:
                                     type: string
                                   timeoutMillis:
+                                    format: int64
                                     type: integer
                                   unhealthyThreshold:
+                                    format: int64
                                     type: integer
                                 required:
                                 - healthyThreshold
@@ -624,6 +635,7 @@ spec:
                               items:
                                 properties:
                                   port:
+                                    format: int64
                                     type: integer
                                   protocol:
                                     type: string

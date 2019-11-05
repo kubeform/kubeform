@@ -55,7 +55,7 @@ type ComputeInstanceFromTemplateSpecBootDiskInitializeParams struct {
 	// +optional
 	Image string `json:"image,omitempty" tf:"image,omitempty"`
 	// +optional
-	Size int `json:"size,omitempty" tf:"size,omitempty"`
+	Size int64 `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
@@ -77,7 +77,7 @@ type ComputeInstanceFromTemplateSpecBootDisk struct {
 }
 
 type ComputeInstanceFromTemplateSpecGuestAccelerator struct {
-	Count int    `json:"count" tf:"count"`
+	Count int64  `json:"count" tf:"count"`
 	Type  string `json:"type" tf:"type"`
 }
 

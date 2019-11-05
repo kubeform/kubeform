@@ -45,7 +45,7 @@ type Route53HealthCheckSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	ChildHealthThreshold int `json:"childHealthThreshold,omitempty" tf:"child_health_threshold,omitempty"`
+	ChildHealthThreshold int64 `json:"childHealthThreshold,omitempty" tf:"child_health_threshold,omitempty"`
 	// +optional
 	ChildHealthchecks []string `json:"childHealthchecks,omitempty" tf:"child_healthchecks,omitempty"`
 	// +optional
@@ -55,7 +55,7 @@ type Route53HealthCheckSpec struct {
 	// +optional
 	EnableSni bool `json:"enableSni,omitempty" tf:"enable_sni,omitempty"`
 	// +optional
-	FailureThreshold int `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 	// +optional
 	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 	// +optional
@@ -67,13 +67,13 @@ type Route53HealthCheckSpec struct {
 	// +optional
 	MeasureLatency bool `json:"measureLatency,omitempty" tf:"measure_latency,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	ReferenceName string `json:"referenceName,omitempty" tf:"reference_name,omitempty"`
 	// +optional
 	Regions []string `json:"regions,omitempty" tf:"regions,omitempty"`
 	// +optional
-	RequestInterval int `json:"requestInterval,omitempty" tf:"request_interval,omitempty"`
+	RequestInterval int64 `json:"requestInterval,omitempty" tf:"request_interval,omitempty"`
 	// +optional
 	ResourcePath string `json:"resourcePath,omitempty" tf:"resource_path,omitempty"`
 	// +optional

@@ -434,12 +434,14 @@ spec:
             configurationsJSON:
               type: string
             coreInstanceCount:
+              format: int64
               type: integer
             coreInstanceType:
               type: string
             customAmiID:
               type: string
             ebsRootVolumeSize:
+              format: int64
               type: integer
             ec2Attributes:
               items:
@@ -480,12 +482,15 @@ spec:
                     items:
                       properties:
                         iops:
+                          format: int64
                           type: integer
                         size:
+                          format: int64
                           type: integer
                         type:
                           type: string
                         volumesPerInstance:
+                          format: int64
                           type: integer
                       required:
                       - size
@@ -493,6 +498,7 @@ spec:
                       type: object
                     type: array
                   instanceCount:
+                    format: int64
                     type: integer
                   instanceRole:
                     type: string
@@ -640,12 +646,14 @@ spec:
                 configurationsJSON:
                   type: string
                 coreInstanceCount:
+                  format: int64
                   type: integer
                 coreInstanceType:
                   type: string
                 customAmiID:
                   type: string
                 ebsRootVolumeSize:
+                  format: int64
                   type: integer
                 ec2Attributes:
                   items:
@@ -686,12 +694,15 @@ spec:
                         items:
                           properties:
                             iops:
+                              format: int64
                               type: integer
                             size:
+                              format: int64
                               type: integer
                             type:
                               type: string
                             volumesPerInstance:
+                              format: int64
                               type: integer
                           required:
                           - size
@@ -699,6 +710,7 @@ spec:
                           type: object
                         type: array
                       instanceCount:
+                        format: int64
                         type: integer
                       instanceRole:
                         type: string

@@ -93,7 +93,7 @@ type FolderOrganizationPolicySpec struct {
 	// +optional
 	UpdateTime string `json:"updateTime,omitempty" tf:"update_time,omitempty"`
 	// +optional
-	Version int `json:"version,omitempty" tf:"version,omitempty"`
+	Version int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type FolderOrganizationPolicyStatus struct {

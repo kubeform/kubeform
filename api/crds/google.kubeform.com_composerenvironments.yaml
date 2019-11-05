@@ -416,6 +416,7 @@ spec:
                     items:
                       properties:
                         diskSizeGb:
+                          format: int64
                           type: integer
                         machineType:
                           type: string
@@ -439,6 +440,7 @@ spec:
                     maxItems: 1
                     type: array
                   nodeCount:
+                    format: int64
                     type: integer
                   softwareConfig:
                     items:
@@ -510,6 +512,7 @@ spec:
                         items:
                           properties:
                             diskSizeGb:
+                              format: int64
                               type: integer
                             machineType:
                               type: string
@@ -533,6 +536,7 @@ spec:
                         maxItems: 1
                         type: array
                       nodeCount:
+                        format: int64
                         type: integer
                       softwareConfig:
                         items:

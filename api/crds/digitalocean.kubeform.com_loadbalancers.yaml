@@ -420,10 +420,12 @@ spec:
                   certificateID:
                     type: string
                   entryPort:
+                    format: int64
                     type: integer
                   entryProtocol:
                     type: string
                   targetPort:
+                    format: int64
                     type: integer
                   targetProtocol:
                     type: string
@@ -441,18 +443,23 @@ spec:
               items:
                 properties:
                   checkIntervalSeconds:
+                    format: int64
                     type: integer
                   healthyThreshold:
+                    format: int64
                     type: integer
                   path:
                     type: string
                   port:
+                    format: int64
                     type: integer
                   protocol:
                     type: string
                   responseTimeoutSeconds:
+                    format: int64
                     type: integer
                   unhealthyThreshold:
+                    format: int64
                     type: integer
                 required:
                 - port
@@ -487,6 +494,7 @@ spec:
                   cookieName:
                     type: string
                   cookieTtlSeconds:
+                    format: int64
                     type: integer
                   type:
                     type: string
@@ -528,10 +536,12 @@ spec:
                       certificateID:
                         type: string
                       entryPort:
+                        format: int64
                         type: integer
                       entryProtocol:
                         type: string
                       targetPort:
+                        format: int64
                         type: integer
                       targetProtocol:
                         type: string
@@ -549,18 +559,23 @@ spec:
                   items:
                     properties:
                       checkIntervalSeconds:
+                        format: int64
                         type: integer
                       healthyThreshold:
+                        format: int64
                         type: integer
                       path:
                         type: string
                       port:
+                        format: int64
                         type: integer
                       protocol:
                         type: string
                       responseTimeoutSeconds:
+                        format: int64
                         type: integer
                       unhealthyThreshold:
+                        format: int64
                         type: integer
                     required:
                     - port
@@ -595,6 +610,7 @@ spec:
                       cookieName:
                         type: string
                       cookieTtlSeconds:
+                        format: int64
                         type: integer
                       type:
                         type: string

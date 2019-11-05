@@ -423,6 +423,7 @@ spec:
             resourceGroupName:
               type: string
             retentionInDays:
+              format: int64
               type: integer
             secretRef:
               description: LocalObjectReference contains enough information to let
@@ -477,6 +478,7 @@ spec:
                 resourceGroupName:
                   type: string
                 retentionInDays:
+                  format: int64
                   type: integer
                 secretRef:
                   description: LocalObjectReference contains enough information to

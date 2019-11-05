@@ -55,7 +55,7 @@ type ComputeInstanceSpecBootDiskInitializeParams struct {
 	// +optional
 	Image string `json:"image,omitempty" tf:"image,omitempty"`
 	// +optional
-	Size int `json:"size,omitempty" tf:"size,omitempty"`
+	Size int64 `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
@@ -77,7 +77,7 @@ type ComputeInstanceSpecBootDisk struct {
 }
 
 type ComputeInstanceSpecGuestAccelerator struct {
-	Count int    `json:"count" tf:"count"`
+	Count int64  `json:"count" tf:"count"`
 	Type  string `json:"type" tf:"type"`
 }
 
@@ -158,7 +158,7 @@ type ComputeInstanceSpec struct {
 	CpuPlatform string `json:"cpuPlatform,omitempty" tf:"cpu_platform,omitempty"`
 	// +optional
 	// Deprecated
-	CreateTimeout int `json:"createTimeout,omitempty" tf:"create_timeout,omitempty"`
+	CreateTimeout int64 `json:"createTimeout,omitempty" tf:"create_timeout,omitempty"`
 	// +optional
 	DeletionProtection bool `json:"deletionProtection,omitempty" tf:"deletion_protection,omitempty"`
 	// +optional

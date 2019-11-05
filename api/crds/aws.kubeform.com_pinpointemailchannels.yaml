@@ -414,6 +414,7 @@ spec:
             identity:
               type: string
             messagesPerSecond:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -453,6 +454,7 @@ spec:
                 identity:
                   type: string
                 messagesPerSecond:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

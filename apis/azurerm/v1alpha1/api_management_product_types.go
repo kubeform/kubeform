@@ -55,7 +55,7 @@ type ApiManagementProductSpec struct {
 	ResourceGroupName    string `json:"resourceGroupName" tf:"resource_group_name"`
 	SubscriptionRequired bool   `json:"subscriptionRequired" tf:"subscription_required"`
 	// +optional
-	SubscriptionsLimit int `json:"subscriptionsLimit,omitempty" tf:"subscriptions_limit,omitempty"`
+	SubscriptionsLimit int64 `json:"subscriptionsLimit,omitempty" tf:"subscriptions_limit,omitempty"`
 	// +optional
 	Terms string `json:"terms,omitempty" tf:"terms,omitempty"`
 }

@@ -44,7 +44,7 @@ type GlueTriggerSpecActions struct {
 	Arguments map[string]string `json:"arguments,omitempty" tf:"arguments,omitempty"`
 	JobName   string            `json:"jobName" tf:"job_name"`
 	// +optional
-	Timeout int `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	Timeout int64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 }
 
 type GlueTriggerSpecPredicateConditions struct {

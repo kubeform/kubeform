@@ -52,7 +52,7 @@ type ComputeTargetHTTPSProxySpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	ProxyID int `json:"proxyID,omitempty" tf:"proxy_id,omitempty"`
+	ProxyID int64 `json:"proxyID,omitempty" tf:"proxy_id,omitempty"`
 	// +optional
 	QuicOverride string `json:"quicOverride,omitempty" tf:"quic_override,omitempty"`
 	// +optional

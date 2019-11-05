@@ -41,34 +41,34 @@ type ComputeRegionInstanceGroupManager struct {
 
 type ComputeRegionInstanceGroupManagerSpecAutoHealingPolicies struct {
 	HealthCheck     string `json:"healthCheck" tf:"health_check"`
-	InitialDelaySec int    `json:"initialDelaySec" tf:"initial_delay_sec"`
+	InitialDelaySec int64  `json:"initialDelaySec" tf:"initial_delay_sec"`
 }
 
 type ComputeRegionInstanceGroupManagerSpecNamedPort struct {
 	Name string `json:"name" tf:"name"`
-	Port int    `json:"port" tf:"port"`
+	Port int64  `json:"port" tf:"port"`
 }
 
 type ComputeRegionInstanceGroupManagerSpecRollingUpdatePolicy struct {
 	// +optional
-	MaxSurgeFixed int `json:"maxSurgeFixed,omitempty" tf:"max_surge_fixed,omitempty"`
+	MaxSurgeFixed int64 `json:"maxSurgeFixed,omitempty" tf:"max_surge_fixed,omitempty"`
 	// +optional
-	MaxSurgePercent int `json:"maxSurgePercent,omitempty" tf:"max_surge_percent,omitempty"`
+	MaxSurgePercent int64 `json:"maxSurgePercent,omitempty" tf:"max_surge_percent,omitempty"`
 	// +optional
-	MaxUnavailableFixed int `json:"maxUnavailableFixed,omitempty" tf:"max_unavailable_fixed,omitempty"`
+	MaxUnavailableFixed int64 `json:"maxUnavailableFixed,omitempty" tf:"max_unavailable_fixed,omitempty"`
 	// +optional
-	MaxUnavailablePercent int `json:"maxUnavailablePercent,omitempty" tf:"max_unavailable_percent,omitempty"`
+	MaxUnavailablePercent int64 `json:"maxUnavailablePercent,omitempty" tf:"max_unavailable_percent,omitempty"`
 	// +optional
-	MinReadySec   int    `json:"minReadySec,omitempty" tf:"min_ready_sec,omitempty"`
+	MinReadySec   int64  `json:"minReadySec,omitempty" tf:"min_ready_sec,omitempty"`
 	MinimalAction string `json:"minimalAction" tf:"minimal_action"`
 	Type          string `json:"type" tf:"type"`
 }
 
 type ComputeRegionInstanceGroupManagerSpecVersionTargetSize struct {
 	// +optional
-	Fixed int `json:"fixed,omitempty" tf:"fixed,omitempty"`
+	Fixed int64 `json:"fixed,omitempty" tf:"fixed,omitempty"`
 	// +optional
-	Percent int `json:"percent,omitempty" tf:"percent,omitempty"`
+	Percent int64 `json:"percent,omitempty" tf:"percent,omitempty"`
 }
 
 type ComputeRegionInstanceGroupManagerSpecVersion struct {
@@ -114,7 +114,7 @@ type ComputeRegionInstanceGroupManagerSpec struct {
 	// +optional
 	TargetPools []string `json:"targetPools,omitempty" tf:"target_pools,omitempty"`
 	// +optional
-	TargetSize int `json:"targetSize,omitempty" tf:"target_size,omitempty"`
+	TargetSize int64 `json:"targetSize,omitempty" tf:"target_size,omitempty"`
 	// +optional
 	// Deprecated
 	UpdateStrategy string `json:"updateStrategy,omitempty" tf:"update_strategy,omitempty"`

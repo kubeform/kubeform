@@ -45,15 +45,15 @@ type DomainRecordSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// The ID of the Domain to access.
-	DomainID int `json:"domainID" tf:"domain_id"`
+	DomainID int64 `json:"domainID" tf:"domain_id"`
 	// The name of this Record. This field's actual usage depends on the type of record this represents. For A and AAAA records, this is the subdomain being associated with an IP address.
 	Name string `json:"name" tf:"name"`
 	// The port this Record points to.
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// The priority of the target host. Lower values are preferred.
 	// +optional
-	Priority int `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 	// The protocol this Record's service communicates with. Only valid for SRV records.
 	// +optional
 	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -69,10 +69,10 @@ type DomainRecordSpec struct {
 	Target string `json:"target" tf:"target"`
 	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	// +optional
-	TtlSec int `json:"ttlSec,omitempty" tf:"ttl_sec,omitempty"`
+	TtlSec int64 `json:"ttlSec,omitempty" tf:"ttl_sec,omitempty"`
 	// The relative weight of this Record. Higher values are preferred.
 	// +optional
-	Weight int `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type DomainRecordStatus struct {

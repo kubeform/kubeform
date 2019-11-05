@@ -71,7 +71,7 @@ type KubernetesClusterSpecAgentPoolProfile struct {
 	// +optional
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	// +optional
-	Count int `json:"count,omitempty" tf:"count,omitempty"`
+	Count int64 `json:"count,omitempty" tf:"count,omitempty"`
 	// +optional
 	// Deprecated
 	DnsPrefix string `json:"dnsPrefix,omitempty" tf:"dns_prefix,omitempty"`
@@ -81,16 +81,16 @@ type KubernetesClusterSpecAgentPoolProfile struct {
 	// Deprecated
 	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 	// +optional
-	MaxCount int `json:"maxCount,omitempty" tf:"max_count,omitempty"`
+	MaxCount int64 `json:"maxCount,omitempty" tf:"max_count,omitempty"`
 	// +optional
-	MaxPods int `json:"maxPods,omitempty" tf:"max_pods,omitempty"`
+	MaxPods int64 `json:"maxPods,omitempty" tf:"max_pods,omitempty"`
 	// +optional
-	MinCount int    `json:"minCount,omitempty" tf:"min_count,omitempty"`
+	MinCount int64  `json:"minCount,omitempty" tf:"min_count,omitempty"`
 	Name     string `json:"name" tf:"name"`
 	// +optional
 	NodeTaints []string `json:"nodeTaints,omitempty" tf:"node_taints,omitempty"`
 	// +optional
-	OsDiskSizeGb int `json:"osDiskSizeGb,omitempty" tf:"os_disk_size_gb,omitempty"`
+	OsDiskSizeGb int64 `json:"osDiskSizeGb,omitempty" tf:"os_disk_size_gb,omitempty"`
 	// +optional
 	OsType string `json:"osType,omitempty" tf:"os_type,omitempty"`
 	// +optional

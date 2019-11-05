@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -54,9 +52,9 @@ type MonitoringAlertPolicySpecConditionsConditionAbsentAggregations struct {
 
 type MonitoringAlertPolicySpecConditionsConditionAbsentTrigger struct {
 	// +optional
-	Count int `json:"count,omitempty" tf:"count,omitempty"`
+	Count int64 `json:"count,omitempty" tf:"count,omitempty"`
 	// +optional
-	Percent json.Number `json:"percent,omitempty" tf:"percent,omitempty"`
+	Percent float64 `json:"percent,omitempty" tf:"percent,omitempty"`
 }
 
 type MonitoringAlertPolicySpecConditionsConditionAbsent struct {
@@ -94,9 +92,9 @@ type MonitoringAlertPolicySpecConditionsConditionThresholdDenominatorAggregation
 
 type MonitoringAlertPolicySpecConditionsConditionThresholdTrigger struct {
 	// +optional
-	Count int `json:"count,omitempty" tf:"count,omitempty"`
+	Count int64 `json:"count,omitempty" tf:"count,omitempty"`
 	// +optional
-	Percent json.Number `json:"percent,omitempty" tf:"percent,omitempty"`
+	Percent float64 `json:"percent,omitempty" tf:"percent,omitempty"`
 }
 
 type MonitoringAlertPolicySpecConditionsConditionThreshold struct {
@@ -111,7 +109,7 @@ type MonitoringAlertPolicySpecConditionsConditionThreshold struct {
 	// +optional
 	Filter string `json:"filter,omitempty" tf:"filter,omitempty"`
 	// +optional
-	ThresholdValue json.Number `json:"thresholdValue,omitempty" tf:"threshold_value,omitempty"`
+	ThresholdValue float64 `json:"thresholdValue,omitempty" tf:"threshold_value,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Trigger []MonitoringAlertPolicySpecConditionsConditionThresholdTrigger `json:"trigger,omitempty" tf:"trigger,omitempty"`

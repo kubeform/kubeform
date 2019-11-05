@@ -422,6 +422,7 @@ spec:
                       type: object
                     type: array
                   asn:
+                    format: int64
                     type: integer
                 required:
                 - asn
@@ -486,6 +487,7 @@ spec:
                           type: object
                         type: array
                       asn:
+                        format: int64
                         type: integer
                     required:
                     - asn

@@ -424,6 +424,7 @@ spec:
                   cacheDataEncrypted:
                     type: boolean
                   cacheTtlInSeconds:
+                    format: int64
                     type: integer
                   cachingEnabled:
                     type: boolean
@@ -436,10 +437,11 @@ spec:
                   requireAuthorizationForCacheControl:
                     type: boolean
                   throttlingBurstLimit:
+                    format: int64
                     type: integer
                   throttlingRateLimit:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                   unauthorizedCacheControlHeaderStrategy:
                     type: string
                 type: object
@@ -484,6 +486,7 @@ spec:
                       cacheDataEncrypted:
                         type: boolean
                       cacheTtlInSeconds:
+                        format: int64
                         type: integer
                       cachingEnabled:
                         type: boolean
@@ -496,10 +499,11 @@ spec:
                       requireAuthorizationForCacheControl:
                         type: boolean
                       throttlingBurstLimit:
+                        format: int64
                         type: integer
                       throttlingRateLimit:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                       unauthorizedCacheControlHeaderStrategy:
                         type: string
                     type: object

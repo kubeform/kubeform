@@ -408,6 +408,7 @@ spec:
             databaseName:
               type: string
             defaultTtlSeconds:
+              format: int64
               type: integer
             id:
               type: string
@@ -458,6 +459,7 @@ spec:
                 databaseName:
                   type: string
                 defaultTtlSeconds:
+                  format: int64
                   type: integer
                 id:
                   type: string

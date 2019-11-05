@@ -43,7 +43,7 @@ type AutoscalingGroupSpecInitialLifecycleHook struct {
 	// +optional
 	DefaultResult string `json:"defaultResult,omitempty" tf:"default_result,omitempty"`
 	// +optional
-	HeartbeatTimeout    int    `json:"heartbeatTimeout,omitempty" tf:"heartbeat_timeout,omitempty"`
+	HeartbeatTimeout    int64  `json:"heartbeatTimeout,omitempty" tf:"heartbeat_timeout,omitempty"`
 	LifecycleTransition string `json:"lifecycleTransition" tf:"lifecycle_transition"`
 	Name                string `json:"name" tf:"name"`
 	// +optional
@@ -67,13 +67,13 @@ type AutoscalingGroupSpecMixedInstancesPolicyInstancesDistribution struct {
 	// +optional
 	OnDemandAllocationStrategy string `json:"onDemandAllocationStrategy,omitempty" tf:"on_demand_allocation_strategy,omitempty"`
 	// +optional
-	OnDemandBaseCapacity int `json:"onDemandBaseCapacity,omitempty" tf:"on_demand_base_capacity,omitempty"`
+	OnDemandBaseCapacity int64 `json:"onDemandBaseCapacity,omitempty" tf:"on_demand_base_capacity,omitempty"`
 	// +optional
-	OnDemandPercentageAboveBaseCapacity int `json:"onDemandPercentageAboveBaseCapacity,omitempty" tf:"on_demand_percentage_above_base_capacity,omitempty"`
+	OnDemandPercentageAboveBaseCapacity int64 `json:"onDemandPercentageAboveBaseCapacity,omitempty" tf:"on_demand_percentage_above_base_capacity,omitempty"`
 	// +optional
 	SpotAllocationStrategy string `json:"spotAllocationStrategy,omitempty" tf:"spot_allocation_strategy,omitempty"`
 	// +optional
-	SpotInstancePools int `json:"spotInstancePools,omitempty" tf:"spot_instance_pools,omitempty"`
+	SpotInstancePools int64 `json:"spotInstancePools,omitempty" tf:"spot_instance_pools,omitempty"`
 	// +optional
 	SpotMaxPrice string `json:"spotMaxPrice,omitempty" tf:"spot_max_price,omitempty"`
 }
@@ -125,15 +125,15 @@ type AutoscalingGroupSpec struct {
 	// +optional
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	// +optional
-	DefaultCooldown int `json:"defaultCooldown,omitempty" tf:"default_cooldown,omitempty"`
+	DefaultCooldown int64 `json:"defaultCooldown,omitempty" tf:"default_cooldown,omitempty"`
 	// +optional
-	DesiredCapacity int `json:"desiredCapacity,omitempty" tf:"desired_capacity,omitempty"`
+	DesiredCapacity int64 `json:"desiredCapacity,omitempty" tf:"desired_capacity,omitempty"`
 	// +optional
 	EnabledMetrics []string `json:"enabledMetrics,omitempty" tf:"enabled_metrics,omitempty"`
 	// +optional
 	ForceDelete bool `json:"forceDelete,omitempty" tf:"force_delete,omitempty"`
 	// +optional
-	HealthCheckGracePeriod int `json:"healthCheckGracePeriod,omitempty" tf:"health_check_grace_period,omitempty"`
+	HealthCheckGracePeriod int64 `json:"healthCheckGracePeriod,omitempty" tf:"health_check_grace_period,omitempty"`
 	// +optional
 	HealthCheckType string `json:"healthCheckType,omitempty" tf:"health_check_type,omitempty"`
 	// +optional
@@ -145,12 +145,12 @@ type AutoscalingGroupSpec struct {
 	LaunchTemplate []AutoscalingGroupSpecLaunchTemplate `json:"launchTemplate,omitempty" tf:"launch_template,omitempty"`
 	// +optional
 	LoadBalancers []string `json:"loadBalancers,omitempty" tf:"load_balancers,omitempty"`
-	MaxSize       int      `json:"maxSize" tf:"max_size"`
+	MaxSize       int64    `json:"maxSize" tf:"max_size"`
 	// +optional
 	MetricsGranularity string `json:"metricsGranularity,omitempty" tf:"metrics_granularity,omitempty"`
 	// +optional
-	MinElbCapacity int `json:"minElbCapacity,omitempty" tf:"min_elb_capacity,omitempty"`
-	MinSize        int `json:"minSize" tf:"min_size"`
+	MinElbCapacity int64 `json:"minElbCapacity,omitempty" tf:"min_elb_capacity,omitempty"`
+	MinSize        int64 `json:"minSize" tf:"min_size"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	MixedInstancesPolicy []AutoscalingGroupSpecMixedInstancesPolicy `json:"mixedInstancesPolicy,omitempty" tf:"mixed_instances_policy,omitempty"`
@@ -178,7 +178,7 @@ type AutoscalingGroupSpec struct {
 	// +optional
 	WaitForCapacityTimeout string `json:"waitForCapacityTimeout,omitempty" tf:"wait_for_capacity_timeout,omitempty"`
 	// +optional
-	WaitForElbCapacity int `json:"waitForElbCapacity,omitempty" tf:"wait_for_elb_capacity,omitempty"`
+	WaitForElbCapacity int64 `json:"waitForElbCapacity,omitempty" tf:"wait_for_elb_capacity,omitempty"`
 }
 
 type AutoscalingGroupStatus struct {

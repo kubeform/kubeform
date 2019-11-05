@@ -409,6 +409,7 @@ spec:
                   relativeName:
                     type: string
                   ttl:
+                    format: int64
                     type: integer
                 required:
                 - relativeName
@@ -425,6 +426,7 @@ spec:
                   path:
                     type: string
                   port:
+                    format: int64
                     type: integer
                   protocol:
                     type: string
@@ -477,6 +479,7 @@ spec:
                       relativeName:
                         type: string
                       ttl:
+                        format: int64
                         type: integer
                     required:
                     - relativeName
@@ -493,6 +496,7 @@ spec:
                       path:
                         type: string
                       port:
+                        format: int64
                         type: integer
                       protocol:
                         type: string

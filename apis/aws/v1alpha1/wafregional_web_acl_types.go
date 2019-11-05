@@ -75,7 +75,7 @@ type WafregionalWebACLSpecRule struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	OverrideAction []WafregionalWebACLSpecRuleOverrideAction `json:"overrideAction,omitempty" tf:"override_action,omitempty"`
-	Priority       int                                       `json:"priority" tf:"priority"`
+	Priority       int64                                     `json:"priority" tf:"priority"`
 	RuleID         string                                    `json:"ruleID" tf:"rule_id"`
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`

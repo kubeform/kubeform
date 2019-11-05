@@ -51,7 +51,7 @@ type PublicIPSpec struct {
 	// +optional
 	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 	// +optional
-	IdleTimeoutInMinutes int `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
+	IdleTimeoutInMinutes int64 `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
 	// +optional
 	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// +optional

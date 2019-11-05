@@ -52,8 +52,8 @@ type KinesisStreamSpec struct {
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	Name     string `json:"name" tf:"name"`
 	// +optional
-	RetentionPeriod int `json:"retentionPeriod,omitempty" tf:"retention_period,omitempty"`
-	ShardCount      int `json:"shardCount" tf:"shard_count"`
+	RetentionPeriod int64 `json:"retentionPeriod,omitempty" tf:"retention_period,omitempty"`
+	ShardCount      int64 `json:"shardCount" tf:"shard_count"`
 	// +optional
 	ShardLevelMetrics []string `json:"shardLevelMetrics,omitempty" tf:"shard_level_metrics,omitempty"`
 	// +optional

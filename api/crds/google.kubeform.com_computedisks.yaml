@@ -459,6 +459,7 @@ spec:
             selfLink:
               type: string
             size:
+              format: int64
               type: integer
             snapshot:
               type: string
@@ -563,6 +564,7 @@ spec:
                 selfLink:
                   type: string
                 size:
+                  format: int64
                   type: integer
                 snapshot:
                   type: string

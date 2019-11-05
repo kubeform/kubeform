@@ -54,7 +54,7 @@ type IamRoleSpec struct {
 	// +optional
 	ForceDetachPolicies bool `json:"forceDetachPolicies,omitempty" tf:"force_detach_policies,omitempty"`
 	// +optional
-	MaxSessionDuration int `json:"maxSessionDuration,omitempty" tf:"max_session_duration,omitempty"`
+	MaxSessionDuration int64 `json:"maxSessionDuration,omitempty" tf:"max_session_duration,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional

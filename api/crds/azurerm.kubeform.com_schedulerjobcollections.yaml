@@ -422,13 +422,16 @@ spec:
               items:
                 properties:
                   maxJobCount:
+                    format: int64
                     type: integer
                   maxRecurrenceFrequency:
                     type: string
                   maxRecurrenceInterval:
+                    format: int64
                     type: integer
                   maxRetryInterval:
                     description: Deprecated
+                    format: int64
                     type: integer
                 required:
                 - maxRecurrenceFrequency
@@ -480,13 +483,16 @@ spec:
                   items:
                     properties:
                       maxJobCount:
+                        format: int64
                         type: integer
                       maxRecurrenceFrequency:
                         type: string
                       maxRecurrenceInterval:
+                        format: int64
                         type: integer
                       maxRetryInterval:
                         description: Deprecated
+                        format: int64
                         type: integer
                     required:
                     - maxRecurrenceFrequency

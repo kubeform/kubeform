@@ -420,6 +420,7 @@ spec:
                         sessionCookieName:
                           type: string
                         sessionTimeout:
+                          format: int64
                           type: integer
                         userPoolArn:
                           type: string
@@ -454,6 +455,7 @@ spec:
                         sessionCookieName:
                           type: string
                         sessionTimeout:
+                          format: int64
                           type: integer
                         tokenEndpoint:
                           type: string
@@ -483,6 +485,7 @@ spec:
                     maxItems: 1
                     type: array
                   order:
+                    format: int64
                     type: integer
                   redirect:
                     items:
@@ -531,6 +534,7 @@ spec:
             listenerArn:
               type: string
             priority:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -582,6 +586,7 @@ spec:
                             sessionCookieName:
                               type: string
                             sessionTimeout:
+                              format: int64
                               type: integer
                             userPoolArn:
                               type: string
@@ -616,6 +621,7 @@ spec:
                             sessionCookieName:
                               type: string
                             sessionTimeout:
+                              format: int64
                               type: integer
                             tokenEndpoint:
                               type: string
@@ -645,6 +651,7 @@ spec:
                         maxItems: 1
                         type: array
                       order:
+                        format: int64
                         type: integer
                       redirect:
                         items:
@@ -693,6 +700,7 @@ spec:
                 listenerArn:
                   type: string
                 priority:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

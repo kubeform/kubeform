@@ -407,6 +407,7 @@ spec:
               items:
                 properties:
                   maxAgeSeconds:
+                    format: int64
                     type: integer
                   method:
                     items:
@@ -460,6 +461,7 @@ spec:
                     items:
                       properties:
                         age:
+                          format: int64
                           type: integer
                         createdBefore:
                           type: string
@@ -471,6 +473,7 @@ spec:
                           minItems: 1
                           type: array
                         numNewerVersions:
+                          format: int64
                           type: integer
                       type: object
                     maxItems: 1
@@ -549,6 +552,7 @@ spec:
                   items:
                     properties:
                       maxAgeSeconds:
+                        format: int64
                         type: integer
                       method:
                         items:
@@ -602,6 +606,7 @@ spec:
                         items:
                           properties:
                             age:
+                              format: int64
                               type: integer
                             createdBefore:
                               type: string
@@ -613,6 +618,7 @@ spec:
                               minItems: 1
                               type: array
                             numNewerVersions:
+                              format: int64
                               type: integer
                           type: object
                         maxItems: 1

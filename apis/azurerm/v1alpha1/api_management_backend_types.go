@@ -73,7 +73,7 @@ type ApiManagementBackendSpecServiceFabricClusterServerX509Name struct {
 type ApiManagementBackendSpecServiceFabricCluster struct {
 	ClientCertificateThumbprint   string   `json:"clientCertificateThumbprint" tf:"client_certificate_thumbprint"`
 	ManagementEndpoints           []string `json:"managementEndpoints" tf:"management_endpoints"`
-	MaxPartitionResolutionRetries int      `json:"maxPartitionResolutionRetries" tf:"max_partition_resolution_retries"`
+	MaxPartitionResolutionRetries int64    `json:"maxPartitionResolutionRetries" tf:"max_partition_resolution_retries"`
 	// +optional
 	ServerCertificateThumbprints []string `json:"serverCertificateThumbprints,omitempty" tf:"server_certificate_thumbprints,omitempty"`
 	// +optional

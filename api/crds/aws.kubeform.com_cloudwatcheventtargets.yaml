@@ -409,8 +409,10 @@ spec:
               items:
                 properties:
                   arraySize:
+                    format: int64
                     type: integer
                   jobAttempts:
+                    format: int64
                     type: integer
                   jobDefinition:
                     type: string
@@ -450,6 +452,7 @@ spec:
                   platformVersion:
                     type: string
                   taskCount:
+                    format: int64
                     type: integer
                   taskDefinitionArn:
                     type: string
@@ -544,8 +547,10 @@ spec:
                   items:
                     properties:
                       arraySize:
+                        format: int64
                         type: integer
                       jobAttempts:
+                        format: int64
                         type: integer
                       jobDefinition:
                         type: string
@@ -585,6 +590,7 @@ spec:
                       platformVersion:
                         type: string
                       taskCount:
+                        format: int64
                         type: integer
                       taskDefinitionArn:
                         type: string

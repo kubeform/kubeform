@@ -423,6 +423,7 @@ spec:
                   type: string
               type: object
             publicPort:
+              format: int64
               type: integer
             resourceGroupName:
               type: string
@@ -436,11 +437,13 @@ spec:
                   type: string
               type: object
             serverPort:
+              format: int64
               type: integer
             sku:
               items:
                 properties:
                   capacity:
+                    format: int64
                     type: integer
                   name:
                     type: string
@@ -490,6 +493,7 @@ spec:
                       type: string
                   type: object
                 publicPort:
+                  format: int64
                   type: integer
                 resourceGroupName:
                   type: string
@@ -503,11 +507,13 @@ spec:
                       type: string
                   type: object
                 serverPort:
+                  format: int64
                   type: integer
                 sku:
                   items:
                     properties:
                       capacity:
+                        format: int64
                         type: integer
                       name:
                         type: string

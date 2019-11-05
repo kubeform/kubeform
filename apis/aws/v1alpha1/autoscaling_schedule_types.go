@@ -48,13 +48,13 @@ type AutoscalingScheduleSpec struct {
 	Arn                  string `json:"arn,omitempty" tf:"arn,omitempty"`
 	AutoscalingGroupName string `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
 	// +optional
-	DesiredCapacity int `json:"desiredCapacity,omitempty" tf:"desired_capacity,omitempty"`
+	DesiredCapacity int64 `json:"desiredCapacity,omitempty" tf:"desired_capacity,omitempty"`
 	// +optional
 	EndTime string `json:"endTime,omitempty" tf:"end_time,omitempty"`
 	// +optional
-	MaxSize int `json:"maxSize,omitempty" tf:"max_size,omitempty"`
+	MaxSize int64 `json:"maxSize,omitempty" tf:"max_size,omitempty"`
 	// +optional
-	MinSize int `json:"minSize,omitempty" tf:"min_size,omitempty"`
+	MinSize int64 `json:"minSize,omitempty" tf:"min_size,omitempty"`
 	// +optional
 	Recurrence          string `json:"recurrence,omitempty" tf:"recurrence,omitempty"`
 	ScheduledActionName string `json:"scheduledActionName" tf:"scheduled_action_name"`

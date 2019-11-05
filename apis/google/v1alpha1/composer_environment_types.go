@@ -41,7 +41,7 @@ type ComposerEnvironment struct {
 
 type ComposerEnvironmentSpecConfigNodeConfig struct {
 	// +optional
-	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
 	// +optional
 	MachineType string `json:"machineType,omitempty" tf:"machine_type,omitempty"`
 	// +optional
@@ -80,7 +80,7 @@ type ComposerEnvironmentSpecConfig struct {
 	// +kubebuilder:validation:MaxItems=1
 	NodeConfig []ComposerEnvironmentSpecConfigNodeConfig `json:"nodeConfig,omitempty" tf:"node_config,omitempty"`
 	// +optional
-	NodeCount int `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SoftwareConfig []ComposerEnvironmentSpecConfigSoftwareConfig `json:"softwareConfig,omitempty" tf:"software_config,omitempty"`

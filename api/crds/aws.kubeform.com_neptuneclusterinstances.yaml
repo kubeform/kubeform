@@ -438,12 +438,14 @@ spec:
             neptuneSubnetGroupName:
               type: string
             port:
+              format: int64
               type: integer
             preferredBackupWindow:
               type: string
             preferredMaintenanceWindow:
               type: string
             promotionTier:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -513,12 +515,14 @@ spec:
                 neptuneSubnetGroupName:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 preferredBackupWindow:
                   type: string
                 preferredMaintenanceWindow:
                   type: string
                 promotionTier:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

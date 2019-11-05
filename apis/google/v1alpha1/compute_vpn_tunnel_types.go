@@ -53,7 +53,7 @@ type ComputeVPNTunnelSpec struct {
 	// +optional
 	DetailedStatus string `json:"detailedStatus,omitempty" tf:"detailed_status,omitempty"`
 	// +optional
-	IkeVersion int `json:"ikeVersion,omitempty" tf:"ike_version,omitempty"`
+	IkeVersion int64 `json:"ikeVersion,omitempty" tf:"ike_version,omitempty"`
 	// +optional
 	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
 	// +optional

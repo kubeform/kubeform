@@ -406,10 +406,13 @@ spec:
             creationDate:
               type: string
             dbDtuMax:
+              format: int64
               type: integer
             dbDtuMin:
+              format: int64
               type: integer
             dtu:
+              format: int64
               type: integer
             edition:
               type: string
@@ -420,6 +423,7 @@ spec:
             name:
               type: string
             poolSize:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -459,10 +463,13 @@ spec:
                 creationDate:
                   type: string
                 dbDtuMax:
+                  format: int64
                   type: integer
                 dbDtuMin:
+                  format: int64
                   type: integer
                 dtu:
+                  format: int64
                   type: integer
                 edition:
                   type: string
@@ -473,6 +480,7 @@ spec:
                 name:
                   type: string
                 poolSize:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

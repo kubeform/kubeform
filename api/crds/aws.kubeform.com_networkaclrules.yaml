@@ -408,6 +408,7 @@ spec:
             egress:
               type: boolean
             fromPort:
+              format: int64
               type: integer
             icmpCode:
               type: string
@@ -433,8 +434,10 @@ spec:
             ruleAction:
               type: string
             ruleNumber:
+              format: int64
               type: integer
             toPort:
+              format: int64
               type: integer
           required:
           - networkACLID
@@ -457,6 +460,7 @@ spec:
                 egress:
                   type: boolean
                 fromPort:
+                  format: int64
                   type: integer
                 icmpCode:
                   type: string
@@ -482,8 +486,10 @@ spec:
                 ruleAction:
                   type: string
                 ruleNumber:
+                  format: int64
                   type: integer
                 toPort:
+                  format: int64
                   type: integer
               required:
               - networkACLID

@@ -41,9 +41,9 @@ type VirtualNetworkGateway struct {
 
 type VirtualNetworkGatewaySpecBgpSettings struct {
 	// +optional
-	Asn int `json:"asn,omitempty" tf:"asn,omitempty"`
+	Asn int64 `json:"asn,omitempty" tf:"asn,omitempty"`
 	// +optional
-	PeerWeight int `json:"peerWeight,omitempty" tf:"peer_weight,omitempty"`
+	PeerWeight int64 `json:"peerWeight,omitempty" tf:"peer_weight,omitempty"`
 	// +optional
 	PeeringAddress string `json:"peeringAddress,omitempty" tf:"peering_address,omitempty"`
 }

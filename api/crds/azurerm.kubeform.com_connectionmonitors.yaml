@@ -411,6 +411,7 @@ spec:
                   address:
                     type: string
                   port:
+                    format: int64
                     type: integer
                   virtualMachineID:
                     type: string
@@ -422,6 +423,7 @@ spec:
             id:
               type: string
             intervalInSeconds:
+              format: int64
               type: integer
             location:
               type: string
@@ -444,6 +446,7 @@ spec:
               items:
                 properties:
                   port:
+                    format: int64
                     type: integer
                   virtualMachineID:
                     type: string
@@ -482,6 +485,7 @@ spec:
                       address:
                         type: string
                       port:
+                        format: int64
                         type: integer
                       virtualMachineID:
                         type: string
@@ -493,6 +497,7 @@ spec:
                 id:
                   type: string
                 intervalInSeconds:
+                  format: int64
                   type: integer
                 location:
                   type: string
@@ -515,6 +520,7 @@ spec:
                   items:
                     properties:
                       port:
+                        format: int64
                         type: integer
                       virtualMachineID:
                         type: string

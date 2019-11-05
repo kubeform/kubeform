@@ -40,7 +40,7 @@ type DlmLifecyclePolicy struct {
 }
 
 type DlmLifecyclePolicySpecPolicyDetailsScheduleCreateRule struct {
-	Interval int `json:"interval" tf:"interval"`
+	Interval int64 `json:"interval" tf:"interval"`
 	// +optional
 	IntervalUnit string `json:"intervalUnit,omitempty" tf:"interval_unit,omitempty"`
 	// +optional
@@ -49,7 +49,7 @@ type DlmLifecyclePolicySpecPolicyDetailsScheduleCreateRule struct {
 }
 
 type DlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule struct {
-	Count int `json:"count" tf:"count"`
+	Count int64 `json:"count" tf:"count"`
 }
 
 type DlmLifecyclePolicySpecPolicyDetailsSchedule struct {

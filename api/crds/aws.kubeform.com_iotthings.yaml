@@ -427,6 +427,7 @@ spec:
             thingTypeName:
               type: string
             version:
+              format: int64
               type: integer
           required:
           - name
@@ -465,6 +466,7 @@ spec:
                 thingTypeName:
                   type: string
                 version:
+                  format: int64
                   type: integer
               required:
               - name

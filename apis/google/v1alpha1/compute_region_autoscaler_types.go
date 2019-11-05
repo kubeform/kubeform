@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -42,32 +40,32 @@ type ComputeRegionAutoscaler struct {
 }
 
 type ComputeRegionAutoscalerSpecAutoscalingPolicyCpuUtilization struct {
-	Target json.Number `json:"target" tf:"target"`
+	Target float64 `json:"target" tf:"target"`
 }
 
 type ComputeRegionAutoscalerSpecAutoscalingPolicyLoadBalancingUtilization struct {
-	Target json.Number `json:"target" tf:"target"`
+	Target float64 `json:"target" tf:"target"`
 }
 
 type ComputeRegionAutoscalerSpecAutoscalingPolicyMetric struct {
-	Name   string      `json:"name" tf:"name"`
-	Target json.Number `json:"target" tf:"target"`
-	Type   string      `json:"type" tf:"type"`
+	Name   string  `json:"name" tf:"name"`
+	Target float64 `json:"target" tf:"target"`
+	Type   string  `json:"type" tf:"type"`
 }
 
 type ComputeRegionAutoscalerSpecAutoscalingPolicy struct {
 	// +optional
-	CooldownPeriod int `json:"cooldownPeriod,omitempty" tf:"cooldown_period,omitempty"`
+	CooldownPeriod int64 `json:"cooldownPeriod,omitempty" tf:"cooldown_period,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CpuUtilization []ComputeRegionAutoscalerSpecAutoscalingPolicyCpuUtilization `json:"cpuUtilization,omitempty" tf:"cpu_utilization,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	LoadBalancingUtilization []ComputeRegionAutoscalerSpecAutoscalingPolicyLoadBalancingUtilization `json:"loadBalancingUtilization,omitempty" tf:"load_balancing_utilization,omitempty"`
-	MaxReplicas              int                                                                    `json:"maxReplicas" tf:"max_replicas"`
+	MaxReplicas              int64                                                                  `json:"maxReplicas" tf:"max_replicas"`
 	// +optional
 	Metric      []ComputeRegionAutoscalerSpecAutoscalingPolicyMetric `json:"metric,omitempty" tf:"metric,omitempty"`
-	MinReplicas int                                                  `json:"minReplicas" tf:"min_replicas"`
+	MinReplicas int64                                                `json:"minReplicas" tf:"min_replicas"`
 }
 
 type ComputeRegionAutoscalerSpec struct {

@@ -451,6 +451,7 @@ spec:
             templateURL:
               type: string
             timeoutInMinutes:
+              format: int64
               type: integer
           required:
           - name
@@ -513,6 +514,7 @@ spec:
                 templateURL:
                   type: string
                 timeoutInMinutes:
+                  format: int64
                   type: integer
               required:
               - name

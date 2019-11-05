@@ -74,7 +74,7 @@ type LbSpec struct {
 	// +optional
 	EnableHttp2 bool `json:"enableHttp2,omitempty" tf:"enable_http2,omitempty"`
 	// +optional
-	IdleTimeout int `json:"idleTimeout,omitempty" tf:"idle_timeout,omitempty"`
+	IdleTimeout int64 `json:"idleTimeout,omitempty" tf:"idle_timeout,omitempty"`
 	// +optional
 	Internal bool `json:"internal,omitempty" tf:"internal,omitempty"`
 	// +optional

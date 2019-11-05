@@ -406,6 +406,7 @@ spec:
             arn:
               type: string
             automaticStopTimeMinutes:
+              format: int64
               type: integer
             description:
               type: string
@@ -447,6 +448,7 @@ spec:
                 arn:
                   type: string
                 automaticStopTimeMinutes:
+                  format: int64
                   type: integer
                 description:
                   type: string

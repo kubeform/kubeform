@@ -65,7 +65,7 @@ type ComputeGlobalAddressSpec struct {
 	Network string `json:"network,omitempty" tf:"network,omitempty"`
 	// +optional
 	// Deprecated
-	PrefixLength int `json:"prefixLength,omitempty" tf:"prefix_length,omitempty"`
+	PrefixLength int64 `json:"prefixLength,omitempty" tf:"prefix_length,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

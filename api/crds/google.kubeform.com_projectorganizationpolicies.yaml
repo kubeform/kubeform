@@ -475,6 +475,7 @@ spec:
             updateTime:
               type: string
             version:
+              format: int64
               type: integer
           required:
           - constraint
@@ -562,6 +563,7 @@ spec:
                 updateTime:
                   type: string
                 version:
+                  format: int64
                   type: integer
               required:
               - constraint

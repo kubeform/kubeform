@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             advertisedRoutePriority:
+              format: int64
               type: integer
             id:
               type: string
@@ -414,6 +415,7 @@ spec:
             name:
               type: string
             peerAsn:
+              format: int64
               type: integer
             peerIPAddress:
               type: string
@@ -449,6 +451,7 @@ spec:
             output:
               properties:
                 advertisedRoutePriority:
+                  format: int64
                   type: integer
                 id:
                   type: string
@@ -459,6 +462,7 @@ spec:
                 name:
                   type: string
                 peerAsn:
+                  format: int64
                   type: integer
                 peerIPAddress:
                   type: string

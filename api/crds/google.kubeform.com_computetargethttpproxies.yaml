@@ -423,6 +423,7 @@ spec:
                   type: string
               type: object
             proxyID:
+              format: int64
               type: integer
             selfLink:
               type: string
@@ -462,6 +463,7 @@ spec:
                       type: string
                   type: object
                 proxyID:
+                  format: int64
                   type: integer
                 selfLink:
                   type: string

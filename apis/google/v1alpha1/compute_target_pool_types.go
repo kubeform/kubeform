@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -51,7 +49,7 @@ type ComputeTargetPoolSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	FailoverRatio json.Number `json:"failoverRatio,omitempty" tf:"failover_ratio,omitempty"`
+	FailoverRatio float64 `json:"failoverRatio,omitempty" tf:"failover_ratio,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	HealthChecks []string `json:"healthChecks,omitempty" tf:"health_checks,omitempty"`

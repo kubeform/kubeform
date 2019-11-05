@@ -49,7 +49,7 @@ type DxBGPPeerSpec struct {
 	AmazonAddress string `json:"amazonAddress,omitempty" tf:"amazon_address,omitempty"`
 	// +optional
 	AwsDevice string `json:"awsDevice,omitempty" tf:"aws_device,omitempty"`
-	BgpAsn    int    `json:"bgpAsn" tf:"bgp_asn"`
+	BgpAsn    int64  `json:"bgpAsn" tf:"bgp_asn"`
 	// +optional
 	BgpAuthKey string `json:"bgpAuthKey,omitempty" tf:"bgp_auth_key,omitempty"`
 	// +optional

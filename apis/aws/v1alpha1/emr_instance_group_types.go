@@ -41,11 +41,11 @@ type EmrInstanceGroup struct {
 
 type EmrInstanceGroupSpecEbsConfig struct {
 	// +optional
-	Iops int    `json:"iops,omitempty" tf:"iops,omitempty"`
-	Size int    `json:"size" tf:"size"`
+	Iops int64  `json:"iops,omitempty" tf:"iops,omitempty"`
+	Size int64  `json:"size" tf:"size"`
 	Type string `json:"type" tf:"type"`
 	// +optional
-	VolumesPerInstance int `json:"volumesPerInstance,omitempty" tf:"volumes_per_instance,omitempty"`
+	VolumesPerInstance int64 `json:"volumesPerInstance,omitempty" tf:"volumes_per_instance,omitempty"`
 }
 
 type EmrInstanceGroupSpec struct {
@@ -59,12 +59,12 @@ type EmrInstanceGroupSpec struct {
 	// +optional
 	EbsOptimized bool `json:"ebsOptimized,omitempty" tf:"ebs_optimized,omitempty"`
 	// +optional
-	InstanceCount int    `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
+	InstanceCount int64  `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
 	InstanceType  string `json:"instanceType" tf:"instance_type"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	RunningInstanceCount int `json:"runningInstanceCount,omitempty" tf:"running_instance_count,omitempty"`
+	RunningInstanceCount int64 `json:"runningInstanceCount,omitempty" tf:"running_instance_count,omitempty"`
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
 }

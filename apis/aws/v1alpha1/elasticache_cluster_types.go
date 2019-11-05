@@ -47,7 +47,7 @@ type ElasticacheClusterSpecCacheNodes struct {
 	// +optional
 	ID string `json:"ID,omitempty" tf:"id,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type ElasticacheClusterSpec struct {
@@ -79,11 +79,11 @@ type ElasticacheClusterSpec struct {
 	// +optional
 	NotificationTopicArn string `json:"notificationTopicArn,omitempty" tf:"notification_topic_arn,omitempty"`
 	// +optional
-	NumCacheNodes int `json:"numCacheNodes,omitempty" tf:"num_cache_nodes,omitempty"`
+	NumCacheNodes int64 `json:"numCacheNodes,omitempty" tf:"num_cache_nodes,omitempty"`
 	// +optional
 	ParameterGroupName string `json:"parameterGroupName,omitempty" tf:"parameter_group_name,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	PreferredAvailabilityZones []string `json:"preferredAvailabilityZones,omitempty" tf:"preferred_availability_zones,omitempty"`
 	// +optional
@@ -97,7 +97,7 @@ type ElasticacheClusterSpec struct {
 	// +optional
 	SnapshotName string `json:"snapshotName,omitempty" tf:"snapshot_name,omitempty"`
 	// +optional
-	SnapshotRetentionLimit int `json:"snapshotRetentionLimit,omitempty" tf:"snapshot_retention_limit,omitempty"`
+	SnapshotRetentionLimit int64 `json:"snapshotRetentionLimit,omitempty" tf:"snapshot_retention_limit,omitempty"`
 	// +optional
 	SnapshotWindow string `json:"snapshotWindow,omitempty" tf:"snapshot_window,omitempty"`
 	// +optional

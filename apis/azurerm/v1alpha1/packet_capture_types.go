@@ -68,11 +68,11 @@ type PacketCaptureSpec struct {
 	// +optional
 	Filter []PacketCaptureSpecFilter `json:"filter,omitempty" tf:"filter,omitempty"`
 	// +optional
-	MaximumBytesPerPacket int `json:"maximumBytesPerPacket,omitempty" tf:"maximum_bytes_per_packet,omitempty"`
+	MaximumBytesPerPacket int64 `json:"maximumBytesPerPacket,omitempty" tf:"maximum_bytes_per_packet,omitempty"`
 	// +optional
-	MaximumBytesPerSession int `json:"maximumBytesPerSession,omitempty" tf:"maximum_bytes_per_session,omitempty"`
+	MaximumBytesPerSession int64 `json:"maximumBytesPerSession,omitempty" tf:"maximum_bytes_per_session,omitempty"`
 	// +optional
-	MaximumCaptureDuration int    `json:"maximumCaptureDuration,omitempty" tf:"maximum_capture_duration,omitempty"`
+	MaximumCaptureDuration int64  `json:"maximumCaptureDuration,omitempty" tf:"maximum_capture_duration,omitempty"`
 	Name                   string `json:"name" tf:"name"`
 	NetworkWatcherName     string `json:"networkWatcherName" tf:"network_watcher_name"`
 	ResourceGroupName      string `json:"resourceGroupName" tf:"resource_group_name"`

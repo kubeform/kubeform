@@ -417,6 +417,7 @@ spec:
                   description:
                     type: string
                   fromPort:
+                    format: int64
                     type: integer
                   ipv6CIDRBlocks:
                     items:
@@ -435,6 +436,7 @@ spec:
                   self:
                     type: boolean
                   toPort:
+                    format: int64
                     type: integer
                 required:
                 - fromPort
@@ -454,6 +456,7 @@ spec:
                   description:
                     type: string
                   fromPort:
+                    format: int64
                     type: integer
                   ipv6CIDRBlocks:
                     items:
@@ -472,6 +475,7 @@ spec:
                   self:
                     type: boolean
                   toPort:
+                    format: int64
                     type: integer
                 required:
                 - fromPort
@@ -528,6 +532,7 @@ spec:
                       description:
                         type: string
                       fromPort:
+                        format: int64
                         type: integer
                       ipv6CIDRBlocks:
                         items:
@@ -546,6 +551,7 @@ spec:
                       self:
                         type: boolean
                       toPort:
+                        format: int64
                         type: integer
                     required:
                     - fromPort
@@ -565,6 +571,7 @@ spec:
                       description:
                         type: string
                       fromPort:
+                        format: int64
                         type: integer
                       ipv6CIDRBlocks:
                         items:
@@ -583,6 +590,7 @@ spec:
                       self:
                         type: boolean
                       toPort:
+                        format: int64
                         type: integer
                     required:
                     - fromPort

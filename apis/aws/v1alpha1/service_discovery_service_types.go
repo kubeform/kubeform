@@ -40,7 +40,7 @@ type ServiceDiscoveryService struct {
 }
 
 type ServiceDiscoveryServiceSpecDnsConfigDnsRecords struct {
-	Ttl  int    `json:"ttl" tf:"ttl"`
+	Ttl  int64  `json:"ttl" tf:"ttl"`
 	Type string `json:"type" tf:"type"`
 }
 
@@ -53,7 +53,7 @@ type ServiceDiscoveryServiceSpecDnsConfig struct {
 
 type ServiceDiscoveryServiceSpecHealthCheckConfig struct {
 	// +optional
-	FailureThreshold int `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 	// +optional
 	ResourcePath string `json:"resourcePath,omitempty" tf:"resource_path,omitempty"`
 	// +optional
@@ -62,7 +62,7 @@ type ServiceDiscoveryServiceSpecHealthCheckConfig struct {
 
 type ServiceDiscoveryServiceSpecHealthCheckCustomConfig struct {
 	// +optional
-	FailureThreshold int `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 }
 
 type ServiceDiscoveryServiceSpec struct {

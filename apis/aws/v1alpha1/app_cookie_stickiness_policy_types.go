@@ -45,7 +45,7 @@ type AppCookieStickinessPolicySpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	CookieName   string `json:"cookieName" tf:"cookie_name"`
-	LbPort       int    `json:"lbPort" tf:"lb_port"`
+	LbPort       int64  `json:"lbPort" tf:"lb_port"`
 	LoadBalancer string `json:"loadBalancer" tf:"load_balancer"`
 	Name         string `json:"name" tf:"name"`
 }

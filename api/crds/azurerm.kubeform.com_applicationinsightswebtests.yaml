@@ -412,6 +412,7 @@ spec:
             enabled:
               type: boolean
             frequency:
+              format: int64
               type: integer
             geoLocations:
               items:
@@ -446,6 +447,7 @@ spec:
                 type: string
               type: object
             timeout:
+              format: int64
               type: integer
           required:
           - applicationInsightsID
@@ -475,6 +477,7 @@ spec:
                 enabled:
                   type: boolean
                 frequency:
+                  format: int64
                   type: integer
                 geoLocations:
                   items:
@@ -509,6 +512,7 @@ spec:
                     type: string
                   type: object
                 timeout:
+                  format: int64
                   type: integer
               required:
               - applicationInsightsID

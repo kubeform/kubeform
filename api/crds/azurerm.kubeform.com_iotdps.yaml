@@ -424,6 +424,7 @@ spec:
               items:
                 properties:
                   capacity:
+                    format: int64
                     type: integer
                   name:
                     type: string
@@ -477,6 +478,7 @@ spec:
                   items:
                     properties:
                       capacity:
+                        format: int64
                         type: integer
                       name:
                         type: string

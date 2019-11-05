@@ -428,10 +428,12 @@ spec:
             id:
               type: string
             minChildEndpoints:
+              format: int64
               type: integer
             name:
               type: string
             priority:
+              format: int64
               type: integer
             profileName:
               type: string
@@ -454,6 +456,7 @@ spec:
                   last:
                     type: string
                   scope:
+                    format: int64
                     type: integer
                 required:
                 - first
@@ -466,6 +469,7 @@ spec:
             type:
               type: string
             weight:
+              format: int64
               type: integer
           required:
           - name
@@ -508,10 +512,12 @@ spec:
                 id:
                   type: string
                 minChildEndpoints:
+                  format: int64
                   type: integer
                 name:
                   type: string
                 priority:
+                  format: int64
                   type: integer
                 profileName:
                   type: string
@@ -534,6 +540,7 @@ spec:
                       last:
                         type: string
                       scope:
+                        format: int64
                         type: integer
                     required:
                     - first
@@ -546,6 +553,7 @@ spec:
                 type:
                   type: string
                 weight:
+                  format: int64
                   type: integer
               required:
               - name

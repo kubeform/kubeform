@@ -433,6 +433,7 @@ spec:
             volumeID:
               type: string
             volumeSize:
+              format: int64
               type: integer
           required:
           - providerRef
@@ -477,6 +478,7 @@ spec:
                 volumeID:
                   type: string
                 volumeSize:
+                  format: int64
                   type: integer
               required:
               - providerRef

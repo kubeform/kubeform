@@ -51,7 +51,7 @@ type LbSSLNegotiationPolicySpec struct {
 
 	// +optional
 	Attribute    []LbSSLNegotiationPolicySpecAttribute `json:"attribute,omitempty" tf:"attribute,omitempty"`
-	LbPort       int                                   `json:"lbPort" tf:"lb_port"`
+	LbPort       int64                                 `json:"lbPort" tf:"lb_port"`
 	LoadBalancer string                                `json:"loadBalancer" tf:"load_balancer"`
 	Name         string                                `json:"name" tf:"name"`
 }

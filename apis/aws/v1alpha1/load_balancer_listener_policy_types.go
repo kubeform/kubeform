@@ -45,7 +45,7 @@ type LoadBalancerListenerPolicySpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	LoadBalancerName string `json:"loadBalancerName" tf:"load_balancer_name"`
-	LoadBalancerPort int    `json:"loadBalancerPort" tf:"load_balancer_port"`
+	LoadBalancerPort int64  `json:"loadBalancerPort" tf:"load_balancer_port"`
 	// +optional
 	PolicyNames []string `json:"policyNames,omitempty" tf:"policy_names,omitempty"`
 }

@@ -49,7 +49,7 @@ type WafSizeConstraintSetSpecSizeConstraints struct {
 	ComparisonOperator string `json:"comparisonOperator" tf:"comparison_operator"`
 	// +kubebuilder:validation:MaxItems=1
 	FieldToMatch       []WafSizeConstraintSetSpecSizeConstraintsFieldToMatch `json:"fieldToMatch" tf:"field_to_match"`
-	Size               int                                                   `json:"size" tf:"size"`
+	Size               int64                                                 `json:"size" tf:"size"`
 	TextTransformation string                                                `json:"textTransformation" tf:"text_transformation"`
 }
 

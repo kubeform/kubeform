@@ -408,6 +408,7 @@ spec:
             id:
               type: string
             minDiskSize:
+              format: int64
               type: integer
             name:
               type: string
@@ -425,8 +426,8 @@ spec:
                 type: string
               type: array
             size:
-              description: A Number represents a JSON number literal.
-              type: string
+              format: float
+              type: number
             volumeID:
               type: string
           required:
@@ -448,6 +449,7 @@ spec:
                 id:
                   type: string
                 minDiskSize:
+                  format: int64
                   type: integer
                 name:
                   type: string
@@ -465,8 +467,8 @@ spec:
                     type: string
                   type: array
                 size:
-                  description: A Number represents a JSON number literal.
-                  type: string
+                  format: float
+                  type: number
                 volumeID:
                   type: string
               required:

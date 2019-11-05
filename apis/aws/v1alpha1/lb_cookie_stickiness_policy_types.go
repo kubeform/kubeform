@@ -45,8 +45,8 @@ type LbCookieStickinessPolicySpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	CookieExpirationPeriod int    `json:"cookieExpirationPeriod,omitempty" tf:"cookie_expiration_period,omitempty"`
-	LbPort                 int    `json:"lbPort" tf:"lb_port"`
+	CookieExpirationPeriod int64  `json:"cookieExpirationPeriod,omitempty" tf:"cookie_expiration_period,omitempty"`
+	LbPort                 int64  `json:"lbPort" tf:"lb_port"`
 	LoadBalancer           string `json:"loadBalancer" tf:"load_balancer"`
 	Name                   string `json:"name" tf:"name"`
 }

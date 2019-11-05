@@ -475,6 +475,7 @@ spec:
                         roleArn:
                           type: string
                         runOrder:
+                          format: int64
                           type: integer
                         version:
                           type: string
@@ -582,6 +583,7 @@ spec:
                             roleArn:
                               type: string
                             runOrder:
+                              format: int64
                               type: integer
                             version:
                               type: string

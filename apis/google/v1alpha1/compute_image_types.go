@@ -54,7 +54,7 @@ type ComputeImageSpec struct {
 
 	// +optional
 	// Deprecated
-	CreateTimeout int `json:"createTimeout,omitempty" tf:"create_timeout,omitempty"`
+	CreateTimeout int64 `json:"createTimeout,omitempty" tf:"create_timeout,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional

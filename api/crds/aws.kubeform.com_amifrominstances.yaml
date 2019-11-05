@@ -417,10 +417,12 @@ spec:
                   encrypted:
                     type: boolean
                   iops:
+                    format: int64
                     type: integer
                   snapshotID:
                     type: string
                   volumeSize:
+                    format: int64
                     type: integer
                   volumeType:
                     type: string
@@ -502,10 +504,12 @@ spec:
                       encrypted:
                         type: boolean
                       iops:
+                        format: int64
                         type: integer
                       snapshotID:
                         type: string
                       volumeSize:
+                        format: int64
                         type: integer
                       volumeType:
                         type: string

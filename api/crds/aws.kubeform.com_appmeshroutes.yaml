@@ -439,6 +439,7 @@ spec:
                                     virtualNode:
                                       type: string
                                     weight:
+                                      format: int64
                                       type: integer
                                   required:
                                   - virtualNode
@@ -482,6 +483,7 @@ spec:
                                     virtualNode:
                                       type: string
                                     weight:
+                                      format: int64
                                       type: integer
                                   required:
                                   - virtualNode
@@ -559,6 +561,7 @@ spec:
                                         virtualNode:
                                           type: string
                                         weight:
+                                          format: int64
                                           type: integer
                                       required:
                                       - virtualNode
@@ -602,6 +605,7 @@ spec:
                                         virtualNode:
                                           type: string
                                         weight:
+                                          format: int64
                                           type: integer
                                       required:
                                       - virtualNode

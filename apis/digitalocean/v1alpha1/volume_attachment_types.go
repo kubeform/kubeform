@@ -44,7 +44,7 @@ type VolumeAttachmentSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	DropletID int    `json:"dropletID" tf:"droplet_id"`
+	DropletID int64  `json:"dropletID" tf:"droplet_id"`
 	VolumeID  string `json:"volumeID" tf:"volume_id"`
 }
 

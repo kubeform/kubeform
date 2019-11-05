@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -50,18 +48,18 @@ type XraySamplingRuleSpec struct {
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	Attributes    map[string]string `json:"attributes,omitempty" tf:"attributes,omitempty"`
-	FixedRate     json.Number       `json:"fixedRate" tf:"fixed_rate"`
+	FixedRate     float64           `json:"fixedRate" tf:"fixed_rate"`
 	Host          string            `json:"host" tf:"host"`
 	HttpMethod    string            `json:"httpMethod" tf:"http_method"`
-	Priority      int               `json:"priority" tf:"priority"`
-	ReservoirSize int               `json:"reservoirSize" tf:"reservoir_size"`
+	Priority      int64             `json:"priority" tf:"priority"`
+	ReservoirSize int64             `json:"reservoirSize" tf:"reservoir_size"`
 	ResourceArn   string            `json:"resourceArn" tf:"resource_arn"`
 	// +optional
 	RuleName    string `json:"ruleName,omitempty" tf:"rule_name,omitempty"`
 	ServiceName string `json:"serviceName" tf:"service_name"`
 	ServiceType string `json:"serviceType" tf:"service_type"`
 	UrlPath     string `json:"urlPath" tf:"url_path"`
-	Version     int    `json:"version" tf:"version"`
+	Version     int64  `json:"version" tf:"version"`
 }
 
 type XraySamplingRuleStatus struct {

@@ -58,7 +58,7 @@ type DbInstanceSpec struct {
 	// +optional
 	Address string `json:"address,omitempty" tf:"address,omitempty"`
 	// +optional
-	AllocatedStorage int `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
+	AllocatedStorage int64 `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
 	// +optional
 	AllowMajorVersionUpgrade bool `json:"allowMajorVersionUpgrade,omitempty" tf:"allow_major_version_upgrade,omitempty"`
 	// +optional
@@ -70,7 +70,7 @@ type DbInstanceSpec struct {
 	// +optional
 	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 	// +optional
-	BackupRetentionPeriod int `json:"backupRetentionPeriod,omitempty" tf:"backup_retention_period,omitempty"`
+	BackupRetentionPeriod int64 `json:"backupRetentionPeriod,omitempty" tf:"backup_retention_period,omitempty"`
 	// +optional
 	BackupWindow string `json:"backupWindow,omitempty" tf:"backup_window,omitempty"`
 	// +optional
@@ -107,7 +107,7 @@ type DbInstanceSpec struct {
 	IdentifierPrefix string `json:"identifierPrefix,omitempty" tf:"identifier_prefix,omitempty"`
 	InstanceClass    string `json:"instanceClass" tf:"instance_class"`
 	// +optional
-	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional
@@ -115,7 +115,7 @@ type DbInstanceSpec struct {
 	// +optional
 	MaintenanceWindow string `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
 	// +optional
-	MonitoringInterval int `json:"monitoringInterval,omitempty" tf:"monitoring_interval,omitempty"`
+	MonitoringInterval int64 `json:"monitoringInterval,omitempty" tf:"monitoring_interval,omitempty"`
 	// +optional
 	MonitoringRoleArn string `json:"monitoringRoleArn,omitempty" tf:"monitoring_role_arn,omitempty"`
 	// +optional
@@ -129,7 +129,7 @@ type DbInstanceSpec struct {
 	// +optional
 	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	PubliclyAccessible bool `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
 	// +optional

@@ -410,6 +410,7 @@ spec:
             id:
               type: string
             promotionalMessagesPerSecond:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -425,6 +426,7 @@ spec:
             shortCode:
               type: string
             transactionalMessagesPerSecond:
+              format: int64
               type: integer
           required:
           - applicationID
@@ -446,6 +448,7 @@ spec:
                 id:
                   type: string
                 promotionalMessagesPerSecond:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -461,6 +464,7 @@ spec:
                 shortCode:
                   type: string
                 transactionalMessagesPerSecond:
+                  format: int64
                   type: integer
               required:
               - applicationID

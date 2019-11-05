@@ -430,8 +430,10 @@ spec:
                   encoding:
                     type: string
                   intervalInSeconds:
+                    format: int64
                     type: integer
                   sizeLimitInBytes:
+                    format: int64
                     type: integer
                   skipEmptyArchives:
                     type: boolean
@@ -448,12 +450,14 @@ spec:
               description: Deprecated
               type: string
             messageRetention:
+              format: int64
               type: integer
             name:
               type: string
             namespaceName:
               type: string
             partitionCount:
+              format: int64
               type: integer
             partitionIDS:
               items:
@@ -514,8 +518,10 @@ spec:
                       encoding:
                         type: string
                       intervalInSeconds:
+                        format: int64
                         type: integer
                       sizeLimitInBytes:
+                        format: int64
                         type: integer
                       skipEmptyArchives:
                         type: boolean
@@ -532,12 +538,14 @@ spec:
                   description: Deprecated
                   type: string
                 messageRetention:
+                  format: int64
                   type: integer
                 name:
                   type: string
                 namespaceName:
                   type: string
                 partitionCount:
+                  format: int64
                   type: integer
                 partitionIDS:
                   items:

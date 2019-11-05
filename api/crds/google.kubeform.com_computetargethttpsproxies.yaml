@@ -423,6 +423,7 @@ spec:
                   type: string
               type: object
             proxyID:
+              format: int64
               type: integer
             quicOverride:
               type: string
@@ -471,6 +472,7 @@ spec:
                       type: string
                   type: object
                 proxyID:
+                  format: int64
                   type: integer
                 quicOverride:
                   type: string

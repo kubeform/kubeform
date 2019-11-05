@@ -52,7 +52,7 @@ type RedshiftClusterSpecSnapshotCopy struct {
 	// +optional
 	GrantName string `json:"grantName,omitempty" tf:"grant_name,omitempty"`
 	// +optional
-	RetentionPeriod int `json:"retentionPeriod,omitempty" tf:"retention_period,omitempty"`
+	RetentionPeriod int64 `json:"retentionPeriod,omitempty" tf:"retention_period,omitempty"`
 }
 
 type RedshiftClusterSpec struct {
@@ -65,7 +65,7 @@ type RedshiftClusterSpec struct {
 	// +optional
 	AllowVersionUpgrade bool `json:"allowVersionUpgrade,omitempty" tf:"allow_version_upgrade,omitempty"`
 	// +optional
-	AutomatedSnapshotRetentionPeriod int `json:"automatedSnapshotRetentionPeriod,omitempty" tf:"automated_snapshot_retention_period,omitempty"`
+	AutomatedSnapshotRetentionPeriod int64 `json:"automatedSnapshotRetentionPeriod,omitempty" tf:"automated_snapshot_retention_period,omitempty"`
 	// +optional
 	AvailabilityZone  string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 	ClusterIdentifier string `json:"clusterIdentifier" tf:"cluster_identifier"`
@@ -110,11 +110,11 @@ type RedshiftClusterSpec struct {
 	MasterUsername string `json:"masterUsername,omitempty" tf:"master_username,omitempty"`
 	NodeType       string `json:"nodeType" tf:"node_type"`
 	// +optional
-	NumberOfNodes int `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes int64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
 	// +optional
 	OwnerAccount string `json:"ownerAccount,omitempty" tf:"owner_account,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	PreferredMaintenanceWindow string `json:"preferredMaintenanceWindow,omitempty" tf:"preferred_maintenance_window,omitempty"`
 	// +optional

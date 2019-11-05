@@ -42,14 +42,14 @@ type ConnectionMonitor struct {
 type ConnectionMonitorSpecDestination struct {
 	// +optional
 	Address string `json:"address,omitempty" tf:"address,omitempty"`
-	Port    int    `json:"port" tf:"port"`
+	Port    int64  `json:"port" tf:"port"`
 	// +optional
 	VirtualMachineID string `json:"virtualMachineID,omitempty" tf:"virtual_machine_id,omitempty"`
 }
 
 type ConnectionMonitorSpecSource struct {
 	// +optional
-	Port             int    `json:"port,omitempty" tf:"port,omitempty"`
+	Port             int64  `json:"port,omitempty" tf:"port,omitempty"`
 	VirtualMachineID string `json:"virtualMachineID" tf:"virtual_machine_id"`
 }
 
@@ -63,7 +63,7 @@ type ConnectionMonitorSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Destination []ConnectionMonitorSpecDestination `json:"destination" tf:"destination"`
 	// +optional
-	IntervalInSeconds  int    `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds  int64  `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 	Location           string `json:"location" tf:"location"`
 	Name               string `json:"name" tf:"name"`
 	NetworkWatcherName string `json:"networkWatcherName" tf:"network_watcher_name"`

@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -57,11 +55,11 @@ type Ec2FleetSpecLaunchTemplateConfigOverride struct {
 	// +optional
 	MaxPrice string `json:"maxPrice,omitempty" tf:"max_price,omitempty"`
 	// +optional
-	Priority json.Number `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 	// +optional
 	SubnetID string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
 	// +optional
-	WeightedCapacity json.Number `json:"weightedCapacity,omitempty" tf:"weighted_capacity,omitempty"`
+	WeightedCapacity float64 `json:"weightedCapacity,omitempty" tf:"weighted_capacity,omitempty"`
 }
 
 type Ec2FleetSpecLaunchTemplateConfig struct {
@@ -84,16 +82,16 @@ type Ec2FleetSpecSpotOptions struct {
 	// +optional
 	InstanceInterruptionBehavior string `json:"instanceInterruptionBehavior,omitempty" tf:"instance_interruption_behavior,omitempty"`
 	// +optional
-	InstancePoolsToUseCount int `json:"instancePoolsToUseCount,omitempty" tf:"instance_pools_to_use_count,omitempty"`
+	InstancePoolsToUseCount int64 `json:"instancePoolsToUseCount,omitempty" tf:"instance_pools_to_use_count,omitempty"`
 }
 
 type Ec2FleetSpecTargetCapacitySpecification struct {
 	DefaultTargetCapacityType string `json:"defaultTargetCapacityType" tf:"default_target_capacity_type"`
 	// +optional
-	OnDemandTargetCapacity int `json:"onDemandTargetCapacity,omitempty" tf:"on_demand_target_capacity,omitempty"`
+	OnDemandTargetCapacity int64 `json:"onDemandTargetCapacity,omitempty" tf:"on_demand_target_capacity,omitempty"`
 	// +optional
-	SpotTargetCapacity  int `json:"spotTargetCapacity,omitempty" tf:"spot_target_capacity,omitempty"`
-	TotalTargetCapacity int `json:"totalTargetCapacity" tf:"total_target_capacity"`
+	SpotTargetCapacity  int64 `json:"spotTargetCapacity,omitempty" tf:"spot_target_capacity,omitempty"`
+	TotalTargetCapacity int64 `json:"totalTargetCapacity" tf:"total_target_capacity"`
 }
 
 type Ec2FleetSpec struct {

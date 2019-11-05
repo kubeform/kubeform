@@ -412,8 +412,10 @@ spec:
             availabilityZone:
               type: string
             cpuCoreCount:
+              format: int64
               type: integer
             cpuThreadsPerCore:
+              format: int64
               type: integer
             creditSpecification:
               items:
@@ -435,12 +437,14 @@ spec:
                   encrypted:
                     type: boolean
                   iops:
+                    format: int64
                     type: integer
                   snapshotID:
                     type: string
                   volumeID:
                     type: string
                   volumeSize:
+                    format: int64
                     type: integer
                   volumeType:
                     type: string
@@ -478,6 +482,7 @@ spec:
             instanceType:
               type: string
             ipv6AddressCount:
+              format: int64
               type: integer
             ipv6Addresses:
               items:
@@ -493,6 +498,7 @@ spec:
                   deleteOnTermination:
                     type: boolean
                   deviceIndex:
+                    format: int64
                     type: integer
                   networkInterfaceID:
                     type: string
@@ -530,10 +536,12 @@ spec:
                   deleteOnTermination:
                     type: boolean
                   iops:
+                    format: int64
                     type: integer
                   volumeID:
                     type: string
                   volumeSize:
+                    format: int64
                     type: integer
                   volumeType:
                     type: string
@@ -589,8 +597,10 @@ spec:
                 availabilityZone:
                   type: string
                 cpuCoreCount:
+                  format: int64
                   type: integer
                 cpuThreadsPerCore:
+                  format: int64
                   type: integer
                 creditSpecification:
                   items:
@@ -612,12 +622,14 @@ spec:
                       encrypted:
                         type: boolean
                       iops:
+                        format: int64
                         type: integer
                       snapshotID:
                         type: string
                       volumeID:
                         type: string
                       volumeSize:
+                        format: int64
                         type: integer
                       volumeType:
                         type: string
@@ -655,6 +667,7 @@ spec:
                 instanceType:
                   type: string
                 ipv6AddressCount:
+                  format: int64
                   type: integer
                 ipv6Addresses:
                   items:
@@ -670,6 +683,7 @@ spec:
                       deleteOnTermination:
                         type: boolean
                       deviceIndex:
+                        format: int64
                         type: integer
                       networkInterfaceID:
                         type: string
@@ -707,10 +721,12 @@ spec:
                       deleteOnTermination:
                         type: boolean
                       iops:
+                        format: int64
                         type: integer
                       volumeID:
                         type: string
                       volumeSize:
+                        format: int64
                         type: integer
                       volumeType:
                         type: string

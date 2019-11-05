@@ -12457,7 +12457,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_CdnSpec(ref common.ReferenceCall
 						SchemaProps: spec.SchemaProps{
 							Description: "The amount of time the content is cached in the CDN",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 				},
@@ -12865,7 +12865,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DatabaseClusterSpec(ref common.R
 					"nodeCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"password": {
@@ -12877,7 +12877,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DatabaseClusterSpec(ref common.R
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"region": {
@@ -13364,7 +13364,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletSnapshotSpec(ref common.R
 					"minDiskSize": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -13388,8 +13388,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletSnapshotSpec(ref common.R
 					},
 					"size": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 				},
@@ -13464,7 +13464,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletSpec(ref common.Reference
 					"disk": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"image": {
@@ -13506,7 +13506,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletSpec(ref common.Reference
 					"memory": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"monitoring": {
@@ -13523,14 +13523,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletSpec(ref common.Reference
 					},
 					"priceHourly": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"priceMonthly": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"privateNetworking": {
@@ -13604,7 +13604,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletSpec(ref common.Reference
 					"vcpus": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"volumeIDS": {
@@ -14025,7 +14025,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FirewallSpecPendingChanges(ref c
 					"dropletID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"removing": {
@@ -14236,7 +14236,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FloatingIPAssignmentSpec(ref com
 					"dropletID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"ipAddress": {
@@ -14358,7 +14358,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FloatingIPSpec(ref common.Refere
 					"dropletID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"ipAddress": {
@@ -14702,7 +14702,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesClusterSpecNodePool(re
 					"nodeCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"nodes": {
@@ -14946,7 +14946,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesNodePoolSpec(ref commo
 					"nodeCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"nodes": {
@@ -15303,7 +15303,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_LoadbalancerSpecForwardingRule(r
 					"entryPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"entryProtocol": {
@@ -15315,7 +15315,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_LoadbalancerSpecForwardingRule(r
 					"targetPort": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"targetProtocol": {
@@ -15346,13 +15346,13 @@ func schema_kubeform_apis_digitalocean_v1alpha1_LoadbalancerSpecHealthcheck(ref 
 					"checkIntervalSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"healthyThreshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"path": {
@@ -15364,7 +15364,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_LoadbalancerSpecHealthcheck(ref 
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"protocol": {
@@ -15376,13 +15376,13 @@ func schema_kubeform_apis_digitalocean_v1alpha1_LoadbalancerSpecHealthcheck(ref 
 					"responseTimeoutSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"unhealthyThreshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -15407,7 +15407,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_LoadbalancerSpecStickySessions(r
 					"cookieTtlSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"type": {
@@ -15598,7 +15598,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_ProjectSpec(ref common.Reference
 						SchemaProps: spec.SchemaProps{
 							Description: "the id of the project owner.",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"ownerUUID": {
@@ -15798,7 +15798,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_RecordSpec(ref common.ReferenceC
 					"flags": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"fqdn": {
@@ -15816,13 +15816,13 @@ func schema_kubeform_apis_digitalocean_v1alpha1_RecordSpec(ref common.ReferenceC
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"tag": {
@@ -15834,7 +15834,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_RecordSpec(ref common.ReferenceC
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"type": {
@@ -15852,7 +15852,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_RecordSpec(ref common.ReferenceC
 					"weight": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 				},
@@ -16579,7 +16579,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeAttachmentSpec(ref common.
 					"dropletID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"volumeID": {
@@ -16797,7 +16797,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeSnapshotSpec(ref common.Re
 					"minDiskSize": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"name": {
@@ -16821,8 +16821,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeSnapshotSpec(ref common.Re
 					},
 					"size": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"volumeID": {
@@ -16953,7 +16953,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeSpec(ref common.ReferenceC
 					"size": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
-							Format: "int32",
+							Format: "int64",
 						},
 					},
 					"snapshotID": {

@@ -421,10 +421,13 @@ spec:
               items:
                 properties:
                   errorCachingMinTtl:
+                    format: int64
                     type: integer
                   errorCode:
+                    format: int64
                     type: integer
                   responseCode:
+                    format: int64
                     type: integer
                   responsePagePath:
                     type: string
@@ -446,6 +449,7 @@ spec:
                   compress:
                     type: boolean
                   defaultTtl:
+                    format: int64
                     type: integer
                   fieldLevelEncryptionID:
                     type: string
@@ -498,8 +502,10 @@ spec:
                     maxItems: 4
                     type: array
                   maxTtl:
+                    format: int64
                     type: integer
                   minTtl:
+                    format: int64
                     type: integer
                   smoothStreaming:
                     type: boolean
@@ -535,6 +541,7 @@ spec:
             id:
               type: string
             inProgressValidationBatches:
+              format: int64
               type: integer
             isIpv6Enabled:
               type: boolean
@@ -568,6 +575,7 @@ spec:
                   compress:
                     type: boolean
                   defaultTtl:
+                    format: int64
                     type: integer
                   fieldLevelEncryptionID:
                     type: string
@@ -620,8 +628,10 @@ spec:
                     maxItems: 4
                     type: array
                   maxTtl:
+                    format: int64
                     type: integer
                   minTtl:
+                    format: int64
                     type: integer
                   pathPattern:
                     type: string
@@ -663,14 +673,18 @@ spec:
                     items:
                       properties:
                         httpPort:
+                          format: int64
                           type: integer
                         httpsPort:
+                          format: int64
                           type: integer
                         originKeepaliveTimeout:
+                          format: int64
                           type: integer
                         originProtocolPolicy:
                           type: string
                         originReadTimeout:
+                          format: int64
                           type: integer
                         originSSLProtocols:
                           items:
@@ -835,10 +849,13 @@ spec:
                   items:
                     properties:
                       errorCachingMinTtl:
+                        format: int64
                         type: integer
                       errorCode:
+                        format: int64
                         type: integer
                       responseCode:
+                        format: int64
                         type: integer
                       responsePagePath:
                         type: string
@@ -860,6 +877,7 @@ spec:
                       compress:
                         type: boolean
                       defaultTtl:
+                        format: int64
                         type: integer
                       fieldLevelEncryptionID:
                         type: string
@@ -912,8 +930,10 @@ spec:
                         maxItems: 4
                         type: array
                       maxTtl:
+                        format: int64
                         type: integer
                       minTtl:
+                        format: int64
                         type: integer
                       smoothStreaming:
                         type: boolean
@@ -949,6 +969,7 @@ spec:
                 id:
                   type: string
                 inProgressValidationBatches:
+                  format: int64
                   type: integer
                 isIpv6Enabled:
                   type: boolean
@@ -982,6 +1003,7 @@ spec:
                       compress:
                         type: boolean
                       defaultTtl:
+                        format: int64
                         type: integer
                       fieldLevelEncryptionID:
                         type: string
@@ -1034,8 +1056,10 @@ spec:
                         maxItems: 4
                         type: array
                       maxTtl:
+                        format: int64
                         type: integer
                       minTtl:
+                        format: int64
                         type: integer
                       pathPattern:
                         type: string
@@ -1077,14 +1101,18 @@ spec:
                         items:
                           properties:
                             httpPort:
+                              format: int64
                               type: integer
                             httpsPort:
+                              format: int64
                               type: integer
                             originKeepaliveTimeout:
+                              format: int64
                               type: integer
                             originProtocolPolicy:
                               type: string
                             originReadTimeout:
+                              format: int64
                               type: integer
                             originSSLProtocols:
                               items:

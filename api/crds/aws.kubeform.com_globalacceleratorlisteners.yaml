@@ -413,8 +413,10 @@ spec:
               items:
                 properties:
                   fromPort:
+                    format: int64
                     type: integer
                   toPort:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 10
@@ -456,8 +458,10 @@ spec:
                   items:
                     properties:
                       fromPort:
+                        format: int64
                         type: integer
                       toPort:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 10

@@ -409,6 +409,7 @@ spec:
                   attachmentID:
                     type: string
                   deviceIndex:
+                    format: int64
                     type: integer
                   instance:
                     type: string
@@ -430,6 +431,7 @@ spec:
                 type: string
               type: array
             privateIPSCount:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -471,6 +473,7 @@ spec:
                       attachmentID:
                         type: string
                       deviceIndex:
+                        format: int64
                         type: integer
                       instance:
                         type: string
@@ -492,6 +495,7 @@ spec:
                     type: string
                   type: array
                 privateIPSCount:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

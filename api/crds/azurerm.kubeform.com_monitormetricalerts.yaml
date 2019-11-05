@@ -448,8 +448,8 @@ spec:
                   operator:
                     type: string
                   threshold:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                 required:
                 - aggregation
                 - metricName
@@ -487,6 +487,7 @@ spec:
               minItems: 1
               type: array
             severity:
+              format: int64
               type: integer
             tags:
               additionalProperties:
@@ -555,8 +556,8 @@ spec:
                       operator:
                         type: string
                       threshold:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                     required:
                     - aggregation
                     - metricName
@@ -594,6 +595,7 @@ spec:
                   minItems: 1
                   type: array
                 severity:
+                  format: int64
                   type: integer
                 tags:
                   additionalProperties:

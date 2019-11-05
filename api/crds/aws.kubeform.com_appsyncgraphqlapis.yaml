@@ -428,10 +428,12 @@ spec:
               items:
                 properties:
                   authTtl:
+                    format: int64
                     type: integer
                   clientID:
                     type: string
                   iatTtl:
+                    format: int64
                     type: integer
                   issuer:
                     type: string
@@ -515,10 +517,12 @@ spec:
                   items:
                     properties:
                       authTtl:
+                        format: int64
                         type: integer
                       clientID:
                         type: string
                       iatTtl:
+                        format: int64
                         type: integer
                       issuer:
                         type: string

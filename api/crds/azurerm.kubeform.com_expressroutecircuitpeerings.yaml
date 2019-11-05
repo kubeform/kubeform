@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             azureAsn:
+              format: int64
               type: integer
             expressRouteCircuitName:
               type: string
@@ -422,6 +423,7 @@ spec:
               maxItems: 1
               type: array
             peerAsn:
+              format: int64
               type: integer
             peeringType:
               type: string
@@ -454,6 +456,7 @@ spec:
                   type: string
               type: object
             vlanID:
+              format: int64
               type: integer
           required:
           - expressRouteCircuitName
@@ -474,6 +477,7 @@ spec:
             output:
               properties:
                 azureAsn:
+                  format: int64
                   type: integer
                 expressRouteCircuitName:
                   type: string
@@ -492,6 +496,7 @@ spec:
                   maxItems: 1
                   type: array
                 peerAsn:
+                  format: int64
                   type: integer
                 peeringType:
                   type: string
@@ -524,6 +529,7 @@ spec:
                       type: string
                   type: object
                 vlanID:
+                  format: int64
                   type: integer
               required:
               - expressRouteCircuitName

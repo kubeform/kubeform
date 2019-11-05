@@ -53,7 +53,7 @@ type CloudwatchLogGroupSpec struct {
 	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
-	RetentionInDays int `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
+	RetentionInDays int64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

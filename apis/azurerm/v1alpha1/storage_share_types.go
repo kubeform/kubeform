@@ -62,7 +62,7 @@ type StorageShareSpec struct {
 	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 	Name     string            `json:"name" tf:"name"`
 	// +optional
-	Quota int `json:"quota,omitempty" tf:"quota,omitempty"`
+	Quota int64 `json:"quota,omitempty" tf:"quota,omitempty"`
 	// +optional
 	// Deprecated
 	ResourceGroupName  string `json:"resourceGroupName,omitempty" tf:"resource_group_name,omitempty"`

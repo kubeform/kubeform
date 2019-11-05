@@ -49,7 +49,7 @@ type EventhubNamespace_Spec struct {
 	// +optional
 	AutoInflateEnabled bool `json:"autoInflateEnabled,omitempty" tf:"auto_inflate_enabled,omitempty"`
 	// +optional
-	Capacity int `json:"capacity,omitempty" tf:"capacity,omitempty"`
+	Capacity int64 `json:"capacity,omitempty" tf:"capacity,omitempty"`
 	// +optional
 	DefaultPrimaryConnectionString string `json:"-" sensitive:"true" tf:"default_primary_connection_string,omitempty"`
 	// +optional
@@ -62,7 +62,7 @@ type EventhubNamespace_Spec struct {
 	KafkaEnabled bool   `json:"kafkaEnabled,omitempty" tf:"kafka_enabled,omitempty"`
 	Location     string `json:"location" tf:"location"`
 	// +optional
-	MaximumThroughputUnits int    `json:"maximumThroughputUnits,omitempty" tf:"maximum_throughput_units,omitempty"`
+	MaximumThroughputUnits int64  `json:"maximumThroughputUnits,omitempty" tf:"maximum_throughput_units,omitempty"`
 	Name                   string `json:"name" tf:"name"`
 	ResourceGroupName      string `json:"resourceGroupName" tf:"resource_group_name"`
 	Sku                    string `json:"sku" tf:"sku"`

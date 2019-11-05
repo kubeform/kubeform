@@ -68,7 +68,7 @@ type ApiGatewayIntegrationSpec struct {
 	ResourceID       string            `json:"resourceID" tf:"resource_id"`
 	RestAPIID        string            `json:"restAPIID" tf:"rest_api_id"`
 	// +optional
-	TimeoutMilliseconds int    `json:"timeoutMilliseconds,omitempty" tf:"timeout_milliseconds,omitempty"`
+	TimeoutMilliseconds int64  `json:"timeoutMilliseconds,omitempty" tf:"timeout_milliseconds,omitempty"`
 	Type                string `json:"type" tf:"type"`
 	// +optional
 	Uri string `json:"uri,omitempty" tf:"uri,omitempty"`

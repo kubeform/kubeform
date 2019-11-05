@@ -405,6 +405,7 @@ spec:
           properties:
             domainID:
               description: The ID of the Domain to access.
+              format: int64
               type: integer
             id:
               type: string
@@ -415,9 +416,11 @@ spec:
               type: string
             port:
               description: The port this Record points to.
+              format: int64
               type: integer
             priority:
               description: The priority of the target host. Lower values are preferred.
+              format: int64
               type: integer
             protocol:
               description: The protocol this Record's service communicates with. Only
@@ -456,9 +459,11 @@ spec:
                 servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600,
                 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value
                 will be rounded to the nearest valid value.'
+              format: int64
               type: integer
             weight:
               description: The relative weight of this Record. Higher values are preferred.
+              format: int64
               type: integer
           required:
           - domainID
@@ -478,6 +483,7 @@ spec:
               properties:
                 domainID:
                   description: The ID of the Domain to access.
+                  format: int64
                   type: integer
                 id:
                   type: string
@@ -488,9 +494,11 @@ spec:
                   type: string
                 port:
                   description: The port this Record points to.
+                  format: int64
                   type: integer
                 priority:
                   description: The priority of the target host. Lower values are preferred.
+                  format: int64
                   type: integer
                 protocol:
                   description: The protocol this Record's service communicates with.
@@ -529,10 +537,12 @@ spec:
                     servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600,
                     86400, 172800, 345600, 604800, 1209600, and 2419200 - any other
                     value will be rounded to the nearest valid value.'
+                  format: int64
                   type: integer
                 weight:
                   description: The relative weight of this Record. Higher values are
                     preferred.
+                  format: int64
                   type: integer
               required:
               - domainID

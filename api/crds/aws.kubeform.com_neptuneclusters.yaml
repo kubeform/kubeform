@@ -412,6 +412,7 @@ spec:
                 type: string
               type: array
             backupRetentionPeriod:
+              format: int64
               type: integer
             clusterIdentifier:
               type: string
@@ -448,6 +449,7 @@ spec:
             neptuneSubnetGroupName:
               type: string
             port:
+              format: int64
               type: integer
             preferredBackupWindow:
               type: string
@@ -501,6 +503,7 @@ spec:
                     type: string
                   type: array
                 backupRetentionPeriod:
+                  format: int64
                   type: integer
                 clusterIdentifier:
                   type: string
@@ -537,6 +540,7 @@ spec:
                 neptuneSubnetGroupName:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 preferredBackupWindow:
                   type: string

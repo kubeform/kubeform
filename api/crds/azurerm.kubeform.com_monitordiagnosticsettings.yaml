@@ -420,6 +420,7 @@ spec:
                     items:
                       properties:
                         days:
+                          format: int64
                           type: integer
                         enabled:
                           type: boolean
@@ -446,6 +447,7 @@ spec:
                     items:
                       properties:
                         days:
+                          format: int64
                           type: integer
                         enabled:
                           type: boolean
@@ -505,6 +507,7 @@ spec:
                         items:
                           properties:
                             days:
+                              format: int64
                               type: integer
                             enabled:
                               type: boolean
@@ -531,6 +534,7 @@ spec:
                         items:
                           properties:
                             days:
+                              format: int64
                               type: integer
                             enabled:
                               type: boolean

@@ -406,6 +406,7 @@ spec:
             clientConnThrottle:
               description: Throttle connections per second (0-20). Set to 0 (zero)
                 to disable throttling.
+              format: int64
               type: integer
             created:
               type: string
@@ -447,15 +448,18 @@ spec:
                   in:
                     description: The total transfer, in MB, used by this NodeBalancer
                       this month
-                    type: string
+                    format: float
+                    type: number
                   out:
                     description: The total inbound transfer, in MB, used for this
                       NodeBalancer this month
-                    type: string
+                    format: float
+                    type: number
                   total:
                     description: The total outbound transfer, in MB, used for this
                       NodeBalancer this month
-                    type: string
+                    format: float
+                    type: number
                 type: object
               type: object
             updated:
@@ -476,6 +480,7 @@ spec:
                 clientConnThrottle:
                   description: Throttle connections per second (0-20). Set to 0 (zero)
                     to disable throttling.
+                  format: int64
                   type: integer
                 created:
                   type: string
@@ -517,15 +522,18 @@ spec:
                       in:
                         description: The total transfer, in MB, used by this NodeBalancer
                           this month
-                        type: string
+                        format: float
+                        type: number
                       out:
                         description: The total inbound transfer, in MB, used for this
                           NodeBalancer this month
-                        type: string
+                        format: float
+                        type: number
                       total:
                         description: The total outbound transfer, in MB, used for
                           this NodeBalancer this month
-                        type: string
+                        format: float
+                        type: number
                     type: object
                   type: object
                 updated:

@@ -424,6 +424,7 @@ spec:
                         sessionCookieName:
                           type: string
                         sessionTimeout:
+                          format: int64
                           type: integer
                         userPoolArn:
                           type: string
@@ -458,6 +459,7 @@ spec:
                         sessionCookieName:
                           type: string
                         sessionTimeout:
+                          format: int64
                           type: integer
                         tokenEndpoint:
                           type: string
@@ -487,6 +489,7 @@ spec:
                     maxItems: 1
                     type: array
                   order:
+                    format: int64
                     type: integer
                   redirect:
                     items:
@@ -521,6 +524,7 @@ spec:
             loadBalancerArn:
               type: string
             port:
+              format: int64
               type: integer
             protocol:
               type: string
@@ -580,6 +584,7 @@ spec:
                             sessionCookieName:
                               type: string
                             sessionTimeout:
+                              format: int64
                               type: integer
                             userPoolArn:
                               type: string
@@ -614,6 +619,7 @@ spec:
                             sessionCookieName:
                               type: string
                             sessionTimeout:
+                              format: int64
                               type: integer
                             tokenEndpoint:
                               type: string
@@ -643,6 +649,7 @@ spec:
                         maxItems: 1
                         type: array
                       order:
+                        format: int64
                         type: integer
                       redirect:
                         items:
@@ -677,6 +684,7 @@ spec:
                 loadBalancerArn:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 protocol:
                   type: string

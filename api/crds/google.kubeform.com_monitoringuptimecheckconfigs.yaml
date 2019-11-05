@@ -432,6 +432,7 @@ spec:
                   path:
                     type: string
                   port:
+                    format: int64
                     type: integer
                   useSSL:
                     type: boolean
@@ -514,6 +515,7 @@ spec:
               items:
                 properties:
                   port:
+                    format: int64
                     type: integer
                 required:
                 - port
@@ -565,6 +567,7 @@ spec:
                       path:
                         type: string
                       port:
+                        format: int64
                         type: integer
                       useSSL:
                         type: boolean
@@ -647,6 +650,7 @@ spec:
                   items:
                     properties:
                       port:
+                        format: int64
                         type: integer
                     required:
                     - port

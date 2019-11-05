@@ -40,10 +40,10 @@ type DnsSrvRecord struct {
 }
 
 type DnsSrvRecordSpecRecord struct {
-	Port     int    `json:"port" tf:"port"`
-	Priority int    `json:"priority" tf:"priority"`
+	Port     int64  `json:"port" tf:"port"`
+	Priority int64  `json:"priority" tf:"priority"`
 	Target   string `json:"target" tf:"target"`
-	Weight   int    `json:"weight" tf:"weight"`
+	Weight   int64  `json:"weight" tf:"weight"`
 }
 
 type DnsSrvRecordSpec struct {
@@ -56,7 +56,7 @@ type DnsSrvRecordSpec struct {
 	ResourceGroupName string                   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	Ttl      int               `json:"ttl" tf:"ttl"`
+	Ttl      int64             `json:"ttl" tf:"ttl"`
 	ZoneName string            `json:"zoneName" tf:"zone_name"`
 }
 

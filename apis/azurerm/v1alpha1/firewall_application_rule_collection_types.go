@@ -41,7 +41,7 @@ type FirewallApplicationRuleCollection struct {
 
 type FirewallApplicationRuleCollectionSpecRuleProtocol struct {
 	// +optional
-	Port int    `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64  `json:"port,omitempty" tf:"port,omitempty"`
 	Type string `json:"type" tf:"type"`
 }
 
@@ -67,7 +67,7 @@ type FirewallApplicationRuleCollectionSpec struct {
 	Action            string `json:"action" tf:"action"`
 	AzureFirewallName string `json:"azureFirewallName" tf:"azure_firewall_name"`
 	Name              string `json:"name" tf:"name"`
-	Priority          int    `json:"priority" tf:"priority"`
+	Priority          int64  `json:"priority" tf:"priority"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MinItems=1
 	Rule []FirewallApplicationRuleCollectionSpecRule `json:"rule" tf:"rule"`

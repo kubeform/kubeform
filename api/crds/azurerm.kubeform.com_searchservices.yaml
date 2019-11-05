@@ -410,6 +410,7 @@ spec:
             name:
               type: string
             partitionCount:
+              format: int64
               type: integer
             primaryKey:
               type: string
@@ -423,6 +424,7 @@ spec:
                   type: string
               type: object
             replicaCount:
+              format: int64
               type: integer
             resourceGroupName:
               type: string
@@ -457,6 +459,7 @@ spec:
                 name:
                   type: string
                 partitionCount:
+                  format: int64
                   type: integer
                 primaryKey:
                   type: string
@@ -470,6 +473,7 @@ spec:
                       type: string
                   type: object
                 replicaCount:
+                  format: int64
                   type: integer
                 resourceGroupName:
                   type: string

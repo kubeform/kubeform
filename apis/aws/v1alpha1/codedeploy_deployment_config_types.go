@@ -43,21 +43,21 @@ type CodedeployDeploymentConfigSpecMinimumHealthyHosts struct {
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
 	// +optional
-	Value int `json:"value,omitempty" tf:"value,omitempty"`
+	Value int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type CodedeployDeploymentConfigSpecTrafficRoutingConfigTimeBasedCanary struct {
 	// +optional
-	Interval int `json:"interval,omitempty" tf:"interval,omitempty"`
+	Interval int64 `json:"interval,omitempty" tf:"interval,omitempty"`
 	// +optional
-	Percentage int `json:"percentage,omitempty" tf:"percentage,omitempty"`
+	Percentage int64 `json:"percentage,omitempty" tf:"percentage,omitempty"`
 }
 
 type CodedeployDeploymentConfigSpecTrafficRoutingConfigTimeBasedLinear struct {
 	// +optional
-	Interval int `json:"interval,omitempty" tf:"interval,omitempty"`
+	Interval int64 `json:"interval,omitempty" tf:"interval,omitempty"`
 	// +optional
-	Percentage int `json:"percentage,omitempty" tf:"percentage,omitempty"`
+	Percentage int64 `json:"percentage,omitempty" tf:"percentage,omitempty"`
 }
 
 type CodedeployDeploymentConfigSpecTrafficRoutingConfig struct {

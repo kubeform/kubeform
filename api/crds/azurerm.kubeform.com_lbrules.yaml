@@ -406,6 +406,7 @@ spec:
             backendAddressPoolID:
               type: string
             backendPort:
+              format: int64
               type: integer
             disableOutboundSnat:
               type: boolean
@@ -416,10 +417,12 @@ spec:
             frontendIPConfigurationName:
               type: string
             frontendPort:
+              format: int64
               type: integer
             id:
               type: string
             idleTimeoutInMinutes:
+              format: int64
               type: integer
             loadDistribution:
               type: string
@@ -467,6 +470,7 @@ spec:
                 backendAddressPoolID:
                   type: string
                 backendPort:
+                  format: int64
                   type: integer
                 disableOutboundSnat:
                   type: boolean
@@ -477,10 +481,12 @@ spec:
                 frontendIPConfigurationName:
                   type: string
                 frontendPort:
+                  format: int64
                   type: integer
                 id:
                   type: string
                 idleTimeoutInMinutes:
+                  format: int64
                   type: integer
                 loadDistribution:
                   type: string

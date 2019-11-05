@@ -474,6 +474,7 @@ spec:
               items:
                 properties:
                   dropletID:
+                    format: int64
                     type: integer
                   removing:
                     type: boolean
@@ -580,6 +581,7 @@ spec:
                   items:
                     properties:
                       dropletID:
+                        format: int64
                         type: integer
                       removing:
                         type: boolean

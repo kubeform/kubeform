@@ -46,8 +46,8 @@ type StreamAnalyticsJobSpec struct {
 
 	CompatibilityLevel                 string `json:"compatibilityLevel" tf:"compatibility_level"`
 	DataLocale                         string `json:"dataLocale" tf:"data_locale"`
-	EventsLateArrivalMaxDelayInSeconds int    `json:"eventsLateArrivalMaxDelayInSeconds" tf:"events_late_arrival_max_delay_in_seconds"`
-	EventsOutOfOrderMaxDelayInSeconds  int    `json:"eventsOutOfOrderMaxDelayInSeconds" tf:"events_out_of_order_max_delay_in_seconds"`
+	EventsLateArrivalMaxDelayInSeconds int64  `json:"eventsLateArrivalMaxDelayInSeconds" tf:"events_late_arrival_max_delay_in_seconds"`
+	EventsOutOfOrderMaxDelayInSeconds  int64  `json:"eventsOutOfOrderMaxDelayInSeconds" tf:"events_out_of_order_max_delay_in_seconds"`
 	EventsOutOfOrderPolicy             string `json:"eventsOutOfOrderPolicy" tf:"events_out_of_order_policy"`
 	// +optional
 	JobID             string `json:"jobID,omitempty" tf:"job_id,omitempty"`
@@ -55,7 +55,7 @@ type StreamAnalyticsJobSpec struct {
 	Name              string `json:"name" tf:"name"`
 	OutputErrorPolicy string `json:"outputErrorPolicy" tf:"output_error_policy"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
-	StreamingUnits    int    `json:"streamingUnits" tf:"streaming_units"`
+	StreamingUnits    int64  `json:"streamingUnits" tf:"streaming_units"`
 	// +optional
 	Tags                map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	TransformationQuery string            `json:"transformationQuery" tf:"transformation_query"`

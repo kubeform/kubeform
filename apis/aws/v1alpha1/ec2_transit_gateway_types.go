@@ -45,7 +45,7 @@ type Ec2TransitGatewaySpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	AmazonSideAsn int `json:"amazonSideAsn,omitempty" tf:"amazon_side_asn,omitempty"`
+	AmazonSideAsn int64 `json:"amazonSideAsn,omitempty" tf:"amazon_side_asn,omitempty"`
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional

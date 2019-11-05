@@ -47,9 +47,9 @@ type VirtualNetworkGatewayConnectionSpecIpsecPolicy struct {
 	IpsecIntegrity  string `json:"ipsecIntegrity" tf:"ipsec_integrity"`
 	PfsGroup        string `json:"pfsGroup" tf:"pfs_group"`
 	// +optional
-	SaDatasize int `json:"saDatasize,omitempty" tf:"sa_datasize,omitempty"`
+	SaDatasize int64 `json:"saDatasize,omitempty" tf:"sa_datasize,omitempty"`
 	// +optional
-	SaLifetime int `json:"saLifetime,omitempty" tf:"sa_lifetime,omitempty"`
+	SaLifetime int64 `json:"saLifetime,omitempty" tf:"sa_lifetime,omitempty"`
 }
 
 type VirtualNetworkGatewayConnectionSpec struct {
@@ -78,7 +78,7 @@ type VirtualNetworkGatewayConnectionSpec struct {
 	PeerVirtualNetworkGatewayID string `json:"peerVirtualNetworkGatewayID,omitempty" tf:"peer_virtual_network_gateway_id,omitempty"`
 	ResourceGroupName           string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	RoutingWeight int `json:"routingWeight,omitempty" tf:"routing_weight,omitempty"`
+	RoutingWeight int64 `json:"routingWeight,omitempty" tf:"routing_weight,omitempty"`
 	// +optional
 	SharedKey string `json:"-" sensitive:"true" tf:"shared_key,omitempty"`
 	// +optional

@@ -183,19 +183,19 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 		case schema.TypeString:
 			statements = append(statements, Id(id).String().Tag(map[string]string{"json": jk, "tf": tk}))
 		case schema.TypeInt:
-			statements = append(statements, Id(id).Int().Tag(map[string]string{"json": jk, "tf": tk}))
+			statements = append(statements, Id(id).Int64().Tag(map[string]string{"json": jk, "tf": tk}))
 		case schema.TypeBool:
 			statements = append(statements, Id(id).Bool().Tag(map[string]string{"json": jk, "tf": tk}))
 		case schema.TypeFloat:
-			statements = append(statements, Id(id).Qual("encoding/json", "Number").Tag(map[string]string{"json": jk, "tf": tk}))
+			statements = append(statements, Id(id).Float64().Tag(map[string]string{"json": jk, "tf": tk}))
 		case schema.TypeMap:
 			switch value.Elem.(type) {
 			case *schema.Schema:
 				switch value.Elem.(*schema.Schema).Type {
 				case schema.TypeInt:
-					statements = append(statements, Id(id).Map(String()).Int().Tag(map[string]string{"json": jk, "tf": tk}))
+					statements = append(statements, Id(id).Map(String()).Int64().Tag(map[string]string{"json": jk, "tf": tk}))
 				case schema.TypeFloat:
-					statements = append(statements, Id(id).Map(String()).Qual("encoding/json", "Number").Tag(map[string]string{"json": jk, "tf": tk}))
+					statements = append(statements, Id(id).Map(String()).Float64().Tag(map[string]string{"json": jk, "tf": tk}))
 				case schema.TypeBool:
 					statements = append(statements, Id(id).Map(String()).Bool().Tag(map[string]string{"json": jk, "tf": tk}))
 				case schema.TypeString:
@@ -214,7 +214,7 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 				case schema.TypeInt:
 					statements = append(statements, Id(id).Index().Int64().Tag(map[string]string{"json": jk, "tf": tk}))
 				case schema.TypeFloat:
-					statements = append(statements, Id(id).Index().Qual("encoding/json", "Number").Tag(map[string]string{"json": jk, "tf": tk}))
+					statements = append(statements, Id(id).Index().Float64().Tag(map[string]string{"json": jk, "tf": tk}))
 				case schema.TypeBool:
 					statements = append(statements, Id(id).Index().Bool().Tag(map[string]string{"json": jk, "tf": tk}))
 				case schema.TypeString:

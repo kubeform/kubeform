@@ -79,8 +79,8 @@ type AcmpcaCertificateAuthoritySpecRevocationConfigurationCrlConfiguration struc
 	// +optional
 	CustomCname string `json:"customCname,omitempty" tf:"custom_cname,omitempty"`
 	// +optional
-	Enabled          bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
-	ExpirationInDays int  `json:"expirationInDays" tf:"expiration_in_days"`
+	Enabled          bool  `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	ExpirationInDays int64 `json:"expirationInDays" tf:"expiration_in_days"`
 	// +optional
 	S3BucketName string `json:"s3BucketName,omitempty" tf:"s3_bucket_name,omitempty"`
 }
@@ -113,7 +113,7 @@ type AcmpcaCertificateAuthoritySpec struct {
 	// +optional
 	NotBefore string `json:"notBefore,omitempty" tf:"not_before,omitempty"`
 	// +optional
-	PermanentDeletionTimeInDays int `json:"permanentDeletionTimeInDays,omitempty" tf:"permanent_deletion_time_in_days,omitempty"`
+	PermanentDeletionTimeInDays int64 `json:"permanentDeletionTimeInDays,omitempty" tf:"permanent_deletion_time_in_days,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RevocationConfiguration []AcmpcaCertificateAuthoritySpecRevocationConfiguration `json:"revocationConfiguration,omitempty" tf:"revocation_configuration,omitempty"`

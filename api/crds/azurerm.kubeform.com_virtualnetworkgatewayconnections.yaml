@@ -427,8 +427,10 @@ spec:
                   pfsGroup:
                     type: string
                   saDatasize:
+                    format: int64
                     type: integer
                   saLifetime:
+                    format: int64
                     type: integer
                 required:
                 - dhGroup
@@ -460,6 +462,7 @@ spec:
             resourceGroupName:
               type: string
             routingWeight:
+              format: int64
               type: integer
             secretRef:
               description: LocalObjectReference contains enough information to let
@@ -521,8 +524,10 @@ spec:
                       pfsGroup:
                         type: string
                       saDatasize:
+                        format: int64
                         type: integer
                       saLifetime:
+                        format: int64
                         type: integer
                     required:
                     - dhGroup
@@ -554,6 +559,7 @@ spec:
                 resourceGroupName:
                   type: string
                 routingWeight:
+                  format: int64
                   type: integer
                 secretRef:
                   description: LocalObjectReference contains enough information to

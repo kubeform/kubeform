@@ -97,7 +97,7 @@ type DmsEndpointSpec struct {
 	// +optional
 	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	S3Settings []DmsEndpointSpecS3Settings `json:"s3Settings,omitempty" tf:"s3_settings,omitempty"`

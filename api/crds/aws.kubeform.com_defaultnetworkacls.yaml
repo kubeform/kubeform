@@ -413,18 +413,23 @@ spec:
                   cidrBlock:
                     type: string
                   fromPort:
+                    format: int64
                     type: integer
                   icmpCode:
+                    format: int64
                     type: integer
                   icmpType:
+                    format: int64
                     type: integer
                   ipv6CIDRBlock:
                     type: string
                   protocol:
                     type: string
                   ruleNo:
+                    format: int64
                     type: integer
                   toPort:
+                    format: int64
                     type: integer
                 required:
                 - action
@@ -444,18 +449,23 @@ spec:
                   cidrBlock:
                     type: string
                   fromPort:
+                    format: int64
                     type: integer
                   icmpCode:
+                    format: int64
                     type: integer
                   icmpType:
+                    format: int64
                     type: integer
                   ipv6CIDRBlock:
                     type: string
                   protocol:
                     type: string
                   ruleNo:
+                    format: int64
                     type: integer
                   toPort:
+                    format: int64
                     type: integer
                 required:
                 - action
@@ -509,18 +519,23 @@ spec:
                       cidrBlock:
                         type: string
                       fromPort:
+                        format: int64
                         type: integer
                       icmpCode:
+                        format: int64
                         type: integer
                       icmpType:
+                        format: int64
                         type: integer
                       ipv6CIDRBlock:
                         type: string
                       protocol:
                         type: string
                       ruleNo:
+                        format: int64
                         type: integer
                       toPort:
+                        format: int64
                         type: integer
                     required:
                     - action
@@ -540,18 +555,23 @@ spec:
                       cidrBlock:
                         type: string
                       fromPort:
+                        format: int64
                         type: integer
                       icmpCode:
+                        format: int64
                         type: integer
                       icmpType:
+                        format: int64
                         type: integer
                       ipv6CIDRBlock:
                         type: string
                       protocol:
                         type: string
                       ruleNo:
+                        format: int64
                         type: integer
                       toPort:
+                        format: int64
                         type: integer
                     required:
                     - action

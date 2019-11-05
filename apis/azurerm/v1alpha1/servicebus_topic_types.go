@@ -63,7 +63,7 @@ type ServicebusTopicSpec struct {
 	// Deprecated
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional
-	MaxSizeInMegabytes int    `json:"maxSizeInMegabytes,omitempty" tf:"max_size_in_megabytes,omitempty"`
+	MaxSizeInMegabytes int64  `json:"maxSizeInMegabytes,omitempty" tf:"max_size_in_megabytes,omitempty"`
 	Name               string `json:"name" tf:"name"`
 	NamespaceName      string `json:"namespaceName" tf:"namespace_name"`
 	// +optional

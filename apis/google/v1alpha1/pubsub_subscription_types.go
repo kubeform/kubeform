@@ -51,7 +51,7 @@ type PubsubSubscriptionSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	AckDeadlineSeconds int    `json:"ackDeadlineSeconds,omitempty" tf:"ack_deadline_seconds,omitempty"`
+	AckDeadlineSeconds int64  `json:"ackDeadlineSeconds,omitempty" tf:"ack_deadline_seconds,omitempty"`
 	Name               string `json:"name" tf:"name"`
 	// +optional
 	Path string `json:"path,omitempty" tf:"path,omitempty"`

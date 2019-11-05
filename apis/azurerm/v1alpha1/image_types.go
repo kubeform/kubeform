@@ -45,11 +45,11 @@ type ImageSpecDataDisk struct {
 	// +optional
 	Caching string `json:"caching,omitempty" tf:"caching,omitempty"`
 	// +optional
-	Lun int `json:"lun,omitempty" tf:"lun,omitempty"`
+	Lun int64 `json:"lun,omitempty" tf:"lun,omitempty"`
 	// +optional
 	ManagedDiskID string `json:"managedDiskID,omitempty" tf:"managed_disk_id,omitempty"`
 	// +optional
-	SizeGb int `json:"sizeGb,omitempty" tf:"size_gb,omitempty"`
+	SizeGb int64 `json:"sizeGb,omitempty" tf:"size_gb,omitempty"`
 }
 
 type ImageSpecOsDisk struct {
@@ -64,7 +64,7 @@ type ImageSpecOsDisk struct {
 	// +optional
 	OsType string `json:"osType,omitempty" tf:"os_type,omitempty"`
 	// +optional
-	SizeGb int `json:"sizeGb,omitempty" tf:"size_gb,omitempty"`
+	SizeGb int64 `json:"sizeGb,omitempty" tf:"size_gb,omitempty"`
 }
 
 type ImageSpec struct {

@@ -409,8 +409,10 @@ spec:
               items:
                 properties:
                   asn:
+                    format: int64
                     type: integer
                   peerWeight:
+                    format: int64
                     type: integer
                   peeringAddress:
                     type: string
@@ -532,8 +534,10 @@ spec:
                   items:
                     properties:
                       asn:
+                        format: int64
                         type: integer
                       peerWeight:
+                        format: int64
                         type: integer
                       peeringAddress:
                         type: string

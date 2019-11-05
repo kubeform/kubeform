@@ -431,8 +431,8 @@ spec:
                 properties:
                   additionalVersionWeights:
                     additionalProperties:
-                      description: A Number represents a JSON number literal.
-                      type: string
+                      format: float
+                      type: number
                     type: object
                 type: object
               maxItems: 1
@@ -480,8 +480,8 @@ spec:
                     properties:
                       additionalVersionWeights:
                         additionalProperties:
-                          description: A Number represents a JSON number literal.
-                          type: string
+                          format: float
+                          type: number
                         type: object
                     type: object
                   maxItems: 1

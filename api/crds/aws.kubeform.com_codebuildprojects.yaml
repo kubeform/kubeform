@@ -432,6 +432,7 @@ spec:
             badgeURL:
               type: string
             buildTimeout:
+              format: int64
               type: integer
             cache:
               items:
@@ -535,6 +536,7 @@ spec:
                   buildspec:
                     type: string
                   gitCloneDepth:
+                    format: int64
                     type: integer
                   insecureSSL:
                     type: boolean
@@ -577,6 +579,7 @@ spec:
                   buildspec:
                     type: string
                   gitCloneDepth:
+                    format: int64
                     type: integer
                   insecureSSL:
                     type: boolean
@@ -663,6 +666,7 @@ spec:
                 badgeURL:
                   type: string
                 buildTimeout:
+                  format: int64
                   type: integer
                 cache:
                   items:
@@ -766,6 +770,7 @@ spec:
                       buildspec:
                         type: string
                       gitCloneDepth:
+                        format: int64
                         type: integer
                       insecureSSL:
                         type: boolean
@@ -808,6 +813,7 @@ spec:
                       buildspec:
                         type: string
                       gitCloneDepth:
+                        format: int64
                         type: integer
                       insecureSSL:
                         type: boolean

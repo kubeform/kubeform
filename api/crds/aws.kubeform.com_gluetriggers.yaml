@@ -413,6 +413,7 @@ spec:
                   jobName:
                     type: string
                   timeout:
+                    format: int64
                     type: integer
                 required:
                 - jobName
@@ -490,6 +491,7 @@ spec:
                       jobName:
                         type: string
                       timeout:
+                        format: int64
                         type: integer
                     required:
                     - jobName

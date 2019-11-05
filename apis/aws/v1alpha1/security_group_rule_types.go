@@ -48,7 +48,7 @@ type SecurityGroupRuleSpec struct {
 	CidrBlocks []string `json:"cidrBlocks,omitempty" tf:"cidr_blocks,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	FromPort    int    `json:"fromPort" tf:"from_port"`
+	FromPort    int64  `json:"fromPort" tf:"from_port"`
 	// +optional
 	Ipv6CIDRBlocks []string `json:"ipv6CIDRBlocks,omitempty" tf:"ipv6_cidr_blocks,omitempty"`
 	// +optional
@@ -59,7 +59,7 @@ type SecurityGroupRuleSpec struct {
 	Self bool `json:"self,omitempty" tf:"self,omitempty"`
 	// +optional
 	SourceSecurityGroupID string `json:"sourceSecurityGroupID,omitempty" tf:"source_security_group_id,omitempty"`
-	ToPort                int    `json:"toPort" tf:"to_port"`
+	ToPort                int64  `json:"toPort" tf:"to_port"`
 	// Type of rule, ingress (inbound) or egress (outbound).
 	Type string `json:"type" tf:"type"`
 }

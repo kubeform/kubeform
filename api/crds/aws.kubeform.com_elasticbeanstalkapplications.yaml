@@ -409,8 +409,10 @@ spec:
                   deleteSourceFromS3:
                     type: boolean
                   maxAgeInDays:
+                    format: int64
                     type: integer
                   maxCount:
+                    format: int64
                     type: integer
                   serviceRole:
                     type: string
@@ -453,8 +455,10 @@ spec:
                       deleteSourceFromS3:
                         type: boolean
                       maxAgeInDays:
+                        format: int64
                         type: integer
                       maxCount:
+                        format: int64
                         type: integer
                       serviceRole:
                         type: string

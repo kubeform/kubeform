@@ -41,9 +41,9 @@ type AppautoscalingScheduledAction struct {
 
 type AppautoscalingScheduledActionSpecScalableTargetAction struct {
 	// +optional
-	MaxCapacity int `json:"maxCapacity,omitempty" tf:"max_capacity,omitempty"`
+	MaxCapacity int64 `json:"maxCapacity,omitempty" tf:"max_capacity,omitempty"`
 	// +optional
-	MinCapacity int `json:"minCapacity,omitempty" tf:"min_capacity,omitempty"`
+	MinCapacity int64 `json:"minCapacity,omitempty" tf:"min_capacity,omitempty"`
 }
 
 type AppautoscalingScheduledActionSpec struct {

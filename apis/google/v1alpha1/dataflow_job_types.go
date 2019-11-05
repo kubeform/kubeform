@@ -45,7 +45,7 @@ type DataflowJobSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	MaxWorkers int    `json:"maxWorkers,omitempty" tf:"max_workers,omitempty"`
+	MaxWorkers int64  `json:"maxWorkers,omitempty" tf:"max_workers,omitempty"`
 	Name       string `json:"name" tf:"name"`
 	// +optional
 	OnDelete string `json:"onDelete,omitempty" tf:"on_delete,omitempty"`

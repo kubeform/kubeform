@@ -40,7 +40,7 @@ type SignalrService struct {
 }
 
 type SignalrServiceSpecSku struct {
-	Capacity int    `json:"capacity" tf:"capacity"`
+	Capacity int64  `json:"capacity" tf:"capacity"`
 	Name     string `json:"name" tf:"name"`
 }
 
@@ -62,14 +62,14 @@ type SignalrServiceSpec struct {
 	// +optional
 	PrimaryConnectionString string `json:"-" sensitive:"true" tf:"primary_connection_string,omitempty"`
 	// +optional
-	PublicPort        int    `json:"publicPort,omitempty" tf:"public_port,omitempty"`
+	PublicPort        int64  `json:"publicPort,omitempty" tf:"public_port,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key,omitempty"`
 	// +optional
 	SecondaryConnectionString string `json:"-" sensitive:"true" tf:"secondary_connection_string,omitempty"`
 	// +optional
-	ServerPort int `json:"serverPort,omitempty" tf:"server_port,omitempty"`
+	ServerPort int64 `json:"serverPort,omitempty" tf:"server_port,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku []SignalrServiceSpecSku `json:"sku" tf:"sku"`
 	// +optional

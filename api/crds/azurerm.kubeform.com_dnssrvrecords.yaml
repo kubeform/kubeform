@@ -420,12 +420,15 @@ spec:
               items:
                 properties:
                   port:
+                    format: int64
                     type: integer
                   priority:
+                    format: int64
                     type: integer
                   target:
                     type: string
                   weight:
+                    format: int64
                     type: integer
                 required:
                 - port
@@ -441,6 +444,7 @@ spec:
                 type: string
               type: object
             ttl:
+              format: int64
               type: integer
             zoneName:
               type: string
@@ -478,12 +482,15 @@ spec:
                   items:
                     properties:
                       port:
+                        format: int64
                         type: integer
                       priority:
+                        format: int64
                         type: integer
                       target:
                         type: string
                       weight:
+                        format: int64
                         type: integer
                     required:
                     - port
@@ -499,6 +506,7 @@ spec:
                     type: string
                   type: object
                 ttl:
+                  format: int64
                   type: integer
                 zoneName:
                   type: string

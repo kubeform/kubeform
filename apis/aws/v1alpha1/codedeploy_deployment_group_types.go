@@ -60,7 +60,7 @@ type CodedeployDeploymentGroupSpecBlueGreenDeploymentConfigDeploymentReadyOption
 	// +optional
 	ActionOnTimeout string `json:"actionOnTimeout,omitempty" tf:"action_on_timeout,omitempty"`
 	// +optional
-	WaitTimeInMinutes int `json:"waitTimeInMinutes,omitempty" tf:"wait_time_in_minutes,omitempty"`
+	WaitTimeInMinutes int64 `json:"waitTimeInMinutes,omitempty" tf:"wait_time_in_minutes,omitempty"`
 }
 
 type CodedeployDeploymentGroupSpecBlueGreenDeploymentConfigGreenFleetProvisioningOption struct {
@@ -72,7 +72,7 @@ type CodedeployDeploymentGroupSpecBlueGreenDeploymentConfigTerminateBlueInstance
 	// +optional
 	Action string `json:"action,omitempty" tf:"action,omitempty"`
 	// +optional
-	TerminationWaitTimeInMinutes int `json:"terminationWaitTimeInMinutes,omitempty" tf:"termination_wait_time_in_minutes,omitempty"`
+	TerminationWaitTimeInMinutes int64 `json:"terminationWaitTimeInMinutes,omitempty" tf:"termination_wait_time_in_minutes,omitempty"`
 }
 
 type CodedeployDeploymentGroupSpecBlueGreenDeploymentConfig struct {

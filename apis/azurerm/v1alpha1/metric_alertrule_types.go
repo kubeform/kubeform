@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -76,7 +74,7 @@ type MetricAlertruleSpec struct {
 	ResourceID        string `json:"resourceID" tf:"resource_id"`
 	// +optional
 	Tags      map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	Threshold json.Number       `json:"threshold" tf:"threshold"`
+	Threshold float64           `json:"threshold" tf:"threshold"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	WebhookAction []MetricAlertruleSpecWebhookAction `json:"webhookAction,omitempty" tf:"webhook_action,omitempty"`

@@ -40,7 +40,7 @@ type MariadbServer struct {
 }
 
 type MariadbServerSpecSku struct {
-	Capacity int    `json:"capacity" tf:"capacity"`
+	Capacity int64  `json:"capacity" tf:"capacity"`
 	Family   string `json:"family" tf:"family"`
 	Name     string `json:"name" tf:"name"`
 	Tier     string `json:"tier" tf:"tier"`
@@ -48,10 +48,10 @@ type MariadbServerSpecSku struct {
 
 type MariadbServerSpecStorageProfile struct {
 	// +optional
-	BackupRetentionDays int `json:"backupRetentionDays,omitempty" tf:"backup_retention_days,omitempty"`
+	BackupRetentionDays int64 `json:"backupRetentionDays,omitempty" tf:"backup_retention_days,omitempty"`
 	// +optional
 	GeoRedundantBackup string `json:"geoRedundantBackup,omitempty" tf:"geo_redundant_backup,omitempty"`
-	StorageMb          int    `json:"storageMb" tf:"storage_mb"`
+	StorageMb          int64  `json:"storageMb" tf:"storage_mb"`
 }
 
 type MariadbServerSpec struct {

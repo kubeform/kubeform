@@ -54,7 +54,7 @@ type DomainSpec struct {
 	Domain string `json:"domain" tf:"domain"`
 	// The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 00, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	// +optional
-	ExpireSec int `json:"expireSec,omitempty" tf:"expire_sec,omitempty"`
+	ExpireSec int64 `json:"expireSec,omitempty" tf:"expire_sec,omitempty"`
 	// The group this Domain belongs to. This is for display purposes only.
 	// +optional
 	Group string `json:"group,omitempty" tf:"group,omitempty"`
@@ -63,10 +63,10 @@ type DomainSpec struct {
 	MasterIPS []string `json:"masterIPS,omitempty" tf:"master_ips,omitempty"`
 	// The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	// +optional
-	RefreshSec int `json:"refreshSec,omitempty" tf:"refresh_sec,omitempty"`
+	RefreshSec int64 `json:"refreshSec,omitempty" tf:"refresh_sec,omitempty"`
 	// The interval, in seconds, at which a failed refresh should be retried. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	// +optional
-	RetrySec int `json:"retrySec,omitempty" tf:"retry_sec,omitempty"`
+	RetrySec int64 `json:"retrySec,omitempty" tf:"retry_sec,omitempty"`
 	// Start of Authority email address. This is required for master Domains.
 	// +optional
 	SoaEmail string `json:"soaEmail,omitempty" tf:"soa_email,omitempty"`
@@ -78,7 +78,7 @@ type DomainSpec struct {
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	// +optional
-	TtlSec int `json:"ttlSec,omitempty" tf:"ttl_sec,omitempty"`
+	TtlSec int64 `json:"ttlSec,omitempty" tf:"ttl_sec,omitempty"`
 	// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
 	Type string `json:"type" tf:"type"`
 }

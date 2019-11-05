@@ -435,8 +435,10 @@ spec:
                   fileMode:
                     type: string
                   groupID:
+                    format: int64
                     type: integer
                   ownerID:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -508,8 +510,10 @@ spec:
                       fileMode:
                         type: string
                       groupID:
+                        format: int64
                         type: integer
                       ownerID:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1

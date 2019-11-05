@@ -406,6 +406,7 @@ spec:
             backups:
               type: boolean
             disk:
+              format: int64
               type: integer
             id:
               type: string
@@ -422,17 +423,18 @@ spec:
             locked:
               type: boolean
             memory:
+              format: int64
               type: integer
             monitoring:
               type: boolean
             name:
               type: string
             priceHourly:
-              description: A Number represents a JSON number literal.
-              type: string
+              format: float
+              type: number
             priceMonthly:
-              description: A Number represents a JSON number literal.
-              type: string
+              format: float
+              type: number
             privateNetworking:
               type: boolean
             providerRef:
@@ -465,6 +467,7 @@ spec:
             userData:
               type: string
             vcpus:
+              format: int64
               type: integer
             volumeIDS:
               items:
@@ -489,6 +492,7 @@ spec:
                 backups:
                   type: boolean
                 disk:
+                  format: int64
                   type: integer
                 id:
                   type: string
@@ -505,17 +509,18 @@ spec:
                 locked:
                   type: boolean
                 memory:
+                  format: int64
                   type: integer
                 monitoring:
                   type: boolean
                 name:
                   type: string
                 priceHourly:
-                  description: A Number represents a JSON number literal.
-                  type: string
+                  format: float
+                  type: number
                 priceMonthly:
-                  description: A Number represents a JSON number literal.
-                  type: string
+                  format: float
+                  type: number
                 privateNetworking:
                   type: boolean
                 providerRef:
@@ -548,6 +553,7 @@ spec:
                 userData:
                   type: string
                 vcpus:
+                  format: int64
                   type: integer
                 volumeIDS:
                   items:

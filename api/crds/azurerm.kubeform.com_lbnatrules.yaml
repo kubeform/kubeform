@@ -406,6 +406,7 @@ spec:
             backendIPConfigurationID:
               type: string
             backendPort:
+              format: int64
               type: integer
             enableFloatingIP:
               type: boolean
@@ -414,6 +415,7 @@ spec:
             frontendIPConfigurationName:
               type: string
             frontendPort:
+              format: int64
               type: integer
             id:
               type: string
@@ -459,6 +461,7 @@ spec:
                 backendIPConfigurationID:
                   type: string
                 backendPort:
+                  format: int64
                   type: integer
                 enableFloatingIP:
                   type: boolean
@@ -467,6 +470,7 @@ spec:
                 frontendIPConfigurationName:
                   type: string
                 frontendPort:
+                  format: int64
                   type: integer
                 id:
                   type: string

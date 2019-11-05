@@ -435,6 +435,7 @@ spec:
                         image:
                           type: string
                         size:
+                          format: int64
                           type: integer
                         type:
                           type: string
@@ -458,6 +459,7 @@ spec:
               items:
                 properties:
                   count:
+                    format: int64
                     type: integer
                   type:
                     type: string
@@ -644,6 +646,7 @@ spec:
                             image:
                               type: string
                             size:
+                              format: int64
                               type: integer
                             type:
                               type: string
@@ -667,6 +670,7 @@ spec:
                   items:
                     properties:
                       count:
+                        format: int64
                         type: integer
                       type:
                         type: string

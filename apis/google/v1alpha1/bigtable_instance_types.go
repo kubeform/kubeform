@@ -43,7 +43,7 @@ type BigtableInstanceSpecCluster struct {
 	// +optional
 	ClusterID string `json:"clusterID,omitempty" tf:"cluster_id,omitempty"`
 	// +optional
-	NumNodes int `json:"numNodes,omitempty" tf:"num_nodes,omitempty"`
+	NumNodes int64 `json:"numNodes,omitempty" tf:"num_nodes,omitempty"`
 	// +optional
 	StorageType string `json:"storageType,omitempty" tf:"storage_type,omitempty"`
 	// +optional
@@ -68,7 +68,7 @@ type BigtableInstanceSpec struct {
 	Name         string `json:"name" tf:"name"`
 	// +optional
 	// Deprecated
-	NumNodes int `json:"numNodes,omitempty" tf:"num_nodes,omitempty"`
+	NumNodes int64 `json:"numNodes,omitempty" tf:"num_nodes,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

@@ -73,7 +73,7 @@ type StorageAccountSpecQueuePropertiesCorsRule struct {
 	AllowedOrigins []string `json:"allowedOrigins" tf:"allowed_origins"`
 	// +kubebuilder:validation:MaxItems=64
 	ExposedHeaders  []string `json:"exposedHeaders" tf:"exposed_headers"`
-	MaxAgeInSeconds int      `json:"maxAgeInSeconds" tf:"max_age_in_seconds"`
+	MaxAgeInSeconds int64    `json:"maxAgeInSeconds" tf:"max_age_in_seconds"`
 }
 
 type StorageAccountSpecQueuePropertiesHourMetrics struct {
@@ -81,7 +81,7 @@ type StorageAccountSpecQueuePropertiesHourMetrics struct {
 	// +optional
 	IncludeApis bool `json:"includeApis,omitempty" tf:"include_apis,omitempty"`
 	// +optional
-	RetentionPolicyDays int    `json:"retentionPolicyDays,omitempty" tf:"retention_policy_days,omitempty"`
+	RetentionPolicyDays int64  `json:"retentionPolicyDays,omitempty" tf:"retention_policy_days,omitempty"`
 	Version             string `json:"version" tf:"version"`
 }
 
@@ -89,7 +89,7 @@ type StorageAccountSpecQueuePropertiesLogging struct {
 	Delete bool `json:"delete" tf:"delete"`
 	Read   bool `json:"read" tf:"read"`
 	// +optional
-	RetentionPolicyDays int    `json:"retentionPolicyDays,omitempty" tf:"retention_policy_days,omitempty"`
+	RetentionPolicyDays int64  `json:"retentionPolicyDays,omitempty" tf:"retention_policy_days,omitempty"`
 	Version             string `json:"version" tf:"version"`
 	Write               bool   `json:"write" tf:"write"`
 }
@@ -99,7 +99,7 @@ type StorageAccountSpecQueuePropertiesMinuteMetrics struct {
 	// +optional
 	IncludeApis bool `json:"includeApis,omitempty" tf:"include_apis,omitempty"`
 	// +optional
-	RetentionPolicyDays int    `json:"retentionPolicyDays,omitempty" tf:"retention_policy_days,omitempty"`
+	RetentionPolicyDays int64  `json:"retentionPolicyDays,omitempty" tf:"retention_policy_days,omitempty"`
 	Version             string `json:"version" tf:"version"`
 }
 

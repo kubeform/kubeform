@@ -421,6 +421,7 @@ spec:
                     maxItems: 1
                     type: array
                   unusedAccountValidityDays:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -501,6 +502,7 @@ spec:
               items:
                 properties:
                   minimumLength:
+                    format: int64
                     type: integer
                   requireLowercase:
                     type: boolean
@@ -646,6 +648,7 @@ spec:
                         maxItems: 1
                         type: array
                       unusedAccountValidityDays:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1
@@ -726,6 +729,7 @@ spec:
                   items:
                     properties:
                       minimumLength:
+                        format: int64
                         type: integer
                       requireLowercase:
                         type: boolean

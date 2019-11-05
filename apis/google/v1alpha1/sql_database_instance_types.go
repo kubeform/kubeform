@@ -54,13 +54,13 @@ type SqlDatabaseInstanceSpecReplicaConfiguration struct {
 	// +optional
 	ClientKey string `json:"clientKey,omitempty" tf:"client_key,omitempty"`
 	// +optional
-	ConnectRetryInterval int `json:"connectRetryInterval,omitempty" tf:"connect_retry_interval,omitempty"`
+	ConnectRetryInterval int64 `json:"connectRetryInterval,omitempty" tf:"connect_retry_interval,omitempty"`
 	// +optional
 	DumpFilePath string `json:"dumpFilePath,omitempty" tf:"dump_file_path,omitempty"`
 	// +optional
 	FailoverTarget bool `json:"failoverTarget,omitempty" tf:"failover_target,omitempty"`
 	// +optional
-	MasterHeartbeatPeriod int `json:"masterHeartbeatPeriod,omitempty" tf:"master_heartbeat_period,omitempty"`
+	MasterHeartbeatPeriod int64 `json:"masterHeartbeatPeriod,omitempty" tf:"master_heartbeat_period,omitempty"`
 	// +optional
 	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
@@ -129,9 +129,9 @@ type SqlDatabaseInstanceSpecSettingsLocationPreference struct {
 
 type SqlDatabaseInstanceSpecSettingsMaintenanceWindow struct {
 	// +optional
-	Day int `json:"day,omitempty" tf:"day,omitempty"`
+	Day int64 `json:"day,omitempty" tf:"day,omitempty"`
 	// +optional
-	Hour int `json:"hour,omitempty" tf:"hour,omitempty"`
+	Hour int64 `json:"hour,omitempty" tf:"hour,omitempty"`
 	// +optional
 	UpdateTrack string `json:"updateTrack,omitempty" tf:"update_track,omitempty"`
 }
@@ -153,7 +153,7 @@ type SqlDatabaseInstanceSpecSettings struct {
 	// +optional
 	DiskAutoresize bool `json:"diskAutoresize,omitempty" tf:"disk_autoresize,omitempty"`
 	// +optional
-	DiskSize int `json:"diskSize,omitempty" tf:"disk_size,omitempty"`
+	DiskSize int64 `json:"diskSize,omitempty" tf:"disk_size,omitempty"`
 	// +optional
 	DiskType string `json:"diskType,omitempty" tf:"disk_type,omitempty"`
 	// +optional
@@ -173,7 +173,7 @@ type SqlDatabaseInstanceSpecSettings struct {
 	// +optional
 	UserLabels map[string]string `json:"userLabels,omitempty" tf:"user_labels,omitempty"`
 	// +optional
-	Version int `json:"version,omitempty" tf:"version,omitempty"`
+	Version int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type SqlDatabaseInstanceSpec struct {

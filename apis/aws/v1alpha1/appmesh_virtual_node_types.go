@@ -50,19 +50,19 @@ type AppmeshVirtualNodeSpecSpecBackend struct {
 }
 
 type AppmeshVirtualNodeSpecSpecListenerHealthCheck struct {
-	HealthyThreshold int `json:"healthyThreshold" tf:"healthy_threshold"`
-	IntervalMillis   int `json:"intervalMillis" tf:"interval_millis"`
+	HealthyThreshold int64 `json:"healthyThreshold" tf:"healthy_threshold"`
+	IntervalMillis   int64 `json:"intervalMillis" tf:"interval_millis"`
 	// +optional
 	Path string `json:"path,omitempty" tf:"path,omitempty"`
 	// +optional
-	Port               int    `json:"port,omitempty" tf:"port,omitempty"`
+	Port               int64  `json:"port,omitempty" tf:"port,omitempty"`
 	Protocol           string `json:"protocol" tf:"protocol"`
-	TimeoutMillis      int    `json:"timeoutMillis" tf:"timeout_millis"`
-	UnhealthyThreshold int    `json:"unhealthyThreshold" tf:"unhealthy_threshold"`
+	TimeoutMillis      int64  `json:"timeoutMillis" tf:"timeout_millis"`
+	UnhealthyThreshold int64  `json:"unhealthyThreshold" tf:"unhealthy_threshold"`
 }
 
 type AppmeshVirtualNodeSpecSpecListenerPortMapping struct {
-	Port     int    `json:"port" tf:"port"`
+	Port     int64  `json:"port" tf:"port"`
 	Protocol string `json:"protocol" tf:"protocol"`
 }
 

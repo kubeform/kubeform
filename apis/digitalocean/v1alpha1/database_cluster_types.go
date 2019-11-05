@@ -58,11 +58,11 @@ type DatabaseClusterSpec struct {
 	// +kubebuilder:validation:MinItems=1
 	MaintenanceWindow []DatabaseClusterSpecMaintenanceWindow `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
 	Name              string                                 `json:"name" tf:"name"`
-	NodeCount         int                                    `json:"nodeCount" tf:"node_count"`
+	NodeCount         int64                                  `json:"nodeCount" tf:"node_count"`
 	// +optional
 	Password string `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
-	Port   int    `json:"port,omitempty" tf:"port,omitempty"`
+	Port   int64  `json:"port,omitempty" tf:"port,omitempty"`
 	Region string `json:"region" tf:"region"`
 	Size   string `json:"size" tf:"size"`
 	// +optional

@@ -432,6 +432,7 @@ spec:
             id:
               type: string
             idleTimeout:
+              format: int64
               type: integer
             internal:
               type: boolean
@@ -520,6 +521,7 @@ spec:
                 id:
                   type: string
                 idleTimeout:
+                  format: int64
                   type: integer
                 internal:
                   type: boolean

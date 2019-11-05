@@ -57,7 +57,7 @@ type ProjectSpec struct {
 	Name string `json:"name" tf:"name"`
 	// the id of the project owner.
 	// +optional
-	OwnerID int `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
+	OwnerID int64 `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
 	// the unique universal identifier of the project owner.
 	// +optional
 	OwnerUUID string `json:"ownerUUID,omitempty" tf:"owner_uuid,omitempty"`

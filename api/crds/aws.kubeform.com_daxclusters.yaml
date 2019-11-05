@@ -435,6 +435,7 @@ spec:
                   availabilityZone:
                     type: string
                   port:
+                    format: int64
                     type: integer
                 type: object
               type: array
@@ -443,6 +444,7 @@ spec:
             parameterGroupName:
               type: string
             port:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -454,6 +456,7 @@ spec:
                   type: string
               type: object
             replicationFactor:
+              format: int64
               type: integer
             securityGroupIDS:
               items:
@@ -521,6 +524,7 @@ spec:
                       availabilityZone:
                         type: string
                       port:
+                        format: int64
                         type: integer
                     type: object
                   type: array
@@ -529,6 +533,7 @@ spec:
                 parameterGroupName:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -540,6 +545,7 @@ spec:
                       type: string
                   type: object
                 replicationFactor:
+                  format: int64
                   type: integer
                 securityGroupIDS:
                   items:

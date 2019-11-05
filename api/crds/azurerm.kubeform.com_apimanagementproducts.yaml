@@ -431,6 +431,7 @@ spec:
             subscriptionRequired:
               type: boolean
             subscriptionsLimit:
+              format: int64
               type: integer
             terms:
               type: string
@@ -480,6 +481,7 @@ spec:
                 subscriptionRequired:
                   type: boolean
                 subscriptionsLimit:
+                  format: int64
                   type: integer
                 terms:
                   type: string

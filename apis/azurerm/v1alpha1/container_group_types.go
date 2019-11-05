@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -43,7 +41,7 @@ type ContainerGroup struct {
 
 type ContainerGroupSpecContainerGpu struct {
 	// +optional
-	Count int `json:"count,omitempty" tf:"count,omitempty"`
+	Count int64 `json:"count,omitempty" tf:"count,omitempty"`
 	// +optional
 	Sku string `json:"sku,omitempty" tf:"sku,omitempty"`
 }
@@ -52,7 +50,7 @@ type ContainerGroupSpecContainerLivenessProbeHttpGet struct {
 	// +optional
 	Path string `json:"path,omitempty" tf:"path,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	Scheme string `json:"scheme,omitempty" tf:"scheme,omitempty"`
 }
@@ -61,22 +59,22 @@ type ContainerGroupSpecContainerLivenessProbe struct {
 	// +optional
 	Exec []string `json:"exec,omitempty" tf:"exec,omitempty"`
 	// +optional
-	FailureThreshold int `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 	// +optional
 	HttpGet []ContainerGroupSpecContainerLivenessProbeHttpGet `json:"httpGet,omitempty" tf:"http_get,omitempty"`
 	// +optional
-	InitialDelaySeconds int `json:"initialDelaySeconds,omitempty" tf:"initial_delay_seconds,omitempty"`
+	InitialDelaySeconds int64 `json:"initialDelaySeconds,omitempty" tf:"initial_delay_seconds,omitempty"`
 	// +optional
-	PeriodSeconds int `json:"periodSeconds,omitempty" tf:"period_seconds,omitempty"`
+	PeriodSeconds int64 `json:"periodSeconds,omitempty" tf:"period_seconds,omitempty"`
 	// +optional
-	SuccessThreshold int `json:"successThreshold,omitempty" tf:"success_threshold,omitempty"`
+	SuccessThreshold int64 `json:"successThreshold,omitempty" tf:"success_threshold,omitempty"`
 	// +optional
-	TimeoutSeconds int `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
+	TimeoutSeconds int64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 }
 
 type ContainerGroupSpecContainerPorts struct {
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 }
@@ -85,7 +83,7 @@ type ContainerGroupSpecContainerReadinessProbeHttpGet struct {
 	// +optional
 	Path string `json:"path,omitempty" tf:"path,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	Scheme string `json:"scheme,omitempty" tf:"scheme,omitempty"`
 }
@@ -94,17 +92,17 @@ type ContainerGroupSpecContainerReadinessProbe struct {
 	// +optional
 	Exec []string `json:"exec,omitempty" tf:"exec,omitempty"`
 	// +optional
-	FailureThreshold int `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 	// +optional
 	HttpGet []ContainerGroupSpecContainerReadinessProbeHttpGet `json:"httpGet,omitempty" tf:"http_get,omitempty"`
 	// +optional
-	InitialDelaySeconds int `json:"initialDelaySeconds,omitempty" tf:"initial_delay_seconds,omitempty"`
+	InitialDelaySeconds int64 `json:"initialDelaySeconds,omitempty" tf:"initial_delay_seconds,omitempty"`
 	// +optional
-	PeriodSeconds int `json:"periodSeconds,omitempty" tf:"period_seconds,omitempty"`
+	PeriodSeconds int64 `json:"periodSeconds,omitempty" tf:"period_seconds,omitempty"`
 	// +optional
-	SuccessThreshold int `json:"successThreshold,omitempty" tf:"success_threshold,omitempty"`
+	SuccessThreshold int64 `json:"successThreshold,omitempty" tf:"success_threshold,omitempty"`
 	// +optional
-	TimeoutSeconds int `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
+	TimeoutSeconds int64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 }
 
 type ContainerGroupSpecContainerVolume struct {
@@ -122,8 +120,8 @@ type ContainerGroupSpecContainer struct {
 	// Deprecated
 	Command string `json:"command,omitempty" tf:"command,omitempty"`
 	// +optional
-	Commands []string    `json:"commands,omitempty" tf:"commands,omitempty"`
-	Cpu      json.Number `json:"cpu" tf:"cpu"`
+	Commands []string `json:"commands,omitempty" tf:"commands,omitempty"`
+	Cpu      float64  `json:"cpu" tf:"cpu"`
 	// +optional
 	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 	// +optional
@@ -133,11 +131,11 @@ type ContainerGroupSpecContainer struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	LivenessProbe []ContainerGroupSpecContainerLivenessProbe `json:"livenessProbe,omitempty" tf:"liveness_probe,omitempty"`
-	Memory        json.Number                                `json:"memory" tf:"memory"`
+	Memory        float64                                    `json:"memory" tf:"memory"`
 	Name          string                                     `json:"name" tf:"name"`
 	// +optional
 	// Deprecated
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	Ports []ContainerGroupSpecContainerPorts `json:"ports,omitempty" tf:"ports,omitempty"`
 	// +optional

@@ -51,7 +51,7 @@ type ApplicationInsightsWebTestSpec struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	Frequency int `json:"frequency,omitempty" tf:"frequency,omitempty"`
+	Frequency int64 `json:"frequency,omitempty" tf:"frequency,omitempty"`
 	// +kubebuilder:validation:MinItems=1
 	GeoLocations      []string `json:"geoLocations" tf:"geo_locations"`
 	Kind              string   `json:"kind" tf:"kind"`
@@ -65,7 +65,7 @@ type ApplicationInsightsWebTestSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Timeout int `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	Timeout int64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 }
 
 type ApplicationInsightsWebTestStatus struct {

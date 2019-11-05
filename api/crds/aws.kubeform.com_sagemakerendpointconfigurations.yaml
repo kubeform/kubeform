@@ -417,10 +417,11 @@ spec:
                   acceleratorType:
                     type: string
                   initialInstanceCount:
+                    format: int64
                     type: integer
                   initialVariantWeight:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                   instanceType:
                     type: string
                   modelName:
@@ -473,10 +474,11 @@ spec:
                       acceleratorType:
                         type: string
                       initialInstanceCount:
+                        format: int64
                         type: integer
                       initialVariantWeight:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                       instanceType:
                         type: string
                       modelName:

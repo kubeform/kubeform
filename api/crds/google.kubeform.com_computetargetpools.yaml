@@ -408,8 +408,8 @@ spec:
             description:
               type: string
             failoverRatio:
-              description: A Number represents a JSON number literal.
-              type: string
+              format: float
+              type: number
             healthChecks:
               items:
                 type: string
@@ -458,8 +458,8 @@ spec:
                 description:
                   type: string
                 failoverRatio:
-                  description: A Number represents a JSON number literal.
-                  type: string
+                  format: float
+                  type: number
                 healthChecks:
                   items:
                     type: string

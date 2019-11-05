@@ -435,6 +435,7 @@ spec:
             id:
               type: string
             minimumCompressionSize:
+              format: int64
               type: integer
             name:
               type: string
@@ -496,6 +497,7 @@ spec:
                 id:
                   type: string
                 minimumCompressionSize:
+                  format: int64
                   type: integer
                 name:
                   type: string

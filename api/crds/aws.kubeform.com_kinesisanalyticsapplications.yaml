@@ -465,6 +465,7 @@ spec:
                     items:
                       properties:
                         count:
+                          format: int64
                           type: integer
                       required:
                       - count
@@ -739,6 +740,7 @@ spec:
             status:
               type: string
             version:
+              format: int64
               type: integer
           required:
           - name
@@ -815,6 +817,7 @@ spec:
                         items:
                           properties:
                             count:
+                              format: int64
                               type: integer
                           required:
                           - count
@@ -1089,6 +1092,7 @@ spec:
                 status:
                   type: string
                 version:
+                  format: int64
                   type: integer
               required:
               - name

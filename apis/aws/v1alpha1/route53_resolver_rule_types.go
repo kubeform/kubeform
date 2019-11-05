@@ -42,7 +42,7 @@ type Route53ResolverRule struct {
 type Route53ResolverRuleSpecTargetIP struct {
 	Ip string `json:"ip" tf:"ip"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type Route53ResolverRuleSpec struct {

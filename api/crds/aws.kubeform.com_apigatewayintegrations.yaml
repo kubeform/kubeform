@@ -447,6 +447,7 @@ spec:
             restAPIID:
               type: string
             timeoutMilliseconds:
+              format: int64
               type: integer
             type:
               type: string
@@ -512,6 +513,7 @@ spec:
                 restAPIID:
                   type: string
                 timeoutMilliseconds:
+                  format: int64
                   type: integer
                 type:
                   type: string

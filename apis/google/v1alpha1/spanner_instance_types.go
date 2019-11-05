@@ -51,7 +51,7 @@ type SpannerInstanceSpec struct {
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	NumNodes int `json:"numNodes,omitempty" tf:"num_nodes,omitempty"`
+	NumNodes int64 `json:"numNodes,omitempty" tf:"num_nodes,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

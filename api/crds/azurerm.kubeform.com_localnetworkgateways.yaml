@@ -411,10 +411,12 @@ spec:
               items:
                 properties:
                   asn:
+                    format: int64
                     type: integer
                   bgpPeeringAddress:
                     type: string
                   peerWeight:
+                    format: int64
                     type: integer
                 required:
                 - asn
@@ -470,10 +472,12 @@ spec:
                   items:
                     properties:
                       asn:
+                        format: int64
                         type: integer
                       bgpPeeringAddress:
                         type: string
                       peerWeight:
+                        format: int64
                         type: integer
                     required:
                     - asn

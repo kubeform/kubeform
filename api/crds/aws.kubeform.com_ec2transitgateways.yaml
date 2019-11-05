@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             amazonSideAsn:
+              format: int64
               type: integer
             arn:
               type: string
@@ -453,6 +454,7 @@ spec:
             output:
               properties:
                 amazonSideAsn:
+                  format: int64
                   type: integer
                 arn:
                   type: string

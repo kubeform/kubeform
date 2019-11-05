@@ -409,24 +409,27 @@ spec:
                   balancingMode:
                     type: string
                   capacityScaler:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                   description:
                     type: string
                   group:
                     type: string
                   maxConnections:
+                    format: int64
                     type: integer
                   maxConnectionsPerInstance:
+                    format: int64
                     type: integer
                   maxRate:
+                    format: int64
                     type: integer
                   maxRatePerInstance:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                   maxUtilization:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                 type: object
               type: array
             cdnPolicy:
@@ -456,6 +459,7 @@ spec:
               maxItems: 1
               type: array
             connectionDrainingTimeoutSec:
+              format: int64
               type: integer
             customRequestHeaders:
               description: Deprecated
@@ -519,6 +523,7 @@ spec:
             sessionAffinity:
               type: string
             timeoutSec:
+              format: int64
               type: integer
           required:
           - healthChecks
@@ -540,24 +545,27 @@ spec:
                       balancingMode:
                         type: string
                       capacityScaler:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                       description:
                         type: string
                       group:
                         type: string
                       maxConnections:
+                        format: int64
                         type: integer
                       maxConnectionsPerInstance:
+                        format: int64
                         type: integer
                       maxRate:
+                        format: int64
                         type: integer
                       maxRatePerInstance:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                       maxUtilization:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                     type: object
                   type: array
                 cdnPolicy:
@@ -587,6 +595,7 @@ spec:
                   maxItems: 1
                   type: array
                 connectionDrainingTimeoutSec:
+                  format: int64
                   type: integer
                 customRequestHeaders:
                   description: Deprecated
@@ -650,6 +659,7 @@ spec:
                 sessionAffinity:
                   type: string
                 timeoutSec:
+                  format: int64
                   type: integer
               required:
               - healthChecks

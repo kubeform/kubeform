@@ -46,7 +46,7 @@ type EcsServiceSpecDeploymentController struct {
 
 type EcsServiceSpecLoadBalancer struct {
 	ContainerName string `json:"containerName" tf:"container_name"`
-	ContainerPort int    `json:"containerPort" tf:"container_port"`
+	ContainerPort int64  `json:"containerPort" tf:"container_port"`
 	// +optional
 	ElbName string `json:"elbName,omitempty" tf:"elb_name,omitempty"`
 	// +optional
@@ -77,9 +77,9 @@ type EcsServiceSpecServiceRegistries struct {
 	// +optional
 	ContainerName string `json:"containerName,omitempty" tf:"container_name,omitempty"`
 	// +optional
-	ContainerPort int `json:"containerPort,omitempty" tf:"container_port,omitempty"`
+	ContainerPort int64 `json:"containerPort,omitempty" tf:"container_port,omitempty"`
 	// +optional
-	Port        int    `json:"port,omitempty" tf:"port,omitempty"`
+	Port        int64  `json:"port,omitempty" tf:"port,omitempty"`
 	RegistryArn string `json:"registryArn" tf:"registry_arn"`
 }
 
@@ -94,15 +94,15 @@ type EcsServiceSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	DeploymentController []EcsServiceSpecDeploymentController `json:"deploymentController,omitempty" tf:"deployment_controller,omitempty"`
 	// +optional
-	DeploymentMaximumPercent int `json:"deploymentMaximumPercent,omitempty" tf:"deployment_maximum_percent,omitempty"`
+	DeploymentMaximumPercent int64 `json:"deploymentMaximumPercent,omitempty" tf:"deployment_maximum_percent,omitempty"`
 	// +optional
-	DeploymentMinimumHealthyPercent int `json:"deploymentMinimumHealthyPercent,omitempty" tf:"deployment_minimum_healthy_percent,omitempty"`
+	DeploymentMinimumHealthyPercent int64 `json:"deploymentMinimumHealthyPercent,omitempty" tf:"deployment_minimum_healthy_percent,omitempty"`
 	// +optional
-	DesiredCount int `json:"desiredCount,omitempty" tf:"desired_count,omitempty"`
+	DesiredCount int64 `json:"desiredCount,omitempty" tf:"desired_count,omitempty"`
 	// +optional
 	EnableEcsManagedTags bool `json:"enableEcsManagedTags,omitempty" tf:"enable_ecs_managed_tags,omitempty"`
 	// +optional
-	HealthCheckGracePeriodSeconds int `json:"healthCheckGracePeriodSeconds,omitempty" tf:"health_check_grace_period_seconds,omitempty"`
+	HealthCheckGracePeriodSeconds int64 `json:"healthCheckGracePeriodSeconds,omitempty" tf:"health_check_grace_period_seconds,omitempty"`
 	// +optional
 	IamRole string `json:"iamRole,omitempty" tf:"iam_role,omitempty"`
 	// +optional

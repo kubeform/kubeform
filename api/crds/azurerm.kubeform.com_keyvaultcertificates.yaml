@@ -429,6 +429,7 @@ spec:
                         exportable:
                           type: boolean
                         keySize:
+                          format: int64
                           type: integer
                         keyType:
                           type: string
@@ -459,8 +460,10 @@ spec:
                           items:
                             properties:
                               daysBeforeExpiry:
+                                format: int64
                                 type: integer
                               lifetimePercentage:
+                                format: int64
                                 type: integer
                             type: object
                           maxItems: 1
@@ -512,6 +515,7 @@ spec:
                           maxItems: 1
                           type: array
                         validityInMonths:
+                          format: int64
                           type: integer
                       required:
                       - keyUsage
@@ -604,6 +608,7 @@ spec:
                             exportable:
                               type: boolean
                             keySize:
+                              format: int64
                               type: integer
                             keyType:
                               type: string
@@ -634,8 +639,10 @@ spec:
                               items:
                                 properties:
                                   daysBeforeExpiry:
+                                    format: int64
                                     type: integer
                                   lifetimePercentage:
+                                    format: int64
                                     type: integer
                                 type: object
                               maxItems: 1
@@ -687,6 +694,7 @@ spec:
                               maxItems: 1
                               type: array
                             validityInMonths:
+                              format: int64
                               type: integer
                           required:
                           - keyUsage

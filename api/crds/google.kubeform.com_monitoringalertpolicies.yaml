@@ -434,10 +434,11 @@ spec:
                           items:
                             properties:
                               count:
+                                format: int64
                                 type: integer
                               percent:
-                                description: A Number represents a JSON number literal.
-                                type: string
+                                format: float
+                                type: number
                             type: object
                           maxItems: 1
                           type: array
@@ -488,16 +489,17 @@ spec:
                         filter:
                           type: string
                         thresholdValue:
-                          description: A Number represents a JSON number literal.
-                          type: string
+                          format: float
+                          type: number
                         trigger:
                           items:
                             properties:
                               count:
+                                format: int64
                                 type: integer
                               percent:
-                                description: A Number represents a JSON number literal.
-                                type: string
+                                format: float
+                                type: number
                             type: object
                           maxItems: 1
                           type: array
@@ -599,11 +601,11 @@ spec:
                               items:
                                 properties:
                                   count:
+                                    format: int64
                                     type: integer
                                   percent:
-                                    description: A Number represents a JSON number
-                                      literal.
-                                    type: string
+                                    format: float
+                                    type: number
                                 type: object
                               maxItems: 1
                               type: array
@@ -654,17 +656,17 @@ spec:
                             filter:
                               type: string
                             thresholdValue:
-                              description: A Number represents a JSON number literal.
-                              type: string
+                              format: float
+                              type: number
                             trigger:
                               items:
                                 properties:
                                   count:
+                                    format: int64
                                     type: integer
                                   percent:
-                                    description: A Number represents a JSON number
-                                      literal.
-                                    type: string
+                                    format: float
+                                    type: number
                                 type: object
                               maxItems: 1
                               type: array

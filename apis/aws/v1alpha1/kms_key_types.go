@@ -47,7 +47,7 @@ type KmsKeySpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
-	DeletionWindowInDays int `json:"deletionWindowInDays,omitempty" tf:"deletion_window_in_days,omitempty"`
+	DeletionWindowInDays int64 `json:"deletionWindowInDays,omitempty" tf:"deletion_window_in_days,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional

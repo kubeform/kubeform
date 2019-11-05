@@ -427,10 +427,12 @@ spec:
             name:
               type: string
             nodeCount:
+              format: int64
               type: integer
             password:
               type: string
             port:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -493,10 +495,12 @@ spec:
                 name:
                   type: string
                 nodeCount:
+                  format: int64
                   type: integer
                 password:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

@@ -423,6 +423,7 @@ spec:
               items:
                 properties:
                   tag8021q:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -479,6 +480,7 @@ spec:
                   items:
                     properties:
                       tag8021q:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1

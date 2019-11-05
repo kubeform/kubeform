@@ -49,7 +49,7 @@ type LbListenerSpecDefaultActionAuthenticateCognito struct {
 	// +optional
 	SessionCookieName string `json:"sessionCookieName,omitempty" tf:"session_cookie_name,omitempty"`
 	// +optional
-	SessionTimeout   int    `json:"sessionTimeout,omitempty" tf:"session_timeout,omitempty"`
+	SessionTimeout   int64  `json:"sessionTimeout,omitempty" tf:"session_timeout,omitempty"`
 	UserPoolArn      string `json:"userPoolArn" tf:"user_pool_arn"`
 	UserPoolClientID string `json:"userPoolClientID" tf:"user_pool_client_id"`
 	UserPoolDomain   string `json:"userPoolDomain" tf:"user_pool_domain"`
@@ -69,7 +69,7 @@ type LbListenerSpecDefaultActionAuthenticateOidc struct {
 	// +optional
 	SessionCookieName string `json:"sessionCookieName,omitempty" tf:"session_cookie_name,omitempty"`
 	// +optional
-	SessionTimeout   int    `json:"sessionTimeout,omitempty" tf:"session_timeout,omitempty"`
+	SessionTimeout   int64  `json:"sessionTimeout,omitempty" tf:"session_timeout,omitempty"`
 	TokenEndpoint    string `json:"tokenEndpoint" tf:"token_endpoint"`
 	UserInfoEndpoint string `json:"userInfoEndpoint" tf:"user_info_endpoint"`
 }
@@ -107,7 +107,7 @@ type LbListenerSpecDefaultAction struct {
 	// +kubebuilder:validation:MaxItems=1
 	FixedResponse []LbListenerSpecDefaultActionFixedResponse `json:"fixedResponse,omitempty" tf:"fixed_response,omitempty"`
 	// +optional
-	Order int `json:"order,omitempty" tf:"order,omitempty"`
+	Order int64 `json:"order,omitempty" tf:"order,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Redirect []LbListenerSpecDefaultActionRedirect `json:"redirect,omitempty" tf:"redirect,omitempty"`
@@ -129,7 +129,7 @@ type LbListenerSpec struct {
 	CertificateArn  string                        `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
 	DefaultAction   []LbListenerSpecDefaultAction `json:"defaultAction" tf:"default_action"`
 	LoadBalancerArn string                        `json:"loadBalancerArn" tf:"load_balancer_arn"`
-	Port            int                           `json:"port" tf:"port"`
+	Port            int64                         `json:"port" tf:"port"`
 	// +optional
 	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 	// +optional

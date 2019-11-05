@@ -40,8 +40,8 @@ type ElasticacheReplicationGroup struct {
 }
 
 type ElasticacheReplicationGroupSpecClusterMode struct {
-	NumNodeGroups        int `json:"numNodeGroups" tf:"num_node_groups"`
-	ReplicasPerNodeGroup int `json:"replicasPerNodeGroup" tf:"replicas_per_node_group"`
+	NumNodeGroups        int64 `json:"numNodeGroups" tf:"num_node_groups"`
+	ReplicasPerNodeGroup int64 `json:"replicasPerNodeGroup" tf:"replicas_per_node_group"`
 }
 
 type ElasticacheReplicationGroupSpec struct {
@@ -81,11 +81,11 @@ type ElasticacheReplicationGroupSpec struct {
 	// +optional
 	NotificationTopicArn string `json:"notificationTopicArn,omitempty" tf:"notification_topic_arn,omitempty"`
 	// +optional
-	NumberCacheClusters int `json:"numberCacheClusters,omitempty" tf:"number_cache_clusters,omitempty"`
+	NumberCacheClusters int64 `json:"numberCacheClusters,omitempty" tf:"number_cache_clusters,omitempty"`
 	// +optional
 	ParameterGroupName string `json:"parameterGroupName,omitempty" tf:"parameter_group_name,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	PrimaryEndpointAddress      string `json:"primaryEndpointAddress,omitempty" tf:"primary_endpoint_address,omitempty"`
 	ReplicationGroupDescription string `json:"replicationGroupDescription" tf:"replication_group_description"`
@@ -99,7 +99,7 @@ type ElasticacheReplicationGroupSpec struct {
 	// +optional
 	SnapshotName string `json:"snapshotName,omitempty" tf:"snapshot_name,omitempty"`
 	// +optional
-	SnapshotRetentionLimit int `json:"snapshotRetentionLimit,omitempty" tf:"snapshot_retention_limit,omitempty"`
+	SnapshotRetentionLimit int64 `json:"snapshotRetentionLimit,omitempty" tf:"snapshot_retention_limit,omitempty"`
 	// +optional
 	SnapshotWindow string `json:"snapshotWindow,omitempty" tf:"snapshot_window,omitempty"`
 	// +optional

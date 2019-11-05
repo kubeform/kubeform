@@ -410,14 +410,17 @@ spec:
             autoscalingGroupName:
               type: string
             cooldown:
+              format: int64
               type: integer
             estimatedInstanceWarmup:
+              format: int64
               type: integer
             id:
               type: string
             metricAggregationType:
               type: string
             minAdjustmentMagnitude:
+              format: int64
               type: integer
             name:
               type: string
@@ -433,6 +436,7 @@ spec:
                   type: string
               type: object
             scalingAdjustment:
+              format: int64
               type: integer
             stepAdjustment:
               items:
@@ -442,6 +446,7 @@ spec:
                   metricIntervalUpperBound:
                     type: string
                   scalingAdjustment:
+                    format: int64
                     type: integer
                 required:
                 - scalingAdjustment
@@ -495,8 +500,8 @@ spec:
                     maxItems: 1
                     type: array
                   targetValue:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                 required:
                 - targetValue
                 type: object
@@ -523,14 +528,17 @@ spec:
                 autoscalingGroupName:
                   type: string
                 cooldown:
+                  format: int64
                   type: integer
                 estimatedInstanceWarmup:
+                  format: int64
                   type: integer
                 id:
                   type: string
                 metricAggregationType:
                   type: string
                 minAdjustmentMagnitude:
+                  format: int64
                   type: integer
                 name:
                   type: string
@@ -546,6 +554,7 @@ spec:
                       type: string
                   type: object
                 scalingAdjustment:
+                  format: int64
                   type: integer
                 stepAdjustment:
                   items:
@@ -555,6 +564,7 @@ spec:
                       metricIntervalUpperBound:
                         type: string
                       scalingAdjustment:
+                        format: int64
                         type: integer
                     required:
                     - scalingAdjustment
@@ -608,8 +618,8 @@ spec:
                         maxItems: 1
                         type: array
                       targetValue:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                     required:
                     - targetValue
                     type: object

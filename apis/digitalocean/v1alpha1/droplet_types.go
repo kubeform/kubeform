@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -49,7 +47,7 @@ type DropletSpec struct {
 	// +optional
 	Backups bool `json:"backups,omitempty" tf:"backups,omitempty"`
 	// +optional
-	Disk  int    `json:"disk,omitempty" tf:"disk,omitempty"`
+	Disk  int64  `json:"disk,omitempty" tf:"disk,omitempty"`
 	Image string `json:"image" tf:"image"`
 	// +optional
 	Ipv4Address string `json:"ipv4Address,omitempty" tf:"ipv4_address,omitempty"`
@@ -62,14 +60,14 @@ type DropletSpec struct {
 	// +optional
 	Locked bool `json:"locked,omitempty" tf:"locked,omitempty"`
 	// +optional
-	Memory int `json:"memory,omitempty" tf:"memory,omitempty"`
+	Memory int64 `json:"memory,omitempty" tf:"memory,omitempty"`
 	// +optional
 	Monitoring bool   `json:"monitoring,omitempty" tf:"monitoring,omitempty"`
 	Name       string `json:"name" tf:"name"`
 	// +optional
-	PriceHourly json.Number `json:"priceHourly,omitempty" tf:"price_hourly,omitempty"`
+	PriceHourly float64 `json:"priceHourly,omitempty" tf:"price_hourly,omitempty"`
 	// +optional
-	PriceMonthly json.Number `json:"priceMonthly,omitempty" tf:"price_monthly,omitempty"`
+	PriceMonthly float64 `json:"priceMonthly,omitempty" tf:"price_monthly,omitempty"`
 	// +optional
 	PrivateNetworking bool   `json:"privateNetworking,omitempty" tf:"private_networking,omitempty"`
 	Region            string `json:"region" tf:"region"`
@@ -87,7 +85,7 @@ type DropletSpec struct {
 	// +optional
 	UserData string `json:"userData,omitempty" tf:"user_data,omitempty"`
 	// +optional
-	Vcpus int `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
+	Vcpus int64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
 	// +optional
 	VolumeIDS []string `json:"volumeIDS,omitempty" tf:"volume_ids,omitempty"`
 }

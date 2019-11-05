@@ -52,7 +52,7 @@ type AutomationVariableIntSpec struct {
 	Name              string `json:"name" tf:"name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Value int `json:"value,omitempty" tf:"value,omitempty"`
+	Value int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AutomationVariableIntStatus struct {

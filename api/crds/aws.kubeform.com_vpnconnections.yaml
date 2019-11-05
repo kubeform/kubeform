@@ -453,6 +453,7 @@ spec:
             tunnel1BGPAsn:
               type: string
             tunnel1BGPHoldtime:
+              format: int64
               type: integer
             tunnel1CgwInsideAddress:
               type: string
@@ -465,6 +466,7 @@ spec:
             tunnel2BGPAsn:
               type: string
             tunnel2BGPHoldtime:
+              format: int64
               type: integer
             tunnel2CgwInsideAddress:
               type: string
@@ -478,6 +480,7 @@ spec:
               items:
                 properties:
                   acceptedRouteCount:
+                    format: int64
                     type: integer
                   lastStatusChange:
                     type: string
@@ -555,6 +558,7 @@ spec:
                 tunnel1BGPAsn:
                   type: string
                 tunnel1BGPHoldtime:
+                  format: int64
                   type: integer
                 tunnel1CgwInsideAddress:
                   type: string
@@ -567,6 +571,7 @@ spec:
                 tunnel2BGPAsn:
                   type: string
                 tunnel2BGPHoldtime:
+                  format: int64
                   type: integer
                 tunnel2CgwInsideAddress:
                   type: string
@@ -580,6 +585,7 @@ spec:
                   items:
                     properties:
                       acceptedRouteCount:
+                        format: int64
                         type: integer
                       lastStatusChange:
                         type: string

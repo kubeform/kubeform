@@ -57,7 +57,7 @@ type ComputeInstanceTemplateSpecDisk struct {
 	// +optional
 	DiskName string `json:"diskName,omitempty" tf:"disk_name,omitempty"`
 	// +optional
-	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
 	// +optional
 	DiskType string `json:"diskType,omitempty" tf:"disk_type,omitempty"`
 	// +optional
@@ -73,7 +73,7 @@ type ComputeInstanceTemplateSpecDisk struct {
 }
 
 type ComputeInstanceTemplateSpecGuestAccelerator struct {
-	Count int    `json:"count" tf:"count"`
+	Count int64  `json:"count" tf:"count"`
 	Type  string `json:"type" tf:"type"`
 }
 

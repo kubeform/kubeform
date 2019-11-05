@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             dropletID:
+              format: int64
               type: integer
             id:
               type: string
@@ -437,6 +438,7 @@ spec:
             output:
               properties:
                 dropletID:
+                  format: int64
                   type: integer
                 id:
                   type: string

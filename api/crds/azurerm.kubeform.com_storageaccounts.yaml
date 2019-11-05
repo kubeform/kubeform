@@ -540,6 +540,7 @@ spec:
                           maxItems: 64
                           type: array
                         maxAgeInSeconds:
+                          format: int64
                           type: integer
                       required:
                       - allowedHeaders
@@ -558,6 +559,7 @@ spec:
                         includeApis:
                           type: boolean
                         retentionPolicyDays:
+                          format: int64
                           type: integer
                         version:
                           type: string
@@ -575,6 +577,7 @@ spec:
                         read:
                           type: boolean
                         retentionPolicyDays:
+                          format: int64
                           type: integer
                         version:
                           type: string
@@ -596,6 +599,7 @@ spec:
                         includeApis:
                           type: boolean
                         retentionPolicyDays:
+                          format: int64
                           type: integer
                         version:
                           type: string
@@ -803,6 +807,7 @@ spec:
                               maxItems: 64
                               type: array
                             maxAgeInSeconds:
+                              format: int64
                               type: integer
                           required:
                           - allowedHeaders
@@ -821,6 +826,7 @@ spec:
                             includeApis:
                               type: boolean
                             retentionPolicyDays:
+                              format: int64
                               type: integer
                             version:
                               type: string
@@ -838,6 +844,7 @@ spec:
                             read:
                               type: boolean
                             retentionPolicyDays:
+                              format: int64
                               type: integer
                             version:
                               type: string
@@ -859,6 +866,7 @@ spec:
                             includeApis:
                               type: boolean
                             retentionPolicyDays:
+                              format: int64
                               type: integer
                             version:
                               type: string

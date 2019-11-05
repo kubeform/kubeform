@@ -47,22 +47,22 @@ type RecoveryServicesProtectionPolicyVmSpecBackup struct {
 }
 
 type RecoveryServicesProtectionPolicyVmSpecRetentionDaily struct {
-	Count int `json:"count" tf:"count"`
+	Count int64 `json:"count" tf:"count"`
 }
 
 type RecoveryServicesProtectionPolicyVmSpecRetentionMonthly struct {
-	Count    int      `json:"count" tf:"count"`
+	Count    int64    `json:"count" tf:"count"`
 	Weekdays []string `json:"weekdays" tf:"weekdays"`
 	Weeks    []string `json:"weeks" tf:"weeks"`
 }
 
 type RecoveryServicesProtectionPolicyVmSpecRetentionWeekly struct {
-	Count    int      `json:"count" tf:"count"`
+	Count    int64    `json:"count" tf:"count"`
 	Weekdays []string `json:"weekdays" tf:"weekdays"`
 }
 
 type RecoveryServicesProtectionPolicyVmSpecRetentionYearly struct {
-	Count    int      `json:"count" tf:"count"`
+	Count    int64    `json:"count" tf:"count"`
 	Months   []string `json:"months" tf:"months"`
 	Weekdays []string `json:"weekdays" tf:"weekdays"`
 	Weeks    []string `json:"weeks" tf:"weeks"`

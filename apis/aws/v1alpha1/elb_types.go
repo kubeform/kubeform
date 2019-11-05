@@ -46,21 +46,21 @@ type ElbSpecAccessLogs struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	Interval int `json:"interval,omitempty" tf:"interval,omitempty"`
+	Interval int64 `json:"interval,omitempty" tf:"interval,omitempty"`
 }
 
 type ElbSpecHealthCheck struct {
-	HealthyThreshold   int    `json:"healthyThreshold" tf:"healthy_threshold"`
-	Interval           int    `json:"interval" tf:"interval"`
+	HealthyThreshold   int64  `json:"healthyThreshold" tf:"healthy_threshold"`
+	Interval           int64  `json:"interval" tf:"interval"`
 	Target             string `json:"target" tf:"target"`
-	Timeout            int    `json:"timeout" tf:"timeout"`
-	UnhealthyThreshold int    `json:"unhealthyThreshold" tf:"unhealthy_threshold"`
+	Timeout            int64  `json:"timeout" tf:"timeout"`
+	UnhealthyThreshold int64  `json:"unhealthyThreshold" tf:"unhealthy_threshold"`
 }
 
 type ElbSpecListener struct {
-	InstancePort     int    `json:"instancePort" tf:"instance_port"`
+	InstancePort     int64  `json:"instancePort" tf:"instance_port"`
 	InstanceProtocol string `json:"instanceProtocol" tf:"instance_protocol"`
-	LbPort           int    `json:"lbPort" tf:"lb_port"`
+	LbPort           int64  `json:"lbPort" tf:"lb_port"`
 	LbProtocol       string `json:"lbProtocol" tf:"lb_protocol"`
 	// +optional
 	SslCertificateID string `json:"sslCertificateID,omitempty" tf:"ssl_certificate_id,omitempty"`
@@ -81,7 +81,7 @@ type ElbSpec struct {
 	// +optional
 	ConnectionDraining bool `json:"connectionDraining,omitempty" tf:"connection_draining,omitempty"`
 	// +optional
-	ConnectionDrainingTimeout int `json:"connectionDrainingTimeout,omitempty" tf:"connection_draining_timeout,omitempty"`
+	ConnectionDrainingTimeout int64 `json:"connectionDrainingTimeout,omitempty" tf:"connection_draining_timeout,omitempty"`
 	// +optional
 	CrossZoneLoadBalancing bool `json:"crossZoneLoadBalancing,omitempty" tf:"cross_zone_load_balancing,omitempty"`
 	// +optional
@@ -90,7 +90,7 @@ type ElbSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	HealthCheck []ElbSpecHealthCheck `json:"healthCheck,omitempty" tf:"health_check,omitempty"`
 	// +optional
-	IdleTimeout int `json:"idleTimeout,omitempty" tf:"idle_timeout,omitempty"`
+	IdleTimeout int64 `json:"idleTimeout,omitempty" tf:"idle_timeout,omitempty"`
 	// +optional
 	Instances []string `json:"instances,omitempty" tf:"instances,omitempty"`
 	// +optional

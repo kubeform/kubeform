@@ -45,7 +45,7 @@ type SsmPatchBaselineSpecApprovalRulePatchFilter struct {
 }
 
 type SsmPatchBaselineSpecApprovalRule struct {
-	ApproveAfterDays int `json:"approveAfterDays" tf:"approve_after_days"`
+	ApproveAfterDays int64 `json:"approveAfterDays" tf:"approve_after_days"`
 	// +optional
 	ComplianceLevel string `json:"complianceLevel,omitempty" tf:"compliance_level,omitempty"`
 	// +optional

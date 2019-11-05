@@ -413,8 +413,10 @@ spec:
               items:
                 properties:
                   bufferingInterval:
+                    format: int64
                     type: integer
                   bufferingSize:
+                    format: int64
                     type: integer
                   cloudwatchLoggingOptions:
                     items:
@@ -464,6 +466,7 @@ spec:
                     maxItems: 1
                     type: array
                   retryDuration:
+                    format: int64
                     type: integer
                   roleArn:
                     type: string
@@ -484,8 +487,10 @@ spec:
                   bucketArn:
                     type: string
                   bufferInterval:
+                    format: int64
                     type: integer
                   bufferSize:
+                    format: int64
                     type: integer
                   cloudwatchLoggingOptions:
                     items:
@@ -554,32 +559,32 @@ spec:
                                       items:
                                         properties:
                                           blockSizeBytes:
+                                            format: int64
                                             type: integer
                                           bloomFilterColumns:
                                             items:
                                               type: string
                                             type: array
                                           bloomFilterFalsePositiveProbability:
-                                            description: A Number represents a JSON
-                                              number literal.
-                                            type: string
+                                            format: float
+                                            type: number
                                           compression:
                                             type: string
                                           dictionaryKeyThreshold:
-                                            description: A Number represents a JSON
-                                              number literal.
-                                            type: string
+                                            format: float
+                                            type: number
                                           enablePadding:
                                             type: boolean
                                           formatVersion:
                                             type: string
                                           paddingTolerance:
-                                            description: A Number represents a JSON
-                                              number literal.
-                                            type: string
+                                            format: float
+                                            type: number
                                           rowIndexStride:
+                                            format: int64
                                             type: integer
                                           stripeSizeBytes:
+                                            format: int64
                                             type: integer
                                         type: object
                                       maxItems: 1
@@ -588,14 +593,17 @@ spec:
                                       items:
                                         properties:
                                           blockSizeBytes:
+                                            format: int64
                                             type: integer
                                           compression:
                                             type: string
                                           enableDictionaryCompression:
                                             type: boolean
                                           maxPaddingBytes:
+                                            format: int64
                                             type: integer
                                           pageSizeBytes:
+                                            format: int64
                                             type: integer
                                           writerVersion:
                                             type: string
@@ -682,8 +690,10 @@ spec:
                         bucketArn:
                           type: string
                         bufferInterval:
+                          format: int64
                           type: integer
                         bufferSize:
+                          format: int64
                           type: integer
                         cloudwatchLoggingOptions:
                           items:
@@ -798,6 +808,7 @@ spec:
                     maxItems: 1
                     type: array
                   retryDuration:
+                    format: int64
                     type: integer
                   roleArn:
                     type: string
@@ -807,8 +818,10 @@ spec:
                         bucketArn:
                           type: string
                         bufferInterval:
+                          format: int64
                           type: integer
                         bufferSize:
+                          format: int64
                           type: integer
                         cloudwatchLoggingOptions:
                           items:
@@ -854,8 +867,10 @@ spec:
                   bucketArn:
                     type: string
                   bufferInterval:
+                    format: int64
                     type: integer
                   bufferSize:
+                    format: int64
                     type: integer
                   cloudwatchLoggingOptions:
                     items:
@@ -908,6 +923,7 @@ spec:
                     maxItems: 1
                     type: array
                   hecAcknowledgmentTimeout:
+                    format: int64
                     type: integer
                   hecEndpoint:
                     type: string
@@ -945,6 +961,7 @@ spec:
                     maxItems: 1
                     type: array
                   retryDuration:
+                    format: int64
                     type: integer
                   s3BackupMode:
                     type: string
@@ -984,8 +1001,10 @@ spec:
                   items:
                     properties:
                       bufferingInterval:
+                        format: int64
                         type: integer
                       bufferingSize:
+                        format: int64
                         type: integer
                       cloudwatchLoggingOptions:
                         items:
@@ -1035,6 +1054,7 @@ spec:
                         maxItems: 1
                         type: array
                       retryDuration:
+                        format: int64
                         type: integer
                       roleArn:
                         type: string
@@ -1055,8 +1075,10 @@ spec:
                       bucketArn:
                         type: string
                       bufferInterval:
+                        format: int64
                         type: integer
                       bufferSize:
+                        format: int64
                         type: integer
                       cloudwatchLoggingOptions:
                         items:
@@ -1125,32 +1147,32 @@ spec:
                                           items:
                                             properties:
                                               blockSizeBytes:
+                                                format: int64
                                                 type: integer
                                               bloomFilterColumns:
                                                 items:
                                                   type: string
                                                 type: array
                                               bloomFilterFalsePositiveProbability:
-                                                description: A Number represents a
-                                                  JSON number literal.
-                                                type: string
+                                                format: float
+                                                type: number
                                               compression:
                                                 type: string
                                               dictionaryKeyThreshold:
-                                                description: A Number represents a
-                                                  JSON number literal.
-                                                type: string
+                                                format: float
+                                                type: number
                                               enablePadding:
                                                 type: boolean
                                               formatVersion:
                                                 type: string
                                               paddingTolerance:
-                                                description: A Number represents a
-                                                  JSON number literal.
-                                                type: string
+                                                format: float
+                                                type: number
                                               rowIndexStride:
+                                                format: int64
                                                 type: integer
                                               stripeSizeBytes:
+                                                format: int64
                                                 type: integer
                                             type: object
                                           maxItems: 1
@@ -1159,14 +1181,17 @@ spec:
                                           items:
                                             properties:
                                               blockSizeBytes:
+                                                format: int64
                                                 type: integer
                                               compression:
                                                 type: string
                                               enableDictionaryCompression:
                                                 type: boolean
                                               maxPaddingBytes:
+                                                format: int64
                                                 type: integer
                                               pageSizeBytes:
+                                                format: int64
                                                 type: integer
                                               writerVersion:
                                                 type: string
@@ -1253,8 +1278,10 @@ spec:
                             bucketArn:
                               type: string
                             bufferInterval:
+                              format: int64
                               type: integer
                             bufferSize:
+                              format: int64
                               type: integer
                             cloudwatchLoggingOptions:
                               items:
@@ -1369,6 +1396,7 @@ spec:
                         maxItems: 1
                         type: array
                       retryDuration:
+                        format: int64
                         type: integer
                       roleArn:
                         type: string
@@ -1378,8 +1406,10 @@ spec:
                             bucketArn:
                               type: string
                             bufferInterval:
+                              format: int64
                               type: integer
                             bufferSize:
+                              format: int64
                               type: integer
                             cloudwatchLoggingOptions:
                               items:
@@ -1425,8 +1455,10 @@ spec:
                       bucketArn:
                         type: string
                       bufferInterval:
+                        format: int64
                         type: integer
                       bufferSize:
+                        format: int64
                         type: integer
                       cloudwatchLoggingOptions:
                         items:
@@ -1479,6 +1511,7 @@ spec:
                         maxItems: 1
                         type: array
                       hecAcknowledgmentTimeout:
+                        format: int64
                         type: integer
                       hecEndpoint:
                         type: string
@@ -1516,6 +1549,7 @@ spec:
                         maxItems: 1
                         type: array
                       retryDuration:
+                        format: int64
                         type: integer
                       s3BackupMode:
                         type: string

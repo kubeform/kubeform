@@ -425,6 +425,7 @@ spec:
             resourceGroupName:
               type: string
             value:
+              format: int64
               type: integer
           required:
           - automationAccountName
@@ -463,6 +464,7 @@ spec:
                 resourceGroupName:
                   type: string
                 value:
+                  format: int64
                   type: integer
               required:
               - automationAccountName

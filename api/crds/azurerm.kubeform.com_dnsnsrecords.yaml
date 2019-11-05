@@ -437,6 +437,7 @@ spec:
                 type: string
               type: object
             ttl:
+              format: int64
               type: integer
             zoneName:
               type: string
@@ -490,6 +491,7 @@ spec:
                     type: string
                   type: object
                 ttl:
+                  format: int64
                   type: integer
                 zoneName:
                   type: string

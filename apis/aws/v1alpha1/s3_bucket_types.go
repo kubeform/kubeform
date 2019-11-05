@@ -47,26 +47,26 @@ type S3BucketSpecCorsRule struct {
 	// +optional
 	ExposeHeaders []string `json:"exposeHeaders,omitempty" tf:"expose_headers,omitempty"`
 	// +optional
-	MaxAgeSeconds int `json:"maxAgeSeconds,omitempty" tf:"max_age_seconds,omitempty"`
+	MaxAgeSeconds int64 `json:"maxAgeSeconds,omitempty" tf:"max_age_seconds,omitempty"`
 }
 
 type S3BucketSpecLifecycleRuleExpiration struct {
 	// +optional
 	Date string `json:"date,omitempty" tf:"date,omitempty"`
 	// +optional
-	Days int `json:"days,omitempty" tf:"days,omitempty"`
+	Days int64 `json:"days,omitempty" tf:"days,omitempty"`
 	// +optional
 	ExpiredObjectDeleteMarker bool `json:"expiredObjectDeleteMarker,omitempty" tf:"expired_object_delete_marker,omitempty"`
 }
 
 type S3BucketSpecLifecycleRuleNoncurrentVersionExpiration struct {
 	// +optional
-	Days int `json:"days,omitempty" tf:"days,omitempty"`
+	Days int64 `json:"days,omitempty" tf:"days,omitempty"`
 }
 
 type S3BucketSpecLifecycleRuleNoncurrentVersionTransition struct {
 	// +optional
-	Days         int    `json:"days,omitempty" tf:"days,omitempty"`
+	Days         int64  `json:"days,omitempty" tf:"days,omitempty"`
 	StorageClass string `json:"storageClass" tf:"storage_class"`
 }
 
@@ -74,14 +74,14 @@ type S3BucketSpecLifecycleRuleTransition struct {
 	// +optional
 	Date string `json:"date,omitempty" tf:"date,omitempty"`
 	// +optional
-	Days         int    `json:"days,omitempty" tf:"days,omitempty"`
+	Days         int64  `json:"days,omitempty" tf:"days,omitempty"`
 	StorageClass string `json:"storageClass" tf:"storage_class"`
 }
 
 type S3BucketSpecLifecycleRule struct {
 	// +optional
-	AbortIncompleteMultipartUploadDays int  `json:"abortIncompleteMultipartUploadDays,omitempty" tf:"abort_incomplete_multipart_upload_days,omitempty"`
-	Enabled                            bool `json:"enabled" tf:"enabled"`
+	AbortIncompleteMultipartUploadDays int64 `json:"abortIncompleteMultipartUploadDays,omitempty" tf:"abort_incomplete_multipart_upload_days,omitempty"`
+	Enabled                            bool  `json:"enabled" tf:"enabled"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Expiration []S3BucketSpecLifecycleRuleExpiration `json:"expiration,omitempty" tf:"expiration,omitempty"`
@@ -108,10 +108,10 @@ type S3BucketSpecLogging struct {
 
 type S3BucketSpecObjectLockConfigurationRuleDefaultRetention struct {
 	// +optional
-	Days int    `json:"days,omitempty" tf:"days,omitempty"`
+	Days int64  `json:"days,omitempty" tf:"days,omitempty"`
 	Mode string `json:"mode" tf:"mode"`
 	// +optional
-	Years int `json:"years,omitempty" tf:"years,omitempty"`
+	Years int64 `json:"years,omitempty" tf:"years,omitempty"`
 }
 
 type S3BucketSpecObjectLockConfigurationRule struct {
@@ -176,7 +176,7 @@ type S3BucketSpecReplicationConfigurationRules struct {
 	// +optional
 	Prefix string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 	// +optional
-	Priority int `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1

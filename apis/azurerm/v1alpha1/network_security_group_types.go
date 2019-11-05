@@ -55,7 +55,7 @@ type NetworkSecurityGroupSpecSecurityRule struct {
 	DestinationPortRanges []string `json:"destinationPortRanges,omitempty" tf:"destination_port_ranges,omitempty"`
 	Direction             string   `json:"direction" tf:"direction"`
 	Name                  string   `json:"name" tf:"name"`
-	Priority              int      `json:"priority" tf:"priority"`
+	Priority              int64    `json:"priority" tf:"priority"`
 	Protocol              string   `json:"protocol" tf:"protocol"`
 	// +optional
 	SourceAddressPrefix string `json:"sourceAddressPrefix,omitempty" tf:"source_address_prefix,omitempty"`

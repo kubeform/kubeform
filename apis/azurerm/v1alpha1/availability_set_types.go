@@ -49,9 +49,9 @@ type AvailabilitySetSpec struct {
 	Managed bool   `json:"managed,omitempty" tf:"managed,omitempty"`
 	Name    string `json:"name" tf:"name"`
 	// +optional
-	PlatformFaultDomainCount int `json:"platformFaultDomainCount,omitempty" tf:"platform_fault_domain_count,omitempty"`
+	PlatformFaultDomainCount int64 `json:"platformFaultDomainCount,omitempty" tf:"platform_fault_domain_count,omitempty"`
 	// +optional
-	PlatformUpdateDomainCount int    `json:"platformUpdateDomainCount,omitempty" tf:"platform_update_domain_count,omitempty"`
+	PlatformUpdateDomainCount int64  `json:"platformUpdateDomainCount,omitempty" tf:"platform_update_domain_count,omitempty"`
 	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

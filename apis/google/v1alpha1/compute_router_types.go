@@ -53,7 +53,7 @@ type ComputeRouterSpecBgp struct {
 	AdvertisedGroups []string `json:"advertisedGroups,omitempty" tf:"advertised_groups,omitempty"`
 	// +optional
 	AdvertisedIPRanges []ComputeRouterSpecBgpAdvertisedIPRanges `json:"advertisedIPRanges,omitempty" tf:"advertised_ip_ranges,omitempty"`
-	Asn                int                                      `json:"asn" tf:"asn"`
+	Asn                int64                                    `json:"asn" tf:"asn"`
 }
 
 type ComputeRouterSpec struct {

@@ -52,9 +52,9 @@ type EventhubSpecCaptureDescription struct {
 	Enabled     bool                                        `json:"enabled" tf:"enabled"`
 	Encoding    string                                      `json:"encoding" tf:"encoding"`
 	// +optional
-	IntervalInSeconds int `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 	// +optional
-	SizeLimitInBytes int `json:"sizeLimitInBytes,omitempty" tf:"size_limit_in_bytes,omitempty"`
+	SizeLimitInBytes int64 `json:"sizeLimitInBytes,omitempty" tf:"size_limit_in_bytes,omitempty"`
 	// +optional
 	SkipEmptyArchives bool `json:"skipEmptyArchives,omitempty" tf:"skip_empty_archives,omitempty"`
 }
@@ -70,10 +70,10 @@ type EventhubSpec struct {
 	// +optional
 	// Deprecated
 	Location         string `json:"location,omitempty" tf:"location,omitempty"`
-	MessageRetention int    `json:"messageRetention" tf:"message_retention"`
+	MessageRetention int64  `json:"messageRetention" tf:"message_retention"`
 	Name             string `json:"name" tf:"name"`
 	NamespaceName    string `json:"namespaceName" tf:"namespace_name"`
-	PartitionCount   int    `json:"partitionCount" tf:"partition_count"`
+	PartitionCount   int64  `json:"partitionCount" tf:"partition_count"`
 	// +optional
 	PartitionIDS      []string `json:"partitionIDS,omitempty" tf:"partition_ids,omitempty"`
 	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`

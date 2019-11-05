@@ -61,16 +61,16 @@ type DataprocClusterSpecClusterConfigGceClusterConfig struct {
 type DataprocClusterSpecClusterConfigInitializationAction struct {
 	Script string `json:"script" tf:"script"`
 	// +optional
-	TimeoutSec int `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
+	TimeoutSec int64 `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
 }
 
 type DataprocClusterSpecClusterConfigMasterConfigDiskConfig struct {
 	// +optional
-	BootDiskSizeGb int `json:"bootDiskSizeGb,omitempty" tf:"boot_disk_size_gb,omitempty"`
+	BootDiskSizeGb int64 `json:"bootDiskSizeGb,omitempty" tf:"boot_disk_size_gb,omitempty"`
 	// +optional
 	BootDiskType string `json:"bootDiskType,omitempty" tf:"boot_disk_type,omitempty"`
 	// +optional
-	NumLocalSsds int `json:"numLocalSsds,omitempty" tf:"num_local_ssds,omitempty"`
+	NumLocalSsds int64 `json:"numLocalSsds,omitempty" tf:"num_local_ssds,omitempty"`
 }
 
 type DataprocClusterSpecClusterConfigMasterConfig struct {
@@ -82,12 +82,12 @@ type DataprocClusterSpecClusterConfigMasterConfig struct {
 	// +optional
 	MachineType string `json:"machineType,omitempty" tf:"machine_type,omitempty"`
 	// +optional
-	NumInstances int `json:"numInstances,omitempty" tf:"num_instances,omitempty"`
+	NumInstances int64 `json:"numInstances,omitempty" tf:"num_instances,omitempty"`
 }
 
 type DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig struct {
 	// +optional
-	BootDiskSizeGb int `json:"bootDiskSizeGb,omitempty" tf:"boot_disk_size_gb,omitempty"`
+	BootDiskSizeGb int64 `json:"bootDiskSizeGb,omitempty" tf:"boot_disk_size_gb,omitempty"`
 }
 
 type DataprocClusterSpecClusterConfigPreemptibleWorkerConfig struct {
@@ -97,7 +97,7 @@ type DataprocClusterSpecClusterConfigPreemptibleWorkerConfig struct {
 	// +optional
 	InstanceNames []string `json:"instanceNames,omitempty" tf:"instance_names,omitempty"`
 	// +optional
-	NumInstances int `json:"numInstances,omitempty" tf:"num_instances,omitempty"`
+	NumInstances int64 `json:"numInstances,omitempty" tf:"num_instances,omitempty"`
 }
 
 type DataprocClusterSpecClusterConfigSoftwareConfig struct {
@@ -111,11 +111,11 @@ type DataprocClusterSpecClusterConfigSoftwareConfig struct {
 
 type DataprocClusterSpecClusterConfigWorkerConfigDiskConfig struct {
 	// +optional
-	BootDiskSizeGb int `json:"bootDiskSizeGb,omitempty" tf:"boot_disk_size_gb,omitempty"`
+	BootDiskSizeGb int64 `json:"bootDiskSizeGb,omitempty" tf:"boot_disk_size_gb,omitempty"`
 	// +optional
 	BootDiskType string `json:"bootDiskType,omitempty" tf:"boot_disk_type,omitempty"`
 	// +optional
-	NumLocalSsds int `json:"numLocalSsds,omitempty" tf:"num_local_ssds,omitempty"`
+	NumLocalSsds int64 `json:"numLocalSsds,omitempty" tf:"num_local_ssds,omitempty"`
 }
 
 type DataprocClusterSpecClusterConfigWorkerConfig struct {
@@ -127,7 +127,7 @@ type DataprocClusterSpecClusterConfigWorkerConfig struct {
 	// +optional
 	MachineType string `json:"machineType,omitempty" tf:"machine_type,omitempty"`
 	// +optional
-	NumInstances int `json:"numInstances,omitempty" tf:"num_instances,omitempty"`
+	NumInstances int64 `json:"numInstances,omitempty" tf:"num_instances,omitempty"`
 }
 
 type DataprocClusterSpecClusterConfig struct {

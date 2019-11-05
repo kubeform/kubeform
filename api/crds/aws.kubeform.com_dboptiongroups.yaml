@@ -437,6 +437,7 @@ spec:
                       type: object
                     type: array
                   port:
+                    format: int64
                     type: integer
                   version:
                     type: string
@@ -511,6 +512,7 @@ spec:
                           type: object
                         type: array
                       port:
+                        format: int64
                         type: integer
                       version:
                         type: string

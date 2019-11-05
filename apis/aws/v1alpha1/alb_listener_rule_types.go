@@ -49,7 +49,7 @@ type AlbListenerRuleSpecActionAuthenticateCognito struct {
 	// +optional
 	SessionCookieName string `json:"sessionCookieName,omitempty" tf:"session_cookie_name,omitempty"`
 	// +optional
-	SessionTimeout   int    `json:"sessionTimeout,omitempty" tf:"session_timeout,omitempty"`
+	SessionTimeout   int64  `json:"sessionTimeout,omitempty" tf:"session_timeout,omitempty"`
 	UserPoolArn      string `json:"userPoolArn" tf:"user_pool_arn"`
 	UserPoolClientID string `json:"userPoolClientID" tf:"user_pool_client_id"`
 	UserPoolDomain   string `json:"userPoolDomain" tf:"user_pool_domain"`
@@ -69,7 +69,7 @@ type AlbListenerRuleSpecActionAuthenticateOidc struct {
 	// +optional
 	SessionCookieName string `json:"sessionCookieName,omitempty" tf:"session_cookie_name,omitempty"`
 	// +optional
-	SessionTimeout   int    `json:"sessionTimeout,omitempty" tf:"session_timeout,omitempty"`
+	SessionTimeout   int64  `json:"sessionTimeout,omitempty" tf:"session_timeout,omitempty"`
 	TokenEndpoint    string `json:"tokenEndpoint" tf:"token_endpoint"`
 	UserInfoEndpoint string `json:"userInfoEndpoint" tf:"user_info_endpoint"`
 }
@@ -107,7 +107,7 @@ type AlbListenerRuleSpecAction struct {
 	// +kubebuilder:validation:MaxItems=1
 	FixedResponse []AlbListenerRuleSpecActionFixedResponse `json:"fixedResponse,omitempty" tf:"fixed_response,omitempty"`
 	// +optional
-	Order int `json:"order,omitempty" tf:"order,omitempty"`
+	Order int64 `json:"order,omitempty" tf:"order,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Redirect []AlbListenerRuleSpecActionRedirect `json:"redirect,omitempty" tf:"redirect,omitempty"`
@@ -137,7 +137,7 @@ type AlbListenerRuleSpec struct {
 	Condition   []AlbListenerRuleSpecCondition `json:"condition" tf:"condition"`
 	ListenerArn string                         `json:"listenerArn" tf:"listener_arn"`
 	// +optional
-	Priority int `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 }
 
 type AlbListenerRuleStatus struct {

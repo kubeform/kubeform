@@ -66,7 +66,7 @@ type ManagedDiskSpec struct {
 
 	CreateOption string `json:"createOption" tf:"create_option"`
 	// +optional
-	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	EncryptionSettings []ManagedDiskSpecEncryptionSettings `json:"encryptionSettings,omitempty" tf:"encryption_settings,omitempty"`

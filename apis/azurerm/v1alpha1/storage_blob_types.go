@@ -45,17 +45,17 @@ type StorageBlobSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	Attempts int `json:"attempts,omitempty" tf:"attempts,omitempty"`
+	Attempts int64 `json:"attempts,omitempty" tf:"attempts,omitempty"`
 	// +optional
 	ContentType string `json:"contentType,omitempty" tf:"content_type,omitempty"`
 	// +optional
 	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 	Name     string            `json:"name" tf:"name"`
 	// +optional
-	Parallelism       int    `json:"parallelism,omitempty" tf:"parallelism,omitempty"`
+	Parallelism       int64  `json:"parallelism,omitempty" tf:"parallelism,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Size int `json:"size,omitempty" tf:"size,omitempty"`
+	Size int64 `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
 	Source string `json:"source,omitempty" tf:"source,omitempty"`
 	// +optional

@@ -434,6 +434,7 @@ spec:
               type: object
             ttl:
               description: The amount of time the content is cached in the CDN
+              format: int64
               type: integer
           required:
           - origin
@@ -480,6 +481,7 @@ spec:
                   type: object
                 ttl:
                   description: The amount of time the content is cached in the CDN
+                  format: int64
                   type: integer
               required:
               - origin

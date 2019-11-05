@@ -47,7 +47,7 @@ type ServicebusNamespaceSpec struct {
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
-	Capacity int `json:"capacity,omitempty" tf:"capacity,omitempty"`
+	Capacity int64 `json:"capacity,omitempty" tf:"capacity,omitempty"`
 	// +optional
 	DefaultPrimaryConnectionString string `json:"-" sensitive:"true" tf:"default_primary_connection_string,omitempty"`
 	// +optional

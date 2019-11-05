@@ -466,6 +466,7 @@ spec:
             notBefore:
               type: string
             permanentDeletionTimeInDays:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -487,6 +488,7 @@ spec:
                         enabled:
                           type: boolean
                         expirationInDays:
+                          format: int64
                           type: integer
                         s3BucketName:
                           type: string
@@ -584,6 +586,7 @@ spec:
                 notBefore:
                   type: string
                 permanentDeletionTimeInDays:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -605,6 +608,7 @@ spec:
                             enabled:
                               type: boolean
                             expirationInDays:
+                              format: int64
                               type: integer
                             s3BucketName:
                               type: string

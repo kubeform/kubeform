@@ -51,12 +51,12 @@ type VolumeSpec struct {
 	Label string `json:"label" tf:"label"`
 	// The Linode ID where the Volume should be attached.
 	// +optional
-	LinodeID int `json:"linodeID,omitempty" tf:"linode_id,omitempty"`
+	LinodeID int64 `json:"linodeID,omitempty" tf:"linode_id,omitempty"`
 	// The region where this volume will be deployed.
 	Region string `json:"region" tf:"region"`
 	// Size of the Volume in GB
 	// +optional
-	Size int `json:"size,omitempty" tf:"size,omitempty"`
+	Size int64 `json:"size,omitempty" tf:"size,omitempty"`
 	// The status of the volume, indicating the current readiness state.
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`

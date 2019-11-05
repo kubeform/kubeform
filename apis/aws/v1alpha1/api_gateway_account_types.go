@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -43,9 +41,9 @@ type ApiGatewayAccount struct {
 
 type ApiGatewayAccountSpecThrottleSettings struct {
 	// +optional
-	BurstLimit int `json:"burstLimit,omitempty" tf:"burst_limit,omitempty"`
+	BurstLimit int64 `json:"burstLimit,omitempty" tf:"burst_limit,omitempty"`
 	// +optional
-	RateLimit json.Number `json:"rateLimit,omitempty" tf:"rate_limit,omitempty"`
+	RateLimit float64 `json:"rateLimit,omitempty" tf:"rate_limit,omitempty"`
 }
 
 type ApiGatewayAccountSpec struct {

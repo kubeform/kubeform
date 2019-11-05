@@ -404,10 +404,12 @@ spec:
         spec:
           properties:
             icmpIdleTimeoutSec:
+              format: int64
               type: integer
             id:
               type: string
             minPortsPerVm:
+              format: int64
               type: integer
             name:
               type: string
@@ -452,10 +454,13 @@ spec:
                 type: object
               type: array
             tcpEstablishedIdleTimeoutSec:
+              format: int64
               type: integer
             tcpTransitoryIdleTimeoutSec:
+              format: int64
               type: integer
             udpIdleTimeoutSec:
+              format: int64
               type: integer
           required:
           - name
@@ -473,10 +478,12 @@ spec:
             output:
               properties:
                 icmpIdleTimeoutSec:
+                  format: int64
                   type: integer
                 id:
                   type: string
                 minPortsPerVm:
+                  format: int64
                   type: integer
                 name:
                   type: string
@@ -521,10 +528,13 @@ spec:
                     type: object
                   type: array
                 tcpEstablishedIdleTimeoutSec:
+                  format: int64
                   type: integer
                 tcpTransitoryIdleTimeoutSec:
+                  format: int64
                   type: integer
                 udpIdleTimeoutSec:
+                  format: int64
                   type: integer
               required:
               - name

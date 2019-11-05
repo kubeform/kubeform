@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -59,7 +57,7 @@ type EfsFileSystemSpec struct {
 	// +optional
 	PerformanceMode string `json:"performanceMode,omitempty" tf:"performance_mode,omitempty"`
 	// +optional
-	ProvisionedThroughputInMibps json.Number `json:"provisionedThroughputInMibps,omitempty" tf:"provisioned_throughput_in_mibps,omitempty"`
+	ProvisionedThroughputInMibps float64 `json:"provisionedThroughputInMibps,omitempty" tf:"provisioned_throughput_in_mibps,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

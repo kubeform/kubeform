@@ -46,7 +46,7 @@ type LbRuleSpec struct {
 
 	// +optional
 	BackendAddressPoolID string `json:"backendAddressPoolID,omitempty" tf:"backend_address_pool_id,omitempty"`
-	BackendPort          int    `json:"backendPort" tf:"backend_port"`
+	BackendPort          int64  `json:"backendPort" tf:"backend_port"`
 	// +optional
 	DisableOutboundSnat bool `json:"disableOutboundSnat,omitempty" tf:"disable_outbound_snat,omitempty"`
 	// +optional
@@ -54,9 +54,9 @@ type LbRuleSpec struct {
 	// +optional
 	FrontendIPConfigurationID   string `json:"frontendIPConfigurationID,omitempty" tf:"frontend_ip_configuration_id,omitempty"`
 	FrontendIPConfigurationName string `json:"frontendIPConfigurationName" tf:"frontend_ip_configuration_name"`
-	FrontendPort                int    `json:"frontendPort" tf:"frontend_port"`
+	FrontendPort                int64  `json:"frontendPort" tf:"frontend_port"`
 	// +optional
-	IdleTimeoutInMinutes int `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
+	IdleTimeoutInMinutes int64 `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
 	// +optional
 	LoadDistribution string `json:"loadDistribution,omitempty" tf:"load_distribution,omitempty"`
 	LoadbalancerID   string `json:"loadbalancerID" tf:"loadbalancer_id"`

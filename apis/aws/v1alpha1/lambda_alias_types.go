@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -43,7 +41,7 @@ type LambdaAlias struct {
 
 type LambdaAliasSpecRoutingConfig struct {
 	// +optional
-	AdditionalVersionWeights map[string]json.Number `json:"additionalVersionWeights,omitempty" tf:"additional_version_weights,omitempty"`
+	AdditionalVersionWeights map[string]float64 `json:"additionalVersionWeights,omitempty" tf:"additional_version_weights,omitempty"`
 }
 
 type LambdaAliasSpec struct {

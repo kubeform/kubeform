@@ -60,10 +60,10 @@ type RedisInstanceSpec struct {
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
 	LocationID   string `json:"locationID,omitempty" tf:"location_id,omitempty"`
-	MemorySizeGb int    `json:"memorySizeGb" tf:"memory_size_gb"`
+	MemorySizeGb int64  `json:"memorySizeGb" tf:"memory_size_gb"`
 	Name         string `json:"name" tf:"name"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

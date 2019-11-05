@@ -47,9 +47,9 @@ type DevTestWindowsVirtualMachineSpecGalleryImageReference struct {
 }
 
 type DevTestWindowsVirtualMachineSpecInboundNATRule struct {
-	BackendPort int `json:"backendPort" tf:"backend_port"`
+	BackendPort int64 `json:"backendPort" tf:"backend_port"`
 	// +optional
-	FrontendPort int    `json:"frontendPort,omitempty" tf:"frontend_port,omitempty"`
+	FrontendPort int64  `json:"frontendPort,omitempty" tf:"frontend_port,omitempty"`
 	Protocol     string `json:"protocol" tf:"protocol"`
 }
 

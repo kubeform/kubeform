@@ -411,10 +411,12 @@ spec:
                   caching:
                     type: string
                   lun:
+                    format: int64
                     type: integer
                   managedDiskID:
                     type: string
                   sizeGb:
+                    format: int64
                     type: integer
                 type: object
               type: array
@@ -438,6 +440,7 @@ spec:
                   osType:
                     type: string
                   sizeGb:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -484,10 +487,12 @@ spec:
                       caching:
                         type: string
                       lun:
+                        format: int64
                         type: integer
                       managedDiskID:
                         type: string
                       sizeGb:
+                        format: int64
                         type: integer
                     type: object
                   type: array
@@ -511,6 +516,7 @@ spec:
                       osType:
                         type: string
                       sizeGb:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1

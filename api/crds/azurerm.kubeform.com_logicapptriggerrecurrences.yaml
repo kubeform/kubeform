@@ -408,6 +408,7 @@ spec:
             id:
               type: string
             interval:
+              format: int64
               type: integer
             logicAppID:
               type: string
@@ -443,6 +444,7 @@ spec:
                 id:
                   type: string
                 interval:
+                  format: int64
                   type: integer
                 logicAppID:
                   type: string

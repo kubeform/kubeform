@@ -54,7 +54,7 @@ type LogAnalyticsWorkspaceSpec struct {
 	PrimarySharedKey  string `json:"-" sensitive:"true" tf:"primary_shared_key,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	RetentionInDays int `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
+	RetentionInDays int64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
 	// +optional
 	SecondarySharedKey string `json:"-" sensitive:"true" tf:"secondary_shared_key,omitempty"`
 	Sku                string `json:"sku" tf:"sku"`

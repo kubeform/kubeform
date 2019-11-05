@@ -55,7 +55,7 @@ type ComputeTargetTcpProxySpec struct {
 	// +optional
 	ProxyHeader string `json:"proxyHeader,omitempty" tf:"proxy_header,omitempty"`
 	// +optional
-	ProxyID int `json:"proxyID,omitempty" tf:"proxy_id,omitempty"`
+	ProxyID int64 `json:"proxyID,omitempty" tf:"proxy_id,omitempty"`
 	// +optional
 	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 }

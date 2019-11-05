@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             childHealthThreshold:
+              format: int64
               type: integer
             childHealthchecks:
               items:
@@ -416,6 +417,7 @@ spec:
             enableSni:
               type: boolean
             failureThreshold:
+              format: int64
               type: integer
             fqdn:
               type: string
@@ -430,6 +432,7 @@ spec:
             measureLatency:
               type: boolean
             port:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -447,6 +450,7 @@ spec:
                 type: string
               type: array
             requestInterval:
+              format: int64
               type: integer
             resourcePath:
               type: string
@@ -472,6 +476,7 @@ spec:
             output:
               properties:
                 childHealthThreshold:
+                  format: int64
                   type: integer
                 childHealthchecks:
                   items:
@@ -484,6 +489,7 @@ spec:
                 enableSni:
                   type: boolean
                 failureThreshold:
+                  format: int64
                   type: integer
                 fqdn:
                   type: string
@@ -498,6 +504,7 @@ spec:
                 measureLatency:
                   type: boolean
                 port:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -515,6 +522,7 @@ spec:
                     type: string
                   type: array
                 requestInterval:
+                  format: int64
                   type: integer
                 resourcePath:
                   type: string

@@ -65,9 +65,9 @@ type ServicebusQueueSpec struct {
 	// +optional
 	LockDuration string `json:"lockDuration,omitempty" tf:"lock_duration,omitempty"`
 	// +optional
-	MaxDeliveryCount int `json:"maxDeliveryCount,omitempty" tf:"max_delivery_count,omitempty"`
+	MaxDeliveryCount int64 `json:"maxDeliveryCount,omitempty" tf:"max_delivery_count,omitempty"`
 	// +optional
-	MaxSizeInMegabytes int    `json:"maxSizeInMegabytes,omitempty" tf:"max_size_in_megabytes,omitempty"`
+	MaxSizeInMegabytes int64  `json:"maxSizeInMegabytes,omitempty" tf:"max_size_in_megabytes,omitempty"`
 	Name               string `json:"name" tf:"name"`
 	NamespaceName      string `json:"namespaceName" tf:"namespace_name"`
 	// +optional

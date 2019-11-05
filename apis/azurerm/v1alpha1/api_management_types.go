@@ -167,7 +167,7 @@ type ApiManagementSpecSignUp struct {
 }
 
 type ApiManagementSpecSku struct {
-	Capacity int    `json:"capacity" tf:"capacity"`
+	Capacity int64  `json:"capacity" tf:"capacity"`
 	Name     string `json:"name" tf:"name"`
 }
 

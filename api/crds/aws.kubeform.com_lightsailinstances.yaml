@@ -412,6 +412,7 @@ spec:
             bundleID:
               type: string
             cpuCount:
+              format: int64
               type: integer
             createdAt:
               type: string
@@ -439,6 +440,7 @@ spec:
             publicIPAddress:
               type: string
             ramSize:
+              format: int64
               type: integer
             userData:
               type: string
@@ -469,6 +471,7 @@ spec:
                 bundleID:
                   type: string
                 cpuCount:
+                  format: int64
                   type: integer
                 createdAt:
                   type: string
@@ -496,6 +499,7 @@ spec:
                 publicIPAddress:
                   type: string
                 ramSize:
+                  format: int64
                   type: integer
                 userData:
                   type: string

@@ -417,6 +417,7 @@ spec:
                   ID:
                     type: string
                   revision:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -549,6 +550,7 @@ spec:
                       ID:
                         type: string
                       revision:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1

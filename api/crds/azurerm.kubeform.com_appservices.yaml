@@ -485,8 +485,8 @@ spec:
                   runtimeVersion:
                     type: string
                   tokenRefreshExtensionHours:
-                    description: A Number represents a JSON number literal.
-                    type: string
+                    format: float
+                    type: number
                   tokenStoreEnabled:
                     type: boolean
                   twitter:
@@ -517,12 +517,14 @@ spec:
                     items:
                       properties:
                         frequencyInterval:
+                          format: int64
                           type: integer
                         frequencyUnit:
                           type: string
                         keepAtLeastOneBackup:
                           type: boolean
                         retentionPeriodInDays:
+                          format: int64
                           type: integer
                         startTime:
                           type: string
@@ -595,6 +597,7 @@ spec:
                               level:
                                 type: string
                               retentionInDays:
+                                format: int64
                                 type: integer
                             required:
                             - level
@@ -851,8 +854,8 @@ spec:
                       runtimeVersion:
                         type: string
                       tokenRefreshExtensionHours:
-                        description: A Number represents a JSON number literal.
-                        type: string
+                        format: float
+                        type: number
                       tokenStoreEnabled:
                         type: boolean
                       twitter:
@@ -883,12 +886,14 @@ spec:
                         items:
                           properties:
                             frequencyInterval:
+                              format: int64
                               type: integer
                             frequencyUnit:
                               type: string
                             keepAtLeastOneBackup:
                               type: boolean
                             retentionPeriodInDays:
+                              format: int64
                               type: integer
                             startTime:
                               type: string
@@ -961,6 +966,7 @@ spec:
                                   level:
                                     type: string
                                   retentionInDays:
+                                    format: int64
                                     type: integer
                                 required:
                                 - level

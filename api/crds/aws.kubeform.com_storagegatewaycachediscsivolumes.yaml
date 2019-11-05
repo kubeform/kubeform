@@ -412,10 +412,12 @@ spec:
             id:
               type: string
             lunNumber:
+              format: int64
               type: integer
             networkInterfaceID:
               type: string
             networkInterfacePort:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -439,6 +441,7 @@ spec:
             volumeID:
               type: string
             volumeSizeInBytes:
+              format: int64
               type: integer
           required:
           - gatewayArn
@@ -465,10 +468,12 @@ spec:
                 id:
                   type: string
                 lunNumber:
+                  format: int64
                   type: integer
                 networkInterfaceID:
                   type: string
                 networkInterfacePort:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -492,6 +497,7 @@ spec:
                 volumeID:
                   type: string
                 volumeSizeInBytes:
+                  format: int64
                   type: integer
               required:
               - gatewayArn

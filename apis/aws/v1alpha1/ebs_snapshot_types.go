@@ -60,7 +60,7 @@ type EbsSnapshotSpec struct {
 	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	VolumeID string            `json:"volumeID" tf:"volume_id"`
 	// +optional
-	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	VolumeSize int64 `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 }
 
 type EbsSnapshotStatus struct {

@@ -45,7 +45,7 @@ type LambdaEventSourceMappingSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	BatchSize int `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
+	BatchSize int64 `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
 	// +optional
 	Enabled        bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	EventSourceArn string `json:"eventSourceArn" tf:"event_source_arn"`

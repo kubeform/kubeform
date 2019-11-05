@@ -49,7 +49,7 @@ type BatchJobQueueSpec struct {
 	// +kubebuilder:validation:MaxItems=3
 	ComputeEnvironments []string `json:"computeEnvironments" tf:"compute_environments"`
 	Name                string   `json:"name" tf:"name"`
-	Priority            int      `json:"priority" tf:"priority"`
+	Priority            int64    `json:"priority" tf:"priority"`
 	State               string   `json:"state" tf:"state"`
 }
 

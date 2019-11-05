@@ -69,7 +69,7 @@ type FirewallSpecOutboundRule struct {
 
 type FirewallSpecPendingChanges struct {
 	// +optional
-	DropletID int `json:"dropletID,omitempty" tf:"droplet_id,omitempty"`
+	DropletID int64 `json:"dropletID,omitempty" tf:"droplet_id,omitempty"`
 	// +optional
 	Removing bool `json:"removing,omitempty" tf:"removing,omitempty"`
 	// +optional

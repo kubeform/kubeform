@@ -52,7 +52,7 @@ type MqConfigurationSpec struct {
 	EngineType    string `json:"engineType" tf:"engine_type"`
 	EngineVersion string `json:"engineVersion" tf:"engine_version"`
 	// +optional
-	LatestRevision int    `json:"latestRevision,omitempty" tf:"latest_revision,omitempty"`
+	LatestRevision int64  `json:"latestRevision,omitempty" tf:"latest_revision,omitempty"`
 	Name           string `json:"name" tf:"name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

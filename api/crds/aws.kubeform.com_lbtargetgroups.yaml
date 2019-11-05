@@ -408,6 +408,7 @@ spec:
             arnSuffix:
               type: string
             deregistrationDelay:
+              format: int64
               type: integer
             healthCheck:
               items:
@@ -415,8 +416,10 @@ spec:
                   enabled:
                     type: boolean
                   healthyThreshold:
+                    format: int64
                     type: integer
                   interval:
+                    format: int64
                     type: integer
                   matcher:
                     type: string
@@ -427,8 +430,10 @@ spec:
                   protocol:
                     type: string
                   timeout:
+                    format: int64
                     type: integer
                   unhealthyThreshold:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -442,6 +447,7 @@ spec:
             namePrefix:
               type: string
             port:
+              format: int64
               type: integer
             protocol:
               type: string
@@ -457,11 +463,13 @@ spec:
             proxyProtocolV2:
               type: boolean
             slowStart:
+              format: int64
               type: integer
             stickiness:
               items:
                 properties:
                   cookieDuration:
+                    format: int64
                     type: integer
                   enabled:
                     type: boolean
@@ -497,6 +505,7 @@ spec:
                 arnSuffix:
                   type: string
                 deregistrationDelay:
+                  format: int64
                   type: integer
                 healthCheck:
                   items:
@@ -504,8 +513,10 @@ spec:
                       enabled:
                         type: boolean
                       healthyThreshold:
+                        format: int64
                         type: integer
                       interval:
+                        format: int64
                         type: integer
                       matcher:
                         type: string
@@ -516,8 +527,10 @@ spec:
                       protocol:
                         type: string
                       timeout:
+                        format: int64
                         type: integer
                       unhealthyThreshold:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1
@@ -531,6 +544,7 @@ spec:
                 namePrefix:
                   type: string
                 port:
+                  format: int64
                   type: integer
                 protocol:
                   type: string
@@ -546,11 +560,13 @@ spec:
                 proxyProtocolV2:
                   type: boolean
                 slowStart:
+                  format: int64
                   type: integer
                 stickiness:
                   items:
                     properties:
                       cookieDuration:
+                        format: int64
                         type: integer
                       enabled:
                         type: boolean

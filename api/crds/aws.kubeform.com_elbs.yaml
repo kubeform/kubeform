@@ -413,6 +413,7 @@ spec:
                   enabled:
                     type: boolean
                   interval:
+                    format: int64
                     type: integer
                 required:
                 - bucket
@@ -428,6 +429,7 @@ spec:
             connectionDraining:
               type: boolean
             connectionDrainingTimeout:
+              format: int64
               type: integer
             crossZoneLoadBalancing:
               type: boolean
@@ -437,14 +439,18 @@ spec:
               items:
                 properties:
                   healthyThreshold:
+                    format: int64
                     type: integer
                   interval:
+                    format: int64
                     type: integer
                   target:
                     type: string
                   timeout:
+                    format: int64
                     type: integer
                   unhealthyThreshold:
+                    format: int64
                     type: integer
                 required:
                 - healthyThreshold
@@ -458,6 +464,7 @@ spec:
             id:
               type: string
             idleTimeout:
+              format: int64
               type: integer
             instances:
               items:
@@ -469,10 +476,12 @@ spec:
               items:
                 properties:
                   instancePort:
+                    format: int64
                     type: integer
                   instanceProtocol:
                     type: string
                   lbPort:
+                    format: int64
                     type: integer
                   lbProtocol:
                     type: string
@@ -539,6 +548,7 @@ spec:
                       enabled:
                         type: boolean
                       interval:
+                        format: int64
                         type: integer
                     required:
                     - bucket
@@ -554,6 +564,7 @@ spec:
                 connectionDraining:
                   type: boolean
                 connectionDrainingTimeout:
+                  format: int64
                   type: integer
                 crossZoneLoadBalancing:
                   type: boolean
@@ -563,14 +574,18 @@ spec:
                   items:
                     properties:
                       healthyThreshold:
+                        format: int64
                         type: integer
                       interval:
+                        format: int64
                         type: integer
                       target:
                         type: string
                       timeout:
+                        format: int64
                         type: integer
                       unhealthyThreshold:
+                        format: int64
                         type: integer
                     required:
                     - healthyThreshold
@@ -584,6 +599,7 @@ spec:
                 id:
                   type: string
                 idleTimeout:
+                  format: int64
                   type: integer
                 instances:
                   items:
@@ -595,10 +611,12 @@ spec:
                   items:
                     properties:
                       instancePort:
+                        format: int64
                         type: integer
                       instanceProtocol:
                         type: string
                       lbPort:
+                        format: int64
                         type: integer
                       lbProtocol:
                         type: string

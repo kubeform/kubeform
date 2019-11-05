@@ -407,6 +407,7 @@ spec:
               items:
                 properties:
                   count:
+                    format: int64
                     type: integer
                   dnsPrefix:
                     type: string
@@ -464,6 +465,7 @@ spec:
               items:
                 properties:
                   count:
+                    format: int64
                     type: integer
                   dnsPrefix:
                     type: string
@@ -536,6 +538,7 @@ spec:
                   items:
                     properties:
                       count:
+                        format: int64
                         type: integer
                       dnsPrefix:
                         type: string
@@ -593,6 +596,7 @@ spec:
                   items:
                     properties:
                       count:
+                        format: int64
                         type: integer
                       dnsPrefix:
                         type: string

@@ -84,13 +84,13 @@ type ServiceFabricClusterSpecFabricSettings struct {
 }
 
 type ServiceFabricClusterSpecNodeTypeApplicationPorts struct {
-	EndPort   int `json:"endPort" tf:"end_port"`
-	StartPort int `json:"startPort" tf:"start_port"`
+	EndPort   int64 `json:"endPort" tf:"end_port"`
+	StartPort int64 `json:"startPort" tf:"start_port"`
 }
 
 type ServiceFabricClusterSpecNodeTypeEphemeralPorts struct {
-	EndPort   int `json:"endPort" tf:"end_port"`
-	StartPort int `json:"startPort" tf:"start_port"`
+	EndPort   int64 `json:"endPort" tf:"end_port"`
+	StartPort int64 `json:"startPort" tf:"start_port"`
 }
 
 type ServiceFabricClusterSpecNodeType struct {
@@ -99,20 +99,20 @@ type ServiceFabricClusterSpecNodeType struct {
 	ApplicationPorts []ServiceFabricClusterSpecNodeTypeApplicationPorts `json:"applicationPorts,omitempty" tf:"application_ports,omitempty"`
 	// +optional
 	Capacities         map[string]string `json:"capacities,omitempty" tf:"capacities,omitempty"`
-	ClientEndpointPort int               `json:"clientEndpointPort" tf:"client_endpoint_port"`
+	ClientEndpointPort int64             `json:"clientEndpointPort" tf:"client_endpoint_port"`
 	// +optional
 	DurabilityLevel string `json:"durabilityLevel,omitempty" tf:"durability_level,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	EphemeralPorts   []ServiceFabricClusterSpecNodeTypeEphemeralPorts `json:"ephemeralPorts,omitempty" tf:"ephemeral_ports,omitempty"`
-	HttpEndpointPort int                                              `json:"httpEndpointPort" tf:"http_endpoint_port"`
-	InstanceCount    int                                              `json:"instanceCount" tf:"instance_count"`
+	HttpEndpointPort int64                                            `json:"httpEndpointPort" tf:"http_endpoint_port"`
+	InstanceCount    int64                                            `json:"instanceCount" tf:"instance_count"`
 	IsPrimary        bool                                             `json:"isPrimary" tf:"is_primary"`
 	Name             string                                           `json:"name" tf:"name"`
 	// +optional
 	PlacementProperties map[string]string `json:"placementProperties,omitempty" tf:"placement_properties,omitempty"`
 	// +optional
-	ReverseProxyEndpointPort int `json:"reverseProxyEndpointPort,omitempty" tf:"reverse_proxy_endpoint_port,omitempty"`
+	ReverseProxyEndpointPort int64 `json:"reverseProxyEndpointPort,omitempty" tf:"reverse_proxy_endpoint_port,omitempty"`
 }
 
 type ServiceFabricClusterSpecReverseProxyCertificate struct {

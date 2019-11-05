@@ -40,7 +40,7 @@ type AppmeshVirtualRouter struct {
 }
 
 type AppmeshVirtualRouterSpecSpecListenerPortMapping struct {
-	Port     int    `json:"port" tf:"port"`
+	Port     int64  `json:"port" tf:"port"`
 	Protocol string `json:"protocol" tf:"protocol"`
 }
 

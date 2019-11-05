@@ -592,8 +592,10 @@ spec:
                   createOption:
                     type: string
                   diskSizeGb:
+                    format: int64
                     type: integer
                   lun:
+                    format: int64
                     type: integer
                   managedDiskID:
                     type: string
@@ -635,6 +637,7 @@ spec:
                   createOption:
                     type: string
                   diskSizeGb:
+                    format: int64
                     type: integer
                   imageURI:
                     type: string
@@ -874,8 +877,10 @@ spec:
                       createOption:
                         type: string
                       diskSizeGb:
+                        format: int64
                         type: integer
                       lun:
+                        format: int64
                         type: integer
                       managedDiskID:
                         type: string
@@ -917,6 +922,7 @@ spec:
                       createOption:
                         type: string
                       diskSizeGb:
+                        format: int64
                         type: integer
                       imageURI:
                         type: string

@@ -445,6 +445,7 @@ spec:
                   type: string
               type: object
             quota:
+              format: int64
               type: integer
             resourceGroupName:
               description: Deprecated
@@ -509,6 +510,7 @@ spec:
                       type: string
                   type: object
                 quota:
+                  format: int64
                   type: integer
                 resourceGroupName:
                   description: Deprecated

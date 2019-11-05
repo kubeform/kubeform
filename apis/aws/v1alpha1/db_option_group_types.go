@@ -51,7 +51,7 @@ type DbOptionGroupSpecOption struct {
 	// +optional
 	OptionSettings []DbOptionGroupSpecOptionOptionSettings `json:"optionSettings,omitempty" tf:"option_settings,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	Version string `json:"version,omitempty" tf:"version,omitempty"`
 	// +optional

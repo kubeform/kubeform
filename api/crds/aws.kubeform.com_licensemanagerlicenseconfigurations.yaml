@@ -408,6 +408,7 @@ spec:
             id:
               type: string
             licenseCount:
+              format: int64
               type: integer
             licenseCountHardLimit:
               type: boolean
@@ -451,6 +452,7 @@ spec:
                 id:
                   type: string
                 licenseCount:
+                  format: int64
                   type: integer
                 licenseCountHardLimit:
                   type: boolean

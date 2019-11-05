@@ -141,7 +141,7 @@ type ApiManagementAPIOperationSpecResponse struct {
 	Header []ApiManagementAPIOperationSpecResponseHeader `json:"header,omitempty" tf:"header,omitempty"`
 	// +optional
 	Representation []ApiManagementAPIOperationSpecResponseRepresentation `json:"representation,omitempty" tf:"representation,omitempty"`
-	StatusCode     int                                                   `json:"statusCode" tf:"status_code"`
+	StatusCode     int64                                                 `json:"statusCode" tf:"status_code"`
 }
 
 type ApiManagementAPIOperationSpecTemplateParameter struct {

@@ -41,12 +41,12 @@ type OpsworksJavaAppLayer struct {
 
 type OpsworksJavaAppLayerSpecEbsVolume struct {
 	// +optional
-	Iops          int    `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops          int64  `json:"iops,omitempty" tf:"iops,omitempty"`
 	MountPoint    string `json:"mountPoint" tf:"mount_point"`
-	NumberOfDisks int    `json:"numberOfDisks" tf:"number_of_disks"`
+	NumberOfDisks int64  `json:"numberOfDisks" tf:"number_of_disks"`
 	// +optional
 	RaidLevel string `json:"raidLevel,omitempty" tf:"raid_level,omitempty"`
-	Size      int    `json:"size" tf:"size"`
+	Size      int64  `json:"size" tf:"size"`
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
@@ -91,7 +91,7 @@ type OpsworksJavaAppLayerSpec struct {
 	// +optional
 	InstallUpdatesOnBoot bool `json:"installUpdatesOnBoot,omitempty" tf:"install_updates_on_boot,omitempty"`
 	// +optional
-	InstanceShutdownTimeout int `json:"instanceShutdownTimeout,omitempty" tf:"instance_shutdown_timeout,omitempty"`
+	InstanceShutdownTimeout int64 `json:"instanceShutdownTimeout,omitempty" tf:"instance_shutdown_timeout,omitempty"`
 	// +optional
 	JvmOptions string `json:"jvmOptions,omitempty" tf:"jvm_options,omitempty"`
 	// +optional

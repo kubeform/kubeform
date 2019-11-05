@@ -434,6 +434,7 @@ spec:
                     maxItems: 1
                     type: array
                   size:
+                    format: int64
                     type: integer
                   textTransformation:
                     type: string
@@ -488,6 +489,7 @@ spec:
                         maxItems: 1
                         type: array
                       size:
+                        format: int64
                         type: integer
                       textTransformation:
                         type: string

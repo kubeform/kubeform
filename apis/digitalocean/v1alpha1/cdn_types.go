@@ -60,7 +60,7 @@ type CdnSpec struct {
 	Origin string `json:"origin" tf:"origin"`
 	// The amount of time the content is cached in the CDN
 	// +optional
-	Ttl int `json:"ttl,omitempty" tf:"ttl,omitempty"`
+	Ttl int64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 }
 
 type CdnStatus struct {

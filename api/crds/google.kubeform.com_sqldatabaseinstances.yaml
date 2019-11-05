@@ -447,12 +447,14 @@ spec:
                   clientKey:
                     type: string
                   connectRetryInterval:
+                    format: int64
                     type: integer
                   dumpFilePath:
                     type: string
                   failoverTarget:
                     type: boolean
                   masterHeartbeatPeriod:
+                    format: int64
                     type: integer
                   sslCipher:
                     type: string
@@ -529,6 +531,7 @@ spec:
                   diskAutoresize:
                     type: boolean
                   diskSize:
+                    format: int64
                     type: integer
                   diskType:
                     type: string
@@ -569,8 +572,10 @@ spec:
                     items:
                       properties:
                         day:
+                          format: int64
                           type: integer
                         hour:
+                          format: int64
                           type: integer
                         updateTrack:
                           type: string
@@ -588,6 +593,7 @@ spec:
                       type: string
                     type: object
                   version:
+                    format: int64
                     type: integer
                 required:
                 - tier
@@ -651,12 +657,14 @@ spec:
                       clientKey:
                         type: string
                       connectRetryInterval:
+                        format: int64
                         type: integer
                       dumpFilePath:
                         type: string
                       failoverTarget:
                         type: boolean
                       masterHeartbeatPeriod:
+                        format: int64
                         type: integer
                       sslCipher:
                         type: string
@@ -733,6 +741,7 @@ spec:
                       diskAutoresize:
                         type: boolean
                       diskSize:
+                        format: int64
                         type: integer
                       diskType:
                         type: string
@@ -773,8 +782,10 @@ spec:
                         items:
                           properties:
                             day:
+                              format: int64
                               type: integer
                             hour:
+                              format: int64
                               type: integer
                             updateTrack:
                               type: string
@@ -792,6 +803,7 @@ spec:
                           type: string
                         type: object
                       version:
+                        format: int64
                         type: integer
                     required:
                     - tier

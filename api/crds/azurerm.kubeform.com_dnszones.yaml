@@ -406,6 +406,7 @@ spec:
             id:
               type: string
             maxNumberOfRecordSets:
+              format: int64
               type: integer
             name:
               type: string
@@ -414,6 +415,7 @@ spec:
                 type: string
               type: array
             numberOfRecordSets:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -457,6 +459,7 @@ spec:
                 id:
                   type: string
                 maxNumberOfRecordSets:
+                  format: int64
                   type: integer
                 name:
                   type: string
@@ -465,6 +468,7 @@ spec:
                     type: string
                   type: array
                 numberOfRecordSets:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

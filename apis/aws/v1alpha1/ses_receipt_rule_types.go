@@ -42,12 +42,12 @@ type SesReceiptRule struct {
 type SesReceiptRuleSpecAddHeaderAction struct {
 	HeaderName  string `json:"headerName" tf:"header_name"`
 	HeaderValue string `json:"headerValue" tf:"header_value"`
-	Position    int    `json:"position" tf:"position"`
+	Position    int64  `json:"position" tf:"position"`
 }
 
 type SesReceiptRuleSpecBounceAction struct {
 	Message       string `json:"message" tf:"message"`
-	Position      int    `json:"position" tf:"position"`
+	Position      int64  `json:"position" tf:"position"`
 	Sender        string `json:"sender" tf:"sender"`
 	SmtpReplyCode string `json:"smtpReplyCode" tf:"smtp_reply_code"`
 	// +optional
@@ -60,7 +60,7 @@ type SesReceiptRuleSpecLambdaAction struct {
 	FunctionArn string `json:"functionArn" tf:"function_arn"`
 	// +optional
 	InvocationType string `json:"invocationType,omitempty" tf:"invocation_type,omitempty"`
-	Position       int    `json:"position" tf:"position"`
+	Position       int64  `json:"position" tf:"position"`
 	// +optional
 	TopicArn string `json:"topicArn,omitempty" tf:"topic_arn,omitempty"`
 }
@@ -71,18 +71,18 @@ type SesReceiptRuleSpecS3Action struct {
 	KmsKeyArn string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
 	// +optional
 	ObjectKeyPrefix string `json:"objectKeyPrefix,omitempty" tf:"object_key_prefix,omitempty"`
-	Position        int    `json:"position" tf:"position"`
+	Position        int64  `json:"position" tf:"position"`
 	// +optional
 	TopicArn string `json:"topicArn,omitempty" tf:"topic_arn,omitempty"`
 }
 
 type SesReceiptRuleSpecSnsAction struct {
-	Position int    `json:"position" tf:"position"`
+	Position int64  `json:"position" tf:"position"`
 	TopicArn string `json:"topicArn" tf:"topic_arn"`
 }
 
 type SesReceiptRuleSpecStopAction struct {
-	Position int    `json:"position" tf:"position"`
+	Position int64  `json:"position" tf:"position"`
 	Scope    string `json:"scope" tf:"scope"`
 	// +optional
 	TopicArn string `json:"topicArn,omitempty" tf:"topic_arn,omitempty"`
@@ -90,7 +90,7 @@ type SesReceiptRuleSpecStopAction struct {
 
 type SesReceiptRuleSpecWorkmailAction struct {
 	OrganizationArn string `json:"organizationArn" tf:"organization_arn"`
-	Position        int    `json:"position" tf:"position"`
+	Position        int64  `json:"position" tf:"position"`
 	// +optional
 	TopicArn string `json:"topicArn,omitempty" tf:"topic_arn,omitempty"`
 }

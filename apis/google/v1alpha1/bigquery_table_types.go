@@ -41,7 +41,7 @@ type BigqueryTable struct {
 
 type BigqueryTableSpecTimePartitioning struct {
 	// +optional
-	ExpirationMs int `json:"expirationMs,omitempty" tf:"expiration_ms,omitempty"`
+	ExpirationMs int64 `json:"expirationMs,omitempty" tf:"expiration_ms,omitempty"`
 	// +optional
 	Field string `json:"field,omitempty" tf:"field,omitempty"`
 	Type  string `json:"type" tf:"type"`
@@ -59,28 +59,28 @@ type BigqueryTableSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	CreationTime int    `json:"creationTime,omitempty" tf:"creation_time,omitempty"`
+	CreationTime int64  `json:"creationTime,omitempty" tf:"creation_time,omitempty"`
 	DatasetID    string `json:"datasetID" tf:"dataset_id"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`
 	// +optional
-	ExpirationTime int `json:"expirationTime,omitempty" tf:"expiration_time,omitempty"`
+	ExpirationTime int64 `json:"expirationTime,omitempty" tf:"expiration_time,omitempty"`
 	// +optional
 	FriendlyName string `json:"friendlyName,omitempty" tf:"friendly_name,omitempty"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
-	LastModifiedTime int `json:"lastModifiedTime,omitempty" tf:"last_modified_time,omitempty"`
+	LastModifiedTime int64 `json:"lastModifiedTime,omitempty" tf:"last_modified_time,omitempty"`
 	// +optional
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional
-	NumBytes int `json:"numBytes,omitempty" tf:"num_bytes,omitempty"`
+	NumBytes int64 `json:"numBytes,omitempty" tf:"num_bytes,omitempty"`
 	// +optional
-	NumLongTermBytes int `json:"numLongTermBytes,omitempty" tf:"num_long_term_bytes,omitempty"`
+	NumLongTermBytes int64 `json:"numLongTermBytes,omitempty" tf:"num_long_term_bytes,omitempty"`
 	// +optional
-	NumRows int `json:"numRows,omitempty" tf:"num_rows,omitempty"`
+	NumRows int64 `json:"numRows,omitempty" tf:"num_rows,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

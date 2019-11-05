@@ -415,6 +415,7 @@ spec:
             name:
               type: string
             priority:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -455,6 +456,7 @@ spec:
                 name:
                   type: string
                 priority:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

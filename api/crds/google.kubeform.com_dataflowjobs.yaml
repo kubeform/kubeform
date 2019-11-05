@@ -406,6 +406,7 @@ spec:
             id:
               type: string
             maxWorkers:
+              format: int64
               type: integer
             name:
               type: string
@@ -454,6 +455,7 @@ spec:
                 id:
                   type: string
                 maxWorkers:
+                  format: int64
                   type: integer
                 name:
                   type: string

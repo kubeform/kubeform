@@ -41,7 +41,7 @@ type ComputeInterconnectAttachment struct {
 
 type ComputeInterconnectAttachmentSpecPrivateInterconnectInfo struct {
 	// +optional
-	Tag8021q int `json:"tag8021q,omitempty" tf:"tag8021q,omitempty"`
+	Tag8021q int64 `json:"tag8021q,omitempty" tf:"tag8021q,omitempty"`
 }
 
 type ComputeInterconnectAttachmentSpec struct {

@@ -410,8 +410,8 @@ spec:
                 type: string
               type: object
             fixedRate:
-              description: A Number represents a JSON number literal.
-              type: string
+              format: float
+              type: number
             host:
               type: string
             httpMethod:
@@ -419,6 +419,7 @@ spec:
             id:
               type: string
             priority:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -430,6 +431,7 @@ spec:
                   type: string
               type: object
             reservoirSize:
+              format: int64
               type: integer
             resourceArn:
               type: string
@@ -442,6 +444,7 @@ spec:
             urlPath:
               type: string
             version:
+              format: int64
               type: integer
           required:
           - fixedRate
@@ -472,8 +475,8 @@ spec:
                     type: string
                   type: object
                 fixedRate:
-                  description: A Number represents a JSON number literal.
-                  type: string
+                  format: float
+                  type: number
                 host:
                   type: string
                 httpMethod:
@@ -481,6 +484,7 @@ spec:
                 id:
                   type: string
                 priority:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -492,6 +496,7 @@ spec:
                       type: string
                   type: object
                 reservoirSize:
+                  format: int64
                   type: integer
                 resourceArn:
                   type: string
@@ -504,6 +509,7 @@ spec:
                 urlPath:
                   type: string
                 version:
+                  format: int64
                   type: integer
               required:
               - fixedRate

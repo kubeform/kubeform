@@ -53,9 +53,9 @@ type DynamodbTableSpecGlobalSecondaryIndex struct {
 	// +optional
 	RangeKey string `json:"rangeKey,omitempty" tf:"range_key,omitempty"`
 	// +optional
-	ReadCapacity int `json:"readCapacity,omitempty" tf:"read_capacity,omitempty"`
+	ReadCapacity int64 `json:"readCapacity,omitempty" tf:"read_capacity,omitempty"`
 	// +optional
-	WriteCapacity int `json:"writeCapacity,omitempty" tf:"write_capacity,omitempty"`
+	WriteCapacity int64 `json:"writeCapacity,omitempty" tf:"write_capacity,omitempty"`
 }
 
 type DynamodbTableSpecLocalSecondaryIndex struct {
@@ -102,7 +102,7 @@ type DynamodbTableSpec struct {
 	// +optional
 	RangeKey string `json:"rangeKey,omitempty" tf:"range_key,omitempty"`
 	// +optional
-	ReadCapacity int `json:"readCapacity,omitempty" tf:"read_capacity,omitempty"`
+	ReadCapacity int64 `json:"readCapacity,omitempty" tf:"read_capacity,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ServerSideEncryption []DynamodbTableSpecServerSideEncryption `json:"serverSideEncryption,omitempty" tf:"server_side_encryption,omitempty"`
@@ -120,7 +120,7 @@ type DynamodbTableSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Ttl []DynamodbTableSpecTtl `json:"ttl,omitempty" tf:"ttl,omitempty"`
 	// +optional
-	WriteCapacity int `json:"writeCapacity,omitempty" tf:"write_capacity,omitempty"`
+	WriteCapacity int64 `json:"writeCapacity,omitempty" tf:"write_capacity,omitempty"`
 }
 
 type DynamodbTableStatus struct {

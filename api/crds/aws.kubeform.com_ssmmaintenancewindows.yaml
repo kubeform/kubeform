@@ -406,8 +406,10 @@ spec:
             allowUnassociatedTargets:
               type: boolean
             cutoff:
+              format: int64
               type: integer
             duration:
+              format: int64
               type: integer
             enabled:
               type: boolean
@@ -455,8 +457,10 @@ spec:
                 allowUnassociatedTargets:
                   type: boolean
                 cutoff:
+                  format: int64
                   type: integer
                 duration:
+                  format: int64
                   type: integer
                 enabled:
                   type: boolean

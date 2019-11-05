@@ -442,6 +442,7 @@ spec:
             sourceCodeHash:
               type: string
             sourceCodeSize:
+              format: int64
               type: integer
             version:
               type: string
@@ -497,6 +498,7 @@ spec:
                 sourceCodeHash:
                   type: string
                 sourceCodeSize:
+                  format: int64
                   type: integer
                 version:
                   type: string

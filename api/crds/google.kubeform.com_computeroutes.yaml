@@ -426,6 +426,7 @@ spec:
             nextHopVPNTunnel:
               type: string
             priority:
+              format: int64
               type: integer
             project:
               type: string
@@ -482,6 +483,7 @@ spec:
                 nextHopVPNTunnel:
                   type: string
                 priority:
+                  format: int64
                   type: integer
                 project:
                   type: string

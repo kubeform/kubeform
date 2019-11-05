@@ -48,9 +48,9 @@ type CdnEndpointSpecGeoFilter struct {
 type CdnEndpointSpecOrigin struct {
 	HostName string `json:"hostName" tf:"host_name"`
 	// +optional
-	HttpPort int `json:"httpPort,omitempty" tf:"http_port,omitempty"`
+	HttpPort int64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
 	// +optional
-	HttpsPort int    `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
+	HttpsPort int64  `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
 	Name      string `json:"name" tf:"name"`
 }
 

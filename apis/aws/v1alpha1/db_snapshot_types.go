@@ -45,7 +45,7 @@ type DbSnapshotSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	AllocatedStorage int `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
+	AllocatedStorage int64 `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
 	// +optional
 	AvailabilityZone     string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 	DbInstanceIdentifier string `json:"dbInstanceIdentifier" tf:"db_instance_identifier"`
@@ -59,7 +59,7 @@ type DbSnapshotSpec struct {
 	// +optional
 	EngineVersion string `json:"engineVersion,omitempty" tf:"engine_version,omitempty"`
 	// +optional
-	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional
@@ -67,7 +67,7 @@ type DbSnapshotSpec struct {
 	// +optional
 	OptionGroupName string `json:"optionGroupName,omitempty" tf:"option_group_name,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	SnapshotType string `json:"snapshotType,omitempty" tf:"snapshot_type,omitempty"`
 	// +optional

@@ -407,13 +407,14 @@ spec:
               items:
                 properties:
                   cooldownPeriod:
+                    format: int64
                     type: integer
                   cpuUtilization:
                     items:
                       properties:
                         target:
-                          description: A Number represents a JSON number literal.
-                          type: string
+                          format: float
+                          type: number
                       required:
                       - target
                       type: object
@@ -423,14 +424,15 @@ spec:
                     items:
                       properties:
                         target:
-                          description: A Number represents a JSON number literal.
-                          type: string
+                          format: float
+                          type: number
                       required:
                       - target
                       type: object
                     maxItems: 1
                     type: array
                   maxReplicas:
+                    format: int64
                     type: integer
                   metric:
                     items:
@@ -438,8 +440,8 @@ spec:
                         name:
                           type: string
                         target:
-                          description: A Number represents a JSON number literal.
-                          type: string
+                          format: float
+                          type: number
                         type:
                           type: string
                       required:
@@ -449,6 +451,7 @@ spec:
                       type: object
                     type: array
                   minReplicas:
+                    format: int64
                     type: integer
                 required:
                 - maxReplicas
@@ -500,13 +503,14 @@ spec:
                   items:
                     properties:
                       cooldownPeriod:
+                        format: int64
                         type: integer
                       cpuUtilization:
                         items:
                           properties:
                             target:
-                              description: A Number represents a JSON number literal.
-                              type: string
+                              format: float
+                              type: number
                           required:
                           - target
                           type: object
@@ -516,14 +520,15 @@ spec:
                         items:
                           properties:
                             target:
-                              description: A Number represents a JSON number literal.
-                              type: string
+                              format: float
+                              type: number
                           required:
                           - target
                           type: object
                         maxItems: 1
                         type: array
                       maxReplicas:
+                        format: int64
                         type: integer
                       metric:
                         items:
@@ -531,8 +536,8 @@ spec:
                             name:
                               type: string
                             target:
-                              description: A Number represents a JSON number literal.
-                              type: string
+                              format: float
+                              type: number
                             type:
                               type: string
                           required:
@@ -542,6 +547,7 @@ spec:
                           type: object
                         type: array
                       minReplicas:
+                        format: int64
                         type: integer
                     required:
                     - maxReplicas

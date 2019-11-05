@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -44,11 +42,11 @@ type SagemakerEndpointConfiguration struct {
 type SagemakerEndpointConfigurationSpecProductionVariants struct {
 	// +optional
 	AcceleratorType      string `json:"acceleratorType,omitempty" tf:"accelerator_type,omitempty"`
-	InitialInstanceCount int    `json:"initialInstanceCount" tf:"initial_instance_count"`
+	InitialInstanceCount int64  `json:"initialInstanceCount" tf:"initial_instance_count"`
 	// +optional
-	InitialVariantWeight json.Number `json:"initialVariantWeight,omitempty" tf:"initial_variant_weight,omitempty"`
-	InstanceType         string      `json:"instanceType" tf:"instance_type"`
-	ModelName            string      `json:"modelName" tf:"model_name"`
+	InitialVariantWeight float64 `json:"initialVariantWeight,omitempty" tf:"initial_variant_weight,omitempty"`
+	InstanceType         string  `json:"instanceType" tf:"instance_type"`
+	ModelName            string  `json:"modelName" tf:"model_name"`
 	// +optional
 	VariantName string `json:"variantName,omitempty" tf:"variant_name,omitempty"`
 }

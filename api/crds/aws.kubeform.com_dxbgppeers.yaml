@@ -410,6 +410,7 @@ spec:
             awsDevice:
               type: string
             bgpAsn:
+              format: int64
               type: integer
             bgpAuthKey:
               type: string
@@ -454,6 +455,7 @@ spec:
                 awsDevice:
                   type: string
                 bgpAsn:
+                  format: int64
                   type: integer
                 bgpAuthKey:
                   type: string

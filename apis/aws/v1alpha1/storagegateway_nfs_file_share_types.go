@@ -45,9 +45,9 @@ type StoragegatewayNfsFileShareSpecNfsFileShareDefaults struct {
 	// +optional
 	FileMode string `json:"fileMode,omitempty" tf:"file_mode,omitempty"`
 	// +optional
-	GroupID int `json:"groupID,omitempty" tf:"group_id,omitempty"`
+	GroupID int64 `json:"groupID,omitempty" tf:"group_id,omitempty"`
 	// +optional
-	OwnerID int `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
+	OwnerID int64 `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
 }
 
 type StoragegatewayNfsFileShareSpec struct {

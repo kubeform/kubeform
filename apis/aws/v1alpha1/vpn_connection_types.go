@@ -50,7 +50,7 @@ type VpnConnectionSpecRoutes struct {
 
 type VpnConnectionSpecVgwTelemetry struct {
 	// +optional
-	AcceptedRouteCount int `json:"acceptedRouteCount,omitempty" tf:"accepted_route_count,omitempty"`
+	AcceptedRouteCount int64 `json:"acceptedRouteCount,omitempty" tf:"accepted_route_count,omitempty"`
 	// +optional
 	LastStatusChange string `json:"lastStatusChange,omitempty" tf:"last_status_change,omitempty"`
 	// +optional
@@ -86,7 +86,7 @@ type VpnConnectionSpec struct {
 	// +optional
 	Tunnel1BGPAsn string `json:"tunnel1BGPAsn,omitempty" tf:"tunnel1_bgp_asn,omitempty"`
 	// +optional
-	Tunnel1BGPHoldtime int `json:"tunnel1BGPHoldtime,omitempty" tf:"tunnel1_bgp_holdtime,omitempty"`
+	Tunnel1BGPHoldtime int64 `json:"tunnel1BGPHoldtime,omitempty" tf:"tunnel1_bgp_holdtime,omitempty"`
 	// +optional
 	Tunnel1CgwInsideAddress string `json:"tunnel1CgwInsideAddress,omitempty" tf:"tunnel1_cgw_inside_address,omitempty"`
 	// +optional
@@ -100,7 +100,7 @@ type VpnConnectionSpec struct {
 	// +optional
 	Tunnel2BGPAsn string `json:"tunnel2BGPAsn,omitempty" tf:"tunnel2_bgp_asn,omitempty"`
 	// +optional
-	Tunnel2BGPHoldtime int `json:"tunnel2BGPHoldtime,omitempty" tf:"tunnel2_bgp_holdtime,omitempty"`
+	Tunnel2BGPHoldtime int64 `json:"tunnel2BGPHoldtime,omitempty" tf:"tunnel2_bgp_holdtime,omitempty"`
 	// +optional
 	Tunnel2CgwInsideAddress string `json:"tunnel2CgwInsideAddress,omitempty" tf:"tunnel2_cgw_inside_address,omitempty"`
 	// +optional

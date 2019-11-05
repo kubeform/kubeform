@@ -69,7 +69,7 @@ type KubernetesClusterSpecNodePool struct {
 	// +optional
 	ID        string `json:"ID,omitempty" tf:"id,omitempty"`
 	Name      string `json:"name" tf:"name"`
-	NodeCount int    `json:"nodeCount" tf:"node_count"`
+	NodeCount int64  `json:"nodeCount" tf:"node_count"`
 	// +optional
 	Nodes []KubernetesClusterSpecNodePoolNodes `json:"nodes,omitempty" tf:"nodes,omitempty"`
 	Size  string                               `json:"size" tf:"size"`

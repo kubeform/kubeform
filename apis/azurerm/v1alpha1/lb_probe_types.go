@@ -45,7 +45,7 @@ type LbProbeSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	IntervalInSeconds int `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 	// +optional
 	LoadBalancerRules []string `json:"loadBalancerRules,omitempty" tf:"load_balancer_rules,omitempty"`
 	LoadbalancerID    string   `json:"loadbalancerID" tf:"loadbalancer_id"`
@@ -54,8 +54,8 @@ type LbProbeSpec struct {
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	Name     string `json:"name" tf:"name"`
 	// +optional
-	NumberOfProbes int `json:"numberOfProbes,omitempty" tf:"number_of_probes,omitempty"`
-	Port           int `json:"port" tf:"port"`
+	NumberOfProbes int64 `json:"numberOfProbes,omitempty" tf:"number_of_probes,omitempty"`
+	Port           int64 `json:"port" tf:"port"`
 	// +optional
 	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 	// +optional

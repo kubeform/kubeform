@@ -417,8 +417,10 @@ spec:
               items:
                 properties:
                   maximumIndividualPlayerLatencyMilliseconds:
+                    format: int64
                     type: integer
                   policyDurationSeconds:
+                    format: int64
                     type: integer
                 required:
                 - maximumIndividualPlayerLatencyMilliseconds
@@ -434,6 +436,7 @@ spec:
                   type: string
               type: object
             timeoutInSeconds:
+              format: int64
               type: integer
           required:
           - name
@@ -462,8 +465,10 @@ spec:
                   items:
                     properties:
                       maximumIndividualPlayerLatencyMilliseconds:
+                        format: int64
                         type: integer
                       policyDurationSeconds:
+                        format: int64
                         type: integer
                     required:
                     - maximumIndividualPlayerLatencyMilliseconds
@@ -479,6 +484,7 @@ spec:
                       type: string
                   type: object
                 timeoutInSeconds:
+                  format: int64
                   type: integer
               required:
               - name

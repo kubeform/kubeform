@@ -62,7 +62,7 @@ type ServicebusSubscriptionSpec struct {
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional
 	LockDuration     string `json:"lockDuration,omitempty" tf:"lock_duration,omitempty"`
-	MaxDeliveryCount int    `json:"maxDeliveryCount" tf:"max_delivery_count"`
+	MaxDeliveryCount int64  `json:"maxDeliveryCount" tf:"max_delivery_count"`
 	Name             string `json:"name" tf:"name"`
 	NamespaceName    string `json:"namespaceName" tf:"namespace_name"`
 	// +optional

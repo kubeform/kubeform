@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -45,21 +43,21 @@ type ComputeBackendServiceSpecBackend struct {
 	// +optional
 	BalancingMode string `json:"balancingMode,omitempty" tf:"balancing_mode,omitempty"`
 	// +optional
-	CapacityScaler json.Number `json:"capacityScaler,omitempty" tf:"capacity_scaler,omitempty"`
+	CapacityScaler float64 `json:"capacityScaler,omitempty" tf:"capacity_scaler,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	Group string `json:"group,omitempty" tf:"group,omitempty"`
 	// +optional
-	MaxConnections int `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
+	MaxConnections int64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
 	// +optional
-	MaxConnectionsPerInstance int `json:"maxConnectionsPerInstance,omitempty" tf:"max_connections_per_instance,omitempty"`
+	MaxConnectionsPerInstance int64 `json:"maxConnectionsPerInstance,omitempty" tf:"max_connections_per_instance,omitempty"`
 	// +optional
-	MaxRate int `json:"maxRate,omitempty" tf:"max_rate,omitempty"`
+	MaxRate int64 `json:"maxRate,omitempty" tf:"max_rate,omitempty"`
 	// +optional
-	MaxRatePerInstance json.Number `json:"maxRatePerInstance,omitempty" tf:"max_rate_per_instance,omitempty"`
+	MaxRatePerInstance float64 `json:"maxRatePerInstance,omitempty" tf:"max_rate_per_instance,omitempty"`
 	// +optional
-	MaxUtilization json.Number `json:"maxUtilization,omitempty" tf:"max_utilization,omitempty"`
+	MaxUtilization float64 `json:"maxUtilization,omitempty" tf:"max_utilization,omitempty"`
 }
 
 type ComputeBackendServiceSpecCdnPolicyCacheKeyPolicy struct {
@@ -99,7 +97,7 @@ type ComputeBackendServiceSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	CdnPolicy []ComputeBackendServiceSpecCdnPolicy `json:"cdnPolicy,omitempty" tf:"cdn_policy,omitempty"`
 	// +optional
-	ConnectionDrainingTimeoutSec int `json:"connectionDrainingTimeoutSec,omitempty" tf:"connection_draining_timeout_sec,omitempty"`
+	ConnectionDrainingTimeoutSec int64 `json:"connectionDrainingTimeoutSec,omitempty" tf:"connection_draining_timeout_sec,omitempty"`
 	// +optional
 	// Deprecated
 	CustomRequestHeaders []string `json:"customRequestHeaders,omitempty" tf:"custom_request_headers,omitempty"`
@@ -129,7 +127,7 @@ type ComputeBackendServiceSpec struct {
 	// +optional
 	SessionAffinity string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 	// +optional
-	TimeoutSec int `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
+	TimeoutSec int64 `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
 }
 
 type ComputeBackendServiceStatus struct {

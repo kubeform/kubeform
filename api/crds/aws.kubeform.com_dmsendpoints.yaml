@@ -440,6 +440,7 @@ spec:
               maxItems: 1
               type: array
             port:
+              format: int64
               type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -543,6 +544,7 @@ spec:
                   maxItems: 1
                   type: array
                 port:
+                  format: int64
                   type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to

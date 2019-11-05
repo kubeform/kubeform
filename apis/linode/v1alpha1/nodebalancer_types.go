@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -44,13 +42,13 @@ type Nodebalancer struct {
 type NodebalancerSpecTransfer struct {
 	// The total transfer, in MB, used by this NodeBalancer this month
 	// +optional
-	In json.Number `json:"in,omitempty" tf:"in,omitempty"`
+	In float64 `json:"in,omitempty" tf:"in,omitempty"`
 	// The total inbound transfer, in MB, used for this NodeBalancer this month
 	// +optional
-	Out json.Number `json:"out,omitempty" tf:"out,omitempty"`
+	Out float64 `json:"out,omitempty" tf:"out,omitempty"`
 	// The total outbound transfer, in MB, used for this NodeBalancer this month
 	// +optional
-	Total json.Number `json:"total,omitempty" tf:"total,omitempty"`
+	Total float64 `json:"total,omitempty" tf:"total,omitempty"`
 }
 
 type NodebalancerSpec struct {
@@ -60,7 +58,7 @@ type NodebalancerSpec struct {
 
 	// Throttle connections per second (0-20). Set to 0 (zero) to disable throttling.
 	// +optional
-	ClientConnThrottle int `json:"clientConnThrottle,omitempty" tf:"client_conn_throttle,omitempty"`
+	ClientConnThrottle int64 `json:"clientConnThrottle,omitempty" tf:"client_conn_throttle,omitempty"`
 	// +optional
 	Created string `json:"created,omitempty" tf:"created,omitempty"`
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com

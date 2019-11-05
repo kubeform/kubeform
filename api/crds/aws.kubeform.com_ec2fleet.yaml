@@ -435,13 +435,13 @@ spec:
                         maxPrice:
                           type: string
                         priority:
-                          description: A Number represents a JSON number literal.
-                          type: string
+                          format: float
+                          type: number
                         subnetID:
                           type: string
                         weightedCapacity:
-                          description: A Number represents a JSON number literal.
-                          type: string
+                          format: float
+                          type: number
                       type: object
                     maxItems: 50
                     type: array
@@ -478,6 +478,7 @@ spec:
                   instanceInterruptionBehavior:
                     type: string
                   instancePoolsToUseCount:
+                    format: int64
                     type: integer
                 type: object
               maxItems: 1
@@ -492,10 +493,13 @@ spec:
                   defaultTargetCapacityType:
                     type: string
                   onDemandTargetCapacity:
+                    format: int64
                     type: integer
                   spotTargetCapacity:
+                    format: int64
                     type: integer
                   totalTargetCapacity:
+                    format: int64
                     type: integer
                 required:
                 - defaultTargetCapacityType
@@ -556,13 +560,13 @@ spec:
                             maxPrice:
                               type: string
                             priority:
-                              description: A Number represents a JSON number literal.
-                              type: string
+                              format: float
+                              type: number
                             subnetID:
                               type: string
                             weightedCapacity:
-                              description: A Number represents a JSON number literal.
-                              type: string
+                              format: float
+                              type: number
                           type: object
                         maxItems: 50
                         type: array
@@ -599,6 +603,7 @@ spec:
                       instanceInterruptionBehavior:
                         type: string
                       instancePoolsToUseCount:
+                        format: int64
                         type: integer
                     type: object
                   maxItems: 1
@@ -613,10 +618,13 @@ spec:
                       defaultTargetCapacityType:
                         type: string
                       onDemandTargetCapacity:
+                        format: int64
                         type: integer
                       spotTargetCapacity:
+                        format: int64
                         type: integer
                       totalTargetCapacity:
+                        format: int64
                         type: integer
                     required:
                     - defaultTargetCapacityType

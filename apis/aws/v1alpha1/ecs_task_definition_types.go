@@ -94,7 +94,7 @@ type EcsTaskDefinitionSpec struct {
 	// +optional
 	RequiresCompatibilities []string `json:"requiresCompatibilities,omitempty" tf:"requires_compatibilities,omitempty"`
 	// +optional
-	Revision int `json:"revision,omitempty" tf:"revision,omitempty"`
+	Revision int64 `json:"revision,omitempty" tf:"revision,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

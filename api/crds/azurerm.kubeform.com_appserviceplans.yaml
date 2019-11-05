@@ -414,8 +414,10 @@ spec:
             location:
               type: string
             maximumElasticWorkerCount:
+              format: int64
               type: integer
             maximumNumberOfWorkers:
+              format: int64
               type: integer
             name:
               type: string
@@ -454,6 +456,7 @@ spec:
               items:
                 properties:
                   capacity:
+                    format: int64
                     type: integer
                   size:
                     type: string
@@ -496,8 +499,10 @@ spec:
                 location:
                   type: string
                 maximumElasticWorkerCount:
+                  format: int64
                   type: integer
                 maximumNumberOfWorkers:
+                  format: int64
                   type: integer
                 name:
                   type: string
@@ -536,6 +541,7 @@ spec:
                   items:
                     properties:
                       capacity:
+                        format: int64
                         type: integer
                       size:
                         type: string

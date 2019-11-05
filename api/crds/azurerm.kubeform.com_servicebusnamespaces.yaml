@@ -404,6 +404,7 @@ spec:
         spec:
           properties:
             capacity:
+              format: int64
               type: integer
             id:
               type: string
@@ -454,6 +455,7 @@ spec:
             output:
               properties:
                 capacity:
+                  format: int64
                   type: integer
                 id:
                   type: string

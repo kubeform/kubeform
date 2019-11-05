@@ -50,10 +50,10 @@ type StoragegatewayCachedIscsiVolumeSpec struct {
 	ChapEnabled bool   `json:"chapEnabled,omitempty" tf:"chap_enabled,omitempty"`
 	GatewayArn  string `json:"gatewayArn" tf:"gateway_arn"`
 	// +optional
-	LunNumber          int    `json:"lunNumber,omitempty" tf:"lun_number,omitempty"`
+	LunNumber          int64  `json:"lunNumber,omitempty" tf:"lun_number,omitempty"`
 	NetworkInterfaceID string `json:"networkInterfaceID" tf:"network_interface_id"`
 	// +optional
-	NetworkInterfacePort int `json:"networkInterfacePort,omitempty" tf:"network_interface_port,omitempty"`
+	NetworkInterfacePort int64 `json:"networkInterfacePort,omitempty" tf:"network_interface_port,omitempty"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 	// +optional
@@ -65,7 +65,7 @@ type StoragegatewayCachedIscsiVolumeSpec struct {
 	VolumeArn string `json:"volumeArn,omitempty" tf:"volume_arn,omitempty"`
 	// +optional
 	VolumeID          string `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
-	VolumeSizeInBytes int    `json:"volumeSizeInBytes" tf:"volume_size_in_bytes"`
+	VolumeSizeInBytes int64  `json:"volumeSizeInBytes" tf:"volume_size_in_bytes"`
 }
 
 type StoragegatewayCachedIscsiVolumeStatus struct {

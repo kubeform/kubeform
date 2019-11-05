@@ -53,7 +53,7 @@ type CosmosdbMongoCollectionSpec struct {
 	AccountName  string `json:"accountName" tf:"account_name"`
 	DatabaseName string `json:"databaseName" tf:"database_name"`
 	// +optional
-	DefaultTtlSeconds int `json:"defaultTtlSeconds,omitempty" tf:"default_ttl_seconds,omitempty"`
+	DefaultTtlSeconds int64 `json:"defaultTtlSeconds,omitempty" tf:"default_ttl_seconds,omitempty"`
 	// +optional
 	Indexes           []CosmosdbMongoCollectionSpecIndexes `json:"indexes,omitempty" tf:"indexes,omitempty"`
 	Name              string                               `json:"name" tf:"name"`

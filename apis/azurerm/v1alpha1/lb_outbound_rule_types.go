@@ -51,7 +51,7 @@ type LbOutboundRuleSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	AllocatedOutboundPorts int    `json:"allocatedOutboundPorts,omitempty" tf:"allocated_outbound_ports,omitempty"`
+	AllocatedOutboundPorts int64  `json:"allocatedOutboundPorts,omitempty" tf:"allocated_outbound_ports,omitempty"`
 	BackendAddressPoolID   string `json:"backendAddressPoolID" tf:"backend_address_pool_id"`
 	// +optional
 	EnableTcpReset bool `json:"enableTcpReset,omitempty" tf:"enable_tcp_reset,omitempty"`
@@ -59,7 +59,7 @@ type LbOutboundRuleSpec struct {
 	// +kubebuilder:validation:MinItems=1
 	FrontendIPConfiguration []LbOutboundRuleSpecFrontendIPConfiguration `json:"frontendIPConfiguration,omitempty" tf:"frontend_ip_configuration,omitempty"`
 	// +optional
-	IdleTimeoutInMinutes int    `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
+	IdleTimeoutInMinutes int64  `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
 	LoadbalancerID       string `json:"loadbalancerID" tf:"loadbalancer_id"`
 	Name                 string `json:"name" tf:"name"`
 	Protocol             string `json:"protocol" tf:"protocol"`

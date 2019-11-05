@@ -66,11 +66,11 @@ type EmrClusterSpecEc2Attributes struct {
 
 type EmrClusterSpecInstanceGroupEbsConfig struct {
 	// +optional
-	Iops int    `json:"iops,omitempty" tf:"iops,omitempty"`
-	Size int    `json:"size" tf:"size"`
+	Iops int64  `json:"iops,omitempty" tf:"iops,omitempty"`
+	Size int64  `json:"size" tf:"size"`
 	Type string `json:"type" tf:"type"`
 	// +optional
-	VolumesPerInstance int `json:"volumesPerInstance,omitempty" tf:"volumes_per_instance,omitempty"`
+	VolumesPerInstance int64 `json:"volumesPerInstance,omitempty" tf:"volumes_per_instance,omitempty"`
 }
 
 type EmrClusterSpecInstanceGroup struct {
@@ -83,7 +83,7 @@ type EmrClusterSpecInstanceGroup struct {
 	// +optional
 	ID string `json:"ID,omitempty" tf:"id,omitempty"`
 	// +optional
-	InstanceCount int    `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
+	InstanceCount int64  `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
 	InstanceRole  string `json:"instanceRole" tf:"instance_role"`
 	InstanceType  string `json:"instanceType" tf:"instance_type"`
 	// +optional
@@ -140,13 +140,13 @@ type EmrClusterSpec struct {
 	// +optional
 	ConfigurationsJSON string `json:"configurationsJSON,omitempty" tf:"configurations_json,omitempty"`
 	// +optional
-	CoreInstanceCount int `json:"coreInstanceCount,omitempty" tf:"core_instance_count,omitempty"`
+	CoreInstanceCount int64 `json:"coreInstanceCount,omitempty" tf:"core_instance_count,omitempty"`
 	// +optional
 	CoreInstanceType string `json:"coreInstanceType,omitempty" tf:"core_instance_type,omitempty"`
 	// +optional
 	CustomAmiID string `json:"customAmiID,omitempty" tf:"custom_ami_id,omitempty"`
 	// +optional
-	EbsRootVolumeSize int `json:"ebsRootVolumeSize,omitempty" tf:"ebs_root_volume_size,omitempty"`
+	EbsRootVolumeSize int64 `json:"ebsRootVolumeSize,omitempty" tf:"ebs_root_volume_size,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Ec2Attributes []EmrClusterSpecEc2Attributes `json:"ec2Attributes,omitempty" tf:"ec2_attributes,omitempty"`

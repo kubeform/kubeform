@@ -455,6 +455,7 @@ spec:
                       type: string
                     type: array
                   count:
+                    format: int64
                     type: integer
                   dnsPrefix:
                     description: Deprecated
@@ -465,10 +466,13 @@ spec:
                     description: Deprecated
                     type: string
                   maxCount:
+                    format: int64
                     type: integer
                   maxPods:
+                    format: int64
                     type: integer
                   minCount:
+                    format: int64
                     type: integer
                   name:
                     type: string
@@ -477,6 +481,7 @@ spec:
                       type: string
                     type: array
                   osDiskSizeGb:
+                    format: int64
                     type: integer
                   osType:
                     type: string
@@ -719,6 +724,7 @@ spec:
                           type: string
                         type: array
                       count:
+                        format: int64
                         type: integer
                       dnsPrefix:
                         description: Deprecated
@@ -729,10 +735,13 @@ spec:
                         description: Deprecated
                         type: string
                       maxCount:
+                        format: int64
                         type: integer
                       maxPods:
+                        format: int64
                         type: integer
                       minCount:
+                        format: int64
                         type: integer
                       name:
                         type: string
@@ -741,6 +750,7 @@ spec:
                           type: string
                         type: array
                       osDiskSizeGb:
+                        format: int64
                         type: integer
                       osType:
                         type: string

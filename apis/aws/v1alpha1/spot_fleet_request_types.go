@@ -46,11 +46,11 @@ type SpotFleetRequestSpecLaunchSpecificationEbsBlockDevice struct {
 	// +optional
 	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
 	// +optional
-	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 	// +optional
-	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	VolumeSize int64 `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 	// +optional
 	VolumeType string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
 }
@@ -64,9 +64,9 @@ type SpotFleetRequestSpecLaunchSpecificationRootBlockDevice struct {
 	// +optional
 	DeleteOnTermination bool `json:"deleteOnTermination,omitempty" tf:"delete_on_termination,omitempty"`
 	// +optional
-	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
-	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	VolumeSize int64 `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 	// +optional
 	VolumeType string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
 }
@@ -129,7 +129,7 @@ type SpotFleetRequestSpec struct {
 	// +optional
 	InstanceInterruptionBehaviour string `json:"instanceInterruptionBehaviour,omitempty" tf:"instance_interruption_behaviour,omitempty"`
 	// +optional
-	InstancePoolsToUseCount int                                       `json:"instancePoolsToUseCount,omitempty" tf:"instance_pools_to_use_count,omitempty"`
+	InstancePoolsToUseCount int64                                     `json:"instancePoolsToUseCount,omitempty" tf:"instance_pools_to_use_count,omitempty"`
 	LaunchSpecification     []SpotFleetRequestSpecLaunchSpecification `json:"launchSpecification" tf:"launch_specification"`
 	// +optional
 	LoadBalancers []string `json:"loadBalancers,omitempty" tf:"load_balancers,omitempty"`
@@ -139,7 +139,7 @@ type SpotFleetRequestSpec struct {
 	SpotPrice string `json:"spotPrice,omitempty" tf:"spot_price,omitempty"`
 	// +optional
 	SpotRequestState string `json:"spotRequestState,omitempty" tf:"spot_request_state,omitempty"`
-	TargetCapacity   int    `json:"targetCapacity" tf:"target_capacity"`
+	TargetCapacity   int64  `json:"targetCapacity" tf:"target_capacity"`
 	// +optional
 	TargetGroupArns []string `json:"targetGroupArns,omitempty" tf:"target_group_arns,omitempty"`
 	// +optional

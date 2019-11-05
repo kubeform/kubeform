@@ -88,13 +88,13 @@ type LambdaFunctionSpec struct {
 	// +kubebuilder:validation:MaxItems=5
 	Layers []string `json:"layers,omitempty" tf:"layers,omitempty"`
 	// +optional
-	MemorySize int `json:"memorySize,omitempty" tf:"memory_size,omitempty"`
+	MemorySize int64 `json:"memorySize,omitempty" tf:"memory_size,omitempty"`
 	// +optional
 	Publish bool `json:"publish,omitempty" tf:"publish,omitempty"`
 	// +optional
 	QualifiedArn string `json:"qualifiedArn,omitempty" tf:"qualified_arn,omitempty"`
 	// +optional
-	ReservedConcurrentExecutions int    `json:"reservedConcurrentExecutions,omitempty" tf:"reserved_concurrent_executions,omitempty"`
+	ReservedConcurrentExecutions int64  `json:"reservedConcurrentExecutions,omitempty" tf:"reserved_concurrent_executions,omitempty"`
 	Role                         string `json:"role" tf:"role"`
 	Runtime                      string `json:"runtime" tf:"runtime"`
 	// +optional
@@ -106,11 +106,11 @@ type LambdaFunctionSpec struct {
 	// +optional
 	SourceCodeHash string `json:"sourceCodeHash,omitempty" tf:"source_code_hash,omitempty"`
 	// +optional
-	SourceCodeSize int `json:"sourceCodeSize,omitempty" tf:"source_code_size,omitempty"`
+	SourceCodeSize int64 `json:"sourceCodeSize,omitempty" tf:"source_code_size,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Timeout int `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	Timeout int64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	TracingConfig []LambdaFunctionSpecTracingConfig `json:"tracingConfig,omitempty" tf:"tracing_config,omitempty"`

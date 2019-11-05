@@ -425,6 +425,7 @@ spec:
                 type: string
               type: array
             ttl:
+              format: int64
               type: integer
             type:
               type: string
@@ -467,6 +468,7 @@ spec:
                     type: string
                   type: array
                 ttl:
+                  format: int64
                   type: integer
                 type:
                   type: string

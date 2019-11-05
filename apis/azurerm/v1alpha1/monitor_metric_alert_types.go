@@ -19,8 +19,6 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"encoding/json"
-
 	base "kubeform.dev/kubeform/apis/base/v1alpha1"
 
 	core "k8s.io/api/core/v1"
@@ -61,7 +59,7 @@ type MonitorMetricAlertSpecCriteria struct {
 	MetricName      string                                    `json:"metricName" tf:"metric_name"`
 	MetricNamespace string                                    `json:"metricNamespace" tf:"metric_namespace"`
 	Operator        string                                    `json:"operator" tf:"operator"`
-	Threshold       json.Number                               `json:"threshold" tf:"threshold"`
+	Threshold       float64                                   `json:"threshold" tf:"threshold"`
 }
 
 type MonitorMetricAlertSpec struct {
@@ -87,7 +85,7 @@ type MonitorMetricAlertSpec struct {
 	// +kubebuilder:validation:MinItems=1
 	Scopes []string `json:"scopes" tf:"scopes"`
 	// +optional
-	Severity int `json:"severity,omitempty" tf:"severity,omitempty"`
+	Severity int64 `json:"severity,omitempty" tf:"severity,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

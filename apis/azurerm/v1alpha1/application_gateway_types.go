@@ -48,8 +48,8 @@ type ApplicationGatewaySpecAuthenticationCertificate struct {
 
 type ApplicationGatewaySpecAutoscaleConfiguration struct {
 	// +optional
-	MaxCapacity int `json:"maxCapacity,omitempty" tf:"max_capacity,omitempty"`
-	MinCapacity int `json:"minCapacity" tf:"min_capacity"`
+	MaxCapacity int64 `json:"maxCapacity,omitempty" tf:"max_capacity,omitempty"`
+	MinCapacity int64 `json:"minCapacity" tf:"min_capacity"`
 }
 
 type ApplicationGatewaySpecBackendAddressPool struct {
@@ -79,8 +79,8 @@ type ApplicationGatewaySpecBackendHTTPSettingsAuthenticationCertificate struct {
 }
 
 type ApplicationGatewaySpecBackendHTTPSettingsConnectionDraining struct {
-	DrainTimeoutSec int  `json:"drainTimeoutSec" tf:"drain_timeout_sec"`
-	Enabled         bool `json:"enabled" tf:"enabled"`
+	DrainTimeoutSec int64 `json:"drainTimeoutSec" tf:"drain_timeout_sec"`
+	Enabled         bool  `json:"enabled" tf:"enabled"`
 }
 
 type ApplicationGatewaySpecBackendHTTPSettings struct {
@@ -100,15 +100,15 @@ type ApplicationGatewaySpecBackendHTTPSettings struct {
 	// +optional
 	Path string `json:"path,omitempty" tf:"path,omitempty"`
 	// +optional
-	PickHostNameFromBackendAddress bool `json:"pickHostNameFromBackendAddress,omitempty" tf:"pick_host_name_from_backend_address,omitempty"`
-	Port                           int  `json:"port" tf:"port"`
+	PickHostNameFromBackendAddress bool  `json:"pickHostNameFromBackendAddress,omitempty" tf:"pick_host_name_from_backend_address,omitempty"`
+	Port                           int64 `json:"port" tf:"port"`
 	// +optional
 	ProbeID string `json:"probeID,omitempty" tf:"probe_id,omitempty"`
 	// +optional
 	ProbeName string `json:"probeName,omitempty" tf:"probe_name,omitempty"`
 	Protocol  string `json:"protocol" tf:"protocol"`
 	// +optional
-	RequestTimeout int `json:"requestTimeout,omitempty" tf:"request_timeout,omitempty"`
+	RequestTimeout int64 `json:"requestTimeout,omitempty" tf:"request_timeout,omitempty"`
 }
 
 type ApplicationGatewaySpecCustomErrorConfiguration struct {
@@ -136,7 +136,7 @@ type ApplicationGatewaySpecFrontendPort struct {
 	// +optional
 	ID   string `json:"ID,omitempty" tf:"id,omitempty"`
 	Name string `json:"name" tf:"name"`
-	Port int    `json:"port" tf:"port"`
+	Port int64  `json:"port" tf:"port"`
 }
 
 type ApplicationGatewaySpecGatewayIPConfiguration struct {
@@ -196,19 +196,19 @@ type ApplicationGatewaySpecProbe struct {
 	Host string `json:"host,omitempty" tf:"host,omitempty"`
 	// +optional
 	ID       string `json:"ID,omitempty" tf:"id,omitempty"`
-	Interval int    `json:"interval" tf:"interval"`
+	Interval int64  `json:"interval" tf:"interval"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Match []ApplicationGatewaySpecProbeMatch `json:"match,omitempty" tf:"match,omitempty"`
 	// +optional
-	MinimumServers int    `json:"minimumServers,omitempty" tf:"minimum_servers,omitempty"`
+	MinimumServers int64  `json:"minimumServers,omitempty" tf:"minimum_servers,omitempty"`
 	Name           string `json:"name" tf:"name"`
 	Path           string `json:"path" tf:"path"`
 	// +optional
 	PickHostNameFromBackendHTTPSettings bool   `json:"pickHostNameFromBackendHTTPSettings,omitempty" tf:"pick_host_name_from_backend_http_settings,omitempty"`
 	Protocol                            string `json:"protocol" tf:"protocol"`
-	Timeout                             int    `json:"timeout" tf:"timeout"`
-	UnhealthyThreshold                  int    `json:"unhealthyThreshold" tf:"unhealthy_threshold"`
+	Timeout                             int64  `json:"timeout" tf:"timeout"`
+	UnhealthyThreshold                  int64  `json:"unhealthyThreshold" tf:"unhealthy_threshold"`
 }
 
 type ApplicationGatewaySpecRedirectConfiguration struct {
@@ -285,7 +285,7 @@ type ApplicationGatewaySpecRewriteRuleSetRewriteRule struct {
 	RequestHeaderConfiguration []ApplicationGatewaySpecRewriteRuleSetRewriteRuleRequestHeaderConfiguration `json:"requestHeaderConfiguration,omitempty" tf:"request_header_configuration,omitempty"`
 	// +optional
 	ResponseHeaderConfiguration []ApplicationGatewaySpecRewriteRuleSetRewriteRuleResponseHeaderConfiguration `json:"responseHeaderConfiguration,omitempty" tf:"response_header_configuration,omitempty"`
-	RuleSequence                int                                                                          `json:"ruleSequence" tf:"rule_sequence"`
+	RuleSequence                int64                                                                        `json:"ruleSequence" tf:"rule_sequence"`
 }
 
 type ApplicationGatewaySpecRewriteRuleSet struct {
@@ -298,7 +298,7 @@ type ApplicationGatewaySpecRewriteRuleSet struct {
 
 type ApplicationGatewaySpecSku struct {
 	// +optional
-	Capacity int    `json:"capacity,omitempty" tf:"capacity,omitempty"`
+	Capacity int64  `json:"capacity,omitempty" tf:"capacity,omitempty"`
 	Name     string `json:"name" tf:"name"`
 	Tier     string `json:"tier" tf:"tier"`
 }
@@ -393,10 +393,10 @@ type ApplicationGatewaySpecWafConfiguration struct {
 	// +optional
 	Exclusion []ApplicationGatewaySpecWafConfigurationExclusion `json:"exclusion,omitempty" tf:"exclusion,omitempty"`
 	// +optional
-	FileUploadLimitMb int    `json:"fileUploadLimitMb,omitempty" tf:"file_upload_limit_mb,omitempty"`
+	FileUploadLimitMb int64  `json:"fileUploadLimitMb,omitempty" tf:"file_upload_limit_mb,omitempty"`
 	FirewallMode      string `json:"firewallMode" tf:"firewall_mode"`
 	// +optional
-	MaxRequestBodySizeKb int `json:"maxRequestBodySizeKb,omitempty" tf:"max_request_body_size_kb,omitempty"`
+	MaxRequestBodySizeKb int64 `json:"maxRequestBodySizeKb,omitempty" tf:"max_request_body_size_kb,omitempty"`
 	// +optional
 	RequestBodyCheck bool `json:"requestBodyCheck,omitempty" tf:"request_body_check,omitempty"`
 	// +optional

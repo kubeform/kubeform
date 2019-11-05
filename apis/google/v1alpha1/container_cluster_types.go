@@ -138,7 +138,7 @@ type ContainerClusterSpecNetworkPolicy struct {
 }
 
 type ContainerClusterSpecNodeConfigGuestAccelerator struct {
-	Count int    `json:"count" tf:"count"`
+	Count int64  `json:"count" tf:"count"`
 	Type  string `json:"type" tf:"type"`
 }
 
@@ -154,7 +154,7 @@ type ContainerClusterSpecNodeConfigWorkloadMetadataConfig struct {
 
 type ContainerClusterSpecNodeConfig struct {
 	// +optional
-	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
 	// +optional
 	DiskType string `json:"diskType,omitempty" tf:"disk_type,omitempty"`
 	// +optional
@@ -164,7 +164,7 @@ type ContainerClusterSpecNodeConfig struct {
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
-	LocalSsdCount int `json:"localSsdCount,omitempty" tf:"local_ssd_count,omitempty"`
+	LocalSsdCount int64 `json:"localSsdCount,omitempty" tf:"local_ssd_count,omitempty"`
 	// +optional
 	MachineType string `json:"machineType,omitempty" tf:"machine_type,omitempty"`
 	// +optional
@@ -189,8 +189,8 @@ type ContainerClusterSpecNodeConfig struct {
 }
 
 type ContainerClusterSpecNodePoolAutoscaling struct {
-	MaxNodeCount int `json:"maxNodeCount" tf:"max_node_count"`
-	MinNodeCount int `json:"minNodeCount" tf:"min_node_count"`
+	MaxNodeCount int64 `json:"maxNodeCount" tf:"max_node_count"`
+	MinNodeCount int64 `json:"minNodeCount" tf:"min_node_count"`
 }
 
 type ContainerClusterSpecNodePoolManagement struct {
@@ -201,7 +201,7 @@ type ContainerClusterSpecNodePoolManagement struct {
 }
 
 type ContainerClusterSpecNodePoolNodeConfigGuestAccelerator struct {
-	Count int    `json:"count" tf:"count"`
+	Count int64  `json:"count" tf:"count"`
 	Type  string `json:"type" tf:"type"`
 }
 
@@ -217,7 +217,7 @@ type ContainerClusterSpecNodePoolNodeConfigWorkloadMetadataConfig struct {
 
 type ContainerClusterSpecNodePoolNodeConfig struct {
 	// +optional
-	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
 	// +optional
 	DiskType string `json:"diskType,omitempty" tf:"disk_type,omitempty"`
 	// +optional
@@ -227,7 +227,7 @@ type ContainerClusterSpecNodePoolNodeConfig struct {
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
-	LocalSsdCount int `json:"localSsdCount,omitempty" tf:"local_ssd_count,omitempty"`
+	LocalSsdCount int64 `json:"localSsdCount,omitempty" tf:"local_ssd_count,omitempty"`
 	// +optional
 	MachineType string `json:"machineType,omitempty" tf:"machine_type,omitempty"`
 	// +optional
@@ -256,7 +256,7 @@ type ContainerClusterSpecNodePool struct {
 	// +kubebuilder:validation:MaxItems=1
 	Autoscaling []ContainerClusterSpecNodePoolAutoscaling `json:"autoscaling,omitempty" tf:"autoscaling,omitempty"`
 	// +optional
-	InitialNodeCount int `json:"initialNodeCount,omitempty" tf:"initial_node_count,omitempty"`
+	InitialNodeCount int64 `json:"initialNodeCount,omitempty" tf:"initial_node_count,omitempty"`
 	// +optional
 	InstanceGroupUrls []string `json:"instanceGroupUrls,omitempty" tf:"instance_group_urls,omitempty"`
 	// +optional
@@ -264,7 +264,7 @@ type ContainerClusterSpecNodePool struct {
 	Management []ContainerClusterSpecNodePoolManagement `json:"management,omitempty" tf:"management,omitempty"`
 	// +optional
 	// Deprecated
-	MaxPodsPerNode int `json:"maxPodsPerNode,omitempty" tf:"max_pods_per_node,omitempty"`
+	MaxPodsPerNode int64 `json:"maxPodsPerNode,omitempty" tf:"max_pods_per_node,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
@@ -274,7 +274,7 @@ type ContainerClusterSpecNodePool struct {
 	// +kubebuilder:validation:MaxItems=1
 	NodeConfig []ContainerClusterSpecNodePoolNodeConfig `json:"nodeConfig,omitempty" tf:"node_config,omitempty"`
 	// +optional
-	NodeCount int `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 	// +optional
 	Version string `json:"version,omitempty" tf:"version,omitempty"`
 }
@@ -325,7 +325,7 @@ type ContainerClusterSpec struct {
 	// +optional
 	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	// +optional
-	InitialNodeCount int `json:"initialNodeCount,omitempty" tf:"initial_node_count,omitempty"`
+	InitialNodeCount int64 `json:"initialNodeCount,omitempty" tf:"initial_node_count,omitempty"`
 	// +optional
 	InstanceGroupUrls []string `json:"instanceGroupUrls,omitempty" tf:"instance_group_urls,omitempty"`
 	// +optional

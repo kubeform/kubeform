@@ -412,6 +412,7 @@ spec:
             awsDevice:
               type: string
             bgpAsn:
+              format: int64
               type: integer
             bgpAuthKey:
               type: string
@@ -442,6 +443,7 @@ spec:
                 type: string
               type: object
             vlan:
+              format: int64
               type: integer
           required:
           - addressFamily
@@ -470,6 +472,7 @@ spec:
                 awsDevice:
                   type: string
                 bgpAsn:
+                  format: int64
                   type: integer
                 bgpAuthKey:
                   type: string
@@ -500,6 +503,7 @@ spec:
                     type: string
                   type: object
                 vlan:
+                  format: int64
                   type: integer
               required:
               - addressFamily

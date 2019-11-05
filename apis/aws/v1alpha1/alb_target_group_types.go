@@ -43,9 +43,9 @@ type AlbTargetGroupSpecHealthCheck struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	HealthyThreshold int `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
+	HealthyThreshold int64 `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
 	// +optional
-	Interval int `json:"interval,omitempty" tf:"interval,omitempty"`
+	Interval int64 `json:"interval,omitempty" tf:"interval,omitempty"`
 	// +optional
 	Matcher string `json:"matcher,omitempty" tf:"matcher,omitempty"`
 	// +optional
@@ -55,14 +55,14 @@ type AlbTargetGroupSpecHealthCheck struct {
 	// +optional
 	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 	// +optional
-	Timeout int `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	Timeout int64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 	// +optional
-	UnhealthyThreshold int `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
+	UnhealthyThreshold int64 `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
 }
 
 type AlbTargetGroupSpecStickiness struct {
 	// +optional
-	CookieDuration int `json:"cookieDuration,omitempty" tf:"cookie_duration,omitempty"`
+	CookieDuration int64 `json:"cookieDuration,omitempty" tf:"cookie_duration,omitempty"`
 	// +optional
 	Enabled bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	Type    string `json:"type" tf:"type"`
@@ -78,7 +78,7 @@ type AlbTargetGroupSpec struct {
 	// +optional
 	ArnSuffix string `json:"arnSuffix,omitempty" tf:"arn_suffix,omitempty"`
 	// +optional
-	DeregistrationDelay int `json:"deregistrationDelay,omitempty" tf:"deregistration_delay,omitempty"`
+	DeregistrationDelay int64 `json:"deregistrationDelay,omitempty" tf:"deregistration_delay,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	HealthCheck []AlbTargetGroupSpecHealthCheck `json:"healthCheck,omitempty" tf:"health_check,omitempty"`
@@ -89,13 +89,13 @@ type AlbTargetGroupSpec struct {
 	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 	// +optional
 	ProxyProtocolV2 bool `json:"proxyProtocolV2,omitempty" tf:"proxy_protocol_v2,omitempty"`
 	// +optional
-	SlowStart int `json:"slowStart,omitempty" tf:"slow_start,omitempty"`
+	SlowStart int64 `json:"slowStart,omitempty" tf:"slow_start,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Stickiness []AlbTargetGroupSpecStickiness `json:"stickiness,omitempty" tf:"stickiness,omitempty"`

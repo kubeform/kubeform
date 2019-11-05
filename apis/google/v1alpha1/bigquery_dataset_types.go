@@ -69,10 +69,10 @@ type BigqueryDatasetSpec struct {
 	// +optional
 	Access []BigqueryDatasetSpecAccess `json:"access,omitempty" tf:"access,omitempty"`
 	// +optional
-	CreationTime int    `json:"creationTime,omitempty" tf:"creation_time,omitempty"`
+	CreationTime int64  `json:"creationTime,omitempty" tf:"creation_time,omitempty"`
 	DatasetID    string `json:"datasetID" tf:"dataset_id"`
 	// +optional
-	DefaultTableExpirationMs int `json:"defaultTableExpirationMs,omitempty" tf:"default_table_expiration_ms,omitempty"`
+	DefaultTableExpirationMs int64 `json:"defaultTableExpirationMs,omitempty" tf:"default_table_expiration_ms,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -82,7 +82,7 @@ type BigqueryDatasetSpec struct {
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
-	LastModifiedTime int `json:"lastModifiedTime,omitempty" tf:"last_modified_time,omitempty"`
+	LastModifiedTime int64 `json:"lastModifiedTime,omitempty" tf:"last_modified_time,omitempty"`
 	// +optional
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional

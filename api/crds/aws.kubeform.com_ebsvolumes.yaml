@@ -412,6 +412,7 @@ spec:
             id:
               type: string
             iops:
+              format: int64
               type: integer
             kmsKeyID:
               type: string
@@ -425,6 +426,7 @@ spec:
                   type: string
               type: object
             size:
+              format: int64
               type: integer
             snapshotID:
               type: string
@@ -456,6 +458,7 @@ spec:
                 id:
                   type: string
                 iops:
+                  format: int64
                   type: integer
                 kmsKeyID:
                   type: string
@@ -469,6 +472,7 @@ spec:
                       type: string
                   type: object
                 size:
+                  format: int64
                   type: integer
                 snapshotID:
                   type: string

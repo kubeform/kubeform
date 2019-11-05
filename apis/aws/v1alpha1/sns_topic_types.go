@@ -49,7 +49,7 @@ type SnsTopicSpec struct {
 	// +optional
 	ApplicationSuccessFeedbackRoleArn string `json:"applicationSuccessFeedbackRoleArn,omitempty" tf:"application_success_feedback_role_arn,omitempty"`
 	// +optional
-	ApplicationSuccessFeedbackSampleRate int `json:"applicationSuccessFeedbackSampleRate,omitempty" tf:"application_success_feedback_sample_rate,omitempty"`
+	ApplicationSuccessFeedbackSampleRate int64 `json:"applicationSuccessFeedbackSampleRate,omitempty" tf:"application_success_feedback_sample_rate,omitempty"`
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
@@ -61,7 +61,7 @@ type SnsTopicSpec struct {
 	// +optional
 	HttpSuccessFeedbackRoleArn string `json:"httpSuccessFeedbackRoleArn,omitempty" tf:"http_success_feedback_role_arn,omitempty"`
 	// +optional
-	HttpSuccessFeedbackSampleRate int `json:"httpSuccessFeedbackSampleRate,omitempty" tf:"http_success_feedback_sample_rate,omitempty"`
+	HttpSuccessFeedbackSampleRate int64 `json:"httpSuccessFeedbackSampleRate,omitempty" tf:"http_success_feedback_sample_rate,omitempty"`
 	// +optional
 	KmsMasterKeyID string `json:"kmsMasterKeyID,omitempty" tf:"kms_master_key_id,omitempty"`
 	// +optional
@@ -69,7 +69,7 @@ type SnsTopicSpec struct {
 	// +optional
 	LambdaSuccessFeedbackRoleArn string `json:"lambdaSuccessFeedbackRoleArn,omitempty" tf:"lambda_success_feedback_role_arn,omitempty"`
 	// +optional
-	LambdaSuccessFeedbackSampleRate int `json:"lambdaSuccessFeedbackSampleRate,omitempty" tf:"lambda_success_feedback_sample_rate,omitempty"`
+	LambdaSuccessFeedbackSampleRate int64 `json:"lambdaSuccessFeedbackSampleRate,omitempty" tf:"lambda_success_feedback_sample_rate,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
@@ -81,7 +81,7 @@ type SnsTopicSpec struct {
 	// +optional
 	SqsSuccessFeedbackRoleArn string `json:"sqsSuccessFeedbackRoleArn,omitempty" tf:"sqs_success_feedback_role_arn,omitempty"`
 	// +optional
-	SqsSuccessFeedbackSampleRate int `json:"sqsSuccessFeedbackSampleRate,omitempty" tf:"sqs_success_feedback_sample_rate,omitempty"`
+	SqsSuccessFeedbackSampleRate int64 `json:"sqsSuccessFeedbackSampleRate,omitempty" tf:"sqs_success_feedback_sample_rate,omitempty"`
 }
 
 type SnsTopicStatus struct {

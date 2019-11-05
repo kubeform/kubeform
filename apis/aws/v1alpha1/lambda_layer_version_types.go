@@ -69,7 +69,7 @@ type LambdaLayerVersionSpec struct {
 	// +optional
 	SourceCodeHash string `json:"sourceCodeHash,omitempty" tf:"source_code_hash,omitempty"`
 	// +optional
-	SourceCodeSize int `json:"sourceCodeSize,omitempty" tf:"source_code_size,omitempty"`
+	SourceCodeSize int64 `json:"sourceCodeSize,omitempty" tf:"source_code_size,omitempty"`
 	// +optional
 	Version string `json:"version,omitempty" tf:"version,omitempty"`
 }

@@ -42,19 +42,19 @@ type Instance struct {
 type InstanceSpecAlerts struct {
 	// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
 	// +optional
-	Cpu int `json:"cpu,omitempty" tf:"cpu,omitempty"`
+	Cpu int64 `json:"cpu,omitempty" tf:"cpu,omitempty"`
 	// The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
 	// +optional
-	Io int `json:"io,omitempty" tf:"io,omitempty"`
+	Io int64 `json:"io,omitempty" tf:"io,omitempty"`
 	// The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 	// +optional
-	NetworkIn int `json:"networkIn,omitempty" tf:"network_in,omitempty"`
+	NetworkIn int64 `json:"networkIn,omitempty" tf:"network_in,omitempty"`
 	// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 	// +optional
-	NetworkOut int `json:"networkOut,omitempty" tf:"network_out,omitempty"`
+	NetworkOut int64 `json:"networkOut,omitempty" tf:"network_out,omitempty"`
 	// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 	// +optional
-	TransferQuota int `json:"transferQuota,omitempty" tf:"transfer_quota,omitempty"`
+	TransferQuota int64 `json:"transferQuota,omitempty" tf:"transfer_quota,omitempty"`
 }
 
 type InstanceSpecBackupsSchedule struct {
@@ -78,76 +78,76 @@ type InstanceSpecBackups struct {
 type InstanceSpecConfigDevicesSda struct {
 	// The Disk ID to map to this disk slot
 	// +optional
-	DiskID int `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
 	// The `label` of the `disk` to map to this `device` slot.
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
 	// The Block Storage volume ID to map to this disk slot
 	// +optional
-	VolumeID int `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
+	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSdb struct {
 	// +optional
-	DiskID int `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
 	// +optional
-	VolumeID int `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
+	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSdc struct {
 	// +optional
-	DiskID int `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
 	// +optional
-	VolumeID int `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
+	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSdd struct {
 	// +optional
-	DiskID int `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
 	// +optional
-	VolumeID int `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
+	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSde struct {
 	// +optional
-	DiskID int `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
 	// +optional
-	VolumeID int `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
+	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSdf struct {
 	// +optional
-	DiskID int `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
 	// +optional
-	VolumeID int `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
+	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSdg struct {
 	// +optional
-	DiskID int `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
 	// +optional
-	VolumeID int `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
+	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSdh struct {
 	// +optional
-	DiskID int `json:"diskID,omitempty" tf:"disk_id,omitempty"`
+	DiskID int64 `json:"diskID,omitempty" tf:"disk_id,omitempty"`
 	// +optional
 	DiskLabel string `json:"diskLabel,omitempty" tf:"disk_label,omitempty"`
 	// +optional
-	VolumeID int `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
+	VolumeID int64 `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 }
 
 type InstanceSpecConfigDevices struct {
@@ -214,7 +214,7 @@ type InstanceSpecConfig struct {
 	Label string `json:"label" tf:"label"`
 	// Defaults to the total RAM of the Linode
 	// +optional
-	MemoryLimit int `json:"memoryLimit,omitempty" tf:"memory_limit,omitempty"`
+	MemoryLimit int64 `json:"memoryLimit,omitempty" tf:"memory_limit,omitempty"`
 	// The root device to boot. The corresponding disk must be attached.
 	// +optional
 	RootDevice string `json:"rootDevice,omitempty" tf:"root_device,omitempty"`
@@ -238,7 +238,7 @@ type InstanceSpecDisk struct {
 	Filesystem string `json:"filesystem,omitempty" tf:"filesystem,omitempty"`
 	// The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)
 	// +optional
-	ID int `json:"ID,omitempty" tf:"id,omitempty"`
+	ID int64 `json:"ID,omitempty" tf:"id,omitempty"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
 	// +optional
 	Image string `json:"image,omitempty" tf:"image,omitempty"`
@@ -251,28 +251,28 @@ type InstanceSpecDisk struct {
 	// +optional
 	RootPass string `json:"-" sensitive:"true" tf:"root_pass,omitempty"`
 	// The size of the Disk in MB.
-	Size int `json:"size" tf:"size"`
+	Size int64 `json:"size" tf:"size"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 	// +optional
 	StackscriptData map[string]string `json:"-" sensitive:"true" tf:"stackscript_data,omitempty"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
 	// +optional
-	StackscriptID int `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
+	StackscriptID int64 `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
 }
 
 type InstanceSpecSpecs struct {
 	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.
 	// +optional
-	Disk int `json:"disk,omitempty" tf:"disk,omitempty"`
+	Disk int64 `json:"disk,omitempty" tf:"disk,omitempty"`
 	// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
 	// +optional
-	Memory int `json:"memory,omitempty" tf:"memory,omitempty"`
+	Memory int64 `json:"memory,omitempty" tf:"memory,omitempty"`
 	// The amount of network transfer this Linode is allotted each month.
 	// +optional
-	Transfer int `json:"transfer,omitempty" tf:"transfer,omitempty"`
+	Transfer int64 `json:"transfer,omitempty" tf:"transfer,omitempty"`
 	// The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
 	// +optional
-	Vcpus int `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
+	Vcpus int64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
 }
 
 type InstanceSpec struct {
@@ -293,7 +293,7 @@ type InstanceSpec struct {
 	AuthorizedUsers []string `json:"authorizedUsers,omitempty" tf:"authorized_users,omitempty"`
 	// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
 	// +optional
-	BackupID int `json:"backupID,omitempty" tf:"backup_id,omitempty"`
+	BackupID int64 `json:"backupID,omitempty" tf:"backup_id,omitempty"`
 	// Information about this Linode's backups status.
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -346,13 +346,13 @@ type InstanceSpec struct {
 	StackscriptData map[string]string `json:"-" sensitive:"true" tf:"stackscript_data,omitempty"`
 	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
 	// +optional
-	StackscriptID int `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
+	StackscriptID int64 `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
 	// The status of the instance, indicating the current readiness state.
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
 	// +optional
-	SwapSize int `json:"swapSize,omitempty" tf:"swap_size,omitempty"`
+	SwapSize int64 `json:"swapSize,omitempty" tf:"swap_size,omitempty"`
 	// An array of tags applied to this object. Tags are for organizational purposes only.
 	// +optional
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`

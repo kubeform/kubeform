@@ -139,19 +139,19 @@ type SchedulerJobSpecErrorActionWeb struct {
 
 type SchedulerJobSpecRecurrenceMonthlyOccurrences struct {
 	Day        string `json:"day" tf:"day"`
-	Occurrence int    `json:"occurrence" tf:"occurrence"`
+	Occurrence int64  `json:"occurrence" tf:"occurrence"`
 }
 
 type SchedulerJobSpecRecurrence struct {
 	// +optional
-	Count int `json:"count,omitempty" tf:"count,omitempty"`
+	Count int64 `json:"count,omitempty" tf:"count,omitempty"`
 	// +optional
 	EndTime   string `json:"endTime,omitempty" tf:"end_time,omitempty"`
 	Frequency string `json:"frequency" tf:"frequency"`
 	// +optional
 	Hours []int64 `json:"hours,omitempty" tf:"hours,omitempty"`
 	// +optional
-	Interval int `json:"interval,omitempty" tf:"interval,omitempty"`
+	Interval int64 `json:"interval,omitempty" tf:"interval,omitempty"`
 	// +optional
 	Minutes []int64 `json:"minutes,omitempty" tf:"minutes,omitempty"`
 	// +optional
@@ -166,7 +166,7 @@ type SchedulerJobSpecRecurrence struct {
 
 type SchedulerJobSpecRetry struct {
 	// +optional
-	Count int `json:"count,omitempty" tf:"count,omitempty"`
+	Count int64 `json:"count,omitempty" tf:"count,omitempty"`
 	// +optional
 	Interval string `json:"interval,omitempty" tf:"interval,omitempty"`
 }

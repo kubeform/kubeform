@@ -486,6 +486,7 @@ spec:
                       type: string
                     type: array
                   maxPartitionResolutionRetries:
+                    format: int64
                     type: integer
                   serverCertificateThumbprints:
                     items:
@@ -624,6 +625,7 @@ spec:
                           type: string
                         type: array
                       maxPartitionResolutionRetries:
+                        format: int64
                         type: integer
                       serverCertificateThumbprints:
                         items:

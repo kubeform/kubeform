@@ -53,9 +53,9 @@ type ComputeRouterNATSpec struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// +optional
-	IcmpIdleTimeoutSec int `json:"icmpIdleTimeoutSec,omitempty" tf:"icmp_idle_timeout_sec,omitempty"`
+	IcmpIdleTimeoutSec int64 `json:"icmpIdleTimeoutSec,omitempty" tf:"icmp_idle_timeout_sec,omitempty"`
 	// +optional
-	MinPortsPerVm       int    `json:"minPortsPerVm,omitempty" tf:"min_ports_per_vm,omitempty"`
+	MinPortsPerVm       int64  `json:"minPortsPerVm,omitempty" tf:"min_ports_per_vm,omitempty"`
 	Name                string `json:"name" tf:"name"`
 	NatIPAllocateOption string `json:"natIPAllocateOption" tf:"nat_ip_allocate_option"`
 	// +optional
@@ -70,11 +70,11 @@ type ComputeRouterNATSpec struct {
 	// +optional
 	Subnetwork []ComputeRouterNATSpecSubnetwork `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
 	// +optional
-	TcpEstablishedIdleTimeoutSec int `json:"tcpEstablishedIdleTimeoutSec,omitempty" tf:"tcp_established_idle_timeout_sec,omitempty"`
+	TcpEstablishedIdleTimeoutSec int64 `json:"tcpEstablishedIdleTimeoutSec,omitempty" tf:"tcp_established_idle_timeout_sec,omitempty"`
 	// +optional
-	TcpTransitoryIdleTimeoutSec int `json:"tcpTransitoryIdleTimeoutSec,omitempty" tf:"tcp_transitory_idle_timeout_sec,omitempty"`
+	TcpTransitoryIdleTimeoutSec int64 `json:"tcpTransitoryIdleTimeoutSec,omitempty" tf:"tcp_transitory_idle_timeout_sec,omitempty"`
 	// +optional
-	UdpIdleTimeoutSec int `json:"udpIdleTimeoutSec,omitempty" tf:"udp_idle_timeout_sec,omitempty"`
+	UdpIdleTimeoutSec int64 `json:"udpIdleTimeoutSec,omitempty" tf:"udp_idle_timeout_sec,omitempty"`
 }
 
 type ComputeRouterNATStatus struct {

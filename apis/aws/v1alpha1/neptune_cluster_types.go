@@ -51,7 +51,7 @@ type NeptuneClusterSpec struct {
 	// +optional
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	// +optional
-	BackupRetentionPeriod int `json:"backupRetentionPeriod,omitempty" tf:"backup_retention_period,omitempty"`
+	BackupRetentionPeriod int64 `json:"backupRetentionPeriod,omitempty" tf:"backup_retention_period,omitempty"`
 	// +optional
 	ClusterIdentifier string `json:"clusterIdentifier,omitempty" tf:"cluster_identifier,omitempty"`
 	// +optional
@@ -81,7 +81,7 @@ type NeptuneClusterSpec struct {
 	// +optional
 	NeptuneSubnetGroupName string `json:"neptuneSubnetGroupName,omitempty" tf:"neptune_subnet_group_name,omitempty"`
 	// +optional
-	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	Port int64 `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	PreferredBackupWindow string `json:"preferredBackupWindow,omitempty" tf:"preferred_backup_window,omitempty"`
 	// +optional

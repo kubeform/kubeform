@@ -156,7 +156,7 @@ type DataprocJobSpecReference struct {
 type DataprocJobSpecScheduling struct {
 	// Maximum number of times per hour a driver may be restarted as a result of driver terminating with non-zero code before job is reported failed.
 	// +optional
-	MaxFailuresPerHour int `json:"maxFailuresPerHour,omitempty" tf:"max_failures_per_hour,omitempty"`
+	MaxFailuresPerHour int64 `json:"maxFailuresPerHour,omitempty" tf:"max_failures_per_hour,omitempty"`
 }
 
 type DataprocJobSpecSparkConfigLoggingConfig struct {

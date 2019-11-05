@@ -122,8 +122,8 @@ type VirtualMachineSpecStorageDataDisk struct {
 	Caching      string `json:"caching,omitempty" tf:"caching,omitempty"`
 	CreateOption string `json:"createOption" tf:"create_option"`
 	// +optional
-	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
-	Lun        int `json:"lun" tf:"lun"`
+	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	Lun        int64 `json:"lun" tf:"lun"`
 	// +optional
 	ManagedDiskID string `json:"managedDiskID,omitempty" tf:"managed_disk_id,omitempty"`
 	// +optional
@@ -153,7 +153,7 @@ type VirtualMachineSpecStorageOsDisk struct {
 	Caching      string `json:"caching,omitempty" tf:"caching,omitempty"`
 	CreateOption string `json:"createOption" tf:"create_option"`
 	// +optional
-	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	DiskSizeGb int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
 	// +optional
 	ImageURI string `json:"imageURI,omitempty" tf:"image_uri,omitempty"`
 	// +optional

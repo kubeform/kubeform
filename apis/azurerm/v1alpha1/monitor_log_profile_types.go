@@ -41,8 +41,8 @@ type MonitorLogProfile struct {
 
 type MonitorLogProfileSpecRetentionPolicy struct {
 	// +optional
-	Days    int  `json:"days,omitempty" tf:"days,omitempty"`
-	Enabled bool `json:"enabled" tf:"enabled"`
+	Days    int64 `json:"days,omitempty" tf:"days,omitempty"`
+	Enabled bool  `json:"enabled" tf:"enabled"`
 }
 
 type MonitorLogProfileSpec struct {

@@ -51,13 +51,13 @@ type InstanceSpecEbsBlockDevice struct {
 	// +optional
 	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
 	// +optional
-	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 	// +optional
 	VolumeID string `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 	// +optional
-	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	VolumeSize int64 `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 	// +optional
 	VolumeType string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
 }
@@ -73,7 +73,7 @@ type InstanceSpecEphemeralBlockDevice struct {
 type InstanceSpecNetworkInterface struct {
 	// +optional
 	DeleteOnTermination bool   `json:"deleteOnTermination,omitempty" tf:"delete_on_termination,omitempty"`
-	DeviceIndex         int    `json:"deviceIndex" tf:"device_index"`
+	DeviceIndex         int64  `json:"deviceIndex" tf:"device_index"`
 	NetworkInterfaceID  string `json:"networkInterfaceID" tf:"network_interface_id"`
 }
 
@@ -81,11 +81,11 @@ type InstanceSpecRootBlockDevice struct {
 	// +optional
 	DeleteOnTermination bool `json:"deleteOnTermination,omitempty" tf:"delete_on_termination,omitempty"`
 	// +optional
-	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
 	VolumeID string `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 	// +optional
-	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	VolumeSize int64 `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 	// +optional
 	VolumeType string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
 }
@@ -103,9 +103,9 @@ type InstanceSpec struct {
 	// +optional
 	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 	// +optional
-	CpuCoreCount int `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CpuCoreCount int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 	// +optional
-	CpuThreadsPerCore int `json:"cpuThreadsPerCore,omitempty" tf:"cpu_threads_per_core,omitempty"`
+	CpuThreadsPerCore int64 `json:"cpuThreadsPerCore,omitempty" tf:"cpu_threads_per_core,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CreditSpecification []InstanceSpecCreditSpecification `json:"creditSpecification,omitempty" tf:"credit_specification,omitempty"`
@@ -129,7 +129,7 @@ type InstanceSpec struct {
 	InstanceState string `json:"instanceState,omitempty" tf:"instance_state,omitempty"`
 	InstanceType  string `json:"instanceType" tf:"instance_type"`
 	// +optional
-	Ipv6AddressCount int `json:"ipv6AddressCount,omitempty" tf:"ipv6_address_count,omitempty"`
+	Ipv6AddressCount int64 `json:"ipv6AddressCount,omitempty" tf:"ipv6_address_count,omitempty"`
 	// +optional
 	Ipv6Addresses []string `json:"ipv6Addresses,omitempty" tf:"ipv6_addresses,omitempty"`
 	// +optional

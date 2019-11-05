@@ -51,13 +51,13 @@ type ExpressRouteCircuitPeeringSpec struct {
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
-	AzureAsn                int    `json:"azureAsn,omitempty" tf:"azure_asn,omitempty"`
+	AzureAsn                int64  `json:"azureAsn,omitempty" tf:"azure_asn,omitempty"`
 	ExpressRouteCircuitName string `json:"expressRouteCircuitName" tf:"express_route_circuit_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	MicrosoftPeeringConfig []ExpressRouteCircuitPeeringSpecMicrosoftPeeringConfig `json:"microsoftPeeringConfig,omitempty" tf:"microsoft_peering_config,omitempty"`
 	// +optional
-	PeerAsn     int    `json:"peerAsn,omitempty" tf:"peer_asn,omitempty"`
+	PeerAsn     int64  `json:"peerAsn,omitempty" tf:"peer_asn,omitempty"`
 	PeeringType string `json:"peeringType" tf:"peering_type"`
 	// +optional
 	PrimaryAzurePort         string `json:"primaryAzurePort,omitempty" tf:"primary_azure_port,omitempty"`
@@ -68,7 +68,7 @@ type ExpressRouteCircuitPeeringSpec struct {
 	SecondaryPeerAddressPrefix string `json:"secondaryPeerAddressPrefix" tf:"secondary_peer_address_prefix"`
 	// +optional
 	SharedKey string `json:"-" sensitive:"true" tf:"shared_key,omitempty"`
-	VlanID    int    `json:"vlanID" tf:"vlan_id"`
+	VlanID    int64  `json:"vlanID" tf:"vlan_id"`
 }
 
 type ExpressRouteCircuitPeeringStatus struct {

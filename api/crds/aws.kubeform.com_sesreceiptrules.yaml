@@ -411,6 +411,7 @@ spec:
                   headerValue:
                     type: string
                   position:
+                    format: int64
                     type: integer
                 required:
                 - headerName
@@ -426,6 +427,7 @@ spec:
                   message:
                     type: string
                   position:
+                    format: int64
                     type: integer
                   sender:
                     type: string
@@ -454,6 +456,7 @@ spec:
                   invocationType:
                     type: string
                   position:
+                    format: int64
                     type: integer
                   topicArn:
                     type: string
@@ -489,6 +492,7 @@ spec:
                   objectKeyPrefix:
                     type: string
                   position:
+                    format: int64
                     type: integer
                   topicArn:
                     type: string
@@ -503,6 +507,7 @@ spec:
               items:
                 properties:
                   position:
+                    format: int64
                     type: integer
                   topicArn:
                     type: string
@@ -515,6 +520,7 @@ spec:
               items:
                 properties:
                   position:
+                    format: int64
                     type: integer
                   scope:
                     type: string
@@ -533,6 +539,7 @@ spec:
                   organizationArn:
                     type: string
                   position:
+                    format: int64
                     type: integer
                   topicArn:
                     type: string
@@ -563,6 +570,7 @@ spec:
                       headerValue:
                         type: string
                       position:
+                        format: int64
                         type: integer
                     required:
                     - headerName
@@ -578,6 +586,7 @@ spec:
                       message:
                         type: string
                       position:
+                        format: int64
                         type: integer
                       sender:
                         type: string
@@ -606,6 +615,7 @@ spec:
                       invocationType:
                         type: string
                       position:
+                        format: int64
                         type: integer
                       topicArn:
                         type: string
@@ -641,6 +651,7 @@ spec:
                       objectKeyPrefix:
                         type: string
                       position:
+                        format: int64
                         type: integer
                       topicArn:
                         type: string
@@ -655,6 +666,7 @@ spec:
                   items:
                     properties:
                       position:
+                        format: int64
                         type: integer
                       topicArn:
                         type: string
@@ -667,6 +679,7 @@ spec:
                   items:
                     properties:
                       position:
+                        format: int64
                         type: integer
                       scope:
                         type: string
@@ -685,6 +698,7 @@ spec:
                       organizationArn:
                         type: string
                       position:
+                        format: int64
                         type: integer
                       topicArn:
                         type: string

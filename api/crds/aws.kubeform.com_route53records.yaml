@@ -475,6 +475,7 @@ spec:
             setIdentifier:
               type: string
             ttl:
+              format: int64
               type: integer
             type:
               type: string
@@ -482,6 +483,7 @@ spec:
               items:
                 properties:
                   weight:
+                    format: int64
                     type: integer
                 required:
                 - weight
@@ -576,6 +578,7 @@ spec:
                 setIdentifier:
                   type: string
                 ttl:
+                  format: int64
                   type: integer
                 type:
                   type: string
@@ -583,6 +586,7 @@ spec:
                   items:
                     properties:
                       weight:
+                        format: int64
                         type: integer
                     required:
                     - weight

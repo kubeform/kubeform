@@ -46,20 +46,20 @@ type CosmosdbAccountSpecCapabilities struct {
 type CosmosdbAccountSpecConsistencyPolicy struct {
 	ConsistencyLevel string `json:"consistencyLevel" tf:"consistency_level"`
 	// +optional
-	MaxIntervalInSeconds int `json:"maxIntervalInSeconds,omitempty" tf:"max_interval_in_seconds,omitempty"`
+	MaxIntervalInSeconds int64 `json:"maxIntervalInSeconds,omitempty" tf:"max_interval_in_seconds,omitempty"`
 	// +optional
-	MaxStalenessPrefix int `json:"maxStalenessPrefix,omitempty" tf:"max_staleness_prefix,omitempty"`
+	MaxStalenessPrefix int64 `json:"maxStalenessPrefix,omitempty" tf:"max_staleness_prefix,omitempty"`
 }
 
 type CosmosdbAccountSpecFailoverPolicy struct {
 	// +optional
 	ID       string `json:"ID,omitempty" tf:"id,omitempty"`
 	Location string `json:"location" tf:"location"`
-	Priority int    `json:"priority" tf:"priority"`
+	Priority int64  `json:"priority" tf:"priority"`
 }
 
 type CosmosdbAccountSpecGeoLocation struct {
-	FailoverPriority int `json:"failoverPriority" tf:"failover_priority"`
+	FailoverPriority int64 `json:"failoverPriority" tf:"failover_priority"`
 	// +optional
 	ID       string `json:"ID,omitempty" tf:"id,omitempty"`
 	Location string `json:"location" tf:"location"`

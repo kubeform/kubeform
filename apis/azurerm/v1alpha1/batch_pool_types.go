@@ -63,9 +63,9 @@ type BatchPoolSpecFixedScale struct {
 	// +optional
 	ResizeTimeout string `json:"resizeTimeout,omitempty" tf:"resize_timeout,omitempty"`
 	// +optional
-	TargetDedicatedNodes int `json:"targetDedicatedNodes,omitempty" tf:"target_dedicated_nodes,omitempty"`
+	TargetDedicatedNodes int64 `json:"targetDedicatedNodes,omitempty" tf:"target_dedicated_nodes,omitempty"`
 	// +optional
-	TargetLowPriorityNodes int `json:"targetLowPriorityNodes,omitempty" tf:"target_low_priority_nodes,omitempty"`
+	TargetLowPriorityNodes int64 `json:"targetLowPriorityNodes,omitempty" tf:"target_low_priority_nodes,omitempty"`
 }
 
 type BatchPoolSpecStartTaskResourceFile struct {
@@ -103,7 +103,7 @@ type BatchPoolSpecStartTask struct {
 	// +optional
 	Environment map[string]string `json:"environment,omitempty" tf:"environment,omitempty"`
 	// +optional
-	MaxTaskRetryCount int `json:"maxTaskRetryCount,omitempty" tf:"max_task_retry_count,omitempty"`
+	MaxTaskRetryCount int64 `json:"maxTaskRetryCount,omitempty" tf:"max_task_retry_count,omitempty"`
 	// +optional
 	ResourceFile []BatchPoolSpecStartTaskResourceFile `json:"resourceFile,omitempty" tf:"resource_file,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
@@ -145,7 +145,7 @@ type BatchPoolSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	FixedScale []BatchPoolSpecFixedScale `json:"fixedScale,omitempty" tf:"fixed_scale,omitempty"`
 	// +optional
-	MaxTasksPerNode   int    `json:"maxTasksPerNode,omitempty" tf:"max_tasks_per_node,omitempty"`
+	MaxTasksPerNode   int64  `json:"maxTasksPerNode,omitempty" tf:"max_tasks_per_node,omitempty"`
 	Name              string `json:"name" tf:"name"`
 	NodeAgentSkuID    string `json:"nodeAgentSkuID" tf:"node_agent_sku_id"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
