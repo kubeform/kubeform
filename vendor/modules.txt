@@ -734,7 +734,7 @@ golang.org/x/net/context/ctxhttp
 golang.org/x/net/publicsuffix
 golang.org/x/net/internal/timeseries
 golang.org/x/net/websocket
-# golang.org/x/oauth2 v0.0.0-20190226205417-e64efc72b421
+# golang.org/x/oauth2 v0.0.0-20190402181905-9f3314589c9a
 golang.org/x/oauth2
 golang.org/x/oauth2/google
 golang.org/x/oauth2/jwt
@@ -866,7 +866,7 @@ gopkg.in/natefinch/lumberjack.v2
 gopkg.in/resty.v1
 # gopkg.in/yaml.v2 v2.2.2
 gopkg.in/yaml.v2
-# k8s.io/api v0.0.0-20190313235455-40a48860b5ab => k8s.io/api v0.0.0-20190313235455-40a48860b5ab
+# k8s.io/api v0.0.0-20190503110853-61630f889b3c => k8s.io/api v0.0.0-20190313235455-40a48860b5ab
 k8s.io/api/core/v1
 k8s.io/api/admissionregistration/v1beta1
 k8s.io/api/apps/v1
@@ -904,7 +904,7 @@ k8s.io/api/storage/v1
 k8s.io/api/storage/v1alpha1
 k8s.io/api/storage/v1beta1
 k8s.io/api/admission/v1beta1
-# k8s.io/apimachinery v0.0.0-20190313205120-d7deff9243b1 => github.com/kmodules/apimachinery v0.0.0-20190508045248-a52a97a7a2bf
+# k8s.io/apimachinery v0.0.0-20190508063446-a3da69d3723c => github.com/kmodules/apimachinery v0.0.0-20190508045248-a52a97a7a2bf
 k8s.io/apimachinery/pkg/runtime
 k8s.io/apimachinery/pkg/util/runtime
 k8s.io/apimachinery/pkg/api/resource
@@ -958,7 +958,7 @@ k8s.io/apimachinery/pkg/apis/meta/v1/validation
 k8s.io/apimachinery/pkg/util/uuid
 k8s.io/apimachinery/pkg/util/waitgroup
 k8s.io/apimachinery/pkg/util/rand
-# k8s.io/apiserver v0.0.0-20190313205120-8b27c41bdbb1 => github.com/kmodules/apiserver v0.0.0-20190811223248-5a95b2df4348
+# k8s.io/apiserver v0.0.0-20190516230822-f89599b3f645 => github.com/kmodules/apiserver v0.0.0-20190811223248-5a95b2df4348
 k8s.io/apiserver/pkg/endpoints/openapi
 k8s.io/apiserver/pkg/registry/rest
 k8s.io/apiserver/pkg/server
@@ -1203,22 +1203,22 @@ k8s.io/client-go/listers/settings/v1alpha1
 k8s.io/client-go/listers/storage/v1
 k8s.io/client-go/listers/storage/v1alpha1
 k8s.io/client-go/listers/storage/v1beta1
-# k8s.io/component-base v0.0.0-20190314000054-4a91899592f4 => k8s.io/component-base v0.0.0-20190314000054-4a91899592f4
+# k8s.io/component-base v0.0.0-20190424053038-9fe063da3132 => k8s.io/component-base v0.0.0-20190314000054-4a91899592f4
 k8s.io/component-base/cli/flag
 # k8s.io/klog v0.3.1 => k8s.io/klog v0.3.0
 k8s.io/klog
-# k8s.io/kube-openapi v0.0.0-20190228160746-b3a7cee44a30 => k8s.io/kube-openapi v0.0.0-20190228160746-b3a7cee44a30
+# k8s.io/kube-openapi v0.0.0-20190502190224-411b2483e503 => k8s.io/kube-openapi v0.0.0-20190228160746-b3a7cee44a30
 k8s.io/kube-openapi/pkg/common
 k8s.io/kube-openapi/pkg/builder
 k8s.io/kube-openapi/pkg/util/proto
 k8s.io/kube-openapi/pkg/util
 k8s.io/kube-openapi/pkg/handler
 k8s.io/kube-openapi/pkg/schemaconv
-# k8s.io/utils v0.0.0-20190221042446-c2654d5206da => k8s.io/utils v0.0.0-20190514214443-0a167cbac756
+# k8s.io/utils v0.0.0-20190506122338-8fab8cb257d5 => k8s.io/utils v0.0.0-20190514214443-0a167cbac756
 k8s.io/utils/integer
 k8s.io/utils/buffer
 k8s.io/utils/trace
-# kmodules.xyz/client-go v0.0.0-20190808141354-bbb9e14f60ab
+# kmodules.xyz/client-go v0.0.0-20191106181350-088754189f4e
 kmodules.xyz/client-go/openapi
 # sigs.k8s.io/structured-merge-diff v0.0.0-20190302045857-e85c7b244fd2 => sigs.k8s.io/structured-merge-diff v0.0.0-20190302045857-e85c7b244fd2
 sigs.k8s.io/structured-merge-diff/fieldpath

@@ -12,17 +12,26 @@ require (
 	github.com/googleapis/gax-go v2.0.2+incompatible // indirect
 	github.com/hashicorp/terraform v0.12.7-0.20190808211310-979a2fa6d13b
 	github.com/hashicorp/terraform-config-inspect v0.0.0-20190327195015-8022a2663a70
+	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
+	github.com/onsi/ginkgo v1.8.0 // indirect
+	github.com/onsi/gomega v1.5.0 // indirect
 	github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4 // indirect
+	github.com/sirupsen/logrus v1.4.1 // indirect
 	github.com/terraform-providers/terraform-provider-aws v0.0.0-20190510001811-4b894dbf13f6
 	github.com/terraform-providers/terraform-provider-azurerm v1.32.1
 	github.com/terraform-providers/terraform-provider-digitalocean v1.5.0
 	github.com/terraform-providers/terraform-provider-google v1.20.0
 	github.com/terraform-providers/terraform-provider-linode v1.8.0
-	k8s.io/api v0.0.0-20190313235455-40a48860b5ab
-	k8s.io/apimachinery v0.0.0-20190313205120-d7deff9243b1
+	golang.org/x/oauth2 v0.0.0-20190402181905-9f3314589c9a // indirect
+	k8s.io/api v0.0.0-20190503110853-61630f889b3c
+	k8s.io/apimachinery v0.0.0-20190508063446-a3da69d3723c
+	k8s.io/apiserver v0.0.0-20190516230822-f89599b3f645 // indirect
 	k8s.io/client-go v11.0.0+incompatible
-	k8s.io/kube-openapi v0.0.0-20190228160746-b3a7cee44a30
-	kmodules.xyz/client-go v0.0.0-20190808141354-bbb9e14f60ab
+	k8s.io/component-base v0.0.0-20190424053038-9fe063da3132 // indirect
+	k8s.io/klog v0.3.1 // indirect
+	k8s.io/kube-openapi v0.0.0-20190502190224-411b2483e503
+	k8s.io/utils v0.0.0-20190506122338-8fab8cb257d5 // indirect
+	kmodules.xyz/client-go v0.0.0-20191106181350-088754189f4e
 )
 
 replace (

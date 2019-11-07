@@ -1,3 +1,18 @@
+/*
+Copyright The Kmodules Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package openapi
 
 import (
@@ -24,6 +39,11 @@ type TypeInfo struct {
 	Resource        string
 	Kind            string
 	NamespaceScoped bool
+}
+
+type VersionResource struct {
+	Version  string
+	Resource string
 }
 
 type Config struct {
@@ -89,15 +109,15 @@ func RenderOpenAPISpec(cfg Config) (string, error) {
 		return "", err
 	}
 
-	table := map[schema.GroupVersion]map[string]rest.Storage{}
+	table := map[string]map[VersionResource]rest.Storage{}
 	{
 		for _, ti := range cfg.Resources {
-			var resmap map[string]rest.Storage
-			if m, found := table[ti.GroupVersion]; found {
+			var resmap map[VersionResource]rest.Storage
+			if m, found := table[ti.GroupVersion.Group]; found {
 				resmap = m
 			} else {
-				resmap = map[string]rest.Storage{}
-				table[ti.GroupVersion] = resmap
+				resmap = map[VersionResource]rest.Storage{}
+				table[ti.GroupVersion.Group] = resmap
 			}
 
 			gvk := ti.GroupVersion.WithKind(ti.Kind)
@@ -110,7 +130,7 @@ func RenderOpenAPISpec(cfg Config) (string, error) {
 				return "", err
 			}
 
-			resmap[ti.Resource] = NewStandardStorage(ResourceInfo{
+			resmap[VersionResource{Version: ti.GroupVersion.Version, Resource: ti.Resource}] = NewStandardStorage(ResourceInfo{
 				gvk:             gvk,
 				obj:             obj,
 				list:            list,
@@ -120,12 +140,12 @@ func RenderOpenAPISpec(cfg Config) (string, error) {
 	}
 	{
 		for _, ti := range cfg.GetterResources {
-			var resmap map[string]rest.Storage
-			if m, found := table[ti.GroupVersion]; found {
+			var resmap map[VersionResource]rest.Storage
+			if m, found := table[ti.GroupVersion.Group]; found {
 				resmap = m
 			} else {
-				resmap = map[string]rest.Storage{}
-				table[ti.GroupVersion] = resmap
+				resmap = map[VersionResource]rest.Storage{}
+				table[ti.GroupVersion.Group] = resmap
 			}
 
 			gvk := ti.GroupVersion.WithKind(ti.Kind)
@@ -134,7 +154,7 @@ func RenderOpenAPISpec(cfg Config) (string, error) {
 				return "", err
 			}
 
-			resmap[ti.Resource] = NewGetterStorage(ResourceInfo{
+			resmap[VersionResource{Version: ti.GroupVersion.Version, Resource: ti.Resource}] = NewGetterStorage(ResourceInfo{
 				gvk:             gvk,
 				obj:             obj,
 				namespaceScoped: ti.NamespaceScoped,
@@ -143,12 +163,12 @@ func RenderOpenAPISpec(cfg Config) (string, error) {
 	}
 	{
 		for _, ti := range cfg.ListerResources {
-			var resmap map[string]rest.Storage
-			if m, found := table[ti.GroupVersion]; found {
+			var resmap map[VersionResource]rest.Storage
+			if m, found := table[ti.GroupVersion.Group]; found {
 				resmap = m
 			} else {
-				resmap = map[string]rest.Storage{}
-				table[ti.GroupVersion] = resmap
+				resmap = map[VersionResource]rest.Storage{}
+				table[ti.GroupVersion.Group] = resmap
 			}
 
 			gvk := ti.GroupVersion.WithKind(ti.Kind)
@@ -161,7 +181,7 @@ func RenderOpenAPISpec(cfg Config) (string, error) {
 				return "", err
 			}
 
-			resmap[ti.Resource] = NewListerStorage(ResourceInfo{
+			resmap[VersionResource{Version: ti.GroupVersion.Version, Resource: ti.Resource}] = NewListerStorage(ResourceInfo{
 				gvk:             gvk,
 				obj:             obj,
 				list:            list,
@@ -171,12 +191,12 @@ func RenderOpenAPISpec(cfg Config) (string, error) {
 	}
 	{
 		for _, ti := range cfg.CDResources {
-			var resmap map[string]rest.Storage
-			if m, found := table[ti.GroupVersion]; found {
+			var resmap map[VersionResource]rest.Storage
+			if m, found := table[ti.GroupVersion.Group]; found {
 				resmap = m
 			} else {
-				resmap = map[string]rest.Storage{}
-				table[ti.GroupVersion] = resmap
+				resmap = map[VersionResource]rest.Storage{}
+				table[ti.GroupVersion.Group] = resmap
 			}
 
 			gvk := ti.GroupVersion.WithKind(ti.Kind)
@@ -185,7 +205,7 @@ func RenderOpenAPISpec(cfg Config) (string, error) {
 				return "", err
 			}
 
-			resmap[ti.Resource] = NewCDStorage(ResourceInfo{
+			resmap[VersionResource{Version: ti.GroupVersion.Version, Resource: ti.Resource}] = NewCDStorage(ResourceInfo{
 				gvk:             gvk,
 				obj:             obj,
 				namespaceScoped: ti.NamespaceScoped,
@@ -194,12 +214,12 @@ func RenderOpenAPISpec(cfg Config) (string, error) {
 	}
 	{
 		for _, ti := range cfg.RDResources {
-			var resmap map[string]rest.Storage
-			if m, found := table[ti.GroupVersion]; found {
+			var resmap map[VersionResource]rest.Storage
+			if m, found := table[ti.GroupVersion.Group]; found {
 				resmap = m
 			} else {
-				resmap = map[string]rest.Storage{}
-				table[ti.GroupVersion] = resmap
+				resmap = map[VersionResource]rest.Storage{}
+				table[ti.GroupVersion.Group] = resmap
 			}
 
 			gvk := ti.GroupVersion.WithKind(ti.Kind)
@@ -212,7 +232,7 @@ func RenderOpenAPISpec(cfg Config) (string, error) {
 				return "", err
 			}
 
-			resmap[ti.Resource] = NewRDStorage(ResourceInfo{
+			resmap[VersionResource{Version: ti.GroupVersion.Version, Resource: ti.Resource}] = NewRDStorage(ResourceInfo{
 				gvk:             gvk,
 				obj:             obj,
 				list:            list,
@@ -221,14 +241,14 @@ func RenderOpenAPISpec(cfg Config) (string, error) {
 		}
 	}
 
-	for gv, resmap := range table {
-		apiGroupInfo := genericapiserver.NewDefaultAPIGroupInfo(gv.Group, cfg.Scheme, metav1.ParameterCodec, cfg.Codecs)
-		storage := map[string]rest.Storage{}
-		for r, s := range resmap {
-			storage[r] = s
+	for group, resmap := range table {
+		apiGroupInfo := genericapiserver.NewDefaultAPIGroupInfo(group, cfg.Scheme, metav1.ParameterCodec, cfg.Codecs)
+		for vr, s := range resmap {
+			if _, found := apiGroupInfo.VersionedResourcesStorageMap[vr.Version]; !found {
+				apiGroupInfo.VersionedResourcesStorageMap[vr.Version] = make(map[string]rest.Storage)
+			}
+			apiGroupInfo.VersionedResourcesStorageMap[vr.Version][vr.Resource] = s
 		}
-		apiGroupInfo.VersionedResourcesStorageMap[gv.Version] = storage
-
 		if err := genericServer.InstallAPIGroup(&apiGroupInfo); err != nil {
 			return "", err
 		}
