@@ -22,4 +22,5 @@ This concept section is divided into the following modules:
 - What is Kubeform?
   - [Overview](/docs/concepts/what-is-kubeform/overview.md) provides an introduction to Kubeform.
   - [Architecture](/docs/concepts/what-is-kubeform/architecture.md) provides a visual representation of Kubeform architecture. It also provides a brief overview of the components it uses.
+  - [TFState](/docs/concepts/what-is-kubeform/tfstate.md) provides an description of how kubeform handles the `tfstate`.
 
