@@ -36,13 +36,13 @@ Appears on:[SpotFleetRequest](#spotfleetrequest), [SpotFleetRequestStatus](#spot
 | `fleetType` | ***string***| ***(Optional)*** |
 | `iamFleetRole` | ***string***||
 | `instanceInterruptionBehaviour` | ***string***| ***(Optional)*** |
-| `instancePoolsToUseCount` | ***int***| ***(Optional)*** |
+| `instancePoolsToUseCount` | ***int64***| ***(Optional)*** |
 | `launchSpecification` | ***[[]SpotFleetRequestSpecLaunchSpecification](#spotfleetrequestspeclaunchspecification)***||
 | `loadBalancers` | ***[]string***| ***(Optional)*** |
 | `replaceUnhealthyInstances` | ***bool***| ***(Optional)*** |
 | `spotPrice` | ***string***| ***(Optional)*** |
 | `spotRequestState` | ***string***| ***(Optional)*** |
-| `targetCapacity` | ***int***||
+| `targetCapacity` | ***int64***||
 | `targetGroupArns` | ***[]string***| ***(Optional)*** |
 | `terminateInstancesWithExpiration` | ***bool***| ***(Optional)*** |
 | `validFrom` | ***string***| ***(Optional)*** |
@@ -83,9 +83,9 @@ Appears on:[SpotFleetRequestSpecLaunchSpecification](#spotfleetrequestspeclaunch
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
 | `deviceName` | ***string***||
 | `encrypted` | ***bool***| ***(Optional)*** |
-| `iops` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
 | `snapshotID` | ***string***| ***(Optional)*** |
-| `volumeSize` | ***int***| ***(Optional)*** |
+| `volumeSize` | ***int64***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## SpotFleetRequestSpecLaunchSpecificationEphemeralBlockDevice
 
@@ -102,8 +102,8 @@ Appears on:[SpotFleetRequestSpecLaunchSpecification](#spotfleetrequestspeclaunch
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
-| `iops` | ***int***| ***(Optional)*** |
-| `volumeSize` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
+| `volumeSize` | ***int64***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## SpotFleetRequestStatus
 

@@ -33,7 +33,7 @@ Appears on:[DocdbClusterSnapshot](#docdbclustersnapshot), [DocdbClusterSnapshotS
 | `engine` | ***string***| ***(Optional)*** |
 | `engineVersion` | ***string***| ***(Optional)*** |
 | `kmsKeyID` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `snapshotType` | ***string***| ***(Optional)*** |
 | `sourceDbClusterSnapshotArn` | ***string***| ***(Optional)*** |
 | `status` | ***string***| ***(Optional)*** |

@@ -41,7 +41,7 @@ Appears on:[ComposerEnvironmentSpec](#composerenvironmentspec)
 | `dagGcsPrefix` | ***string***| ***(Optional)*** |
 | `gkeCluster` | ***string***| ***(Optional)*** |
 | `nodeConfig` | ***[[]ComposerEnvironmentSpecConfigNodeConfig](#composerenvironmentspecconfignodeconfig)***| ***(Optional)*** |
-| `nodeCount` | ***int***| ***(Optional)*** |
+| `nodeCount` | ***int64***| ***(Optional)*** |
 | `softwareConfig` | ***[[]ComposerEnvironmentSpecConfigSoftwareConfig](#composerenvironmentspecconfigsoftwareconfig)***| ***(Optional)*** |
 ## ComposerEnvironmentSpecConfigNodeConfig
 
@@ -49,7 +49,7 @@ Appears on:[ComposerEnvironmentSpecConfig](#composerenvironmentspecconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskSizeGb` | ***int***| ***(Optional)*** |
+| `diskSizeGb` | ***int64***| ***(Optional)*** |
 | `machineType` | ***string***| ***(Optional)*** |
 | `network` | ***string***| ***(Optional)*** |
 | `oauthScopes` | ***[]string***| ***(Optional)*** |

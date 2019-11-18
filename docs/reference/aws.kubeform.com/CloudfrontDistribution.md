@@ -39,7 +39,7 @@ Appears on:[CloudfrontDistribution](#cloudfrontdistribution), [CloudfrontDistrib
 | `etag` | ***string***| ***(Optional)*** |
 | `hostedZoneID` | ***string***| ***(Optional)*** |
 | `httpVersion` | ***string***| ***(Optional)*** |
-| `inProgressValidationBatches` | ***int***| ***(Optional)*** |
+| `inProgressValidationBatches` | ***int64***| ***(Optional)*** |
 | `isIpv6Enabled` | ***bool***| ***(Optional)*** |
 | `lastModifiedTime` | ***string***| ***(Optional)*** |
 | `loggingConfig` | ***[[]CloudfrontDistributionSpecLoggingConfig](#cloudfrontdistributionspecloggingconfig)***| ***(Optional)*** |
@@ -60,9 +60,9 @@ Appears on:[CloudfrontDistributionSpec](#cloudfrontdistributionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `errorCachingMinTtl` | ***int***| ***(Optional)*** |
-| `errorCode` | ***int***||
-| `responseCode` | ***int***| ***(Optional)*** |
+| `errorCachingMinTtl` | ***int64***| ***(Optional)*** |
+| `errorCode` | ***int64***||
+| `responseCode` | ***int64***| ***(Optional)*** |
 | `responsePagePath` | ***string***| ***(Optional)*** |
 ## CloudfrontDistributionSpecDefaultCacheBehavior
 
@@ -73,12 +73,12 @@ Appears on:[CloudfrontDistributionSpec](#cloudfrontdistributionspec)
 | `allowedMethods` | ***[]string***||
 | `cachedMethods` | ***[]string***||
 | `compress` | ***bool***| ***(Optional)*** |
-| `defaultTtl` | ***int***| ***(Optional)*** |
+| `defaultTtl` | ***int64***| ***(Optional)*** |
 | `fieldLevelEncryptionID` | ***string***| ***(Optional)*** |
 | `forwardedValues` | ***[[]CloudfrontDistributionSpecDefaultCacheBehaviorForwardedValues](#cloudfrontdistributionspecdefaultcachebehaviorforwardedvalues)***||
 | `lambdaFunctionAssociation` | ***[[]CloudfrontDistributionSpecDefaultCacheBehaviorLambdaFunctionAssociation](#cloudfrontdistributionspecdefaultcachebehaviorlambdafunctionassociation)***| ***(Optional)*** |
-| `maxTtl` | ***int***| ***(Optional)*** |
-| `minTtl` | ***int***| ***(Optional)*** |
+| `maxTtl` | ***int64***| ***(Optional)*** |
+| `minTtl` | ***int64***| ***(Optional)*** |
 | `smoothStreaming` | ***bool***| ***(Optional)*** |
 | `targetOriginID` | ***string***||
 | `trustedSigners` | ***[]string***| ***(Optional)*** |
@@ -128,12 +128,12 @@ Appears on:[CloudfrontDistributionSpec](#cloudfrontdistributionspec)
 | `allowedMethods` | ***[]string***||
 | `cachedMethods` | ***[]string***||
 | `compress` | ***bool***| ***(Optional)*** |
-| `defaultTtl` | ***int***| ***(Optional)*** |
+| `defaultTtl` | ***int64***| ***(Optional)*** |
 | `fieldLevelEncryptionID` | ***string***| ***(Optional)*** |
 | `forwardedValues` | ***[[]CloudfrontDistributionSpecOrderedCacheBehaviorForwardedValues](#cloudfrontdistributionspecorderedcachebehaviorforwardedvalues)***||
 | `lambdaFunctionAssociation` | ***[[]CloudfrontDistributionSpecOrderedCacheBehaviorLambdaFunctionAssociation](#cloudfrontdistributionspecorderedcachebehaviorlambdafunctionassociation)***| ***(Optional)*** |
-| `maxTtl` | ***int***| ***(Optional)*** |
-| `minTtl` | ***int***| ***(Optional)*** |
+| `maxTtl` | ***int64***| ***(Optional)*** |
+| `minTtl` | ***int64***| ***(Optional)*** |
 | `pathPattern` | ***string***||
 | `smoothStreaming` | ***bool***| ***(Optional)*** |
 | `targetOriginID` | ***string***||
@@ -192,11 +192,11 @@ Appears on:[CloudfrontDistributionSpecOrigin](#cloudfrontdistributionspecorigin)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `httpPort` | ***int***||
-| `httpsPort` | ***int***||
-| `originKeepaliveTimeout` | ***int***| ***(Optional)*** |
+| `httpPort` | ***int64***||
+| `httpsPort` | ***int64***||
+| `originKeepaliveTimeout` | ***int64***| ***(Optional)*** |
 | `originProtocolPolicy` | ***string***||
-| `originReadTimeout` | ***int***| ***(Optional)*** |
+| `originReadTimeout` | ***int64***| ***(Optional)*** |
 | `originSSLProtocols` | ***[]string***||
 ## CloudfrontDistributionSpecOriginGroup
 

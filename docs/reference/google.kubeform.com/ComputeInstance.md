@@ -32,7 +32,7 @@ Appears on:[ComputeInstance](#computeinstance), [ComputeInstanceStatus](#compute
 | `bootDisk` | ***[[]ComputeInstanceSpecBootDisk](#computeinstancespecbootdisk)***||
 | `canIPForward` | ***bool***| ***(Optional)*** |
 | `cpuPlatform` | ***string***| ***(Optional)*** |
-| `createTimeout` | ***int***| ***(Optional)*** Deprecated|
+| `createTimeout` | ***int64***| ***(Optional)*** Deprecated|
 | `deletionProtection` | ***bool***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `guestAccelerator` | ***[[]ComputeInstanceSpecGuestAccelerator](#computeinstancespecguestaccelerator)***| ***(Optional)*** |
@@ -82,7 +82,7 @@ Appears on:[ComputeInstanceSpecBootDisk](#computeinstancespecbootdisk)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `image` | ***string***| ***(Optional)*** |
-| `size` | ***int***| ***(Optional)*** |
+| `size` | ***int64***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## ComputeInstanceSpecGuestAccelerator
 
@@ -90,7 +90,7 @@ Appears on:[ComputeInstanceSpec](#computeinstancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `count` | ***int***||
+| `count` | ***int64***||
 | `type` | ***string***||
 ## ComputeInstanceSpecNetworkInterface
 

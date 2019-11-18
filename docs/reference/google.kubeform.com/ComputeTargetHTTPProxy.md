@@ -30,7 +30,7 @@ Appears on:[ComputeTargetHTTPProxy](#computetargethttpproxy), [ComputeTargetHTTP
 | `description` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `project` | ***string***| ***(Optional)*** |
-| `proxyID` | ***int***| ***(Optional)*** |
+| `proxyID` | ***int64***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `urlMap` | ***string***||
 ## ComputeTargetHTTPProxyStatus

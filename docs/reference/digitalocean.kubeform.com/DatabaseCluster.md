@@ -31,9 +31,9 @@ Appears on:[DatabaseCluster](#databasecluster), [DatabaseClusterStatus](#databas
 | `host` | ***string***| ***(Optional)*** |
 | `maintenanceWindow` | ***[[]DatabaseClusterSpecMaintenanceWindow](#databaseclusterspecmaintenancewindow)***| ***(Optional)*** |
 | `name` | ***string***||
-| `nodeCount` | ***int***||
+| `nodeCount` | ***int64***||
 | `password` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `region` | ***string***||
 | `size` | ***string***||
 | `uri` | ***string***| ***(Optional)*** |

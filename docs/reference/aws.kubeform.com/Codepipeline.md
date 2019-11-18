@@ -70,7 +70,7 @@ Appears on:[CodepipelineSpecStage](#codepipelinespecstage)
 | `owner` | ***string***||
 | `provider` | ***string***||
 | `roleArn` | ***string***| ***(Optional)*** |
-| `runOrder` | ***int***| ***(Optional)*** |
+| `runOrder` | ***int64***| ***(Optional)*** |
 | `version` | ***string***||
 ## CodepipelineStatus
 

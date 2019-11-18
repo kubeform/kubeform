@@ -55,14 +55,14 @@ Appears on:[RecoveryServicesProtectionPolicyVmSpec](#recoveryservicesprotectionp
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `count` | ***int***||
+| `count` | ***int64***||
 ## RecoveryServicesProtectionPolicyVmSpecRetentionMonthly
 
 Appears on:[RecoveryServicesProtectionPolicyVmSpec](#recoveryservicesprotectionpolicyvmspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `count` | ***int***||
+| `count` | ***int64***||
 | `weekdays` | ***[]string***||
 | `weeks` | ***[]string***||
 ## RecoveryServicesProtectionPolicyVmSpecRetentionWeekly
@@ -71,7 +71,7 @@ Appears on:[RecoveryServicesProtectionPolicyVmSpec](#recoveryservicesprotectionp
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `count` | ***int***||
+| `count` | ***int64***||
 | `weekdays` | ***[]string***||
 ## RecoveryServicesProtectionPolicyVmSpecRetentionYearly
 
@@ -79,7 +79,7 @@ Appears on:[RecoveryServicesProtectionPolicyVmSpec](#recoveryservicesprotectionp
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `count` | ***int***||
+| `count` | ***int64***||
 | `months` | ***[]string***||
 | `weekdays` | ***[]string***||
 | `weeks` | ***[]string***||

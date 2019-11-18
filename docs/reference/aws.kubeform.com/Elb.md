@@ -30,11 +30,11 @@ Appears on:[Elb](#elb), [ElbStatus](#elbstatus)
 | `arn` | ***string***| ***(Optional)*** |
 | `availabilityZones` | ***[]string***| ***(Optional)*** |
 | `connectionDraining` | ***bool***| ***(Optional)*** |
-| `connectionDrainingTimeout` | ***int***| ***(Optional)*** |
+| `connectionDrainingTimeout` | ***int64***| ***(Optional)*** |
 | `crossZoneLoadBalancing` | ***bool***| ***(Optional)*** |
 | `dnsName` | ***string***| ***(Optional)*** |
 | `healthCheck` | ***[[]ElbSpecHealthCheck](#elbspechealthcheck)***| ***(Optional)*** |
-| `idleTimeout` | ***int***| ***(Optional)*** |
+| `idleTimeout` | ***int64***| ***(Optional)*** |
 | `instances` | ***[]string***| ***(Optional)*** |
 | `internal` | ***bool***| ***(Optional)*** |
 | `listener` | ***[[]ElbSpecListener](#elbspeclistener)***||
@@ -55,27 +55,27 @@ Appears on:[ElbSpec](#elbspec)
 | `bucket` | ***string***||
 | `bucketPrefix` | ***string***| ***(Optional)*** |
 | `enabled` | ***bool***| ***(Optional)*** |
-| `interval` | ***int***| ***(Optional)*** |
+| `interval` | ***int64***| ***(Optional)*** |
 ## ElbSpecHealthCheck
 
 Appears on:[ElbSpec](#elbspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `healthyThreshold` | ***int***||
-| `interval` | ***int***||
+| `healthyThreshold` | ***int64***||
+| `interval` | ***int64***||
 | `target` | ***string***||
-| `timeout` | ***int***||
-| `unhealthyThreshold` | ***int***||
+| `timeout` | ***int64***||
+| `unhealthyThreshold` | ***int64***||
 ## ElbSpecListener
 
 Appears on:[ElbSpec](#elbspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `instancePort` | ***int***||
+| `instancePort` | ***int64***||
 | `instanceProtocol` | ***string***||
-| `lbPort` | ***int***||
+| `lbPort` | ***int64***||
 | `lbProtocol` | ***string***||
 | `sslCertificateID` | ***string***| ***(Optional)*** |
 ## ElbStatus

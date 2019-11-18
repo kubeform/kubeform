@@ -32,7 +32,7 @@ Appears on:[RedshiftCluster](#redshiftcluster), [RedshiftClusterStatus](#redshif
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `allowVersionUpgrade` | ***bool***| ***(Optional)*** |
-| `automatedSnapshotRetentionPeriod` | ***int***| ***(Optional)*** |
+| `automatedSnapshotRetentionPeriod` | ***int64***| ***(Optional)*** |
 | `availabilityZone` | ***string***| ***(Optional)*** |
 | `clusterIdentifier` | ***string***||
 | `clusterParameterGroupName` | ***string***| ***(Optional)*** |
@@ -54,9 +54,9 @@ Appears on:[RedshiftCluster](#redshiftcluster), [RedshiftClusterStatus](#redshif
 | `logging` | ***[[]RedshiftClusterSpecLogging](#redshiftclusterspeclogging)***| ***(Optional)*** |
 | `masterUsername` | ***string***| ***(Optional)*** |
 | `nodeType` | ***string***||
-| `numberOfNodes` | ***int***| ***(Optional)*** |
+| `numberOfNodes` | ***int64***| ***(Optional)*** |
 | `ownerAccount` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `preferredMaintenanceWindow` | ***string***| ***(Optional)*** |
 | `publiclyAccessible` | ***bool***| ***(Optional)*** |
 | `skipFinalSnapshot` | ***bool***| ***(Optional)*** |
@@ -82,7 +82,7 @@ Appears on:[RedshiftClusterSpec](#redshiftclusterspec)
 | ------ | ----- | ----------- |
 | `destinationRegion` | ***string***||
 | `grantName` | ***string***| ***(Optional)*** |
-| `retentionPeriod` | ***int***| ***(Optional)*** |
+| `retentionPeriod` | ***int64***| ***(Optional)*** |
 ## RedshiftClusterStatus
 
 Appears on:[RedshiftCluster](#redshiftcluster)

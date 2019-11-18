@@ -26,7 +26,7 @@ Appears on:[FloatingIPAssignment](#floatingipassignment), [FloatingIPAssignmentS
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `dropletID` | ***int***||
+| `dropletID` | ***int64***||
 | `ipAddress` | ***string***||
 ## FloatingIPAssignmentStatus
 

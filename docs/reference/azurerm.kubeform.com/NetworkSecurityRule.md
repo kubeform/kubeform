@@ -36,7 +36,7 @@ Appears on:[NetworkSecurityRule](#networksecurityrule), [NetworkSecurityRuleStat
 | `direction` | ***string***||
 | `name` | ***string***||
 | `networkSecurityGroupName` | ***string***||
-| `priority` | ***int***||
+| `priority` | ***int64***||
 | `protocol` | ***string***||
 | `resourceGroupName` | ***string***||
 | `sourceAddressPrefix` | ***string***| ***(Optional)*** |

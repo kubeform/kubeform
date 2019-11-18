@@ -31,7 +31,7 @@ Appears on:[Cdn](#cdn), [CdnStatus](#cdnstatus)
 | `customDomain` | ***string***| ***(Optional)*** fully qualified domain name (FQDN) for custom subdomain, (requires certificate_id)|
 | `endpoint` | ***string***| ***(Optional)*** fully qualified domain name (FQDN) to serve the CDN content|
 | `origin` | ***string***|fully qualified domain name (FQDN) for the origin server|
-| `ttl` | ***int***| ***(Optional)*** The amount of time the content is cached in the CDN|
+| `ttl` | ***int64***| ***(Optional)*** The amount of time the content is cached in the CDN|
 ## CdnStatus
 
 Appears on:[Cdn](#cdn)

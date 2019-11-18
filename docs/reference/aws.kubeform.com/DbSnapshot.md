@@ -26,7 +26,7 @@ Appears on:[DbSnapshot](#dbsnapshot), [DbSnapshotStatus](#dbsnapshotstatus)
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `allocatedStorage` | ***int***| ***(Optional)*** |
+| `allocatedStorage` | ***int64***| ***(Optional)*** |
 | `availabilityZone` | ***string***| ***(Optional)*** |
 | `dbInstanceIdentifier` | ***string***||
 | `dbSnapshotArn` | ***string***| ***(Optional)*** |
@@ -34,11 +34,11 @@ Appears on:[DbSnapshot](#dbsnapshot), [DbSnapshotStatus](#dbsnapshotstatus)
 | `encrypted` | ***bool***| ***(Optional)*** |
 | `engine` | ***string***| ***(Optional)*** |
 | `engineVersion` | ***string***| ***(Optional)*** |
-| `iops` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
 | `kmsKeyID` | ***string***| ***(Optional)*** |
 | `licenseModel` | ***string***| ***(Optional)*** |
 | `optionGroupName` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `snapshotType` | ***string***| ***(Optional)*** |
 | `sourceDbSnapshotIdentifier` | ***string***| ***(Optional)*** |
 | `sourceRegion` | ***string***| ***(Optional)*** |

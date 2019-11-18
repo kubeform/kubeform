@@ -31,7 +31,7 @@ Appears on:[Ec2CapacityReservation](#ec2capacityreservation), [Ec2CapacityReserv
 | `endDate` | ***string***| ***(Optional)*** |
 | `endDateType` | ***string***| ***(Optional)*** |
 | `ephemeralStorage` | ***bool***| ***(Optional)*** |
-| `instanceCount` | ***int***||
+| `instanceCount` | ***int64***||
 | `instanceMatchCriteria` | ***string***| ***(Optional)*** |
 | `instancePlatform` | ***string***||
 | `instanceType` | ***string***||

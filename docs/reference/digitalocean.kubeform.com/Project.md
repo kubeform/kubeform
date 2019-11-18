@@ -34,7 +34,7 @@ Appears on:[Project](#project), [ProjectStatus](#projectstatus)
 | `description` | ***string***| ***(Optional)*** the descirption of the project|
 | `environment` | ***string***| ***(Optional)*** the environment of the project's resources|
 | `name` | ***string***|the human-readable name for the project|
-| `ownerID` | ***int***| ***(Optional)*** the id of the project owner.|
+| `ownerID` | ***int64***| ***(Optional)*** the id of the project owner.|
 | `ownerUUID` | ***string***| ***(Optional)*** the unique universal identifier of the project owner.|
 | `purpose` | ***string***| ***(Optional)*** the purpose of the project|
 | `resources` | ***[]string***| ***(Optional)*** the resources associated with the project|

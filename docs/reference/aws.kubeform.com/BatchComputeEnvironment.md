@@ -41,15 +41,15 @@ Appears on:[BatchComputeEnvironmentSpec](#batchcomputeenvironmentspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `bidPercentage` | ***int***| ***(Optional)*** |
-| `desiredVcpus` | ***int***| ***(Optional)*** |
+| `bidPercentage` | ***int64***| ***(Optional)*** |
+| `desiredVcpus` | ***int64***| ***(Optional)*** |
 | `ec2KeyPair` | ***string***| ***(Optional)*** |
 | `imageID` | ***string***| ***(Optional)*** |
 | `instanceRole` | ***string***||
 | `instanceType` | ***[]string***||
 | `launchTemplate` | ***[[]BatchComputeEnvironmentSpecComputeResourcesLaunchTemplate](#batchcomputeenvironmentspeccomputeresourceslaunchtemplate)***| ***(Optional)*** |
-| `maxVcpus` | ***int***||
-| `minVcpus` | ***int***||
+| `maxVcpus` | ***int64***||
+| `minVcpus` | ***int64***||
 | `securityGroupIDS` | ***[]string***||
 | `spotIamFleetRole` | ***string***| ***(Optional)*** |
 | `subnets` | ***[]string***||

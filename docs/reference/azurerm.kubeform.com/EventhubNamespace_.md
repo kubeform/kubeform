@@ -28,10 +28,10 @@ Appears on:[EventhubNamespace_](#eventhubnamespace_), [EventhubNamespace_Status]
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `autoInflateEnabled` | ***bool***| ***(Optional)*** |
-| `capacity` | ***int***| ***(Optional)*** |
+| `capacity` | ***int64***| ***(Optional)*** |
 | `kafkaEnabled` | ***bool***| ***(Optional)*** |
 | `location` | ***string***||
-| `maximumThroughputUnits` | ***int***| ***(Optional)*** |
+| `maximumThroughputUnits` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 | `sku` | ***string***||

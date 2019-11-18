@@ -27,7 +27,7 @@ Appears on:[ComputeRegionBackendService](#computeregionbackendservice), [Compute
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `backend` | ***[[]ComputeRegionBackendServiceSpecBackend](#computeregionbackendservicespecbackend)***| ***(Optional)*** |
-| `connectionDrainingTimeoutSec` | ***int***| ***(Optional)*** |
+| `connectionDrainingTimeoutSec` | ***int64***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `fingerprint` | ***string***| ***(Optional)*** |
 | `healthChecks` | ***[]string***||
@@ -37,7 +37,7 @@ Appears on:[ComputeRegionBackendService](#computeregionbackendservice), [Compute
 | `region` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `sessionAffinity` | ***string***| ***(Optional)*** |
-| `timeoutSec` | ***int***| ***(Optional)*** |
+| `timeoutSec` | ***int64***| ***(Optional)*** |
 ## ComputeRegionBackendServiceSpecBackend
 
 Appears on:[ComputeRegionBackendServiceSpec](#computeregionbackendservicespec)

@@ -29,7 +29,7 @@ Appears on:[FirewallNATRuleCollection](#firewallnatrulecollection), [FirewallNAT
 | `action` | ***string***||
 | `azureFirewallName` | ***string***||
 | `name` | ***string***||
-| `priority` | ***int***||
+| `priority` | ***int64***||
 | `resourceGroupName` | ***string***||
 | `rule` | ***[[]FirewallNATRuleCollectionSpecRule](#firewallnatrulecollectionspecrule)***||
 ## FirewallNATRuleCollectionSpecRule

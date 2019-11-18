@@ -26,7 +26,7 @@ Appears on:[FloatingIP](#floatingip), [FloatingIPStatus](#floatingipstatus)
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `dropletID` | ***int***| ***(Optional)*** |
+| `dropletID` | ***int64***| ***(Optional)*** |
 | `ipAddress` | ***string***| ***(Optional)*** |
 | `region` | ***string***||
 | `urn` | ***string***| ***(Optional)*** the uniform resource name for the floating ip|

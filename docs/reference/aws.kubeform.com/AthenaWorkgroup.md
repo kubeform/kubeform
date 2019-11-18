@@ -21,7 +21,9 @@ section_menu_id: reference
 ## AthenaWorkgroupSpec
 
 
+
 Appears on:[AthenaWorkgroup](#athenaworkgroup), [AthenaWorkgroupStatus](#athenaworkgroupstatus)
+
 
 
 | Field | Type | Description |
@@ -37,7 +39,9 @@ Appears on:[AthenaWorkgroup](#athenaworkgroup), [AthenaWorkgroupStatus](#athenaw
 ## AthenaWorkgroupSpecConfiguration
 
 
+
 Appears on:[AthenaWorkgroupSpec](#athenaworkgroupspec)
+
 
 
 | Field | Type | Description |
@@ -49,7 +53,9 @@ Appears on:[AthenaWorkgroupSpec](#athenaworkgroupspec)
 ## AthenaWorkgroupSpecConfigurationResultConfiguration
 
 
+
 Appears on:[AthenaWorkgroupSpecConfiguration](#athenaworkgroupspecconfiguration)
+
 
 
 | Field | Type | Description |
@@ -59,7 +65,9 @@ Appears on:[AthenaWorkgroupSpecConfiguration](#athenaworkgroupspecconfiguration)
 ## AthenaWorkgroupSpecConfigurationResultConfigurationEncryptionConfiguration
 
 
+
 Appears on:[AthenaWorkgroupSpecConfigurationResultConfiguration](#athenaworkgroupspecconfigurationresultconfiguration)
+
 
 
 | Field | Type | Description |
@@ -69,7 +77,9 @@ Appears on:[AthenaWorkgroupSpecConfigurationResultConfiguration](#athenaworkgrou
 ## AthenaWorkgroupStatus
 
 
+
 Appears on:[AthenaWorkgroup](#athenaworkgroup)
+
 
 
 | Field | Type | Description |

@@ -31,7 +31,7 @@ Appears on:[IotThing](#iotthing), [IotThingStatus](#iotthingstatus)
 | `defaultClientID` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `thingTypeName` | ***string***| ***(Optional)*** |
-| `version` | ***int***| ***(Optional)*** |
+| `version` | ***int64***| ***(Optional)*** |
 ## IotThingStatus
 
 Appears on:[IotThing](#iotthing)

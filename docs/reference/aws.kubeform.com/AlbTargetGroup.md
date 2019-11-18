@@ -28,15 +28,15 @@ Appears on:[AlbTargetGroup](#albtargetgroup), [AlbTargetGroupStatus](#albtargetg
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `arnSuffix` | ***string***| ***(Optional)*** |
-| `deregistrationDelay` | ***int***| ***(Optional)*** |
+| `deregistrationDelay` | ***int64***| ***(Optional)*** |
 | `healthCheck` | ***[[]AlbTargetGroupSpecHealthCheck](#albtargetgroupspechealthcheck)***| ***(Optional)*** |
 | `lambdaMultiValueHeadersEnabled` | ***bool***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `protocol` | ***string***| ***(Optional)*** |
 | `proxyProtocolV2` | ***bool***| ***(Optional)*** |
-| `slowStart` | ***int***| ***(Optional)*** |
+| `slowStart` | ***int64***| ***(Optional)*** |
 | `stickiness` | ***[[]AlbTargetGroupSpecStickiness](#albtargetgroupspecstickiness)***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `targetType` | ***string***| ***(Optional)*** |
@@ -48,21 +48,21 @@ Appears on:[AlbTargetGroupSpec](#albtargetgroupspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `enabled` | ***bool***| ***(Optional)*** |
-| `healthyThreshold` | ***int***| ***(Optional)*** |
-| `interval` | ***int***| ***(Optional)*** |
+| `healthyThreshold` | ***int64***| ***(Optional)*** |
+| `interval` | ***int64***| ***(Optional)*** |
 | `matcher` | ***string***| ***(Optional)*** |
 | `path` | ***string***| ***(Optional)*** |
 | `port` | ***string***| ***(Optional)*** |
 | `protocol` | ***string***| ***(Optional)*** |
-| `timeout` | ***int***| ***(Optional)*** |
-| `unhealthyThreshold` | ***int***| ***(Optional)*** |
+| `timeout` | ***int64***| ***(Optional)*** |
+| `unhealthyThreshold` | ***int64***| ***(Optional)*** |
 ## AlbTargetGroupSpecStickiness
 
 Appears on:[AlbTargetGroupSpec](#albtargetgroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `cookieDuration` | ***int***| ***(Optional)*** |
+| `cookieDuration` | ***int64***| ***(Optional)*** |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `type` | ***string***||
 ## AlbTargetGroupStatus

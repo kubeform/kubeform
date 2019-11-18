@@ -26,7 +26,7 @@ Appears on:[ComputeImage](#computeimage), [ComputeImageStatus](#computeimagestat
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `createTimeout` | ***int***| ***(Optional)*** Deprecated|
+| `createTimeout` | ***int64***| ***(Optional)*** Deprecated|
 | `description` | ***string***| ***(Optional)*** |
 | `family` | ***string***| ***(Optional)*** |
 | `labelFingerprint` | ***string***| ***(Optional)*** |

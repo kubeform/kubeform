@@ -27,18 +27,18 @@ Appears on:[Droplet](#droplet), [DropletStatus](#dropletstatus)
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `backups` | ***bool***| ***(Optional)*** |
-| `disk` | ***int***| ***(Optional)*** |
+| `disk` | ***int64***| ***(Optional)*** |
 | `image` | ***string***||
 | `ipv4Address` | ***string***| ***(Optional)*** |
 | `ipv4AddressPrivate` | ***string***| ***(Optional)*** |
 | `ipv6` | ***bool***| ***(Optional)*** |
 | `ipv6Address` | ***string***| ***(Optional)*** |
 | `locked` | ***bool***| ***(Optional)*** |
-| `memory` | ***int***| ***(Optional)*** |
+| `memory` | ***int64***| ***(Optional)*** |
 | `monitoring` | ***bool***| ***(Optional)*** |
 | `name` | ***string***||
-| `priceHourly` | ***encoding/json.Number***| ***(Optional)*** |
-| `priceMonthly` | ***encoding/json.Number***| ***(Optional)*** |
+| `priceHourly` | ***float64***| ***(Optional)*** |
+| `priceMonthly` | ***float64***| ***(Optional)*** |
 | `privateNetworking` | ***bool***| ***(Optional)*** |
 | `region` | ***string***||
 | `resizeDisk` | ***bool***| ***(Optional)*** |
@@ -48,7 +48,7 @@ Appears on:[Droplet](#droplet), [DropletStatus](#dropletstatus)
 | `tags` | ***[]string***| ***(Optional)*** |
 | `urn` | ***string***| ***(Optional)*** |
 | `userData` | ***string***| ***(Optional)*** |
-| `vcpus` | ***int***| ***(Optional)*** |
+| `vcpus` | ***int64***| ***(Optional)*** |
 | `volumeIDS` | ***[]string***| ***(Optional)*** |
 ## DropletStatus
 

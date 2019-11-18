@@ -27,7 +27,7 @@ Appears on:[InspectorAssessmentTemplate](#inspectorassessmenttemplate), [Inspect
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
-| `duration` | ***int***||
+| `duration` | ***int64***||
 | `name` | ***string***||
 | `rulesPackageArns` | ***[]string***||
 | `targetArn` | ***string***||

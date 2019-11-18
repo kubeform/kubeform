@@ -38,9 +38,9 @@ Appears on:[RedisInstance](#redisinstance), [RedisInstanceStatus](#redisinstance
 | `host` | ***string***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
 | `locationID` | ***string***| ***(Optional)*** |
-| `memorySizeGb` | ***int***||
+| `memorySizeGb` | ***int64***||
 | `name` | ***string***||
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `redisConfigs` | ***map[string]string***| ***(Optional)*** |
 | `redisVersion` | ***string***| ***(Optional)*** |

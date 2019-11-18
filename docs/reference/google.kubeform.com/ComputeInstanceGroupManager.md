@@ -38,7 +38,7 @@ Appears on:[ComputeInstanceGroupManager](#computeinstancegroupmanager), [Compute
 | `rollingUpdatePolicy` | ***[[]ComputeInstanceGroupManagerSpecRollingUpdatePolicy](#computeinstancegroupmanagerspecrollingupdatepolicy)***| ***(Optional)*** Deprecated|
 | `selfLink` | ***string***| ***(Optional)*** |
 | `targetPools` | ***[]string***| ***(Optional)*** |
-| `targetSize` | ***int***| ***(Optional)*** |
+| `targetSize` | ***int64***| ***(Optional)*** |
 | `updateStrategy` | ***string***| ***(Optional)*** |
 | `version` | ***[[]ComputeInstanceGroupManagerSpecVersion](#computeinstancegroupmanagerspecversion)***| ***(Optional)*** Deprecated|
 | `waitForInstances` | ***bool***| ***(Optional)*** |
@@ -50,7 +50,7 @@ Appears on:[ComputeInstanceGroupManagerSpec](#computeinstancegroupmanagerspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `healthCheck` | ***string***||
-| `initialDelaySec` | ***int***||
+| `initialDelaySec` | ***int64***||
 ## ComputeInstanceGroupManagerSpecNamedPort
 
 Appears on:[ComputeInstanceGroupManagerSpec](#computeinstancegroupmanagerspec)
@@ -58,18 +58,18 @@ Appears on:[ComputeInstanceGroupManagerSpec](#computeinstancegroupmanagerspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
-| `port` | ***int***||
+| `port` | ***int64***||
 ## ComputeInstanceGroupManagerSpecRollingUpdatePolicy
 
 Appears on:[ComputeInstanceGroupManagerSpec](#computeinstancegroupmanagerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `maxSurgeFixed` | ***int***| ***(Optional)*** |
-| `maxSurgePercent` | ***int***| ***(Optional)*** |
-| `maxUnavailableFixed` | ***int***| ***(Optional)*** |
-| `maxUnavailablePercent` | ***int***| ***(Optional)*** |
-| `minReadySec` | ***int***| ***(Optional)*** |
+| `maxSurgeFixed` | ***int64***| ***(Optional)*** |
+| `maxSurgePercent` | ***int64***| ***(Optional)*** |
+| `maxUnavailableFixed` | ***int64***| ***(Optional)*** |
+| `maxUnavailablePercent` | ***int64***| ***(Optional)*** |
+| `minReadySec` | ***int64***| ***(Optional)*** |
 | `minimalAction` | ***string***||
 | `type` | ***string***||
 ## ComputeInstanceGroupManagerSpecVersion
@@ -87,8 +87,8 @@ Appears on:[ComputeInstanceGroupManagerSpecVersion](#computeinstancegroupmanager
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `fixed` | ***int***| ***(Optional)*** |
-| `percent` | ***int***| ***(Optional)*** |
+| `fixed` | ***int64***| ***(Optional)*** |
+| `percent` | ***int64***| ***(Optional)*** |
 ## ComputeInstanceGroupManagerStatus
 
 Appears on:[ComputeInstanceGroupManager](#computeinstancegroupmanager)

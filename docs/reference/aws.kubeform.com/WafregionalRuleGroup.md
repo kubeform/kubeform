@@ -40,7 +40,7 @@ Appears on:[WafregionalRuleGroupSpec](#wafregionalrulegroupspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `action` | ***[[]WafregionalRuleGroupSpecActivatedRuleAction](#wafregionalrulegroupspecactivatedruleaction)***||
-| `priority` | ***int***||
+| `priority` | ***int64***||
 | `ruleID` | ***string***||
 | `type` | ***string***| ***(Optional)*** |
 ## WafregionalRuleGroupSpecActivatedRuleAction

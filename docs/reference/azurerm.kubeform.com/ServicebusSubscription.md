@@ -38,7 +38,7 @@ Appears on:[ServicebusSubscription](#servicebussubscription), [ServicebusSubscri
 | `forwardTo` | ***string***| ***(Optional)*** |
 | `location` | ***string***| ***(Optional)*** Deprecated|
 | `lockDuration` | ***string***| ***(Optional)*** |
-| `maxDeliveryCount` | ***int***||
+| `maxDeliveryCount` | ***int64***||
 | `name` | ***string***||
 | `namespaceName` | ***string***||
 | `requiresSession` | ***bool***| ***(Optional)*** |

@@ -31,13 +31,13 @@ Appears on:[SqlElasticpool](#sqlelasticpool), [SqlElasticpoolStatus](#sqlelastic
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `creationDate` | ***string***| ***(Optional)*** |
-| `dbDtuMax` | ***int***| ***(Optional)*** |
-| `dbDtuMin` | ***int***| ***(Optional)*** |
-| `dtu` | ***int***||
+| `dbDtuMax` | ***int64***| ***(Optional)*** |
+| `dbDtuMin` | ***int64***| ***(Optional)*** |
+| `dtu` | ***int64***||
 | `edition` | ***string***||
 | `location` | ***string***||
 | `name` | ***string***||
-| `poolSize` | ***int***| ***(Optional)*** |
+| `poolSize` | ***int64***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 | `serverName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |

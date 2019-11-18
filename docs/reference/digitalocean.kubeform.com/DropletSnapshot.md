@@ -28,10 +28,10 @@ Appears on:[DropletSnapshot](#dropletsnapshot), [DropletSnapshotStatus](#droplet
 | `id` | ***string***||
 | `createdAt` | ***string***| ***(Optional)*** |
 | `dropletID` | ***string***||
-| `minDiskSize` | ***int***| ***(Optional)*** |
+| `minDiskSize` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `regions` | ***[]string***| ***(Optional)*** |
-| `size` | ***encoding/json.Number***| ***(Optional)*** |
+| `size` | ***float64***| ***(Optional)*** |
 ## DropletSnapshotStatus
 
 Appears on:[DropletSnapshot](#dropletsnapshot)

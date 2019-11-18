@@ -40,9 +40,9 @@ Appears on:[ElasticacheReplicationGroup](#elasticachereplicationgroup), [Elastic
 | `memberClusters` | ***[]string***| ***(Optional)*** |
 | `nodeType` | ***string***| ***(Optional)*** |
 | `notificationTopicArn` | ***string***| ***(Optional)*** |
-| `numberCacheClusters` | ***int***| ***(Optional)*** |
+| `numberCacheClusters` | ***int64***| ***(Optional)*** |
 | `parameterGroupName` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `primaryEndpointAddress` | ***string***| ***(Optional)*** |
 | `replicationGroupDescription` | ***string***||
 | `replicationGroupID` | ***string***||
@@ -50,7 +50,7 @@ Appears on:[ElasticacheReplicationGroup](#elasticachereplicationgroup), [Elastic
 | `securityGroupNames` | ***[]string***| ***(Optional)*** |
 | `snapshotArns` | ***[]string***| ***(Optional)*** |
 | `snapshotName` | ***string***| ***(Optional)*** |
-| `snapshotRetentionLimit` | ***int***| ***(Optional)*** |
+| `snapshotRetentionLimit` | ***int64***| ***(Optional)*** |
 | `snapshotWindow` | ***string***| ***(Optional)*** |
 | `subnetGroupName` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
@@ -61,8 +61,8 @@ Appears on:[ElasticacheReplicationGroupSpec](#elasticachereplicationgroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `numNodeGroups` | ***int***||
-| `replicasPerNodeGroup` | ***int***||
+| `numNodeGroups` | ***int64***||
+| `replicasPerNodeGroup` | ***int64***||
 ## ElasticacheReplicationGroupStatus
 
 Appears on:[ElasticacheReplicationGroup](#elasticachereplicationgroup)

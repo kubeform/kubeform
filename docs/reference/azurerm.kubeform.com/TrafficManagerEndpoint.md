@@ -35,16 +35,16 @@ Appears on:[TrafficManagerEndpoint](#trafficmanagerendpoint), [TrafficManagerEnd
 | `endpointMonitorStatus` | ***string***| ***(Optional)*** |
 | `endpointStatus` | ***string***| ***(Optional)*** |
 | `geoMappings` | ***[]string***| ***(Optional)*** |
-| `minChildEndpoints` | ***int***| ***(Optional)*** |
+| `minChildEndpoints` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
-| `priority` | ***int***| ***(Optional)*** |
+| `priority` | ***int64***| ***(Optional)*** |
 | `profileName` | ***string***||
 | `resourceGroupName` | ***string***||
 | `subnet` | ***[[]TrafficManagerEndpointSpecSubnet](#trafficmanagerendpointspecsubnet)***| ***(Optional)*** |
 | `target` | ***string***| ***(Optional)*** |
 | `targetResourceID` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
-| `weight` | ***int***| ***(Optional)*** |
+| `weight` | ***int64***| ***(Optional)*** |
 ## TrafficManagerEndpointSpecCustomHeader
 
 Appears on:[TrafficManagerEndpointSpec](#trafficmanagerendpointspec)
@@ -61,7 +61,7 @@ Appears on:[TrafficManagerEndpointSpec](#trafficmanagerendpointspec)
 | ------ | ----- | ----------- |
 | `first` | ***string***||
 | `last` | ***string***| ***(Optional)*** |
-| `scope` | ***int***| ***(Optional)*** |
+| `scope` | ***int64***| ***(Optional)*** |
 ## TrafficManagerEndpointStatus
 
 Appears on:[TrafficManagerEndpoint](#trafficmanagerendpoint)

@@ -31,7 +31,7 @@ Appears on:[AlbListenerRule](#alblistenerrule), [AlbListenerRuleStatus](#alblist
 | `arn` | ***string***| ***(Optional)*** |
 | `condition` | ***[[]AlbListenerRuleSpecCondition](#alblistenerrulespeccondition)***||
 | `listenerArn` | ***string***||
-| `priority` | ***int***| ***(Optional)*** |
+| `priority` | ***int64***| ***(Optional)*** |
 ## AlbListenerRuleSpecAction
 
 Appears on:[AlbListenerRuleSpec](#alblistenerrulespec)
@@ -41,7 +41,7 @@ Appears on:[AlbListenerRuleSpec](#alblistenerrulespec)
 | `authenticateCognito` | ***[[]AlbListenerRuleSpecActionAuthenticateCognito](#alblistenerrulespecactionauthenticatecognito)***| ***(Optional)*** |
 | `authenticateOidc` | ***[[]AlbListenerRuleSpecActionAuthenticateOidc](#alblistenerrulespecactionauthenticateoidc)***| ***(Optional)*** |
 | `fixedResponse` | ***[[]AlbListenerRuleSpecActionFixedResponse](#alblistenerrulespecactionfixedresponse)***| ***(Optional)*** |
-| `order` | ***int***| ***(Optional)*** |
+| `order` | ***int64***| ***(Optional)*** |
 | `redirect` | ***[[]AlbListenerRuleSpecActionRedirect](#alblistenerrulespecactionredirect)***| ***(Optional)*** |
 | `targetGroupArn` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
@@ -55,7 +55,7 @@ Appears on:[AlbListenerRuleSpecAction](#alblistenerrulespecaction)
 | `onUnauthenticatedRequest` | ***string***| ***(Optional)*** |
 | `scope` | ***string***| ***(Optional)*** |
 | `sessionCookieName` | ***string***| ***(Optional)*** |
-| `sessionTimeout` | ***int***| ***(Optional)*** |
+| `sessionTimeout` | ***int64***| ***(Optional)*** |
 | `userPoolArn` | ***string***||
 | `userPoolClientID` | ***string***||
 | `userPoolDomain` | ***string***||
@@ -72,7 +72,7 @@ Appears on:[AlbListenerRuleSpecAction](#alblistenerrulespecaction)
 | `onUnauthenticatedRequest` | ***string***| ***(Optional)*** |
 | `scope` | ***string***| ***(Optional)*** |
 | `sessionCookieName` | ***string***| ***(Optional)*** |
-| `sessionTimeout` | ***int***| ***(Optional)*** |
+| `sessionTimeout` | ***int64***| ***(Optional)*** |
 | `tokenEndpoint` | ***string***||
 | `userInfoEndpoint` | ***string***||
 ## AlbListenerRuleSpecActionFixedResponse

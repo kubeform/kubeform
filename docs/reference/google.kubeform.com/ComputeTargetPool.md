@@ -28,7 +28,7 @@ Appears on:[ComputeTargetPool](#computetargetpool), [ComputeTargetPoolStatus](#c
 | `id` | ***string***||
 | `backupPool` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `failoverRatio` | ***encoding/json.Number***| ***(Optional)*** |
+| `failoverRatio` | ***float64***| ***(Optional)*** |
 | `healthChecks` | ***[]string***| ***(Optional)*** |
 | `instances` | ***[]string***| ***(Optional)*** |
 | `name` | ***string***||

@@ -26,7 +26,7 @@ Appears on:[LambdaEventSourceMapping](#lambdaeventsourcemapping), [LambdaEventSo
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `batchSize` | ***int***| ***(Optional)*** |
+| `batchSize` | ***int64***| ***(Optional)*** |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `eventSourceArn` | ***string***||
 | `functionArn` | ***string***| ***(Optional)*** |

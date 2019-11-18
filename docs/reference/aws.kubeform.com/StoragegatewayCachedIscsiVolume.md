@@ -33,16 +33,16 @@ Appears on:[StoragegatewayCachedIscsiVolume](#storagegatewaycachediscsivolume), 
 | `arn` | ***string***| ***(Optional)*** |
 | `chapEnabled` | ***bool***| ***(Optional)*** |
 | `gatewayArn` | ***string***||
-| `lunNumber` | ***int***| ***(Optional)*** |
+| `lunNumber` | ***int64***| ***(Optional)*** |
 | `networkInterfaceID` | ***string***||
-| `networkInterfacePort` | ***int***| ***(Optional)*** |
+| `networkInterfacePort` | ***int64***| ***(Optional)*** |
 | `snapshotID` | ***string***| ***(Optional)*** |
 | `sourceVolumeArn` | ***string***| ***(Optional)*** |
 | `targetArn` | ***string***| ***(Optional)*** |
 | `targetName` | ***string***||
 | `volumeArn` | ***string***| ***(Optional)*** |
 | `volumeID` | ***string***| ***(Optional)*** |
-| `volumeSizeInBytes` | ***int***||
+| `volumeSizeInBytes` | ***int64***||
 ## StoragegatewayCachedIscsiVolumeStatus
 
 Appears on:[StoragegatewayCachedIscsiVolume](#storagegatewaycachediscsivolume)

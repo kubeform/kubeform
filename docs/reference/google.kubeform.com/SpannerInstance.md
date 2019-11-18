@@ -34,7 +34,7 @@ Appears on:[SpannerInstance](#spannerinstance), [SpannerInstanceStatus](#spanner
 | `displayName` | ***string***||
 | `labels` | ***map[string]string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
-| `numNodes` | ***int***| ***(Optional)*** |
+| `numNodes` | ***int64***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `state` | ***string***| ***(Optional)*** |
 ## SpannerInstanceStatus

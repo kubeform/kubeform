@@ -144,11 +144,11 @@ Appears on:[SchedulerJobSpec](#schedulerjobspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `count` | ***int***| ***(Optional)*** |
+| `count` | ***int64***| ***(Optional)*** |
 | `endTime` | ***string***| ***(Optional)*** |
 | `frequency` | ***string***||
 | `hours` | ***[]int64***| ***(Optional)*** |
-| `interval` | ***int***| ***(Optional)*** |
+| `interval` | ***int64***| ***(Optional)*** |
 | `minutes` | ***[]int64***| ***(Optional)*** |
 | `monthDays` | ***[]int64***| ***(Optional)*** |
 | `monthlyOccurrences` | ***[[]SchedulerJobSpecRecurrenceMonthlyOccurrences](#schedulerjobspecrecurrencemonthlyoccurrences)***| ***(Optional)*** |
@@ -160,14 +160,14 @@ Appears on:[SchedulerJobSpecRecurrence](#schedulerjobspecrecurrence)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `day` | ***string***||
-| `occurrence` | ***int***||
+| `occurrence` | ***int64***||
 ## SchedulerJobSpecRetry
 
 Appears on:[SchedulerJobSpec](#schedulerjobspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `count` | ***int***| ***(Optional)*** |
+| `count` | ***int64***| ***(Optional)*** |
 | `interval` | ***string***| ***(Optional)*** |
 ## SchedulerJobStatus
 

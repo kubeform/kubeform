@@ -80,11 +80,11 @@ Appears on:[HdinsightKafkaClusterSpecRoles](#hdinsightkafkaclusterspecroles)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `minInstanceCount` | ***int***| ***(Optional)*** |
-| `numberOfDisksPerNode` | ***int***||
+| `minInstanceCount` | ***int64***| ***(Optional)*** |
+| `numberOfDisksPerNode` | ***int64***||
 | `sshKeys` | ***[]string***| ***(Optional)*** |
 | `subnetID` | ***string***| ***(Optional)*** |
-| `targetInstanceCount` | ***int***||
+| `targetInstanceCount` | ***int64***||
 | `username` | ***string***||
 | `virtualNetworkID` | ***string***| ***(Optional)*** |
 | `vmSize` | ***string***||

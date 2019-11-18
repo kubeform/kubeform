@@ -51,10 +51,10 @@ Appears on:[PinpointAppSpec](#pinpointappspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `daily` | ***int***| ***(Optional)*** |
-| `maximumDuration` | ***int***| ***(Optional)*** |
-| `messagesPerSecond` | ***int***| ***(Optional)*** |
-| `total` | ***int***| ***(Optional)*** |
+| `daily` | ***int64***| ***(Optional)*** |
+| `maximumDuration` | ***int64***| ***(Optional)*** |
+| `messagesPerSecond` | ***int64***| ***(Optional)*** |
+| `total` | ***int64***| ***(Optional)*** |
 ## PinpointAppSpecQuietTime
 
 Appears on:[PinpointAppSpec](#pinpointappspec)

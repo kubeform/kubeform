@@ -27,11 +27,11 @@ Appears on:[LbNATRule](#lbnatrule), [LbNATRuleStatus](#lbnatrulestatus)
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `backendIPConfigurationID` | ***string***| ***(Optional)*** |
-| `backendPort` | ***int***||
+| `backendPort` | ***int64***||
 | `enableFloatingIP` | ***bool***| ***(Optional)*** |
 | `frontendIPConfigurationID` | ***string***| ***(Optional)*** |
 | `frontendIPConfigurationName` | ***string***||
-| `frontendPort` | ***int***||
+| `frontendPort` | ***int64***||
 | `loadbalancerID` | ***string***||
 | `location` | ***string***| ***(Optional)*** Deprecated|
 | `name` | ***string***||

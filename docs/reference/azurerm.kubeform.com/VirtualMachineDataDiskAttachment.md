@@ -32,7 +32,7 @@ Appears on:[VirtualMachineDataDiskAttachment](#virtualmachinedatadiskattachment)
 | `id` | ***string***||
 | `caching` | ***string***||
 | `createOption` | ***string***| ***(Optional)*** |
-| `lun` | ***int***||
+| `lun` | ***int64***||
 | `managedDiskID` | ***string***||
 | `virtualMachineID` | ***string***||
 | `writeAcceleratorEnabled` | ***bool***| ***(Optional)*** |

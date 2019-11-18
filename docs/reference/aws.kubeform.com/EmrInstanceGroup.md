@@ -29,10 +29,10 @@ Appears on:[EmrInstanceGroup](#emrinstancegroup), [EmrInstanceGroupStatus](#emri
 | `clusterID` | ***string***||
 | `ebsConfig` | ***[[]EmrInstanceGroupSpecEbsConfig](#emrinstancegroupspecebsconfig)***| ***(Optional)*** |
 | `ebsOptimized` | ***bool***| ***(Optional)*** |
-| `instanceCount` | ***int***| ***(Optional)*** |
+| `instanceCount` | ***int64***| ***(Optional)*** |
 | `instanceType` | ***string***||
 | `name` | ***string***| ***(Optional)*** |
-| `runningInstanceCount` | ***int***| ***(Optional)*** |
+| `runningInstanceCount` | ***int64***| ***(Optional)*** |
 | `status` | ***string***| ***(Optional)*** |
 ## EmrInstanceGroupSpecEbsConfig
 
@@ -40,10 +40,10 @@ Appears on:[EmrInstanceGroupSpec](#emrinstancegroupspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `iops` | ***int***| ***(Optional)*** |
-| `size` | ***int***||
+| `iops` | ***int64***| ***(Optional)*** |
+| `size` | ***int64***||
 | `type` | ***string***||
-| `volumesPerInstance` | ***int***| ***(Optional)*** |
+| `volumesPerInstance` | ***int64***| ***(Optional)*** |
 ## EmrInstanceGroupStatus
 
 Appears on:[EmrInstanceGroup](#emrinstancegroup)

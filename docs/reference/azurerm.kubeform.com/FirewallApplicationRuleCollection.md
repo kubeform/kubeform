@@ -29,7 +29,7 @@ Appears on:[FirewallApplicationRuleCollection](#firewallapplicationrulecollectio
 | `action` | ***string***||
 | `azureFirewallName` | ***string***||
 | `name` | ***string***||
-| `priority` | ***int***||
+| `priority` | ***int64***||
 | `resourceGroupName` | ***string***||
 | `rule` | ***[[]FirewallApplicationRuleCollectionSpecRule](#firewallapplicationrulecollectionspecrule)***||
 ## FirewallApplicationRuleCollectionSpecRule
@@ -50,7 +50,7 @@ Appears on:[FirewallApplicationRuleCollectionSpecRule](#firewallapplicationrulec
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `type` | ***string***||
 ## FirewallApplicationRuleCollectionStatus
 

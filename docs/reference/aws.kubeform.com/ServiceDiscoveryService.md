@@ -51,7 +51,7 @@ Appears on:[ServiceDiscoveryServiceSpecDnsConfig](#servicediscoveryservicespecdn
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `ttl` | ***int***||
+| `ttl` | ***int64***||
 | `type` | ***string***||
 ## ServiceDiscoveryServiceSpecHealthCheckConfig
 
@@ -59,7 +59,7 @@ Appears on:[ServiceDiscoveryServiceSpec](#servicediscoveryservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `failureThreshold` | ***int***| ***(Optional)*** |
+| `failureThreshold` | ***int64***| ***(Optional)*** |
 | `resourcePath` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 ## ServiceDiscoveryServiceSpecHealthCheckCustomConfig
@@ -68,7 +68,7 @@ Appears on:[ServiceDiscoveryServiceSpec](#servicediscoveryservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `failureThreshold` | ***int***| ***(Optional)*** |
+| `failureThreshold` | ***int64***| ***(Optional)*** |
 ## ServiceDiscoveryServiceStatus
 
 Appears on:[ServiceDiscoveryService](#servicediscoveryservice)

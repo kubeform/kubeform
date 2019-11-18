@@ -56,7 +56,7 @@ Appears on:[DlmLifecyclePolicySpecPolicyDetailsSchedule](#dlmlifecyclepolicyspec
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `interval` | ***int***||
+| `interval` | ***int64***||
 | `intervalUnit` | ***string***| ***(Optional)*** |
 | `times` | ***[]string***| ***(Optional)*** |
 ## DlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule
@@ -65,7 +65,7 @@ Appears on:[DlmLifecyclePolicySpecPolicyDetailsSchedule](#dlmlifecyclepolicyspec
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `count` | ***int***||
+| `count` | ***int64***||
 ## DlmLifecyclePolicyStatus
 
 Appears on:[DlmLifecyclePolicy](#dlmlifecyclepolicy)

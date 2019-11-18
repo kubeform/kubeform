@@ -38,7 +38,7 @@ Appears on:[ComputeRegionDisk](#computeregiondisk), [ComputeRegionDiskStatus](#c
 | `region` | ***string***| ***(Optional)*** |
 | `replicaZones` | ***[]string***||
 | `selfLink` | ***string***| ***(Optional)*** |
-| `size` | ***int***| ***(Optional)*** |
+| `size` | ***int64***| ***(Optional)*** |
 | `snapshot` | ***string***| ***(Optional)*** |
 | `sourceSnapshotEncryptionKey` | ***[[]ComputeRegionDiskSpecSourceSnapshotEncryptionKey](#computeregiondiskspecsourcesnapshotencryptionkey)***| ***(Optional)*** |
 | `sourceSnapshotID` | ***string***| ***(Optional)*** |

@@ -26,7 +26,7 @@ Appears on:[Ec2TransitGateway](#ec2transitgateway), [Ec2TransitGatewayStatus](#e
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `amazonSideAsn` | ***int***| ***(Optional)*** |
+| `amazonSideAsn` | ***int64***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `associationDefaultRouteTableID` | ***string***| ***(Optional)*** |
 | `autoAcceptSharedAttachments` | ***string***| ***(Optional)*** |

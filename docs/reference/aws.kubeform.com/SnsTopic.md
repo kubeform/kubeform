@@ -32,23 +32,23 @@ Appears on:[SnsTopic](#snstopic), [SnsTopicStatus](#snstopicstatus)
 | `id` | ***string***||
 | `applicationFailureFeedbackRoleArn` | ***string***| ***(Optional)*** |
 | `applicationSuccessFeedbackRoleArn` | ***string***| ***(Optional)*** |
-| `applicationSuccessFeedbackSampleRate` | ***int***| ***(Optional)*** |
+| `applicationSuccessFeedbackSampleRate` | ***int64***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `deliveryPolicy` | ***string***| ***(Optional)*** |
 | `displayName` | ***string***| ***(Optional)*** |
 | `httpFailureFeedbackRoleArn` | ***string***| ***(Optional)*** |
 | `httpSuccessFeedbackRoleArn` | ***string***| ***(Optional)*** |
-| `httpSuccessFeedbackSampleRate` | ***int***| ***(Optional)*** |
+| `httpSuccessFeedbackSampleRate` | ***int64***| ***(Optional)*** |
 | `kmsMasterKeyID` | ***string***| ***(Optional)*** |
 | `lambdaFailureFeedbackRoleArn` | ***string***| ***(Optional)*** |
 | `lambdaSuccessFeedbackRoleArn` | ***string***| ***(Optional)*** |
-| `lambdaSuccessFeedbackSampleRate` | ***int***| ***(Optional)*** |
+| `lambdaSuccessFeedbackSampleRate` | ***int64***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
 | `policy` | ***string***| ***(Optional)*** |
 | `sqsFailureFeedbackRoleArn` | ***string***| ***(Optional)*** |
 | `sqsSuccessFeedbackRoleArn` | ***string***| ***(Optional)*** |
-| `sqsSuccessFeedbackSampleRate` | ***int***| ***(Optional)*** |
+| `sqsSuccessFeedbackSampleRate` | ***int64***| ***(Optional)*** |
 ## SnsTopicStatus
 
 Appears on:[SnsTopic](#snstopic)

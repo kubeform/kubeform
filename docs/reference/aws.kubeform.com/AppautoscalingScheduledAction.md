@@ -41,8 +41,8 @@ Appears on:[AppautoscalingScheduledActionSpec](#appautoscalingscheduledactionspe
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `maxCapacity` | ***int***| ***(Optional)*** |
-| `minCapacity` | ***int***| ***(Optional)*** |
+| `maxCapacity` | ***int64***| ***(Optional)*** |
+| `minCapacity` | ***int64***| ***(Optional)*** |
 ## AppautoscalingScheduledActionStatus
 
 Appears on:[AppautoscalingScheduledAction](#appautoscalingscheduledaction)

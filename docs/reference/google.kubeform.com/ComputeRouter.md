@@ -43,7 +43,7 @@ Appears on:[ComputeRouterSpec](#computerouterspec)
 | `advertiseMode` | ***string***| ***(Optional)*** |
 | `advertisedGroups` | ***[]string***| ***(Optional)*** |
 | `advertisedIPRanges` | ***[[]ComputeRouterSpecBgpAdvertisedIPRanges](#computerouterspecbgpadvertisedipranges)***| ***(Optional)*** |
-| `asn` | ***int***||
+| `asn` | ***int64***||
 ## ComputeRouterSpecBgpAdvertisedIPRanges
 
 Appears on:[ComputeRouterSpecBgp](#computerouterspecbgp)

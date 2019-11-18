@@ -29,13 +29,13 @@ Appears on:[AutoscalingPolicy](#autoscalingpolicy), [AutoscalingPolicyStatus](#a
 | `adjustmentType` | ***string***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `autoscalingGroupName` | ***string***||
-| `cooldown` | ***int***| ***(Optional)*** |
-| `estimatedInstanceWarmup` | ***int***| ***(Optional)*** |
+| `cooldown` | ***int64***| ***(Optional)*** |
+| `estimatedInstanceWarmup` | ***int64***| ***(Optional)*** |
 | `metricAggregationType` | ***string***| ***(Optional)*** |
-| `minAdjustmentMagnitude` | ***int***| ***(Optional)*** |
+| `minAdjustmentMagnitude` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `policyType` | ***string***| ***(Optional)*** |
-| `scalingAdjustment` | ***int***| ***(Optional)*** |
+| `scalingAdjustment` | ***int64***| ***(Optional)*** |
 | `stepAdjustment` | ***[[]AutoscalingPolicySpecStepAdjustment](#autoscalingpolicyspecstepadjustment)***| ***(Optional)*** |
 | `targetTrackingConfiguration` | ***[[]AutoscalingPolicySpecTargetTrackingConfiguration](#autoscalingpolicyspectargettrackingconfiguration)***| ***(Optional)*** |
 ## AutoscalingPolicySpecStepAdjustment
@@ -46,7 +46,7 @@ Appears on:[AutoscalingPolicySpec](#autoscalingpolicyspec)
 | ------ | ----- | ----------- |
 | `metricIntervalLowerBound` | ***string***| ***(Optional)*** |
 | `metricIntervalUpperBound` | ***string***| ***(Optional)*** |
-| `scalingAdjustment` | ***int***||
+| `scalingAdjustment` | ***int64***||
 ## AutoscalingPolicySpecTargetTrackingConfiguration
 
 Appears on:[AutoscalingPolicySpec](#autoscalingpolicyspec)
@@ -56,7 +56,7 @@ Appears on:[AutoscalingPolicySpec](#autoscalingpolicyspec)
 | `customizedMetricSpecification` | ***[[]AutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecification](#autoscalingpolicyspectargettrackingconfigurationcustomizedmetricspecification)***| ***(Optional)*** |
 | `disableScaleIn` | ***bool***| ***(Optional)*** |
 | `predefinedMetricSpecification` | ***[[]AutoscalingPolicySpecTargetTrackingConfigurationPredefinedMetricSpecification](#autoscalingpolicyspectargettrackingconfigurationpredefinedmetricspecification)***| ***(Optional)*** |
-| `targetValue` | ***encoding/json.Number***||
+| `targetValue` | ***float64***||
 ## AutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecification
 
 Appears on:[AutoscalingPolicySpecTargetTrackingConfiguration](#autoscalingpolicyspectargettrackingconfiguration)

@@ -34,7 +34,7 @@ Appears on:[EbsSnapshot](#ebssnapshot), [EbsSnapshotStatus](#ebssnapshotstatus)
 | `ownerID` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `volumeID` | ***string***||
-| `volumeSize` | ***int***| ***(Optional)*** |
+| `volumeSize` | ***int64***| ***(Optional)*** |
 ## EbsSnapshotStatus
 
 Appears on:[EbsSnapshot](#ebssnapshot)

@@ -38,7 +38,7 @@ Appears on:[ServicebusTopic](#servicebustopic), [ServicebusTopicStatus](#service
 | `enableFilteringMessagesBeforePublishing` | ***bool***| ***(Optional)*** Deprecated|
 | `enablePartitioning` | ***bool***| ***(Optional)*** |
 | `location` | ***string***| ***(Optional)*** Deprecated|
-| `maxSizeInMegabytes` | ***int***| ***(Optional)*** |
+| `maxSizeInMegabytes` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `namespaceName` | ***string***||
 | `requiresDuplicateDetection` | ***bool***| ***(Optional)*** |

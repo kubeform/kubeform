@@ -46,14 +46,14 @@ Appears on:[RdsClusterInstance](#rdsclusterinstance), [RdsClusterInstanceStatus]
 | `identifierPrefix` | ***string***| ***(Optional)*** |
 | `instanceClass` | ***string***||
 | `kmsKeyID` | ***string***| ***(Optional)*** |
-| `monitoringInterval` | ***int***| ***(Optional)*** |
+| `monitoringInterval` | ***int64***| ***(Optional)*** |
 | `monitoringRoleArn` | ***string***| ***(Optional)*** |
 | `performanceInsightsEnabled` | ***bool***| ***(Optional)*** |
 | `performanceInsightsKmsKeyID` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `preferredBackupWindow` | ***string***| ***(Optional)*** |
 | `preferredMaintenanceWindow` | ***string***| ***(Optional)*** |
-| `promotionTier` | ***int***| ***(Optional)*** |
+| `promotionTier` | ***int64***| ***(Optional)*** |
 | `publiclyAccessible` | ***bool***| ***(Optional)*** |
 | `storageEncrypted` | ***bool***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |

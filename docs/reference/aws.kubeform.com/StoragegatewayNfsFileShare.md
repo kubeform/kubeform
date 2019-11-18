@@ -53,8 +53,8 @@ Appears on:[StoragegatewayNfsFileShareSpec](#storagegatewaynfsfilesharespec)
 | ------ | ----- | ----------- |
 | `directoryMode` | ***string***| ***(Optional)*** |
 | `fileMode` | ***string***| ***(Optional)*** |
-| `groupID` | ***int***| ***(Optional)*** |
-| `ownerID` | ***int***| ***(Optional)*** |
+| `groupID` | ***int64***| ***(Optional)*** |
+| `ownerID` | ***int64***| ***(Optional)*** |
 ## StoragegatewayNfsFileShareStatus
 
 Appears on:[StoragegatewayNfsFileShare](#storagegatewaynfsfileshare)

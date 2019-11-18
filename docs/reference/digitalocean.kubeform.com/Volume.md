@@ -38,7 +38,7 @@ Appears on:[Volume](#volume), [VolumeStatus](#volumestatus)
 | `initialFilesystemType` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `region` | ***string***||
-| `size` | ***int***||
+| `size` | ***int64***||
 | `snapshotID` | ***string***| ***(Optional)*** |
 | `urn` | ***string***| ***(Optional)*** the uniform resource name for the volume.|
 ## VolumeStatus

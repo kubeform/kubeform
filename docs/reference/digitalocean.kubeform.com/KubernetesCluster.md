@@ -58,7 +58,7 @@ Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `nodeCount` | ***int***||
+| `nodeCount` | ***int64***||
 | `nodes` | ***[[]KubernetesClusterSpecNodePoolNodes](#kubernetesclusterspecnodepoolnodes)***| ***(Optional)*** |
 | `size` | ***string***||
 | `tags` | ***[]string***| ***(Optional)*** |

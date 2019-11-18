@@ -43,7 +43,7 @@ Appears on:[DbOptionGroupSpec](#dboptiongroupspec)
 | `dbSecurityGroupMemberships` | ***[]string***| ***(Optional)*** |
 | `optionName` | ***string***||
 | `optionSettings` | ***[[]DbOptionGroupSpecOptionOptionSettings](#dboptiongroupspecoptionoptionsettings)***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
 | `vpcSecurityGroupMemberships` | ***[]string***| ***(Optional)*** |
 ## DbOptionGroupSpecOptionOptionSettings

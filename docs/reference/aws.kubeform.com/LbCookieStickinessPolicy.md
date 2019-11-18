@@ -26,8 +26,8 @@ Appears on:[LbCookieStickinessPolicy](#lbcookiestickinesspolicy), [LbCookieStick
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `cookieExpirationPeriod` | ***int***| ***(Optional)*** |
-| `lbPort` | ***int***||
+| `cookieExpirationPeriod` | ***int64***| ***(Optional)*** |
+| `lbPort` | ***int64***||
 | `loadBalancer` | ***string***||
 | `name` | ***string***||
 ## LbCookieStickinessPolicyStatus

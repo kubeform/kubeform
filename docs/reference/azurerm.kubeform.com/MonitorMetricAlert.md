@@ -35,7 +35,7 @@ Appears on:[MonitorMetricAlert](#monitormetricalert), [MonitorMetricAlertStatus]
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||
 | `scopes` | ***[]string***||
-| `severity` | ***int***| ***(Optional)*** |
+| `severity` | ***int64***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `windowSize` | ***string***| ***(Optional)*** |
 ## MonitorMetricAlertSpecAction
@@ -57,7 +57,7 @@ Appears on:[MonitorMetricAlertSpec](#monitormetricalertspec)
 | `metricName` | ***string***||
 | `metricNamespace` | ***string***||
 | `operator` | ***string***||
-| `threshold` | ***encoding/json.Number***||
+| `threshold` | ***float64***||
 ## MonitorMetricAlertSpecCriteriaDimension
 
 Appears on:[MonitorMetricAlertSpecCriteria](#monitormetricalertspeccriteria)

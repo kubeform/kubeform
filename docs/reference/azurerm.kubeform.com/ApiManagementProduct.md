@@ -34,7 +34,7 @@ Appears on:[ApiManagementProduct](#apimanagementproduct), [ApiManagementProductS
 | `published` | ***bool***||
 | `resourceGroupName` | ***string***||
 | `subscriptionRequired` | ***bool***||
-| `subscriptionsLimit` | ***int***| ***(Optional)*** |
+| `subscriptionsLimit` | ***int64***| ***(Optional)*** |
 | `terms` | ***string***| ***(Optional)*** |
 ## ApiManagementProductStatus
 

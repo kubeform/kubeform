@@ -29,7 +29,7 @@ Appears on:[DxBGPPeer](#dxbgppeer), [DxBGPPeerStatus](#dxbgppeerstatus)
 | `addressFamily` | ***string***||
 | `amazonAddress` | ***string***| ***(Optional)*** |
 | `awsDevice` | ***string***| ***(Optional)*** |
-| `bgpAsn` | ***int***||
+| `bgpAsn` | ***int64***||
 | `bgpAuthKey` | ***string***| ***(Optional)*** |
 | `bgpPeerID` | ***string***| ***(Optional)*** |
 | `bgpStatus` | ***string***| ***(Optional)*** |

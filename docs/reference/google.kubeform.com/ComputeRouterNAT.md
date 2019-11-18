@@ -26,8 +26,8 @@ Appears on:[ComputeRouterNAT](#computerouternat), [ComputeRouterNATStatus](#comp
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `icmpIdleTimeoutSec` | ***int***| ***(Optional)*** |
-| `minPortsPerVm` | ***int***| ***(Optional)*** |
+| `icmpIdleTimeoutSec` | ***int64***| ***(Optional)*** |
+| `minPortsPerVm` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `natIPAllocateOption` | ***string***||
 | `natIPS` | ***[]string***| ***(Optional)*** |
@@ -36,9 +36,9 @@ Appears on:[ComputeRouterNAT](#computerouternat), [ComputeRouterNATStatus](#comp
 | `router` | ***string***||
 | `sourceSubnetworkIPRangesToNAT` | ***string***| ***(Optional)*** |
 | `subnetwork` | ***[[]ComputeRouterNATSpecSubnetwork](#computerouternatspecsubnetwork)***| ***(Optional)*** |
-| `tcpEstablishedIdleTimeoutSec` | ***int***| ***(Optional)*** |
-| `tcpTransitoryIdleTimeoutSec` | ***int***| ***(Optional)*** |
-| `udpIdleTimeoutSec` | ***int***| ***(Optional)*** |
+| `tcpEstablishedIdleTimeoutSec` | ***int64***| ***(Optional)*** |
+| `tcpTransitoryIdleTimeoutSec` | ***int64***| ***(Optional)*** |
+| `udpIdleTimeoutSec` | ***int64***| ***(Optional)*** |
 ## ComputeRouterNATSpecSubnetwork
 
 Appears on:[ComputeRouterNATSpec](#computerouternatspec)

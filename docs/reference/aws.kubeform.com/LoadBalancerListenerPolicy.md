@@ -27,7 +27,7 @@ Appears on:[LoadBalancerListenerPolicy](#loadbalancerlistenerpolicy), [LoadBalan
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `loadBalancerName` | ***string***||
-| `loadBalancerPort` | ***int***||
+| `loadBalancerPort` | ***int64***||
 | `policyNames` | ***[]string***| ***(Optional)*** |
 ## LoadBalancerListenerPolicyStatus
 

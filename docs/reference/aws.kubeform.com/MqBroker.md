@@ -51,7 +51,7 @@ Appears on:[MqBrokerSpec](#mqbrokerspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ID` | ***string***| ***(Optional)*** |
-| `revision` | ***int***| ***(Optional)*** |
+| `revision` | ***int64***| ***(Optional)*** |
 ## MqBrokerSpecInstances
 
 Appears on:[MqBrokerSpec](#mqbrokerspec)

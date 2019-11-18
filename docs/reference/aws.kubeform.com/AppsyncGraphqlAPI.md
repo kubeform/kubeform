@@ -49,9 +49,9 @@ Appears on:[AppsyncGraphqlAPISpec](#appsyncgraphqlapispec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `authTtl` | ***int***| ***(Optional)*** |
+| `authTtl` | ***int64***| ***(Optional)*** |
 | `clientID` | ***string***| ***(Optional)*** |
-| `iatTtl` | ***int***| ***(Optional)*** |
+| `iatTtl` | ***int64***| ***(Optional)*** |
 | `issuer` | ***string***||
 ## AppsyncGraphqlAPISpecUserPoolConfig
 

@@ -32,9 +32,9 @@ Appears on:[Volume](#volume), [VolumeStatus](#volumestatus)
 | `id` | ***string***||
 | `filesystemPath` | ***string***| ***(Optional)*** The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0Linode_Volume_ + Volume label.|
 | `label` | ***string***|The label of the Linode Volume.|
-| `linodeID` | ***int***| ***(Optional)*** The Linode ID where the Volume should be attached.|
+| `linodeID` | ***int64***| ***(Optional)*** The Linode ID where the Volume should be attached.|
 | `region` | ***string***|The region where this volume will be deployed.|
-| `size` | ***int***| ***(Optional)*** Size of the Volume in GB|
+| `size` | ***int64***| ***(Optional)*** Size of the Volume in GB|
 | `status` | ***string***| ***(Optional)*** The status of the volume, indicating the current readiness state.|
 | `tags` | ***[]string***| ***(Optional)*** An array of tags applied to this object. Tags are for organizational purposes only.|
 ## VolumeStatus

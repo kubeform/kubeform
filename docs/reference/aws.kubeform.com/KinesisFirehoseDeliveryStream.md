@@ -45,14 +45,14 @@ Appears on:[KinesisFirehoseDeliveryStreamSpec](#kinesisfirehosedeliverystreamspe
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `bufferingInterval` | ***int***| ***(Optional)*** |
-| `bufferingSize` | ***int***| ***(Optional)*** |
+| `bufferingInterval` | ***int64***| ***(Optional)*** |
+| `bufferingSize` | ***int64***| ***(Optional)*** |
 | `cloudwatchLoggingOptions` | ***[[]KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationCloudwatchLoggingOptions](#kinesisfirehosedeliverystreamspecelasticsearchconfigurationcloudwatchloggingoptions)***| ***(Optional)*** |
 | `domainArn` | ***string***||
 | `indexName` | ***string***||
 | `indexRotationPeriod` | ***string***| ***(Optional)*** |
 | `processingConfiguration` | ***[[]KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfiguration](#kinesisfirehosedeliverystreamspecelasticsearchconfigurationprocessingconfiguration)***| ***(Optional)*** |
-| `retryDuration` | ***int***| ***(Optional)*** |
+| `retryDuration` | ***int64***| ***(Optional)*** |
 | `roleArn` | ***string***||
 | `s3BackupMode` | ***string***| ***(Optional)*** |
 | `typeName` | ***string***| ***(Optional)*** |
@@ -96,8 +96,8 @@ Appears on:[KinesisFirehoseDeliveryStreamSpec](#kinesisfirehosedeliverystreamspe
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketArn` | ***string***||
-| `bufferInterval` | ***int***| ***(Optional)*** |
-| `bufferSize` | ***int***| ***(Optional)*** |
+| `bufferInterval` | ***int64***| ***(Optional)*** |
+| `bufferSize` | ***int64***| ***(Optional)*** |
 | `cloudwatchLoggingOptions` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationCloudwatchLoggingOptions](#kinesisfirehosedeliverystreamspecextendeds3configurationcloudwatchloggingoptions)***| ***(Optional)*** |
 | `compressionFormat` | ***string***| ***(Optional)*** |
 | `dataFormatConversionConfiguration` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfiguration](#kinesisfirehosedeliverystreamspecextendeds3configurationdataformatconversionconfiguration)***| ***(Optional)*** |
@@ -179,27 +179,27 @@ Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatCo
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `blockSizeBytes` | ***int***| ***(Optional)*** |
+| `blockSizeBytes` | ***int64***| ***(Optional)*** |
 | `bloomFilterColumns` | ***[]string***| ***(Optional)*** |
-| `bloomFilterFalsePositiveProbability` | ***encoding/json.Number***| ***(Optional)*** |
+| `bloomFilterFalsePositiveProbability` | ***float64***| ***(Optional)*** |
 | `compression` | ***string***| ***(Optional)*** |
-| `dictionaryKeyThreshold` | ***encoding/json.Number***| ***(Optional)*** |
+| `dictionaryKeyThreshold` | ***float64***| ***(Optional)*** |
 | `enablePadding` | ***bool***| ***(Optional)*** |
 | `formatVersion` | ***string***| ***(Optional)*** |
-| `paddingTolerance` | ***encoding/json.Number***| ***(Optional)*** |
-| `rowIndexStride` | ***int***| ***(Optional)*** |
-| `stripeSizeBytes` | ***int***| ***(Optional)*** |
+| `paddingTolerance` | ***float64***| ***(Optional)*** |
+| `rowIndexStride` | ***int64***| ***(Optional)*** |
+| `stripeSizeBytes` | ***int64***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe
 
 Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer](#kinesisfirehosedeliverystreamspecextendeds3configurationdataformatconversionconfigurationoutputformatconfigurationserializer)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `blockSizeBytes` | ***int***| ***(Optional)*** |
+| `blockSizeBytes` | ***int64***| ***(Optional)*** |
 | `compression` | ***string***| ***(Optional)*** |
 | `enableDictionaryCompression` | ***bool***| ***(Optional)*** |
-| `maxPaddingBytes` | ***int***| ***(Optional)*** |
-| `pageSizeBytes` | ***int***| ***(Optional)*** |
+| `maxPaddingBytes` | ***int64***| ***(Optional)*** |
+| `pageSizeBytes` | ***int64***| ***(Optional)*** |
 | `writerVersion` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration
 
@@ -244,8 +244,8 @@ Appears on:[KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration](#kinesisfi
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketArn` | ***string***||
-| `bufferInterval` | ***int***| ***(Optional)*** |
-| `bufferSize` | ***int***| ***(Optional)*** |
+| `bufferInterval` | ***int64***| ***(Optional)*** |
+| `bufferSize` | ***int64***| ***(Optional)*** |
 | `cloudwatchLoggingOptions` | ***[[]KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions](#kinesisfirehosedeliverystreamspecextendeds3configurations3backupconfigurationcloudwatchloggingoptions)***| ***(Optional)*** |
 | `compressionFormat` | ***string***| ***(Optional)*** |
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
@@ -280,7 +280,7 @@ Appears on:[KinesisFirehoseDeliveryStreamSpec](#kinesisfirehosedeliverystreamspe
 | `dataTableColumns` | ***string***| ***(Optional)*** |
 | `dataTableName` | ***string***||
 | `processingConfiguration` | ***[[]KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfiguration](#kinesisfirehosedeliverystreamspecredshiftconfigurationprocessingconfiguration)***| ***(Optional)*** |
-| `retryDuration` | ***int***| ***(Optional)*** |
+| `retryDuration` | ***int64***| ***(Optional)*** |
 | `roleArn` | ***string***||
 | `s3BackupConfiguration` | ***[[]KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfiguration](#kinesisfirehosedeliverystreamspecredshiftconfigurations3backupconfiguration)***| ***(Optional)*** |
 | `s3BackupMode` | ***string***| ***(Optional)*** |
@@ -325,8 +325,8 @@ Appears on:[KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration](#kinesisfire
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketArn` | ***string***||
-| `bufferInterval` | ***int***| ***(Optional)*** |
-| `bufferSize` | ***int***| ***(Optional)*** |
+| `bufferInterval` | ***int64***| ***(Optional)*** |
+| `bufferSize` | ***int64***| ***(Optional)*** |
 | `cloudwatchLoggingOptions` | ***[[]KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions](#kinesisfirehosedeliverystreamspecredshiftconfigurations3backupconfigurationcloudwatchloggingoptions)***| ***(Optional)*** |
 | `compressionFormat` | ***string***| ***(Optional)*** |
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
@@ -348,8 +348,8 @@ Appears on:[KinesisFirehoseDeliveryStreamSpec](#kinesisfirehosedeliverystreamspe
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `bucketArn` | ***string***||
-| `bufferInterval` | ***int***| ***(Optional)*** |
-| `bufferSize` | ***int***| ***(Optional)*** |
+| `bufferInterval` | ***int64***| ***(Optional)*** |
+| `bufferSize` | ***int64***| ***(Optional)*** |
 | `cloudwatchLoggingOptions` | ***[[]KinesisFirehoseDeliveryStreamSpecS3ConfigurationCloudwatchLoggingOptions](#kinesisfirehosedeliverystreamspecs3configurationcloudwatchloggingoptions)***| ***(Optional)*** |
 | `compressionFormat` | ***string***| ***(Optional)*** |
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
@@ -371,12 +371,12 @@ Appears on:[KinesisFirehoseDeliveryStreamSpec](#kinesisfirehosedeliverystreamspe
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cloudwatchLoggingOptions` | ***[[]KinesisFirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptions](#kinesisfirehosedeliverystreamspecsplunkconfigurationcloudwatchloggingoptions)***| ***(Optional)*** |
-| `hecAcknowledgmentTimeout` | ***int***| ***(Optional)*** |
+| `hecAcknowledgmentTimeout` | ***int64***| ***(Optional)*** |
 | `hecEndpoint` | ***string***||
 | `hecEndpointType` | ***string***| ***(Optional)*** |
 | `hecToken` | ***string***||
 | `processingConfiguration` | ***[[]KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfiguration](#kinesisfirehosedeliverystreamspecsplunkconfigurationprocessingconfiguration)***| ***(Optional)*** |
-| `retryDuration` | ***int***| ***(Optional)*** |
+| `retryDuration` | ***int64***| ***(Optional)*** |
 | `s3BackupMode` | ***string***| ***(Optional)*** |
 ## KinesisFirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptions
 

@@ -33,7 +33,7 @@ Appears on:[FolderOrganizationPolicy](#folderorganizationpolicy), [FolderOrganiz
 | `listPolicy` | ***[[]FolderOrganizationPolicySpecListPolicy](#folderorganizationpolicyspeclistpolicy)***| ***(Optional)*** |
 | `restorePolicy` | ***[[]FolderOrganizationPolicySpecRestorePolicy](#folderorganizationpolicyspecrestorepolicy)***| ***(Optional)*** |
 | `updateTime` | ***string***| ***(Optional)*** |
-| `version` | ***int***| ***(Optional)*** |
+| `version` | ***int64***| ***(Optional)*** |
 ## FolderOrganizationPolicySpecBooleanPolicy
 
 Appears on:[FolderOrganizationPolicySpec](#folderorganizationpolicyspec)

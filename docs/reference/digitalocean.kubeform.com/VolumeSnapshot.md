@@ -31,10 +31,10 @@ Appears on:[VolumeSnapshot](#volumesnapshot), [VolumeSnapshotStatus](#volumesnap
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `createdAt` | ***string***| ***(Optional)*** |
-| `minDiskSize` | ***int***| ***(Optional)*** |
+| `minDiskSize` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `regions` | ***[]string***| ***(Optional)*** |
-| `size` | ***encoding/json.Number***| ***(Optional)*** |
+| `size` | ***float64***| ***(Optional)*** |
 | `volumeID` | ***string***||
 ## VolumeSnapshotStatus
 

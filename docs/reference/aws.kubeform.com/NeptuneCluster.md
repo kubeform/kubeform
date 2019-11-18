@@ -29,7 +29,7 @@ Appears on:[NeptuneCluster](#neptunecluster), [NeptuneClusterStatus](#neptuneclu
 | `applyImmediately` | ***bool***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `availabilityZones` | ***[]string***| ***(Optional)*** |
-| `backupRetentionPeriod` | ***int***| ***(Optional)*** |
+| `backupRetentionPeriod` | ***int64***| ***(Optional)*** |
 | `clusterIdentifier` | ***string***| ***(Optional)*** |
 | `clusterIdentifierPrefix` | ***string***| ***(Optional)*** |
 | `clusterMembers` | ***[]string***| ***(Optional)*** |
@@ -44,7 +44,7 @@ Appears on:[NeptuneCluster](#neptunecluster), [NeptuneClusterStatus](#neptuneclu
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
 | `neptuneClusterParameterGroupName` | ***string***| ***(Optional)*** |
 | `neptuneSubnetGroupName` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `preferredBackupWindow` | ***string***| ***(Optional)*** |
 | `preferredMaintenanceWindow` | ***string***| ***(Optional)*** |
 | `readerEndpoint` | ***string***| ***(Optional)*** |

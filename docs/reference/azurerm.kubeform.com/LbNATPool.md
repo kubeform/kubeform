@@ -26,11 +26,11 @@ Appears on:[LbNATPool](#lbnatpool), [LbNATPoolStatus](#lbnatpoolstatus)
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `backendPort` | ***int***||
+| `backendPort` | ***int64***||
 | `frontendIPConfigurationID` | ***string***| ***(Optional)*** |
 | `frontendIPConfigurationName` | ***string***||
-| `frontendPortEnd` | ***int***||
-| `frontendPortStart` | ***int***||
+| `frontendPortEnd` | ***int64***||
+| `frontendPortStart` | ***int64***||
 | `loadbalancerID` | ***string***||
 | `location` | ***string***| ***(Optional)*** Deprecated|
 | `name` | ***string***||

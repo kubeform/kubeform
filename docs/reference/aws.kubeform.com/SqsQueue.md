@@ -32,19 +32,19 @@ Appears on:[SqsQueue](#sqsqueue), [SqsQueueStatus](#sqsqueuestatus)
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `contentBasedDeduplication` | ***bool***| ***(Optional)*** |
-| `delaySeconds` | ***int***| ***(Optional)*** |
+| `delaySeconds` | ***int64***| ***(Optional)*** |
 | `fifoQueue` | ***bool***| ***(Optional)*** |
-| `kmsDataKeyReusePeriodSeconds` | ***int***| ***(Optional)*** |
+| `kmsDataKeyReusePeriodSeconds` | ***int64***| ***(Optional)*** |
 | `kmsMasterKeyID` | ***string***| ***(Optional)*** |
-| `maxMessageSize` | ***int***| ***(Optional)*** |
-| `messageRetentionSeconds` | ***int***| ***(Optional)*** |
+| `maxMessageSize` | ***int64***| ***(Optional)*** |
+| `messageRetentionSeconds` | ***int64***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
 | `policy` | ***string***| ***(Optional)*** |
-| `receiveWaitTimeSeconds` | ***int***| ***(Optional)*** |
+| `receiveWaitTimeSeconds` | ***int64***| ***(Optional)*** |
 | `redrivePolicy` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `visibilityTimeoutSeconds` | ***int***| ***(Optional)*** |
+| `visibilityTimeoutSeconds` | ***int64***| ***(Optional)*** |
 ## SqsQueueStatus
 
 Appears on:[SqsQueue](#sqsqueue)

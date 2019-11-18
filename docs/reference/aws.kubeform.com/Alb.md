@@ -33,7 +33,7 @@ Appears on:[Alb](#alb), [AlbStatus](#albstatus)
 | `enableCrossZoneLoadBalancing` | ***bool***| ***(Optional)*** |
 | `enableDeletionProtection` | ***bool***| ***(Optional)*** |
 | `enableHttp2` | ***bool***| ***(Optional)*** |
-| `idleTimeout` | ***int***| ***(Optional)*** |
+| `idleTimeout` | ***int64***| ***(Optional)*** |
 | `internal` | ***bool***| ***(Optional)*** |
 | `ipAddressType` | ***string***| ***(Optional)*** |
 | `loadBalancerType` | ***string***| ***(Optional)*** |

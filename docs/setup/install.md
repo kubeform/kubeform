@@ -24,7 +24,7 @@ $ helm search appscode/kubeform
 NAME                CHART VERSION  APP VERSION  DESCRIPTION
 appscode/kubeform   {{< param "info.version" >}}         {{< param "info.version" >}}       Kubeform by AppsCode - Build Cloud Infrastructure from Kubernetes
 
-$ helm install appscode/kubeform --name kfc --version {{< param "info.version" >}} --namespace kube-system --set secretKey="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 31 | head -n 1 | base64)"
+$ helm install appscode/kubeform --name kfc --version {{< param "info.version" >}} --namespace kube-system
 ```
 
 To see the detailed configuration options, visit [here](https://github.com/kubeform/installer/tree/{{< param "info.version" >}}/charts/kubeform).

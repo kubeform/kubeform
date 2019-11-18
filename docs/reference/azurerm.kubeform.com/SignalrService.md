@@ -35,9 +35,9 @@ Appears on:[SignalrService](#signalrservice), [SignalrServiceStatus](#signalrser
 | `ipAddress` | ***string***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
-| `publicPort` | ***int***| ***(Optional)*** |
+| `publicPort` | ***int64***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
-| `serverPort` | ***int***| ***(Optional)*** |
+| `serverPort` | ***int64***| ***(Optional)*** |
 | `sku` | ***[[]SignalrServiceSpecSku](#signalrservicespecsku)***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SignalrServiceSpecSku
@@ -46,7 +46,7 @@ Appears on:[SignalrServiceSpec](#signalrservicespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `capacity` | ***int***||
+| `capacity` | ***int64***||
 | `name` | ***string***||
 ## SignalrServiceStatus
 

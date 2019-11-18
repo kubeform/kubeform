@@ -34,8 +34,8 @@ Appears on:[RdsCluster](#rdscluster), [RdsClusterStatus](#rdsclusterstatus)
 | `applyImmediately` | ***bool***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `availabilityZones` | ***[]string***| ***(Optional)*** |
-| `backtrackWindow` | ***int***| ***(Optional)*** |
-| `backupRetentionPeriod` | ***int***| ***(Optional)*** |
+| `backtrackWindow` | ***int64***| ***(Optional)*** |
+| `backupRetentionPeriod` | ***int64***| ***(Optional)*** |
 | `clusterIdentifier` | ***string***| ***(Optional)*** |
 | `clusterIdentifierPrefix` | ***string***| ***(Optional)*** |
 | `clusterMembers` | ***[]string***| ***(Optional)*** |
@@ -57,7 +57,7 @@ Appears on:[RdsCluster](#rdscluster), [RdsClusterStatus](#rdsclusterstatus)
 | `iamRoles` | ***[]string***| ***(Optional)*** |
 | `kmsKeyID` | ***string***| ***(Optional)*** |
 | `masterUsername` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `preferredBackupWindow` | ***string***| ***(Optional)*** |
 | `preferredMaintenanceWindow` | ***string***| ***(Optional)*** |
 | `readerEndpoint` | ***string***| ***(Optional)*** |
@@ -88,9 +88,9 @@ Appears on:[RdsClusterSpec](#rdsclusterspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `autoPause` | ***bool***| ***(Optional)*** |
-| `maxCapacity` | ***int***| ***(Optional)*** |
-| `minCapacity` | ***int***| ***(Optional)*** |
-| `secondsUntilAutoPause` | ***int***| ***(Optional)*** |
+| `maxCapacity` | ***int64***| ***(Optional)*** |
+| `minCapacity` | ***int64***| ***(Optional)*** |
+| `secondsUntilAutoPause` | ***int64***| ***(Optional)*** |
 ## RdsClusterStatus
 
 Appears on:[RdsCluster](#rdscluster)

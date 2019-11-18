@@ -30,15 +30,15 @@ Appears on:[GameliftGameSessionQueue](#gameliftgamesessionqueue), [GameliftGameS
 | `destinations` | ***[]string***| ***(Optional)*** |
 | `name` | ***string***||
 | `playerLatencyPolicy` | ***[[]GameliftGameSessionQueueSpecPlayerLatencyPolicy](#gameliftgamesessionqueuespecplayerlatencypolicy)***| ***(Optional)*** |
-| `timeoutInSeconds` | ***int***| ***(Optional)*** |
+| `timeoutInSeconds` | ***int64***| ***(Optional)*** |
 ## GameliftGameSessionQueueSpecPlayerLatencyPolicy
 
 Appears on:[GameliftGameSessionQueueSpec](#gameliftgamesessionqueuespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `maximumIndividualPlayerLatencyMilliseconds` | ***int***||
-| `policyDurationSeconds` | ***int***| ***(Optional)*** |
+| `maximumIndividualPlayerLatencyMilliseconds` | ***int64***||
+| `policyDurationSeconds` | ***int64***| ***(Optional)*** |
 ## GameliftGameSessionQueueStatus
 
 Appears on:[GameliftGameSessionQueue](#gameliftgamesessionqueue)

@@ -46,7 +46,7 @@ Appears on:[SharedImageVersionSpec](#sharedimageversionspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
-| `regionalReplicaCount` | ***int***||
+| `regionalReplicaCount` | ***int64***||
 ## SharedImageVersionStatus
 
 Appears on:[SharedImageVersion](#sharedimageversion)

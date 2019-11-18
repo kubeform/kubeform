@@ -34,7 +34,7 @@ Appears on:[AcmpcaCertificateAuthority](#acmpcacertificateauthority), [AcmpcaCer
 | `enabled` | ***bool***| ***(Optional)*** |
 | `notAfter` | ***string***| ***(Optional)*** |
 | `notBefore` | ***string***| ***(Optional)*** |
-| `permanentDeletionTimeInDays` | ***int***| ***(Optional)*** |
+| `permanentDeletionTimeInDays` | ***int64***| ***(Optional)*** |
 | `revocationConfiguration` | ***[[]AcmpcaCertificateAuthoritySpecRevocationConfiguration](#acmpcacertificateauthorityspecrevocationconfiguration)***| ***(Optional)*** |
 | `serial` | ***string***| ***(Optional)*** |
 | `status` | ***string***| ***(Optional)*** |
@@ -83,7 +83,7 @@ Appears on:[AcmpcaCertificateAuthoritySpecRevocationConfiguration](#acmpcacertif
 | ------ | ----- | ----------- |
 | `customCname` | ***string***| ***(Optional)*** |
 | `enabled` | ***bool***| ***(Optional)*** |
-| `expirationInDays` | ***int***||
+| `expirationInDays` | ***int64***||
 | `s3BucketName` | ***string***| ***(Optional)*** |
 ## AcmpcaCertificateAuthorityStatus
 

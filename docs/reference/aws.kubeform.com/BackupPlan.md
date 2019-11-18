@@ -37,12 +37,12 @@ Appears on:[BackupPlanSpec](#backupplanspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `completionWindow` | ***int***| ***(Optional)*** |
+| `completionWindow` | ***int64***| ***(Optional)*** |
 | `lifecycle` | ***[[]BackupPlanSpecRuleLifecycle](#backupplanspecrulelifecycle)***| ***(Optional)*** |
 | `recoveryPointTags` | ***map[string]string***| ***(Optional)*** |
 | `ruleName` | ***string***||
 | `schedule` | ***string***| ***(Optional)*** |
-| `startWindow` | ***int***| ***(Optional)*** |
+| `startWindow` | ***int64***| ***(Optional)*** |
 | `targetVaultName` | ***string***||
 ## BackupPlanSpecRuleLifecycle
 
@@ -50,8 +50,8 @@ Appears on:[BackupPlanSpecRule](#backupplanspecrule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `coldStorageAfter` | ***int***| ***(Optional)*** |
-| `deleteAfter` | ***int***| ***(Optional)*** |
+| `coldStorageAfter` | ***int64***| ***(Optional)*** |
+| `deleteAfter` | ***int64***| ***(Optional)*** |
 ## BackupPlanStatus
 
 Appears on:[BackupPlan](#backupplan)

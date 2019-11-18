@@ -67,7 +67,7 @@ Appears on:[DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `script` | ***string***||
-| `timeoutSec` | ***int***| ***(Optional)*** |
+| `timeoutSec` | ***int64***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigMasterConfig
 
 Appears on:[DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)
@@ -77,16 +77,16 @@ Appears on:[DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)
 | `diskConfig` | ***[[]DataprocClusterSpecClusterConfigMasterConfigDiskConfig](#dataprocclusterspecclusterconfigmasterconfigdiskconfig)***| ***(Optional)*** |
 | `instanceNames` | ***[]string***| ***(Optional)*** |
 | `machineType` | ***string***| ***(Optional)*** |
-| `numInstances` | ***int***| ***(Optional)*** |
+| `numInstances` | ***int64***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigMasterConfigDiskConfig
 
 Appears on:[DataprocClusterSpecClusterConfigMasterConfig](#dataprocclusterspecclusterconfigmasterconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `bootDiskSizeGb` | ***int***| ***(Optional)*** |
+| `bootDiskSizeGb` | ***int64***| ***(Optional)*** |
 | `bootDiskType` | ***string***| ***(Optional)*** |
-| `numLocalSsds` | ***int***| ***(Optional)*** |
+| `numLocalSsds` | ***int64***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigPreemptibleWorkerConfig
 
 Appears on:[DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)
@@ -95,14 +95,14 @@ Appears on:[DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)
 | ------ | ----- | ----------- |
 | `diskConfig` | ***[[]DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig](#dataprocclusterspecclusterconfigpreemptibleworkerconfigdiskconfig)***| ***(Optional)*** |
 | `instanceNames` | ***[]string***| ***(Optional)*** |
-| `numInstances` | ***int***| ***(Optional)*** |
+| `numInstances` | ***int64***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig
 
 Appears on:[DataprocClusterSpecClusterConfigPreemptibleWorkerConfig](#dataprocclusterspecclusterconfigpreemptibleworkerconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `bootDiskSizeGb` | ***int***| ***(Optional)*** |
+| `bootDiskSizeGb` | ***int64***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigSoftwareConfig
 
 Appears on:[DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)
@@ -121,16 +121,16 @@ Appears on:[DataprocClusterSpecClusterConfig](#dataprocclusterspecclusterconfig)
 | `diskConfig` | ***[[]DataprocClusterSpecClusterConfigWorkerConfigDiskConfig](#dataprocclusterspecclusterconfigworkerconfigdiskconfig)***| ***(Optional)*** |
 | `instanceNames` | ***[]string***| ***(Optional)*** |
 | `machineType` | ***string***| ***(Optional)*** |
-| `numInstances` | ***int***| ***(Optional)*** |
+| `numInstances` | ***int64***| ***(Optional)*** |
 ## DataprocClusterSpecClusterConfigWorkerConfigDiskConfig
 
 Appears on:[DataprocClusterSpecClusterConfigWorkerConfig](#dataprocclusterspecclusterconfigworkerconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `bootDiskSizeGb` | ***int***| ***(Optional)*** |
+| `bootDiskSizeGb` | ***int64***| ***(Optional)*** |
 | `bootDiskType` | ***string***| ***(Optional)*** |
-| `numLocalSsds` | ***int***| ***(Optional)*** |
+| `numLocalSsds` | ***int64***| ***(Optional)*** |
 ## DataprocClusterStatus
 
 Appears on:[DataprocCluster](#dataproccluster)

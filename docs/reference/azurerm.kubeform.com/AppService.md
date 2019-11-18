@@ -65,7 +65,7 @@ Appears on:[AppServiceSpec](#appservicespec)
 | `issuer` | ***string***| ***(Optional)*** |
 | `microsoft` | ***[[]AppServiceSpecAuthSettingsMicrosoft](#appservicespecauthsettingsmicrosoft)***| ***(Optional)*** |
 | `runtimeVersion` | ***string***| ***(Optional)*** |
-| `tokenRefreshExtensionHours` | ***encoding/json.Number***| ***(Optional)*** |
+| `tokenRefreshExtensionHours` | ***float64***| ***(Optional)*** |
 | `tokenStoreEnabled` | ***bool***| ***(Optional)*** |
 | `twitter` | ***[[]AppServiceSpecAuthSettingsTwitter](#appservicespecauthsettingstwitter)***| ***(Optional)*** |
 | `unauthenticatedClientAction` | ***string***| ***(Optional)*** |
@@ -123,10 +123,10 @@ Appears on:[AppServiceSpecBackup](#appservicespecbackup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `frequencyInterval` | ***int***||
+| `frequencyInterval` | ***int64***||
 | `frequencyUnit` | ***string***||
 | `keepAtLeastOneBackup` | ***bool***| ***(Optional)*** |
-| `retentionPeriodInDays` | ***int***| ***(Optional)*** |
+| `retentionPeriodInDays` | ***int64***| ***(Optional)*** |
 | `startTime` | ***string***| ***(Optional)*** |
 ## AppServiceSpecConnectionString
 
@@ -167,7 +167,7 @@ Appears on:[AppServiceSpecLogsApplicationLogs](#appservicespeclogsapplicationlog
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `level` | ***string***||
-| `retentionInDays` | ***int***||
+| `retentionInDays` | ***int64***||
 ## AppServiceSpecSiteConfig
 
 Appears on:[AppServiceSpec](#appservicespec)

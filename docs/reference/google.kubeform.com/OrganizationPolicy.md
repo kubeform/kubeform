@@ -33,7 +33,7 @@ Appears on:[OrganizationPolicy](#organizationpolicy), [OrganizationPolicyStatus]
 | `orgID` | ***string***||
 | `restorePolicy` | ***[[]OrganizationPolicySpecRestorePolicy](#organizationpolicyspecrestorepolicy)***| ***(Optional)*** |
 | `updateTime` | ***string***| ***(Optional)*** |
-| `version` | ***int***| ***(Optional)*** |
+| `version` | ***int64***| ***(Optional)*** |
 ## OrganizationPolicySpecBooleanPolicy
 
 Appears on:[OrganizationPolicySpec](#organizationpolicyspec)

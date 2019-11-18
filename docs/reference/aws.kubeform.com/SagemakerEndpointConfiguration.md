@@ -42,8 +42,8 @@ Appears on:[SagemakerEndpointConfigurationSpec](#sagemakerendpointconfigurations
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `acceleratorType` | ***string***| ***(Optional)*** |
-| `initialInstanceCount` | ***int***||
-| `initialVariantWeight` | ***encoding/json.Number***| ***(Optional)*** |
+| `initialInstanceCount` | ***int64***||
+| `initialVariantWeight` | ***float64***| ***(Optional)*** |
 | `instanceType` | ***string***||
 | `modelName` | ***string***||
 | `variantName` | ***string***| ***(Optional)*** |

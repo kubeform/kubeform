@@ -37,7 +37,7 @@ Appears on:[KinesisAnalyticsApplication](#kinesisanalyticsapplication), [Kinesis
 | `outputs` | ***[[]KinesisAnalyticsApplicationSpecOutputs](#kinesisanalyticsapplicationspecoutputs)***| ***(Optional)*** |
 | `referenceDataSources` | ***[[]KinesisAnalyticsApplicationSpecReferenceDataSources](#kinesisanalyticsapplicationspecreferencedatasources)***| ***(Optional)*** |
 | `status` | ***string***| ***(Optional)*** |
-| `version` | ***int***| ***(Optional)*** |
+| `version` | ***int64***| ***(Optional)*** |
 ## KinesisAnalyticsApplicationSpecCloudwatchLoggingOptions
 
 Appears on:[KinesisAnalyticsApplicationSpec](#kinesisanalyticsapplicationspec)
@@ -84,7 +84,7 @@ Appears on:[KinesisAnalyticsApplicationSpecInputs](#kinesisanalyticsapplications
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `count` | ***int***||
+| `count` | ***int64***||
 ## KinesisAnalyticsApplicationSpecInputsProcessingConfiguration
 
 Appears on:[KinesisAnalyticsApplicationSpecInputs](#kinesisanalyticsapplicationspecinputs)

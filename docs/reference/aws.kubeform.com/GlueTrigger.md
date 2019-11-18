@@ -41,7 +41,7 @@ Appears on:[GlueTriggerSpec](#gluetriggerspec)
 | ------ | ----- | ----------- |
 | `arguments` | ***map[string]string***| ***(Optional)*** |
 | `jobName` | ***string***||
-| `timeout` | ***int***| ***(Optional)*** |
+| `timeout` | ***int64***| ***(Optional)*** |
 ## GlueTriggerSpecPredicate
 
 Appears on:[GlueTriggerSpec](#gluetriggerspec)

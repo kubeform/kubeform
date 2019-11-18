@@ -79,9 +79,9 @@ Appears on:[OpsworksInstanceSpec](#opsworksinstancespec)
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
 | `deviceName` | ***string***||
-| `iops` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
 | `snapshotID` | ***string***| ***(Optional)*** |
-| `volumeSize` | ***int***| ***(Optional)*** |
+| `volumeSize` | ***int64***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## OpsworksInstanceSpecEphemeralBlockDevice
 
@@ -98,8 +98,8 @@ Appears on:[OpsworksInstanceSpec](#opsworksinstancespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
-| `iops` | ***int***| ***(Optional)*** |
-| `volumeSize` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
+| `volumeSize` | ***int64***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## OpsworksInstanceStatus
 

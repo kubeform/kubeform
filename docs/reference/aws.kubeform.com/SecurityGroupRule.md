@@ -32,14 +32,14 @@ Appears on:[SecurityGroupRule](#securitygrouprule), [SecurityGroupRuleStatus](#s
 | `id` | ***string***||
 | `cidrBlocks` | ***[]string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `fromPort` | ***int***||
+| `fromPort` | ***int64***||
 | `ipv6CIDRBlocks` | ***[]string***| ***(Optional)*** |
 | `prefixListIDS` | ***[]string***| ***(Optional)*** |
 | `protocol` | ***string***||
 | `securityGroupID` | ***string***||
 | `self` | ***bool***| ***(Optional)*** |
 | `sourceSecurityGroupID` | ***string***| ***(Optional)*** |
-| `toPort` | ***int***||
+| `toPort` | ***int64***||
 | `type` | ***string***|Type of rule, ingress (inbound) or egress (outbound).|
 ## SecurityGroupRuleStatus
 

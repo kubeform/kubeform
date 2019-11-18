@@ -61,10 +61,10 @@ Appears on:[SqlDatabaseInstanceSpec](#sqldatabaseinstancespec)
 | `caCertificate` | ***string***| ***(Optional)*** |
 | `clientCertificate` | ***string***| ***(Optional)*** |
 | `clientKey` | ***string***| ***(Optional)*** |
-| `connectRetryInterval` | ***int***| ***(Optional)*** |
+| `connectRetryInterval` | ***int64***| ***(Optional)*** |
 | `dumpFilePath` | ***string***| ***(Optional)*** |
 | `failoverTarget` | ***bool***| ***(Optional)*** |
-| `masterHeartbeatPeriod` | ***int***| ***(Optional)*** |
+| `masterHeartbeatPeriod` | ***int64***| ***(Optional)*** |
 | `sslCipher` | ***string***| ***(Optional)*** |
 | `username` | ***string***| ***(Optional)*** |
 | `verifyServerCertificate` | ***bool***| ***(Optional)*** |
@@ -92,7 +92,7 @@ Appears on:[SqlDatabaseInstanceSpec](#sqldatabaseinstancespec)
 | `crashSafeReplication` | ***bool***| ***(Optional)*** |
 | `databaseFlags` | ***[[]SqlDatabaseInstanceSpecSettingsDatabaseFlags](#sqldatabaseinstancespecsettingsdatabaseflags)***| ***(Optional)*** |
 | `diskAutoresize` | ***bool***| ***(Optional)*** |
-| `diskSize` | ***int***| ***(Optional)*** |
+| `diskSize` | ***int64***| ***(Optional)*** |
 | `diskType` | ***string***| ***(Optional)*** |
 | `ipConfiguration` | ***[[]SqlDatabaseInstanceSpecSettingsIpConfiguration](#sqldatabaseinstancespecsettingsipconfiguration)***| ***(Optional)*** |
 | `locationPreference` | ***[[]SqlDatabaseInstanceSpecSettingsLocationPreference](#sqldatabaseinstancespecsettingslocationpreference)***| ***(Optional)*** |
@@ -101,7 +101,7 @@ Appears on:[SqlDatabaseInstanceSpec](#sqldatabaseinstancespec)
 | `replicationType` | ***string***| ***(Optional)*** |
 | `tier` | ***string***||
 | `userLabels` | ***map[string]string***| ***(Optional)*** |
-| `version` | ***int***| ***(Optional)*** |
+| `version` | ***int64***| ***(Optional)*** |
 ## SqlDatabaseInstanceSpecSettingsBackupConfiguration
 
 Appears on:[SqlDatabaseInstanceSpecSettings](#sqldatabaseinstancespecsettings)
@@ -152,8 +152,8 @@ Appears on:[SqlDatabaseInstanceSpecSettings](#sqldatabaseinstancespecsettings)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `day` | ***int***| ***(Optional)*** |
-| `hour` | ***int***| ***(Optional)*** |
+| `day` | ***int64***| ***(Optional)*** |
+| `hour` | ***int64***| ***(Optional)*** |
 | `updateTrack` | ***string***| ***(Optional)*** |
 ## SqlDatabaseInstanceStatus
 

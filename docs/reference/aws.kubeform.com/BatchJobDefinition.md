@@ -31,7 +31,7 @@ Appears on:[BatchJobDefinition](#batchjobdefinition), [BatchJobDefinitionStatus]
 | `name` | ***string***||
 | `parameters` | ***map[string]string***| ***(Optional)*** |
 | `retryStrategy` | ***[[]BatchJobDefinitionSpecRetryStrategy](#batchjobdefinitionspecretrystrategy)***| ***(Optional)*** |
-| `revision` | ***int***| ***(Optional)*** |
+| `revision` | ***int64***| ***(Optional)*** |
 | `timeout` | ***[[]BatchJobDefinitionSpecTimeout](#batchjobdefinitionspectimeout)***| ***(Optional)*** |
 | `type` | ***string***||
 ## BatchJobDefinitionSpecRetryStrategy
@@ -40,14 +40,14 @@ Appears on:[BatchJobDefinitionSpec](#batchjobdefinitionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `attempts` | ***int***| ***(Optional)*** |
+| `attempts` | ***int64***| ***(Optional)*** |
 ## BatchJobDefinitionSpecTimeout
 
 Appears on:[BatchJobDefinitionSpec](#batchjobdefinitionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `attemptDurationSeconds` | ***int***| ***(Optional)*** |
+| `attemptDurationSeconds` | ***int64***| ***(Optional)*** |
 ## BatchJobDefinitionStatus
 
 Appears on:[BatchJobDefinition](#batchjobdefinition)

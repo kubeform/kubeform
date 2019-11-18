@@ -41,7 +41,7 @@ Appears on:[OpsworksMysqlLayer](#opsworksmysqllayer), [OpsworksMysqlLayerStatus]
 | `ebsVolume` | ***[[]OpsworksMysqlLayerSpecEbsVolume](#opsworksmysqllayerspecebsvolume)***| ***(Optional)*** |
 | `elasticLoadBalancer` | ***string***| ***(Optional)*** |
 | `installUpdatesOnBoot` | ***bool***| ***(Optional)*** |
-| `instanceShutdownTimeout` | ***int***| ***(Optional)*** |
+| `instanceShutdownTimeout` | ***int64***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `rootPassword` | ***string***| ***(Optional)*** |
 | `rootPasswordOnAllInstances` | ***bool***| ***(Optional)*** |
@@ -54,11 +54,11 @@ Appears on:[OpsworksMysqlLayerSpec](#opsworksmysqllayerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `iops` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
 | `mountPoint` | ***string***||
-| `numberOfDisks` | ***int***||
+| `numberOfDisks` | ***int64***||
 | `raidLevel` | ***string***| ***(Optional)*** |
-| `size` | ***int***||
+| `size` | ***int64***||
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksMysqlLayerStatus
 

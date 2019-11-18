@@ -50,9 +50,9 @@ Appears on:[AmiSpec](#amispec)
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
 | `deviceName` | ***string***||
 | `encrypted` | ***bool***| ***(Optional)*** |
-| `iops` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
 | `snapshotID` | ***string***| ***(Optional)*** |
-| `volumeSize` | ***int***| ***(Optional)*** |
+| `volumeSize` | ***int64***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## AmiSpecEphemeralBlockDevice
 

@@ -31,7 +31,7 @@ Appears on:[LbListenerRule](#lblistenerrule), [LbListenerRuleStatus](#lblistener
 | `arn` | ***string***| ***(Optional)*** |
 | `condition` | ***[[]LbListenerRuleSpecCondition](#lblistenerrulespeccondition)***||
 | `listenerArn` | ***string***||
-| `priority` | ***int***| ***(Optional)*** |
+| `priority` | ***int64***| ***(Optional)*** |
 ## LbListenerRuleSpecAction
 
 Appears on:[LbListenerRuleSpec](#lblistenerrulespec)
@@ -41,7 +41,7 @@ Appears on:[LbListenerRuleSpec](#lblistenerrulespec)
 | `authenticateCognito` | ***[[]LbListenerRuleSpecActionAuthenticateCognito](#lblistenerrulespecactionauthenticatecognito)***| ***(Optional)*** |
 | `authenticateOidc` | ***[[]LbListenerRuleSpecActionAuthenticateOidc](#lblistenerrulespecactionauthenticateoidc)***| ***(Optional)*** |
 | `fixedResponse` | ***[[]LbListenerRuleSpecActionFixedResponse](#lblistenerrulespecactionfixedresponse)***| ***(Optional)*** |
-| `order` | ***int***| ***(Optional)*** |
+| `order` | ***int64***| ***(Optional)*** |
 | `redirect` | ***[[]LbListenerRuleSpecActionRedirect](#lblistenerrulespecactionredirect)***| ***(Optional)*** |
 | `targetGroupArn` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
@@ -55,7 +55,7 @@ Appears on:[LbListenerRuleSpecAction](#lblistenerrulespecaction)
 | `onUnauthenticatedRequest` | ***string***| ***(Optional)*** |
 | `scope` | ***string***| ***(Optional)*** |
 | `sessionCookieName` | ***string***| ***(Optional)*** |
-| `sessionTimeout` | ***int***| ***(Optional)*** |
+| `sessionTimeout` | ***int64***| ***(Optional)*** |
 | `userPoolArn` | ***string***||
 | `userPoolClientID` | ***string***||
 | `userPoolDomain` | ***string***||
@@ -72,7 +72,7 @@ Appears on:[LbListenerRuleSpecAction](#lblistenerrulespecaction)
 | `onUnauthenticatedRequest` | ***string***| ***(Optional)*** |
 | `scope` | ***string***| ***(Optional)*** |
 | `sessionCookieName` | ***string***| ***(Optional)*** |
-| `sessionTimeout` | ***int***| ***(Optional)*** |
+| `sessionTimeout` | ***int64***| ***(Optional)*** |
 | `tokenEndpoint` | ***string***||
 | `userInfoEndpoint` | ***string***||
 ## LbListenerRuleSpecActionFixedResponse

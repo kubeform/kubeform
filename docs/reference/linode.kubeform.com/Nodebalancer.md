@@ -26,7 +26,7 @@ Appears on:[Nodebalancer](#nodebalancer), [NodebalancerStatus](#nodebalancerstat
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `clientConnThrottle` | ***int***| ***(Optional)*** Throttle connections per second (0-20). Set to 0 (zero) to disable throttling.|
+| `clientConnThrottle` | ***int64***| ***(Optional)*** Throttle connections per second (0-20). Set to 0 (zero) to disable throttling.|
 | `created` | ***string***| ***(Optional)*** |
 | `hostname` | ***string***| ***(Optional)*** This NodeBalancer's hostname, ending with .nodebalancer.linode.com|
 | `ipv4` | ***string***| ***(Optional)*** The Public IPv4 Address of this NodeBalancer|

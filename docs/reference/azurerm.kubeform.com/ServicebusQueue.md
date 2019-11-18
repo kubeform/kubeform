@@ -39,8 +39,8 @@ Appears on:[ServicebusQueue](#servicebusqueue), [ServicebusQueueStatus](#service
 | `enablePartitioning` | ***bool***| ***(Optional)*** |
 | `location` | ***string***| ***(Optional)*** Deprecated|
 | `lockDuration` | ***string***| ***(Optional)*** |
-| `maxDeliveryCount` | ***int***| ***(Optional)*** |
-| `maxSizeInMegabytes` | ***int***| ***(Optional)*** |
+| `maxDeliveryCount` | ***int64***| ***(Optional)*** |
+| `maxSizeInMegabytes` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `namespaceName` | ***string***||
 | `requiresDuplicateDetection` | ***bool***| ***(Optional)*** |

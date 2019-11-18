@@ -37,19 +37,19 @@ Appears on:[LambdaFunction](#lambdafunction), [LambdaFunctionStatus](#lambdafunc
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
 | `lastModified` | ***string***| ***(Optional)*** |
 | `layers` | ***[]string***| ***(Optional)*** |
-| `memorySize` | ***int***| ***(Optional)*** |
+| `memorySize` | ***int64***| ***(Optional)*** |
 | `publish` | ***bool***| ***(Optional)*** |
 | `qualifiedArn` | ***string***| ***(Optional)*** |
-| `reservedConcurrentExecutions` | ***int***| ***(Optional)*** |
+| `reservedConcurrentExecutions` | ***int64***| ***(Optional)*** |
 | `role` | ***string***||
 | `runtime` | ***string***||
 | `s3Bucket` | ***string***| ***(Optional)*** |
 | `s3Key` | ***string***| ***(Optional)*** |
 | `s3ObjectVersion` | ***string***| ***(Optional)*** |
 | `sourceCodeHash` | ***string***| ***(Optional)*** |
-| `sourceCodeSize` | ***int***| ***(Optional)*** |
+| `sourceCodeSize` | ***int64***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `timeout` | ***int***| ***(Optional)*** |
+| `timeout` | ***int64***| ***(Optional)*** |
 | `tracingConfig` | ***[[]LambdaFunctionSpecTracingConfig](#lambdafunctionspectracingconfig)***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
 | `vpcConfig` | ***[[]LambdaFunctionSpecVpcConfig](#lambdafunctionspecvpcconfig)***| ***(Optional)*** |

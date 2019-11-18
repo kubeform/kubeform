@@ -32,7 +32,7 @@ Appears on:[EfsFileSystem](#efsfilesystem), [EfsFileSystemStatus](#efsfilesystem
 | `encrypted` | ***bool***| ***(Optional)*** |
 | `kmsKeyID` | ***string***| ***(Optional)*** |
 | `performanceMode` | ***string***| ***(Optional)*** |
-| `provisionedThroughputInMibps` | ***encoding/json.Number***| ***(Optional)*** |
+| `provisionedThroughputInMibps` | ***float64***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `throughputMode` | ***string***| ***(Optional)*** |
 ## EfsFileSystemStatus

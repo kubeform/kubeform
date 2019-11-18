@@ -58,7 +58,7 @@ Appears on:[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)
 | `deviceName` | ***string***| ***(Optional)*** |
 | `diskEncryptionKey` | ***[[]ComputeInstanceTemplateSpecDiskDiskEncryptionKey](#computeinstancetemplatespecdiskdiskencryptionkey)***| ***(Optional)*** |
 | `diskName` | ***string***| ***(Optional)*** |
-| `diskSizeGb` | ***int***| ***(Optional)*** |
+| `diskSizeGb` | ***int64***| ***(Optional)*** |
 | `diskType` | ***string***| ***(Optional)*** |
 | `interface` | ***string***| ***(Optional)*** |
 | `mode` | ***string***| ***(Optional)*** |
@@ -78,7 +78,7 @@ Appears on:[ComputeInstanceTemplateSpec](#computeinstancetemplatespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `count` | ***int***||
+| `count` | ***int64***||
 | `type` | ***string***||
 ## ComputeInstanceTemplateSpecNetworkInterface
 

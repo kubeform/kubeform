@@ -31,7 +31,7 @@ Appears on:[LbListener](#lblistener), [LbListenerStatus](#lblistenerstatus)
 | `certificateArn` | ***string***| ***(Optional)*** |
 | `defaultAction` | ***[[]LbListenerSpecDefaultAction](#lblistenerspecdefaultaction)***||
 | `loadBalancerArn` | ***string***||
-| `port` | ***int***||
+| `port` | ***int64***||
 | `protocol` | ***string***| ***(Optional)*** |
 | `sslPolicy` | ***string***| ***(Optional)*** |
 ## LbListenerSpecDefaultAction
@@ -43,7 +43,7 @@ Appears on:[LbListenerSpec](#lblistenerspec)
 | `authenticateCognito` | ***[[]LbListenerSpecDefaultActionAuthenticateCognito](#lblistenerspecdefaultactionauthenticatecognito)***| ***(Optional)*** |
 | `authenticateOidc` | ***[[]LbListenerSpecDefaultActionAuthenticateOidc](#lblistenerspecdefaultactionauthenticateoidc)***| ***(Optional)*** |
 | `fixedResponse` | ***[[]LbListenerSpecDefaultActionFixedResponse](#lblistenerspecdefaultactionfixedresponse)***| ***(Optional)*** |
-| `order` | ***int***| ***(Optional)*** |
+| `order` | ***int64***| ***(Optional)*** |
 | `redirect` | ***[[]LbListenerSpecDefaultActionRedirect](#lblistenerspecdefaultactionredirect)***| ***(Optional)*** |
 | `targetGroupArn` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
@@ -57,7 +57,7 @@ Appears on:[LbListenerSpecDefaultAction](#lblistenerspecdefaultaction)
 | `onUnauthenticatedRequest` | ***string***| ***(Optional)*** |
 | `scope` | ***string***| ***(Optional)*** |
 | `sessionCookieName` | ***string***| ***(Optional)*** |
-| `sessionTimeout` | ***int***| ***(Optional)*** |
+| `sessionTimeout` | ***int64***| ***(Optional)*** |
 | `userPoolArn` | ***string***||
 | `userPoolClientID` | ***string***||
 | `userPoolDomain` | ***string***||
@@ -74,7 +74,7 @@ Appears on:[LbListenerSpecDefaultAction](#lblistenerspecdefaultaction)
 | `onUnauthenticatedRequest` | ***string***| ***(Optional)*** |
 | `scope` | ***string***| ***(Optional)*** |
 | `sessionCookieName` | ***string***| ***(Optional)*** |
-| `sessionTimeout` | ***int***| ***(Optional)*** |
+| `sessionTimeout` | ***int64***| ***(Optional)*** |
 | `tokenEndpoint` | ***string***||
 | `userInfoEndpoint` | ***string***||
 ## LbListenerSpecDefaultActionFixedResponse

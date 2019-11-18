@@ -43,10 +43,10 @@ Appears on:[SchedulerJobCollectionSpec](#schedulerjobcollectionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `maxJobCount` | ***int***| ***(Optional)*** |
+| `maxJobCount` | ***int64***| ***(Optional)*** |
 | `maxRecurrenceFrequency` | ***string***||
-| `maxRecurrenceInterval` | ***int***| ***(Optional)*** |
-| `maxRetryInterval` | ***int***| ***(Optional)*** Deprecated|
+| `maxRecurrenceInterval` | ***int64***| ***(Optional)*** |
+| `maxRetryInterval` | ***int64***| ***(Optional)*** Deprecated|
 ## SchedulerJobCollectionStatus
 
 Appears on:[SchedulerJobCollection](#schedulerjobcollection)

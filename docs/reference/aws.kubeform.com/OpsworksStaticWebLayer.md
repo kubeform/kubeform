@@ -41,7 +41,7 @@ Appears on:[OpsworksStaticWebLayer](#opsworksstaticweblayer), [OpsworksStaticWeb
 | `ebsVolume` | ***[[]OpsworksStaticWebLayerSpecEbsVolume](#opsworksstaticweblayerspecebsvolume)***| ***(Optional)*** |
 | `elasticLoadBalancer` | ***string***| ***(Optional)*** |
 | `installUpdatesOnBoot` | ***bool***| ***(Optional)*** |
-| `instanceShutdownTimeout` | ***int***| ***(Optional)*** |
+| `instanceShutdownTimeout` | ***int64***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `stackID` | ***string***||
 | `systemPackages` | ***[]string***| ***(Optional)*** |
@@ -52,11 +52,11 @@ Appears on:[OpsworksStaticWebLayerSpec](#opsworksstaticweblayerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `iops` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
 | `mountPoint` | ***string***||
-| `numberOfDisks` | ***int***||
+| `numberOfDisks` | ***int64***||
 | `raidLevel` | ***string***| ***(Optional)*** |
-| `size` | ***int***||
+| `size` | ***int64***||
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksStaticWebLayerStatus
 

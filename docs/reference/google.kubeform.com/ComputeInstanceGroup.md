@@ -33,7 +33,7 @@ Appears on:[ComputeInstanceGroup](#computeinstancegroup), [ComputeInstanceGroupS
 | `network` | ***string***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
-| `size` | ***int***| ***(Optional)*** |
+| `size` | ***int64***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
 ## ComputeInstanceGroupSpecNamedPort
 
@@ -42,7 +42,7 @@ Appears on:[ComputeInstanceGroupSpec](#computeinstancegroupspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
-| `port` | ***int***||
+| `port` | ***int64***||
 ## ComputeInstanceGroupStatus
 
 Appears on:[ComputeInstanceGroup](#computeinstancegroup)

@@ -30,7 +30,7 @@ Appears on:[DnsMxRecord](#dnsmxrecord), [DnsMxRecordStatus](#dnsmxrecordstatus)
 | `record` | ***[[]DnsMxRecordSpecRecord](#dnsmxrecordspecrecord)***||
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `ttl` | ***int***||
+| `ttl` | ***int64***||
 | `zoneName` | ***string***||
 ## DnsMxRecordSpecRecord
 

@@ -40,7 +40,7 @@ Appears on:[VirtualNetworkGatewayConnection](#virtualnetworkgatewayconnection), 
 | `name` | ***string***||
 | `peerVirtualNetworkGatewayID` | ***string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
-| `routingWeight` | ***int***| ***(Optional)*** |
+| `routingWeight` | ***int64***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `type` | ***string***||
 | `usePolicyBasedTrafficSelectors` | ***bool***| ***(Optional)*** |
@@ -57,8 +57,8 @@ Appears on:[VirtualNetworkGatewayConnectionSpec](#virtualnetworkgatewayconnectio
 | `ipsecEncryption` | ***string***||
 | `ipsecIntegrity` | ***string***||
 | `pfsGroup` | ***string***||
-| `saDatasize` | ***int***| ***(Optional)*** |
-| `saLifetime` | ***int***| ***(Optional)*** |
+| `saDatasize` | ***int64***| ***(Optional)*** |
+| `saLifetime` | ***int64***| ***(Optional)*** |
 ## VirtualNetworkGatewayConnectionStatus
 
 Appears on:[VirtualNetworkGatewayConnection](#virtualnetworkgatewayconnection)

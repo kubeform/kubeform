@@ -27,17 +27,17 @@ Appears on:[ExpressRouteCircuitPeering](#expressroutecircuitpeering), [ExpressRo
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
-| `azureAsn` | ***int***| ***(Optional)*** |
+| `azureAsn` | ***int64***| ***(Optional)*** |
 | `expressRouteCircuitName` | ***string***||
 | `microsoftPeeringConfig` | ***[[]ExpressRouteCircuitPeeringSpecMicrosoftPeeringConfig](#expressroutecircuitpeeringspecmicrosoftpeeringconfig)***| ***(Optional)*** |
-| `peerAsn` | ***int***| ***(Optional)*** |
+| `peerAsn` | ***int64***| ***(Optional)*** |
 | `peeringType` | ***string***||
 | `primaryAzurePort` | ***string***| ***(Optional)*** |
 | `primaryPeerAddressPrefix` | ***string***||
 | `resourceGroupName` | ***string***||
 | `secondaryAzurePort` | ***string***| ***(Optional)*** |
 | `secondaryPeerAddressPrefix` | ***string***||
-| `vlanID` | ***int***||
+| `vlanID` | ***int64***||
 ## ExpressRouteCircuitPeeringSpecMicrosoftPeeringConfig
 
 Appears on:[ExpressRouteCircuitPeeringSpec](#expressroutecircuitpeeringspec)

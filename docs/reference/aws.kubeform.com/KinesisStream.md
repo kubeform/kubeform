@@ -30,8 +30,8 @@ Appears on:[KinesisStream](#kinesisstream), [KinesisStreamStatus](#kinesisstream
 | `encryptionType` | ***string***| ***(Optional)*** |
 | `kmsKeyID` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `retentionPeriod` | ***int***| ***(Optional)*** |
-| `shardCount` | ***int***||
+| `retentionPeriod` | ***int64***| ***(Optional)*** |
+| `shardCount` | ***int64***||
 | `shardLevelMetrics` | ***[]string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## KinesisStreamStatus

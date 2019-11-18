@@ -39,7 +39,7 @@ Appears on:[ComputeDisk](#computedisk), [ComputeDiskStatus](#computediskstatus)
 | `name` | ***string***||
 | `project` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
-| `size` | ***int***| ***(Optional)*** |
+| `size` | ***int64***| ***(Optional)*** |
 | `snapshot` | ***string***| ***(Optional)*** |
 | `sourceImageEncryptionKey` | ***[[]ComputeDiskSpecSourceImageEncryptionKey](#computediskspecsourceimageencryptionkey)***| ***(Optional)*** |
 | `sourceImageID` | ***string***| ***(Optional)*** |

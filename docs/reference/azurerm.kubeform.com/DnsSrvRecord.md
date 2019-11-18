@@ -30,7 +30,7 @@ Appears on:[DnsSrvRecord](#dnssrvrecord), [DnsSrvRecordStatus](#dnssrvrecordstat
 | `record` | ***[[]DnsSrvRecordSpecRecord](#dnssrvrecordspecrecord)***||
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `ttl` | ***int***||
+| `ttl` | ***int64***||
 | `zoneName` | ***string***||
 ## DnsSrvRecordSpecRecord
 
@@ -38,10 +38,10 @@ Appears on:[DnsSrvRecordSpec](#dnssrvrecordspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `port` | ***int***||
-| `priority` | ***int***||
+| `port` | ***int64***||
+| `priority` | ***int64***||
 | `target` | ***string***||
-| `weight` | ***int***||
+| `weight` | ***int64***||
 ## DnsSrvRecordStatus
 
 Appears on:[DnsSrvRecord](#dnssrvrecord)

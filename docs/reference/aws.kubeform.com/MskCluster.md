@@ -21,7 +21,9 @@ section_menu_id: reference
 ## MskClusterSpec
 
 
+
 Appears on:[MskCluster](#mskcluster), [MskClusterStatus](#mskclusterstatus)
+
 
 
 | Field | Type | Description |
@@ -45,7 +47,9 @@ Appears on:[MskCluster](#mskcluster), [MskClusterStatus](#mskclusterstatus)
 ## MskClusterSpecBrokerNodeGroupInfo
 
 
+
 Appears on:[MskClusterSpec](#mskclusterspec)
+
 
 
 | Field | Type | Description |
@@ -58,7 +62,9 @@ Appears on:[MskClusterSpec](#mskclusterspec)
 ## MskClusterSpecClientAuthentication
 
 
+
 Appears on:[MskClusterSpec](#mskclusterspec)
+
 
 
 | Field | Type | Description |
@@ -67,7 +73,9 @@ Appears on:[MskClusterSpec](#mskclusterspec)
 ## MskClusterSpecClientAuthenticationTls
 
 
+
 Appears on:[MskClusterSpecClientAuthentication](#mskclusterspecclientauthentication)
+
 
 
 | Field | Type | Description |
@@ -76,7 +84,9 @@ Appears on:[MskClusterSpecClientAuthentication](#mskclusterspecclientauthenticat
 ## MskClusterSpecConfigurationInfo
 
 
+
 Appears on:[MskClusterSpec](#mskclusterspec)
+
 
 
 | Field | Type | Description |
@@ -86,7 +96,9 @@ Appears on:[MskClusterSpec](#mskclusterspec)
 ## MskClusterSpecEncryptionInfo
 
 
+
 Appears on:[MskClusterSpec](#mskclusterspec)
+
 
 
 | Field | Type | Description |
@@ -96,7 +108,9 @@ Appears on:[MskClusterSpec](#mskclusterspec)
 ## MskClusterSpecEncryptionInfoEncryptionInTransit
 
 
+
 Appears on:[MskClusterSpecEncryptionInfo](#mskclusterspecencryptioninfo)
+
 
 
 | Field | Type | Description |
@@ -106,7 +120,9 @@ Appears on:[MskClusterSpecEncryptionInfo](#mskclusterspecencryptioninfo)
 ## MskClusterStatus
 
 
+
 Appears on:[MskCluster](#mskcluster)
+
 
 
 | Field | Type | Description |

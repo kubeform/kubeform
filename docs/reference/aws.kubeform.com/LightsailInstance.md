@@ -30,7 +30,7 @@ Appears on:[LightsailInstance](#lightsailinstance), [LightsailInstanceStatus](#l
 | `availabilityZone` | ***string***||
 | `blueprintID` | ***string***||
 | `bundleID` | ***string***||
-| `cpuCount` | ***int***| ***(Optional)*** |
+| `cpuCount` | ***int64***| ***(Optional)*** |
 | `createdAt` | ***string***| ***(Optional)*** |
 | `ipv6Address` | ***string***| ***(Optional)*** |
 | `isStaticIP` | ***bool***| ***(Optional)*** |
@@ -38,7 +38,7 @@ Appears on:[LightsailInstance](#lightsailinstance), [LightsailInstanceStatus](#l
 | `name` | ***string***||
 | `privateIPAddress` | ***string***| ***(Optional)*** |
 | `publicIPAddress` | ***string***| ***(Optional)*** |
-| `ramSize` | ***int***| ***(Optional)*** |
+| `ramSize` | ***int64***| ***(Optional)*** |
 | `userData` | ***string***| ***(Optional)*** |
 | `username` | ***string***| ***(Optional)*** |
 ## LightsailInstanceStatus

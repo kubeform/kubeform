@@ -29,9 +29,9 @@ Appears on:[IamAccountPasswordPolicy](#iamaccountpasswordpolicy), [IamAccountPas
 | `allowUsersToChangePassword` | ***bool***| ***(Optional)*** |
 | `expirePasswords` | ***bool***| ***(Optional)*** |
 | `hardExpiry` | ***bool***| ***(Optional)*** |
-| `maxPasswordAge` | ***int***| ***(Optional)*** |
-| `minimumPasswordLength` | ***int***| ***(Optional)*** |
-| `passwordReusePrevention` | ***int***| ***(Optional)*** |
+| `maxPasswordAge` | ***int64***| ***(Optional)*** |
+| `minimumPasswordLength` | ***int64***| ***(Optional)*** |
+| `passwordReusePrevention` | ***int64***| ***(Optional)*** |
 | `requireLowercaseCharacters` | ***bool***| ***(Optional)*** |
 | `requireNumbers` | ***bool***| ***(Optional)*** |
 | `requireSymbols` | ***bool***| ***(Optional)*** |

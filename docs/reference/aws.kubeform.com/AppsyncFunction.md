@@ -21,7 +21,9 @@ section_menu_id: reference
 ## AppsyncFunctionSpec
 
 
+
 Appears on:[AppsyncFunction](#appsyncfunction), [AppsyncFunctionStatus](#appsyncfunctionstatus)
+
 
 
 | Field | Type | Description |
@@ -40,7 +42,9 @@ Appears on:[AppsyncFunction](#appsyncfunction), [AppsyncFunctionStatus](#appsync
 ## AppsyncFunctionStatus
 
 
+
 Appears on:[AppsyncFunction](#appsyncfunction)
+
 
 
 | Field | Type | Description |

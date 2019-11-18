@@ -34,7 +34,7 @@ Appears on:[WafregionalRateBasedRule](#wafregionalratebasedrule), [WafregionalRa
 | `name` | ***string***||
 | `predicate` | ***[[]WafregionalRateBasedRuleSpecPredicate](#wafregionalratebasedrulespecpredicate)***| ***(Optional)*** |
 | `rateKey` | ***string***||
-| `rateLimit` | ***int***||
+| `rateLimit` | ***int64***||
 ## WafregionalRateBasedRuleSpecPredicate
 
 Appears on:[WafregionalRateBasedRuleSpec](#wafregionalratebasedrulespec)

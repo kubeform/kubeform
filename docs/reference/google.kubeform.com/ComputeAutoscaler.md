@@ -40,26 +40,26 @@ Appears on:[ComputeAutoscalerSpec](#computeautoscalerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `cooldownPeriod` | ***int***| ***(Optional)*** |
+| `cooldownPeriod` | ***int64***| ***(Optional)*** |
 | `cpuUtilization` | ***[[]ComputeAutoscalerSpecAutoscalingPolicyCpuUtilization](#computeautoscalerspecautoscalingpolicycpuutilization)***| ***(Optional)*** |
 | `loadBalancingUtilization` | ***[[]ComputeAutoscalerSpecAutoscalingPolicyLoadBalancingUtilization](#computeautoscalerspecautoscalingpolicyloadbalancingutilization)***| ***(Optional)*** |
-| `maxReplicas` | ***int***||
+| `maxReplicas` | ***int64***||
 | `metric` | ***[[]ComputeAutoscalerSpecAutoscalingPolicyMetric](#computeautoscalerspecautoscalingpolicymetric)***| ***(Optional)*** |
-| `minReplicas` | ***int***||
+| `minReplicas` | ***int64***||
 ## ComputeAutoscalerSpecAutoscalingPolicyCpuUtilization
 
 Appears on:[ComputeAutoscalerSpecAutoscalingPolicy](#computeautoscalerspecautoscalingpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `target` | ***encoding/json.Number***||
+| `target` | ***float64***||
 ## ComputeAutoscalerSpecAutoscalingPolicyLoadBalancingUtilization
 
 Appears on:[ComputeAutoscalerSpecAutoscalingPolicy](#computeautoscalerspecautoscalingpolicy)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `target` | ***encoding/json.Number***||
+| `target` | ***float64***||
 ## ComputeAutoscalerSpecAutoscalingPolicyMetric
 
 Appears on:[ComputeAutoscalerSpecAutoscalingPolicy](#computeautoscalerspecautoscalingpolicy)
@@ -67,7 +67,7 @@ Appears on:[ComputeAutoscalerSpecAutoscalingPolicy](#computeautoscalerspecautosc
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `name` | ***string***||
-| `target` | ***encoding/json.Number***||
+| `target` | ***float64***||
 | `type` | ***string***||
 ## ComputeAutoscalerStatus
 

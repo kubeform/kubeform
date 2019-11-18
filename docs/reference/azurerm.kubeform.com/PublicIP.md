@@ -33,7 +33,7 @@ Appears on:[PublicIP](#publicip), [PublicIPStatus](#publicipstatus)
 | `allocationMethod` | ***string***| ***(Optional)*** |
 | `domainNameLabel` | ***string***| ***(Optional)*** |
 | `fqdn` | ***string***| ***(Optional)*** |
-| `idleTimeoutInMinutes` | ***int***| ***(Optional)*** |
+| `idleTimeoutInMinutes` | ***int64***| ***(Optional)*** |
 | `ipAddress` | ***string***| ***(Optional)*** |
 | `ipVersion` | ***string***| ***(Optional)*** |
 | `location` | ***string***||

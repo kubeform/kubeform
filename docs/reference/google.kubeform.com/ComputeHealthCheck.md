@@ -26,10 +26,10 @@ Appears on:[ComputeHealthCheck](#computehealthcheck), [ComputeHealthCheckStatus]
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `checkIntervalSec` | ***int***| ***(Optional)*** |
+| `checkIntervalSec` | ***int64***| ***(Optional)*** |
 | `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `healthyThreshold` | ***int***| ***(Optional)*** |
+| `healthyThreshold` | ***int64***| ***(Optional)*** |
 | `httpHealthCheck` | ***[[]ComputeHealthCheckSpecHttpHealthCheck](#computehealthcheckspechttphealthcheck)***| ***(Optional)*** |
 | `httpsHealthCheck` | ***[[]ComputeHealthCheckSpecHttpsHealthCheck](#computehealthcheckspechttpshealthcheck)***| ***(Optional)*** |
 | `name` | ***string***||
@@ -37,9 +37,9 @@ Appears on:[ComputeHealthCheck](#computehealthcheck), [ComputeHealthCheckStatus]
 | `selfLink` | ***string***| ***(Optional)*** |
 | `sslHealthCheck` | ***[[]ComputeHealthCheckSpecSslHealthCheck](#computehealthcheckspecsslhealthcheck)***| ***(Optional)*** |
 | `tcpHealthCheck` | ***[[]ComputeHealthCheckSpecTcpHealthCheck](#computehealthcheckspectcphealthcheck)***| ***(Optional)*** |
-| `timeoutSec` | ***int***| ***(Optional)*** |
+| `timeoutSec` | ***int64***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
-| `unhealthyThreshold` | ***int***| ***(Optional)*** |
+| `unhealthyThreshold` | ***int64***| ***(Optional)*** |
 ## ComputeHealthCheckSpecHttpHealthCheck
 
 Appears on:[ComputeHealthCheckSpec](#computehealthcheckspec)
@@ -47,7 +47,7 @@ Appears on:[ComputeHealthCheckSpec](#computehealthcheckspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `host` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `proxyHeader` | ***string***| ***(Optional)*** |
 | `requestPath` | ***string***| ***(Optional)*** |
 | `response` | ***string***| ***(Optional)*** |
@@ -58,7 +58,7 @@ Appears on:[ComputeHealthCheckSpec](#computehealthcheckspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `host` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `proxyHeader` | ***string***| ***(Optional)*** |
 | `requestPath` | ***string***| ***(Optional)*** |
 | `response` | ***string***| ***(Optional)*** |
@@ -68,7 +68,7 @@ Appears on:[ComputeHealthCheckSpec](#computehealthcheckspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `proxyHeader` | ***string***| ***(Optional)*** |
 | `request` | ***string***| ***(Optional)*** |
 | `response` | ***string***| ***(Optional)*** |
@@ -78,7 +78,7 @@ Appears on:[ComputeHealthCheckSpec](#computehealthcheckspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `proxyHeader` | ***string***| ***(Optional)*** |
 | `request` | ***string***| ***(Optional)*** |
 | `response` | ***string***| ***(Optional)*** |

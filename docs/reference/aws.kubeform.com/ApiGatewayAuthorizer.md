@@ -27,7 +27,7 @@ Appears on:[ApiGatewayAuthorizer](#apigatewayauthorizer), [ApiGatewayAuthorizerS
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `authorizerCredentials` | ***string***| ***(Optional)*** |
-| `authorizerResultTtlInSeconds` | ***int***| ***(Optional)*** |
+| `authorizerResultTtlInSeconds` | ***int64***| ***(Optional)*** |
 | `authorizerURI` | ***string***| ***(Optional)*** |
 | `identitySource` | ***string***| ***(Optional)*** |
 | `identityValidationExpression` | ***string***| ***(Optional)*** |

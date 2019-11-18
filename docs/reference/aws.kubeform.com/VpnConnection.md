@@ -40,13 +40,13 @@ Appears on:[VpnConnection](#vpnconnection), [VpnConnectionStatus](#vpnconnection
 | `transitGatewayID` | ***string***| ***(Optional)*** |
 | `tunnel1Address` | ***string***| ***(Optional)*** |
 | `tunnel1BGPAsn` | ***string***| ***(Optional)*** |
-| `tunnel1BGPHoldtime` | ***int***| ***(Optional)*** |
+| `tunnel1BGPHoldtime` | ***int64***| ***(Optional)*** |
 | `tunnel1CgwInsideAddress` | ***string***| ***(Optional)*** |
 | `tunnel1InsideCIDR` | ***string***| ***(Optional)*** |
 | `tunnel1VgwInsideAddress` | ***string***| ***(Optional)*** |
 | `tunnel2Address` | ***string***| ***(Optional)*** |
 | `tunnel2BGPAsn` | ***string***| ***(Optional)*** |
-| `tunnel2BGPHoldtime` | ***int***| ***(Optional)*** |
+| `tunnel2BGPHoldtime` | ***int64***| ***(Optional)*** |
 | `tunnel2CgwInsideAddress` | ***string***| ***(Optional)*** |
 | `tunnel2InsideCIDR` | ***string***| ***(Optional)*** |
 | `tunnel2VgwInsideAddress` | ***string***| ***(Optional)*** |
@@ -68,7 +68,7 @@ Appears on:[VpnConnectionSpec](#vpnconnectionspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `acceptedRouteCount` | ***int***| ***(Optional)*** |
+| `acceptedRouteCount` | ***int64***| ***(Optional)*** |
 | `lastStatusChange` | ***string***| ***(Optional)*** |
 | `outsideIPAddress` | ***string***| ***(Optional)*** |
 | `status` | ***string***| ***(Optional)*** |

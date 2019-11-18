@@ -38,16 +38,16 @@ Appears on:[ElasticacheCluster](#elasticachecluster), [ElasticacheClusterStatus]
 | `maintenanceWindow` | ***string***| ***(Optional)*** |
 | `nodeType` | ***string***| ***(Optional)*** |
 | `notificationTopicArn` | ***string***| ***(Optional)*** |
-| `numCacheNodes` | ***int***| ***(Optional)*** |
+| `numCacheNodes` | ***int64***| ***(Optional)*** |
 | `parameterGroupName` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `preferredAvailabilityZones` | ***[]string***| ***(Optional)*** |
 | `replicationGroupID` | ***string***| ***(Optional)*** |
 | `securityGroupIDS` | ***[]string***| ***(Optional)*** |
 | `securityGroupNames` | ***[]string***| ***(Optional)*** |
 | `snapshotArns` | ***[]string***| ***(Optional)*** |
 | `snapshotName` | ***string***| ***(Optional)*** |
-| `snapshotRetentionLimit` | ***int***| ***(Optional)*** |
+| `snapshotRetentionLimit` | ***int64***| ***(Optional)*** |
 | `snapshotWindow` | ***string***| ***(Optional)*** |
 | `subnetGroupName` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
@@ -60,7 +60,7 @@ Appears on:[ElasticacheClusterSpec](#elasticacheclusterspec)
 | `address` | ***string***| ***(Optional)*** |
 | `availabilityZone` | ***string***| ***(Optional)*** |
 | `ID` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 ## ElasticacheClusterStatus
 
 Appears on:[ElasticacheCluster](#elasticachecluster)

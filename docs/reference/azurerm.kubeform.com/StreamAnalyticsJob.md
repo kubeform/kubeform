@@ -32,15 +32,15 @@ Appears on:[StreamAnalyticsJob](#streamanalyticsjob), [StreamAnalyticsJobStatus]
 | `id` | ***string***||
 | `compatibilityLevel` | ***string***||
 | `dataLocale` | ***string***||
-| `eventsLateArrivalMaxDelayInSeconds` | ***int***||
-| `eventsOutOfOrderMaxDelayInSeconds` | ***int***||
+| `eventsLateArrivalMaxDelayInSeconds` | ***int64***||
+| `eventsOutOfOrderMaxDelayInSeconds` | ***int64***||
 | `eventsOutOfOrderPolicy` | ***string***||
 | `jobID` | ***string***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
 | `outputErrorPolicy` | ***string***||
 | `resourceGroupName` | ***string***||
-| `streamingUnits` | ***int***||
+| `streamingUnits` | ***int64***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `transformationQuery` | ***string***||
 ## StreamAnalyticsJobStatus

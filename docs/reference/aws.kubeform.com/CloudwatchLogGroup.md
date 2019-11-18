@@ -30,7 +30,7 @@ Appears on:[CloudwatchLogGroup](#cloudwatchloggroup), [CloudwatchLogGroupStatus]
 | `kmsKeyID` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
-| `retentionInDays` | ***int***| ***(Optional)*** |
+| `retentionInDays` | ***int64***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## CloudwatchLogGroupStatus
 

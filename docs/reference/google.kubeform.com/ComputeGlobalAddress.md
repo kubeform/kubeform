@@ -35,7 +35,7 @@ Appears on:[ComputeGlobalAddress](#computeglobaladdress), [ComputeGlobalAddressS
 | `labels` | ***map[string]string***| ***(Optional)*** Deprecated|
 | `name` | ***string***||
 | `network` | ***string***| ***(Optional)*** Deprecated|
-| `prefixLength` | ***int***| ***(Optional)*** Deprecated|
+| `prefixLength` | ***int64***| ***(Optional)*** Deprecated|
 | `project` | ***string***| ***(Optional)*** |
 | `purpose` | ***string***| ***(Optional)*** Deprecated|
 | `selfLink` | ***string***| ***(Optional)*** |

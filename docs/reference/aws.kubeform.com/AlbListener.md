@@ -31,7 +31,7 @@ Appears on:[AlbListener](#alblistener), [AlbListenerStatus](#alblistenerstatus)
 | `certificateArn` | ***string***| ***(Optional)*** |
 | `defaultAction` | ***[[]AlbListenerSpecDefaultAction](#alblistenerspecdefaultaction)***||
 | `loadBalancerArn` | ***string***||
-| `port` | ***int***||
+| `port` | ***int64***||
 | `protocol` | ***string***| ***(Optional)*** |
 | `sslPolicy` | ***string***| ***(Optional)*** |
 ## AlbListenerSpecDefaultAction
@@ -43,7 +43,7 @@ Appears on:[AlbListenerSpec](#alblistenerspec)
 | `authenticateCognito` | ***[[]AlbListenerSpecDefaultActionAuthenticateCognito](#alblistenerspecdefaultactionauthenticatecognito)***| ***(Optional)*** |
 | `authenticateOidc` | ***[[]AlbListenerSpecDefaultActionAuthenticateOidc](#alblistenerspecdefaultactionauthenticateoidc)***| ***(Optional)*** |
 | `fixedResponse` | ***[[]AlbListenerSpecDefaultActionFixedResponse](#alblistenerspecdefaultactionfixedresponse)***| ***(Optional)*** |
-| `order` | ***int***| ***(Optional)*** |
+| `order` | ***int64***| ***(Optional)*** |
 | `redirect` | ***[[]AlbListenerSpecDefaultActionRedirect](#alblistenerspecdefaultactionredirect)***| ***(Optional)*** |
 | `targetGroupArn` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
@@ -57,7 +57,7 @@ Appears on:[AlbListenerSpecDefaultAction](#alblistenerspecdefaultaction)
 | `onUnauthenticatedRequest` | ***string***| ***(Optional)*** |
 | `scope` | ***string***| ***(Optional)*** |
 | `sessionCookieName` | ***string***| ***(Optional)*** |
-| `sessionTimeout` | ***int***| ***(Optional)*** |
+| `sessionTimeout` | ***int64***| ***(Optional)*** |
 | `userPoolArn` | ***string***||
 | `userPoolClientID` | ***string***||
 | `userPoolDomain` | ***string***||
@@ -74,7 +74,7 @@ Appears on:[AlbListenerSpecDefaultAction](#alblistenerspecdefaultaction)
 | `onUnauthenticatedRequest` | ***string***| ***(Optional)*** |
 | `scope` | ***string***| ***(Optional)*** |
 | `sessionCookieName` | ***string***| ***(Optional)*** |
-| `sessionTimeout` | ***int***| ***(Optional)*** |
+| `sessionTimeout` | ***int64***| ***(Optional)*** |
 | `tokenEndpoint` | ***string***||
 | `userInfoEndpoint` | ***string***||
 ## AlbListenerSpecDefaultActionFixedResponse

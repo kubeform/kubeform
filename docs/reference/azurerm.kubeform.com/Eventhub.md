@@ -28,10 +28,10 @@ Appears on:[Eventhub](#eventhub), [EventhubStatus](#eventhubstatus)
 | `id` | ***string***||
 | `captureDescription` | ***[[]EventhubSpecCaptureDescription](#eventhubspeccapturedescription)***| ***(Optional)*** |
 | `location` | ***string***| ***(Optional)*** Deprecated|
-| `messageRetention` | ***int***||
+| `messageRetention` | ***int64***||
 | `name` | ***string***||
 | `namespaceName` | ***string***||
-| `partitionCount` | ***int***||
+| `partitionCount` | ***int64***||
 | `partitionIDS` | ***[]string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 ## EventhubSpecCaptureDescription
@@ -43,8 +43,8 @@ Appears on:[EventhubSpec](#eventhubspec)
 | `destination` | ***[[]EventhubSpecCaptureDescriptionDestination](#eventhubspeccapturedescriptiondestination)***||
 | `enabled` | ***bool***||
 | `encoding` | ***string***||
-| `intervalInSeconds` | ***int***| ***(Optional)*** |
-| `sizeLimitInBytes` | ***int***| ***(Optional)*** |
+| `intervalInSeconds` | ***int64***| ***(Optional)*** |
+| `sizeLimitInBytes` | ***int64***| ***(Optional)*** |
 | `skipEmptyArchives` | ***bool***| ***(Optional)*** |
 ## EventhubSpecCaptureDescriptionDestination
 

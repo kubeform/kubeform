@@ -28,7 +28,7 @@ Appears on:[KmsExternalKey](#kmsexternalkey), [KmsExternalKeyStatus](#kmsexterna
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `arn` | ***string***| ***(Optional)*** |
-| `deletionWindowInDays` | ***int***| ***(Optional)*** |
+| `deletionWindowInDays` | ***int64***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `enabled` | ***bool***| ***(Optional)*** |
 | `expirationModel` | ***string***| ***(Optional)*** |

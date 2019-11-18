@@ -26,18 +26,18 @@ Appears on:[BigqueryTable](#bigquerytable), [BigqueryTableStatus](#bigquerytable
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `creationTime` | ***int***| ***(Optional)*** |
+| `creationTime` | ***int64***| ***(Optional)*** |
 | `datasetID` | ***string***||
 | `description` | ***string***| ***(Optional)*** |
 | `etag` | ***string***| ***(Optional)*** |
-| `expirationTime` | ***int***| ***(Optional)*** |
+| `expirationTime` | ***int64***| ***(Optional)*** |
 | `friendlyName` | ***string***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
-| `lastModifiedTime` | ***int***| ***(Optional)*** |
+| `lastModifiedTime` | ***int64***| ***(Optional)*** |
 | `location` | ***string***| ***(Optional)*** |
-| `numBytes` | ***int***| ***(Optional)*** |
-| `numLongTermBytes` | ***int***| ***(Optional)*** |
-| `numRows` | ***int***| ***(Optional)*** |
+| `numBytes` | ***int64***| ***(Optional)*** |
+| `numLongTermBytes` | ***int64***| ***(Optional)*** |
+| `numRows` | ***int64***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `schema` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
@@ -51,7 +51,7 @@ Appears on:[BigqueryTableSpec](#bigquerytablespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `expirationMs` | ***int***| ***(Optional)*** |
+| `expirationMs` | ***int64***| ***(Optional)*** |
 | `field` | ***string***| ***(Optional)*** |
 | `type` | ***string***||
 ## BigqueryTableSpecView

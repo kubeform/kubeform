@@ -28,7 +28,7 @@ Appears on:[ExpressRouteCircuit](#expressroutecircuit), [ExpressRouteCircuitStat
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `allowClassicOperations` | ***bool***| ***(Optional)*** |
-| `bandwidthInMbps` | ***int***||
+| `bandwidthInMbps` | ***int64***||
 | `location` | ***string***||
 | `name` | ***string***||
 | `peeringLocation` | ***string***||

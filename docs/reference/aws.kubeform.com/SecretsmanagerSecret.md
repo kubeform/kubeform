@@ -36,7 +36,7 @@ Appears on:[SecretsmanagerSecret](#secretsmanagersecret), [SecretsmanagerSecretS
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
 | `policy` | ***string***| ***(Optional)*** |
-| `recoveryWindowInDays` | ***int***| ***(Optional)*** |
+| `recoveryWindowInDays` | ***int64***| ***(Optional)*** |
 | `rotationEnabled` | ***bool***| ***(Optional)*** |
 | `rotationLambdaArn` | ***string***| ***(Optional)*** |
 | `rotationRules` | ***[[]SecretsmanagerSecretSpecRotationRules](#secretsmanagersecretspecrotationrules)***| ***(Optional)*** |
@@ -47,7 +47,7 @@ Appears on:[SecretsmanagerSecretSpec](#secretsmanagersecretspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `automaticallyAfterDays` | ***int***||
+| `automaticallyAfterDays` | ***int64***||
 ## SecretsmanagerSecretStatus
 
 Appears on:[SecretsmanagerSecret](#secretsmanagersecret)

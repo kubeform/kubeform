@@ -74,7 +74,7 @@ Appears on:[WafWebACLSpec](#wafwebaclspec)
 | ------ | ----- | ----------- |
 | `action` | ***[[]WafWebACLSpecRulesAction](#wafwebaclspecrulesaction)***| ***(Optional)*** |
 | `overrideAction` | ***[[]WafWebACLSpecRulesOverrideAction](#wafwebaclspecrulesoverrideaction)***| ***(Optional)*** |
-| `priority` | ***int***||
+| `priority` | ***int64***||
 | `ruleID` | ***string***||
 | `type` | ***string***| ***(Optional)*** |
 ## WafWebACLSpecRulesAction

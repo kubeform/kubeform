@@ -30,7 +30,7 @@ Appears on:[Instance](#instance), [InstanceStatus](#instancestatus)
 | `alerts` | ***[[]InstanceSpecAlerts](#instancespecalerts)***| ***(Optional)*** |
 | `authorizedKeys` | ***[]string***| ***(Optional)*** A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.|
 | `authorizedUsers` | ***[]string***| ***(Optional)*** A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.|
-| `backupID` | ***int***| ***(Optional)*** A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.|
+| `backupID` | ***int64***| ***(Optional)*** A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.|
 | `backups` | ***[[]InstanceSpecBackups](#instancespecbackups)***| ***(Optional)*** Information about this Linode's backups status.|
 | `backupsEnabled` | ***bool***| ***(Optional)*** If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.|
 | `bootConfigLabel` | ***string***| ***(Optional)*** The Label of the Instance Config that should be used to boot the Linode instance.|
@@ -46,9 +46,9 @@ Appears on:[Instance](#instance), [InstanceStatus](#instancestatus)
 | `privateIPAddress` | ***string***| ***(Optional)*** This Linode's Private IPv4 Address.  The regional private IP address range is 192.168.128/17 address shared by all Linode Instances in a region.|
 | `region` | ***string***|This is the location where the Linode was deployed. This cannot be changed without opening a support ticket.|
 | `specs` | ***[[]InstanceSpecSpecs](#instancespecspecs)***| ***(Optional)*** |
-| `stackscriptID` | ***int***| ***(Optional)*** The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.|
+| `stackscriptID` | ***int64***| ***(Optional)*** The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.|
 | `status` | ***string***| ***(Optional)*** The status of the instance, indicating the current readiness state.|
-| `swapSize` | ***int***| ***(Optional)*** When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.|
+| `swapSize` | ***int64***| ***(Optional)*** When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.|
 | `tags` | ***[]string***| ***(Optional)*** An array of tags applied to this object. Tags are for organizational purposes only.|
 | `type` | ***string***| ***(Optional)*** The type of instance to be deployed, determining the price and size.|
 | `watchdogEnabled` | ***bool***| ***(Optional)*** The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.|
@@ -58,11 +58,11 @@ Appears on:[InstanceSpec](#instancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `cpu` | ***int***| ***(Optional)*** The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.|
-| `io` | ***int***| ***(Optional)*** The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.|
-| `networkIn` | ***int***| ***(Optional)*** The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.|
-| `networkOut` | ***int***| ***(Optional)*** The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.|
-| `transferQuota` | ***int***| ***(Optional)*** The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.|
+| `cpu` | ***int64***| ***(Optional)*** The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.|
+| `io` | ***int64***| ***(Optional)*** The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.|
+| `networkIn` | ***int64***| ***(Optional)*** The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.|
+| `networkOut` | ***int64***| ***(Optional)*** The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.|
+| `transferQuota` | ***int64***| ***(Optional)*** The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.|
 ## InstanceSpecBackups
 
 Appears on:[InstanceSpec](#instancespec)
@@ -90,7 +90,7 @@ Appears on:[InstanceSpec](#instancespec)
 | `helpers` | ***[[]InstanceSpecConfigHelpers](#instancespecconfighelpers)***| ***(Optional)*** Helpers enabled when booting to this Linode Config.|
 | `kernel` | ***string***| ***(Optional)*** A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)|
 | `label` | ***string***|The Config's label for display purposes.  Also used by `boot_config_label`.|
-| `memoryLimit` | ***int***| ***(Optional)*** Defaults to the total RAM of the Linode|
+| `memoryLimit` | ***int64***| ***(Optional)*** Defaults to the total RAM of the Linode|
 | `rootDevice` | ***string***| ***(Optional)*** The root device to boot. The corresponding disk must be attached.|
 | `runLevel` | ***string***| ***(Optional)*** Defines the state of your Linode after booting. Defaults to default.|
 | `virtMode` | ***string***| ***(Optional)*** Controls the virtualization mode. Defaults to paravirt.|
@@ -114,72 +114,72 @@ Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int***| ***(Optional)*** The Disk ID to map to this disk slot|
+| `diskID` | ***int64***| ***(Optional)*** The Disk ID to map to this disk slot|
 | `diskLabel` | ***string***| ***(Optional)*** The `label` of the `disk` to map to this `device` slot.|
-| `volumeID` | ***int***| ***(Optional)*** The Block Storage volume ID to map to this disk slot|
+| `volumeID` | ***int64***| ***(Optional)*** The Block Storage volume ID to map to this disk slot|
 ## InstanceSpecConfigDevicesSdb
 
 Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int***| ***(Optional)*** |
+| `volumeID` | ***int64***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdc
 
 Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int***| ***(Optional)*** |
+| `volumeID` | ***int64***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdd
 
 Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int***| ***(Optional)*** |
+| `volumeID` | ***int64***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSde
 
 Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int***| ***(Optional)*** |
+| `volumeID` | ***int64***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdf
 
 Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int***| ***(Optional)*** |
+| `volumeID` | ***int64***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdg
 
 Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int***| ***(Optional)*** |
+| `volumeID` | ***int64***| ***(Optional)*** |
 ## InstanceSpecConfigDevicesSdh
 
 Appears on:[InstanceSpecConfigDevices](#instancespecconfigdevices)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskID` | ***int***| ***(Optional)*** |
+| `diskID` | ***int64***| ***(Optional)*** |
 | `diskLabel` | ***string***| ***(Optional)*** |
-| `volumeID` | ***int***| ***(Optional)*** |
+| `volumeID` | ***int64***| ***(Optional)*** |
 ## InstanceSpecConfigHelpers
 
 Appears on:[InstanceSpecConfig](#instancespecconfig)
@@ -200,22 +200,22 @@ Appears on:[InstanceSpec](#instancespec)
 | `authorizedKeys` | ***[]string***| ***(Optional)*** A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.|
 | `authorizedUsers` | ***[]string***| ***(Optional)*** A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.|
 | `filesystem` | ***string***| ***(Optional)*** The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)|
-| `ID` | ***int***| ***(Optional)*** The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)|
+| `ID` | ***int64***| ***(Optional)*** The ID of the Disk (for use in Linode Image resources and Linode Instance Config Devices)|
 | `image` | ***string***| ***(Optional)*** An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.|
 | `label` | ***string***|The disks label, which acts as an identifier in Terraform.|
 | `readOnly` | ***bool***| ***(Optional)*** If true, this Disk is read-only.|
-| `size` | ***int***|The size of the Disk in MB.|
-| `stackscriptID` | ***int***| ***(Optional)*** The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.|
+| `size` | ***int64***|The size of the Disk in MB.|
+| `stackscriptID` | ***int64***| ***(Optional)*** The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.|
 ## InstanceSpecSpecs
 
 Appears on:[InstanceSpec](#instancespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `disk` | ***int***| ***(Optional)*** The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.|
-| `memory` | ***int***| ***(Optional)*** The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.|
-| `transfer` | ***int***| ***(Optional)*** The amount of network transfer this Linode is allotted each month.|
-| `vcpus` | ***int***| ***(Optional)*** The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.|
+| `disk` | ***int64***| ***(Optional)*** The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image without specifying disks.|
+| `memory` | ***int64***| ***(Optional)*** The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.|
+| `transfer` | ***int64***| ***(Optional)*** The amount of network transfer this Linode is allotted each month.|
+| `vcpus` | ***int64***| ***(Optional)*** The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.|
 ## InstanceStatus
 
 Appears on:[Instance](#instance)

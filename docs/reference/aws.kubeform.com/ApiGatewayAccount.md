@@ -34,8 +34,8 @@ Appears on:[ApiGatewayAccountSpec](#apigatewayaccountspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `burstLimit` | ***int***| ***(Optional)*** |
-| `rateLimit` | ***encoding/json.Number***| ***(Optional)*** |
+| `burstLimit` | ***int64***| ***(Optional)*** |
+| `rateLimit` | ***float64***| ***(Optional)*** |
 ## ApiGatewayAccountStatus
 
 Appears on:[ApiGatewayAccount](#apigatewayaccount)

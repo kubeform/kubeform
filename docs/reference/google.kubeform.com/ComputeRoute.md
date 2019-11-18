@@ -36,7 +36,7 @@ Appears on:[ComputeRoute](#computeroute), [ComputeRouteStatus](#computeroutestat
 | `nextHopIP` | ***string***| ***(Optional)*** |
 | `nextHopNetwork` | ***string***| ***(Optional)*** |
 | `nextHopVPNTunnel` | ***string***| ***(Optional)*** |
-| `priority` | ***int***| ***(Optional)*** |
+| `priority` | ***int64***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `tags` | ***[]string***| ***(Optional)*** |

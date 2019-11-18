@@ -31,7 +31,7 @@ Appears on:[MqConfiguration](#mqconfiguration), [MqConfigurationStatus](#mqconfi
 | `description` | ***string***| ***(Optional)*** |
 | `engineType` | ***string***||
 | `engineVersion` | ***string***||
-| `latestRevision` | ***int***| ***(Optional)*** |
+| `latestRevision` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## MqConfigurationStatus

@@ -33,7 +33,7 @@ Appears on:[StorageShare](#storageshare), [StorageShareStatus](#storagesharestat
 | `acl` | ***[[]StorageShareSpecAcl](#storagesharespecacl)***| ***(Optional)*** |
 | `metadata` | ***map[string]string***| ***(Optional)*** |
 | `name` | ***string***||
-| `quota` | ***int***| ***(Optional)*** |
+| `quota` | ***int64***| ***(Optional)*** |
 | `resourceGroupName` | ***string***| ***(Optional)*** Deprecated|
 | `storageAccountName` | ***string***||
 | `url` | ***string***| ***(Optional)*** |

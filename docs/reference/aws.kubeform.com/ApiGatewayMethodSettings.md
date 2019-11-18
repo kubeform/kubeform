@@ -37,14 +37,14 @@ Appears on:[ApiGatewayMethodSettingsSpec](#apigatewaymethodsettingsspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `cacheDataEncrypted` | ***bool***| ***(Optional)*** |
-| `cacheTtlInSeconds` | ***int***| ***(Optional)*** |
+| `cacheTtlInSeconds` | ***int64***| ***(Optional)*** |
 | `cachingEnabled` | ***bool***| ***(Optional)*** |
 | `dataTraceEnabled` | ***bool***| ***(Optional)*** |
 | `loggingLevel` | ***string***| ***(Optional)*** |
 | `metricsEnabled` | ***bool***| ***(Optional)*** |
 | `requireAuthorizationForCacheControl` | ***bool***| ***(Optional)*** |
-| `throttlingBurstLimit` | ***int***| ***(Optional)*** |
-| `throttlingRateLimit` | ***encoding/json.Number***| ***(Optional)*** |
+| `throttlingBurstLimit` | ***int64***| ***(Optional)*** |
+| `throttlingRateLimit` | ***float64***| ***(Optional)*** |
 | `unauthorizedCacheControlHeaderStrategy` | ***string***| ***(Optional)*** |
 ## ApiGatewayMethodSettingsStatus
 

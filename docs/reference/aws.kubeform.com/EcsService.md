@@ -28,11 +28,11 @@ Appears on:[EcsService](#ecsservice), [EcsServiceStatus](#ecsservicestatus)
 | `id` | ***string***||
 | `cluster` | ***string***| ***(Optional)*** |
 | `deploymentController` | ***[[]EcsServiceSpecDeploymentController](#ecsservicespecdeploymentcontroller)***| ***(Optional)*** |
-| `deploymentMaximumPercent` | ***int***| ***(Optional)*** |
-| `deploymentMinimumHealthyPercent` | ***int***| ***(Optional)*** |
-| `desiredCount` | ***int***| ***(Optional)*** |
+| `deploymentMaximumPercent` | ***int64***| ***(Optional)*** |
+| `deploymentMinimumHealthyPercent` | ***int64***| ***(Optional)*** |
+| `desiredCount` | ***int64***| ***(Optional)*** |
 | `enableEcsManagedTags` | ***bool***| ***(Optional)*** |
-| `healthCheckGracePeriodSeconds` | ***int***| ***(Optional)*** |
+| `healthCheckGracePeriodSeconds` | ***int64***| ***(Optional)*** |
 | `iamRole` | ***string***| ***(Optional)*** |
 | `launchType` | ***string***| ***(Optional)*** |
 | `loadBalancer` | ***[[]EcsServiceSpecLoadBalancer](#ecsservicespecloadbalancer)***| ***(Optional)*** |
@@ -60,7 +60,7 @@ Appears on:[EcsServiceSpec](#ecsservicespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `containerName` | ***string***||
-| `containerPort` | ***int***||
+| `containerPort` | ***int64***||
 | `elbName` | ***string***| ***(Optional)*** |
 | `targetGroupArn` | ***string***| ***(Optional)*** |
 ## EcsServiceSpecNetworkConfiguration
@@ -95,8 +95,8 @@ Appears on:[EcsServiceSpec](#ecsservicespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `containerName` | ***string***| ***(Optional)*** |
-| `containerPort` | ***int***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `containerPort` | ***int64***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `registryArn` | ***string***||
 ## EcsServiceStatus
 

@@ -36,7 +36,7 @@ Appears on:[DmsEndpoint](#dmsendpoint), [DmsEndpointStatus](#dmsendpointstatus)
 | `extraConnectionAttributes` | ***string***| ***(Optional)*** |
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
 | `mongodbSettings` | ***[[]DmsEndpointSpecMongodbSettings](#dmsendpointspecmongodbsettings)***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `s3Settings` | ***[[]DmsEndpointSpecS3Settings](#dmsendpointspecs3settings)***| ***(Optional)*** |
 | `serverName` | ***string***| ***(Optional)*** |
 | `serviceAccessRole` | ***string***| ***(Optional)*** |

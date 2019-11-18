@@ -137,7 +137,7 @@ Appears on:[DataprocJobSpec](#dataprocjobspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `maxFailuresPerHour` | ***int***| ***(Optional)*** Maximum number of times per hour a driver may be restarted as a result of driver terminating with non-zero code before job is reported failed.|
+| `maxFailuresPerHour` | ***int64***| ***(Optional)*** Maximum number of times per hour a driver may be restarted as a result of driver terminating with non-zero code before job is reported failed.|
 ## DataprocJobSpecSparkConfig
 
 Appears on:[DataprocJobSpec](#dataprocjobspec)

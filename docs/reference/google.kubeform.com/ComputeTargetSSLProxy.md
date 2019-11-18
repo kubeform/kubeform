@@ -32,7 +32,7 @@ Appears on:[ComputeTargetSSLProxy](#computetargetsslproxy), [ComputeTargetSSLPro
 | `name` | ***string***||
 | `project` | ***string***| ***(Optional)*** |
 | `proxyHeader` | ***string***| ***(Optional)*** |
-| `proxyID` | ***int***| ***(Optional)*** |
+| `proxyID` | ***int64***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `sslCertificates` | ***[]string***||
 | `sslPolicy` | ***string***| ***(Optional)*** |

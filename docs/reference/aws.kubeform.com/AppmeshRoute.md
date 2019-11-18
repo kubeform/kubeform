@@ -63,7 +63,7 @@ Appears on:[AppmeshRouteSpecSpecHttpRouteAction](#appmeshroutespecspechttproutea
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `virtualNode` | ***string***||
-| `weight` | ***int***||
+| `weight` | ***int64***||
 ## AppmeshRouteSpecSpecHttpRouteMatch
 
 Appears on:[AppmeshRouteSpecSpecHttpRoute](#appmeshroutespecspechttproute)
@@ -92,7 +92,7 @@ Appears on:[AppmeshRouteSpecSpecTcpRouteAction](#appmeshroutespecspectcprouteact
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `virtualNode` | ***string***||
-| `weight` | ***int***||
+| `weight` | ***int64***||
 ## AppmeshRouteStatus
 
 Appears on:[AppmeshRoute](#appmeshroute)

@@ -28,10 +28,10 @@ Appears on:[AutoscalingSchedule](#autoscalingschedule), [AutoscalingScheduleStat
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `autoscalingGroupName` | ***string***||
-| `desiredCapacity` | ***int***| ***(Optional)*** |
+| `desiredCapacity` | ***int64***| ***(Optional)*** |
 | `endTime` | ***string***| ***(Optional)*** |
-| `maxSize` | ***int***| ***(Optional)*** |
-| `minSize` | ***int***| ***(Optional)*** |
+| `maxSize` | ***int64***| ***(Optional)*** |
+| `minSize` | ***int64***| ***(Optional)*** |
 | `recurrence` | ***string***| ***(Optional)*** |
 | `scheduledActionName` | ***string***||
 | `startTime` | ***string***| ***(Optional)*** |

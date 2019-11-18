@@ -80,10 +80,10 @@ Appears on:[HdinsightSparkClusterSpecRoles](#hdinsightsparkclusterspecroles)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `minInstanceCount` | ***int***| ***(Optional)*** |
+| `minInstanceCount` | ***int64***| ***(Optional)*** |
 | `sshKeys` | ***[]string***| ***(Optional)*** |
 | `subnetID` | ***string***| ***(Optional)*** |
-| `targetInstanceCount` | ***int***||
+| `targetInstanceCount` | ***int64***||
 | `username` | ***string***||
 | `virtualNetworkID` | ***string***| ***(Optional)*** |
 | `vmSize` | ***string***||

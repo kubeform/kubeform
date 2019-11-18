@@ -27,14 +27,14 @@ Appears on:[BigqueryDataset](#bigquerydataset), [BigqueryDatasetStatus](#bigquer
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `access` | ***[[]BigqueryDatasetSpecAccess](#bigquerydatasetspecaccess)***| ***(Optional)*** |
-| `creationTime` | ***int***| ***(Optional)*** |
+| `creationTime` | ***int64***| ***(Optional)*** |
 | `datasetID` | ***string***||
-| `defaultTableExpirationMs` | ***int***| ***(Optional)*** |
+| `defaultTableExpirationMs` | ***int64***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `etag` | ***string***| ***(Optional)*** |
 | `friendlyName` | ***string***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
-| `lastModifiedTime` | ***int***| ***(Optional)*** |
+| `lastModifiedTime` | ***int64***| ***(Optional)*** |
 | `location` | ***string***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |

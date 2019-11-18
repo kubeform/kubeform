@@ -31,8 +31,8 @@ Appears on:[SsmMaintenanceWindow](#ssmmaintenancewindow), [SsmMaintenanceWindowS
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `allowUnassociatedTargets` | ***bool***| ***(Optional)*** |
-| `cutoff` | ***int***||
-| `duration` | ***int***||
+| `cutoff` | ***int64***||
+| `duration` | ***int64***||
 | `enabled` | ***bool***| ***(Optional)*** |
 | `endDate` | ***string***| ***(Optional)*** |
 | `name` | ***string***||

@@ -27,7 +27,7 @@ Appears on:[AlbTargetGroupAttachment](#albtargetgroupattachment), [AlbTargetGrou
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `availabilityZone` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `targetGroupArn` | ***string***||
 | `targetID` | ***string***||
 ## AlbTargetGroupAttachmentStatus

@@ -30,7 +30,7 @@ Appears on:[LaunchTemplate](#launchtemplate), [LaunchTemplateStatus](#launchtemp
 | `blockDeviceMappings` | ***[[]LaunchTemplateSpecBlockDeviceMappings](#launchtemplatespecblockdevicemappings)***| ***(Optional)*** |
 | `capacityReservationSpecification` | ***[[]LaunchTemplateSpecCapacityReservationSpecification](#launchtemplatespeccapacityreservationspecification)***| ***(Optional)*** |
 | `creditSpecification` | ***[[]LaunchTemplateSpecCreditSpecification](#launchtemplatespeccreditspecification)***| ***(Optional)*** |
-| `defaultVersion` | ***int***| ***(Optional)*** |
+| `defaultVersion` | ***int64***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `disableAPITermination` | ***bool***| ***(Optional)*** |
 | `ebsOptimized` | ***string***| ***(Optional)*** |
@@ -43,7 +43,7 @@ Appears on:[LaunchTemplate](#launchtemplate), [LaunchTemplateStatus](#launchtemp
 | `instanceType` | ***string***| ***(Optional)*** |
 | `kernelID` | ***string***| ***(Optional)*** |
 | `keyName` | ***string***| ***(Optional)*** |
-| `latestVersion` | ***int***| ***(Optional)*** |
+| `latestVersion` | ***int64***| ***(Optional)*** |
 | `licenseSpecification` | ***[[]LaunchTemplateSpecLicenseSpecification](#launchtemplatespeclicensespecification)***| ***(Optional)*** |
 | `monitoring` | ***[[]LaunchTemplateSpecMonitoring](#launchtemplatespecmonitoring)***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
@@ -74,10 +74,10 @@ Appears on:[LaunchTemplateSpecBlockDeviceMappings](#launchtemplatespecblockdevic
 | ------ | ----- | ----------- |
 | `deleteOnTermination` | ***string***| ***(Optional)*** |
 | `encrypted` | ***string***| ***(Optional)*** |
-| `iops` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
 | `kmsKeyID` | ***string***| ***(Optional)*** |
 | `snapshotID` | ***string***| ***(Optional)*** |
-| `volumeSize` | ***int***| ***(Optional)*** |
+| `volumeSize` | ***int64***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## LaunchTemplateSpecCapacityReservationSpecification
 
@@ -137,7 +137,7 @@ Appears on:[LaunchTemplateSpecInstanceMarketOptions](#launchtemplatespecinstance
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `blockDurationMinutes` | ***int***| ***(Optional)*** |
+| `blockDurationMinutes` | ***int64***| ***(Optional)*** |
 | `instanceInterruptionBehavior` | ***string***| ***(Optional)*** |
 | `maxPrice` | ***string***| ***(Optional)*** |
 | `spotInstanceType` | ***string***| ***(Optional)*** |
@@ -165,10 +165,10 @@ Appears on:[LaunchTemplateSpec](#launchtemplatespec)
 | `associatePublicIPAddress` | ***bool***| ***(Optional)*** |
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `deviceIndex` | ***int***| ***(Optional)*** |
-| `ipv4AddressCount` | ***int***| ***(Optional)*** |
+| `deviceIndex` | ***int64***| ***(Optional)*** |
+| `ipv4AddressCount` | ***int64***| ***(Optional)*** |
 | `ipv4Addresses` | ***[]string***| ***(Optional)*** |
-| `ipv6AddressCount` | ***int***| ***(Optional)*** |
+| `ipv6AddressCount` | ***int64***| ***(Optional)*** |
 | `ipv6Addresses` | ***[]string***| ***(Optional)*** |
 | `networkInterfaceID` | ***string***| ***(Optional)*** |
 | `privateIPAddress` | ***string***| ***(Optional)*** |

@@ -27,7 +27,7 @@ Appears on:[ComputeSSLCertificate](#computesslcertificate), [ComputeSSLCertifica
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
-| `certificateID` | ***int***| ***(Optional)*** |
+| `certificateID` | ***int64***| ***(Optional)*** |
 | `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |

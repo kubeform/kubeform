@@ -21,7 +21,9 @@ section_menu_id: reference
 ## SesEmailIdentitySpec
 
 
+
 Appears on:[SesEmailIdentity](#sesemailidentity), [SesEmailIdentityStatus](#sesemailidentitystatus)
+
 
 
 | Field | Type | Description |
@@ -33,7 +35,9 @@ Appears on:[SesEmailIdentity](#sesemailidentity), [SesEmailIdentityStatus](#sese
 ## SesEmailIdentityStatus
 
 
+
 Appears on:[SesEmailIdentity](#sesemailidentity)
+
 
 
 | Field | Type | Description |

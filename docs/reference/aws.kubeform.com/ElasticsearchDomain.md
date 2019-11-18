@@ -49,10 +49,10 @@ Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `dedicatedMasterCount` | ***int***| ***(Optional)*** |
+| `dedicatedMasterCount` | ***int64***| ***(Optional)*** |
 | `dedicatedMasterEnabled` | ***bool***| ***(Optional)*** |
 | `dedicatedMasterType` | ***string***| ***(Optional)*** |
-| `instanceCount` | ***int***| ***(Optional)*** |
+| `instanceCount` | ***int64***| ***(Optional)*** |
 | `instanceType` | ***string***| ***(Optional)*** |
 | `zoneAwarenessEnabled` | ***bool***| ***(Optional)*** |
 ## ElasticsearchDomainSpecCognitoOptions
@@ -72,8 +72,8 @@ Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ebsEnabled` | ***bool***||
-| `iops` | ***int***| ***(Optional)*** |
-| `volumeSize` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
+| `volumeSize` | ***int64***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## ElasticsearchDomainSpecEncryptAtRest
 
@@ -105,7 +105,7 @@ Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `automatedSnapshotStartHour` | ***int***||
+| `automatedSnapshotStartHour` | ***int64***||
 ## ElasticsearchDomainSpecVpcOptions
 
 Appears on:[ElasticsearchDomainSpec](#elasticsearchdomainspec)

@@ -28,20 +28,20 @@ Appears on:[AutoscalingGroup](#autoscalinggroup), [AutoscalingGroupStatus](#auto
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `availabilityZones` | ***[]string***| ***(Optional)*** |
-| `defaultCooldown` | ***int***| ***(Optional)*** |
-| `desiredCapacity` | ***int***| ***(Optional)*** |
+| `defaultCooldown` | ***int64***| ***(Optional)*** |
+| `desiredCapacity` | ***int64***| ***(Optional)*** |
 | `enabledMetrics` | ***[]string***| ***(Optional)*** |
 | `forceDelete` | ***bool***| ***(Optional)*** |
-| `healthCheckGracePeriod` | ***int***| ***(Optional)*** |
+| `healthCheckGracePeriod` | ***int64***| ***(Optional)*** |
 | `healthCheckType` | ***string***| ***(Optional)*** |
 | `initialLifecycleHook` | ***[[]AutoscalingGroupSpecInitialLifecycleHook](#autoscalinggroupspecinitiallifecyclehook)***| ***(Optional)*** |
 | `launchConfiguration` | ***string***| ***(Optional)*** |
 | `launchTemplate` | ***[[]AutoscalingGroupSpecLaunchTemplate](#autoscalinggroupspeclaunchtemplate)***| ***(Optional)*** |
 | `loadBalancers` | ***[]string***| ***(Optional)*** |
-| `maxSize` | ***int***||
+| `maxSize` | ***int64***||
 | `metricsGranularity` | ***string***| ***(Optional)*** |
-| `minElbCapacity` | ***int***| ***(Optional)*** |
-| `minSize` | ***int***||
+| `minElbCapacity` | ***int64***| ***(Optional)*** |
+| `minSize` | ***int64***||
 | `mixedInstancesPolicy` | ***[[]AutoscalingGroupSpecMixedInstancesPolicy](#autoscalinggroupspecmixedinstancespolicy)***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
@@ -54,7 +54,7 @@ Appears on:[AutoscalingGroup](#autoscalinggroup), [AutoscalingGroupStatus](#auto
 | `terminationPolicies` | ***[]string***| ***(Optional)*** |
 | `vpcZoneIdentifier` | ***[]string***| ***(Optional)*** |
 | `waitForCapacityTimeout` | ***string***| ***(Optional)*** |
-| `waitForElbCapacity` | ***int***| ***(Optional)*** |
+| `waitForElbCapacity` | ***int64***| ***(Optional)*** |
 ## AutoscalingGroupSpecInitialLifecycleHook
 
 Appears on:[AutoscalingGroupSpec](#autoscalinggroupspec)
@@ -62,7 +62,7 @@ Appears on:[AutoscalingGroupSpec](#autoscalinggroupspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultResult` | ***string***| ***(Optional)*** |
-| `heartbeatTimeout` | ***int***| ***(Optional)*** |
+| `heartbeatTimeout` | ***int64***| ***(Optional)*** |
 | `lifecycleTransition` | ***string***||
 | `name` | ***string***||
 | `notificationMetadata` | ***string***| ***(Optional)*** |
@@ -92,10 +92,10 @@ Appears on:[AutoscalingGroupSpecMixedInstancesPolicy](#autoscalinggroupspecmixed
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `onDemandAllocationStrategy` | ***string***| ***(Optional)*** |
-| `onDemandBaseCapacity` | ***int***| ***(Optional)*** |
-| `onDemandPercentageAboveBaseCapacity` | ***int***| ***(Optional)*** |
+| `onDemandBaseCapacity` | ***int64***| ***(Optional)*** |
+| `onDemandPercentageAboveBaseCapacity` | ***int64***| ***(Optional)*** |
 | `spotAllocationStrategy` | ***string***| ***(Optional)*** |
-| `spotInstancePools` | ***int***| ***(Optional)*** |
+| `spotInstancePools` | ***int64***| ***(Optional)*** |
 | `spotMaxPrice` | ***string***| ***(Optional)*** |
 ## AutoscalingGroupSpecMixedInstancesPolicyLaunchTemplate
 

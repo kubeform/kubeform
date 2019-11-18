@@ -29,7 +29,7 @@ Appears on:[ComputeBackendService](#computebackendservice), [ComputeBackendServi
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `backend` | ***[[]ComputeBackendServiceSpecBackend](#computebackendservicespecbackend)***| ***(Optional)*** |
 | `cdnPolicy` | ***[[]ComputeBackendServiceSpecCdnPolicy](#computebackendservicespeccdnpolicy)***| ***(Optional)*** |
-| `connectionDrainingTimeoutSec` | ***int***| ***(Optional)*** |
+| `connectionDrainingTimeoutSec` | ***int64***| ***(Optional)*** |
 | `customRequestHeaders` | ***[]string***| ***(Optional)*** Deprecated|
 | `description` | ***string***| ***(Optional)*** |
 | `enableCdn` | ***bool***| ***(Optional)*** |
@@ -43,7 +43,7 @@ Appears on:[ComputeBackendService](#computebackendservice), [ComputeBackendServi
 | `securityPolicy` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `sessionAffinity` | ***string***| ***(Optional)*** |
-| `timeoutSec` | ***int***| ***(Optional)*** |
+| `timeoutSec` | ***int64***| ***(Optional)*** |
 ## ComputeBackendServiceSpecBackend
 
 Appears on:[ComputeBackendServiceSpec](#computebackendservicespec)
@@ -51,14 +51,14 @@ Appears on:[ComputeBackendServiceSpec](#computebackendservicespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `balancingMode` | ***string***| ***(Optional)*** |
-| `capacityScaler` | ***encoding/json.Number***| ***(Optional)*** |
+| `capacityScaler` | ***float64***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `group` | ***string***| ***(Optional)*** |
-| `maxConnections` | ***int***| ***(Optional)*** |
-| `maxConnectionsPerInstance` | ***int***| ***(Optional)*** |
-| `maxRate` | ***int***| ***(Optional)*** |
-| `maxRatePerInstance` | ***encoding/json.Number***| ***(Optional)*** |
-| `maxUtilization` | ***encoding/json.Number***| ***(Optional)*** |
+| `maxConnections` | ***int64***| ***(Optional)*** |
+| `maxConnectionsPerInstance` | ***int64***| ***(Optional)*** |
+| `maxRate` | ***int64***| ***(Optional)*** |
+| `maxRatePerInstance` | ***float64***| ***(Optional)*** |
+| `maxUtilization` | ***float64***| ***(Optional)*** |
 ## ComputeBackendServiceSpecCdnPolicy
 
 Appears on:[ComputeBackendServiceSpec](#computebackendservicespec)

@@ -29,7 +29,7 @@ Appears on:[BackupVault](#backupvault), [BackupVaultStatus](#backupvaultstatus)
 | `arn` | ***string***| ***(Optional)*** |
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `recoveryPoints` | ***int***| ***(Optional)*** |
+| `recoveryPoints` | ***int64***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## BackupVaultStatus
 

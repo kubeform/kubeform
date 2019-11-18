@@ -34,7 +34,7 @@ Appears on:[WafRateBasedRule](#wafratebasedrule), [WafRateBasedRuleStatus](#wafr
 | `name` | ***string***||
 | `predicates` | ***[[]WafRateBasedRuleSpecPredicates](#wafratebasedrulespecpredicates)***| ***(Optional)*** |
 | `rateKey` | ***string***||
-| `rateLimit` | ***int***||
+| `rateLimit` | ***int64***||
 ## WafRateBasedRuleSpecPredicates
 
 Appears on:[WafRateBasedRuleSpec](#wafratebasedrulespec)

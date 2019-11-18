@@ -27,7 +27,7 @@ Appears on:[NetworkInterfaceAttachment](#networkinterfaceattachment), [NetworkIn
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `attachmentID` | ***string***| ***(Optional)*** |
-| `deviceIndex` | ***int***||
+| `deviceIndex` | ***int64***||
 | `instanceID` | ***string***||
 | `networkInterfaceID` | ***string***||
 | `status` | ***string***| ***(Optional)*** |

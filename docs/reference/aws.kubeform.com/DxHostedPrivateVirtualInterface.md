@@ -30,15 +30,15 @@ Appears on:[DxHostedPrivateVirtualInterface](#dxhostedprivatevirtualinterface), 
 | `amazonAddress` | ***string***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `awsDevice` | ***string***| ***(Optional)*** |
-| `bgpAsn` | ***int***||
+| `bgpAsn` | ***int64***||
 | `bgpAuthKey` | ***string***| ***(Optional)*** |
 | `connectionID` | ***string***||
 | `customerAddress` | ***string***| ***(Optional)*** |
 | `jumboFrameCapable` | ***bool***| ***(Optional)*** |
-| `mtu` | ***int***| ***(Optional)*** |
+| `mtu` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `ownerAccountID` | ***string***||
-| `vlan` | ***int***||
+| `vlan` | ***int64***||
 ## DxHostedPrivateVirtualInterfaceStatus
 
 Appears on:[DxHostedPrivateVirtualInterface](#dxhostedprivatevirtualinterface)

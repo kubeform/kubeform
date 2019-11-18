@@ -31,8 +31,8 @@ Appears on:[Stackscript](#stackscript), [StackscriptStatus](#stackscriptstatus)
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `created` | ***string***| ***(Optional)*** The date this StackScript was created.|
-| `deploymentsActive` | ***int***| ***(Optional)*** Count of currently active, deployed Linodes created from this StackScript.|
-| `deploymentsTotal` | ***int***| ***(Optional)*** The total number of times this StackScript has been deployed.|
+| `deploymentsActive` | ***int64***| ***(Optional)*** Count of currently active, deployed Linodes created from this StackScript.|
+| `deploymentsTotal` | ***int64***| ***(Optional)*** The total number of times this StackScript has been deployed.|
 | `description` | ***string***|A description for the StackScript.|
 | `images` | ***[]string***|An array of Image IDs representing the Images that this StackScript is compatible for deploying with.|
 | `isPublic` | ***bool***| ***(Optional)*** This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.|

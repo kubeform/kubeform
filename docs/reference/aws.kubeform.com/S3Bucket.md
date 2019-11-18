@@ -63,14 +63,14 @@ Appears on:[S3BucketSpec](#s3bucketspec)
 | `allowedMethods` | ***[]string***||
 | `allowedOrigins` | ***[]string***||
 | `exposeHeaders` | ***[]string***| ***(Optional)*** |
-| `maxAgeSeconds` | ***int***| ***(Optional)*** |
+| `maxAgeSeconds` | ***int64***| ***(Optional)*** |
 ## S3BucketSpecLifecycleRule
 
 Appears on:[S3BucketSpec](#s3bucketspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `abortIncompleteMultipartUploadDays` | ***int***| ***(Optional)*** |
+| `abortIncompleteMultipartUploadDays` | ***int64***| ***(Optional)*** |
 | `enabled` | ***bool***||
 | `expiration` | ***[[]S3BucketSpecLifecycleRuleExpiration](#s3bucketspeclifecycleruleexpiration)***| ***(Optional)*** |
 | `ID` | ***string***| ***(Optional)*** |
@@ -86,7 +86,7 @@ Appears on:[S3BucketSpecLifecycleRule](#s3bucketspeclifecyclerule)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `date` | ***string***| ***(Optional)*** |
-| `days` | ***int***| ***(Optional)*** |
+| `days` | ***int64***| ***(Optional)*** |
 | `expiredObjectDeleteMarker` | ***bool***| ***(Optional)*** |
 ## S3BucketSpecLifecycleRuleNoncurrentVersionExpiration
 
@@ -94,14 +94,14 @@ Appears on:[S3BucketSpecLifecycleRule](#s3bucketspeclifecyclerule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `days` | ***int***| ***(Optional)*** |
+| `days` | ***int64***| ***(Optional)*** |
 ## S3BucketSpecLifecycleRuleNoncurrentVersionTransition
 
 Appears on:[S3BucketSpecLifecycleRule](#s3bucketspeclifecyclerule)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `days` | ***int***| ***(Optional)*** |
+| `days` | ***int64***| ***(Optional)*** |
 | `storageClass` | ***string***||
 ## S3BucketSpecLifecycleRuleTransition
 
@@ -110,7 +110,7 @@ Appears on:[S3BucketSpecLifecycleRule](#s3bucketspeclifecyclerule)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `date` | ***string***| ***(Optional)*** |
-| `days` | ***int***| ***(Optional)*** |
+| `days` | ***int64***| ***(Optional)*** |
 | `storageClass` | ***string***||
 ## S3BucketSpecLogging
 
@@ -141,9 +141,9 @@ Appears on:[S3BucketSpecObjectLockConfigurationRule](#s3bucketspecobjectlockconf
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `days` | ***int***| ***(Optional)*** |
+| `days` | ***int64***| ***(Optional)*** |
 | `mode` | ***string***||
-| `years` | ***int***| ***(Optional)*** |
+| `years` | ***int64***| ***(Optional)*** |
 ## S3BucketSpecReplicationConfiguration
 
 Appears on:[S3BucketSpec](#s3bucketspec)
@@ -162,7 +162,7 @@ Appears on:[S3BucketSpecReplicationConfiguration](#s3bucketspecreplicationconfig
 | `filter` | ***[[]S3BucketSpecReplicationConfigurationRulesFilter](#s3bucketspecreplicationconfigurationrulesfilter)***| ***(Optional)*** |
 | `ID` | ***string***| ***(Optional)*** |
 | `prefix` | ***string***| ***(Optional)*** |
-| `priority` | ***int***| ***(Optional)*** |
+| `priority` | ***int64***| ***(Optional)*** |
 | `sourceSelectionCriteria` | ***[[]S3BucketSpecReplicationConfigurationRulesSourceSelectionCriteria](#s3bucketspecreplicationconfigurationrulessourceselectioncriteria)***| ***(Optional)*** |
 | `status` | ***string***||
 ## S3BucketSpecReplicationConfigurationRulesDestination

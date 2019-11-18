@@ -38,8 +38,8 @@ Appears on:[DaxCluster](#daxcluster), [DaxClusterStatus](#daxclusterstatus)
 | `nodes` | ***[[]DaxClusterSpecNodes](#daxclusterspecnodes)***| ***(Optional)*** |
 | `notificationTopicArn` | ***string***| ***(Optional)*** |
 | `parameterGroupName` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
-| `replicationFactor` | ***int***||
+| `port` | ***int64***| ***(Optional)*** |
+| `replicationFactor` | ***int64***||
 | `securityGroupIDS` | ***[]string***| ***(Optional)*** |
 | `serverSideEncryption` | ***[[]DaxClusterSpecServerSideEncryption](#daxclusterspecserversideencryption)***| ***(Optional)*** |
 | `subnetGroupName` | ***string***| ***(Optional)*** |
@@ -53,7 +53,7 @@ Appears on:[DaxClusterSpec](#daxclusterspec)
 | `address` | ***string***| ***(Optional)*** |
 | `availabilityZone` | ***string***| ***(Optional)*** |
 | `ID` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 ## DaxClusterSpecServerSideEncryption
 
 Appears on:[DaxClusterSpec](#daxclusterspec)

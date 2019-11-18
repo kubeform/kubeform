@@ -38,7 +38,7 @@ Appears on:[MonitorMetricAlertrule](#monitormetricalertrule), [MonitorMetricAler
 | `resourceGroupName` | ***string***||
 | `resourceID` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `threshold` | ***encoding/json.Number***||
+| `threshold` | ***float64***||
 | `webhookAction` | ***[[]MonitorMetricAlertruleSpecWebhookAction](#monitormetricalertrulespecwebhookaction)***| ***(Optional)*** |
 ## MonitorMetricAlertruleSpecEmailAction
 

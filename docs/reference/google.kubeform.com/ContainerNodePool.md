@@ -28,14 +28,14 @@ Appears on:[ContainerNodePool](#containernodepool), [ContainerNodePoolStatus](#c
 | `id` | ***string***||
 | `autoscaling` | ***[[]ContainerNodePoolSpecAutoscaling](#containernodepoolspecautoscaling)***| ***(Optional)*** |
 | `cluster` | ***string***||
-| `initialNodeCount` | ***int***| ***(Optional)*** |
+| `initialNodeCount` | ***int64***| ***(Optional)*** |
 | `instanceGroupUrls` | ***[]string***| ***(Optional)*** |
 | `management` | ***[[]ContainerNodePoolSpecManagement](#containernodepoolspecmanagement)***| ***(Optional)*** |
-| `maxPodsPerNode` | ***int***| ***(Optional)*** Deprecated|
+| `maxPodsPerNode` | ***int64***| ***(Optional)*** Deprecated|
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** Deprecated|
 | `nodeConfig` | ***[[]ContainerNodePoolSpecNodeConfig](#containernodepoolspecnodeconfig)***| ***(Optional)*** |
-| `nodeCount` | ***int***| ***(Optional)*** |
+| `nodeCount` | ***int64***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `region` | ***string***| ***(Optional)*** |
 | `version` | ***string***| ***(Optional)*** |
@@ -46,8 +46,8 @@ Appears on:[ContainerNodePoolSpec](#containernodepoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `maxNodeCount` | ***int***||
-| `minNodeCount` | ***int***||
+| `maxNodeCount` | ***int64***||
+| `minNodeCount` | ***int64***||
 ## ContainerNodePoolSpecManagement
 
 Appears on:[ContainerNodePoolSpec](#containernodepoolspec)
@@ -62,12 +62,12 @@ Appears on:[ContainerNodePoolSpec](#containernodepoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `diskSizeGb` | ***int***| ***(Optional)*** |
+| `diskSizeGb` | ***int64***| ***(Optional)*** |
 | `diskType` | ***string***| ***(Optional)*** |
 | `guestAccelerator` | ***[[]ContainerNodePoolSpecNodeConfigGuestAccelerator](#containernodepoolspecnodeconfigguestaccelerator)***| ***(Optional)*** |
 | `imageType` | ***string***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
-| `localSsdCount` | ***int***| ***(Optional)*** |
+| `localSsdCount` | ***int64***| ***(Optional)*** |
 | `machineType` | ***string***| ***(Optional)*** |
 | `metadata` | ***map[string]string***| ***(Optional)*** |
 | `minCPUPlatform` | ***string***| ***(Optional)*** |
@@ -83,7 +83,7 @@ Appears on:[ContainerNodePoolSpecNodeConfig](#containernodepoolspecnodeconfig)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `count` | ***int***||
+| `count` | ***int64***||
 | `type` | ***string***||
 ## ContainerNodePoolSpecNodeConfigTaint
 

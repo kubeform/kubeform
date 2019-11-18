@@ -31,7 +31,7 @@ Appears on:[ServicebusNamespace](#servicebusnamespace), [ServicebusNamespaceStat
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
-| `capacity` | ***int***| ***(Optional)*** |
+| `capacity` | ***int64***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||

@@ -30,13 +30,13 @@ Appears on:[StorageBlob](#storageblob), [StorageBlobStatus](#storageblobstatus)
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `attempts` | ***int***| ***(Optional)*** |
+| `attempts` | ***int64***| ***(Optional)*** |
 | `contentType` | ***string***| ***(Optional)*** |
 | `metadata` | ***map[string]string***| ***(Optional)*** |
 | `name` | ***string***||
-| `parallelism` | ***int***| ***(Optional)*** |
+| `parallelism` | ***int64***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
-| `size` | ***int***| ***(Optional)*** |
+| `size` | ***int64***| ***(Optional)*** |
 | `source` | ***string***| ***(Optional)*** |
 | `sourceURI` | ***string***| ***(Optional)*** |
 | `storageAccountName` | ***string***||

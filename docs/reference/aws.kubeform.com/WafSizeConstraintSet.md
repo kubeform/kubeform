@@ -40,7 +40,7 @@ Appears on:[WafSizeConstraintSetSpec](#wafsizeconstraintsetspec)
 | ------ | ----- | ----------- |
 | `comparisonOperator` | ***string***||
 | `fieldToMatch` | ***[[]WafSizeConstraintSetSpecSizeConstraintsFieldToMatch](#wafsizeconstraintsetspecsizeconstraintsfieldtomatch)***||
-| `size` | ***int***||
+| `size` | ***int64***||
 | `textTransformation` | ***string***||
 ## WafSizeConstraintSetSpecSizeConstraintsFieldToMatch
 

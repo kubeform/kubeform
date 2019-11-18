@@ -70,20 +70,20 @@ Appears on:[AppmeshVirtualNodeSpecSpecListener](#appmeshvirtualnodespecspecliste
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `healthyThreshold` | ***int***||
-| `intervalMillis` | ***int***||
+| `healthyThreshold` | ***int64***||
+| `intervalMillis` | ***int64***||
 | `path` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `protocol` | ***string***||
-| `timeoutMillis` | ***int***||
-| `unhealthyThreshold` | ***int***||
+| `timeoutMillis` | ***int64***||
+| `unhealthyThreshold` | ***int64***||
 ## AppmeshVirtualNodeSpecSpecListenerPortMapping
 
 Appears on:[AppmeshVirtualNodeSpecSpecListener](#appmeshvirtualnodespecspeclistener)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `port` | ***int***||
+| `port` | ***int64***||
 | `protocol` | ***string***||
 ## AppmeshVirtualNodeSpecSpecLogging
 

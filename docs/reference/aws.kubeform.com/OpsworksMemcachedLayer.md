@@ -26,7 +26,7 @@ Appears on:[OpsworksMemcachedLayer](#opsworksmemcachedlayer), [OpsworksMemcached
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `allocatedMemory` | ***int***| ***(Optional)*** |
+| `allocatedMemory` | ***int64***| ***(Optional)*** |
 | `autoAssignElasticIPS` | ***bool***| ***(Optional)*** |
 | `autoAssignPublicIPS` | ***bool***| ***(Optional)*** |
 | `autoHealing` | ***bool***| ***(Optional)*** |
@@ -42,7 +42,7 @@ Appears on:[OpsworksMemcachedLayer](#opsworksmemcachedlayer), [OpsworksMemcached
 | `ebsVolume` | ***[[]OpsworksMemcachedLayerSpecEbsVolume](#opsworksmemcachedlayerspecebsvolume)***| ***(Optional)*** |
 | `elasticLoadBalancer` | ***string***| ***(Optional)*** |
 | `installUpdatesOnBoot` | ***bool***| ***(Optional)*** |
-| `instanceShutdownTimeout` | ***int***| ***(Optional)*** |
+| `instanceShutdownTimeout` | ***int64***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `stackID` | ***string***||
 | `systemPackages` | ***[]string***| ***(Optional)*** |
@@ -53,11 +53,11 @@ Appears on:[OpsworksMemcachedLayerSpec](#opsworksmemcachedlayerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `iops` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
 | `mountPoint` | ***string***||
-| `numberOfDisks` | ***int***||
+| `numberOfDisks` | ***int64***||
 | `raidLevel` | ***string***| ***(Optional)*** |
-| `size` | ***int***||
+| `size` | ***int64***||
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksMemcachedLayerStatus
 

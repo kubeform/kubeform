@@ -36,7 +36,7 @@ Appears on:[EbsSnapshotCopy](#ebssnapshotcopy), [EbsSnapshotCopyStatus](#ebssnap
 | `sourceSnapshotID` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `volumeID` | ***string***| ***(Optional)*** |
-| `volumeSize` | ***int***| ***(Optional)*** |
+| `volumeSize` | ***int64***| ***(Optional)*** |
 ## EbsSnapshotCopyStatus
 
 Appears on:[EbsSnapshotCopy](#ebssnapshotcopy)

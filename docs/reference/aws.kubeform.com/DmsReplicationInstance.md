@@ -26,7 +26,7 @@ Appears on:[DmsReplicationInstance](#dmsreplicationinstance), [DmsReplicationIns
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `allocatedStorage` | ***int***| ***(Optional)*** |
+| `allocatedStorage` | ***int64***| ***(Optional)*** |
 | `applyImmediately` | ***bool***| ***(Optional)*** |
 | `autoMinorVersionUpgrade` | ***bool***| ***(Optional)*** |
 | `availabilityZone` | ***string***| ***(Optional)*** |

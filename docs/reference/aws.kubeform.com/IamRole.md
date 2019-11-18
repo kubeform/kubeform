@@ -31,7 +31,7 @@ Appears on:[IamRole](#iamrole), [IamRoleStatus](#iamrolestatus)
 | `createDate` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `forceDetachPolicies` | ***bool***| ***(Optional)*** |
-| `maxSessionDuration` | ***int***| ***(Optional)*** |
+| `maxSessionDuration` | ***int64***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `namePrefix` | ***string***| ***(Optional)*** |
 | `path` | ***string***| ***(Optional)*** |

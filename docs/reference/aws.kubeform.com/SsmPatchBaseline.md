@@ -45,7 +45,7 @@ Appears on:[SsmPatchBaselineSpec](#ssmpatchbaselinespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `approveAfterDays` | ***int***||
+| `approveAfterDays` | ***int64***||
 | `complianceLevel` | ***string***| ***(Optional)*** |
 | `enableNonSecurity` | ***bool***| ***(Optional)*** |
 | `patchFilter` | ***[[]SsmPatchBaselineSpecApprovalRulePatchFilter](#ssmpatchbaselinespecapprovalrulepatchfilter)***||

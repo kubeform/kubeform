@@ -29,8 +29,8 @@ Appears on:[AvailabilitySet](#availabilityset), [AvailabilitySetStatus](#availab
 | `location` | ***string***||
 | `managed` | ***bool***| ***(Optional)*** |
 | `name` | ***string***||
-| `platformFaultDomainCount` | ***int***| ***(Optional)*** |
-| `platformUpdateDomainCount` | ***int***| ***(Optional)*** |
+| `platformFaultDomainCount` | ***int64***| ***(Optional)*** |
+| `platformUpdateDomainCount` | ***int64***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## AvailabilitySetStatus

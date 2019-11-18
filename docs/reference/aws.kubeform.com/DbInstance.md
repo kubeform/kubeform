@@ -28,13 +28,13 @@ Appears on:[DbInstance](#dbinstance), [DbInstanceStatus](#dbinstancestatus)
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `address` | ***string***| ***(Optional)*** |
-| `allocatedStorage` | ***int***| ***(Optional)*** |
+| `allocatedStorage` | ***int64***| ***(Optional)*** |
 | `allowMajorVersionUpgrade` | ***bool***| ***(Optional)*** |
 | `applyImmediately` | ***bool***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `autoMinorVersionUpgrade` | ***bool***| ***(Optional)*** |
 | `availabilityZone` | ***string***| ***(Optional)*** |
-| `backupRetentionPeriod` | ***int***| ***(Optional)*** |
+| `backupRetentionPeriod` | ***int64***| ***(Optional)*** |
 | `backupWindow` | ***string***| ***(Optional)*** |
 | `caCertIdentifier` | ***string***| ***(Optional)*** |
 | `characterSetName` | ***string***| ***(Optional)*** |
@@ -53,17 +53,17 @@ Appears on:[DbInstance](#dbinstance), [DbInstanceStatus](#dbinstancestatus)
 | `identifier` | ***string***| ***(Optional)*** |
 | `identifierPrefix` | ***string***| ***(Optional)*** |
 | `instanceClass` | ***string***||
-| `iops` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
 | `kmsKeyID` | ***string***| ***(Optional)*** |
 | `licenseModel` | ***string***| ***(Optional)*** |
 | `maintenanceWindow` | ***string***| ***(Optional)*** |
-| `monitoringInterval` | ***int***| ***(Optional)*** |
+| `monitoringInterval` | ***int64***| ***(Optional)*** |
 | `monitoringRoleArn` | ***string***| ***(Optional)*** |
 | `multiAz` | ***bool***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `optionGroupName` | ***string***| ***(Optional)*** |
 | `parameterGroupName` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `publiclyAccessible` | ***bool***| ***(Optional)*** |
 | `replicas` | ***[]string***| ***(Optional)*** |
 | `replicateSourceDb` | ***string***| ***(Optional)*** |

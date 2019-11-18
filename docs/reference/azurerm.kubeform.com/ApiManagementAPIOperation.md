@@ -103,7 +103,7 @@ Appears on:[ApiManagementAPIOperationSpec](#apimanagementapioperationspec)
 | `description` | ***string***| ***(Optional)*** |
 | `header` | ***[[]ApiManagementAPIOperationSpecResponseHeader](#apimanagementapioperationspecresponseheader)***| ***(Optional)*** |
 | `representation` | ***[[]ApiManagementAPIOperationSpecResponseRepresentation](#apimanagementapioperationspecresponserepresentation)***| ***(Optional)*** |
-| `statusCode` | ***int***||
+| `statusCode` | ***int64***||
 ## ApiManagementAPIOperationSpecResponseHeader
 
 Appears on:[ApiManagementAPIOperationSpecResponse](#apimanagementapioperationspecresponse)

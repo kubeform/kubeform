@@ -118,31 +118,31 @@ Appears on:[ServiceFabricClusterSpec](#servicefabricclusterspec)
 | ------ | ----- | ----------- |
 | `applicationPorts` | ***[[]ServiceFabricClusterSpecNodeTypeApplicationPorts](#servicefabricclusterspecnodetypeapplicationports)***| ***(Optional)*** |
 | `capacities` | ***map[string]string***| ***(Optional)*** |
-| `clientEndpointPort` | ***int***||
+| `clientEndpointPort` | ***int64***||
 | `durabilityLevel` | ***string***| ***(Optional)*** |
 | `ephemeralPorts` | ***[[]ServiceFabricClusterSpecNodeTypeEphemeralPorts](#servicefabricclusterspecnodetypeephemeralports)***| ***(Optional)*** |
-| `httpEndpointPort` | ***int***||
-| `instanceCount` | ***int***||
+| `httpEndpointPort` | ***int64***||
+| `instanceCount` | ***int64***||
 | `isPrimary` | ***bool***||
 | `name` | ***string***||
 | `placementProperties` | ***map[string]string***| ***(Optional)*** |
-| `reverseProxyEndpointPort` | ***int***| ***(Optional)*** |
+| `reverseProxyEndpointPort` | ***int64***| ***(Optional)*** |
 ## ServiceFabricClusterSpecNodeTypeApplicationPorts
 
 Appears on:[ServiceFabricClusterSpecNodeType](#servicefabricclusterspecnodetype)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `endPort` | ***int***||
-| `startPort` | ***int***||
+| `endPort` | ***int64***||
+| `startPort` | ***int64***||
 ## ServiceFabricClusterSpecNodeTypeEphemeralPorts
 
 Appears on:[ServiceFabricClusterSpecNodeType](#servicefabricclusterspecnodetype)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `endPort` | ***int***||
-| `startPort` | ***int***||
+| `endPort` | ***int64***||
+| `startPort` | ***int64***||
 ## ServiceFabricClusterSpecReverseProxyCertificate
 
 Appears on:[ServiceFabricClusterSpec](#servicefabricclusterspec)

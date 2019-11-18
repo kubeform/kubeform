@@ -36,8 +36,8 @@ Appears on:[ElasticBeanstalkApplicationSpec](#elasticbeanstalkapplicationspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `deleteSourceFromS3` | ***bool***| ***(Optional)*** |
-| `maxAgeInDays` | ***int***| ***(Optional)*** |
-| `maxCount` | ***int***| ***(Optional)*** |
+| `maxAgeInDays` | ***int64***| ***(Optional)*** |
+| `maxCount` | ***int64***| ***(Optional)*** |
 | `serviceRole` | ***string***||
 ## ElasticBeanstalkApplicationStatus
 

@@ -20,11 +20,15 @@ section_menu_id: reference
 | `status` | ***[ProjectServicesStatus](#projectservicesstatus)***||
 ## Phase(`string` alias)
 
+
 Appears on:[ProjectServicesStatus](#projectservicesstatus)
+
 
 ## ProjectServicesSpec
 
+
 Appears on:[ProjectServices](#projectservices), [ProjectServicesStatus](#projectservicesstatus)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
@@ -35,7 +39,9 @@ Appears on:[ProjectServices](#projectservices), [ProjectServicesStatus](#project
 | `services` | ***[]string***||
 ## ProjectServicesStatus
 
+
 Appears on:[ProjectServices](#projectservices)
+
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |

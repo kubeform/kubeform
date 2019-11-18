@@ -29,7 +29,7 @@ Appears on:[KeyVaultKey](#keyvaultkey), [KeyVaultKeyStatus](#keyvaultkeystatus)
 | `curve` | ***string***| ***(Optional)*** |
 | `e` | ***string***| ***(Optional)*** |
 | `keyOpts` | ***[]string***||
-| `keySize` | ***int***| ***(Optional)*** |
+| `keySize` | ***int64***| ***(Optional)*** |
 | `keyType` | ***string***||
 | `keyVaultID` | ***string***| ***(Optional)*** |
 | `n` | ***string***| ***(Optional)*** |

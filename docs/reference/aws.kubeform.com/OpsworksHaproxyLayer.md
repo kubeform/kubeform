@@ -43,7 +43,7 @@ Appears on:[OpsworksHaproxyLayer](#opsworkshaproxylayer), [OpsworksHaproxyLayerS
 | `healthcheckMethod` | ***string***| ***(Optional)*** |
 | `healthcheckURL` | ***string***| ***(Optional)*** |
 | `installUpdatesOnBoot` | ***bool***| ***(Optional)*** |
-| `instanceShutdownTimeout` | ***int***| ***(Optional)*** |
+| `instanceShutdownTimeout` | ***int64***| ***(Optional)*** |
 | `name` | ***string***| ***(Optional)*** |
 | `stackID` | ***string***||
 | `statsEnabled` | ***bool***| ***(Optional)*** |
@@ -58,11 +58,11 @@ Appears on:[OpsworksHaproxyLayerSpec](#opsworkshaproxylayerspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `iops` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
 | `mountPoint` | ***string***||
-| `numberOfDisks` | ***int***||
+| `numberOfDisks` | ***int64***||
 | `raidLevel` | ***string***| ***(Optional)*** |
-| `size` | ***int***||
+| `size` | ***int64***||
 | `type` | ***string***| ***(Optional)*** |
 ## OpsworksHaproxyLayerStatus
 

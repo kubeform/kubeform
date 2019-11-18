@@ -27,7 +27,7 @@ Appears on:[AppCookieStickinessPolicy](#appcookiestickinesspolicy), [AppCookieSt
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `cookieName` | ***string***||
-| `lbPort` | ***int***||
+| `lbPort` | ***int64***||
 | `loadBalancer` | ***string***||
 | `name` | ***string***||
 ## AppCookieStickinessPolicyStatus

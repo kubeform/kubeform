@@ -129,7 +129,7 @@ Appears on:[VirtualMachineScaleSetSpecNetworkProfileIpConfiguration](#virtualmac
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `domainNameLabel` | ***string***||
-| `idleTimeout` | ***int***||
+| `idleTimeout` | ***int64***||
 | `name` | ***string***||
 ## VirtualMachineScaleSetSpecOsProfile
 
@@ -214,9 +214,9 @@ Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `maxBatchInstancePercent` | ***int***| ***(Optional)*** |
-| `maxUnhealthyInstancePercent` | ***int***| ***(Optional)*** |
-| `maxUnhealthyUpgradedInstancePercent` | ***int***| ***(Optional)*** |
+| `maxBatchInstancePercent` | ***int64***| ***(Optional)*** |
+| `maxUnhealthyInstancePercent` | ***int64***| ***(Optional)*** |
+| `maxUnhealthyUpgradedInstancePercent` | ***int64***| ***(Optional)*** |
 | `pauseTimeBetweenBatches` | ***string***| ***(Optional)*** |
 ## VirtualMachineScaleSetSpecSku
 
@@ -224,7 +224,7 @@ Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `capacity` | ***int***||
+| `capacity` | ***int64***||
 | `name` | ***string***||
 | `tier` | ***string***| ***(Optional)*** |
 ## VirtualMachineScaleSetSpecStorageProfileDataDisk
@@ -235,8 +235,8 @@ Appears on:[VirtualMachineScaleSetSpec](#virtualmachinescalesetspec)
 | ------ | ----- | ----------- |
 | `caching` | ***string***| ***(Optional)*** |
 | `createOption` | ***string***||
-| `diskSizeGb` | ***int***| ***(Optional)*** |
-| `lun` | ***int***||
+| `diskSizeGb` | ***int64***| ***(Optional)*** |
+| `lun` | ***int64***||
 | `managedDiskType` | ***string***| ***(Optional)*** |
 ## VirtualMachineScaleSetSpecStorageProfileImageReference
 

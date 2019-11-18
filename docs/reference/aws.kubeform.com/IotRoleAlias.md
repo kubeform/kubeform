@@ -27,7 +27,7 @@ Appears on:[IotRoleAlias](#iotrolealias), [IotRoleAliasStatus](#iotrolealiasstat
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `alias` | ***string***||
-| `credentialDuration` | ***int***| ***(Optional)*** |
+| `credentialDuration` | ***int64***| ***(Optional)*** |
 | `roleArn` | ***string***||
 ## IotRoleAliasStatus
 

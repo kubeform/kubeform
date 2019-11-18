@@ -30,11 +30,11 @@ Appears on:[PrivateDNSZone](#privatednszone), [PrivateDNSZoneStatus](#privatedns
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `maxNumberOfRecordSets` | ***int***| ***(Optional)*** |
-| `maxNumberOfVirtualNetworkLinks` | ***int***| ***(Optional)*** |
-| `maxNumberOfVirtualNetworkLinksWithRegistration` | ***int***| ***(Optional)*** |
+| `maxNumberOfRecordSets` | ***int64***| ***(Optional)*** |
+| `maxNumberOfVirtualNetworkLinks` | ***int64***| ***(Optional)*** |
+| `maxNumberOfVirtualNetworkLinksWithRegistration` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
-| `numberOfRecordSets` | ***int***| ***(Optional)*** |
+| `numberOfRecordSets` | ***int64***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## PrivateDNSZoneStatus

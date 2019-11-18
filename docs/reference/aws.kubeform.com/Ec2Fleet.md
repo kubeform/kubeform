@@ -62,9 +62,9 @@ Appears on:[Ec2FleetSpecLaunchTemplateConfig](#ec2fleetspeclaunchtemplateconfig)
 | `availabilityZone` | ***string***| ***(Optional)*** |
 | `instanceType` | ***string***| ***(Optional)*** |
 | `maxPrice` | ***string***| ***(Optional)*** |
-| `priority` | ***encoding/json.Number***| ***(Optional)*** |
+| `priority` | ***float64***| ***(Optional)*** |
 | `subnetID` | ***string***| ***(Optional)*** |
-| `weightedCapacity` | ***encoding/json.Number***| ***(Optional)*** |
+| `weightedCapacity` | ***float64***| ***(Optional)*** |
 ## Ec2FleetSpecOnDemandOptions
 
 Appears on:[Ec2FleetSpec](#ec2fleetspec)
@@ -80,7 +80,7 @@ Appears on:[Ec2FleetSpec](#ec2fleetspec)
 | ------ | ----- | ----------- |
 | `allocationStrategy` | ***string***| ***(Optional)*** |
 | `instanceInterruptionBehavior` | ***string***| ***(Optional)*** |
-| `instancePoolsToUseCount` | ***int***| ***(Optional)*** |
+| `instancePoolsToUseCount` | ***int64***| ***(Optional)*** |
 ## Ec2FleetSpecTargetCapacitySpecification
 
 Appears on:[Ec2FleetSpec](#ec2fleetspec)
@@ -88,9 +88,9 @@ Appears on:[Ec2FleetSpec](#ec2fleetspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `defaultTargetCapacityType` | ***string***||
-| `onDemandTargetCapacity` | ***int***| ***(Optional)*** |
-| `spotTargetCapacity` | ***int***| ***(Optional)*** |
-| `totalTargetCapacity` | ***int***||
+| `onDemandTargetCapacity` | ***int64***| ***(Optional)*** |
+| `spotTargetCapacity` | ***int64***| ***(Optional)*** |
+| `totalTargetCapacity` | ***int64***||
 ## Ec2FleetStatus
 
 Appears on:[Ec2Fleet](#ec2fleet)

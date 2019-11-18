@@ -42,10 +42,10 @@ Appears on:[NeptuneClusterInstance](#neptuneclusterinstance), [NeptuneClusterIns
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
 | `neptuneParameterGroupName` | ***string***| ***(Optional)*** |
 | `neptuneSubnetGroupName` | ***string***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `preferredBackupWindow` | ***string***| ***(Optional)*** |
 | `preferredMaintenanceWindow` | ***string***| ***(Optional)*** |
-| `promotionTier` | ***int***| ***(Optional)*** |
+| `promotionTier` | ***int64***| ***(Optional)*** |
 | `publiclyAccessible` | ***bool***| ***(Optional)*** |
 | `storageEncrypted` | ***bool***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |

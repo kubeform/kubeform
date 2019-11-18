@@ -26,18 +26,18 @@ Appears on:[ComputeHTTPSHealthCheck](#computehttpshealthcheck), [ComputeHTTPSHea
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `checkIntervalSec` | ***int***| ***(Optional)*** |
+| `checkIntervalSec` | ***int64***| ***(Optional)*** |
 | `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `healthyThreshold` | ***int***| ***(Optional)*** |
+| `healthyThreshold` | ***int64***| ***(Optional)*** |
 | `host` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `requestPath` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
-| `timeoutSec` | ***int***| ***(Optional)*** |
-| `unhealthyThreshold` | ***int***| ***(Optional)*** |
+| `timeoutSec` | ***int64***| ***(Optional)*** |
+| `unhealthyThreshold` | ***int64***| ***(Optional)*** |
 ## ComputeHTTPSHealthCheckStatus
 
 Appears on:[ComputeHTTPSHealthCheck](#computehttpshealthcheck)

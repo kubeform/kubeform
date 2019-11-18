@@ -30,7 +30,7 @@ Appears on:[ComputeVPNTunnel](#computevpntunnel), [ComputeVPNTunnelStatus](#comp
 | `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `detailedStatus` | ***string***| ***(Optional)*** |
-| `ikeVersion` | ***int***| ***(Optional)*** |
+| `ikeVersion` | ***int64***| ***(Optional)*** |
 | `labelFingerprint` | ***string***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
 | `localTrafficSelector` | ***[]string***| ***(Optional)*** |

@@ -28,7 +28,7 @@ Appears on:[AutoscalingLifecycleHook](#autoscalinglifecyclehook), [AutoscalingLi
 | `id` | ***string***||
 | `autoscalingGroupName` | ***string***||
 | `defaultResult` | ***string***| ***(Optional)*** |
-| `heartbeatTimeout` | ***int***| ***(Optional)*** |
+| `heartbeatTimeout` | ***int64***| ***(Optional)*** |
 | `lifecycleTransition` | ***string***||
 | `name` | ***string***||
 | `notificationMetadata` | ***string***| ***(Optional)*** |

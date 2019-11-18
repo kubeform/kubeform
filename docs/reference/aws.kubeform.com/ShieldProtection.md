@@ -21,7 +21,9 @@ section_menu_id: reference
 ## ShieldProtectionSpec
 
 
+
 Appears on:[ShieldProtection](#shieldprotection), [ShieldProtectionStatus](#shieldprotectionstatus)
+
 
 
 | Field | Type | Description |
@@ -33,7 +35,9 @@ Appears on:[ShieldProtection](#shieldprotection), [ShieldProtectionStatus](#shie
 ## ShieldProtectionStatus
 
 
+
 Appears on:[ShieldProtection](#shieldprotection)
+
 
 
 | Field | Type | Description |

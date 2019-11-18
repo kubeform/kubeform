@@ -57,7 +57,7 @@ Appears on:[CognitoUserPoolSpec](#cognitouserpoolspec)
 | ------ | ----- | ----------- |
 | `allowAdminCreateUserOnly` | ***bool***| ***(Optional)*** |
 | `inviteMessageTemplate` | ***[[]CognitoUserPoolSpecAdminCreateUserConfigInviteMessageTemplate](#cognitouserpoolspecadmincreateuserconfiginvitemessagetemplate)***| ***(Optional)*** |
-| `unusedAccountValidityDays` | ***int***| ***(Optional)*** |
+| `unusedAccountValidityDays` | ***int64***| ***(Optional)*** |
 ## CognitoUserPoolSpecAdminCreateUserConfigInviteMessageTemplate
 
 Appears on:[CognitoUserPoolSpecAdminCreateUserConfig](#cognitouserpoolspecadmincreateuserconfig)
@@ -105,7 +105,7 @@ Appears on:[CognitoUserPoolSpec](#cognitouserpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `minimumLength` | ***int***| ***(Optional)*** |
+| `minimumLength` | ***int64***| ***(Optional)*** |
 | `requireLowercase` | ***bool***| ***(Optional)*** |
 | `requireNumbers` | ***bool***| ***(Optional)*** |
 | `requireSymbols` | ***bool***| ***(Optional)*** |

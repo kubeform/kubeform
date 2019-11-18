@@ -36,8 +36,8 @@ Appears on:[SsmActivation](#ssmactivation), [SsmActivationStatus](#ssmactivation
 | `expired` | ***string***| ***(Optional)*** |
 | `iamRole` | ***string***||
 | `name` | ***string***| ***(Optional)*** |
-| `registrationCount` | ***int***| ***(Optional)*** |
-| `registrationLimit` | ***int***| ***(Optional)*** |
+| `registrationCount` | ***int64***| ***(Optional)*** |
+| `registrationLimit` | ***int64***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 ## SsmActivationStatus
 

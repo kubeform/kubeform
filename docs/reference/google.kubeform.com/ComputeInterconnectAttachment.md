@@ -44,7 +44,7 @@ Appears on:[ComputeInterconnectAttachmentSpec](#computeinterconnectattachmentspe
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `tag8021q` | ***int***| ***(Optional)*** |
+| `tag8021q` | ***int64***| ***(Optional)*** |
 ## ComputeInterconnectAttachmentStatus
 
 Appears on:[ComputeInterconnectAttachment](#computeinterconnectattachment)

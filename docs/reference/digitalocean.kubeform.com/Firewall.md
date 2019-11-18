@@ -64,7 +64,7 @@ Appears on:[FirewallSpec](#firewallspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `dropletID` | ***int***| ***(Optional)*** |
+| `dropletID` | ***int64***| ***(Optional)*** |
 | `removing` | ***bool***| ***(Optional)*** |
 | `status` | ***string***| ***(Optional)*** |
 ## FirewallStatus

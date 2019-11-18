@@ -54,9 +54,9 @@ Appears on:[AmiCopySpec](#amicopyspec)
 | `deleteOnTermination` | ***bool***| ***(Optional)*** |
 | `deviceName` | ***string***| ***(Optional)*** |
 | `encrypted` | ***bool***| ***(Optional)*** |
-| `iops` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
 | `snapshotID` | ***string***| ***(Optional)*** |
-| `volumeSize` | ***int***| ***(Optional)*** |
+| `volumeSize` | ***int64***| ***(Optional)*** |
 | `volumeType` | ***string***| ***(Optional)*** |
 ## AmiCopySpecEphemeralBlockDevice
 

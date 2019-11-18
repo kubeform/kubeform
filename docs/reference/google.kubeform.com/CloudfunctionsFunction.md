@@ -26,7 +26,7 @@ Appears on:[CloudfunctionsFunction](#cloudfunctionsfunction), [CloudfunctionsFun
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `availableMemoryMb` | ***int***| ***(Optional)*** |
+| `availableMemoryMb` | ***int64***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `entryPoint` | ***string***| ***(Optional)*** |
 | `environmentVariables` | ***map[string]string***| ***(Optional)*** |
@@ -40,7 +40,7 @@ Appears on:[CloudfunctionsFunction](#cloudfunctionsfunction), [CloudfunctionsFun
 | `runtime` | ***string***| ***(Optional)*** |
 | `sourceArchiveBucket` | ***string***||
 | `sourceArchiveObject` | ***string***||
-| `timeout` | ***int***| ***(Optional)*** |
+| `timeout` | ***int64***| ***(Optional)*** |
 | `triggerBucket` | ***string***| ***(Optional)*** Deprecated|
 | `triggerHTTP` | ***bool***| ***(Optional)*** |
 | `triggerTopic` | ***string***| ***(Optional)*** Deprecated|

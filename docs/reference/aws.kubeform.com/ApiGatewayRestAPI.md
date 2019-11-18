@@ -33,7 +33,7 @@ Appears on:[ApiGatewayRestAPI](#apigatewayrestapi), [ApiGatewayRestAPIStatus](#a
 | `description` | ***string***| ***(Optional)*** |
 | `endpointConfiguration` | ***[[]ApiGatewayRestAPISpecEndpointConfiguration](#apigatewayrestapispecendpointconfiguration)***| ***(Optional)*** |
 | `executionArn` | ***string***| ***(Optional)*** |
-| `minimumCompressionSize` | ***int***| ***(Optional)*** |
+| `minimumCompressionSize` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `policy` | ***string***| ***(Optional)*** |
 | `rootResourceID` | ***string***| ***(Optional)*** |

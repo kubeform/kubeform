@@ -30,7 +30,7 @@ Appears on:[ApplicationInsightsWebTest](#applicationinsightswebtest), [Applicati
 | `configuration` | ***string***||
 | `description` | ***string***| ***(Optional)*** |
 | `enabled` | ***bool***| ***(Optional)*** |
-| `frequency` | ***int***| ***(Optional)*** |
+| `frequency` | ***int64***| ***(Optional)*** |
 | `geoLocations` | ***[]string***||
 | `kind` | ***string***||
 | `location` | ***string***||
@@ -39,7 +39,7 @@ Appears on:[ApplicationInsightsWebTest](#applicationinsightswebtest), [Applicati
 | `retryEnabled` | ***bool***| ***(Optional)*** |
 | `syntheticMonitorID` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `timeout` | ***int***| ***(Optional)*** |
+| `timeout` | ***int64***| ***(Optional)*** |
 ## ApplicationInsightsWebTestStatus
 
 Appears on:[ApplicationInsightsWebTest](#applicationinsightswebtest)

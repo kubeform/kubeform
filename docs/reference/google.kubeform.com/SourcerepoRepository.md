@@ -32,7 +32,7 @@ Appears on:[SourcerepoRepository](#sourcereporepository), [SourcerepoRepositoryS
 | `id` | ***string***||
 | `name` | ***string***||
 | `project` | ***string***| ***(Optional)*** |
-| `size` | ***int***| ***(Optional)*** |
+| `size` | ***int64***| ***(Optional)*** |
 | `url` | ***string***| ***(Optional)*** |
 ## SourcerepoRepositoryStatus
 

@@ -28,7 +28,7 @@ Appears on:[CosmosdbMongoCollection](#cosmosdbmongocollection), [CosmosdbMongoCo
 | `id` | ***string***||
 | `accountName` | ***string***||
 | `databaseName` | ***string***||
-| `defaultTtlSeconds` | ***int***| ***(Optional)*** |
+| `defaultTtlSeconds` | ***int64***| ***(Optional)*** |
 | `indexes` | ***[[]CosmosdbMongoCollectionSpecIndexes](#cosmosdbmongocollectionspecindexes)***| ***(Optional)*** |
 | `name` | ***string***||
 | `resourceGroupName` | ***string***||

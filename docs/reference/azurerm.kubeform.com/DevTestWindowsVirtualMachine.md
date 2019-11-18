@@ -60,8 +60,8 @@ Appears on:[DevTestWindowsVirtualMachineSpec](#devtestwindowsvirtualmachinespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `backendPort` | ***int***||
-| `frontendPort` | ***int***| ***(Optional)*** |
+| `backendPort` | ***int64***||
+| `frontendPort` | ***int64***| ***(Optional)*** |
 | `protocol` | ***string***||
 ## DevTestWindowsVirtualMachineStatus
 

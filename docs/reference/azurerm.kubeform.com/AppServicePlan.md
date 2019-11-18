@@ -30,8 +30,8 @@ Appears on:[AppServicePlan](#appserviceplan), [AppServicePlanStatus](#appservice
 | `isXenon` | ***bool***| ***(Optional)*** |
 | `kind` | ***string***| ***(Optional)*** |
 | `location` | ***string***||
-| `maximumElasticWorkerCount` | ***int***| ***(Optional)*** |
-| `maximumNumberOfWorkers` | ***int***| ***(Optional)*** |
+| `maximumElasticWorkerCount` | ***int64***| ***(Optional)*** |
+| `maximumNumberOfWorkers` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `perSiteScaling` | ***bool***| ***(Optional)*** |
 | `properties` | ***[[]AppServicePlanSpecProperties](#appserviceplanspecproperties)***| ***(Optional)*** Deprecated|
@@ -54,7 +54,7 @@ Appears on:[AppServicePlanSpec](#appserviceplanspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `capacity` | ***int***| ***(Optional)*** |
+| `capacity` | ***int64***| ***(Optional)*** |
 | `size` | ***string***||
 | `tier` | ***string***||
 ## AppServicePlanStatus

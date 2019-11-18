@@ -46,7 +46,7 @@ Appears on:[NetworkSecurityGroupSpec](#networksecuritygroupspec)
 | `destinationPortRanges` | ***[]string***| ***(Optional)*** |
 | `direction` | ***string***||
 | `name` | ***string***||
-| `priority` | ***int***||
+| `priority` | ***int64***||
 | `protocol` | ***string***||
 | `sourceAddressPrefix` | ***string***| ***(Optional)*** |
 | `sourceAddressPrefixes` | ***[]string***| ***(Optional)*** |

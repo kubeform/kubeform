@@ -27,7 +27,7 @@ Appears on:[Cloud9EnvironmentEc2](#cloud9environmentec2), [Cloud9EnvironmentEc2S
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
-| `automaticStopTimeMinutes` | ***int***| ***(Optional)*** |
+| `automaticStopTimeMinutes` | ***int64***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `instanceType` | ***string***||
 | `name` | ***string***||

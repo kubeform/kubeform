@@ -30,14 +30,14 @@ Appears on:[DxHostedPublicVirtualInterface](#dxhostedpublicvirtualinterface), [D
 | `amazonAddress` | ***string***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `awsDevice` | ***string***| ***(Optional)*** |
-| `bgpAsn` | ***int***||
+| `bgpAsn` | ***int64***||
 | `bgpAuthKey` | ***string***| ***(Optional)*** |
 | `connectionID` | ***string***||
 | `customerAddress` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `ownerAccountID` | ***string***||
 | `routeFilterPrefixes` | ***[]string***||
-| `vlan` | ***int***||
+| `vlan` | ***int64***||
 ## DxHostedPublicVirtualInterfaceStatus
 
 Appears on:[DxHostedPublicVirtualInterface](#dxhostedpublicvirtualinterface)

@@ -35,7 +35,7 @@ Appears on:[StorageObjectAccessControl](#storageobjectaccesscontrol), [StorageOb
 | `email` | ***string***| ***(Optional)*** |
 | `entity` | ***string***||
 | `entityID` | ***string***| ***(Optional)*** |
-| `generation` | ***int***| ***(Optional)*** |
+| `generation` | ***int64***| ***(Optional)*** |
 | `object` | ***string***||
 | `projectTeam` | ***[[]StorageObjectAccessControlSpecProjectTeam](#storageobjectaccesscontrolspecprojectteam)***| ***(Optional)*** |
 | `role` | ***string***||

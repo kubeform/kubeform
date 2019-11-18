@@ -37,7 +37,7 @@ Appears on:[IotDpsSpec](#iotdpsspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `capacity` | ***int***||
+| `capacity` | ***int64***||
 | `name` | ***string***||
 | `tier` | ***string***||
 ## IotDpsStatus

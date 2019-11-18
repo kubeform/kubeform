@@ -73,7 +73,7 @@ Appears on:[ApiManagementBackendSpec](#apimanagementbackendspec)
 | ------ | ----- | ----------- |
 | `clientCertificateThumbprint` | ***string***||
 | `managementEndpoints` | ***[]string***||
-| `maxPartitionResolutionRetries` | ***int***||
+| `maxPartitionResolutionRetries` | ***int64***||
 | `serverCertificateThumbprints` | ***[]string***| ***(Optional)*** |
 | `serverX509Name` | ***[[]ApiManagementBackendSpecServiceFabricClusterServerX509Name](#apimanagementbackendspecservicefabricclusterserverx509name)***| ***(Optional)*** |
 ## ApiManagementBackendSpecServiceFabricClusterServerX509Name

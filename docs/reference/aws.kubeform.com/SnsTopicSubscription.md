@@ -31,7 +31,7 @@ Appears on:[SnsTopicSubscription](#snstopicsubscription), [SnsTopicSubscriptionS
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
-| `confirmationTimeoutInMinutes` | ***int***| ***(Optional)*** |
+| `confirmationTimeoutInMinutes` | ***int64***| ***(Optional)*** |
 | `deliveryPolicy` | ***string***| ***(Optional)*** |
 | `endpoint` | ***string***||
 | `endpointAutoConfirms` | ***bool***| ***(Optional)*** |

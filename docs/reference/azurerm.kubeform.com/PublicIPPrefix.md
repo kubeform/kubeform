@@ -33,7 +33,7 @@ Appears on:[PublicIPPrefix](#publicipprefix), [PublicIPPrefixStatus](#publicippr
 | `ipPrefix` | ***string***| ***(Optional)*** |
 | `location` | ***string***||
 | `name` | ***string***||
-| `prefixLength` | ***int***| ***(Optional)*** |
+| `prefixLength` | ***int64***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 | `sku` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |

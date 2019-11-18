@@ -26,10 +26,10 @@ Appears on:[DnsZone](#dnszone), [DnsZoneStatus](#dnszonestatus)
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `maxNumberOfRecordSets` | ***int***| ***(Optional)*** |
+| `maxNumberOfRecordSets` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `nameServers` | ***[]string***| ***(Optional)*** |
-| `numberOfRecordSets` | ***int***| ***(Optional)*** |
+| `numberOfRecordSets` | ***int64***| ***(Optional)*** |
 | `registrationVirtualNetworkIDS` | ***[]string***| ***(Optional)*** |
 | `resolutionVirtualNetworkIDS` | ***[]string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||

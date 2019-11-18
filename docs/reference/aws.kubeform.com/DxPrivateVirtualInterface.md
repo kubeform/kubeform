@@ -30,16 +30,16 @@ Appears on:[DxPrivateVirtualInterface](#dxprivatevirtualinterface), [DxPrivateVi
 | `amazonAddress` | ***string***| ***(Optional)*** |
 | `arn` | ***string***| ***(Optional)*** |
 | `awsDevice` | ***string***| ***(Optional)*** |
-| `bgpAsn` | ***int***||
+| `bgpAsn` | ***int64***||
 | `bgpAuthKey` | ***string***| ***(Optional)*** |
 | `connectionID` | ***string***||
 | `customerAddress` | ***string***| ***(Optional)*** |
 | `dxGatewayID` | ***string***| ***(Optional)*** |
 | `jumboFrameCapable` | ***bool***| ***(Optional)*** |
-| `mtu` | ***int***| ***(Optional)*** |
+| `mtu` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `vlan` | ***int***||
+| `vlan` | ***int64***||
 | `vpnGatewayID` | ***string***| ***(Optional)*** |
 ## DxPrivateVirtualInterfaceStatus
 

@@ -26,7 +26,7 @@ Appears on:[DataflowJob](#dataflowjob), [DataflowJobStatus](#dataflowjobstatus)
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `maxWorkers` | ***int***| ***(Optional)*** |
+| `maxWorkers` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `onDelete` | ***string***| ***(Optional)*** |
 | `parameters` | ***map[string]string***| ***(Optional)*** |

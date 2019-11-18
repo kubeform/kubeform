@@ -29,7 +29,7 @@ Appears on:[ComputeSnapshot](#computesnapshot), [ComputeSnapshotStatus](#compute
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `creationTimestamp` | ***string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
-| `diskSizeGb` | ***int***| ***(Optional)*** |
+| `diskSizeGb` | ***int64***| ***(Optional)*** |
 | `labelFingerprint` | ***string***| ***(Optional)*** |
 | `labels` | ***map[string]string***| ***(Optional)*** |
 | `licenses` | ***[]string***| ***(Optional)*** |
@@ -38,12 +38,12 @@ Appears on:[ComputeSnapshot](#computesnapshot), [ComputeSnapshotStatus](#compute
 | `selfLink` | ***string***| ***(Optional)*** |
 | `snapshotEncryptionKey` | ***[[]ComputeSnapshotSpecSnapshotEncryptionKey](#computesnapshotspecsnapshotencryptionkey)***| ***(Optional)*** |
 | `snapshotEncryptionKeySha256` | ***string***| ***(Optional)*** Deprecated|
-| `snapshotID` | ***int***| ***(Optional)*** |
+| `snapshotID` | ***int64***| ***(Optional)*** |
 | `sourceDisk` | ***string***||
 | `sourceDiskEncryptionKey` | ***[[]ComputeSnapshotSpecSourceDiskEncryptionKey](#computesnapshotspecsourcediskencryptionkey)***| ***(Optional)*** |
 | `sourceDiskEncryptionKeySha256` | ***string***| ***(Optional)*** Deprecated|
 | `sourceDiskLink` | ***string***| ***(Optional)*** |
-| `storageBytes` | ***int***| ***(Optional)*** |
+| `storageBytes` | ***int64***| ***(Optional)*** |
 | `zone` | ***string***| ***(Optional)*** |
 ## ComputeSnapshotSpecSnapshotEncryptionKey
 

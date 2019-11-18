@@ -71,8 +71,8 @@ Appears on:[MonitoringAlertPolicySpecConditionsConditionAbsent](#monitoringalert
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `count` | ***int***| ***(Optional)*** |
-| `percent` | ***encoding/json.Number***| ***(Optional)*** |
+| `count` | ***int64***| ***(Optional)*** |
+| `percent` | ***float64***| ***(Optional)*** |
 ## MonitoringAlertPolicySpecConditionsConditionThreshold
 
 Appears on:[MonitoringAlertPolicySpecConditions](#monitoringalertpolicyspecconditions)
@@ -85,7 +85,7 @@ Appears on:[MonitoringAlertPolicySpecConditions](#monitoringalertpolicyspeccondi
 | `denominatorFilter` | ***string***| ***(Optional)*** |
 | `duration` | ***string***||
 | `filter` | ***string***| ***(Optional)*** |
-| `thresholdValue` | ***encoding/json.Number***| ***(Optional)*** |
+| `thresholdValue` | ***float64***| ***(Optional)*** |
 | `trigger` | ***[[]MonitoringAlertPolicySpecConditionsConditionThresholdTrigger](#monitoringalertpolicyspecconditionsconditionthresholdtrigger)***| ***(Optional)*** |
 ## MonitoringAlertPolicySpecConditionsConditionThresholdAggregations
 
@@ -113,8 +113,8 @@ Appears on:[MonitoringAlertPolicySpecConditionsConditionThreshold](#monitoringal
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `count` | ***int***| ***(Optional)*** |
-| `percent` | ***encoding/json.Number***| ***(Optional)*** |
+| `count` | ***int64***| ***(Optional)*** |
+| `percent` | ***float64***| ***(Optional)*** |
 ## MonitoringAlertPolicySpecCreationRecord
 
 Appears on:[MonitoringAlertPolicySpec](#monitoringalertpolicyspec)

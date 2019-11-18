@@ -30,7 +30,7 @@ Appears on:[DnsCaaRecord](#dnscaarecord), [DnsCaaRecordStatus](#dnscaarecordstat
 | `record` | ***[[]DnsCaaRecordSpecRecord](#dnscaarecordspecrecord)***||
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `ttl` | ***int***||
+| `ttl` | ***int64***||
 | `zoneName` | ***string***||
 ## DnsCaaRecordSpecRecord
 
@@ -38,7 +38,7 @@ Appears on:[DnsCaaRecordSpec](#dnscaarecordspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `flags` | ***int***||
+| `flags` | ***int64***||
 | `tag` | ***string***||
 | `value` | ***string***||
 ## DnsCaaRecordStatus

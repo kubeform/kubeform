@@ -26,8 +26,8 @@ Appears on:[AppautoscalingTarget](#appautoscalingtarget), [AppautoscalingTargetS
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `maxCapacity` | ***int***||
-| `minCapacity` | ***int***||
+| `maxCapacity` | ***int64***||
+| `minCapacity` | ***int64***||
 | `resourceID` | ***string***||
 | `roleArn` | ***string***| ***(Optional)*** |
 | `scalableDimension` | ***string***||

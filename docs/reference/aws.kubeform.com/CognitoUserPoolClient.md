@@ -37,7 +37,7 @@ Appears on:[CognitoUserPoolClient](#cognitouserpoolclient), [CognitoUserPoolClie
 | `logoutUrls` | ***[]string***| ***(Optional)*** |
 | `name` | ***string***||
 | `readAttributes` | ***[]string***| ***(Optional)*** |
-| `refreshTokenValidity` | ***int***| ***(Optional)*** |
+| `refreshTokenValidity` | ***int64***| ***(Optional)*** |
 | `supportedIdentityProviders` | ***[]string***| ***(Optional)*** |
 | `userPoolID` | ***string***||
 | `writeAttributes` | ***[]string***| ***(Optional)*** |

@@ -44,26 +44,26 @@ Appears on:[GameliftFleetSpec](#gameliftfleetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `fromPort` | ***int***||
+| `fromPort` | ***int64***||
 | `ipRange` | ***string***||
 | `protocol` | ***string***||
-| `toPort` | ***int***||
+| `toPort` | ***int64***||
 ## GameliftFleetSpecResourceCreationLimitPolicy
 
 Appears on:[GameliftFleetSpec](#gameliftfleetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `newGameSessionsPerCreator` | ***int***| ***(Optional)*** |
-| `policyPeriodInMinutes` | ***int***| ***(Optional)*** |
+| `newGameSessionsPerCreator` | ***int64***| ***(Optional)*** |
+| `policyPeriodInMinutes` | ***int64***| ***(Optional)*** |
 ## GameliftFleetSpecRuntimeConfiguration
 
 Appears on:[GameliftFleetSpec](#gameliftfleetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `gameSessionActivationTimeoutSeconds` | ***int***| ***(Optional)*** |
-| `maxConcurrentGameSessionActivations` | ***int***| ***(Optional)*** |
+| `gameSessionActivationTimeoutSeconds` | ***int64***| ***(Optional)*** |
+| `maxConcurrentGameSessionActivations` | ***int64***| ***(Optional)*** |
 | `serverProcess` | ***[[]GameliftFleetSpecRuntimeConfigurationServerProcess](#gameliftfleetspecruntimeconfigurationserverprocess)***| ***(Optional)*** |
 ## GameliftFleetSpecRuntimeConfigurationServerProcess
 
@@ -71,7 +71,7 @@ Appears on:[GameliftFleetSpecRuntimeConfiguration](#gameliftfleetspecruntimeconf
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `concurrentExecutions` | ***int***||
+| `concurrentExecutions` | ***int64***||
 | `launchPath` | ***string***||
 | `parameters` | ***string***| ***(Optional)*** |
 ## GameliftFleetStatus

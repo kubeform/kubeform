@@ -42,9 +42,9 @@ Appears on:[AppautoscalingPolicySpec](#appautoscalingpolicyspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `adjustmentType` | ***string***| ***(Optional)*** |
-| `cooldown` | ***int***| ***(Optional)*** |
+| `cooldown` | ***int64***| ***(Optional)*** |
 | `metricAggregationType` | ***string***| ***(Optional)*** |
-| `minAdjustmentMagnitude` | ***int***| ***(Optional)*** |
+| `minAdjustmentMagnitude` | ***int64***| ***(Optional)*** |
 | `stepAdjustment` | ***[[]AppautoscalingPolicySpecStepScalingPolicyConfigurationStepAdjustment](#appautoscalingpolicyspecstepscalingpolicyconfigurationstepadjustment)***| ***(Optional)*** |
 ## AppautoscalingPolicySpecStepScalingPolicyConfigurationStepAdjustment
 
@@ -54,7 +54,7 @@ Appears on:[AppautoscalingPolicySpecStepScalingPolicyConfiguration](#appautoscal
 | ------ | ----- | ----------- |
 | `metricIntervalLowerBound` | ***string***| ***(Optional)*** |
 | `metricIntervalUpperBound` | ***string***| ***(Optional)*** |
-| `scalingAdjustment` | ***int***||
+| `scalingAdjustment` | ***int64***||
 ## AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration
 
 Appears on:[AppautoscalingPolicySpec](#appautoscalingpolicyspec)
@@ -64,9 +64,9 @@ Appears on:[AppautoscalingPolicySpec](#appautoscalingpolicyspec)
 | `customizedMetricSpecification` | ***[[]AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification](#appautoscalingpolicyspectargettrackingscalingpolicyconfigurationcustomizedmetricspecification)***| ***(Optional)*** |
 | `disableScaleIn` | ***bool***| ***(Optional)*** |
 | `predefinedMetricSpecification` | ***[[]AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification](#appautoscalingpolicyspectargettrackingscalingpolicyconfigurationpredefinedmetricspecification)***| ***(Optional)*** |
-| `scaleInCooldown` | ***int***| ***(Optional)*** |
-| `scaleOutCooldown` | ***int***| ***(Optional)*** |
-| `targetValue` | ***encoding/json.Number***||
+| `scaleInCooldown` | ***int64***| ***(Optional)*** |
+| `scaleOutCooldown` | ***int64***| ***(Optional)*** |
+| `targetValue` | ***float64***||
 ## AppautoscalingPolicySpecTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification
 
 Appears on:[AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration](#appautoscalingpolicyspectargettrackingscalingpolicyconfiguration)

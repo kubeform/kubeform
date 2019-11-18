@@ -32,10 +32,10 @@ Appears on:[PinpointSmsChannel](#pinpointsmschannel), [PinpointSmsChannelStatus]
 | `id` | ***string***||
 | `applicationID` | ***string***||
 | `enabled` | ***bool***| ***(Optional)*** |
-| `promotionalMessagesPerSecond` | ***int***| ***(Optional)*** |
+| `promotionalMessagesPerSecond` | ***int64***| ***(Optional)*** |
 | `senderID` | ***string***| ***(Optional)*** |
 | `shortCode` | ***string***| ***(Optional)*** |
-| `transactionalMessagesPerSecond` | ***int***| ***(Optional)*** |
+| `transactionalMessagesPerSecond` | ***int64***| ***(Optional)*** |
 ## PinpointSmsChannelStatus
 
 Appears on:[PinpointSmsChannel](#pinpointsmschannel)

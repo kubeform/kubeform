@@ -26,18 +26,18 @@ Appears on:[GlueJob](#gluejob), [GlueJobStatus](#gluejobstatus)
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `allocatedCapacity` | ***int***| ***(Optional)*** Deprecated|
+| `allocatedCapacity` | ***int64***| ***(Optional)*** Deprecated|
 | `command` | ***[[]GlueJobSpecCommand](#gluejobspeccommand)***||
 | `connections` | ***[]string***| ***(Optional)*** |
 | `defaultArguments` | ***map[string]string***| ***(Optional)*** |
 | `description` | ***string***| ***(Optional)*** |
 | `executionProperty` | ***[[]GlueJobSpecExecutionProperty](#gluejobspecexecutionproperty)***| ***(Optional)*** |
-| `maxCapacity` | ***encoding/json.Number***| ***(Optional)*** |
-| `maxRetries` | ***int***| ***(Optional)*** |
+| `maxCapacity` | ***float64***| ***(Optional)*** |
+| `maxRetries` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `roleArn` | ***string***||
 | `securityConfiguration` | ***string***| ***(Optional)*** |
-| `timeout` | ***int***| ***(Optional)*** |
+| `timeout` | ***int64***| ***(Optional)*** |
 ## GlueJobSpecCommand
 
 Appears on:[GlueJobSpec](#gluejobspec)
@@ -52,7 +52,7 @@ Appears on:[GlueJobSpec](#gluejobspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `maxConcurrentRuns` | ***int***| ***(Optional)*** |
+| `maxConcurrentRuns` | ***int64***| ***(Optional)*** |
 ## GlueJobStatus
 
 Appears on:[GlueJob](#gluejob)

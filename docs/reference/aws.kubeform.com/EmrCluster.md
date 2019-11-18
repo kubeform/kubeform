@@ -34,10 +34,10 @@ Appears on:[EmrCluster](#emrcluster), [EmrClusterStatus](#emrclusterstatus)
 | `clusterState` | ***string***| ***(Optional)*** |
 | `configurations` | ***string***| ***(Optional)*** |
 | `configurationsJSON` | ***string***| ***(Optional)*** |
-| `coreInstanceCount` | ***int***| ***(Optional)*** |
+| `coreInstanceCount` | ***int64***| ***(Optional)*** |
 | `coreInstanceType` | ***string***| ***(Optional)*** |
 | `customAmiID` | ***string***| ***(Optional)*** |
-| `ebsRootVolumeSize` | ***int***| ***(Optional)*** |
+| `ebsRootVolumeSize` | ***int64***| ***(Optional)*** |
 | `ec2Attributes` | ***[[]EmrClusterSpecEc2Attributes](#emrclusterspecec2attributes)***| ***(Optional)*** |
 | `instanceGroup` | ***[[]EmrClusterSpecInstanceGroup](#emrclusterspecinstancegroup)***| ***(Optional)*** |
 | `keepJobFlowAliveWhenNoSteps` | ***bool***| ***(Optional)*** |
@@ -87,7 +87,7 @@ Appears on:[EmrClusterSpec](#emrclusterspec)
 | `bidPrice` | ***string***| ***(Optional)*** |
 | `ebsConfig` | ***[[]EmrClusterSpecInstanceGroupEbsConfig](#emrclusterspecinstancegroupebsconfig)***| ***(Optional)*** |
 | `ID` | ***string***| ***(Optional)*** |
-| `instanceCount` | ***int***| ***(Optional)*** |
+| `instanceCount` | ***int64***| ***(Optional)*** |
 | `instanceRole` | ***string***||
 | `instanceType` | ***string***||
 | `name` | ***string***| ***(Optional)*** |
@@ -97,10 +97,10 @@ Appears on:[EmrClusterSpecInstanceGroup](#emrclusterspecinstancegroup)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `iops` | ***int***| ***(Optional)*** |
-| `size` | ***int***||
+| `iops` | ***int64***| ***(Optional)*** |
+| `size` | ***int64***||
 | `type` | ***string***||
-| `volumesPerInstance` | ***int***| ***(Optional)*** |
+| `volumesPerInstance` | ***int64***| ***(Optional)*** |
 ## EmrClusterSpecKerberosAttributes
 
 Appears on:[EmrClusterSpec](#emrclusterspec)

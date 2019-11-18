@@ -28,8 +28,8 @@ Appears on:[MssqlElasticpool](#mssqlelasticpool), [MssqlElasticpoolStatus](#mssq
 | `id` | ***string***||
 | `elasticPoolProperties` | ***[[]MssqlElasticpoolSpecElasticPoolProperties](#mssqlelasticpoolspecelasticpoolproperties)***| ***(Optional)*** Deprecated|
 | `location` | ***string***||
-| `maxSizeBytes` | ***int***| ***(Optional)*** |
-| `maxSizeGb` | ***encoding/json.Number***| ***(Optional)*** |
+| `maxSizeBytes` | ***int64***| ***(Optional)*** |
+| `maxSizeGb` | ***float64***| ***(Optional)*** |
 | `name` | ***string***||
 | `perDatabaseSettings` | ***[[]MssqlElasticpoolSpecPerDatabaseSettings](#mssqlelasticpoolspecperdatabasesettings)***||
 | `resourceGroupName` | ***string***||
@@ -45,7 +45,7 @@ Appears on:[MssqlElasticpoolSpec](#mssqlelasticpoolspec)
 | ------ | ----- | ----------- |
 | `creationDate` | ***string***| ***(Optional)*** Deprecated|
 | `licenseType` | ***string***| ***(Optional)*** Deprecated|
-| `maxSizeBytes` | ***int***| ***(Optional)*** Deprecated|
+| `maxSizeBytes` | ***int64***| ***(Optional)*** Deprecated|
 | `state` | ***string***| ***(Optional)*** Deprecated|
 | `zoneRedundant` | ***bool***| ***(Optional)*** Deprecated|
 ## MssqlElasticpoolSpecPerDatabaseSettings
@@ -54,15 +54,15 @@ Appears on:[MssqlElasticpoolSpec](#mssqlelasticpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `maxCapacity` | ***encoding/json.Number***||
-| `minCapacity` | ***encoding/json.Number***||
+| `maxCapacity` | ***float64***||
+| `minCapacity` | ***float64***||
 ## MssqlElasticpoolSpecSku
 
 Appears on:[MssqlElasticpoolSpec](#mssqlelasticpoolspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `capacity` | ***int***||
+| `capacity` | ***int64***||
 | `family` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `tier` | ***string***||

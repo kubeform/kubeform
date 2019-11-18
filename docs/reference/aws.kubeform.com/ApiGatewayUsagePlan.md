@@ -46,8 +46,8 @@ Appears on:[ApiGatewayUsagePlanSpec](#apigatewayusageplanspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `limit` | ***int***||
-| `offset` | ***int***| ***(Optional)*** |
+| `limit` | ***int64***||
+| `offset` | ***int64***| ***(Optional)*** |
 | `period` | ***string***||
 ## ApiGatewayUsagePlanSpecThrottleSettings
 
@@ -55,8 +55,8 @@ Appears on:[ApiGatewayUsagePlanSpec](#apigatewayusageplanspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `burstLimit` | ***int***| ***(Optional)*** |
-| `rateLimit` | ***encoding/json.Number***| ***(Optional)*** |
+| `burstLimit` | ***int64***| ***(Optional)*** |
+| `rateLimit` | ***float64***| ***(Optional)*** |
 ## ApiGatewayUsagePlanStatus
 
 Appears on:[ApiGatewayUsagePlan](#apigatewayusageplan)

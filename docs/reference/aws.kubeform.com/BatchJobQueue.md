@@ -29,7 +29,7 @@ Appears on:[BatchJobQueue](#batchjobqueue), [BatchJobQueueStatus](#batchjobqueue
 | `arn` | ***string***| ***(Optional)*** |
 | `computeEnvironments` | ***[]string***||
 | `name` | ***string***||
-| `priority` | ***int***||
+| `priority` | ***int64***||
 | `state` | ***string***||
 ## BatchJobQueueStatus
 

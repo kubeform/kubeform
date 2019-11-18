@@ -39,7 +39,7 @@ Appears on:[CloudformationStack](#cloudformationstack), [CloudformationStackStat
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `templateBody` | ***string***| ***(Optional)*** |
 | `templateURL` | ***string***| ***(Optional)*** |
-| `timeoutInMinutes` | ***int***| ***(Optional)*** |
+| `timeoutInMinutes` | ***int64***| ***(Optional)*** |
 ## CloudformationStackStatus
 
 Appears on:[CloudformationStack](#cloudformationstack)

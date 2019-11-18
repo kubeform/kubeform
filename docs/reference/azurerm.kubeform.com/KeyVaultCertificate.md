@@ -68,7 +68,7 @@ Appears on:[KeyVaultCertificateSpecCertificatePolicy](#keyvaultcertificatespecce
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `exportable` | ***bool***||
-| `keySize` | ***int***||
+| `keySize` | ***int64***||
 | `keyType` | ***string***||
 | `reuseKey` | ***bool***||
 ## KeyVaultCertificateSpecCertificatePolicyLifetimeAction
@@ -92,8 +92,8 @@ Appears on:[KeyVaultCertificateSpecCertificatePolicyLifetimeAction](#keyvaultcer
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `daysBeforeExpiry` | ***int***| ***(Optional)*** |
-| `lifetimePercentage` | ***int***| ***(Optional)*** |
+| `daysBeforeExpiry` | ***int64***| ***(Optional)*** |
+| `lifetimePercentage` | ***int64***| ***(Optional)*** |
 ## KeyVaultCertificateSpecCertificatePolicySecretProperties
 
 Appears on:[KeyVaultCertificateSpecCertificatePolicy](#keyvaultcertificatespeccertificatepolicy)
@@ -111,7 +111,7 @@ Appears on:[KeyVaultCertificateSpecCertificatePolicy](#keyvaultcertificatespecce
 | `keyUsage` | ***[]string***||
 | `subject` | ***string***||
 | `subjectAlternativeNames` | ***[[]KeyVaultCertificateSpecCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames](#keyvaultcertificatespeccertificatepolicyx509certificatepropertiessubjectalternativenames)***| ***(Optional)*** |
-| `validityInMonths` | ***int***||
+| `validityInMonths` | ***int64***||
 ## KeyVaultCertificateSpecCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames
 
 Appears on:[KeyVaultCertificateSpecCertificatePolicyX509CertificateProperties](#keyvaultcertificatespeccertificatepolicyx509certificateproperties)

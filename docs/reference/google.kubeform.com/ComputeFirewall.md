@@ -36,7 +36,7 @@ Appears on:[ComputeFirewall](#computefirewall), [ComputeFirewallStatus](#compute
 | `enableLogging` | ***bool***| ***(Optional)*** Deprecated|
 | `name` | ***string***||
 | `network` | ***string***||
-| `priority` | ***int***| ***(Optional)*** |
+| `priority` | ***int64***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `selfLink` | ***string***| ***(Optional)*** |
 | `sourceRanges` | ***[]string***| ***(Optional)*** |

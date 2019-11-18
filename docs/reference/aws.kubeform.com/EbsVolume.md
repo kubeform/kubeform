@@ -29,9 +29,9 @@ Appears on:[EbsVolume](#ebsvolume), [EbsVolumeStatus](#ebsvolumestatus)
 | `arn` | ***string***| ***(Optional)*** |
 | `availabilityZone` | ***string***||
 | `encrypted` | ***bool***| ***(Optional)*** |
-| `iops` | ***int***| ***(Optional)*** |
+| `iops` | ***int64***| ***(Optional)*** |
 | `kmsKeyID` | ***string***| ***(Optional)*** |
-| `size` | ***int***| ***(Optional)*** |
+| `size` | ***int64***| ***(Optional)*** |
 | `snapshotID` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |

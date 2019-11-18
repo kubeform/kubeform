@@ -52,7 +52,7 @@ Appears on:[SesReceiptRuleSpec](#sesreceiptrulespec)
 | ------ | ----- | ----------- |
 | `headerName` | ***string***||
 | `headerValue` | ***string***||
-| `position` | ***int***||
+| `position` | ***int64***||
 ## SesReceiptRuleSpecBounceAction
 
 Appears on:[SesReceiptRuleSpec](#sesreceiptrulespec)
@@ -60,7 +60,7 @@ Appears on:[SesReceiptRuleSpec](#sesreceiptrulespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `message` | ***string***||
-| `position` | ***int***||
+| `position` | ***int64***||
 | `sender` | ***string***||
 | `smtpReplyCode` | ***string***||
 | `statusCode` | ***string***| ***(Optional)*** |
@@ -73,7 +73,7 @@ Appears on:[SesReceiptRuleSpec](#sesreceiptrulespec)
 | ------ | ----- | ----------- |
 | `functionArn` | ***string***||
 | `invocationType` | ***string***| ***(Optional)*** |
-| `position` | ***int***||
+| `position` | ***int64***||
 | `topicArn` | ***string***| ***(Optional)*** |
 ## SesReceiptRuleSpecS3Action
 
@@ -84,7 +84,7 @@ Appears on:[SesReceiptRuleSpec](#sesreceiptrulespec)
 | `bucketName` | ***string***||
 | `kmsKeyArn` | ***string***| ***(Optional)*** |
 | `objectKeyPrefix` | ***string***| ***(Optional)*** |
-| `position` | ***int***||
+| `position` | ***int64***||
 | `topicArn` | ***string***| ***(Optional)*** |
 ## SesReceiptRuleSpecSnsAction
 
@@ -92,7 +92,7 @@ Appears on:[SesReceiptRuleSpec](#sesreceiptrulespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `position` | ***int***||
+| `position` | ***int64***||
 | `topicArn` | ***string***||
 ## SesReceiptRuleSpecStopAction
 
@@ -100,7 +100,7 @@ Appears on:[SesReceiptRuleSpec](#sesreceiptrulespec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `position` | ***int***||
+| `position` | ***int64***||
 | `scope` | ***string***||
 | `topicArn` | ***string***| ***(Optional)*** |
 ## SesReceiptRuleSpecWorkmailAction
@@ -110,7 +110,7 @@ Appears on:[SesReceiptRuleSpec](#sesreceiptrulespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `organizationArn` | ***string***||
-| `position` | ***int***||
+| `position` | ***int64***||
 | `topicArn` | ***string***| ***(Optional)*** |
 ## SesReceiptRuleStatus
 

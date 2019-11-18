@@ -32,20 +32,20 @@ Appears on:[CloudwatchMetricAlarm](#cloudwatchmetricalarm), [CloudwatchMetricAla
 | `alarmName` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `comparisonOperator` | ***string***||
-| `datapointsToAlarm` | ***int***| ***(Optional)*** |
+| `datapointsToAlarm` | ***int64***| ***(Optional)*** |
 | `dimensions` | ***map[string]string***| ***(Optional)*** |
 | `evaluateLowSampleCountPercentiles` | ***string***| ***(Optional)*** |
-| `evaluationPeriods` | ***int***||
+| `evaluationPeriods` | ***int64***||
 | `extendedStatistic` | ***string***| ***(Optional)*** |
 | `insufficientDataActions` | ***[]string***| ***(Optional)*** |
 | `metricName` | ***string***| ***(Optional)*** |
 | `metricQuery` | ***[[]CloudwatchMetricAlarmSpecMetricQuery](#cloudwatchmetricalarmspecmetricquery)***| ***(Optional)*** |
 | `namespace` | ***string***| ***(Optional)*** |
 | `okActions` | ***[]string***| ***(Optional)*** |
-| `period` | ***int***| ***(Optional)*** |
+| `period` | ***int64***| ***(Optional)*** |
 | `statistic` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `threshold` | ***encoding/json.Number***||
+| `threshold` | ***float64***||
 | `treatMissingData` | ***string***| ***(Optional)*** |
 | `unit` | ***string***| ***(Optional)*** |
 ## CloudwatchMetricAlarmSpecMetricQuery
@@ -68,7 +68,7 @@ Appears on:[CloudwatchMetricAlarmSpecMetricQuery](#cloudwatchmetricalarmspecmetr
 | `dimensions` | ***map[string]string***| ***(Optional)*** |
 | `metricName` | ***string***||
 | `namespace` | ***string***| ***(Optional)*** |
-| `period` | ***int***||
+| `period` | ***int64***||
 | `stat` | ***string***||
 | `unit` | ***string***| ***(Optional)*** |
 ## CloudwatchMetricAlarmStatus

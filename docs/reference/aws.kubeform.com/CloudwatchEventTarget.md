@@ -44,8 +44,8 @@ Appears on:[CloudwatchEventTargetSpec](#cloudwatcheventtargetspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `arraySize` | ***int***| ***(Optional)*** |
-| `jobAttempts` | ***int***| ***(Optional)*** |
+| `arraySize` | ***int64***| ***(Optional)*** |
+| `jobAttempts` | ***int64***| ***(Optional)*** |
 | `jobDefinition` | ***string***||
 | `jobName` | ***string***||
 ## CloudwatchEventTargetSpecEcsTarget
@@ -58,7 +58,7 @@ Appears on:[CloudwatchEventTargetSpec](#cloudwatcheventtargetspec)
 | `launchType` | ***string***| ***(Optional)*** |
 | `networkConfiguration` | ***[[]CloudwatchEventTargetSpecEcsTargetNetworkConfiguration](#cloudwatcheventtargetspececstargetnetworkconfiguration)***| ***(Optional)*** |
 | `platformVersion` | ***string***| ***(Optional)*** |
-| `taskCount` | ***int***| ***(Optional)*** |
+| `taskCount` | ***int64***| ***(Optional)*** |
 | `taskDefinitionArn` | ***string***||
 ## CloudwatchEventTargetSpecEcsTargetNetworkConfiguration
 

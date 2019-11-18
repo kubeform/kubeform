@@ -21,7 +21,9 @@ section_menu_id: reference
 ## GlobalacceleratorEndpointGroupSpec
 
 
+
 Appears on:[GlobalacceleratorEndpointGroup](#globalacceleratorendpointgroup), [GlobalacceleratorEndpointGroupStatus](#globalacceleratorendpointgroupstatus)
+
 
 
 | Field | Type | Description |
@@ -40,7 +42,9 @@ Appears on:[GlobalacceleratorEndpointGroup](#globalacceleratorendpointgroup), [G
 ## GlobalacceleratorEndpointGroupSpecEndpointConfiguration
 
 
+
 Appears on:[GlobalacceleratorEndpointGroupSpec](#globalacceleratorendpointgroupspec)
+
 
 
 | Field | Type | Description |
@@ -50,7 +54,9 @@ Appears on:[GlobalacceleratorEndpointGroupSpec](#globalacceleratorendpointgroups
 ## GlobalacceleratorEndpointGroupStatus
 
 
+
 Appears on:[GlobalacceleratorEndpointGroup](#globalacceleratorendpointgroup)
+
 
 
 | Field | Type | Description |

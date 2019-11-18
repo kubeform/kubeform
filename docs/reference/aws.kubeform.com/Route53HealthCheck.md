@@ -30,21 +30,21 @@ Appears on:[Route53HealthCheck](#route53healthcheck), [Route53HealthCheckStatus]
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `childHealthThreshold` | ***int***| ***(Optional)*** |
+| `childHealthThreshold` | ***int64***| ***(Optional)*** |
 | `childHealthchecks` | ***[]string***| ***(Optional)*** |
 | `cloudwatchAlarmName` | ***string***| ***(Optional)*** |
 | `cloudwatchAlarmRegion` | ***string***| ***(Optional)*** |
 | `enableSni` | ***bool***| ***(Optional)*** |
-| `failureThreshold` | ***int***| ***(Optional)*** |
+| `failureThreshold` | ***int64***| ***(Optional)*** |
 | `fqdn` | ***string***| ***(Optional)*** |
 | `insufficientDataHealthStatus` | ***string***| ***(Optional)*** |
 | `invertHealthcheck` | ***bool***| ***(Optional)*** |
 | `ipAddress` | ***string***| ***(Optional)*** |
 | `measureLatency` | ***bool***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `referenceName` | ***string***| ***(Optional)*** |
 | `regions` | ***[]string***| ***(Optional)*** |
-| `requestInterval` | ***int***| ***(Optional)*** |
+| `requestInterval` | ***int64***| ***(Optional)*** |
 | `resourcePath` | ***string***| ***(Optional)*** |
 | `searchString` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |

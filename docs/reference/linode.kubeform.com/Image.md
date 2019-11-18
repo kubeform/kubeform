@@ -30,12 +30,12 @@ Appears on:[Image](#image), [ImageStatus](#imagestatus)
 | `createdBy` | ***string***| ***(Optional)*** The name of the User who created this Image.|
 | `deprecated` | ***bool***| ***(Optional)*** Whether or not this Image is deprecated. Will only be True for deprecated public Images.|
 | `description` | ***string***| ***(Optional)*** A detailed description of this Image.|
-| `diskID` | ***int***|The ID of the Linode Disk that this Image will be created from.|
+| `diskID` | ***int64***|The ID of the Linode Disk that this Image will be created from.|
 | `expiry` | ***string***| ***(Optional)*** Only Images created automatically (from a deleted Linode; type=automatic) will expire.|
 | `isPublic` | ***bool***| ***(Optional)*** True if the Image is public.|
 | `label` | ***string***|A short description of the Image. Labels cannot contain special characters.|
-| `linodeID` | ***int***|The ID of the Linode that this Image will be created from.|
-| `size` | ***int***| ***(Optional)*** The minimum size this Image needs to deploy. Size is in MB.|
+| `linodeID` | ***int64***|The ID of the Linode that this Image will be created from.|
+| `size` | ***int64***| ***(Optional)*** The minimum size this Image needs to deploy. Size is in MB.|
 | `type` | ***string***| ***(Optional)*** How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.|
 | `vendor` | ***string***| ***(Optional)*** The upstream distribution vendor. Nil for private Images.|
 ## ImageStatus

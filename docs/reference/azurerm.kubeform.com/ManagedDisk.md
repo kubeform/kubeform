@@ -27,7 +27,7 @@ Appears on:[ManagedDisk](#manageddisk), [ManagedDiskStatus](#manageddiskstatus)
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `createOption` | ***string***||
-| `diskSizeGb` | ***int***| ***(Optional)*** |
+| `diskSizeGb` | ***int64***| ***(Optional)*** |
 | `encryptionSettings` | ***[[]ManagedDiskSpecEncryptionSettings](#manageddiskspecencryptionsettings)***| ***(Optional)*** |
 | `imageReferenceID` | ***string***| ***(Optional)*** |
 | `location` | ***string***||

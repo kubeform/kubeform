@@ -34,7 +34,7 @@ Appears on:[PinpointEmailChannel](#pinpointemailchannel), [PinpointEmailChannelS
 | `enabled` | ***bool***| ***(Optional)*** |
 | `fromAddress` | ***string***||
 | `identity` | ***string***||
-| `messagesPerSecond` | ***int***| ***(Optional)*** |
+| `messagesPerSecond` | ***int64***| ***(Optional)*** |
 | `roleArn` | ***string***||
 ## PinpointEmailChannelStatus
 

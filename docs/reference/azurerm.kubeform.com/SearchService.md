@@ -32,9 +32,9 @@ Appears on:[SearchService](#searchservice), [SearchServiceStatus](#searchservice
 | `id` | ***string***||
 | `location` | ***string***||
 | `name` | ***string***||
-| `partitionCount` | ***int***| ***(Optional)*** |
+| `partitionCount` | ***int64***| ***(Optional)*** |
 | `primaryKey` | ***string***| ***(Optional)*** |
-| `replicaCount` | ***int***| ***(Optional)*** |
+| `replicaCount` | ***int64***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
 | `secondaryKey` | ***string***| ***(Optional)*** |
 | `sku` | ***string***||

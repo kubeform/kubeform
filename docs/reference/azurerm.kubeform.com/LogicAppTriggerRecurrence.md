@@ -27,7 +27,7 @@ Appears on:[LogicAppTriggerRecurrence](#logicapptriggerrecurrence), [LogicAppTri
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `frequency` | ***string***||
-| `interval` | ***int***||
+| `interval` | ***int64***||
 | `logicAppID` | ***string***||
 | `name` | ***string***||
 ## LogicAppTriggerRecurrenceStatus

@@ -76,9 +76,9 @@ Appears on:[AutoscaleSettingSpecProfile](#autoscalesettingspecprofile)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `default` | ***int***||
-| `maximum` | ***int***||
-| `minimum` | ***int***||
+| `default` | ***int64***||
+| `maximum` | ***int64***||
+| `minimum` | ***int64***||
 ## AutoscaleSettingSpecProfileFixedDate
 
 Appears on:[AutoscaleSettingSpecProfile](#autoscalesettingspecprofile)
@@ -116,7 +116,7 @@ Appears on:[AutoscaleSettingSpecProfileRule](#autoscalesettingspecprofilerule)
 | `metricResourceID` | ***string***||
 | `operator` | ***string***||
 | `statistic` | ***string***||
-| `threshold` | ***encoding/json.Number***||
+| `threshold` | ***float64***||
 | `timeAggregation` | ***string***||
 | `timeGrain` | ***string***||
 | `timeWindow` | ***string***||
@@ -129,7 +129,7 @@ Appears on:[AutoscaleSettingSpecProfileRule](#autoscalesettingspecprofilerule)
 | `cooldown` | ***string***||
 | `direction` | ***string***||
 | `type` | ***string***||
-| `value` | ***int***||
+| `value` | ***int64***||
 ## AutoscaleSettingStatus
 
 Appears on:[AutoscaleSetting](#autoscalesetting)

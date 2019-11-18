@@ -28,15 +28,15 @@ Appears on:[NetworkACLRule](#networkaclrule), [NetworkACLRuleStatus](#networkacl
 | `id` | ***string***||
 | `cidrBlock` | ***string***| ***(Optional)*** |
 | `egress` | ***bool***| ***(Optional)*** |
-| `fromPort` | ***int***| ***(Optional)*** |
+| `fromPort` | ***int64***| ***(Optional)*** |
 | `icmpCode` | ***string***| ***(Optional)*** |
 | `icmpType` | ***string***| ***(Optional)*** |
 | `ipv6CIDRBlock` | ***string***| ***(Optional)*** |
 | `networkACLID` | ***string***||
 | `protocol` | ***string***||
 | `ruleAction` | ***string***||
-| `ruleNumber` | ***int***||
-| `toPort` | ***int***| ***(Optional)*** |
+| `ruleNumber` | ***int64***||
+| `toPort` | ***int64***| ***(Optional)*** |
 ## NetworkACLRuleStatus
 
 Appears on:[NetworkACLRule](#networkaclrule)

@@ -27,9 +27,9 @@ Appears on:[NetworkPacketCapture](#networkpacketcapture), [NetworkPacketCaptureS
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `filter` | ***[[]NetworkPacketCaptureSpecFilter](#networkpacketcapturespecfilter)***| ***(Optional)*** |
-| `maximumBytesPerPacket` | ***int***| ***(Optional)*** |
-| `maximumBytesPerSession` | ***int***| ***(Optional)*** |
-| `maximumCaptureDuration` | ***int***| ***(Optional)*** |
+| `maximumBytesPerPacket` | ***int64***| ***(Optional)*** |
+| `maximumBytesPerSession` | ***int64***| ***(Optional)*** |
+| `maximumCaptureDuration` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `networkWatcherName` | ***string***||
 | `resourceGroupName` | ***string***||

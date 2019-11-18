@@ -41,7 +41,7 @@ Appears on:[Route53Record](#route53record), [Route53RecordStatus](#route53record
 | `name` | ***string***||
 | `records` | ***[]string***| ***(Optional)*** |
 | `setIdentifier` | ***string***| ***(Optional)*** |
-| `ttl` | ***int***| ***(Optional)*** |
+| `ttl` | ***int64***| ***(Optional)*** |
 | `type` | ***string***||
 | `weightedRoutingPolicy` | ***[[]Route53RecordSpecWeightedRoutingPolicy](#route53recordspecweightedroutingpolicy)***| ***(Optional)*** |
 | `zoneID` | ***string***||
@@ -83,7 +83,7 @@ Appears on:[Route53RecordSpec](#route53recordspec)
 
 | Field | Type | Description |
 | ------ | ----- | ----------- |
-| `weight` | ***int***||
+| `weight` | ***int64***||
 ## Route53RecordStatus
 
 Appears on:[Route53Record](#route53record)

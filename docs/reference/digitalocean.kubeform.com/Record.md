@@ -31,16 +31,16 @@ Appears on:[Record](#record), [RecordStatus](#recordstatus)
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `domain` | ***string***||
-| `flags` | ***int***| ***(Optional)*** |
+| `flags` | ***int64***| ***(Optional)*** |
 | `fqdn` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `port` | ***int***| ***(Optional)*** |
-| `priority` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
+| `priority` | ***int64***| ***(Optional)*** |
 | `tag` | ***string***| ***(Optional)*** |
-| `ttl` | ***int***| ***(Optional)*** |
+| `ttl` | ***int64***| ***(Optional)*** |
 | `type` | ***string***||
 | `value` | ***string***||
-| `weight` | ***int***| ***(Optional)*** |
+| `weight` | ***int64***| ***(Optional)*** |
 ## RecordStatus
 
 Appears on:[Record](#record)

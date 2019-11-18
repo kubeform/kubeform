@@ -46,7 +46,7 @@ Appears on:[Route53ResolverRuleSpec](#route53resolverrulespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `ip` | ***string***||
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 ## Route53ResolverRuleStatus
 
 Appears on:[Route53ResolverRule](#route53resolverrule)

@@ -30,7 +30,7 @@ Appears on:[DnsCnameRecord](#dnscnamerecord), [DnsCnameRecordStatus](#dnscnamere
 | `record` | ***string***||
 | `resourceGroupName` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `ttl` | ***int***||
+| `ttl` | ***int64***||
 | `zoneName` | ***string***||
 ## DnsCnameRecordStatus
 

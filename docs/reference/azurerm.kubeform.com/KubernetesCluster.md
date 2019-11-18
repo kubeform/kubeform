@@ -85,16 +85,16 @@ Appears on:[KubernetesClusterSpec](#kubernetesclusterspec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `availabilityZones` | ***[]string***| ***(Optional)*** |
-| `count` | ***int***| ***(Optional)*** |
+| `count` | ***int64***| ***(Optional)*** |
 | `dnsPrefix` | ***string***| ***(Optional)*** Deprecated|
 | `enableAutoScaling` | ***bool***| ***(Optional)*** |
 | `fqdn` | ***string***| ***(Optional)*** Deprecated|
-| `maxCount` | ***int***| ***(Optional)*** |
-| `maxPods` | ***int***| ***(Optional)*** |
-| `minCount` | ***int***| ***(Optional)*** |
+| `maxCount` | ***int64***| ***(Optional)*** |
+| `maxPods` | ***int64***| ***(Optional)*** |
+| `minCount` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `nodeTaints` | ***[]string***| ***(Optional)*** |
-| `osDiskSizeGb` | ***int***| ***(Optional)*** |
+| `osDiskSizeGb` | ***int64***| ***(Optional)*** |
 | `osType` | ***string***| ***(Optional)*** |
 | `type` | ***string***| ***(Optional)*** |
 | `vmSize` | ***string***||

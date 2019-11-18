@@ -32,17 +32,17 @@ Appears on:[XraySamplingRule](#xraysamplingrule), [XraySamplingRuleStatus](#xray
 | `id` | ***string***||
 | `arn` | ***string***| ***(Optional)*** |
 | `attributes` | ***map[string]string***| ***(Optional)*** |
-| `fixedRate` | ***encoding/json.Number***||
+| `fixedRate` | ***float64***||
 | `host` | ***string***||
 | `httpMethod` | ***string***||
-| `priority` | ***int***||
-| `reservoirSize` | ***int***||
+| `priority` | ***int64***||
+| `reservoirSize` | ***int64***||
 | `resourceArn` | ***string***||
 | `ruleName` | ***string***| ***(Optional)*** |
 | `serviceName` | ***string***||
 | `serviceType` | ***string***||
 | `urlPath` | ***string***||
-| `version` | ***int***||
+| `version` | ***int64***||
 ## XraySamplingRuleStatus
 
 Appears on:[XraySamplingRule](#xraysamplingrule)

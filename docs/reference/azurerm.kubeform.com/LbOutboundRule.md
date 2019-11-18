@@ -26,11 +26,11 @@ Appears on:[LbOutboundRule](#lboutboundrule), [LbOutboundRuleStatus](#lboutbound
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `allocatedOutboundPorts` | ***int***| ***(Optional)*** |
+| `allocatedOutboundPorts` | ***int64***| ***(Optional)*** |
 | `backendAddressPoolID` | ***string***||
 | `enableTcpReset` | ***bool***| ***(Optional)*** |
 | `frontendIPConfiguration` | ***[[]LbOutboundRuleSpecFrontendIPConfiguration](#lboutboundrulespecfrontendipconfiguration)***| ***(Optional)*** |
-| `idleTimeoutInMinutes` | ***int***| ***(Optional)*** |
+| `idleTimeoutInMinutes` | ***int64***| ***(Optional)*** |
 | `loadbalancerID` | ***string***||
 | `name` | ***string***||
 | `protocol` | ***string***||

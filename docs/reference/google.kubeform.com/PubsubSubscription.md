@@ -30,7 +30,7 @@ Appears on:[PubsubSubscription](#pubsubsubscription), [PubsubSubscriptionStatus]
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `ackDeadlineSeconds` | ***int***| ***(Optional)*** |
+| `ackDeadlineSeconds` | ***int64***| ***(Optional)*** |
 | `name` | ***string***||
 | `path` | ***string***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |

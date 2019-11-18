@@ -26,13 +26,13 @@ Appears on:[LbProbe](#lbprobe), [LbProbeStatus](#lbprobestatus)
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `intervalInSeconds` | ***int***| ***(Optional)*** |
+| `intervalInSeconds` | ***int64***| ***(Optional)*** |
 | `loadBalancerRules` | ***[]string***| ***(Optional)*** |
 | `loadbalancerID` | ***string***||
 | `location` | ***string***| ***(Optional)*** Deprecated|
 | `name` | ***string***||
-| `numberOfProbes` | ***int***| ***(Optional)*** |
-| `port` | ***int***||
+| `numberOfProbes` | ***int64***| ***(Optional)*** |
+| `port` | ***int64***||
 | `protocol` | ***string***| ***(Optional)*** |
 | `requestPath` | ***string***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||

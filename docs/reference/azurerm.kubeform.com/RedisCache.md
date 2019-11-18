@@ -31,7 +31,7 @@ Appears on:[RedisCache](#rediscache), [RedisCacheStatus](#rediscachestatus)
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `secretRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
-| `capacity` | ***int***||
+| `capacity` | ***int64***||
 | `enableNonSSLPort` | ***bool***| ***(Optional)*** |
 | `family` | ***string***||
 | `hostname` | ***string***| ***(Optional)*** |
@@ -39,13 +39,13 @@ Appears on:[RedisCache](#rediscache), [RedisCacheStatus](#rediscachestatus)
 | `minimumTLSVersion` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
 | `patchSchedule` | ***[[]RedisCacheSpecPatchSchedule](#rediscachespecpatchschedule)***| ***(Optional)*** |
-| `port` | ***int***| ***(Optional)*** |
+| `port` | ***int64***| ***(Optional)*** |
 | `privateStaticIPAddress` | ***string***| ***(Optional)*** |
 | `redisConfiguration` | ***[[]RedisCacheSpecRedisConfiguration](#rediscachespecredisconfiguration)***| ***(Optional)*** |
 | `resourceGroupName` | ***string***||
-| `shardCount` | ***int***| ***(Optional)*** |
+| `shardCount` | ***int64***| ***(Optional)*** |
 | `skuName` | ***string***||
-| `sslPort` | ***int***| ***(Optional)*** |
+| `sslPort` | ***int64***| ***(Optional)*** |
 | `subnetID` | ***string***| ***(Optional)*** |
 | `tags` | ***map[string]string***| ***(Optional)*** |
 | `zones` | ***[]string***| ***(Optional)*** |
@@ -56,7 +56,7 @@ Appears on:[RedisCacheSpec](#rediscachespec)
 | Field | Type | Description |
 | ------ | ----- | ----------- |
 | `dayOfWeek` | ***string***||
-| `startHourUtc` | ***int***| ***(Optional)*** |
+| `startHourUtc` | ***int64***| ***(Optional)*** |
 ## RedisCacheSpecRedisConfiguration
 
 Appears on:[RedisCacheSpec](#rediscachespec)
@@ -65,15 +65,15 @@ Appears on:[RedisCacheSpec](#rediscachespec)
 | ------ | ----- | ----------- |
 | `aofBackupEnabled` | ***bool***| ***(Optional)*** |
 | `enableAuthentication` | ***bool***| ***(Optional)*** |
-| `maxclients` | ***int***| ***(Optional)*** |
-| `maxfragmentationmemoryReserved` | ***int***| ***(Optional)*** |
-| `maxmemoryDelta` | ***int***| ***(Optional)*** |
+| `maxclients` | ***int64***| ***(Optional)*** |
+| `maxfragmentationmemoryReserved` | ***int64***| ***(Optional)*** |
+| `maxmemoryDelta` | ***int64***| ***(Optional)*** |
 | `maxmemoryPolicy` | ***string***| ***(Optional)*** |
-| `maxmemoryReserved` | ***int***| ***(Optional)*** |
+| `maxmemoryReserved` | ***int64***| ***(Optional)*** |
 | `notifyKeyspaceEvents` | ***string***| ***(Optional)*** |
 | `rdbBackupEnabled` | ***bool***| ***(Optional)*** |
-| `rdbBackupFrequency` | ***int***| ***(Optional)*** |
-| `rdbBackupMaxSnapshotCount` | ***int***| ***(Optional)*** |
+| `rdbBackupFrequency` | ***int64***| ***(Optional)*** |
+| `rdbBackupMaxSnapshotCount` | ***int64***| ***(Optional)*** |
 ## RedisCacheStatus
 
 Appears on:[RedisCache](#rediscache)

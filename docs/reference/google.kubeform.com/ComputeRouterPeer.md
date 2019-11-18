@@ -26,11 +26,11 @@ Appears on:[ComputeRouterPeer](#computerouterpeer), [ComputeRouterPeerStatus](#c
 | ------ | ----- | ----------- |
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
-| `advertisedRoutePriority` | ***int***| ***(Optional)*** |
+| `advertisedRoutePriority` | ***int64***| ***(Optional)*** |
 | `interface` | ***string***||
 | `ipAddress` | ***string***| ***(Optional)*** |
 | `name` | ***string***||
-| `peerAsn` | ***int***||
+| `peerAsn` | ***int64***||
 | `peerIPAddress` | ***string***| ***(Optional)*** |
 | `project` | ***string***| ***(Optional)*** |
 | `region` | ***string***| ***(Optional)*** |

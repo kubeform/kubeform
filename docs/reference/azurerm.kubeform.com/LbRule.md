@@ -27,13 +27,13 @@ Appears on:[LbRule](#lbrule), [LbRuleStatus](#lbrulestatus)
 | `providerRef` | ***[Kubernetes core/v1.LocalObjectReference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#localobjectreference-v1-core)***||
 | `id` | ***string***||
 | `backendAddressPoolID` | ***string***| ***(Optional)*** |
-| `backendPort` | ***int***||
+| `backendPort` | ***int64***||
 | `disableOutboundSnat` | ***bool***| ***(Optional)*** |
 | `enableFloatingIP` | ***bool***| ***(Optional)*** |
 | `frontendIPConfigurationID` | ***string***| ***(Optional)*** |
 | `frontendIPConfigurationName` | ***string***||
-| `frontendPort` | ***int***||
-| `idleTimeoutInMinutes` | ***int***| ***(Optional)*** |
+| `frontendPort` | ***int64***||
+| `idleTimeoutInMinutes` | ***int64***| ***(Optional)*** |
 | `loadDistribution` | ***string***| ***(Optional)*** |
 | `loadbalancerID` | ***string***||
 | `location` | ***string***| ***(Optional)*** Deprecated|

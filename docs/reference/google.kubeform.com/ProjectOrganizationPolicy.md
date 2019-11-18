@@ -37,7 +37,7 @@ Appears on:[ProjectOrganizationPolicy](#projectorganizationpolicy), [ProjectOrga
 | `project` | ***string***||
 | `restorePolicy` | ***[[]ProjectOrganizationPolicySpecRestorePolicy](#projectorganizationpolicyspecrestorepolicy)***| ***(Optional)*** |
 | `updateTime` | ***string***| ***(Optional)*** |
-| `version` | ***int***| ***(Optional)*** |
+| `version` | ***int64***| ***(Optional)*** |
 ## ProjectOrganizationPolicySpecBooleanPolicy
 
 Appears on:[ProjectOrganizationPolicySpec](#projectorganizationpolicyspec)

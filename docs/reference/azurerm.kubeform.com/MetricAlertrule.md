@@ -38,7 +38,7 @@ Appears on:[MetricAlertrule](#metricalertrule), [MetricAlertruleStatus](#metrica
 | `resourceGroupName` | ***string***||
 | `resourceID` | ***string***||
 | `tags` | ***map[string]string***| ***(Optional)*** |
-| `threshold` | ***encoding/json.Number***||
+| `threshold` | ***float64***||
 | `webhookAction` | ***[[]MetricAlertruleSpecWebhookAction](#metricalertrulespecwebhookaction)***| ***(Optional)*** |
 ## MetricAlertruleSpecEmailAction
 
