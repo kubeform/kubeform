@@ -16,10 +16,13 @@ Kubeform controller can be installed via Helm.
 
 <ul class="nav nav-tabs" id="installerTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="helm3-tab" data-toggle="tab" href="#helm3" role="tab" aria-controls="helm3" aria-selected="true">Helm 3</a>
+    <a class="nav-link active" id="helm3-tab" data-toggle="tab" href="#helm3" role="tab" aria-controls="helm3" aria-selected="true">Helm 3 (Recommended)</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="helm2-tab" data-toggle="tab" href="#helm2" role="tab" aria-controls="helm2" aria-selected="false">Helm 2</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="script-tab" data-toggle="tab" href="#script" role="tab" aria-controls="script" aria-selected="false">YAML</a>
   </li>
 </ul>
 <div class="tab-content" id="installerTabContent">
@@ -56,6 +59,28 @@ NAME                CHART VERSION  APP VERSION  DESCRIPTION
 appscode/kubeform   {{< param "info.version" >}}         {{< param "info.version" >}}       Kubeform by AppsCode - Build Cloud Infrastructure from Kubernetes
 
 $ helm install appscode/kubeform --name kfc --version {{< param "info.version" >}} --namespace kube-system
+```
+
+To see the detailed configuration options, visit [here](https://github.com/kubeform/installer/tree/{{< param "info.version" >}}/charts/kubeform).
+
+</div>
+<div class="tab-pane fade show active" id="script" role="tabpanel" aria-labelledby="script-tab">
+
+## Using YAML
+
+If you prefer to not use Helm, you can generate YAMLs from Kubeform chart and deploy using `kubectl`. Here we are going to show the prodecure using Helm 3.
+
+```console
+$ helm repo add appscode https://charts.appscode.com/stable/
+$ helm repo update
+$ helm search repo appscode/kubeform
+NAME                CHART VERSION  APP VERSION  DESCRIPTION
+appscode/kubeform   {{< param "info.version" >}}         {{< param "info.version" >}}       Kubeform by AppsCode - Build Cloud Infrastructure from Kubernetes
+
+$ helm install kfc appscode/kubeform \
+  --version {{< param "info.version" >}} \
+  --namespace kube-system \
+  --no-hooks | kubectl apply -f -
 ```
 
 To see the detailed configuration options, visit [here](https://github.com/kubeform/installer/tree/{{< param "info.version" >}}/charts/kubeform).
