@@ -64,7 +64,7 @@ $ helm install appscode/kubeform --name kfc --version {{< param "info.version" >
 To see the detailed configuration options, visit [here](https://github.com/kubeform/installer/tree/{{< param "info.version" >}}/charts/kubeform).
 
 </div>
-<div class="tab-pane fade show active" id="script" role="tabpanel" aria-labelledby="script-tab">
+<div class="tab-pane fade" id="script" role="tabpanel" aria-labelledby="script-tab">
 
 ## Using YAML
 
