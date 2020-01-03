@@ -35,7 +35,7 @@ Kubeform can be installed via [Helm](https://helm.sh/) using the [chart](https:/
 ```console
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/kubeform
+$ helm search repo appscode/kubeform --version {{< param "info.version" >}}
 NAME                CHART VERSION  APP VERSION  DESCRIPTION
 appscode/kubeform   {{< param "info.version" >}}         {{< param "info.version" >}}       Kubeform by AppsCode - Build Cloud Infrastructure from Kubernetes
 
@@ -54,7 +54,7 @@ Kubeform can be installed via [Helm](https://helm.sh/) using the [chart](https:/
 ```console
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search appscode/kubeform
+$ helm search appscode/kubeform --version {{< param "info.version" >}}
 NAME                CHART VERSION  APP VERSION  DESCRIPTION
 appscode/kubeform   {{< param "info.version" >}}         {{< param "info.version" >}}       Kubeform by AppsCode - Build Cloud Infrastructure from Kubernetes
 
@@ -73,7 +73,7 @@ If you prefer to not use Helm, you can generate YAMLs from Kubeform chart and de
 ```console
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/kubeform
+$ helm search repo appscode/kubeform --version {{< param "info.version" >}}
 NAME                CHART VERSION  APP VERSION  DESCRIPTION
 appscode/kubeform   {{< param "info.version" >}}         {{< param "info.version" >}}       Kubeform by AppsCode - Build Cloud Infrastructure from Kubernetes
 
